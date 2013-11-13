@@ -1,0 +1,25 @@
+
+# Apple Finder Database
+
+.DS_Store
+
+# Microsoft VS
+
+*.sdf
+*.suo
+*.user
+*.sln.docstates
+
+# XCode
+
+*.mode1
+*.mode2v3
+*.mode1v3
+*.pbxuser
+*.perspectivev3
+
+!default.pbxuser
+!default.mode1
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3

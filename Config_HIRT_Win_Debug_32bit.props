@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>../../Builds/</OutDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntDir>../../Intermediate/$(ProjectName)/</IntDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetExt>.mxe</TargetExt>
+    <_PropertySheetDisplayName>HIRT_Debug_32bit</_PropertySheetDisplayName>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>.\..\..\Max6_support\c74support\max-includes;.\..\..\Max6_support\c74support\msp-includes;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>MSVCRTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <AdditionalDependencies>MaxAPI.lib;MaxAudio.lib;maxcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <MergeSections>
+      </MergeSections>
+      <ImportLibrary>$(IntDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalOptions>/EXPORT:main %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DENORM_WANT_FIX;NO_TRANSLATION_SUPPORT;WIN_VERSION;WIN32;_DEBUG;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_CRT_NOFORCE_MANIFEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <StructMemberAlignment>2Bytes</StructMemberAlignment>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(IntDir)$(TargetName).asm</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <Optimization>Disabled</Optimization>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
