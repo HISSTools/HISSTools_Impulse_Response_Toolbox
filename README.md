@@ -6,10 +6,10 @@ A toolbox for convolution, deconvolution and other impulse response related task
 By Alex Harker and Pierre Alexandre Tremblay
 CeReNeM - The University of Huddersfield
 
-Contact:
+**Contact:**
 
-ajharker@gmail.com / p.a.tremblay@hud.ac.uk
-http://thehiss.org/
+* ajharker@gmail.com / p.a.tremblay@hud.ac.uk
+* http://thehiss.org/
 			
 HISSTools first release is a set of tools for working with convolution and impulse responses in MaxMSP. This set of object addresses various tasks, including measuring impulse responses, spectral display from realtime data/ buffers, and buffer-based convolution, deconvolution and inversion.
 
