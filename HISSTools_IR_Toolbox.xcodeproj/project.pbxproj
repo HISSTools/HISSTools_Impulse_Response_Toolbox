@@ -378,7 +378,6 @@
 /* Begin PBXFileReference section */
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		B1D996400A4BB03700CE1530 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		B80028AE1696EB8600B0030C /* AH_Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AH_Types.h; path = HISSTools_IR_Toolbox_Dependencies/AH_Types.h; sourceTree = "<group>"; };
 		B80029731696FF4E00B0030C /* AH_Atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AH_Atomic.h; sourceTree = "<group>"; };
 		B80029751696FF4E00B0030C /* AH_Generic_Memory_Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AH_Generic_Memory_Swap.h; sourceTree = "<group>"; };
 		B80029761696FF4E00B0030C /* AH_Memory_Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AH_Memory_Swap.h; sourceTree = "<group>"; };
@@ -419,6 +418,7 @@
 		B879996B1695C9770088D616 /* HISSTools_FFT_SIMD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT_SIMD.h; sourceTree = "<group>"; };
 		B890395F13CEFB4C0090602F /* irphase~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irphase~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B890397E13CEFBB20090602F /* irphase~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "irphase~.c"; path = "../HISSTools_IR_Toolbox_Objects/irphase~.c"; sourceTree = "<group>"; };
+		B89678E81833F14F001B9FD0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B89E6720137AE78C007BBD9F /* irmeasure~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "irmeasure~.c"; path = "../HISSTools_IR_Toolbox_Objects/irmeasure~.c"; sourceTree = "<group>"; };
 		B8A18A08137AA8CD0056CD0F /* irmeasure~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irmeasure~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A7366A151B980B0030B923 /* irstats~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irstats~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -646,7 +646,7 @@
 		089C166AFE841209C02AAC07 /* plus~ */ = {
 			isa = PBXGroup;
 			children = (
-				B80028AE1696EB8600B0030C /* AH_Types.h */,
+				B89678E81833F14F001B9FD0 /* Info.plist */,
 				B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */,
 				08FB77ADFE841716C02AAC07 /* Source */,
 				089C167CFE841241C02AAC07 /* Resources */,
