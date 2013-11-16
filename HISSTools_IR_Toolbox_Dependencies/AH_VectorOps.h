@@ -58,6 +58,14 @@ typedef	__m128d vDouble;
 #endif
 #endif
 
+// Define for 64 bit float vector in 128bits (2 doubles)
+
+#ifdef TARGET_INTEL
+#ifndef VECTOR_F64_128BIT
+#define VECTOR_F64_128BIT
+#endif
+#endif
+
 // Runtime test for SSE2
 
 static __inline int SSE2_check()

@@ -154,7 +154,7 @@ void FFT_FUNC_NAME (fft_internal) (FFT_SPLIT_TYPE *input, FFT_SETUP_TYPE *setup,
 		return;
 	}
 	
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 	if ((HstFFT_UInt) input->realp % 16 || (HstFFT_UInt) input->imagp % 16 || !AHFFT_SSE_Exists)
 #endif
 	{
@@ -171,7 +171,7 @@ void FFT_FUNC_NAME (fft_internal) (FFT_SPLIT_TYPE *input, FFT_SETUP_TYPE *setup,
 		for (; i < fft_log2; i++)
 			FFT_FUNC_NAME(pass_trig_table) (input, setup, length, i);
 	}
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 	else 
 	{
 		FFT_FUNC_NAME (pass_1_2_reorder_simd) (input, length);

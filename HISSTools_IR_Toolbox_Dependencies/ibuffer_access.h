@@ -140,7 +140,7 @@ void ibuffer_float_samps_scalar_cubic_bspline (void *samps, float *out, AH_SIntP
 void ibuffer_float_samps_scalar_cubic_hermite (void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul);
 void ibuffer_float_samps_scalar_cubic_lagrange (void *samps, float *out, AH_SIntPtr *offsets, float*fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul);
 
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 
 // Vectorised Interpolation Double Precision: None / Linear / Cubic Bspline / Cubic Hermite / Cubic Lagrange
 

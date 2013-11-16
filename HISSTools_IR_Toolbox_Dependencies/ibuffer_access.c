@@ -814,7 +814,7 @@ void ibuffer_float_samps_scalar_cubic_lagrange (void *samps, float *out, AH_SInt
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 
 void ibuffer_double_samps_simd_nointerp (void *samps, vDouble *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
@@ -864,7 +864,7 @@ void ibuffer_double_samps_scalar_nointerp (void *samps, double *out, AH_SIntPtr 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 
 void ibuffer_lin_interp_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
@@ -955,7 +955,7 @@ void ibuffer_double_samps_scalar_linear (void *samps, double *out, AH_SIntPtr *o
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 
 void ibuffer_cubic_bspline_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
@@ -1110,7 +1110,7 @@ void ibuffer_double_samps_scalar_cubic_bspline (void *samps, double *out, AH_SIn
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 
 void ibuffer_cubic_hermite_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
@@ -1256,7 +1256,7 @@ void ibuffer_double_samps_scalar_cubic_hermite (void *samps, double *out, AH_SIn
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#ifdef TARGET_INTEL
+#ifdef VECTOR_F64_128BIT
 
 void ibuffer_cubic_lagrange_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
