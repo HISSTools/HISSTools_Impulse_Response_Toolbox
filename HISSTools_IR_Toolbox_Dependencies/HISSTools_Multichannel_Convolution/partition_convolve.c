@@ -367,7 +367,6 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
 	
 	vFloat vscale_mult = float2vector((float) (1.0 / (double) (fft_size << 2)));	
 	vFloat Zero = {0.,0.,0.,0.};
-	MUL_ZERO_INIT
 	
 	if  (!num_partitions)
 		return false;
@@ -556,7 +555,6 @@ void partition_convolve_process_partition(FFT_SPLIT_COMPLEX_F in1, FFT_SPLIT_COM
 	vFloat *in_imag2 = (vFloat *) in2.imagp;
 	vFloat *out_real = (vFloat *) out.realp;
 	vFloat *out_imag = (vFloat *) out.imagp;
-	MUL_ZERO_INIT
 	
 	float nyquist1, nyquist2;
 	AH_UIntPtr i;

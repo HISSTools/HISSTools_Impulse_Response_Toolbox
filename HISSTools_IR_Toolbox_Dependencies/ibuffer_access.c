@@ -51,15 +51,13 @@ __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
 	vSInt32	*ivec_ptr = (vSInt32 *) out;
 	vFloat *fvec_ptr = (vFloat *) out;
 	AH_SInt32 *temp_ptr;
-	
-	MUL_ZERO_INIT
-	
+		
 	AH_SIntPtr i;
 	
 	// Do vectors
 	
 	for (i = 0; i < n_samps >> 2; i++)
-		*fvec_ptr++ = F32_VEC_MUL_OP (scale, F32_VEC_INT_TO_FLOAT (*ivec_ptr++));
+		*fvec_ptr++ = F32_VEC_MUL_OP (scale, F32_VEC_FROM_I32 (*ivec_ptr++));
 	
 	// Clean up with scalars
 	
@@ -79,9 +77,7 @@ __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
 	
 	AH_SIntPtr start_offset = (16 - ((AH_SIntPtr) out % 16)) >> 2;
 	AH_SIntPtr i;
-	
-	MUL_ZERO_INIT
-	
+		
 	if (start_offset == 4)
 		start_offset = 0;
 	
@@ -98,7 +94,7 @@ __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
 	// Do vectors
 	
 	for (ivec_ptr = (vSInt32 *) temp_ptr, fvec_ptr = (vFloat *) out; i < n_samps - 3; i += 4)
-		*fvec_ptr++ = F32_VEC_MUL_OP (scale, F32_VEC_INT_TO_FLOAT (*ivec_ptr++));
+		*fvec_ptr++ = F32_VEC_MUL_OP (scale, F32_VEC_FROM_I32 (*ivec_ptr++));
 	
 	// Clean up with scalars
 	
@@ -382,7 +378,6 @@ void ibuffer_float_samps_simd_nointerp (void *samps, vFloat *out, AH_SIntPtr *of
 {
 	vFloat scale = float2vector ((format == PCM_FLOAT) ? mul : (mul * TWO_POW_31_RECIP));
 	vSInt32 *int_vec = (vSInt32 *) out;
-	MUL_ZERO_INIT
 	AH_SIntPtr i;	
 
 	ibuffer_fetch_samps ((void *) out, samps, offsets, n_samps, n_chans, chan, format);
@@ -395,7 +390,7 @@ void ibuffer_float_samps_simd_nointerp (void *samps, vFloat *out, AH_SIntPtr *of
 	else 
 	{
 		for (i = 0; i < (n_samps + 3) >> 2; i++)
-			*out++ = F32_VEC_MUL_OP (scale, F32_VEC_INT_TO_FLOAT (*int_vec++));
+			*out++ = F32_VEC_MUL_OP (scale, F32_VEC_FROM_I32 (*int_vec++));
 	}
 }
 
@@ -420,9 +415,7 @@ void ibuffer_lin_interp_float (vFloat *out,  void **inbuffers, vFloat *fracts, A
 	
 	vFloat scale = float2vector (mul);
 	vFloat y0, y1;	
-	
-	MUL_ZERO_INIT
-	
+		
 	while (n_samps_over_4--)
 	{
 		y0 = *in1++;
@@ -439,13 +432,11 @@ void ibuffer_lin_interp_int_to_float(vFloat *out, void **inbuffers, vFloat *frac
 	
 	vFloat scale = float2vector (TWO_POW_31_RECIP * mul);
 	vFloat y0, y1;	
-	
-	MUL_ZERO_INIT
-	
+		
 	while(n_samps_over_4--)
 	{
-		y0 = F32_VEC_INT_TO_FLOAT (*in1++);
-		y1 = F32_VEC_INT_TO_FLOAT (*in2++);
+		y0 = F32_VEC_FROM_I32 (*in1++);
+		y1 = F32_VEC_FROM_I32 (*in2++);
 		
 		*out++ = F32_VEC_MUL_OP (scale, F32_VEC_ADD_OP (y0, F32_VEC_MUL_OP (*fracts++, F32_VEC_SUB_OP (y1, y0)))); 
 	}
@@ -499,9 +490,7 @@ void ibuffer_cubic_bspline_float (vFloat *out, void **inbuffers, vFloat *fracts,
 	vFloat TwoThirds = {2.f/3.f, 2.f/3.f, 2.f/3.f, 2.f/3.f};
 	
 	vFloat scale = float2vector (mul);
-	
-	MUL_ZERO_INIT
-	
+		
 	while (n_samps_over_4--)
 	{
 		xval = *in1++;
@@ -535,16 +524,14 @@ void ibuffer_cubic_bspline_int_to_float(vFloat *out, void **inbuffers, vFloat *f
 	vFloat TwoThirds = {2.f/3.f, 2.f/3.f, 2.f/3.f, 2.f/3.f};
 	
 	vFloat scale = float2vector (TWO_POW_31_RECIP * mul);
-	
-	MUL_ZERO_INIT
-	
+		
 	while (n_samps_over_4--)
 	{
 		xval = *in1++;
-		y0 = F32_VEC_INT_TO_FLOAT(*in2++);
-		y1 = F32_VEC_INT_TO_FLOAT(*in3++); 
-		y2 = F32_VEC_INT_TO_FLOAT(*in4++); 
-		y3 = F32_VEC_INT_TO_FLOAT(*in5++);
+		y0 = F32_VEC_FROM_I32(*in2++);
+		y1 = F32_VEC_FROM_I32(*in3++); 
+		y2 = F32_VEC_FROM_I32(*in4++); 
+		y3 = F32_VEC_FROM_I32(*in5++);
 		
 		y0py2 = F32_VEC_ADD_OP (y0 , y2);								
 		c0 = F32_VEC_ADD_OP(F32_VEC_MUL_OP (Sixth, y0py2), F32_VEC_MUL_OP (TwoThirds, y1));					
@@ -613,9 +600,7 @@ void ibuffer_cubic_hermite_float (vFloat *out, void **inbuffers, vFloat *fracts,
 	vFloat TwoAndHalf = {2.5f, 2.5f, 2.5f, 2.5f};
 	
 	vFloat scale = float2vector (mul);
-	
-	MUL_ZERO_INIT
-	
+		
 	while (n_samps_over_4--)
 	{
 		xval = *in1++;
@@ -647,16 +632,14 @@ void ibuffer_cubic_hermite_int_to_float(vFloat *out,void **inbuffers, vFloat *fr
 	vFloat TwoAndHalf = {2.5f, 2.5f, 2.5f, 2.5f};
 	
 	vFloat scale = float2vector (TWO_POW_31_RECIP * mul);
-	
-	MUL_ZERO_INIT
-	
+		
 	while (n_samps_over_4--)
 	{
 		xval = *in1++;
-		y0 = F32_VEC_INT_TO_FLOAT(*in2++);
-		y1 = F32_VEC_INT_TO_FLOAT(*in3++); 
-		y2 = F32_VEC_INT_TO_FLOAT(*in4++); 
-		y3 = F32_VEC_INT_TO_FLOAT(*in5++);
+		y0 = F32_VEC_FROM_I32(*in2++);
+		y1 = F32_VEC_FROM_I32(*in3++); 
+		y2 = F32_VEC_FROM_I32(*in4++); 
+		y3 = F32_VEC_FROM_I32(*in5++);
 		
 		c1 = F32_VEC_MUL_OP (Half, F32_VEC_SUB_OP (y2, y0));
 		c2 = F32_VEC_ADD_OP (F32_VEC_SUB_OP (y0, F32_VEC_MUL_OP ( TwoAndHalf, y1)), F32_VEC_SUB_OP (F32_VEC_ADD_OP (y2, y2), F32_VEC_MUL_OP (Half, y3)));     		
@@ -721,9 +704,7 @@ void ibuffer_cubic_lagrange_float (vFloat *out, void **inbuffers, vFloat *fracts
 	vFloat Sixth = {1.f/6.f, 1.f/6.f, 1.f/6.f, 1.f/6.f};
  
 	vFloat scale = float2vector (mul);
- 
-	MUL_ZERO_INIT
- 
+  
 	while (n_samps_over_4--)
 	{
 		xval = *in1++;
@@ -755,16 +736,14 @@ void ibuffer_cubic_lagrange_int_to_float(vFloat *out,void **inbuffers, vFloat *f
 	vFloat Sixth = {1.f/6.f, 1.f/6.f, 1.f/6.f, 1.f/6.f};
 	
 	vFloat scale = float2vector (TWO_POW_31_RECIP * mul);
-	
-	MUL_ZERO_INIT
-	
+		
 	while (n_samps_over_4--)
 	{
 		xval = *in1++;
-		y0 = F32_VEC_INT_TO_FLOAT(*in2++);
-		y1 = F32_VEC_INT_TO_FLOAT(*in3++); 
-		y2 = F32_VEC_INT_TO_FLOAT(*in4++); 
-		y3 = F32_VEC_INT_TO_FLOAT(*in5++);
+		y0 = F32_VEC_FROM_I32(*in2++);
+		y1 = F32_VEC_FROM_I32(*in3++); 
+		y2 = F32_VEC_FROM_I32(*in4++); 
+		y3 = F32_VEC_FROM_I32(*in5++);
 		
 		c1 = F32_VEC_SUB_OP (F32_VEC_SUB_OP (y2, F32_VEC_MUL_OP (Third, y0)) , F32_VEC_ADD_OP (F32_VEC_MUL_OP (Half, y1), F32_VEC_MUL_OP (Sixth, y3)));
 		c2 = F32_VEC_SUB_OP (F32_VEC_MUL_OP (Half, F32_VEC_ADD_OP (y0, y2)), y1);     		
@@ -841,8 +820,8 @@ void ibuffer_double_samps_simd_nointerp (void *samps, vDouble *out, AH_SIntPtr *
 		for (i = 0; i < ((n_samps + 3) >> 2); i++)
 		{
 			int_temp = *int_vec++;
-			*out++ = F64_VEC_MUL_OP(scale, F64_VEC_INT_TO_FLOAT(int_temp));
-			*out++ = F64_VEC_MUL_OP(scale, F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(int_temp, 0xE)));
+			*out++ = F64_VEC_MUL_OP(scale, F64_VEC_FROM_I32(int_temp));
+			*out++ = F64_VEC_MUL_OP(scale, F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(int_temp, 0xE)));
 		}
 	}
 }
@@ -908,13 +887,13 @@ void ibuffer_lin_interp_int_to_double (vDouble *out, void **inbuffers, vDouble *
 		ya = *in1++; 
 		yb = *in2++;
 		
-		y0 = F64_VEC_INT_TO_FLOAT(ya);
-		y1 = F64_VEC_INT_TO_FLOAT(yb);
+		y0 = F64_VEC_FROM_I32(ya);
+		y1 = F64_VEC_FROM_I32(yb);
 			
 		*out++ = F64_VEC_MUL_OP (scale, F64_VEC_ADD_OP (y0, F64_VEC_MUL_OP (*fracts++, F64_VEC_SUB_OP (y1, y0))));  
 		
-		y0 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(ya, 0xE));
-		y1 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
+		y0 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(ya, 0xE));
+		y1 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
 		
 		*out++ = F64_VEC_MUL_OP (scale, F64_VEC_ADD_OP (y0, F64_VEC_MUL_OP (*fracts++, F64_VEC_SUB_OP (y1, y0))));  
 	}
@@ -1037,10 +1016,10 @@ void ibuffer_cubic_bspline_int_to_double (vDouble *out, void **inbuffers, vDoubl
 		yc = *in4++; 
 		yd = *in5++;
 		
-		y0 = F64_VEC_INT_TO_FLOAT(ya);
-		y1 = F64_VEC_INT_TO_FLOAT(yb);
-		y2 = F64_VEC_INT_TO_FLOAT(yc);
-		y3 = F64_VEC_INT_TO_FLOAT(yd);
+		y0 = F64_VEC_FROM_I32(ya);
+		y1 = F64_VEC_FROM_I32(yb);
+		y2 = F64_VEC_FROM_I32(yc);
+		y3 = F64_VEC_FROM_I32(yd);
 		
 		xval = *in1++;
 		y0py2 = F64_VEC_ADD_OP (y0 , y2);								
@@ -1051,10 +1030,10 @@ void ibuffer_cubic_bspline_int_to_double (vDouble *out, void **inbuffers, vDoubl
 		
 		*out++ = F64_VEC_MUL_OP (scale, F64_VEC_ADD_OP (c0, F64_VEC_MUL_OP (xval, F64_VEC_ADD_OP (c1, F64_VEC_MUL_OP (xval, F64_VEC_ADD_OP (c2, F64_VEC_MUL_OP (xval, c3))))))); 
 		
-		y0 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(ya, 0xE));
-		y1 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
-		y2 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yc, 0xE));
-		y3 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yd, 0xE));
+		y0 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(ya, 0xE));
+		y1 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
+		y2 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yc, 0xE));
+		y3 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yd, 0xE));
 		
 		xval = *in1++;
 		y0py2 = F64_VEC_ADD_OP (y0 , y2);								
@@ -1188,10 +1167,10 @@ void ibuffer_cubic_hermite_int_to_double (vDouble *out, void **inbuffers, vDoubl
 		yc = *in4++; 
 		yd = *in5++;
 		
-		y0 = F64_VEC_INT_TO_FLOAT(ya);
-		y1 = F64_VEC_INT_TO_FLOAT(yb);
-		y2 = F64_VEC_INT_TO_FLOAT(yc);
-		y3 = F64_VEC_INT_TO_FLOAT(yd);
+		y0 = F64_VEC_FROM_I32(ya);
+		y1 = F64_VEC_FROM_I32(yb);
+		y2 = F64_VEC_FROM_I32(yc);
+		y3 = F64_VEC_FROM_I32(yd);
 		
 		xval = *in1++;
 		c1 = F64_VEC_MUL_OP (Half, F64_VEC_SUB_OP (y2, y0));
@@ -1200,10 +1179,10 @@ void ibuffer_cubic_hermite_int_to_double (vDouble *out, void **inbuffers, vDoubl
 		
 		*out++ = F64_VEC_MUL_OP (scale, F64_VEC_ADD_OP (y1, F64_VEC_MUL_OP (xval, F64_VEC_ADD_OP (c1, F64_VEC_MUL_OP (xval, F64_VEC_ADD_OP (c2, F64_VEC_MUL_OP (xval, c3))))))); 
 		
-		y0 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(ya, 0xE));
-		y1 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
-		y2 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yc, 0xE));
-		y3 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yd, 0xE));
+		y0 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(ya, 0xE));
+		y1 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
+		y2 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yc, 0xE));
+		y3 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yd, 0xE));
 		
 		xval = *in1++;
 		c1 = F64_VEC_MUL_OP (Half, F64_VEC_SUB_OP (y2, y0));
@@ -1334,10 +1313,10 @@ void ibuffer_cubic_lagrange_int_to_double (vDouble *out, void **inbuffers, vDoub
 		yc = *in4++; 
 		yd = *in5++;
 		
-		y0 = F64_VEC_INT_TO_FLOAT(ya);
-		y1 = F64_VEC_INT_TO_FLOAT(yb);
-		y2 = F64_VEC_INT_TO_FLOAT(yc);
-		y3 = F64_VEC_INT_TO_FLOAT(yd);
+		y0 = F64_VEC_FROM_I32(ya);
+		y1 = F64_VEC_FROM_I32(yb);
+		y2 = F64_VEC_FROM_I32(yc);
+		y3 = F64_VEC_FROM_I32(yd);
 		
 		xval = *in1++;
 		c1 = F64_VEC_SUB_OP (F64_VEC_SUB_OP (y2, F64_VEC_MUL_OP (Third, y0)) , F64_VEC_ADD_OP (F64_VEC_MUL_OP (Half, y1), F64_VEC_MUL_OP (Sixth, y3)));
@@ -1346,10 +1325,10 @@ void ibuffer_cubic_lagrange_int_to_double (vDouble *out, void **inbuffers, vDoub
 		
 		*out++ = F64_VEC_MUL_OP (scale, F64_VEC_ADD_OP (y1, F64_VEC_MUL_OP (xval, F64_VEC_ADD_OP (c1, F64_VEC_MUL_OP (xval, F64_VEC_ADD_OP (c2, F64_VEC_MUL_OP (xval, c3))))))); 
 		
-		y0 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(ya, 0xE));
-		y1 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
-		y2 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yc, 0xE));
-		y3 = F64_VEC_INT_TO_FLOAT(I32_VEC_SHUFFLE_OP(yd, 0xE));
+		y0 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(ya, 0xE));
+		y1 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yb, 0xE)); 
+		y2 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yc, 0xE));
+		y3 = F64_VEC_FROM_I32(I32_VEC_SHUFFLE_OP(yd, 0xE));
 		
 		xval = *in1++;
 		c1 = F64_VEC_SUB_OP (F64_VEC_SUB_OP (y2, F64_VEC_MUL_OP (Third, y0)) , F64_VEC_ADD_OP (F64_VEC_MUL_OP (Half, y1), F64_VEC_MUL_OP (Sixth, y3)));

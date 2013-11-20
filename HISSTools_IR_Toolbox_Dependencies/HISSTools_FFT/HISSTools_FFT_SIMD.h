@@ -37,6 +37,7 @@ typedef	__m128d vDouble;
 #endif
 #endif
 
+
 // Runtime test for SSE2
 
 static __inline int SSE2_check()
@@ -70,14 +71,12 @@ static __inline int SSE2_check()
 
 // Floating point 32 bit intrinsics or functions defined here
 
-
 #define F32_VEC_MUL_OP					_mm_mul_ps
 #define F32_VEC_ADD_OP					_mm_add_ps
 #define F32_VEC_SUB_OP					_mm_sub_ps
 #define F32_VEC_SHUFFLE					_mm_shuffle_ps
 
 #define F32_SHUFFLE_CONST(z, y, x, w)	((z<<6)|(y<<4)|(x<<2)|w)
-
 
 // Double precision (64 bit) floating point vector ops (intel only - test for intel compile before using)
 

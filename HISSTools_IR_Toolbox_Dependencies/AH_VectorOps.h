@@ -126,51 +126,40 @@ static const vDouble Vec_Ops_F64_One = {1.,1.};
 // Floating point single precision (32 bit) intrinsics or local functions
 
 #define float2vector					_mm_set1_ps
-#define s32int2vector					_mm_set1_epi32
 
 #define F32_VEC_MUL_OP					_mm_mul_ps
 #define F32_VEC_DIV_OP					_mm_div_ps
 #define F32_VEC_ADD_OP					_mm_add_ps
 #define F32_VEC_SUB_OP					_mm_sub_ps
 
-#define F32_VEC_EQUAL_OP(a,b)			_mm_cmpeq_ps(a,b)
-#define F32_VEC_GT_OP(a,b)				_mm_cmpgt_ps(a,b)
-#define F32_VEC_LT_OP(a,b)				_mm_cmplt_ps(a,b)
-
-#define F32_VEC_MIN_OP					_mm_min_ps
-#define F32_VEC_MAX_OP					_mm_max_ps
-
 #define F32_VEC_AND_OP					_mm_and_ps
 #define F32_VEC_ANDNOT_OP				_mm_andnot_ps
 #define F32_VEC_OR_OP					_mm_or_ps
 #define F32_VEC_XOR_OP					_mm_xor_ps
+
 #define F32_VEC_SEL_OP					_mm_sel_ps
 
-#define F32_VEC_SQRT_OP					_mm_sqrt_ps
-#define F32_VEC_TRUNC_OP(v)				_mm_cvtepi32_ps(_mm_cvttps_epi32(v))
+#define F32_VEC_MIN_OP					_mm_min_ps
+#define F32_VEC_MAX_OP					_mm_max_ps
 
-#define F32_VEC_ULOAD(p)				_mm_loadu_ps((float *) p)
-#define F32_VEC_USTORE(p,v)				_mm_storeu_ps((float *) p, v)
+#define F32_VEC_EQUAL_OP(a,b)			_mm_cmpeq_ps(a,b)
+#define F32_VEC_NEQUAL_OP(a,b)			_mm_cmpneq_ps(a,b)
+#define F32_VEC_GT_OP(a,b)				_mm_cmpgt_ps(a,b)
+#define F32_VEC_LT_OP(a,b)				_mm_cmplt_ps(a,b)
+
+#define F32_VEC_SQRT_OP					_mm_sqrt_ps
+
+#define F32_VEC_ULOAD					_mm_loadu_ps
+#define F32_VEC_USTORE					_mm_storeu_ps
 #define F32_VEC_MOVE_LO					_mm_movelh_ps
 #define F32_VEC_MOVE_HI					_mm_movehl_ps
 #define F32_VEC_SHUFFLE					_mm_shuffle_ps
 
 // Conversions from and to 32 bit floating point vectors
 
-#define F32_VEC_INT_TO_FLOAT			_mm_cvtepi32_ps
-#define F32_VEC_FLOAT_TO_INT			_mm_cvttps_epi32
-
-// Integer 32 bit intrinsics
-
-#define I32_VEC_ADD_OP					_mm_add_epi32
-#define I32_VEC_SUB_OP					_mm_sub_epi32
-#define I32_VEC_OR_OP					_mm_or_si128
-#define I32_VEC_AND_OP					_mm_and_si128
-#define I32_VEC_ADD_OP					_mm_add_epi32
-#define I32_VEC_SHUFFLE_OP				_mm_shuffle_epi32
-
-#define I32_VEC_MIN_OP					_mm_min_epi32
-#define I32_VEC_MAX_OP					_mm_max_epi32
+#define F32_VEC_FROM_I32				_mm_cvtepi32_ps
+#define I32_VEC_FROM_F32_ROUND			_mm_cvtps_epi32
+#define I32_VEC_FROM_F32_TRUNC			_mm_cvttps_epi32
 
 // Floating-point double precision (64 bit) intrinsics or local functions (only available under intel)
 
@@ -181,25 +170,22 @@ static const vDouble Vec_Ops_F64_One = {1.,1.};
 #define F64_VEC_ADD_OP					_mm_add_pd
 #define F64_VEC_SUB_OP					_mm_sub_pd
 
-#define F64_VEC_EQUAL_OP(a,b)			_mm_cmpeq_pd(a,b)
-#define F64_VEC_GT_OP					_mm_cmpgt_pd
-#define F64_VEC_LT_OP					_mm_cmplt_pd
+#define F64_VEC_AND_OP					_mm_and_pd
+#define F64_VEC_ANDNOT_OP				_mm_andnot_pd
+#define F64_VEC_OR_OP					_mm_or_pd
+#define F64_VEC_XOR_OP					_mm_xor_pd
+
+#define F64_VEC_SEL_OP					_mm_sel_pd
 
 #define F64_VEC_MIN_OP					_mm_min_pd
 #define F64_VEC_MAX_OP					_mm_max_pd
 
-#define F64_VEC_AND_OP					_mm_and_pd
-#define F64_VEC_OR_OP					_mm_or_pd
-#define F64_VEC_XOR_OP					_mm_xor_pd
-#define F64_VEC_SEL_OP					_mm_sel_pd
+#define F64_VEC_EQUAL_OP(a,b)			_mm_cmpeq_pd(a,b)
+#define F64_VEC_NEQUAL_OP(a,b)			_mm_cmpneq_pd(a,b)
+#define F64_VEC_GT_OP					_mm_cmpgt_pd
+#define F64_VEC_LT_OP					_mm_cmplt_pd
 
-// Conversions from and to 64 bit floating point vectors
-
-#define F64_VEC_FROM_F32				_mm_cvtps_pd
-#define F32_VEC_FROM_F64				_mm_cvtpd_ps
-
-#define F64_VEC_INT_TO_FLOAT			_mm_cvtepi32_pd 
-#define F64_VEC_FLOAT_TO_INT			_mm_cvtpd_epi32
+#define F64_VEC_SQRT_OP					_mm_sqrt_pd
 
 #define F64_VEC_ULOAD					_mm_loadu_pd
 #define F64_VEC_USTORE					_mm_storeu_pd
@@ -210,7 +196,30 @@ static const vDouble Vec_Ops_F64_One = {1.,1.};
 #define F64_VEC_SET_BOTH				_mm_set1_pd
 #define F64_VEC_SHUFFLE					_mm_shuffle_pd
 
-#define MUL_ZERO_INIT
+// Conversions from and to 64 bit floating point vectors
+
+#define F64_VEC_FROM_F32				_mm_cvtps_pd
+#define F32_VEC_FROM_F64				_mm_cvtpd_ps
+
+#define F64_VEC_FROM_I32				_mm_cvtepi32_pd 
+#define I32_VEC_FROM_F64_ROUND			_mm_cvtpd_epi32
+#define I32_VEC_FROM_F64_TRUNC			_mm_cvttpd_epi32
+
+// Integer 32 bit intrinsics
+
+#define s32int2vector					_mm_set1_epi32
+
+#define I32_VEC_ADD_OP					_mm_add_epi32
+#define I32_VEC_SUB_OP					_mm_sub_epi32
+#define I32_VEC_ADD_OP					_mm_add_epi32
+
+#define I32_VEC_MIN_OP					_mm_min_epi32
+#define I32_VEC_MAX_OP					_mm_max_epi32
+
+#define I32_VEC_OR_OP					_mm_or_si128
+#define I32_VEC_AND_OP					_mm_and_si128
+
+#define I32_VEC_SHUFFLE_OP				_mm_shuffle_epi32
 
 // Altivec has min / max intrinics for 32 bit signed integers, but on intel this must be done in software (although it is provided under windows)
 // These routines are taken directly from the apple SSE migration guide
@@ -235,8 +244,6 @@ static __inline vSInt32 _mm_max_epi32(vSInt32 a, vSInt32 b)
 // Altivec has selection intrinics for 32 bit floating point vectors, but on intel this must be done in software
 // These routines are taken directly from the apple SSE migration guide
 // The guide can be found at http://developer.apple.com/legacy/mac/library/documentation/Performance/Conceptual/Accelerate_sse_migration/Accelerate_sse_migration.pdf
-
-// Inlining is really broken here!!
 
 #ifdef __APPLE__
 static __inline vFloat _mm_sel_ps(vFloat a, vFloat b, vFloat mask) FORCE_INLINE;
@@ -268,45 +275,49 @@ static __inline vDouble _mm_sel_pd(vDouble a, vDouble b, vDouble mask) FORCE_INL
 
 // Altivec
 
+static const vFloat Vec_Ops_F32_Zero = {0.f,0.f,0.f,0.f};
+
 // Floating point 32 bit intrinsics or local functions
 
-#define F32_VEC_MUL_OP(v1, v2)			vec_madd(v1,v2, VecMulZero)
+#define F32_VEC_MUL_OP(v1, v2)			vec_madd(v1,v2, Vec_Ops_F32_Zero)
 #define F32_VEC_DIV_OP					vdivf
 #define F32_VEC_ADD_OP					vec_add
 #define F32_VEC_SUB_OP					vec_sub
 
-#define F32_VEC_EQUAL_OP(a,b)			vec_cmpeq(a,b) 
-#define F32_VEC_GT_OP(a,b)				vec_cmpgt(a,b) 
-#define F32_VEC_LT_OP(a,b)				vec_cmplt(a,b)
+#define F32_VEC_AND_OP					vec_and
+#define F32_VEC_XOR_OP					vec_xor
+#define F32_VEC_OR_OP					vec_or
+#define F32_VEC_SEL_OP					vec_sel
 
 #define F32_VEC_MIN_OP					vec_min
 #define F32_VEC_MAX_OP					vec_max
 
-#define F32_VEC_AND_OP					vec_and
-#define F32_VEC_XOR_OP					vecxor
-#define F32_VEC_OR_OP					vec_or
-#define F32_VEC_SEL_OP					vec_sel
-
-#define F32_VEC_TRUNC_OP				vec_trunc
+#define F32_VEC_EQUAL_OP(a,b)			vec_cmpeq(a,b) 
+#define F32_VEC_NEQUAL_OP(a,b)			vec_xor(vec_cmpeq(a,b),Vec_Ops_F32_One) 
+#define F32_VEC_GT_OP(a,b)				vec_cmpgt(a,b) 
+#define F32_VEC_LT_OP(a,b)				vec_cmplt(a,b)
 
 #define F32_VEC_ULOAD(p)				vec_uload((unsigned char *)p)
 #define F32_VEC_USTORE(p, v)			vec_ustore((unsigned char *)p, (vector unsigned char)v)
 #define F32_VEC_SHUFFLE					vec_permute
 
+// Conversions from and to 32 bit floating point vectors
+
+#define F32_VEC_FROM_I32(a)				vec_ctf(a, 0)
+#define I32_VEC_FROM_F32_ROUND(a)		vec_cts(vec_round(a), 0)
+#define I32_VEC_FROM_F32_TRUNC(a)		vec_cts(a, 0)
+
 // Integer 32 bit intrinsics
 
 #define I32_VEC_ADD_OP					vec_add
 #define I32_VEC_SUB_OP					vec_sub
-#define I32_VEC_BIT_AND					vec_and
-#define F32_VEC_INT_TO_FLOAT(a)			vec_ctf(a, 0)
-#define F32_VEC_FLOAT_TO_INT(a)			vec_cts(a, 0)
+
+#define I32_VEC_AND_OP					vec_and
 
 #define I32_VEC_MIN_OP					vec_min
 #define I32_VEC_MAX_OP					vec_max
 
-#define MUL_ZERO_INIT vFloat			VecMulZero = {0.,0.,0.,0.};
-
-// return a vector filled with a single signed integer value
+// Return a vector filled with a single signed integer value
 
 static __inline vSInt32 s32int2vector (int s32int_val) FORCE_INLINE;
 static __inline vSInt32 s32int2vector (int s32int_val) FORCE_INLINE_DEFINITION
@@ -315,7 +326,7 @@ static __inline vSInt32 s32int2vector (int s32int_val) FORCE_INLINE_DEFINITION
 	return TheVector;
 }
 
-// return a vector filled with a single float value
+// Return a vector filled with a single float value
 
 static __inline vFloat float2vector (float floatval) FORCE_INLINE;
 static __inline vFloat float2vector (float floatval) FORCE_INLINE_DEFINITION

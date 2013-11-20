@@ -294,7 +294,7 @@ static __inline double ibuffer_double_get_samp (void *samps, AH_SIntPtr offset, 
 			return (double) ( *( ((AH_SInt32 *) samps) + chan + (offset * n_chans) ) ) * TWO_POW_31_RECIP_DOUBLE;
 			
 		case PCM_FLOAT:
-			return *( ((double *) samps) + chan + (offset * n_chans) );
+			return (double) *( ((float *) samps) + chan + (offset * n_chans) );
 	}
 	
 	return 0.0;
