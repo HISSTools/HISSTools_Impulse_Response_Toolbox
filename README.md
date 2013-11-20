@@ -13,7 +13,7 @@ CeReNeM - The University of Huddersfield
 			
 HISSTools first release is a set of tools for working with convolution and impulse responses in MaxMSP. This set of object addresses various tasks, including measuring impulse responses, spectral display from realtime data/ buffers, and buffer-based convolution, deconvolution and inversion.
 
-The HIRT is distributed freely, under a Modified BSD License (see License). You may use it however you see fit, as long as you respect the terms of the license.
+The HIRT is distributed freely, under a Modified BSD License (see _Docs_License_). You may use it however you see fit, as long as you respect the terms of the license.
 
 Enjoy,
 
