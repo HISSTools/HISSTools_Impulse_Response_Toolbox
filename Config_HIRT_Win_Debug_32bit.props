@@ -3,10 +3,10 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir>../HissTools_Builds/</OutDir>
+    <OutDir>../HISSTools_Builds/</OutDir>
   </PropertyGroup>
   <PropertyGroup>
-    <IntDir>../HissTools_Intermediate/$(ProjectName)/</IntDir>
+    <IntDir>../HISSTools_Intermediate/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup>
     <TargetExt>.mxe</TargetExt>
