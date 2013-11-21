@@ -164,9 +164,7 @@ void ah_conv(float *in, vFloat *impulse, float *output, AH_UIntPtr N, AH_UIntPtr
 	float results[4];
 
 	AH_UIntPtr i, j;
-	
-	MUL_ZERO_INIT
-	
+		
 	L = pad_length(L);
 				   
 	for (i = 0; i < N; i++)
