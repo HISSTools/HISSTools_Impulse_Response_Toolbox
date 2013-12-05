@@ -21,9 +21,9 @@ static __inline long Generic_Atomic_Compare_And_Swap_Barrier (t_ah_atomic_32 Com
 #ifdef __APPLE__
 	if (OSAtomicCompareAndSwap32Barrier(Comparand, Exchange, (int32_t *) Destination))
 #else
-		if (InterlockedCompareExchange  (Destination, Exchange, Comparand) == Comparand)
+	if (InterlockedCompareExchange  (Destination, Exchange, Comparand) == Comparand)
 #endif
-			return 1;
+		return 1;
 	return 0;
 }
 
