@@ -68,7 +68,7 @@ void hisstools_rifft_f (FFT_SETUP_F setup, FFT_SPLIT_COMPLEX_F *input, HstFFT_UI
 void hisstools_unzip_zero_d (double *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_UInt in_length, HstFFT_UInt log2n);
 void hisstools_unzip_zero_f (float *input, FFT_SPLIT_COMPLEX_F *output, HstFFT_UInt in_length, HstFFT_UInt log2n);
 
-// Special float to double precision unzip reoutine
+// Special float to double precision unzip routine
 
 void hisstools_unzip_zero_fd (float *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_UInt in_length, HstFFT_UInt log2n);
 
