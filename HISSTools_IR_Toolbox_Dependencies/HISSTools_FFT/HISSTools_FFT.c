@@ -1,7 +1,4 @@
 
-// Comment out the following line if you don't wish to use the apple fft when available
-
-#define USE_APPLE_FFT_IF_AVAILABLE
 
 #include "HISSTools_FFT.h"
 #include "FFT_Main.h"

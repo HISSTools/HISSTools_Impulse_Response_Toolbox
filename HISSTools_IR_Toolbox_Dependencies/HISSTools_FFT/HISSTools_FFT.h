@@ -3,6 +3,10 @@
 #ifndef __HISSTOOLS_FFT__
 #define __HISSTOOLS_FFT__
 
+// Comment out the following line if you don't wish to use the apple fft when available
+
+#define USE_APPLE_FFT_IF_AVAILABLE
+
 #define _USE_MATH_DEFINES
 
 #include <math.h>
