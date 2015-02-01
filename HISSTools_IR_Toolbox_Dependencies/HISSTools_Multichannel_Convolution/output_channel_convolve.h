@@ -18,7 +18,7 @@ typedef struct _output_channel_convolve
 		
 } t_output_channel_convolve;
 
-#endif __OUTPUTCHANCONVOLVE_STRUCT__
+#endif //__OUTPUTCHANCONVOLVE_STRUCT__
 
 void output_channel_convolve_free(t_output_channel_convolve *x);
 t_output_channel_convolve *output_channel_convolve_new(AH_UIntPtr input_chans, AH_UIntPtr max_length, t_convolve_latency_mode latency_mode);

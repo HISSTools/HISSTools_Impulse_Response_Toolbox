@@ -477,7 +477,7 @@ void irinvert_mimo_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *a
 		return;
 	}
 	
-	if (argc && atom_gettype(argv) == A_LONG || atom_gettype(argv) == A_FLOAT)
+	if (argc && (atom_gettype(argv) == A_LONG || atom_gettype(argv) == A_FLOAT))
 	{
 		time_mul = atom_getfloat(argv++);
 		argc--;

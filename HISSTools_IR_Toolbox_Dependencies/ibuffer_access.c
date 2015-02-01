@@ -44,7 +44,7 @@ void ibuffer_init ()
 
 #ifdef __APPLE__
 
-__inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
+static __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
 {
 	vFloat scale = {TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP};
 	
@@ -67,7 +67,7 @@ __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
 
 #else
 
-__inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
+static __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
 {
 	vFloat scale = {TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP};
 	
@@ -271,17 +271,17 @@ for (i <<= 3; i < n_samps; i++)					\
 for (; i < ((n_samps + 3) >> 2) << 2; i++)		\
 *out++ = 0;
 
-__inline void ibuffer_fetch_samps_float (float *out, float *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_float (float *out, float *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {	
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = *(samps + *offsets++))
 }
 
-__inline void ibuffer_fetch_samps_16 (AH_SInt32 *out, AH_SInt16 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_16 (AH_SInt32 *out, AH_SInt16 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = (*(samps + *offsets++) << 16))
 }
 
-__inline void ibuffer_fetch_samps_24 (AH_SInt32 *out, AH_SInt8 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_24 (AH_SInt32 *out, AH_SInt8 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {	
 #if (TARGET_RT_LITTLE_ENDIAN)
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = (*((AH_SInt32 *) ((samps - 1) + *offsets++)) & MASK_24_BIT))
@@ -290,7 +290,7 @@ __inline void ibuffer_fetch_samps_24 (AH_SInt32 *out, AH_SInt8 *samps, AH_SIntPt
 #endif
 }
 
-__inline void ibuffer_fetch_samps_32 (AH_SInt32 *out, AH_SInt32 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_32 (AH_SInt32 *out, AH_SInt32 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = (*(samps + *offsets++)))
 }

@@ -443,7 +443,7 @@ AH_SIntPtr conv_db (double *integration_db, double conv_db, AH_SIntPtr conv_pos,
 			break;
 	}
 	
-	return i;
+	return i + 1;
 }
 
 
@@ -908,15 +908,21 @@ double calc_clarity (double *integration, AH_SIntPtr length, double sample_rate)
 }
 
 
+// FIX - this doesn't seemt o work quite right...
+
 double calc_center (double *integration, AH_SIntPtr length)
 {
-	double time_power_integration = 0;
+	double weighted_sum = 0.0;
+    double sum = 0.0;
 	AH_SIntPtr i;
 	
 	for (i = 0; i < length; i++)
-		time_power_integration += i * integration[i];
+    {
+        weighted_sum += i * integration[i];
+        sum += integration[i];
+    }
 	
-	return time_power_integration / time_power_integration;
+	return weighted_sum / sum;
 }
 
 
@@ -1402,7 +1408,7 @@ void irstats_stats (t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 		}
 		if (atom_getsym(argv + i) == ps_center)
 		{
-			current_stat = retrieve_T20(&stats);
+			current_stat = retrieve_center(&stats);
 			time_store(report + i, current_stat, time_mode, sample_rate);
 			continue;
 		}

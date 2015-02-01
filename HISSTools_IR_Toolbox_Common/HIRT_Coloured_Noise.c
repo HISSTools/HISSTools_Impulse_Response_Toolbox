@@ -65,7 +65,7 @@ void coloured_noise_params (t_noise_params *x, t_noise_mode mode, double fade_in
 	
 	// Mode
 	
-	if (mode < 0 || mode > 2)
+	if (mode > 2)
 		mode = 0;
 	
 	x->mode = mode;

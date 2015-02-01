@@ -92,7 +92,7 @@ void fill_power_array_specifier(double *array, t_atom *specifier, long num_speci
 
 t_max_err deconvolve_delay_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {	
-	if (argc && argv && atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG)
+	if (argc && argv && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
 		x->deconvolve_delay = *argv;
 	else 
 		atom_setsym(&x->deconvolve_delay, gensym("center"));

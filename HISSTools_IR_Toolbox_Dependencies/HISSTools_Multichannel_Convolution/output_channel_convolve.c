@@ -49,7 +49,7 @@ t_output_channel_convolve *output_channel_convolve_new(AH_UIntPtr input_chans, A
 
 t_convolve_error output_channel_convolve_resize(t_output_channel_convolve *x, AH_UIntPtr in_chan, AH_UIntPtr impulse_length)
 {
-	if (in_chan >= 0 && in_chan < x->num_in_chans)
+	if (in_chan < x->num_in_chans)
 	{
 		if (!zero_latency_convolve_resize(x->convolvers[in_chan], impulse_length, false))
 			return CONVOLVE_ERR_MEM_UNAVAILABLE;
@@ -63,7 +63,7 @@ t_convolve_error output_channel_convolve_resize(t_output_channel_convolve *x, AH
 
 t_convolve_error output_channel_convolve_set(t_output_channel_convolve *x, AH_UIntPtr in_chan, float *input, AH_UIntPtr impulse_length, AH_Boolean resize)
 {
-	if (in_chan >= 0 && in_chan < x->num_in_chans)
+	if (in_chan < x->num_in_chans)
 		return zero_latency_convolve_set(x->convolvers[in_chan], input, impulse_length, resize);
 	else
 		return CONVOLVE_ERR_IN_CHAN_OUT_OF_RANGE;

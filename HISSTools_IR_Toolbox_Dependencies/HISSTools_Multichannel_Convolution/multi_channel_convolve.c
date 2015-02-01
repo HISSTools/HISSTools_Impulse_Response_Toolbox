@@ -97,7 +97,7 @@ t_convolve_error multi_channel_convolve_resize(t_multi_channel_convolve *x, AH_U
 	if (!x->N2M)
 		in_chan -= out_chan;
 	
-	if (out_chan >= 0 && out_chan < x->num_out_chans)
+	if (out_chan < x->num_out_chans)
 		return output_channel_convolve_resize(x->chan_convolvers[out_chan], in_chan, impulse_length);
 	else 
 		return CONVOLVE_ERR_IN_CHAN_OUT_OF_RANGE;
@@ -111,7 +111,7 @@ t_convolve_error multi_channel_convolve_set(t_multi_channel_convolve *x, AH_UInt
 	if (!x->N2M)
 		in_chan -= out_chan;
 	
-	if (out_chan >= 0 && out_chan < x->num_out_chans)
+	if (out_chan < x->num_out_chans)
 		return output_channel_convolve_set(x->chan_convolvers[out_chan], in_chan, input, impulse_length, resize);
 	else 
 		return CONVOLVE_ERR_OUT_CHAN_OUT_OF_RANGE;

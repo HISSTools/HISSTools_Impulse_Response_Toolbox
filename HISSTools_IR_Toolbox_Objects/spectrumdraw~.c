@@ -378,14 +378,14 @@ static __inline double bin_2_mouse(double bin, t_scale_vals *scale)
 		return scale->bin_scale * (bin - scale->bin_min);
 }
 
-
+/*
 static __inline double mouse_2_bin(double x_val, t_scale_vals *scale)
 {
 	if (scale->log_mode)
 		return exp((x_val / scale->bin_scale) + scale->bin_min);
 	else 
 		return (x_val / scale->bin_scale) + scale->bin_min;
-}
+}*/
 
 
 static __inline double freq_2_mouse(double freq, t_scale_vals *scale)
@@ -3138,7 +3138,7 @@ void spectrumdraw_paint(t_spectrumdraw *x, t_object *patcherview)
 //////////////////////////////////////////////////////////////////////////
 
 
-__inline t_symbol *get_attribname_symbol (char *base_string, short N)
+static __inline t_symbol *get_attribname_symbol (char *base_string, short N)
 {
 	char string_test[32];
 	

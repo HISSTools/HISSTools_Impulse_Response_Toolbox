@@ -282,7 +282,7 @@ void setup_hann_wind()
 }
 
 
-__inline double fast_hann_wind(double in)
+static __inline double fast_hann_wind(double in)
 {
 	// N.B. - in must be between 0 and 1
 	

@@ -48,7 +48,6 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 	if (!x)
 		return 0;
 	
-	latency_mode = latency_mode < 0 ? 0 : latency_mode;
 	latency_mode = latency_mode > 2 ? 2 : latency_mode;
 
 	switch (latency_mode) 

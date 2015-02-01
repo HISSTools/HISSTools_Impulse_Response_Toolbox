@@ -167,7 +167,7 @@ void irmeasure_mls_params(t_irmeasure *x);
 void irmeasure_noise_params(t_irmeasure *x);
 void irmeasure_params(t_irmeasure *x);
 
-__inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision);
+static __inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision);
 t_int *irmeasure_perform (t_int *w);
 void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 
@@ -1255,7 +1255,7 @@ void irmeasure_params(t_irmeasure *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-__inline double min_double (double v1, double v2)
+static __inline double min_double (double v1, double v2)
 {
 	v1 = v1 < v2 ? v1 : v2;
 	
@@ -1263,7 +1263,7 @@ __inline double min_double (double v1, double v2)
 }
 
 
-__inline double max_double (double v1, double v2)
+static __inline double max_double (double v1, double v2)
 {
 	v1 = v1 > v2 ? v1 : v2;
 	
@@ -1275,7 +1275,7 @@ __inline double max_double (double v1, double v2)
 //////////////////////////////////////////////////////////////////////////
 
 
-__inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision)
+static __inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision)
 {
 	long start;
 	long todo;

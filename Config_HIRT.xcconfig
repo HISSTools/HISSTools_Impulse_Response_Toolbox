@@ -16,7 +16,7 @@ INFOPLIST_FILE = Info.plist
 
 // Per architecture and deployment settings
 
-GCC_VERSION = com.apple.compilers.llvmgcc42
+GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 
 // This matches with Cycling's maximum backward compatibility
 
