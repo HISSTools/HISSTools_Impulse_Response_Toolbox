@@ -57,8 +57,8 @@ t_time_domain_convolve *time_domain_convolve_new(AH_UIntPtr offset, AH_UIntPtr l
 	
 	// Allocate impulse buffer and input bufferr
 	
-	x->impulse_buffer = ALIGNED_MALLOC (sizeof(float) * 2048);
-	x->input_buffer = ALIGNED_MALLOC (sizeof(float) *  8192);
+	x->impulse_buffer = ALIGNED_MALLOC(sizeof(float) * 2048);
+	x->input_buffer = ALIGNED_MALLOC(sizeof(float) *  8192);
 	
 	if (!x->impulse_buffer || !x->input_buffer)
 	{

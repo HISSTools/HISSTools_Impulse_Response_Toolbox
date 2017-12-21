@@ -31,7 +31,7 @@ complex1.imagp = complex2.imagp + temp_offset; \
 
 // Random seeding for rand
 
-static __inline unsigned int get_rand_seed ()
+static __inline unsigned int get_rand_seed()
 {
 	unsigned int seed;
 	
@@ -53,7 +53,7 @@ static __inline unsigned int get_rand_seed ()
 }
 
 
-AH_UIntPtr partition_convolve_int_log2 (AH_UIntPtr in, AH_UIntPtr *inexact)
+AH_UIntPtr partition_convolve_int_log2(AH_UIntPtr in, AH_UIntPtr *inexact)
 {
 	AH_UIntPtr temp = in;
 	AH_UIntPtr out = 0;
@@ -81,7 +81,7 @@ AH_UIntPtr partition_convolve_int_log2 (AH_UIntPtr in, AH_UIntPtr *inexact)
 
 void init_partition_convolve()
 {
-	srand(get_rand_seed ());	
+	srand(get_rand_seed());
 }
 
 
@@ -100,7 +100,7 @@ void partition_convolve_free(t_partition_convolve *x)
 t_convolve_error partition_convolve_max_fft_size_set(t_partition_convolve *x, AH_UIntPtr max_fft_size)
 {
 	AH_UIntPtr inexact = 0;
-	AH_UIntPtr max_fft_size_log2 = partition_convolve_int_log2 (max_fft_size, &inexact);
+	AH_UIntPtr max_fft_size_log2 = partition_convolve_int_log2(max_fft_size, &inexact);
 	
 	t_convolve_error error = CONVOLVE_ERR_NONE;
 	
@@ -161,14 +161,14 @@ t_partition_convolve *partition_convolve_new(AH_UIntPtr max_fft_size, AH_UIntPtr
 		max_impulse_length *= (max_fft_over_4 << 1);
 	}
 	
-	x->impulse_buffer.realp = (float *) ALIGNED_MALLOC ((max_impulse_length * 4 * sizeof(float)));
+	x->impulse_buffer.realp = (float *) ALIGNED_MALLOC((max_impulse_length * 4 * sizeof(float)));
 	x->impulse_buffer.imagp = x->impulse_buffer.realp + max_impulse_length;
 	x->input_buffer.realp = x->impulse_buffer.imagp + max_impulse_length;
 	x->input_buffer.imagp = x->input_buffer.realp + max_impulse_length;
 	
 	// Allocate fft and temporary buffers	
 	
-	x->fft_buffers[0] = (vFloat *) ALIGNED_MALLOC ((max_fft_over_4 * 6 * sizeof(vFloat)));			    
+	x->fft_buffers[0] = (vFloat *) ALIGNED_MALLOC((max_fft_over_4 * 6 * sizeof(vFloat)));
 	x->fft_buffers[1] = x->fft_buffers[0] + max_fft_over_4;											
 	x->fft_buffers[2] = x->fft_buffers[1] + max_fft_over_4;											
 	x->fft_buffers[3] = x->fft_buffers[2] + max_fft_over_4;
@@ -178,7 +178,7 @@ t_partition_convolve *partition_convolve_new(AH_UIntPtr max_fft_size, AH_UIntPtr
 	x->partition_temp.realp = x->accum_buffer.imagp + (max_fft_over_4 * 2);
 	x->partition_temp.imagp = x->partition_temp.realp + (max_fft_over_4 * 2);
 		
-	x->fft_setup_real = hisstools_create_setup_f (x->max_fft_size_log2);			
+	x->fft_setup_real = hisstools_create_setup_f(x->max_fft_size_log2);
 		
 	if (!x->impulse_buffer.realp || !x->fft_buffers[0] || !x->fft_setup_real)
 	{
@@ -193,7 +193,7 @@ t_partition_convolve *partition_convolve_new(AH_UIntPtr max_fft_size, AH_UIntPtr
 t_convolve_error partition_convolve_fft_size_set(t_partition_convolve *x, AH_UIntPtr fft_size)
 {
 	AH_UIntPtr inexact = 0;
-	AH_UIntPtr fft_size_log2 = partition_convolve_int_log2 (fft_size, &inexact);
+	AH_UIntPtr fft_size_log2 = partition_convolve_int_log2(fft_size, &inexact);
 	
 	t_convolve_error error = CONVOLVE_ERR_NONE;
 	
@@ -244,7 +244,7 @@ void partition_convolve_offset_set(t_partition_convolve *x, AH_UIntPtr offset)
 }
 
 
-t_convolve_error partition_convolve_set (t_partition_convolve *x, float *input, AH_UIntPtr impulse_length)
+t_convolve_error partition_convolve_set(t_partition_convolve *x, float *input, AH_UIntPtr impulse_length)
 {	
 	t_convolve_error error = CONVOLVE_ERR_NONE;
 	
@@ -309,9 +309,9 @@ t_convolve_error partition_convolve_set (t_partition_convolve *x, float *input, 
 			
 		// Do fft straight into position
 		
-		hisstools_unzip_f (buffer_temp1, &buffer_temp2, fft_size_log2);
-		hisstools_rfft_f (fft_setup_real, &buffer_temp2, fft_size_log2);
-		DSP_SPLIT_COMPLEX_POINTER_CALC (buffer_temp2, buffer_temp2, fft_size_halved);
+		hisstools_unzip_f(buffer_temp1, &buffer_temp2, fft_size_log2);
+		hisstools_rfft_f(fft_setup_real, &buffer_temp2, fft_size_log2);
+		DSP_SPLIT_COMPLEX_POINTER_CALC(buffer_temp2, buffer_temp2, fft_size_halved);
 	}
 	
 	x->reset_flag = 1;
@@ -443,16 +443,16 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
 			
 			// Calculate offsets and pointers
 			
-			DSP_SPLIT_COMPLEX_POINTER_CALC (impulse_temp, impulse_buffer, ((partitions_done + 1) * fft_size_halved));
-			DSP_SPLIT_COMPLEX_POINTER_CALC (buffer_temp, input_buffer, (next_partition * fft_size_halved));			
+			DSP_SPLIT_COMPLEX_POINTER_CALC(impulse_temp, impulse_buffer, ((partitions_done + 1) * fft_size_halved));
+			DSP_SPLIT_COMPLEX_POINTER_CALC(buffer_temp, input_buffer, (next_partition * fft_size_halved));
 			
 			// Do processing
 			
 			for (i = next_partition; i < last_partition; i++)
 			{	
-				partition_convolve_process_partition (buffer_temp, impulse_temp, accum_buffer, fft_size_halved_over_4);
-				DSP_SPLIT_COMPLEX_POINTER_CALC (impulse_temp, impulse_temp, fft_size_halved);
-				DSP_SPLIT_COMPLEX_POINTER_CALC (buffer_temp, buffer_temp, fft_size_halved);
+				partition_convolve_process_partition(buffer_temp, impulse_temp, accum_buffer, fft_size_halved_over_4);
+				DSP_SPLIT_COMPLEX_POINTER_CALC(impulse_temp, impulse_temp, fft_size_halved);
+				DSP_SPLIT_COMPLEX_POINTER_CALC(buffer_temp, buffer_temp, fft_size_halved);
 				partitions_done++;
 			}
 		}
@@ -465,12 +465,12 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
 			// Calculate the position to do the fft from/ to and calculate relevant pointers
 			
 			temp_vpointer1 = (rw_pointer1 == fft_size_over_4) ? fft_buffers[1] : fft_buffers[0];
-			DSP_SPLIT_COMPLEX_POINTER_CALC (buffer_temp, input_buffer, (input_position * fft_size_halved));
+			DSP_SPLIT_COMPLEX_POINTER_CALC(buffer_temp, input_buffer, (input_position * fft_size_halved));
 						
 			// Do the fft and put into the input buffer
 			
-			hisstools_unzip_f ((float *) temp_vpointer1, &buffer_temp, fft_size_log2);
-			hisstools_rfft_f (fft_setup_real, &buffer_temp, fft_size_log2);
+			hisstools_unzip_f((float *) temp_vpointer1, &buffer_temp, fft_size_log2);
+			hisstools_rfft_f(fft_setup_real, &buffer_temp, fft_size_log2);
 			
 			// Process first partition here and accumulate the output (we need it now!)
 			
@@ -478,8 +478,8 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
 			
 			// Processing done - do inverse fft on the accumulation buffer
 			
-			hisstools_rifft_f (fft_setup_real, &accum_buffer, fft_size_log2);
-			hisstools_zip_f (&accum_buffer, (float *) fft_buffers[2], fft_size_log2);
+			hisstools_rifft_f(fft_setup_real, &accum_buffer, fft_size_log2);
+			hisstools_zip_f(&accum_buffer, (float *) fft_buffers[2], fft_size_log2);
 			
 			// Calculate temporary output pointers
 			
@@ -573,14 +573,14 @@ void partition_convolve_process_partition(FFT_SPLIT_COMPLEX_F in1, FFT_SPLIT_COM
 	
 	for (i = 0; i + 3 < num_vecs; i += 4)
 	{
-		out_real[i+0] = F32_VEC_ADD_OP (out_real[i+0], F32_VEC_SUB_OP (F32_VEC_MUL_OP(in_real1[i+0], in_real2[i+0]), F32_VEC_MUL_OP(in_imag1[i+0], in_imag2[i+0])));
-		out_imag[i+0] = F32_VEC_ADD_OP (out_imag[i+0], F32_VEC_ADD_OP (F32_VEC_MUL_OP(in_real1[i+0], in_imag2[i+0]), F32_VEC_MUL_OP(in_imag1[i+0], in_real2[i+0])));
-		out_real[i+1] = F32_VEC_ADD_OP (out_real[i+1], F32_VEC_SUB_OP (F32_VEC_MUL_OP(in_real1[i+1], in_real2[i+1]), F32_VEC_MUL_OP(in_imag1[i+1], in_imag2[i+1])));
-		out_imag[i+1] = F32_VEC_ADD_OP (out_imag[i+1], F32_VEC_ADD_OP (F32_VEC_MUL_OP(in_real1[i+1], in_imag2[i+1]), F32_VEC_MUL_OP(in_imag1[i+1], in_real2[i+1])));
-		out_real[i+2] = F32_VEC_ADD_OP (out_real[i+2], F32_VEC_SUB_OP (F32_VEC_MUL_OP(in_real1[i+2], in_real2[i+2]), F32_VEC_MUL_OP(in_imag1[i+2], in_imag2[i+2])));
-		out_imag[i+2] = F32_VEC_ADD_OP (out_imag[i+2], F32_VEC_ADD_OP (F32_VEC_MUL_OP(in_real1[i+2], in_imag2[i+2]), F32_VEC_MUL_OP(in_imag1[i+2], in_real2[i+2])));
-		out_real[i+3] = F32_VEC_ADD_OP (out_real[i+3], F32_VEC_SUB_OP (F32_VEC_MUL_OP(in_real1[i+3], in_real2[i+3]), F32_VEC_MUL_OP(in_imag1[i+3], in_imag2[i+3])));
-		out_imag[i+3] = F32_VEC_ADD_OP (out_imag[i+3], F32_VEC_ADD_OP (F32_VEC_MUL_OP(in_real1[i+3], in_imag2[i+3]), F32_VEC_MUL_OP(in_imag1[i+3], in_real2[i+3])));
+		out_real[i+0] = F32_VEC_ADD_OP(out_real[i+0], F32_VEC_SUB_OP(F32_VEC_MUL_OP(in_real1[i+0], in_real2[i+0]), F32_VEC_MUL_OP(in_imag1[i+0], in_imag2[i+0])));
+		out_imag[i+0] = F32_VEC_ADD_OP(out_imag[i+0], F32_VEC_ADD_OP(F32_VEC_MUL_OP(in_real1[i+0], in_imag2[i+0]), F32_VEC_MUL_OP(in_imag1[i+0], in_real2[i+0])));
+		out_real[i+1] = F32_VEC_ADD_OP(out_real[i+1], F32_VEC_SUB_OP(F32_VEC_MUL_OP(in_real1[i+1], in_real2[i+1]), F32_VEC_MUL_OP(in_imag1[i+1], in_imag2[i+1])));
+		out_imag[i+1] = F32_VEC_ADD_OP(out_imag[i+1], F32_VEC_ADD_OP(F32_VEC_MUL_OP(in_real1[i+1], in_imag2[i+1]), F32_VEC_MUL_OP(in_imag1[i+1], in_real2[i+1])));
+		out_real[i+2] = F32_VEC_ADD_OP(out_real[i+2], F32_VEC_SUB_OP(F32_VEC_MUL_OP(in_real1[i+2], in_real2[i+2]), F32_VEC_MUL_OP(in_imag1[i+2], in_imag2[i+2])));
+		out_imag[i+2] = F32_VEC_ADD_OP(out_imag[i+2], F32_VEC_ADD_OP(F32_VEC_MUL_OP(in_real1[i+2], in_imag2[i+2]), F32_VEC_MUL_OP(in_imag1[i+2], in_real2[i+2])));
+		out_real[i+3] = F32_VEC_ADD_OP(out_real[i+3], F32_VEC_SUB_OP(F32_VEC_MUL_OP(in_real1[i+3], in_real2[i+3]), F32_VEC_MUL_OP(in_imag1[i+3], in_imag2[i+3])));
+		out_imag[i+3] = F32_VEC_ADD_OP(out_imag[i+3], F32_VEC_ADD_OP(F32_VEC_MUL_OP(in_real1[i+3], in_imag2[i+3]), F32_VEC_MUL_OP(in_imag1[i+3], in_real2[i+3])));
 	}
 
 	// Replace nyquist bins

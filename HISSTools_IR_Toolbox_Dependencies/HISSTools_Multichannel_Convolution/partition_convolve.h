@@ -73,7 +73,7 @@ t_convolve_error partition_convolve_fft_size_set(t_partition_convolve *x, AH_UIn
 t_convolve_error partition_convolve_length_set(t_partition_convolve *x, AH_UIntPtr length);
 void partition_convolve_offset_set(t_partition_convolve *x, AH_UIntPtr offset);
 
-t_convolve_error partition_convolve_set (t_partition_convolve *x, float *input, AH_UIntPtr impulse_length);
+t_convolve_error partition_convolve_set(t_partition_convolve *x, float *input, AH_UIntPtr impulse_length);
 
 AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloat *out, AH_UIntPtr vec_size);
 void partition_convolve_process_partition(FFT_SPLIT_COMPLEX_F in1, FFT_SPLIT_COMPLEX_F in2, FFT_SPLIT_COMPLEX_F out, AH_UIntPtr num_vecs);
