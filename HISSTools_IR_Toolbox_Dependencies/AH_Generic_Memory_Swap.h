@@ -16,7 +16,7 @@ typedef volatile long t_ah_atomic_32;
 #endif
 
 
-static __inline long Generic_Atomic_Compare_And_Swap_Barrier (t_ah_atomic_32 Comparand, t_ah_atomic_32 Exchange, t_ah_atomic_32 *Destination)
+static __inline long Generic_Atomic_Compare_And_Swap_Barrier(t_ah_atomic_32 Comparand, t_ah_atomic_32 Exchange, t_ah_atomic_32 *Destination)
 {
 #ifdef __APPLE__
 	if (OSAtomicCompareAndSwap32Barrier(Comparand, Exchange, (int32_t *) Destination))
@@ -53,7 +53,7 @@ typedef struct _memory_swap
 
 // Free Lock
 
-static __inline void unlock_memory_swap (t_memory_swap *mem_struct)
+static __inline void unlock_memory_swap(t_memory_swap *mem_struct)
 {
 	Generic_Atomic_Compare_And_Swap_Barrier(1, 0, &mem_struct-> lock);
 }
@@ -68,7 +68,7 @@ static __inline void unlock_memory_swap (t_memory_swap *mem_struct)
 
 // Alloc - Does not get the lock.... Only ever call once at creation time. It is not safe to use memory until this routine has exited.
 
-static __inline long alloc_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
+static __inline long alloc_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
 {
 	long fail = 0;
 	
@@ -99,7 +99,7 @@ static __inline long alloc_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr si
 
 // Clear - clears memory without getting lock (assumes you already have the lock) 
 
-static __inline void clear_memory_swap (t_memory_swap *mem_struct)
+static __inline void clear_memory_swap(t_memory_swap *mem_struct)
 {
 	if (mem_struct->current_free_method)
 		mem_struct->current_free_method(mem_struct->current_ptr);
@@ -108,7 +108,7 @@ static __inline void clear_memory_swap (t_memory_swap *mem_struct)
 
 // Free - frees the memory immediately 
 
-static __inline void free_memory_swap (t_memory_swap *mem_struct)
+static __inline void free_memory_swap(t_memory_swap *mem_struct)
 {
 	// Spin on the lock
 	
@@ -136,7 +136,7 @@ static __inline void free_memory_swap (t_memory_swap *mem_struct)
 
 // Access - this routine will lock to get access to the memory struct and safely return the pointer
 
-static __inline void *access_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
+static __inline void *access_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
 {
 	void *return_ptr;
 	
@@ -153,7 +153,7 @@ static __inline void *access_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr 
 
 // Attempt - This non-blocking routine will attempt to get the pointer but fail if the pointer is being altered / accessed in another thread
 
-static __inline void *attempt_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
+static __inline void *attempt_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
 {
 	void *return_ptr = 0;
 		
@@ -180,7 +180,7 @@ static __inline void *attempt_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr
 //  Swap Pointer - this routine will lock to get access to the memory struct and place a given ptr and nominal size in the new slots
 // This pointer will *NOT* be freed by the memory_swap routines
 
-static __inline void swap_memory_swap (t_memory_swap *mem_struct, void *ptr, long nom_size)
+static __inline void swap_memory_swap(t_memory_swap *mem_struct, void *ptr, long nom_size)
 {	
 	// Spin on the lock
 	
@@ -196,7 +196,7 @@ static __inline void swap_memory_swap (t_memory_swap *mem_struct, void *ptr, lon
 
 // Grow - this routine will lock to get access to the memory struct and allocate new memory if required, swapping it in safely
 
-static __inline void *grow_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
+static __inline void *grow_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
 {	
 	void *return_ptr;
 	
@@ -221,7 +221,7 @@ static __inline void *grow_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr si
 
 //  Equal - This routine will lock to get access to the memory struct and allocate new memory unless the sizes are equal, placing the memory in the new slots
 
-static __inline void *equal_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
+static __inline void *equal_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
 {	
 	void *return_ptr; 
 	
@@ -254,7 +254,7 @@ static __inline void *equal_memory_swap (t_memory_swap *mem_struct, AH_UIntPtr s
 
 // Alloc Custom
 
-static __inline long alloc_memory_swap_custom (t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
+static __inline long alloc_memory_swap_custom(t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
 {
 	long fail = 0;
 	
@@ -285,7 +285,7 @@ static __inline long alloc_memory_swap_custom (t_memory_swap *mem_struct, alloc_
 
 // This routine will lock to get access to the memory struct and allocate new memory if required
 
-static __inline void *grow_memory_swap_custom (t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
+static __inline void *grow_memory_swap_custom(t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
 {	
 	void *return_ptr;
 	
@@ -310,7 +310,7 @@ static __inline void *grow_memory_swap_custom (t_memory_swap *mem_struct, alloc_
 
 // This routine will lock to get access to the memory struct and allocate new memory unless the sizes are equal
 
-static __inline void *equal_memory_swap_custom (t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
+static __inline void *equal_memory_swap_custom(t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
 {	
 	void *return_ptr; 
 	

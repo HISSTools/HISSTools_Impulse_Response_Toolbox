@@ -67,7 +67,7 @@ typedef struct _complex_double
 #define CLOG(a) cm_clog(a)
 #define CPOLAR(a, b) cm_cpolar(a, b)
 
-static __inline t_complex_double cm_cset (double a, double b)
+static __inline t_complex_double cm_cset(double a, double b)
 {
 	t_complex_double ret;
 	
@@ -77,7 +77,7 @@ static __inline t_complex_double cm_cset (double a, double b)
 	return ret;
 }
 
-static __inline double cm_cabs (t_complex_double in)
+static __inline double cm_cabs(t_complex_double in)
 {	
 	double a = in.real;
 	double b = in.imag;
@@ -85,7 +85,7 @@ static __inline double cm_cabs (t_complex_double in)
 	return sqrt((a * a) + (b * b));
 }
 
-static __inline double cm_carg (t_complex_double in)
+static __inline double cm_carg(t_complex_double in)
 {	
 	double a = in.real;
 	double b = in.imag;
@@ -93,7 +93,7 @@ static __inline double cm_carg (t_complex_double in)
 	return atan2(b, a);
 }
 
-static __inline t_complex_double cm_conj (t_complex_double in)
+static __inline t_complex_double cm_conj(t_complex_double in)
 {
 	t_complex_double ret;
 	
@@ -104,7 +104,7 @@ static __inline t_complex_double cm_conj (t_complex_double in)
 }
 
 
-static __inline t_complex_double cm_cadd (t_complex_double in1, t_complex_double in2)
+static __inline t_complex_double cm_cadd(t_complex_double in1, t_complex_double in2)
 {
 	t_complex_double ret;
 	
@@ -119,7 +119,7 @@ static __inline t_complex_double cm_cadd (t_complex_double in1, t_complex_double
 	return ret;
 }
 
-static __inline t_complex_double cm_csub (t_complex_double in1, t_complex_double in2)
+static __inline t_complex_double cm_csub(t_complex_double in1, t_complex_double in2)
 {
 	t_complex_double ret;
 	
@@ -134,7 +134,7 @@ static __inline t_complex_double cm_csub (t_complex_double in1, t_complex_double
 	return ret;
 }
 
-static __inline t_complex_double cm_cmul (t_complex_double in1, t_complex_double in2)
+static __inline t_complex_double cm_cmul(t_complex_double in1, t_complex_double in2)
 {
 	t_complex_double ret;
 	
@@ -149,7 +149,7 @@ static __inline t_complex_double cm_cmul (t_complex_double in1, t_complex_double
 	return ret;
 }
 
-static __inline t_complex_double cm_csmul (t_complex_double in1, double in2)
+static __inline t_complex_double cm_csmul(t_complex_double in1, double in2)
 {
 	t_complex_double ret;
 	
@@ -159,7 +159,7 @@ static __inline t_complex_double cm_csmul (t_complex_double in1, double in2)
 	return ret;
 }
 
-static __inline t_complex_double cm_csdiv (t_complex_double in1, double in2)
+static __inline t_complex_double cm_csdiv(t_complex_double in1, double in2)
 {
 	t_complex_double ret;
 	
@@ -171,7 +171,7 @@ static __inline t_complex_double cm_csdiv (t_complex_double in1, double in2)
 	return ret;
 }
 
-static __inline t_complex_double cm_cdiv (t_complex_double in1, t_complex_double in2)
+static __inline t_complex_double cm_cdiv(t_complex_double in1, t_complex_double in2)
 {
 	t_complex_double ret;
 	
@@ -187,7 +187,7 @@ static __inline t_complex_double cm_cdiv (t_complex_double in1, t_complex_double
 	return ret;
 }
 
-static __inline t_complex_double cm_cexp (t_complex_double in1)
+static __inline t_complex_double cm_cexp(t_complex_double in1)
 {
 	t_complex_double ret;
 	
@@ -199,7 +199,7 @@ static __inline t_complex_double cm_cexp (t_complex_double in1)
 	return ret;
 }
 
-static __inline t_complex_double cm_clog (t_complex_double in1)
+static __inline t_complex_double cm_clog(t_complex_double in1)
 {
 	t_complex_double ret = cm_cset(log(cm_cabs(in1)), cm_carg(in1));
 	
@@ -208,14 +208,14 @@ static __inline t_complex_double cm_clog (t_complex_double in1)
 
 #endif	
 
-static __inline COMPLEX_DOUBLE cm_cneg (COMPLEX_DOUBLE in)
+static __inline COMPLEX_DOUBLE cm_cneg(COMPLEX_DOUBLE in)
 {	
 	COMPLEX_DOUBLE ret = CSET(-CREAL(in), -CIMAG(in));
 	
 	return ret;
 }
 
-static __inline double cm_cabs_sq (COMPLEX_DOUBLE in)
+static __inline double cm_cabs_sq(COMPLEX_DOUBLE in)
 {	
 	double a = CREAL(in);
 	double b = CIMAG(in);
@@ -223,7 +223,7 @@ static __inline double cm_cabs_sq (COMPLEX_DOUBLE in)
 	return (a * a) + (b * b);
 }
 
-static __inline COMPLEX_DOUBLE cm_cpolar (double a, double w)
+static __inline COMPLEX_DOUBLE cm_cpolar(double a, double w)
 {
 	COMPLEX_DOUBLE ret = CSET(a * cos(w), a * sin(w));
 	

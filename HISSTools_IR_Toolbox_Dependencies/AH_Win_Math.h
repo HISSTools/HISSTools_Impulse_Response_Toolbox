@@ -20,7 +20,7 @@
 
 #define LOG_2_RECIP 1.44269504088896340735992468100189213742664595415299
 
-static __inline double round (double r) 
+static __inline double round(double r)
 {
     return (r > 0.0) ? floor(r + 0.5) : ceil(r - 0.5);
 }
@@ -52,32 +52,32 @@ static __inline double copysign(double a, double b)
 	return b < 0 ? -val : val;
 }
 
-static __inline double asinh (double x)
+static __inline double asinh(double x)
 {
 	return log(x + sqrt((x * x) + 1));
 }
 
-static __inline double acosh (double x)
+static __inline double acosh(double x)
 {
 	return log(x + sqrt((x * x) - 1));
 }
 
-static __inline double atanh (double x)
+static __inline double atanh(double x)
 {
     return (log(1+x) - log(1-x))/2.0;
 }
 
-static __inline float asinhf (float x)
+static __inline float asinhf(float x)
 {
 	return (float) asinh(x);
 }
 
-static __inline float acoshf (float x)
+static __inline float acoshf(float x)
 {
 	return (float) acosh(x);
 }
 
-static __inline float atanhf (float x)
+static __inline float atanhf(float x)
 {
 	return (float) atanh(x);
 }
