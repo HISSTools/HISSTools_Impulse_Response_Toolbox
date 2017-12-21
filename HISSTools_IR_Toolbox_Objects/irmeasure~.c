@@ -131,36 +131,36 @@ typedef struct _irmeasure
 
 // Function prototypes
 
-void *irmeasure_new (t_symbol *s, short argc, t_atom *argv);
-void irmeasure_free (t_irmeasure *x);
-void irmeasure_assist (t_irmeasure *x, void *b, long m, long a, char *s);
+void *irmeasure_new(t_symbol *s, short argc, t_atom *argv);
+void irmeasure_free(t_irmeasure *x);
+void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s);
 
 AH_SIntPtr irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate);
 AH_SIntPtr irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate);
 AH_SIntPtr irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate);
 AH_SIntPtr irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate);
 
-double irmeasure_param_check (t_irmeasure *x, char *name, double val, double min, double max);
+double irmeasure_param_check(t_irmeasure *x, char *name, double val, double min, double max);
 
-void irmeasure_sweep (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
-void irmeasure_mls (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
-void irmeasure_noise (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
+void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
+void irmeasure_mls(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
+void irmeasure_noise(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
 void irmeasure_tone(t_irmeasure *x, double freq, t_atom_long chan);
 void irmeasure_stop(t_irmeasure *x);
-void irmeasure_clear (t_irmeasure *x);
+void irmeasure_clear(t_irmeasure *x);
 
-void irmeasure_active_ins (t_irmeasure *x, t_atom_long num_active_ins);
-void irmeasure_active_outs (t_irmeasure *x, t_atom_long num_active_outs);
+void irmeasure_active_ins(t_irmeasure *x, t_atom_long num_active_ins);
+void irmeasure_active_outs(t_irmeasure *x, t_atom_long num_active_outs);
 
 void irmeasure_reprocess(t_irmeasure *x);
-void irmeasure_process (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
+void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
 
-void irmeasure_extract (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
-void irmeasure_extract_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
-void irmeasure_dump (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
-void irmeasure_dump_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
-void irmeasure_getir (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
-void irmeasure_getir_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
+void irmeasure_extract(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
+void irmeasure_extract_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
+void irmeasure_dump(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
+void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
+void irmeasure_getir(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv);
+void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv);
 
 void irmeasure_sweep_params(t_irmeasure *x);
 void irmeasure_mls_params(t_irmeasure *x);
@@ -168,12 +168,12 @@ void irmeasure_noise_params(t_irmeasure *x);
 void irmeasure_params(t_irmeasure *x);
 
 static __inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision);
-t_int *irmeasure_perform (t_int *w);
-void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
+t_int *irmeasure_perform(t_int *w);
+void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 
-void irmeasure_dsp_common (t_irmeasure *x, double samplerate);
-void irmeasure_dsp (t_irmeasure *x, t_signal **sp, short *count);
-void irmeasure_dsp64 (t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
+void irmeasure_dsp_common(t_irmeasure *x, double samplerate);
+void irmeasure_dsp(t_irmeasure *x, t_signal **sp, short *count);
+void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -181,9 +181,9 @@ void irmeasure_dsp64 (t_irmeasure *x, t_object *dsp64, short *count, double samp
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irmeasure~",
+    this_class = class_new("irmeasure~",
 							(method) irmeasure_new, 
 							(method)irmeasure_free, 
 							sizeof(t_irmeasure), 
@@ -191,28 +191,28 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irmeasure_assist, "assist", A_CANT, 0L);
-	class_addmethod (this_class, (method)irmeasure_dsp, "dsp", A_CANT, 0L);
-	class_addmethod (this_class, (method)irmeasure_dsp64, "dsp64", A_CANT, 0L);
+	class_addmethod(this_class, (method)irmeasure_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irmeasure_dsp, "dsp", A_CANT, 0L);
+	class_addmethod(this_class, (method)irmeasure_dsp64, "dsp64", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)irmeasure_sweep, "sweep", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irmeasure_mls, "mls", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irmeasure_noise, "white", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irmeasure_noise, "brown", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irmeasure_noise, "pink", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_sweep, "sweep", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_mls, "mls", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_noise, "white", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_noise, "brown", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_noise, "pink", A_GIMME, 0L);
 		
-	class_addmethod (this_class, (method)irmeasure_tone, "tone", A_FLOAT, A_DEFLONG, 0L);
-	class_addmethod (this_class, (method)irmeasure_stop, "stop", 0L);
-	class_addmethod (this_class, (method)irmeasure_clear, "clear", 0L);
+	class_addmethod(this_class, (method)irmeasure_tone, "tone", A_FLOAT, A_DEFLONG, 0L);
+	class_addmethod(this_class, (method)irmeasure_stop, "stop", 0L);
+	class_addmethod(this_class, (method)irmeasure_clear, "clear", 0L);
 
-	class_addmethod (this_class, (method)irmeasure_active_ins, "activeins", A_LONG, 0L);
-	class_addmethod (this_class, (method)irmeasure_active_outs, "activeouts", A_LONG, 0L);
+	class_addmethod(this_class, (method)irmeasure_active_ins, "activeins", A_LONG, 0L);
+	class_addmethod(this_class, (method)irmeasure_active_outs, "activeouts", A_LONG, 0L);
 
-	class_addmethod (this_class, (method)irmeasure_reprocess, "reprocess", 0L);
+	class_addmethod(this_class, (method)irmeasure_reprocess, "reprocess", 0L);
 	
-	class_addmethod (this_class, (method)irmeasure_extract, "extract", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irmeasure_dump, "dump", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irmeasure_getir, "getir", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_extract, "extract", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_dump, "dump", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irmeasure_getir, "getir", A_GIMME, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 	
@@ -238,9 +238,9 @@ int main (void)
 }
 
 
-void *irmeasure_new (t_symbol *s, short argc, t_atom *argv)
+void *irmeasure_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irmeasure *x = (t_irmeasure *)object_alloc (this_class);
+    t_irmeasure *x = (t_irmeasure *)object_alloc(this_class);
 	t_atom_long num_out_chans = 1;
 	t_atom_long num_in_chans = 1;
 	long i;
@@ -271,7 +271,7 @@ void *irmeasure_new (t_symbol *s, short argc, t_atom *argv)
 	
 	x->bandlimit = 1;
 	x->abs_progress = 0;
-	x->amp = -1;
+	x->amp = -1.0;
 	x->inv_amp = 0;
 	
 	x->T2 = 0;
@@ -284,7 +284,7 @@ void *irmeasure_new (t_symbol *s, short argc, t_atom *argv)
 	x->sample_rate = sys_getsr();
 	
 	if (!x->sample_rate)
-		x->sample_rate = 44100;
+		x->sample_rate = 44100.0;
 	
 	
 	alloc_mem_swap(&x->rec_mem, 0, 0);
@@ -298,7 +298,7 @@ void *irmeasure_new (t_symbol *s, short argc, t_atom *argv)
 	x->current_num_active_outs = (long) num_out_chans;
 	
 	x->measure_mode = SWEEP;
-	x->phase = 0.;
+	x->phase = 0.0;
 
 	attr_args_process(x, argc, argv);
 
@@ -317,7 +317,7 @@ void irmeasure_free(t_irmeasure *x)
 }
 
 
-void irmeasure_assist (t_irmeasure *x, void *b, long m, long a, char *s)
+void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_OUTLET)
 	{
@@ -393,7 +393,7 @@ AH_SIntPtr irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_o
 //////////////////////////////////////////////////////////////////////////
 
 
-double irmeasure_param_check (t_irmeasure *x, char *name, double val, double min, double max)
+double irmeasure_param_check(t_irmeasure *x, char *name, double val, double min, double max)
 {
 	double new_val = val;
 	AH_Boolean changed = false;
@@ -422,16 +422,16 @@ double irmeasure_param_check (t_irmeasure *x, char *name, double val, double min
 //////////////////////////////////////////////////////////////////////////
 
 
-void irmeasure_sweep (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
+void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {		
 	t_ess sweep_params;
 	
-	double f1 = 20;
-	double f2 = sys_getsr() / 2;
-	double length = 30000;
-	double fade_in = 50;
-	double fade_out = 10;
-	double out_length = 5000;
+	double f1 = 20.0;
+	double f2 = sys_getsr() / 2.0;
+	double length = 30000.0;
+	double fade_in = 50.0;
+	double fade_out = 10.0;
+	double out_length = 5000.0;
 	
 	long num_active_ins = x->num_active_ins;
 	long num_active_outs = x->num_active_outs;
@@ -455,21 +455,21 @@ void irmeasure_sweep (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 	
 	// Check parameters
 	
-	f1 = irmeasure_param_check(x, "low frequency", f1, 0.0001, x->sample_rate / 2);
-	f2 = irmeasure_param_check(x, "high frequency", f2, f2, x->sample_rate / 2);
-	length = irmeasure_param_check(x, "length", length, 0., HUGE_VAL);
-	fade_in = irmeasure_param_check(x, "fade in time", fade_in, 0., length / 2);
-	fade_out = irmeasure_param_check(x, "fade out time", fade_out, 0., length / 2);
-	out_length = irmeasure_param_check(x, "ir length", out_length, 0., HUGE_VAL);
+	f1 = irmeasure_param_check(x, "low frequency", f1, 0.0001, x->sample_rate / 2.0);
+	f2 = irmeasure_param_check(x, "high frequency", f2, f2, x->sample_rate / 2.0);
+	length = irmeasure_param_check(x, "length", length, 0.0, HUGE_VAL);
+	fade_in = irmeasure_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
+	fade_out = irmeasure_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
+	out_length = irmeasure_param_check(x, "ir length", out_length, 0.0, HUGE_VAL);
 	
 	// Store parameters
 	
 	x->lo_f = f1;
 	x->hi_f = f2;
-	x->fade_in = fade_in / 1000.;
-	x->fade_out = fade_out / 1000.;
-	x->length = length / 1000.;
-	x->out_length = out_length / 1000.;
+	x->fade_in = fade_in / 1000.0;
+	x->fade_out = fade_out / 1000.0;
+	x->length = length / 1000.0;
+	x->out_length = out_length / 1000.0;
 	
 	// Check length of sweep and memory allocation
 	
@@ -502,9 +502,9 @@ void irmeasure_sweep (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 }
 
 
-void irmeasure_mls (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
+void irmeasure_mls(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {
-	double out_length = 5000;
+	double out_length = 5000.0;
 	
 	long num_active_ins = x->num_active_ins;
 	long num_active_outs = x->num_active_outs;
@@ -523,12 +523,12 @@ void irmeasure_mls (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 	// Check parameters
 	
 	order = (t_atom_long) irmeasure_param_check(x, "order", (double) order, 1, 24);
-	out_length = irmeasure_param_check(x, "ir length", out_length, 0., HUGE_VAL);
+	out_length = irmeasure_param_check(x, "ir length", out_length, 0.0, HUGE_VAL);
 		
 	// Store parameters
 	
 	x->order = (long) order;
-	x->out_length = out_length / 1000.;	
+	x->out_length = out_length / 1000.0;
 
 	// Allocate memory
 	
@@ -549,12 +549,12 @@ void irmeasure_mls (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 }
 
 
-void irmeasure_noise (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
+void irmeasure_noise(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {
-	double length = 10000;
-	double fade_in = 10;
-	double fade_out = 10;
-	double out_length = 5000;
+	double length = 10000.0;
+	double fade_in = 10.0;
+	double fade_out = 10.0;
+	double out_length = 5000.0;
 	
 	long num_active_ins = x->num_active_ins;
 	long num_active_outs = x->num_active_outs;
@@ -581,18 +581,18 @@ void irmeasure_noise (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 	
 	// Check parameters
 	
-	length = irmeasure_param_check(x, "length", length, 0., HUGE_VAL);
-	fade_in = irmeasure_param_check(x, "fade in time", fade_in, 0., length / 2);
-	fade_out = irmeasure_param_check(x, "fade out time", fade_out, 0., length / 2);
-	out_length = irmeasure_param_check(x, "ir length", out_length, 0., HUGE_VAL);
+	length = irmeasure_param_check(x, "length", length, 0.0, HUGE_VAL);
+	fade_in = irmeasure_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
+	fade_out = irmeasure_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
+	out_length = irmeasure_param_check(x, "ir length", out_length, 0.0, HUGE_VAL);
 
 	// Store parameters
 	
 	x->noise_mode = noise_mode;
-	x->length = length / 1000.;
-	x->fade_in = fade_in / 1000.;
-	x->fade_out = fade_out / 1000.;
-	x->out_length = out_length / 1000.;
+	x->length = length / 1000.0;
+	x->fade_in = fade_in / 1000.0;
+	x->fade_out = fade_out / 1000.0;
+	x->out_length = out_length / 1000.0;
 	
 	// Allocate memory
 
@@ -637,7 +637,7 @@ void irmeasure_stop(t_irmeasure *x)
 }
 
 
-void irmeasure_clear (t_irmeasure *x)
+void irmeasure_clear(t_irmeasure *x)
 {
 	irmeasure_stop(x);
 	
@@ -652,7 +652,7 @@ void irmeasure_clear (t_irmeasure *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irmeasure_active_ins (t_irmeasure *x, t_atom_long num_active_ins)
+void irmeasure_active_ins(t_irmeasure *x, t_atom_long num_active_ins)
 {
 	if (num_active_ins < 1)
 	{
@@ -670,7 +670,7 @@ void irmeasure_active_ins (t_irmeasure *x, t_atom_long num_active_ins)
 }
 
 
-void irmeasure_active_outs (t_irmeasure *x, t_atom_long num_active_outs)
+void irmeasure_active_outs(t_irmeasure *x, t_atom_long num_active_outs)
 {
 	if (num_active_outs < 1)
 	{
@@ -705,7 +705,7 @@ void irmeasure_reprocess(t_irmeasure *x)
 }
 
 
-void irmeasure_process (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
+void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -843,7 +843,7 @@ void irmeasure_process (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 		// Calculate full power spectrum from half spectrum - convert filter to have the required phase
 		
 		power_full_spectrum_from_half_spectrum(spectrum_3, fft_size);		
-		variable_phase_from_power_spectrum(fft_setup, spectrum_3, fft_size, deconvolve_phase, true);		
+        variable_phase_from_power_spectrum(fft_setup, spectrum_3, fft_size, deconvolve_phase, true);
 		
 		// Convert back to real format
 		
@@ -905,19 +905,19 @@ void irmeasure_process (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irmeasure_extract (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
+void irmeasure_extract(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irmeasure_extract_internal, sym, (short) argc, argv);
 }
 
 
-void irmeasure_extract_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
+void irmeasure_extract_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 {	
 	double *rec_mem;
 	
 	t_buffer_write_error error;
 	t_atom_long in_chan = 1;
-	t_symbol *buffer = 0;
+	t_symbol *buffer = NULL;
 	
 	AH_SIntPtr rec_length = x->T2;
 	
@@ -957,24 +957,24 @@ void irmeasure_extract_internal (t_irmeasure *x, t_symbol *sym, short argc, t_at
 
 	// Write to buffer
 	
-	error = buffer_write(buffer, rec_mem + rec_length * in_chan, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, rec_mem + rec_length * in_chan, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }
 
 
-void irmeasure_dump (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
+void irmeasure_dump(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irmeasure_dump_internal, sym, (short) argc, argv);
 }
 
 
-void irmeasure_dump_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
+void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 {	
 	double *out_mem;
 	
 	t_buffer_write_error error;
 	t_atom_long in_chan = 1;
-	t_symbol *buffer = 0;
+	t_symbol *buffer = NULL;
 	
 	AH_UIntPtr fft_size = x->fft_size;
 	AH_UIntPtr mem_size;
@@ -1020,18 +1020,18 @@ void irmeasure_dump_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom 
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }
 
 
-void irmeasure_getir (t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
+void irmeasure_getir(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irmeasure_getir_internal, sym, (short) argc, argv);
 }
 
 
-void irmeasure_getir_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
+void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_buffer_write_error error;
 	t_symbol *buffer;
@@ -1149,7 +1149,7 @@ void irmeasure_getir_internal (t_irmeasure *x, t_symbol *sym, short argc, t_atom
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }
 
@@ -1212,7 +1212,7 @@ void irmeasure_noise_params(t_irmeasure *x)
 	long chan_offset = (long) ((out_length * sample_rate) + noise_length);
 	long i;
 	
-	double amp_comp = 1.;
+	double amp_comp = 1.0;
 	
 	if (noise_mode == NOISE_MODE_BROWN)
 		amp_comp = x->max_amp_brown;
@@ -1255,7 +1255,7 @@ void irmeasure_params(t_irmeasure *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-static __inline double min_double (double v1, double v2)
+static __inline double min_double(double v1, double v2)
 {
 	v1 = v1 < v2 ? v1 : v2;
 	
@@ -1263,7 +1263,7 @@ static __inline double min_double (double v1, double v2)
 }
 
 
-static __inline double max_double (double v1, double v2)
+static __inline double max_double(double v1, double v2)
 {
 	v1 = v1 > v2 ? v1 : v2;
 	
@@ -1323,7 +1323,7 @@ static __inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, lon
 }
 
 
-t_int *irmeasure_perform (t_int *w)
+t_int *irmeasure_perform(t_int *w)
 {		
 	// Set pointers
 	
@@ -1339,7 +1339,7 @@ t_int *irmeasure_perform (t_int *w)
 	double phase_inc = x->test_tone_freq / x->sample_rate;
 	double amp = db_to_a(x->amp);
 	double sample_rate = x->sample_rate;
-	double progress_mul = 0.;
+	double progress_mul = 0.0;
 	
 	AH_SIntPtr T2;
 	AH_SIntPtr current_t;
@@ -1421,10 +1421,10 @@ t_int *irmeasure_perform (t_int *w)
 		
 		// Wrap tone generator phase
 		
-		while (phase < 0)
-			phase += 1.;
-		while (phase > 1.)
-			phase -= 1.;
+		while (phase < 0.0)
+			phase += 1.0;
+		while (phase > 1.0)
+			phase -= 1.0;
 	
 		// Copy to all other channels if relevant
 		
@@ -1447,10 +1447,10 @@ t_int *irmeasure_perform (t_int *w)
 				irmeasure_perform_excitation(x, x->out_chans[j], (long) (x->current_t - x->chan_offset[j]), vec_size, false);
 			
 			if (x->abs_progress)
-				progress_mul = 1000. / sample_rate;
+				progress_mul = 1000.0 / sample_rate;
 			else
 				if (T2)
-					progress_mul = 1. / T2;
+					progress_mul = 1.0 / T2;
 				
 			// Progress output
 			
@@ -1477,7 +1477,7 @@ t_int *irmeasure_perform (t_int *w)
 }
 
 
-void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
+void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
 {			
 	double *measurement_rec;
 	double *in;
@@ -1488,7 +1488,7 @@ void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long nu
 	double phase_inc = x->test_tone_freq / x->sample_rate;
 	double amp = db_to_a(x->amp);
 	double sample_rate = x->sample_rate;
-	double progress_mul = 0.;
+	double progress_mul = 0.0;
 	
 	AH_SIntPtr T2;
 	AH_SIntPtr current_t;
@@ -1570,10 +1570,10 @@ void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long nu
 		
 		// Wrap tone generator phase
 		
-		while (phase < 0)
-			phase += 1.;
-		while (phase > 1.)
-			phase -= 1.;
+		while (phase < 0.0)
+			phase += 1.0;
+		while (phase > 1.0)
+			phase -= 1.0;
 	
 		// Copy to all other channels if relevant
 		
@@ -1596,10 +1596,10 @@ void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long nu
 				irmeasure_perform_excitation(x, outs[j], (long) (x->current_t - x->chan_offset[j]), vec_size, true);
 			
 			if (x->abs_progress)
-				progress_mul = 1000. / sample_rate;
+				progress_mul = 1000.0 / sample_rate;
 			else
 				if (T2)
-					progress_mul = 1. / T2;
+					progress_mul = 1.0 / T2;
 			
 			// Progress output
 			
@@ -1629,7 +1629,7 @@ void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long nu
 //////////////////////////////////////////////////////////////////////////
 
 
-void irmeasure_dsp_common (t_irmeasure *x, double samplerate)
+void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
 {		
 	t_ess sweep_params;
 	t_noise_params noise_params;
@@ -1683,7 +1683,7 @@ void irmeasure_dsp_common (t_irmeasure *x, double samplerate)
 }
 
 
-void irmeasure_dsp (t_irmeasure *x, t_signal **sp, short *count)
+void irmeasure_dsp(t_irmeasure *x, t_signal **sp, short *count)
 {		
 	long i;
 	
@@ -1706,7 +1706,7 @@ void irmeasure_dsp (t_irmeasure *x, t_signal **sp, short *count)
 }
 
 
-void irmeasure_dsp64 (t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
+void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {		
 	irmeasure_dsp_common(x, samplerate);	
 	object_method(dsp64, gensym("dsp_add64"), x, irmeasure_perform64, 0, NULL);
