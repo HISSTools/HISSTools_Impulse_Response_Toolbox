@@ -194,7 +194,7 @@ double calc_LR_onset_rms (float *ir, float *samples, double *window, AH_SIntPtr 
 double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate, double *max_oct);
 
 void do_integration(t_stats_calc *stats);
-void do_integrataion_db(t_stats_calc *stats);
+void do_integration_db(t_stats_calc *stats);
 
 AH_SIntPtr retrieve_onset(t_stats_calc *stats);
 double retrieve_T20(t_stats_calc *stats);
@@ -1046,7 +1046,7 @@ void do_integration(t_stats_calc *stats)
 }
 
 
-void do_integrataion_db(t_stats_calc *stats)
+void do_integration_db(t_stats_calc *stats)
 {
 	if (!stats->calc_integration_db)
 	{
@@ -1080,7 +1080,7 @@ double retrieve_T20(t_stats_calc *stats)
 	if (stats->T20 == -1)
 	{
 		stats->integration_conv_db_val = -25;
-		do_integrataion_db(stats);
+		do_integration_db(stats);
 		stats->T20 = calc_reverb_time(stats->integration_db, stats->ir_length, -5, -25, -60);
 	}
 	
@@ -1093,7 +1093,7 @@ double retrieve_T30(t_stats_calc *stats)
 	if (stats->T30 == -1)
 	{
 		stats->integration_conv_db_val = -35;
-		do_integrataion_db(stats);
+		do_integration_db(stats);
 		stats->T30 = calc_reverb_time(stats->integration_db, stats->ir_length, -5, -35, -60);
 	}
 	
@@ -1106,7 +1106,7 @@ double retrieve_EDT(t_stats_calc *stats)
 	if (stats->EDT == -1)
 	{
 		stats->integration_conv_db_val = -10;
-		do_integrataion_db(stats);
+		do_integration_db(stats);
 		stats->EDT = calc_reverb_time(stats->integration_db, stats->ir_length, 0, -10, -60);
 	}
 	
