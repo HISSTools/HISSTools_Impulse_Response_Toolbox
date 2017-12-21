@@ -7,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-t_matrix_complex *matrix_alloc_complex (AH_UIntPtr m_dim, AH_UIntPtr n_dim)
+t_matrix_complex *matrix_alloc_complex(AH_UIntPtr m_dim, AH_UIntPtr n_dim)
 {
 	t_matrix_complex *matrix = malloc(sizeof(t_matrix_complex));
 	
@@ -28,7 +28,7 @@ t_matrix_complex *matrix_alloc_complex (AH_UIntPtr m_dim, AH_UIntPtr n_dim)
 	return matrix;
 }
 
-void matrix_destroy_complex (t_matrix_complex *matrix)
+void matrix_destroy_complex(t_matrix_complex *matrix)
 {
 	free (matrix->matrix_data);
 	free (matrix);
@@ -56,7 +56,7 @@ long matrix_new_size_complex(t_matrix_complex *out, AH_UIntPtr m_dim, AH_UIntPtr
 //////////////////////////////////////////////////////////////////////////
 
 
-void matrix_multiply_complex (t_matrix_complex *out, t_matrix_complex *in1, t_matrix_complex *in2)
+void matrix_multiply_complex(t_matrix_complex *out, t_matrix_complex *in1, t_matrix_complex *in2)
 {
 	AH_UIntPtr m_dim = in1->m_dim;
 	AH_UIntPtr n_dim = in2->n_dim;
@@ -109,7 +109,7 @@ void matrix_multiply_complex (t_matrix_complex *out, t_matrix_complex *in1, t_ma
 //////////////////////////////////////////////////////////////////////////
 
 
-long matrix_choelsky_decompose_complex (t_matrix_complex *out, t_matrix_complex *in)
+long matrix_choelsky_decompose_complex(t_matrix_complex *out, t_matrix_complex *in)
 {
 	AH_UIntPtr z_dim = in->m_dim;
 	AH_UIntPtr i, j, k;
@@ -164,7 +164,7 @@ long matrix_choelsky_decompose_complex (t_matrix_complex *out, t_matrix_complex 
 }
 
 
-void matrix_choelsky_solve_complex (t_matrix_complex *out, t_matrix_complex *decompose, t_matrix_complex *solve)
+void matrix_choelsky_solve_complex(t_matrix_complex *out, t_matrix_complex *decompose, t_matrix_complex *solve)
 {
 	AH_UIntPtr m_dim = solve->m_dim;
 	AH_UIntPtr n_dim = solve->n_dim;
@@ -217,7 +217,7 @@ void matrix_choelsky_solve_complex (t_matrix_complex *out, t_matrix_complex *dec
 //////////////////////////////////////////////////////////////////////////
 
 
-void matrix_conjugate_transpose_complex (t_matrix_complex *out, t_matrix_complex *in)
+void matrix_conjugate_transpose_complex(t_matrix_complex *out, t_matrix_complex *in)
 {
 	AH_UIntPtr m_dim = in->n_dim;
 	AH_UIntPtr n_dim = in->m_dim;

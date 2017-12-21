@@ -7,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-double norm_find_max (double *in, AH_UIntPtr length, double start_max)
+double norm_find_max(double *in, AH_UIntPtr length, double start_max)
 {
 	double norm_factor = start_max;
 	double norm_test;
@@ -33,7 +33,7 @@ double norm_find_max (double *in, AH_UIntPtr length, double start_max)
 //////////////////////////////////////////////////////////////////////////
 
 
-void fade_calc_fade_in (double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
+void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
 {
 	double mult = 1. / fade_length;
 	double fade_val;
@@ -94,7 +94,7 @@ void fade_calc_fade_in (double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr lengt
 }
 
 
-void fade_calc_fade_out (double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
+void fade_calc_fade_out(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
 {
 	double mult = 1. / fade_length;
 	double fade_val;

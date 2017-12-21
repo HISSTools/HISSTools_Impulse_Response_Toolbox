@@ -41,12 +41,12 @@ typedef enum {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-double norm_find_max (double *in, AH_UIntPtr length, double start_max);
+double norm_find_max(double *in, AH_UIntPtr length, double start_max);
 
-void fade_calc_fade_in (double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type);
-void fade_calc_fade_out (double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type);
+void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type);
+void fade_calc_fade_out(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type);
 
-t_rms_result trim_find_crossings_rms (double *in_buf, AH_UIntPtr length, AH_UIntPtr window_in, AH_UIntPtr window_out, double in_db, double out_db, double mul, AH_UIntPtr *current_start, AH_UIntPtr *current_end);
+t_rms_result trim_find_crossings_rms(double *in_buf, AH_UIntPtr length, AH_UIntPtr window_in, AH_UIntPtr window_out, double in_db, double out_db, double mul, AH_UIntPtr *current_start, AH_UIntPtr *current_end);
 void trim_copy_part(double *out_buf, double *in_buf, AH_UIntPtr offset, AH_UIntPtr length);
 
 

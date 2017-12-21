@@ -50,13 +50,13 @@ static __inline AH_UInt32 mls_get_length (t_mls *x)
 void mls_params(t_mls *x, AH_UInt32 log2_T, double amp);
 void mls_reset(t_mls *x);
 
-void mls_gen_float (t_mls *x, float *out, AH_UIntPtr N);
-void mls_gen_double (t_mls *x, double *out, AH_UIntPtr N);
+void mls_gen_float(t_mls *x, float *out, AH_UIntPtr N);
+void mls_gen_double(t_mls *x, double *out, AH_UIntPtr N);
 
-void mls_gen_block (t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precision);
-void mls_gen (t_mls *x, void *out, AH_Boolean double_precision);
+void mls_gen_block(t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precision);
+void mls_gen(t_mls *x, void *out, AH_Boolean double_precision);
 
-AH_UInt32 get_next_lfsr_int (AH_UInt32 lfsr, AH_UInt32 feedback_mask) ;
+AH_UInt32 get_next_lfsr_int(AH_UInt32 lfsr, AH_UInt32 feedback_mask) ;
 
 
 #endif	/* __HIRT_MAXIMUM_LENGTH_SEQUENCES__ */

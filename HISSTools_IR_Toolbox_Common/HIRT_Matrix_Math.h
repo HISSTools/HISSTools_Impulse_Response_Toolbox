@@ -53,15 +53,15 @@ __##matrix##_m_dim = matrix->m_dim;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void matrix_destroy_complex (t_matrix_complex *matrix);
-t_matrix_complex *matrix_alloc_complex (AH_UIntPtr m_dim, AH_UIntPtr n_dim);
+void matrix_destroy_complex(t_matrix_complex *matrix);
+t_matrix_complex *matrix_alloc_complex(AH_UIntPtr m_dim, AH_UIntPtr n_dim);
 long matrix_new_size_complex(t_matrix_complex *out, AH_UIntPtr m_dim, AH_UIntPtr n_dim);
 
 void matrix_multiply_complex (t_matrix_complex *out, t_matrix_complex *in1, t_matrix_complex *in2);
 
-long matrix_choelsky_decompose_complex (t_matrix_complex *out, t_matrix_complex *in);
-void matrix_choelsky_solve_complex (t_matrix_complex *out, t_matrix_complex *decompose, t_matrix_complex *solve);
-void matrix_conjugate_transpose_complex (t_matrix_complex *out, t_matrix_complex *in);
+long matrix_choelsky_decompose_complex(t_matrix_complex *out, t_matrix_complex *in);
+void matrix_choelsky_solve_complex(t_matrix_complex *out, t_matrix_complex *decompose, t_matrix_complex *solve);
+void matrix_conjugate_transpose_complex(t_matrix_complex *out, t_matrix_complex *in);
 
 
 #endif	/* HIRT_MATRIX_MATH_ */

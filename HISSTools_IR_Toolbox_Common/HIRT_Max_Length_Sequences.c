@@ -32,13 +32,13 @@ void mls_reset(t_mls *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_UInt32 get_next_lfsr_int (AH_UInt32 lfsr, AH_UInt32 feedback_mask) 
+AH_UInt32 get_next_lfsr_int(AH_UInt32 lfsr, AH_UInt32 feedback_mask)
 {
 	return (lfsr >> 1) ^ (AH_UInt32)((0 - (lfsr & 0x1u)) & feedback_mask); 
 }
 
 
-void mls_gen_float (t_mls *x, float *out, AH_UIntPtr N)
+void mls_gen_float(t_mls *x, float *out, AH_UIntPtr N)
 {
 	AH_UInt32 lfsr = x->lfsr;
 	AH_UInt32 feedback_mask = x->feedback_mask;
@@ -57,7 +57,7 @@ void mls_gen_float (t_mls *x, float *out, AH_UIntPtr N)
 }
 
 
-void mls_gen_double (t_mls *x, double *out, AH_UIntPtr N)
+void mls_gen_double(t_mls *x, double *out, AH_UIntPtr N)
 {
 	AH_UInt32 lfsr = x->lfsr;
 	AH_UInt32 feedback_mask = x->feedback_mask;
@@ -76,7 +76,7 @@ void mls_gen_double (t_mls *x, double *out, AH_UIntPtr N)
 }
 
 
-void mls_gen_block (t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precision)
+void mls_gen_block(t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precision)
 {
 	if (double_precision)
 		mls_gen_double(x, out, N);
@@ -85,7 +85,7 @@ void mls_gen_block (t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precisi
 }
 
 
-void mls_gen (t_mls *x, void *out, AH_Boolean double_precision)
+void mls_gen(t_mls *x, void *out, AH_Boolean double_precision)
 {
 	if (double_precision)
 		mls_gen_double(x, out, x->T);

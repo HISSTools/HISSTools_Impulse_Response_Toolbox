@@ -349,7 +349,7 @@ void fill_amp_curve_specifier(double *array, t_atom *specifier, long num_specifi
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-static __inline void declare_HIRT_common_attributes (void *c) 
+static __inline void declare_HIRT_common_attributes(void *c)
 {
 	CLASS_STICKY_ATTR(c, "category", 0L, "Buffer");
 
@@ -436,7 +436,7 @@ static __inline void declare_HIRT_common_attributes (void *c)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-static __inline long init_HIRT_common_attributes (OBJ_CLASSNAME *x)
+static __inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
 {
 	
 #ifdef OBJ_USES_HIRT_WRITE_ATTR
@@ -494,7 +494,7 @@ static __inline long init_HIRT_common_attributes (OBJ_CLASSNAME *x)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-static __inline void free_HIRT_common_attributes (OBJ_CLASSNAME *x)
+static __inline void free_HIRT_common_attributes(OBJ_CLASSNAME *x)
 {
 	
 #ifdef OBJ_USES_HIRT_DECONVOLUTION_ATTR
