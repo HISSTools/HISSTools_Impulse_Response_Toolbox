@@ -42,7 +42,7 @@ typedef struct _ibuffer
 	long channels;			// number of channels
 	long format;			// sample format
 	
-	long valid;				// set to 0 when loading / unable to load
+	t_int32_atomic valid;   // set to 0 when loading / unable to load
 	t_int32_atomic inuse;	// count for num objects currently using this ibuffer~
 	
 	void *bang_out;			// bangs on load
