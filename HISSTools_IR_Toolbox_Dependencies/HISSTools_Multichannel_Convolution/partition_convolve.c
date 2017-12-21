@@ -366,7 +366,7 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
 	char reset_flag = x->reset_flag;
 	
 	vFloat vscale_mult = float2vector((float) (1.0 / (double) (fft_size << 2)));	
-	vFloat Zero = {0.,0.,0.,0.};
+	vFloat Zero = {0.f,0.f,0.f,0.f};
 	
 	if  (!num_partitions)
 		return false;

@@ -154,7 +154,7 @@ long matrix_choelsky_decompose_complex(t_matrix_complex *out, t_matrix_complex *
 		for (sum = MATRIX_ELEMENT(in, i, i), k = 0; k < i; k++)
 			sum = CSUB(sum, CMUL(MATRIX_ELEMENT(out, i, k), CONJ(MATRIX_ELEMENT(out, i, k))));
 		
-		if (CREAL(sum) <= 0.)
+		if (CREAL(sum) <= 0.0)
 			return 1;
 		
 		MATRIX_ELEMENT(out, i, i) = CSET(sqrt(CREAL(sum)), 0);

@@ -35,7 +35,7 @@ double norm_find_max(double *in, AH_UIntPtr length, double start_max)
 
 void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
 {
-	double mult = 1. / fade_length;
+	double mult = 1.0 / fade_length;
 	double fade_val;
 	
 	AH_UIntPtr i;
@@ -86,7 +86,7 @@ void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length
 			for (i = 0; i < fade_length; i++)
 			{
 				fade_val = (i * mult) - 1.2;
-				fade_val = exp(-0.1 * exp(-5. * fade_val));
+				fade_val = exp(-0.1 * exp(-5.0 * fade_val));
 				*in_buf++ *= fade_val;
 			}
 			break;
@@ -96,7 +96,7 @@ void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length
 
 void fade_calc_fade_out(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
 {
-	double mult = 1. / fade_length;
+	double mult = 1.0 / fade_length;
 	double fade_val;
 	
 	AH_UIntPtr i;
@@ -149,7 +149,7 @@ void fade_calc_fade_out(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr lengt
 			for (i = 0; i < fade_length; i++)
 			{
 				fade_val = (i * mult) - 1.2;
-				fade_val = exp(-0.1 * exp(-5. * fade_val));
+				fade_val = exp(-0.1 * exp(-5.0 * fade_val));
 				*in_buf-- *= fade_val;
 			}
 			break;
@@ -238,7 +238,7 @@ double calculate_rms_run(t_rms_measure *rms, double *in, AH_UIntPtr length, AH_U
 	pre_length = pre_length > index ? index : pre_length;
 	post_length = (index + post_length >= length) ? (length - 1) - index: post_length;
 	
-	for (i = index - pre_length, accum = 0.; i <= post_length; i++)
+	for (i = index - pre_length, accum = 0.0; i <= post_length; i++)
 	{
 		in_val = in[i];
 		accum += in_val * in_val;
@@ -255,7 +255,7 @@ void reset_rms(t_rms_measure *rms, AH_UIntPtr index_reset)
 {
 	// Reset for running calculation
 	
-	rms->accum = 0.;
+	rms->accum = 0.0;
 	rms->last_index = index_reset;
 }
 
@@ -266,15 +266,15 @@ t_rms_result trim_find_crossings_rms (double *in_buf, AH_UIntPtr length, AH_UInt
 	AH_UIntPtr end_search = *current_end;
 	AH_UIntPtr i, j;
 	
-	double in_lin = pow (10, in_db / 20.);
-	double out_lin = pow (10, out_db / 20.);
+	double in_lin = pow(10.0, in_db / 20.0);
+	double out_lin = pow(10.0, out_db / 20.0);
 
 	t_rms_measure rms;
 
 	// Don't search at either end
 		
-	in_lin = (in_db == -HUGE_VAL) ? -1. : in_lin;
-	out_lin = (out_db == -HUGE_VAL) ? -1. : out_lin;
+	in_lin = (in_db == -HUGE_VAL) ? -1.0 : in_lin;
+	out_lin = (out_db == -HUGE_VAL) ? -1.0 : out_lin;
 	
 	// Search for in level
 	

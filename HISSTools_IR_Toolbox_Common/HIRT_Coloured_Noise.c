@@ -28,27 +28,27 @@ void coloured_noise_params(t_noise_params *x, t_noise_mode mode, double fade_in,
 	// All Times in seconds
 	// Browning filter coefficient - N.B cf is 16Hz
 	
-	x->alpha = sin(M_PI * 2. * 16. / sample_rate);		
+	x->alpha = sin(M_PI * 2.0 * 16.0 / sample_rate);
 	
 	// Pinking filter coefficients
 	
-	x->alpha0 = sin(M_PI * 2. * 8.00135734209627 / sample_rate);		
-	x->alpha1 = sin(M_PI * 2. * 46.88548507044182 / sample_rate);		
-	x->alpha2 = sin(M_PI * 2. * 217.61558695916962 / sample_rate);		
-	x->alpha3 = sin(M_PI * 2. * 939.80665948455472 / sample_rate);		
-	x->alpha4 = sin(M_PI * 2. * 3276.10128392439381 / sample_rate);		
+	x->alpha0 = sin(M_PI * 2.0 * 8.00135734209627 / sample_rate);
+	x->alpha1 = sin(M_PI * 2.0 * 46.88548507044182 / sample_rate);
+	x->alpha2 = sin(M_PI * 2.0 * 217.61558695916962 / sample_rate);
+	x->alpha3 = sin(M_PI * 2.0 * 939.80665948455472 / sample_rate);
+	x->alpha4 = sin(M_PI * 2.0 * 3276.10128392439381 / sample_rate);
 	
 	// Zero filter memory
 	
-	x->prev_output = 0.;
+	x->prev_output = 0.0;
 	
-	x->b0 = 0;
-	x->b1 = 0;
-	x->b2 = 0;
-	x->b3 = 0;
-	x->b4 = 0;
-	x->b5 = 0;
-	x->b6 = 0;
+	x->b0 = 0.0;
+	x->b1 = 0.0;
+	x->b2 = 0.0;
+	x->b3 = 0.0;
+	x->b4 = 0.0;
+	x->b5 = 0.0;
+	x->b6 = 0.0;
 	
 	// Reset RNG parameters
 
@@ -106,11 +106,11 @@ void coloured_noise_gen_float(t_noise_params *x, float *out, AH_UIntPtr startN, 
 	double b6 = x->b6;
 	
 	double one_amp = x->amp;
-	double two_amp = one_amp * 2.;
+	double two_amp = one_amp * 2.0;
 	
 	double sample_rate = x->sample_rate;
-	double FiN = x->fade_in * sample_rate * 2.;
-	double FoN = x->fade_out * sample_rate * 2.;
+	double FiN = x->fade_in * sample_rate * 2.0;
+	double FoN = x->fade_out * sample_rate * 2.0;
 	double fade_in;
 	double fade_out;
 	double input_val;
@@ -125,8 +125,8 @@ void coloured_noise_gen_float(t_noise_params *x, float *out, AH_UIntPtr startN, 
 	AH_UIntPtr T = x->T;
 	AH_UIntPtr i;
 	
-	FiN = (FiN < 1.) ? 1. : FiN;
-	FoN = (FoN < 1.) ? 1. : FoN;
+	FiN = (FiN < 1.0) ? 1.0 : FiN;
+	FoN = (FoN < 1.0) ? 1.0 : FoN;
 	
 	switch (x->mode)
 	{
@@ -235,11 +235,11 @@ void coloured_noise_gen_double(t_noise_params *x, double *out, AH_UIntPtr startN
 	double b6 = x->b6;
 	
 	double one_amp = x->amp;
-	double two_amp = one_amp * 2.;
+	double two_amp = one_amp * 2.0;
 	
 	double sample_rate = x->sample_rate;
-	double FiN = x->fade_in * sample_rate * 2.;
-	double FoN = x->fade_out * sample_rate * 2.;
+	double FiN = x->fade_in * sample_rate * 2.0;
+	double FoN = x->fade_out * sample_rate * 2.0;
 	double fade_in;
 	double fade_out;
 	double input_val;
@@ -254,8 +254,8 @@ void coloured_noise_gen_double(t_noise_params *x, double *out, AH_UIntPtr startN
 	AH_UIntPtr T = x->T;
 	AH_UIntPtr i;	
 	
-	FiN = (FiN < 1.) ? 1. : FiN;
-	FoN = (FoN < 1.) ? 1. : FoN;
+	FiN = (FiN < 1.0) ? 1.0 : FiN;
+	FoN = (FoN < 1.0) ? 1.0 : FoN;
 	
 	switch (x->mode)
 	{
@@ -386,8 +386,8 @@ void coloured_noise_measure(t_noise_params *x, AH_UIntPtr N, double *max_out_pin
 	double b5 = x->b5;
 	double b6 = x->b6;
 	
-	double max_brown = 0.;
-	double max_pink = 0.;
+	double max_brown = 0.0;
+	double max_pink = 0.0;
 	
 	double input_val;
 	double result;
@@ -408,7 +408,7 @@ void coloured_noise_measure(t_noise_params *x, AH_UIntPtr N, double *max_out_pin
 		zr = wr;
 		wr = r;
 		
-		input_val = ((r * UNSIGNED_INT32_TO_NORM_DOUBLE * 2.) - 1.);
+		input_val = ((r * UNSIGNED_INT32_TO_NORM_DOUBLE * 2.0) - 1.0);
 		result = prev_output + (alpha * (input_val - prev_output));
 		prev_output = result;
 		
@@ -425,7 +425,7 @@ void coloured_noise_measure(t_noise_params *x, AH_UIntPtr N, double *max_out_pin
 		zr = wr;
 		wr = r;
 		
-		input_val = (r * UNSIGNED_INT32_TO_NORM_DOUBLE * 2.) - 1.;
+		input_val = (r * UNSIGNED_INT32_TO_NORM_DOUBLE * 2.0) - 1.0;
 		
 		b0 = b0 + (alpha0 * ((input_val * 48.69991228070175) - b0));
 		b1 = b1 + (alpha1 * ((input_val * 11.23890718562874) - b1));

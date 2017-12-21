@@ -88,15 +88,15 @@ void time_to_spectrum_float(FFT_SETUP_D fft_setup, float *in_buf, AH_UIntPtr in_
 	for (i = 0; i < in_length; i++)
 	{
 		spectrum.realp[i] = in_buf[i];
-		spectrum.imagp[i] = 0.;
+		spectrum.imagp[i] = 0.0;
 	}
 	
 	// zero pad
 	
 	for (; i < fft_size; i++)
 	{
-		spectrum.realp[i] = 0.;
-		spectrum.imagp[i] = 0.;
+		spectrum.realp[i] = 0.0;
+		spectrum.imagp[i] = 0.0;
 	}	
 	
 	// take the complex fft
@@ -141,15 +141,15 @@ void time_to_spectrum_double(FFT_SETUP_D fft_setup, double *in_buf, AH_UIntPtr i
 	for (i = 0; i < in_length; i++)
 	{
 		spectrum.realp[i] = in_buf[i];
-		spectrum.imagp[i] = 0.;
+		spectrum.imagp[i] = 0.0;
 	}
 	
 	// zero pad
 	
 	for (; i < fft_size; i++)
 	{
-		spectrum.realp[i] = 0.;
-		spectrum.imagp[i] = 0.;
+		spectrum.realp[i] = 0.0;
+		spectrum.imagp[i] = 0.0;
 	}
 	
 	// take the complex fft
@@ -186,7 +186,7 @@ void spectrum_to_time(FFT_SETUP_D fft_setup, double *out_buf, FFT_SPLIT_COMPLEX_
 	AH_UIntPtr fft_size_log2 = int_log2(fft_size, &inexact);
 	AH_UIntPtr i;
 	
-	double scale = 1. / (fft_size);
+	double scale = 1.0 / (fft_size);
 
 	if (inexact)
 		return;
@@ -221,14 +221,14 @@ void power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectru
 	// discard nyquist bin for a half spectrum
 	
 	if (format == SPECTRUM_REAL)
-		spectrum.imagp[0] = 0.;
+		spectrum.imagp[0] = 0.0;
 		
 	// Calculate power
 	
 	for (i = 0; i < to; i++)
 	{
 		real[i] = (real[i] * real[i]) + (imag[i] * imag[i]);
-		imag[i] = 0.;
+		imag[i] = 0.0;
 	}
 }
 
@@ -260,7 +260,7 @@ void power_full_spectrum_from_half_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIn
 	// Zero imaginary values
 	
 	for (i = 0; i < fft_size; i++)
-		imag[i] = 0.;
+		imag[i] = 0.0;
 }
 
 
@@ -278,7 +278,7 @@ void setup_hann_wind()
 	AH_UIntPtr i;
 
 	for (i = 0; i < 4097; i++)
-		hann_table[i] = 0.5 * (1. - cos(M_PI * (4095 - i) / (double) 4095));
+		hann_table[i] = 0.5 * (1.0 - cos(M_PI * (4095 - i) / (double) 4095));
 }
 
 
@@ -319,8 +319,8 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
 
 	// CHECK THIS (I think there is a danger with the upper branch if the smoothing hi is 1
 	
-	smooth_lo = smooth_lo > 1. ? 1. : smooth_lo;
-	smooth_hi = smooth_hi > 1. ? 1. : smooth_hi;
+	smooth_lo = smooth_lo > 1.0 ? 1.0 : smooth_lo;
+	smooth_hi = smooth_hi > 1.0 ? 1.0 : smooth_hi;
 	smooth_mul = smooth_hi - smooth_lo;
 	
 	// Copy power spectrum from real part (spectrum_out) to imaginary part (spectrum_in) for calculation
@@ -346,7 +346,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
 			
 				half_width = (AH_SIntPtr) (((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo) * (double) nyquist_bin);
 				filter_val = spectrum_in[i];
-				half_width_recip = half_width > 1 ? 2. / (2 * half_width - 1): 1.;
+				half_width_recip = half_width > 1 ? 2.0 / (2 * half_width - 1): 1.0;
 		
 				for (j = 1; j < half_width; j++)
 				{
@@ -369,7 +369,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
 				// Linear relationship between bin and width
 				
 				half_width = (AH_SIntPtr) (((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo) * (double) nyquist_bin);
-				accum = 0.;
+				accum = 0.0;
 				
 				lo = i - half_width;	
 				hi = i + half_width;
@@ -400,7 +400,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
 			for (i = 1; i < nyquist_bin + 1; i++)
 			{
 				oct_width = ((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo);
-				oct_width = pow (2.0, oct_width * 0.5);
+				oct_width = pow(2.0, oct_width * 0.5);
 				
 				lo = (AH_SIntPtr) (i / oct_width);	
 				hi = (AH_SIntPtr) (i * oct_width);
@@ -491,8 +491,8 @@ void minimum_phase_components_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPL
 	
 	for (i = fft_size_halved + 1; i < fft_size; i++)
 	{
-		spectrum.realp[i] = 0.;
-		spectrum.imagp[i] = 0.;
+		spectrum.realp[i] = 0.0;
+		spectrum.imagp[i] = 0.0;
 	}
 	
 	// scale
@@ -955,7 +955,7 @@ void deconvolve_with_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D 
 		
 		c1 = CMUL(CMUL(c1, CONJ(c2)), c3);
 
-		mul = 1. / CABS_SQ(c2);
+		mul = 1.0 / CABS_SQ(c2);
 		mul = isinf(mul) ? 0.0 : mul;
 
 		real1[i] = CREAL(c1) * mul;
@@ -982,16 +982,16 @@ void make_regularisation_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denom
 	
 	if (format == SPECTRUM_REAL)
 	{
-		filter_amp = 1. / (1. + beta_in[0] / (real1[0] * real1[0]));
+		filter_amp = 1.0 / (1.0 + beta_in[0] / (real1[0] * real1[0]));
 		real2[0] = filter_amp * filter_amp;		
 		
-		filter_amp = 1. / (1. +  beta_in[fft_size >> 1] / (imag1[0] * imag1[0]));
+		filter_amp = 1.0 / (1.0 +  beta_in[fft_size >> 1] / (imag1[0] * imag1[0]));
 		real2[fft_size >> 1] = filter_amp * filter_amp;
 	}
 	
 	for (i = from; i < to; i++)
 	{
-		filter_amp = 1. / (1. + beta_in[i] / (real1[i] * real1[i] + imag1[i] * imag1[i]));
+		filter_amp = 1.0 / (1.0 + beta_in[i] / (real1[i] * real1[i] + imag1[i] * imag1[i]));
 		real2[i] = filter_amp * filter_amp;
 	}
 	
@@ -1032,12 +1032,12 @@ void make_clip_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spe
 	if (format == SPECTRUM_REAL)
 	{
 		divisor_power = (real1[0] * real1[0]); 
-		filter_power = divisor_power < clip_min[0] ? divisor_power / clip_min[0] : 1.;
+		filter_power = divisor_power < clip_min[0] ? divisor_power / clip_min[0] : 1.0;
 		filter_power = divisor_power > clip_max[0] ? divisor_power / clip_max[0] : filter_power;
 		real2[0] = filter_power;	
 		
 		divisor_power = (imag1[0] * imag1[0]);
-		filter_power = divisor_power < clip_min[fft_size >> 1] ? divisor_power / clip_min[fft_size >> 1] : 1.;
+		filter_power = divisor_power < clip_min[fft_size >> 1] ? divisor_power / clip_min[fft_size >> 1] : 1.0;
 		filter_power = divisor_power > clip_max[fft_size >> 1] ? divisor_power / clip_max[fft_size >> 1] : filter_power;
 		real2[fft_size >> 1] = filter_power;
 	}
@@ -1045,7 +1045,7 @@ void make_clip_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spe
 	for (i = from; i < to; i++)
 	{
 		divisor_power = (real1[i] * real1[i] + imag1[i] * imag1[i]);
-		filter_power = divisor_power < clip_min[i] ? divisor_power / clip_min[i] : 1.;
+		filter_power = divisor_power < clip_min[i] ? divisor_power / clip_min[i] : 1.0;
 		filter_power = divisor_power > clip_max[i] ? divisor_power / clip_max[i] : filter_power;
 		real2[i] = filter_power;
 	}
@@ -1100,7 +1100,7 @@ void deconvolve_zero_phase(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D s
 	{
 		case FILTER_REGULARISATION:
 			for (i = 0; i < fft_size; i++)
-				filter_spectrum.imagp[i] = 0.;
+				filter_spectrum.imagp[i] = 0.0;
 			deconvolve_regularised_zero_phase(spectrum_1, spectrum_2, filter_spectrum.realp, fft_size, format);
 			break;
 			
@@ -1162,7 +1162,7 @@ void make_deconvolution_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denomi
 			if (!filter_in)
 			{
 				for (i = 0; i < fft_size; i++)
-					filter_spectrum.imagp[i] = 0.;
+					filter_spectrum.imagp[i] = 0.0;
 								
 				variable_phase_from_power_spectrum(fft_setup, filter_spectrum, fft_size, phase, true);
 			}
@@ -1194,7 +1194,7 @@ void deconvolve(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT
 				 double *filter_specifier, double *range_specifier, double filter_db_offset, float *filter_in, AH_UIntPtr filter_length, 
 				 AH_UIntPtr fft_size, t_spectrum_format format, t_filter_type mode, double phase, double delay, double sample_rate)
 {
-	if (phase == 0. && !filter_in)
+	if (phase == 0.0 && !filter_in)
 		deconvolve_zero_phase(spectrum_1, spectrum_2, filter_spectrum, filter_specifier, range_specifier, filter_db_offset, fft_size, format, mode, sample_rate);
 	else
 		deconvolve_variable_phase(fft_setup, spectrum_1, spectrum_2, filter_spectrum, filter_specifier, range_specifier, filter_db_offset, filter_in, filter_length, fft_size, format, mode, phase, sample_rate);
@@ -1211,7 +1211,7 @@ void deconvolve(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT
 
 void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double spike)
 {
-	long double spike_const = (long double) (2. * M_PI) * (double) (fft_size - spike) / ((double) fft_size);
+	long double spike_const = (long double) (2.0 * M_PI) * (double) (fft_size - spike) / ((double) fft_size);
 	long double phase;
 	AH_UIntPtr i;
 	
@@ -1245,7 +1245,7 @@ void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectru
 
 void delay_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double delay)
 {
-	long double delay_const = (long double) (2. * M_PI) * (double) -delay / ((double) fft_size);
+	long double delay_const = (long double) (2.0 * M_PI) * (double) -delay / ((double) fft_size);
 	long double phase;
 	double a, b, c, d;
 	AH_UIntPtr i;

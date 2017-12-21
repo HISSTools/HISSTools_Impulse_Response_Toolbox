@@ -98,7 +98,7 @@ static __inline int SSE2_check()
 // The standard compare operations return all bits on, but for use in MSP we probably want values of one
 // These routines can be used in this case
 
-static const vFloat Vec_Ops_F32_One = {1.,1.,1.,1.};
+static const vFloat Vec_Ops_F32_One = {1.f,1.f,1.f,1.f};
 
 #define F32_VEC_EQUAL_MSP_OP(a,b)		F32_VEC_AND_OP(Vec_Ops_F32_One, F32_VEC_EQUAL_OP(a,b)) 
 #define F32_VEC_NOTEQUAL_MSP_OP(a,b)	F32_VEC_SUB_OP(Vec_Ops_F32_One, F32_VEC_AND_OP(F32_VEC_EQUAL_OP(a,b), Vec_Ops_F32_One))
@@ -116,7 +116,7 @@ static const vFloat Vec_Ops_F32_One = {1.,1.,1.,1.};
 
 // Comparisons that return one or zero
 
-static const vDouble Vec_Ops_F64_One = {1.,1.};
+static const vDouble Vec_Ops_F64_One = {1.0,1.0};
 
 #define F64_VEC_EQUAL_MSP_OP(a,b)		F64_VEC_AND_OP(Vec_Ops_F64_One, F64_VEC_EQUAL_OP(a,b)) 
 #define F64_VEC_NOTEQUAL_MSP_OP(a,b)	F64_VEC_SUB_OP(Vec_Ops_F64_One, F64_VEC_AND_OP(F64_VEC_EQUAL_OP(a,b), Vec_Ops_F64_One))

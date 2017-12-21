@@ -183,7 +183,7 @@ t_buffer_write_error buffer_write(t_symbol *buffer, double *in, AH_SIntPtr write
 	
 	if (!resize)
 		for (i = write_length; i < length; i++)
-			samples[i * n_chans + chan] = 0.;
+			samples[i * n_chans + chan] = 0.f;
 	
 	if (sample_rate)
 	{
@@ -240,7 +240,7 @@ t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr 
 	
 	if (!resize)
 		for (i = write_length; i < length; i++)
-			samples[i * n_chans + chan] = 0.;
+			samples[i * n_chans + chan] = 0.f;
 	
 	if (sample_rate)
 	{
@@ -270,7 +270,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 	AH_SIntPtr new_length;
 	short i;
 	
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	double new_sample_rate;
 	
 	if (!in_place)
@@ -341,7 +341,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 		
 		// Check sample rates
 		
-		if ((sample_rate != 0 && sample_rate != new_sample_rate) || new_sample_rate == 0.)
+		if ((sample_rate != 0.0 && sample_rate != new_sample_rate) || new_sample_rate == 0.0)
 			object_warn(x, "sample rates do not match for all source buffers");
 		else 
 			sample_rate = new_sample_rate;

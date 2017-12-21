@@ -75,7 +75,7 @@ void frame_stats_reset(t_frame_stats *stats, AH_Boolean full)
 		
 		for (i = 0; i < stats->max_N; i++)
 		{
-			current_frame[i] = 0.;
+			current_frame[i] = 0.0;
 			ages[i] = 0;
 		}
 	}
@@ -122,15 +122,15 @@ void frame_stats_max_age(t_frame_stats *stats, AH_UInt32 max_age)
 
 void frame_stats_alpha(t_frame_stats *stats, double alpha_u, double alpha_d)
 {	
-	if (alpha_u > 1.) 
-		alpha_u = 1.;
-	if (alpha_u < 0.)
-		alpha_u = 0.;
+	if (alpha_u > 1.0)
+		alpha_u = 1.0;
+	if (alpha_u < 0.0)
+		alpha_u = 0.0;
 	
-	if (alpha_d > 1.) 
-		alpha_d = 1.;
-	if (alpha_d < 0.)
-		alpha_d = 0.;
+	if (alpha_d > 1.0)
+		alpha_d = 1.0;
+	if (alpha_d < 0.0)
+		alpha_d = 0.0;
 	
 	stats->alpha_u = alpha_u;		
 	stats->alpha_d = alpha_d;	
@@ -246,12 +246,12 @@ void frame_stats_write(t_frame_stats *stats, float *in, AH_UIntPtr N)
 void frame_stats_read(t_frame_stats *stats, float *out, AH_UIntPtr N)
 {
 	double *current_frame = stats->current_frame;
-	double recip = 1. / stats->frames;
+	double recip = 1.0 / stats->frames;
 	
 	AH_UIntPtr i;	
 	
 	if (stats->mode != MODE_ACCUMULATE)
-		recip = 1.;
+		recip = 1.0;
 	
 	if (stats->frames)
 	{

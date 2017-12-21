@@ -163,7 +163,7 @@ static __inline t_complex_double cm_csdiv(t_complex_double in1, double in2)
 {
 	t_complex_double ret;
 	
-	double recip = 1. / in2;
+	double recip = 1.0 / in2;
 	
 	ret.real = in1.real * recip;
 	ret.imag = in1.imag * recip;
@@ -179,7 +179,7 @@ static __inline t_complex_double cm_cdiv(t_complex_double in1, t_complex_double 
 	double b = in1.imag;
 	double c = in2.real;
 	double d = in2.imag;
-	double e = 1. / (c*c + d*d);
+	double e = 1.0 / (c*c + d*d);
 	
 	ret.real = (a*c + b*d) * e;
 	ret.imag = (a*d - b*c) * e;

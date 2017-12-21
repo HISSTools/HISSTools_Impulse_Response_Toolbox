@@ -17,8 +17,8 @@ t_atom phase_parser(t_atom a)
 	if (atom_gettype(&a) == A_FLOAT || atom_gettype(&a) == A_LONG)
 	{
 			double phase = atom_getfloat(&a);
-			phase = phase < 0. ? 0 : phase;
-			phase = phase < 0. ? 0 : phase;
+			phase = phase < 0.0 ? 0.0 : phase;
+			phase = phase < 0.0 ? 0.0 : phase;
 			
 			atom_setfloat(&a, phase);
 	}
@@ -46,10 +46,10 @@ double phase_retriever(t_atom a)
 		return 0.5;
 	
 	if (sym == gensym("min") || sym == gensym("minimum"))
-		return 0.;
+		return 0.0;
 	
 	if (sym == gensym("max") || sym == gensym("maximum"))
-		return 1.;
+		return 1.0;
 	
 	return 0;
 }
