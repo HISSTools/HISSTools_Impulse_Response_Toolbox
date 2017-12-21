@@ -7,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-AH_UIntPtr int_log2 (AH_UIntPtr in, AH_UIntPtr *inexact)
+AH_UIntPtr int_log2(AH_UIntPtr in, AH_UIntPtr *inexact)
 {
 	AH_UIntPtr temp = in;
 	AH_UIntPtr out = 0;
@@ -52,7 +52,7 @@ AH_UIntPtr calculate_fft_size(AH_UIntPtr input_size, AH_UIntPtr *fft_size_log2)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void db_to_pow_array (double *in, AH_UIntPtr length)
+void db_to_pow_array(double *in, AH_UIntPtr length)
 {
 	AH_UIntPtr i;
 	
@@ -60,7 +60,7 @@ void db_to_pow_array (double *in, AH_UIntPtr length)
 		in[i] = db_to_pow(in[i]);
 }
 
-void pow_to_db_array (double *in, AH_UIntPtr length)
+void pow_to_db_array(double *in, AH_UIntPtr length)
 {
 	AH_UIntPtr i;
 	
@@ -127,7 +127,7 @@ void time_to_halfspectrum_float(FFT_SETUP_D fft_setup, float *in_buf, AH_UIntPtr
 }
 
 
-void time_to_spectrum_double (FFT_SETUP_D fft_setup, double *in_buf, AH_UIntPtr in_length, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
+void time_to_spectrum_double(FFT_SETUP_D fft_setup, double *in_buf, AH_UIntPtr in_length, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
 {
 	AH_UIntPtr inexact = 0;
 	AH_UIntPtr fft_size_log2 = int_log2(fft_size, &inexact);
@@ -304,7 +304,7 @@ static __inline double fast_hann_wind(double in)
 }
 
 
-void smooth_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_UIntPtr fft_size, double smooth_lo, double smooth_hi)
+void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_UIntPtr fft_size, double smooth_lo, double smooth_hi)
 {
 	double *spectrum_out = spectrum.realp;
 	double *spectrum_in = spectrum.imagp; 
@@ -317,7 +317,7 @@ void smooth_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH
 	AH_SIntPtr limit = fft_size_m1;
 	AH_SIntPtr i, j;
 
-	// CHECK THIS (I think there is a danger with the upper barnch if the smoothing hi is 1
+	// CHECK THIS (I think there is a danger with the upper branch if the smoothing hi is 1
 	
 	smooth_lo = smooth_lo > 1. ? 1. : smooth_lo;
 	smooth_hi = smooth_hi > 1. ? 1. : smooth_hi;
@@ -433,7 +433,7 @@ void smooth_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void zero_phase_from_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format)
+void zero_phase_from_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	AH_UIntPtr to = format == SPECTRUM_REAL ? (fft_size >> 1) : (fft_size >> 1) + 1;
 	AH_UIntPtr i;
@@ -449,14 +449,14 @@ void zero_phase_from_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr ff
 }
 
 
-void linear_phase_from_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format)
+void linear_phase_from_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	zero_phase_from_power_spectrum (spectrum, fft_size, format);
 	delay_spectrum(spectrum, fft_size, format, (double) (fft_size >> 1));
 }
 
 
-void minimum_phase_components_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
+void minimum_phase_components_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
 {
 	double scale = 1.0 / fft_size;
 	double min_power = db_to_pow(-1000.0);
@@ -510,7 +510,7 @@ void minimum_phase_components_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SP
 }
 
 
-void minimum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
+void minimum_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
 {
 	AH_UIntPtr fft_size_halved = fft_size >> 1;
 	AH_UIntPtr i;
@@ -538,7 +538,7 @@ void minimum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX
 }
 
 
-void noncausal_maximum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
+void noncausal_maximum_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
 {
 	AH_UIntPtr i;
 	
@@ -553,7 +553,7 @@ void noncausal_maximum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPL
 }
 
 
-void maximum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
+void maximum_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size)
 {
 	noncausal_maximum_phase_from_power_spectrum(fft_setup, spectrum, fft_size);
 
@@ -563,7 +563,7 @@ void maximum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX
 }
 
 
-void mixed_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, double phase, AH_Boolean zero_center)
+void mixed_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, double phase, AH_Boolean zero_center)
 {
 	AH_UIntPtr fft_size_halved = fft_size >> 1;
 	AH_UIntPtr i;
@@ -609,7 +609,7 @@ void mixed_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D
 }
 
 
-void variable_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, double phase, AH_Boolean zero_center)
+void variable_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, double phase, AH_Boolean zero_center)
 {
 	if (phase == 0.0)
 	{
@@ -644,7 +644,7 @@ void variable_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLE
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void make_freq_dependent_power_array (double *power_array, double *specifier_array, AH_UIntPtr fft_size, double sample_rate, double db_offset)
+void make_freq_dependent_power_array(double *power_array, double *specifier_array, AH_UIntPtr fft_size, double sample_rate, double db_offset)
 {	
 	AH_UIntPtr fft_size_halved = fft_size >> 1;
 	AH_UIntPtr num_items = 0;
@@ -729,7 +729,7 @@ void make_freq_dependent_power_array (double *power_array, double *specifier_arr
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void convolve (FFT_SPLIT_COMPLEX_D fft_data_1, FFT_SPLIT_COMPLEX_D fft_data_2, AH_UIntPtr fft_size, t_spectrum_format format)
+void convolve(FFT_SPLIT_COMPLEX_D fft_data_1, FFT_SPLIT_COMPLEX_D fft_data_2, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	double *real1 = fft_data_1.realp;
 	double *real2 = fft_data_2.realp;
@@ -766,7 +766,7 @@ void convolve (FFT_SPLIT_COMPLEX_D fft_data_1, FFT_SPLIT_COMPLEX_D fft_data_2, A
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void deconvolve_with_amp_filter (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, 
+void deconvolve_with_amp_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2,
 								 double *filter_amps, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	double *real1 = spectrum_1.realp;
@@ -807,7 +807,7 @@ void deconvolve_with_amp_filter (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPL
 }
 
 
-void deconvolve_regularised_zero_phase (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, 
+void deconvolve_regularised_zero_phase(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2,
 										double *beta_in, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	double *real1 = spectrum_1.realp;
@@ -847,7 +847,7 @@ void deconvolve_regularised_zero_phase (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLI
 }
 
 
-void deconvolve_clip_zero_phase (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, 
+void deconvolve_clip_zero_phase(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2,
 								 double *clip_min, double *clip_max, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	double *real1 = spectrum_1.realp;
@@ -920,7 +920,7 @@ void deconvolve_clip_zero_phase (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPL
 
 // N.B. All spectra must have the same format
 
-void deconvolve_with_filter (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, 
+void deconvolve_with_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2,
 							 FFT_SPLIT_COMPLEX_D filter_spectrum, AH_UIntPtr fft_size, t_spectrum_format format)
 {
 	double *real1 = spectrum_1.realp;
@@ -966,7 +966,7 @@ void deconvolve_with_filter (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D
 
 // N.B. The filter spectrum will be returned in the correct format, but must be large enough to fit a full spectrum
 
-void make_regularisation_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spectrum, FFT_SPLIT_COMPLEX_D filter_spectrum, 
+void make_regularisation_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spectrum, FFT_SPLIT_COMPLEX_D filter_spectrum,
 								 double *beta_in, AH_UIntPtr fft_size, t_spectrum_format format, double phase)
 {
 	double *real1 = denominator_spectrum.realp;
@@ -1012,7 +1012,7 @@ void make_regularisation_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D deno
 
 // N.B. The filter spectrum will be returned in the correct format, but must be large enough to fit a full spectrum
 
-void make_clip_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spectrum, FFT_SPLIT_COMPLEX_D filter_spectrum, 
+void make_clip_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spectrum, FFT_SPLIT_COMPLEX_D filter_spectrum,
 					   double *clip_min, double *clip_max, AH_UIntPtr fft_size, t_spectrum_format format, double phase)
 {
 	double *real1 = denominator_spectrum.realp;
@@ -1065,7 +1065,7 @@ void make_clip_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_sp
 }
 
 
-void deconvolve_regularised_variable_phase (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, 
+void deconvolve_regularised_variable_phase(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2,
 											FFT_SPLIT_COMPLEX_D temp_full_spectrum, double *beta_in, AH_UIntPtr fft_size, t_spectrum_format format, double phase)
 {
 	make_regularisation_filter(fft_setup, spectrum_2, temp_full_spectrum, beta_in, fft_size, format, phase);
@@ -1088,13 +1088,13 @@ void deconvolve_clip_variable_phase (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D 
 
 // N.B. The filter spectrum must be large enough to fit a full spectrum
 
-void deconvolve_zero_phase (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, FFT_SPLIT_COMPLEX_D filter_spectrum, 
+void deconvolve_zero_phase(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, FFT_SPLIT_COMPLEX_D filter_spectrum,
 							double *filter_specifier, double *range_specifier, double filter_db_offset,
 							AH_UIntPtr fft_size, t_spectrum_format format, t_filter_type mode, double sample_rate)
 {
 	AH_UIntPtr i;
 	
-	make_freq_dependent_power_array (filter_spectrum.realp, filter_specifier, fft_size, sample_rate, filter_db_offset);
+	make_freq_dependent_power_array(filter_spectrum.realp, filter_specifier, fft_size, sample_rate, filter_db_offset);
 	
 	switch (mode)
 	{
@@ -1126,7 +1126,7 @@ void deconvolve_zero_phase (FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D 
 
 // N.B. The filter spectrum will be returned in the correct format, but must be large enough to fit a full spectrum
 
-void make_deconvolution_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spectrum, FFT_SPLIT_COMPLEX_D filter_spectrum, 
+void make_deconvolution_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spectrum, FFT_SPLIT_COMPLEX_D filter_spectrum,
 								double *filter_specifier, double *range_specifier, double filter_db_offset, float *filter_in, AH_UIntPtr filter_length, 
 								AH_UIntPtr fft_size, t_spectrum_format format, t_filter_type mode, double phase, double sample_rate)
 {
@@ -1139,7 +1139,7 @@ void make_deconvolution_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denom
 			power_spectrum(filter_spectrum, fft_size, SPECTRUM_FULL);
 	}
 	else 
-		make_freq_dependent_power_array (filter_spectrum.realp, filter_specifier, fft_size, sample_rate, filter_db_offset);
+		make_freq_dependent_power_array(filter_spectrum.realp, filter_specifier, fft_size, sample_rate, filter_db_offset);
 	
 	switch (mode)
 	{
@@ -1179,7 +1179,7 @@ void make_deconvolution_filter (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denom
 
 // N.B. The filter spectrum will be returned in the correct format, but must be large enough to fit a full spectrum
 
-void deconvolve_variable_phase (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, FFT_SPLIT_COMPLEX_D filter_spectrum, 
+void deconvolve_variable_phase(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, FFT_SPLIT_COMPLEX_D filter_spectrum,
 								double *filter_specifier, double *range_specifier, double filter_db_offset, float *filter_in, AH_UIntPtr filter_length, 
 								AH_UIntPtr fft_size, t_spectrum_format format, t_filter_type mode, double phase, double sample_rate)
 {
@@ -1190,7 +1190,7 @@ void deconvolve_variable_phase (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spect
 
 // N.B. The filter spectrum will be returned in the correct format, but must be large enough to fit a full spectrum
 
-void deconvolve (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, FFT_SPLIT_COMPLEX_D filter_spectrum, 
+void deconvolve(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D spectrum_2, FFT_SPLIT_COMPLEX_D filter_spectrum,
 				 double *filter_specifier, double *range_specifier, double filter_db_offset, float *filter_in, AH_UIntPtr filter_length, 
 				 AH_UIntPtr fft_size, t_spectrum_format format, t_filter_type mode, double phase, double delay, double sample_rate)
 {
@@ -1209,7 +1209,7 @@ void deconvolve (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLI
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void spike_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double spike)
+void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double spike)
 {
 	long double spike_const = (long double) (2. * M_PI) * (double) (fft_size - spike) / ((double) fft_size);
 	long double phase;
@@ -1243,7 +1243,7 @@ void spike_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectr
 }
 
 
-void delay_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double delay)
+void delay_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double delay)
 {
 	long double delay_const = (long double) (2. * M_PI) * (double) -delay / ((double) fft_size);
 	long double phase;

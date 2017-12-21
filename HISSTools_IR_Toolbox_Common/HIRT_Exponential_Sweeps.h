@@ -72,15 +72,15 @@ static __inline double ess_harm_offset(t_ess *x, AH_UIntPtr harm)
 
 AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fade_out, double T, double sample_rate, double amp, double *amp_curve);
 
-AH_UIntPtr ess_gen_float (t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N);
-AH_UIntPtr ess_igen_float (t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp);
-AH_UIntPtr ess_gen_double (t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N);
-AH_UIntPtr ess_igen_double (t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp);
+AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N);
+AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp);
+AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N);
+AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp);
 
-AH_UIntPtr ess_gen_block (t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision);
-AH_UIntPtr ess_igen_block (t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp, AH_Boolean double_precision);
-AH_UIntPtr ess_gen (t_ess *x, void *out, AH_Boolean double_precision);
-AH_UIntPtr ess_igen (t_ess *x, void *out, AH_Boolean inv_amp, AH_Boolean double_precision);
+AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision);
+AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp, AH_Boolean double_precision);
+AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision);
+AH_UIntPtr ess_igen(t_ess *x, void *out, AH_Boolean inv_amp, AH_Boolean double_precision);
 
 #ifdef __cplusplus
 }

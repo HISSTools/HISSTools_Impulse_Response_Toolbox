@@ -23,7 +23,7 @@ long IBuffer_SSE_Exists = 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_init ()
+void ibuffer_init()
 {
 	ps_buffer = gensym("buffer~");
 	ps_ibuffer = gensym("ibuffer~");
@@ -44,7 +44,7 @@ void ibuffer_init ()
 
 #ifdef __APPLE__
 
-static __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
+static __inline void convert_and_scale_int32_to_float(float *out, AH_SIntPtr n_samps)
 {
 	vFloat scale = {TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP};
 	
@@ -67,7 +67,7 @@ static __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_
 
 #else
 
-static __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_samps)
+static __inline void convert_and_scale_int32_to_float(float *out, AH_SIntPtr n_samps)
 {
 	vFloat scale = {TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP, TWO_POW_31_RECIP};
 	
@@ -109,7 +109,7 @@ static __inline void convert_and_scale_int32_to_float (float *out, AH_SIntPtr n_
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_get_samps_16 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_16(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	AH_SInt16 *sampschan = ((AH_SInt16 *) samps) + chan + (offset * n_chans);
 	AH_SInt32 *temp_ptr = (AH_SInt32 *) out;
@@ -122,7 +122,7 @@ void ibuffer_get_samps_16 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPt
 }
 
 
-void ibuffer_get_samps_24 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_24(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {	
 	AH_SInt8 *sampschan = ((AH_SInt8 *) samps) + (3 * (chan + (offset * n_chans))) - 1;
 	AH_SInt32 *temp_ptr = (AH_SInt32 *) out;
@@ -135,7 +135,7 @@ void ibuffer_get_samps_24 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPt
 }
 
 
-void ibuffer_get_samps_32 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_32(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	AH_SInt32 *sampschan = ((AH_SInt32 *) samps) + chan + (offset * n_chans);
 	AH_SInt32	*temp_ptr = (AH_SInt32 *) out;
@@ -148,7 +148,7 @@ void ibuffer_get_samps_32 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPt
 }
 
 
-void ibuffer_get_samps_float (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_float(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	float *sampschan = ((float *) samps) + chan + (offset * n_chans);
 	AH_SIntPtr i;
@@ -158,7 +158,7 @@ void ibuffer_get_samps_float (void *samps, float *out, AH_SIntPtr offset, AH_SIn
 }
 
 
-void ibuffer_get_samps (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan, long format)
+void ibuffer_get_samps(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan, long format)
 {
 	switch (format)
 	{
@@ -186,7 +186,7 @@ void ibuffer_get_samps (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_get_samps_rev_16 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_rev_16(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	AH_SInt16 *sampschan = ((AH_SInt16 *) samps) + chan + (offset * n_chans);
 	AH_SInt32 *temp_ptr = (AH_SInt32 *) out;
@@ -199,7 +199,7 @@ void ibuffer_get_samps_rev_16 (void *samps, float *out, AH_SIntPtr offset, AH_SI
 }
 
 
-void ibuffer_get_samps_rev_24 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_rev_24(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	AH_SInt8 *sampschan = ((AH_SInt8 *) samps) + (3 * (chan + (offset * n_chans))) - 1;
 	AH_SInt32 *temp_ptr = (AH_SInt32 *) out;
@@ -212,7 +212,7 @@ void ibuffer_get_samps_rev_24 (void *samps, float *out, AH_SIntPtr offset, AH_SI
 }
 
 
-void ibuffer_get_samps_rev_32 (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_rev_32(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	AH_SInt32 *sampschan = ((AH_SInt32 *) samps) + chan + + (offset * n_chans);
 	AH_SInt32 *temp_ptr = (AH_SInt32 *) out;
@@ -225,7 +225,7 @@ void ibuffer_get_samps_rev_32 (void *samps, float *out, AH_SIntPtr offset, AH_SI
 }
 
 
-void ibuffer_get_samps_rev_float (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
+void ibuffer_get_samps_rev_float(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan)
 {
 	float *sampschan = ((float *) samps) + chan + (offset * n_chans);
 	AH_SIntPtr i;
@@ -235,7 +235,7 @@ void ibuffer_get_samps_rev_float (void *samps, float *out, AH_SIntPtr offset, AH
 }
 
 
-void ibuffer_get_samps_rev (void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan, long format)
+void ibuffer_get_samps_rev(void *samps, float *out, AH_SIntPtr offset, AH_SIntPtr n_samps, long n_chans, long chan, long format)
 {
 	switch (format)
 	{
@@ -271,17 +271,17 @@ for (i <<= 3; i < n_samps; i++)					\
 for (; i < ((n_samps + 3) >> 2) << 2; i++)		\
 *out++ = 0;
 
-static __inline void ibuffer_fetch_samps_float (float *out, float *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_float(float *out, float *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {	
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = *(samps + *offsets++))
 }
 
-static __inline void ibuffer_fetch_samps_16 (AH_SInt32 *out, AH_SInt16 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_16(AH_SInt32 *out, AH_SInt16 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = (*(samps + *offsets++) << 16))
 }
 
-static __inline void ibuffer_fetch_samps_24 (AH_SInt32 *out, AH_SInt8 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_24(AH_SInt32 *out, AH_SInt8 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {	
 #if (TARGET_RT_LITTLE_ENDIAN)
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = (*((AH_SInt32 *) ((samps - 1) + *offsets++)) & MASK_24_BIT))
@@ -290,12 +290,12 @@ static __inline void ibuffer_fetch_samps_24 (AH_SInt32 *out, AH_SInt8 *samps, AH
 #endif
 }
 
-static __inline void ibuffer_fetch_samps_32 (AH_SInt32 *out, AH_SInt32 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
+static __inline void ibuffer_fetch_samps_32(AH_SInt32 *out, AH_SInt32 *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)
 {
 	IBUFFER_FETCH_LOOP_UNROLL (*out++ = (*(samps + *offsets++)))
 }
 
-void ibuffer_fetch_samps (void *out, void *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format)
+void ibuffer_fetch_samps(void *out, void *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format)
 {
 	switch (format)
 	{
@@ -314,7 +314,7 @@ void ibuffer_fetch_samps (void *out, void *samps, AH_SIntPtr *offsets, AH_SIntPt
 	}
 }
 
-void ibuffer_fetch_samps_2 (void **temp, void *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format)
+void ibuffer_fetch_samps_2(void **temp, void *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format)
 {
 	switch (format)
 	{
@@ -337,7 +337,7 @@ void ibuffer_fetch_samps_2 (void **temp, void *samps, AH_SIntPtr *offsets, AH_SI
 	}
 }
 
-void ibuffer_fetch_samps_4 (void **temp, void *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format)
+void ibuffer_fetch_samps_4(void **temp, void *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format)
 {
 	switch (format)
 	{
@@ -374,7 +374,7 @@ void ibuffer_fetch_samps_4 (void **temp, void *samps, AH_SIntPtr *offsets, AH_SI
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_float_samps_simd_nointerp (void *samps, vFloat *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_simd_nointerp(void *samps, vFloat *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	vFloat scale = float2vector ((format == PCM_FLOAT) ? mul : (mul * TWO_POW_31_RECIP));
 	vSInt32 *int_vec = (vSInt32 *) out;
@@ -394,7 +394,7 @@ void ibuffer_float_samps_simd_nointerp (void *samps, vFloat *out, AH_SIntPtr *of
 	}
 }
 
-void ibuffer_float_samps_scalar_nointerp (void *samps, float *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_scalar_nointerp(void *samps, float *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	AH_SIntPtr i;	
 		
@@ -408,7 +408,7 @@ void ibuffer_float_samps_scalar_nointerp (void *samps, float *out, AH_SIntPtr *o
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_lin_interp_float (vFloat *out,  void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
+void ibuffer_lin_interp_float(vFloat *out,  void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
 {		
     vFloat *in1 = (vFloat *) inbuffers[0];
 	vFloat *in2 = (vFloat *) inbuffers[1];
@@ -442,7 +442,7 @@ void ibuffer_lin_interp_int_to_float(vFloat *out, void **inbuffers, vFloat *frac
 	}
 }
 
-void ibuffer_float_samps_simd_linear (void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_simd_linear(void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	ibuffer_fetch_samps_2 (temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -452,7 +452,7 @@ void ibuffer_float_samps_simd_linear (void *samps, vFloat *out, AH_SIntPtr *offs
 		ibuffer_lin_interp_int_to_float(out, temp, fracts, (n_samps + 3) >> 2, mul);
 }
 
-void ibuffer_float_samps_scalar_linear (void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_scalar_linear(void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	float fract, y0, y1;
 	AH_SIntPtr offset, i;
@@ -475,7 +475,7 @@ void ibuffer_float_samps_scalar_linear (void *samps, float *out, AH_SIntPtr *off
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_cubic_bspline_float (vFloat *out, void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
+void ibuffer_cubic_bspline_float(vFloat *out, void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
 {		
     vFloat *in1 = fracts;
     vFloat *in2 = (vFloat *) inbuffers[0];
@@ -544,7 +544,7 @@ void ibuffer_cubic_bspline_int_to_float(vFloat *out, void **inbuffers, vFloat *f
 }
 
 
-void ibuffer_float_samps_simd_cubic_bspline (void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_simd_cubic_bspline(void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	ibuffer_fetch_samps_4 (temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -554,7 +554,7 @@ void ibuffer_float_samps_simd_cubic_bspline (void *samps, vFloat *out, AH_SIntPt
 		ibuffer_cubic_bspline_int_to_float(out, temp, fracts, (n_samps + 3) >> 2, mul);
 }
 
-void ibuffer_float_samps_scalar_cubic_bspline (void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_scalar_cubic_bspline(void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	float fract, y0, y1, y2, y3, y0py2, c0, c1, c2, c3;
 	AH_SIntPtr offset, i;
@@ -585,7 +585,7 @@ void ibuffer_float_samps_scalar_cubic_bspline (void *samps, float *out, AH_SIntP
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_cubic_hermite_float (vFloat *out, void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
+void ibuffer_cubic_hermite_float(vFloat *out, void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
 {		
     vFloat *in1 = fracts;
     vFloat *in2 = (vFloat *) inbuffers[0];
@@ -649,7 +649,7 @@ void ibuffer_cubic_hermite_int_to_float(vFloat *out,void **inbuffers, vFloat *fr
 	}
 }
 
-void ibuffer_float_samps_simd_cubic_hermite (void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_simd_cubic_hermite(void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	ibuffer_fetch_samps_4 (temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -659,7 +659,7 @@ void ibuffer_float_samps_simd_cubic_hermite (void *samps, vFloat *out, AH_SIntPt
 		ibuffer_cubic_hermite_int_to_float(out, temp, fracts, (n_samps + 3) >> 2, mul);
 }
 
-void ibuffer_float_samps_scalar_cubic_hermite (void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_scalar_cubic_hermite(void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	float fract, y0, y1, y2, y3, c0, c1, c2, c3;
 	AH_SIntPtr offset, i;
@@ -689,7 +689,7 @@ void ibuffer_float_samps_scalar_cubic_hermite (void *samps, float *out, AH_SIntP
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void ibuffer_cubic_lagrange_float (vFloat *out, void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
+void ibuffer_cubic_lagrange_float(vFloat *out, void **inbuffers, vFloat *fracts, AH_SIntPtr n_samps_over_4, float mul)
 {		
 	vFloat *in1 = fracts;
 	vFloat *in2 = (vFloat *) inbuffers[0];
@@ -753,7 +753,7 @@ void ibuffer_cubic_lagrange_int_to_float(vFloat *out,void **inbuffers, vFloat *f
 	}
 }
 
-void ibuffer_float_samps_simd_cubic_lagrange (void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_simd_cubic_lagrange(void *samps, vFloat *out, AH_SIntPtr *offsets, vFloat *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	ibuffer_fetch_samps_4 (temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -763,7 +763,7 @@ void ibuffer_float_samps_simd_cubic_lagrange (void *samps, vFloat *out, AH_SIntP
 		ibuffer_cubic_lagrange_int_to_float(out, temp, fracts, (n_samps + 3) >> 2, mul);
 }
 
-void ibuffer_float_samps_scalar_cubic_lagrange (void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
+void ibuffer_float_samps_scalar_cubic_lagrange(void *samps, float *out, AH_SIntPtr *offsets, float *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, float mul)
 {
 	float fract, y0, y1, y2, y3, c0, c1, c2, c3;
 	AH_SIntPtr offset, i;
@@ -795,7 +795,7 @@ void ibuffer_float_samps_scalar_cubic_lagrange (void *samps, float *out, AH_SInt
 
 #ifdef VECTOR_F64_128BIT
 
-void ibuffer_double_samps_simd_nointerp (void *samps, vDouble *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_simd_nointerp(void *samps, vDouble *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	vDouble scale = double2vector ((format == PCM_FLOAT) ? mul : (mul * TWO_POW_31_RECIP));
 	vFloat *float_vec = (vFloat *) ((double *) out + (((n_samps + 3) >> 2) << 1));
@@ -829,7 +829,7 @@ void ibuffer_double_samps_simd_nointerp (void *samps, vDouble *out, AH_SIntPtr *
 #endif
 
 
-void ibuffer_double_samps_scalar_nointerp (void *samps, double *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_scalar_nointerp(void *samps, double *out, AH_SIntPtr *offsets, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	AH_SIntPtr i;	
 	
@@ -845,7 +845,7 @@ void ibuffer_double_samps_scalar_nointerp (void *samps, double *out, AH_SIntPtr 
 
 #ifdef VECTOR_F64_128BIT
 
-void ibuffer_lin_interp_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_lin_interp_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
     vFloat *in1 = (vFloat *) inbuffers[0];
 	vFloat *in2 = (vFloat *) inbuffers[1];
@@ -872,7 +872,7 @@ void ibuffer_lin_interp_double (vDouble *out, void **inbuffers, vDouble *fracts,
 	}
 }
 
-void ibuffer_lin_interp_int_to_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_lin_interp_int_to_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
     vSInt32 *in1 = (vSInt32 *) inbuffers[0];
 	vSInt32 *in2 = (vSInt32 *) inbuffers[1];
@@ -899,7 +899,7 @@ void ibuffer_lin_interp_int_to_double (vDouble *out, void **inbuffers, vDouble *
 	}
 }
 
-void ibuffer_double_samps_simd_linear (void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_simd_linear(void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	ibuffer_fetch_samps_2 (temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -911,7 +911,7 @@ void ibuffer_double_samps_simd_linear (void *samps, vDouble *out, AH_SIntPtr *of
 
 #endif
 
-void ibuffer_double_samps_scalar_linear (void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_scalar_linear(void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	double fract, y0, y1;
 	AH_SIntPtr offset, i;
@@ -936,7 +936,7 @@ void ibuffer_double_samps_scalar_linear (void *samps, double *out, AH_SIntPtr *o
 
 #ifdef VECTOR_F64_128BIT
 
-void ibuffer_cubic_bspline_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_cubic_bspline_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
     vDouble *in1 = fracts;
     vFloat *in2 = (vFloat *) inbuffers[0];
@@ -991,7 +991,7 @@ void ibuffer_cubic_bspline_double (vDouble *out, void **inbuffers, vDouble *frac
 	}
 }
 
-void ibuffer_cubic_bspline_int_to_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_cubic_bspline_int_to_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
     vDouble *in1 = fracts;
 	vSInt32 *in2 = (vSInt32 *) inbuffers[0];
@@ -1046,7 +1046,7 @@ void ibuffer_cubic_bspline_int_to_double (vDouble *out, void **inbuffers, vDoubl
 	}
 }
 
-void ibuffer_double_samps_simd_cubic_bspline (void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_simd_cubic_bspline(void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	ibuffer_fetch_samps_4 (temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -1058,7 +1058,7 @@ void ibuffer_double_samps_simd_cubic_bspline (void *samps, vDouble *out, AH_SInt
 
 #endif
 
-void ibuffer_double_samps_scalar_cubic_bspline (void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_scalar_cubic_bspline(void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	double fract, y0, y1, y2, y3, y0py2, c0, c1, c2, c3;
 	AH_SIntPtr offset, i;
@@ -1091,7 +1091,7 @@ void ibuffer_double_samps_scalar_cubic_bspline (void *samps, double *out, AH_SIn
 
 #ifdef VECTOR_F64_128BIT
 
-void ibuffer_cubic_hermite_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_cubic_hermite_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
     vDouble *in1 = fracts;
 	vFloat *in2 = (vFloat *) inbuffers[0];
@@ -1142,7 +1142,7 @@ void ibuffer_cubic_hermite_double (vDouble *out, void **inbuffers, vDouble *frac
 	}
 }
 
-void ibuffer_cubic_hermite_int_to_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_cubic_hermite_int_to_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
     vDouble *in1 = fracts;
     vSInt32 *in2 = (vSInt32 *) inbuffers[0];
@@ -1193,7 +1193,7 @@ void ibuffer_cubic_hermite_int_to_double (vDouble *out, void **inbuffers, vDoubl
 	}
 }
 
-void ibuffer_double_samps_simd_cubic_hermite (void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_simd_cubic_hermite(void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	ibuffer_fetch_samps_4 ((void **)temp, samps, offsets, n_samps, n_chans, chan, format);
 	
@@ -1205,7 +1205,7 @@ void ibuffer_double_samps_simd_cubic_hermite (void *samps, vDouble *out, AH_SInt
 
 #endif
 
-void ibuffer_double_samps_scalar_cubic_hermite (void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_scalar_cubic_hermite(void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	double fract, y0, y1, y2, y3, c0, c1, c2, c3;
 	AH_SIntPtr offset, i;
@@ -1237,7 +1237,7 @@ void ibuffer_double_samps_scalar_cubic_hermite (void *samps, double *out, AH_SIn
 
 #ifdef VECTOR_F64_128BIT
 
-void ibuffer_cubic_lagrange_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_cubic_lagrange_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
 	vDouble *in1 = fracts;
 	vFloat *in2 = (vFloat *) inbuffers[0];
@@ -1288,7 +1288,7 @@ void ibuffer_cubic_lagrange_double (vDouble *out, void **inbuffers, vDouble *fra
 	}
 }
 
-void ibuffer_cubic_lagrange_int_to_double (vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
+void ibuffer_cubic_lagrange_int_to_double(vDouble *out, void **inbuffers, vDouble *fracts, AH_SIntPtr n_samps_over_4, double mul)
 {		
 	vDouble *in1 = fracts;
 	vSInt32 *in2 = (vSInt32 *) inbuffers[0];
@@ -1339,7 +1339,7 @@ void ibuffer_cubic_lagrange_int_to_double (vDouble *out, void **inbuffers, vDoub
 	}
 }
 
-void ibuffer_double_samps_simd_cubic_lagrange (void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_simd_cubic_lagrange(void *samps, vDouble *out, AH_SIntPtr *offsets, vDouble *fracts, void **temp, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	ibuffer_fetch_samps_4 ((void **)temp, samps, offsets, n_samps, n_chans, chan, format);
 
@@ -1351,7 +1351,7 @@ void ibuffer_double_samps_simd_cubic_lagrange (void *samps, vDouble *out, AH_SIn
 
 #endif
 
-void ibuffer_double_samps_scalar_cubic_lagrange (void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
+void ibuffer_double_samps_scalar_cubic_lagrange(void *samps, double *out, AH_SIntPtr *offsets, double *fracts, AH_SIntPtr n_samps, long n_chans, long chan, long format, double mul)
 {
 	double fract, y0, y1, y2, y3, c0, c1, c2, c3;
 	AH_SIntPtr offset, i;
