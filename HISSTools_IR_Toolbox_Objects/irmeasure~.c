@@ -1454,7 +1454,7 @@ t_int *irmeasure_perform (t_int *w)
 				
 			// Progress output
 			
-			out = x->out_chans[j];
+			out = x->out_chans[num_out_chans];
 			current_t2 = x->current_t;
 			for (i = 0; i < vec_size && current_t2 < T2; i++, current_t2++)		
 				out[i] = (float) (progress_mul * current_t2);
@@ -1603,7 +1603,7 @@ void irmeasure_perform64 (t_irmeasure *x, t_object *dsp64, double **ins, long nu
 			
 			// Progress output
 			
-			out = outs[j];
+			out = outs[num_out_chans];
 			current_t2 = x->current_t;
 			for (i = 0; i < vec_size && current_t2 < T2; i++, current_t2++)		
 				out[i] = progress_mul * current_t2;
