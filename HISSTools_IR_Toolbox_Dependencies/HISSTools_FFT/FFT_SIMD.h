@@ -286,8 +286,8 @@ void pass_3_reorder_simd_float(SplitFloat *input, HstFFT_UInt length)
 	
 	vFloat r1, r2, r3, r4, r5;
 	vFloat i1, i2, i3, i4, i5;
-	vFloat twiddle_c = {1, (FFT_TYPE) SQRT_2_2, 0, (FFT_TYPE) -SQRT_2_2};
-	vFloat twiddle_s = {0, (FFT_TYPE)-SQRT_2_2, -1, (FFT_TYPE) -SQRT_2_2};
+	vFloat twiddle_c = {1, (float) SQRT_2_2, 0, (float) -SQRT_2_2};
+	vFloat twiddle_s = {0, (float)-SQRT_2_2, -1, (float) -SQRT_2_2};
 	
 	vFloat *r1_ptr = (vFloat *) input->realp;
 	vFloat *i1_ptr = (vFloat *) input->imagp;
