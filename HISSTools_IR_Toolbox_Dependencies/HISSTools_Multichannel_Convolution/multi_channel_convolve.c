@@ -121,7 +121,7 @@ t_convolve_error multi_channel_convolve_set(t_multi_channel_convolve *x, AH_UInt
 void multi_channel_convolve_process_float(t_multi_channel_convolve *x, float **ins, float **outs, float *dry_gain, float *wet_gain, AH_UIntPtr vec_size, AH_UIntPtr active_in_chans, AH_UIntPtr active_out_chans)
 {
 	void *mem_pointer;
-	vFloat **in_temps = x->in_temps;
+	vFloat **in_temps;
 	vFloat *temp1;
 	vFloat *temp2;
 	AH_UIntPtr num_in_chans = x->num_in_chans;
@@ -138,6 +138,7 @@ void multi_channel_convolve_process_float(t_multi_channel_convolve *x, float **i
 	mem_pointer = grow_memory_swap(&x->temporary_memory, (num_in_chans + 2) * vec_size * sizeof(float), vec_size);
 	multi_channel_convolve_temp_setup(x, mem_pointer, x->temporary_memory.current_size);
 	
+    in_temps = x->in_temps;
 	temp1 = x->temp1;
 	temp2 = x->temp2;
 	
@@ -185,7 +186,7 @@ void multi_channel_convolve_process_float(t_multi_channel_convolve *x, float **i
 void multi_channel_convolve_process_double(t_multi_channel_convolve *x, double **ins, double **outs, double *dry_gain, double *wet_gain, AH_UIntPtr vec_size, AH_UIntPtr active_in_chans, AH_UIntPtr active_out_chans)
 {
 	void *mem_pointer;
-	vFloat **in_temps = x->in_temps;
+	vFloat **in_temps;
 	vFloat *temp1;
 	vFloat *temp2;
 	AH_UIntPtr num_in_chans = x->num_in_chans;
@@ -202,6 +203,7 @@ void multi_channel_convolve_process_double(t_multi_channel_convolve *x, double *
 	mem_pointer = grow_memory_swap(&x->temporary_memory, (num_in_chans + 2) * vec_size * sizeof(float), vec_size);
 	multi_channel_convolve_temp_setup(x, mem_pointer, x->temporary_memory.current_size);
 	
+    in_temps = x->in_temps;
 	temp1 = x->temp1;
 	temp2 = x->temp2;
 	
