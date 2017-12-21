@@ -191,7 +191,7 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
 
 	t_buffer_write_error error;
 	
-	float *temp_buf = malloc (sig_length * sizeof(float));
+	float *temp_buf = malloc(sig_length * sizeof(float));
 
 	if (!temp_buf) 
 	{

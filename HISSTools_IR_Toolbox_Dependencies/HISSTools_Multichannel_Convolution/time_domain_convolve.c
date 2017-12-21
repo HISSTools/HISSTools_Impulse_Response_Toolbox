@@ -33,8 +33,8 @@ void time_domain_convolve_free(t_time_domain_convolve *x)
 	if (!x)
 		return;
 	
-	ALIGNED_FREE (x->impulse_buffer);
-	ALIGNED_FREE (x->input_buffer);
+	ALIGNED_FREE(x->impulse_buffer);
+	ALIGNED_FREE(x->input_buffer);
 	free(x);
 }
 

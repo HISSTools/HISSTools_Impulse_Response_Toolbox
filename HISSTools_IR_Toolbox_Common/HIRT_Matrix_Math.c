@@ -30,8 +30,8 @@ t_matrix_complex *matrix_alloc_complex(AH_UIntPtr m_dim, AH_UIntPtr n_dim)
 
 void matrix_destroy_complex(t_matrix_complex *matrix)
 {
-	free (matrix->matrix_data);
-	free (matrix);
+	free(matrix->matrix_data);
+	free(matrix);
 }
 
 //////////////////////////////////////////////////////////////////////////
