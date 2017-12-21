@@ -42,12 +42,12 @@ typedef struct _irtransaural
 
 // Function prototypes
 
-void *irtransaural_new (t_symbol *s, short argc, t_atom *argv);
-void irtransaural_free (t_irtransaural *x);
-void irtransaural_assist (t_irtransaural *x, void *b, long m, long a, char *s);
+void *irtransaural_new(t_symbol *s, short argc, t_atom *argv);
+void irtransaural_free(t_irtransaural *x);
+void irtransaural_assist(t_irtransaural *x, void *b, long m, long a, char *s);
 
-void irtransaural_process (t_irtransaural *x, t_symbol *sym, long argc, t_atom *argv);
-void irtransaural_process_internal (t_irtransaural *x, t_symbol *sym, short argc, t_atom *argv);
+void irtransaural_process(t_irtransaural *x, t_symbol *sym, long argc, t_atom *argv);
+void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -55,9 +55,9 @@ void irtransaural_process_internal (t_irtransaural *x, t_symbol *sym, short argc
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irtransaural~",
+    this_class = class_new("irtransaural~",
 							(method) irtransaural_new, 
 							(method)irtransaural_free, 
 							sizeof(t_irtransaural), 
@@ -65,10 +65,10 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irtransaural_process, "lattice", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irtransaural_process, "shuffler", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtransaural_process, "lattice", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtransaural_process, "shuffler", A_GIMME, 0L);
 	
-	class_addmethod (this_class, (method)irtransaural_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irtransaural_assist, "assist", A_CANT, 0L);
 	class_register(CLASS_BOX, this_class);
 	
 	declare_HIRT_common_attributes(this_class);
@@ -79,9 +79,9 @@ int main (void)
 }
 
 
-void *irtransaural_new (t_symbol *s, short argc, t_atom *argv)
+void *irtransaural_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irtransaural *x = (t_irtransaural *)object_alloc (this_class);
+    t_irtransaural *x = (t_irtransaural *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 	
@@ -98,7 +98,7 @@ void irtransaural_free(t_irtransaural *x)
 }
 
 
-void irtransaural_assist (t_irtransaural *x, void *b, long m, long a, char *s)
+void irtransaural_assist(t_irtransaural *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -112,10 +112,10 @@ void irtransaural_assist (t_irtransaural *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irtransaural_process (t_irtransaural *x, t_symbol *sym, long argc, t_atom *argv)
+void irtransaural_process(t_irtransaural *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	t_atom temp_argv[5];
-	double time_mul = 1.;
+	double time_mul = 1.0;
 	
 	// Load and check arguments
 	
@@ -146,7 +146,7 @@ void irtransaural_process (t_irtransaural *x, t_symbol *sym, long argc, t_atom *
 }
 
 
-void irtransaural_process_internal (t_irtransaural *x, t_symbol *sym, short argc, t_atom *argv)
+void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -273,7 +273,7 @@ void irtransaural_process_internal (t_irtransaural *x, t_symbol *sym, short argc
 		spike_spectrum(spectrum_1, fft_size, SPECTRUM_REAL, deconvolve_delay);
 		deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
 		spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
-		error = buffer_write(target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+		error = buffer_write(target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 		buffer_write_error((t_object *) x, target_1, error);
 		
 		// Deconvolve - convert to time domain - copy out to buffer
@@ -281,7 +281,7 @@ void irtransaural_process_internal (t_irtransaural *x, t_symbol *sym, short argc
 		spike_spectrum(spectrum_1, fft_size, SPECTRUM_REAL, deconvolve_delay);
 		deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
 		spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
-		error = buffer_write(target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+		error = buffer_write(target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 		buffer_write_error((t_object *) x, target_2, error);
 	}
 	else 
@@ -321,14 +321,14 @@ void irtransaural_process_internal (t_irtransaural *x, t_symbol *sym, short argc
 		
 		deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
 		spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
-		error = buffer_write(target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+		error = buffer_write(target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 		buffer_write_error((t_object *) x, target_1, error);
 		
 		// Deconvolve - convert to time domain - copy out to buffer
 		
 		deconvolve(fft_setup, spectrum_2, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
 		spectrum_to_time(fft_setup, out_buf, spectrum_2, fft_size, SPECTRUM_REAL);
-		error = buffer_write(target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+		error = buffer_write(target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 		buffer_write_error((t_object *) x, target_2, error);
 	}
 	

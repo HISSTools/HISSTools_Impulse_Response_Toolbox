@@ -55,7 +55,7 @@ typedef struct _safe_mem_swap
 
 static void free_temp_mem_swap(t_object *x, t_symbol *s, short argc, t_atom *argv)
 {
-	free_method free_method_ptr = 0;
+	free_method free_method_ptr = NULL;
 		
 	if (argc)
 		free_method_ptr = (free_method) atom_getsym(argv);
@@ -81,33 +81,33 @@ static __inline long alloc_mem_swap(t_safe_mem_swap *mem_struct, AH_UIntPtr size
 {
 	long fail = 0;
 	
-	mem_struct-> lock = 0;
+	mem_struct->lock = 0;
 	
 	if (size)
 		mem_struct->current_ptr = ALIGNED_MALLOC(size);
 	else
-		mem_struct->current_ptr = 0;
+		mem_struct->current_ptr = NULL;
 
 	if (size && mem_struct->current_ptr)
 	{
 		mem_struct->current_size = nom_size;
 		mem_struct->current_free = 1;
-		mem_struct->current_free_method = 0;
+		mem_struct->current_free_method = NULL;
 	}
 	else 
 	{
 		mem_struct->current_size = 0;
 		mem_struct->current_free = 0;
-		mem_struct->current_free_method = 0;
+		mem_struct->current_free_method = NULL;
 		
 		if (size) 
 			fail = 1;
 	}
 
-	mem_struct->new_ptr = 0;
+	mem_struct->new_ptr = NULL;
 	mem_struct->new_size = 0;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	return fail;
 }
@@ -138,15 +138,15 @@ static __inline void free_mem_swap(t_safe_mem_swap *mem_struct)
 			ALIGNED_FREE(mem_struct->new_ptr);
 	}
 		
-	mem_struct->current_ptr = 0;
+	mem_struct->current_ptr = NULL;
 	mem_struct->current_size = 0;
 	mem_struct->current_free = 0;
-	mem_struct->current_free_method = 0;
+	mem_struct->current_free_method = NULL;
 	
-	mem_struct->new_ptr = 0;
+	mem_struct->new_ptr = NULL;
 	mem_struct->new_size = 0;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	// This should never fail as this thread has the lock 
 	
@@ -176,15 +176,15 @@ static __inline void clear_mem_swap(t_safe_mem_swap *mem_struct)
 		defer_low(0, (method)free_temp_mem_swap, (t_symbol *) mem_struct->new_ptr, 1, &method_ptr);
 	}
 	
-	mem_struct->current_ptr = 0;
+	mem_struct->current_ptr = NULL;
 	mem_struct->current_size = 0;
 	mem_struct->current_free = 0;
-	mem_struct->current_free_method = 0;
+	mem_struct->current_free_method = NULL;
 	
-	mem_struct->new_ptr = 0;
+	mem_struct->new_ptr = NULL;
 	mem_struct->new_size = 0;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	// This should never fail as this thread has the lock 
 	
@@ -258,10 +258,10 @@ static __inline t_swap_status attempt_mem_swap(t_safe_mem_swap *mem_struct)
 			
 			// Zero
 			
-			mem_struct->new_ptr				= 0;
+			mem_struct->new_ptr				= NULL;
 			mem_struct->new_size			= 0;
 			mem_struct->new_free			= 0;
-			mem_struct->new_free_method		= 0;
+			mem_struct->new_free_method		= NULL;
 			
 			swap = SWAP_DONE;
 		}
@@ -306,7 +306,7 @@ static __inline void schedule_swap_mem_swap(t_safe_mem_swap *mem_struct, void *p
 	mem_struct->new_ptr = ptr;
 	mem_struct->new_size = nom_size;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	// This should never fail as this thread has the lock 
 	
@@ -338,7 +338,7 @@ static __inline void *schedule_grow_mem_swap(t_safe_mem_swap *mem_struct,  AH_UI
 		mem_struct->new_ptr = return_ptr = ALIGNED_MALLOC(size);
 		mem_struct->new_size = return_ptr ? nom_size: 0;
 		mem_struct->new_free = 1;
-		mem_struct->new_free_method = 0;
+		mem_struct->new_free_method = NULL;
 	}
 	else 
 	{
@@ -377,10 +377,10 @@ static __inline void *schedule_equal_mem_swap(t_safe_mem_swap *mem_struct,  AH_U
 			defer_low(0, (method)free_temp_mem_swap, (t_symbol *) mem_struct->new_ptr, 1, &method_ptr);
 		}
 		
-		mem_struct->new_ptr = 0;
+		mem_struct->new_ptr = NULL;
 		mem_struct->new_size = 0;
 		mem_struct->new_free = 0;
-		mem_struct->new_free_method = 0;
+		mem_struct->new_free_method = NULL;
 
 		return_ptr = mem_struct->current_ptr;
 	}
@@ -397,7 +397,7 @@ static __inline void *schedule_equal_mem_swap(t_safe_mem_swap *mem_struct,  AH_U
 			mem_struct->new_ptr = return_ptr = ALIGNED_MALLOC(size);
 			mem_struct->new_size = return_ptr ? nom_size: 0;
 			mem_struct->new_free = 1;
-			mem_struct->new_free_method = 0;
+			mem_struct->new_free_method = NULL;
 		}
 		else
 			return_ptr = mem_struct->new_ptr;
@@ -443,7 +443,7 @@ static __inline void *grow_mem_swap(t_safe_mem_swap *mem_struct,  AH_UIntPtr siz
 			mem_struct->current_ptr = ALIGNED_MALLOC(size);
 			mem_struct->current_size = mem_struct->current_ptr ? nom_size : 0;
 			mem_struct->current_free = 1;
-			mem_struct->current_free_method = 0;
+			mem_struct->current_free_method = NULL;
 		}
 		else
 		{
@@ -454,10 +454,10 @@ static __inline void *grow_mem_swap(t_safe_mem_swap *mem_struct,  AH_UIntPtr siz
 		}
 	}
 	
-	mem_struct->new_ptr = 0;
+	mem_struct->new_ptr = NULL;
 	mem_struct->new_size = 0;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	return_ptr = mem_struct->current_ptr;
 	
@@ -483,12 +483,12 @@ static __inline long alloc_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_m
 {
 	long fail = 0;
 	
-	mem_struct-> lock = 0;
+	mem_struct->lock = 0;
 	
 	if (size)
 		mem_struct->current_ptr = alloc_method_ptr(size, nom_size);
 	else
-		mem_struct->current_ptr = 0;
+		mem_struct->current_ptr = NULL;
 	
 	if (size && mem_struct->current_ptr)
 	{
@@ -500,16 +500,16 @@ static __inline long alloc_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_m
 	{
 		mem_struct->current_size = 0;
 		mem_struct->current_free = 0;
-		mem_struct->current_free_method = 0;
+		mem_struct->current_free_method = NULL;
 		
 		if (size) 
 			fail = 1;
 	}
 	
-	mem_struct->new_ptr = 0;
+	mem_struct->new_ptr = NULL;
 	mem_struct->new_size = 0;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	return fail;
 }
@@ -578,10 +578,10 @@ static __inline void *schedule_equal_mem_swap_custom (t_safe_mem_swap *mem_struc
 			defer_low(0, (method)free_temp_mem_swap, (t_symbol *) mem_struct->new_ptr, 1, &method_ptr);
 		}
 
-		mem_struct->new_ptr = 0;
+		mem_struct->new_ptr = NULL;
 		mem_struct->new_size = 0;
 		mem_struct->new_free = 0;
-		mem_struct->new_free_method = 0;
+		mem_struct->new_free_method = NULL;
 		
 		return_ptr = mem_struct->current_ptr;
 	}
@@ -655,10 +655,10 @@ static __inline void *grow_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_m
 		}
 	}
 	
-	mem_struct->new_ptr = 0;
+	mem_struct->new_ptr = NULL;
 	mem_struct->new_size = 0;
 	mem_struct->new_free = 0;
-	mem_struct->new_free_method = 0;
+	mem_struct->new_free_method = NULL;
 	
 	return_ptr = mem_struct->current_ptr;
 	

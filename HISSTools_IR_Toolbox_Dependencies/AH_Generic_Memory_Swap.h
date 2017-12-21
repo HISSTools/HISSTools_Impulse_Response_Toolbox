@@ -72,12 +72,12 @@ static __inline long alloc_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr siz
 {
 	long fail = 0;
 	
-	mem_struct-> lock = 0;
+	mem_struct->lock = 0;
 	
 	if (size)
 		mem_struct->current_ptr = ALIGNED_MALLOC(size);
 	else
-		mem_struct->current_ptr = 0;
+		mem_struct->current_ptr = NULL;
 
 	if (size && mem_struct->current_ptr)
 	{
@@ -87,7 +87,7 @@ static __inline long alloc_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr siz
 	else 
 	{
 		mem_struct->current_size = 0;
-		mem_struct->current_free_method = 0;
+		mem_struct->current_free_method = NULL;
 		
 		if (size) 
 			fail = 1;
@@ -116,9 +116,9 @@ static __inline void free_memory_swap(t_memory_swap *mem_struct)
 	
 	clear_memory_swap(mem_struct);
 		
-	mem_struct->current_ptr = 0;
+	mem_struct->current_ptr = NULL;
 	mem_struct->current_size = 0;
-	mem_struct->current_free_method = 0;
+	mem_struct->current_free_method = NULL;
 	
 	// This should never fail as this thread has the lock 
 	
@@ -155,7 +155,7 @@ static __inline void *access_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *
 
 static __inline void *attempt_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
 {
-	void *return_ptr = 0;
+	void *return_ptr = NULL;
 		
 	if (Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct->lock))
 	{
@@ -190,7 +190,7 @@ static __inline void swap_memory_swap(t_memory_swap *mem_struct, void *ptr, long
 		
 	mem_struct->current_ptr = ptr;
 	mem_struct->current_size = nom_size;
-	mem_struct->current_free_method = 0;
+	mem_struct->current_free_method = NULL;
 }
 
 
@@ -263,7 +263,7 @@ static __inline long alloc_memory_swap_custom(t_memory_swap *mem_struct, alloc_m
 	if (size)
 		mem_struct->current_ptr = alloc_method_ptr(size, nom_size);
 	else
-		mem_struct->current_ptr = 0;
+		mem_struct->current_ptr = NULL;
 	
 	if (size && mem_struct->current_ptr)
 	{
@@ -273,7 +273,7 @@ static __inline long alloc_memory_swap_custom(t_memory_swap *mem_struct, alloc_m
 	else 
 	{
 		mem_struct->current_size = 0;
-		mem_struct->current_free_method = 0;
+		mem_struct->current_free_method = NULL;
 		
 		if (size) 
 			fail = 1;

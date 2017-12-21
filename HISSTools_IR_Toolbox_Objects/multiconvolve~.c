@@ -38,17 +38,17 @@ typedef struct _multiconvolve
 t_max_err multiconvolve_fixed_size_set(t_multiconvolve *x, t_object *attr, long argc, t_atom *argv);
 t_atom_long multiconvolve_arg_check(t_multiconvolve *x, char *name, t_atom_long val, t_atom_long min, t_atom_long max);
 
-void *multiconvolve_new (t_symbol *s, short argc, t_atom *argv);
-void multiconvolve_free (t_multiconvolve *x);
-void multiconvolve_assist (t_multiconvolve *x, void *b, long m, long a, char *s);
+void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv);
+void multiconvolve_free(t_multiconvolve *x);
+void multiconvolve_assist(t_multiconvolve *x, void *b, long m, long a, char *s);
 
 void multiconvolve_clear(t_multiconvolve *x);
 void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *argv);
 
-t_int *multiconvolve_perform (t_int *w);
+t_int *multiconvolve_perform(t_int *w);
 void multiconvolve_perform64(t_multiconvolve *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 void multiconvolve_dsp(t_multiconvolve *x, t_signal **sp, short *count);
-void multiconvolve_dsp64 (t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
+void multiconvolve_dsp64(t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -127,11 +127,11 @@ t_atom_long multiconvolve_arg_check(t_multiconvolve *x, char *name, t_atom_long 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
     t_object *attr_temp;
 	
-	this_class = class_new ("multiconvolve~",
+	this_class = class_new("multiconvolve~",
 							(method)multiconvolve_new, 
 							(method)multiconvolve_free, 
 							sizeof(t_multiconvolve), 
@@ -139,12 +139,12 @@ int main (void)
 							A_GIMME,
 							0);
 
-	class_addmethod (this_class, (method)multiconvolve_assist, "assist", A_CANT, 0L);
-	class_addmethod (this_class, (method)multiconvolve_dsp64, "dsp64", A_CANT, 0L);
-	class_addmethod (this_class, (method)multiconvolve_dsp, "dsp", A_CANT, 0L);
+	class_addmethod(this_class, (method)multiconvolve_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)multiconvolve_dsp64, "dsp64", A_CANT, 0L);
+	class_addmethod(this_class, (method)multiconvolve_dsp, "dsp", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)multiconvolve_set, "set", A_GIMME, 0L);
-	class_addmethod (this_class, (method)multiconvolve_clear, "clear", 0L);
+	class_addmethod(this_class, (method)multiconvolve_set, "set", A_GIMME, 0L);
+	class_addmethod(this_class, (method)multiconvolve_clear, "clear", 0L);
 
 	CLASS_ATTR_LONG(this_class, "fixedsize", 0L, t_multiconvolve, fixed_impulse_length); 
 	CLASS_ATTR_ACCESSORS(this_class, "fixedsize", 0L, multiconvolve_fixed_size_set);	
@@ -166,9 +166,9 @@ int main (void)
 }
 
 
-void *multiconvolve_new (t_symbol *s, short argc, t_atom *argv)
+void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_multiconvolve *x = (t_multiconvolve *)object_alloc (this_class);
+    t_multiconvolve *x = (t_multiconvolve *)object_alloc(this_class);
 	
 	t_atom_long num_in_chans = 1;
 	t_atom_long num_out_chans = 0;
@@ -240,7 +240,7 @@ void multiconvolve_free(t_multiconvolve *x)
 }
 
 
-void multiconvolve_assist (t_multiconvolve *x, void *b, long m, long a, char *s)
+void multiconvolve_assist(t_multiconvolve *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_OUTLET)
 	{
@@ -371,7 +371,7 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
 //////////////////////////////////////////////////////////////////////////
 
 
-t_int *multiconvolve_perform (t_int *w)
+t_int *multiconvolve_perform(t_int *w)
 {		
 	t_multiconvolve *x = (t_multiconvolve *) w[1];
 	long vec_size = (long) w[2];
@@ -381,7 +381,7 @@ t_int *multiconvolve_perform (t_int *w)
 	return w + 3;
 }
 
-void multiconvolve_perform64 (t_multiconvolve *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
+void multiconvolve_perform64(t_multiconvolve *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
 {			
 	multi_channel_convolve_process_double(x->multi, ins, outs, 0, 0, (AH_UIntPtr) vec_size, (AH_UIntPtr) x->num_in_chans, (AH_UIntPtr) x->num_out_chans);
 }
@@ -406,7 +406,7 @@ void multiconvolve_dsp(t_multiconvolve *x, t_signal **sp, short *count)
 }
 
 
-void multiconvolve_dsp64 (t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
+void multiconvolve_dsp64(t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {		
 	if (x->multi)
 		object_method(dsp64, gensym("dsp_add64"), x, multiconvolve_perform64, 0, NULL);

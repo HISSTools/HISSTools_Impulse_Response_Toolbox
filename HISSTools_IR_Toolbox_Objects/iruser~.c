@@ -50,12 +50,12 @@ typedef struct _iruser
 t_max_err impulse_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv);
 t_max_err response_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *argc, t_atom **argv);
 
-void *iruser_new (t_symbol *s, short argc, t_atom *argv);
-void iruser_free (t_iruser *x);
-void iruser_assist (t_iruser *x, void *b, long m, long a, char *s);
+void *iruser_new(t_symbol *s, short argc, t_atom *argv);
+void iruser_free(t_iruser *x);
+void iruser_assist(t_iruser *x, void *b, long m, long a, char *s);
 
-void iruser_make (t_iruser *x, t_symbol *sym, long argc, t_atom *argv);
-void iruser_make_internal (t_iruser *x, t_symbol *sym, short argc, t_atom *argv);
+void iruser_make(t_iruser *x, t_symbol *sym, long argc, t_atom *argv);
+void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -120,9 +120,9 @@ t_max_err response_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("iruser~",
+    this_class = class_new("iruser~",
 							(method) iruser_new, 
 							(method)iruser_free, 
 							sizeof(t_iruser), 
@@ -130,8 +130,8 @@ int main (void)
 							A_GIMME,
 							0);
 		
-	class_addmethod (this_class, (method)iruser_make, "make", A_GIMME, 0L);
-	class_addmethod (this_class, (method)iruser_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)iruser_make, "make", A_GIMME, 0L);
+	class_addmethod(this_class, (method)iruser_assist, "assist", A_CANT, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 		
@@ -147,9 +147,9 @@ int main (void)
 }
 
 
-void *iruser_new (t_symbol *s, short argc, t_atom *argv)
+void *iruser_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_iruser *x = (t_iruser *)object_alloc (this_class);
+    t_iruser *x = (t_iruser *)object_alloc(this_class);
 
 	x->make_done = bangout(x);
 	x->response_specifier = malloc(sizeof(double) * HIRT_MAX_SPECIFIER_ITEMS);
@@ -176,7 +176,7 @@ void iruser_free(t_iruser *x)
 }
 
 
-void iruser_assist (t_iruser *x, void *b, long m, long a, char *s)
+void iruser_assist(t_iruser *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -190,13 +190,13 @@ void iruser_assist (t_iruser *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-void iruser_make (t_iruser *x, t_symbol *sym, long argc, t_atom *argv)
+void iruser_make(t_iruser *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) iruser_make_internal, sym, (short) argc, argv);
 }
 
 
-void iruser_make_internal (t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
+void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -216,7 +216,7 @@ void iruser_make_internal (t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 	
 	t_buffer_write_error error;
 	
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	
 	if (!argc)
 	{
@@ -234,9 +234,9 @@ void iruser_make_internal (t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 	
 	// Check sample rate
 	
-	sample_rate = sample_rate < 0 ? -sample_rate : sample_rate;
-	sample_rate = sample_rate == 0 ? sys_getsr() : sample_rate;
-	sample_rate = sample_rate == 0 ? 44100 : sample_rate;
+	sample_rate = sample_rate < 0.0 ? -sample_rate : sample_rate;
+	sample_rate = sample_rate == 0.0 ? sys_getsr() : sample_rate;
+	sample_rate = sample_rate == 0.0 ? 44100.0 : sample_rate;
 	
 	// Calculate FFT size
 		
@@ -272,13 +272,13 @@ void iruser_make_internal (t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 	fill_power_array_specifier(impulse_specifier, x->response_specifier, x->num_specifiers);
 	make_freq_dependent_power_array(spectrum_1.realp, impulse_specifier, fft_size, sample_rate, 0);
 	for (i = 0; i < fft_size; i++) 
-		spectrum_1.imagp[i] = 0;
+		spectrum_1.imagp[i] = 0.0;
 	variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase_retriever(x->out_phase), false);
 		
 	// Inverse FFT - copy out to buffer
 
 	spectrum_to_time(fft_setup, out_temp, spectrum_1, fft_size, SPECTRUM_FULL);
-	error = buffer_write(target, out_temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+	error = buffer_write(target, out_temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 	buffer_write_error((t_object *) x, target, error);
 
 	// Free Resources

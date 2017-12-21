@@ -64,7 +64,7 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 		
 		case CONVOLVE_LATENCY_SHORT:
 			
-			x->time1 = 0;
+			x->time1 = NULL;
 			x->part1 = partition_convolve_new(256, 384, 0, 384);
 			x->part2 = partition_convolve_new(1024, 1536, 384, 1536);
 			x->part3 = partition_convolve_new(4096, 6144, 1920, 6144);
@@ -74,8 +74,8 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 			
 		case CONVOLVE_LATENCY_MEDIUM:
 			
-			x->time1 = 0;
-			x->part1 = 0;
+			x->time1 = NULL;
+			x->part1 = NULL;
 			x->part2 = partition_convolve_new(1024, 1536, 0, 1536);
 			x->part3 = partition_convolve_new(4096, 6144, 1536, 6144);
 			fail = alloc_memory_swap_custom(&x->part4, largest_partition_fft2_alloc, largest_partition_free, max_length, max_length);
@@ -99,7 +99,7 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 
 t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, AH_UIntPtr impulse_length, AH_Boolean keep_lock)
 {
-	t_partition_convolve *return_part = 0;
+	t_partition_convolve *return_part = NULL;
 	x->impulse_length = 0;
 	
 	switch (x->latency_mode)
@@ -126,7 +126,7 @@ t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, A
 
 t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *input, AH_UIntPtr impulse_length, AH_Boolean resize)
 {	
-	t_partition_convolve *part4 = 0;
+	t_partition_convolve *part4 = NULL;
 	AH_UIntPtr max_impulse;
 	
 	x->impulse_length = 0;

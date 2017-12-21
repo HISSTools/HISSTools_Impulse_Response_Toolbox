@@ -49,7 +49,7 @@ t_multi_channel_convolve *multi_channel_convolve_new(AH_UIntPtr num_in_chans, AH
 	x->N2M = N2M = num_out_chans > 0;
 	x->num_in_chans = 0;
 	x->num_out_chans = 0;
-	x->in_temps[0] = 0;
+	x->in_temps[0] = NULL;
 	
 	num_out_chans = !N2M ? num_in_chans : num_out_chans;
 	

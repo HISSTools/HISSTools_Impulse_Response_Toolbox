@@ -91,7 +91,7 @@ void hisstools_rifft_f (FFT_SETUP_F setup, FFT_SPLIT_COMPLEX_F *input, HstFFT_UI
 void hisstools_unzip_zero_d (double *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_UInt in_length, HstFFT_UInt log2n)
 {
 	HstFFT_UInt i;
-	double temp = 0;
+	double temp = 0.0;
 	
 	double *realp = output->realp;
 	double *imagp = output->imagp;
@@ -116,12 +116,12 @@ void hisstools_unzip_zero_d (double *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_
 	if (((HstFFT_UInt) 1 << log2n) > in_length)
 	{
 		realp[in_length >> 1] = temp;
-		imagp[in_length >> 1] = 0;
+		imagp[in_length >> 1] = 0.0;
 	
 		for (i = (in_length >> (HstFFT_UInt) 1) + 1; i < ((HstFFT_UInt) 1 << (log2n - (HstFFT_UInt) 1)); i++)
 		{
-			realp[i] = 0.;
-			imagp[i] = 0.;
+			realp[i] = 0.0;
+			imagp[i] = 0.0;
 		}
 	}
 }
@@ -129,7 +129,7 @@ void hisstools_unzip_zero_d (double *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_
 void hisstools_unzip_zero_f (float *input, FFT_SPLIT_COMPLEX_F *output, HstFFT_UInt in_length, HstFFT_UInt log2n)
 {
 	HstFFT_UInt i;
-	float temp = 0;
+	float temp = 0.f;
 	
 	float *realp = output->realp;
 	float *imagp = output->imagp;
@@ -169,7 +169,7 @@ void hisstools_unzip_zero_f (float *input, FFT_SPLIT_COMPLEX_F *output, HstFFT_U
 void hisstools_unzip_zero_fd (float *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_UInt in_length, HstFFT_UInt log2n)
 {
 	HstFFT_UInt i;
-	float temp = 0;
+	float temp = 0.f;
 	
 	double *realp = output->realp;
 	double *imagp = output->imagp;
@@ -194,12 +194,12 @@ void hisstools_unzip_zero_fd (float *input, FFT_SPLIT_COMPLEX_D *output, HstFFT_
 	if (((HstFFT_UInt) 1 << log2n) > in_length)
 	{
 		*realp++ = temp;
-		*imagp++ = 0.;
+		*imagp++ = 0.f;
 		
 		for (i = (in_length >> (HstFFT_UInt) 1) + 1; i < ((HstFFT_UInt) 1 << (log2n - (HstFFT_UInt) 1)); i++)
 		{
-			*realp++ = 0.;
-			*imagp++ = 0.;
+			*realp++ = 0.f;
+			*imagp++ = 0.f;
 		}
 	}
 }

@@ -68,29 +68,29 @@ double atom_getdouble(t_atom *a)
 
 // Function prototypes
 
-void *irtrimnorm_new (t_symbol *s, short argc, t_atom *argv);
-void irtrimnorm_free (t_irtrimnorm *x);
-void irtrimnorm_assist (t_irtrimnorm *x, void *b, long m, long a, char *s);
+void *irtrimnorm_new(t_symbol *s, short argc, t_atom *argv);
+void irtrimnorm_free(t_irtrimnorm *x);
+void irtrimnorm_assist(t_irtrimnorm *x, void *b, long m, long a, char *s);
 
 long irtrimnorm_check_number(t_atom *a);
 long irtrimnorm_check_db(t_atom *a, double *db);
 
-void irtrimnorm_write_internal_buffer (double *samples, double *internal_buffer, AH_SIntPtr offset, AH_SIntPtr length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, t_fade_type fade_type);
+void irtrimnorm_write_internal_buffer(double *samples, double *internal_buffer, AH_SIntPtr offset, AH_SIntPtr length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, t_fade_type fade_type);
 
-double irtrimnorm_calculate_norm (t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, short N);
-double irtrimnorm_calculate_trim (t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, AH_SIntPtr max_length, AH_SIntPtr total_length, short N, double in_db, double out_db, double sample_rate, AH_SIntPtr *trim_offset, AH_SIntPtr *trim_length);
+double irtrimnorm_calculate_norm(t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, short N);
+double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, AH_SIntPtr max_length, AH_SIntPtr total_length, short N, double in_db, double out_db, double sample_rate, AH_SIntPtr *trim_offset, AH_SIntPtr *trim_length);
 
-long irtrimnorm_crop_check_write (t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L);
-long irtrimnorm_crop_write_buffer (t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate);
-void irtrimnorm_crop (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
-void irtrimnorm_crop_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv);
+long irtrimnorm_crop_check_write(t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L);
+long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate);
+void irtrimnorm_crop(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
+void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv);
 
-long irtrimnorm_trim_check_write (t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L, double sample_rate);
-long irtrimnorm_trim_write_buffer (t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate);
-void irtrimnorm_trim (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
-void irtrimnorm_trim_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv);
+long irtrimnorm_trim_check_write(t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L, double sample_rate);
+long irtrimnorm_trim_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate);
+void irtrimnorm_trim(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
+void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv);
 
-void irtrimnorm_pad (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
+void irtrimnorm_pad(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -98,9 +98,9 @@ void irtrimnorm_pad (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irtrimnorm~",
+    this_class = class_new("irtrimnorm~",
 							(method) irtrimnorm_new, 
 							(method)irtrimnorm_free, 
 							sizeof(t_irtrimnorm), 
@@ -108,14 +108,14 @@ int main (void)
 							A_GIMME,	
 							0);
 	
-	class_addmethod (this_class, (method)irtrimnorm_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_assist, "assist", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)irtrimnorm_trim, "trim", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irtrimnorm_trim, "trimto", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irtrimnorm_crop, "crop", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irtrimnorm_crop, "cropto", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irtrimnorm_pad, "pad", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irtrimnorm_pad, "padto", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_trim, "trim", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_trim, "trimto", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_crop, "crop", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_crop, "cropto", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_pad, "pad", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irtrimnorm_pad, "padto", A_GIMME, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 	
@@ -133,7 +133,7 @@ int main (void)
 	CLASS_ATTR_LABEL(this_class,"normmode", 0, "Normalization Mode");
 
 	CLASS_ATTR_DOUBLE_ARRAY(this_class, "integrationtimes", 0, t_irtrimnorm, integration_times, 2); 
-	CLASS_ATTR_FILTER_MIN(this_class, "integrationtimes", 1.);
+	CLASS_ATTR_FILTER_MIN(this_class, "integrationtimes", 1.0);
 	CLASS_ATTR_LABEL(this_class,"integrationtimes", 0, "Integration Times");
 	
 	CLASS_ATTR_LONG(this_class, "cropinsamps", 0 , OBJ_CLASSNAME, crop_in_samples);
@@ -158,15 +158,15 @@ int main (void)
 }
 
 
-void *irtrimnorm_new (t_symbol *s, short argc, t_atom *argv)
+void *irtrimnorm_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irtrimnorm *x = (t_irtrimnorm *)object_alloc (this_class);
+    t_irtrimnorm *x = (t_irtrimnorm *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 	
 	init_HIRT_common_attributes(x);
 	
-	x->normalize = 0.;
+	x->normalize = 0.0;
 	x->norm_mode = 0;
 	x->fade_type = 0;
 		
@@ -174,8 +174,8 @@ void *irtrimnorm_new (t_symbol *s, short argc, t_atom *argv)
 	x->fade_in_samples = 0;
 	x->pad_in_samples = 0;
 	
-	x->integration_times[0] = 5.;
-	x->integration_times[1] = 50.;
+	x->integration_times[0] = 5.0;
+	x->integration_times[1] = 50.0;
 	
 	x->limited_warnings = 0;
 	
@@ -191,7 +191,7 @@ void irtrimnorm_free(t_irtrimnorm *x)
 }
 
 
-void irtrimnorm_assist (t_irtrimnorm *x, void *b, long m, long a, char *s)
+void irtrimnorm_assist(t_irtrimnorm *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -240,19 +240,19 @@ long irtrimnorm_check_db(t_atom *a, double *db)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irtrimnorm_write_internal_buffer (double *samples, double *internal_buffer, AH_SIntPtr offset, AH_SIntPtr length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, t_fade_type fade_type)
+void irtrimnorm_write_internal_buffer(double *samples, double *internal_buffer, AH_SIntPtr offset, AH_SIntPtr length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, t_fade_type fade_type)
 {
 	AH_SIntPtr i;
 	
 	for (i = 0; i < pad_in; i++)
-		internal_buffer[i] = 0.;
+		internal_buffer[i] = 0.0;
 	
 	trim_copy_part(internal_buffer + pad_in, samples, offset, length);
 	fade_calc_fade_in(internal_buffer + pad_in, fade_in, length, fade_type);
 	fade_calc_fade_out(internal_buffer + pad_in, fade_out, length, fade_type);
 	
 	for (i = pad_in + length; i < (pad_in + length + pad_out); i++)
-		internal_buffer[i] = 0.;
+		internal_buffer[i] = 0.0;
 }
 
 			
@@ -261,11 +261,11 @@ void irtrimnorm_write_internal_buffer (double *samples, double *internal_buffer,
 //////////////////////////////////////////////////////////////////////////
 
 
-double irtrimnorm_calculate_norm (t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, short N)
+double irtrimnorm_calculate_norm(t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, short N)
 {
 	// Calculate Normalisation Factor
 	
-	double max = 0.;
+	double max = 0.0;
 	short i;
 	
 	if (x->norm_mode)
@@ -277,11 +277,11 @@ double irtrimnorm_calculate_norm (t_irtrimnorm *x, double **samples, AH_SIntPtr 
 	if (max)
 		return db_to_a(x->normalize) / max;
 	else 
-		return 1.;
+		return 1.0;
 }
 
 
-double irtrimnorm_calculate_trim (t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, AH_SIntPtr max_length, AH_SIntPtr total_length, short N, double in_db, double out_db, double sample_rate, AH_SIntPtr *trim_offset, AH_SIntPtr *trim_length)
+double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, AH_SIntPtr *lengths, AH_SIntPtr max_length, AH_SIntPtr total_length, short N, double in_db, double out_db, double sample_rate, AH_SIntPtr *trim_offset, AH_SIntPtr *trim_length)
 {
 	AH_UIntPtr current_start = max_length;
 	AH_UIntPtr current_end = 0;
@@ -298,7 +298,7 @@ double irtrimnorm_calculate_trim (t_irtrimnorm *x, double **samples, AH_SIntPtr 
 		
 	for (i = 0; i < N; i++)
 	{
-		if (!trim_find_crossings_rms(samples[i], lengths[i], (AH_UIntPtr) (x->integration_times[0] * sample_rate / 1000.), (AH_UIntPtr) (x->integration_times[1] * sample_rate / 1000.), in_db, out_db, mul, &current_start, &current_end))
+		if (!trim_find_crossings_rms(samples[i], lengths[i], (AH_UIntPtr) (x->integration_times[0] * sample_rate / 1000.0), (AH_UIntPtr) (x->integration_times[1] * sample_rate / 1000.0), in_db, out_db, mul, &current_start, &current_end))
 			no_success = 0;
 	}
 	
@@ -322,7 +322,7 @@ double irtrimnorm_calculate_trim (t_irtrimnorm *x, double **samples, AH_SIntPtr 
 //////////////////////////////////////////////////////////////////////////
 
 
-long irtrimnorm_crop_check_write (t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L)
+long irtrimnorm_crop_check_write(t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L)
 {				
 	L -= crop1;
 	crop2 -=crop1;
@@ -337,7 +337,7 @@ long irtrimnorm_crop_check_write (t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr 
 }
 
 
-long irtrimnorm_crop_write_buffer (t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate)
+long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr crop1, AH_SIntPtr crop2, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate)
 {			
 	AH_SIntPtr crop_length = crop2 - crop1;
 
@@ -389,13 +389,13 @@ long irtrimnorm_crop_write_buffer (t_irtrimnorm *x, t_symbol *buffer, double *sa
 }
 
 
-void irtrimnorm_crop (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv)
+void irtrimnorm_crop(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irtrimnorm_crop_internal, sym, (short) argc, argv);
 }
 
 
-void irtrimnorm_crop_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv)
+void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_symbol *in_buffer_names[128];
 	t_symbol *out_buffer_names[128];
@@ -407,10 +407,10 @@ void irtrimnorm_crop_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_ato
 	double crop2_time;
 	double fade_in_time;
 	double fade_out_time;
-	double pad_in_time = 0;
-	double pad_out_time = 0;
+	double pad_in_time = 0.0;
+	double pad_out_time = 0.0;
 	double norm_factor;
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	
 	double *temp_buf_d;
 	float *temp_buf_f;
@@ -487,20 +487,20 @@ void irtrimnorm_crop_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_ato
 	
 	if (!x->fade_in_samples)
 	{
-		fade_in = (AH_SIntPtr) (fade_in_time * sample_rate / 1000.);
-		fade_out = (AH_SIntPtr) (fade_out_time * sample_rate / 1000.);
+		fade_in = (AH_SIntPtr) (fade_in_time * sample_rate / 1000.0);
+		fade_out = (AH_SIntPtr) (fade_out_time * sample_rate / 1000.0);
 	}
 
 	if (!x->crop_in_samples)
 	{
-		crop1 = (AH_SIntPtr) (crop1_time * sample_rate / 1000.);
-		crop2 = (AH_SIntPtr) (crop2_time * sample_rate / 1000.);
+		crop1 = (AH_SIntPtr) (crop1_time * sample_rate / 1000.0);
+		crop2 = (AH_SIntPtr) (crop2_time * sample_rate / 1000.0);
 	}
 	
 	if (!x->pad_in_samples)
 	{
-		pad_in = (AH_SIntPtr) (pad_in_time * sample_rate / 1000.);
-		pad_out = (AH_SIntPtr) (pad_out_time * sample_rate / 1000.);
+		pad_in = (AH_SIntPtr) (pad_in_time * sample_rate / 1000.0);
+		pad_out = (AH_SIntPtr) (pad_out_time * sample_rate / 1000.0);
 	}
 	
 	// Check arguments
@@ -594,7 +594,7 @@ void irtrimnorm_crop_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_ato
 //////////////////////////////////////////////////////////////////////////
 
 
-long irtrimnorm_trim_check_write (t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L, double sample_rate)
+long irtrimnorm_trim_check_write(t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, AH_SIntPtr L, double sample_rate)
 {					
 	// Check length
 	
@@ -619,7 +619,7 @@ long irtrimnorm_trim_check_write (t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr 
 }	
 	
 	
-long irtrimnorm_trim_write_buffer (t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate)
+long irtrimnorm_trim_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate)
 {		
 	t_buffer_write_error error;
 			
@@ -666,13 +666,13 @@ long irtrimnorm_trim_write_buffer (t_irtrimnorm *x, t_symbol *buffer, double *sa
 }
 
 
-void irtrimnorm_trim (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv)
+void irtrimnorm_trim(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irtrimnorm_trim_internal, sym, (short) argc, argv);
 }
 
 
-void irtrimnorm_trim_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv)
+void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_symbol *in_buffer_names[128];
 	t_symbol *out_buffer_names[128];
@@ -684,9 +684,9 @@ void irtrimnorm_trim_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_ato
 	double out_db = -HUGE_VAL;
 	double fade_in_time;
 	double fade_out_time;
-	double pad_in_time = 0;
-	double pad_out_time = 0;
-	double sample_rate = 0;
+	double pad_in_time = 0.0;
+	double pad_out_time = 0.0;
+	double sample_rate = 0.0;
 	double norm_factor;
 	
 	double *temp_buf_d;
@@ -767,14 +767,14 @@ void irtrimnorm_trim_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_ato
 	
 	if (!x->fade_in_samples)
 	{
-		fade_in = (AH_SIntPtr) (fade_in_time * sample_rate / 1000.);
-		fade_out = (AH_SIntPtr) (fade_out_time * sample_rate / 1000.);
+		fade_in = (AH_SIntPtr) (fade_in_time * sample_rate / 1000.0);
+		fade_out = (AH_SIntPtr) (fade_out_time * sample_rate / 1000.0);
 	}
 
 	if (!x->pad_in_samples)
 	{
-		pad_in = (AH_SIntPtr) (pad_in_time * sample_rate / 1000.);
-		pad_out = (AH_SIntPtr) (pad_out_time * sample_rate / 1000.);
+		pad_in = (AH_SIntPtr) (pad_in_time * sample_rate / 1000.0);
+		pad_out = (AH_SIntPtr) (pad_out_time * sample_rate / 1000.0);
 	}
 
 	// Check times
@@ -855,7 +855,7 @@ void irtrimnorm_trim_internal (t_irtrimnorm *x, t_symbol *sym, short argc, t_ato
 //////////////////////////////////////////////////////////////////////////
 
 
-void irtrimnorm_pad (t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv)
+void irtrimnorm_pad(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	t_symbol *call_sym;
 	t_atom call_argv[134];

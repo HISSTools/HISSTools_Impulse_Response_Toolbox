@@ -32,7 +32,7 @@ t_frame_stats *create_frame_stats(AH_UIntPtr max_N)
 			free(stats->current_frame);
 			free(stats->ages);
 			free(stats);
-			stats = 0;
+			stats = NULL;
 		}
 	}
 	

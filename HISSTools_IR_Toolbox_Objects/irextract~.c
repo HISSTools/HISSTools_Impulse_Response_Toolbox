@@ -93,23 +93,23 @@ typedef struct _irextract
 
 // Function prototypes
 
-void *irextract_new (t_symbol *s, short argc, t_atom *argv);
-void irextract_free (t_irextract *x);
-void irextract_assist (t_irextract *x, void *b, long m, long a, char *s);
+void *irextract_new(t_symbol *s, short argc, t_atom *argv);
+void irextract_free(t_irextract *x);
+void irextract_assist(t_irextract *x, void *b, long m, long a, char *s);
 
-double irextract_param_check (t_irextract *x, char *name, double val, double min, double max);
+double irextract_param_check(t_irextract *x, char *name, double val, double min, double max);
 
-void irextract_sweep (t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
-void irextract_mls (t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
-void irextract_noise (t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
-void irextract_clear (t_irextract *x);
+void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
+void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
+void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
+void irextract_clear(t_irextract *x);
 
-void irextract_process (t_irextract *x, t_symbol *rec_buffer, t_atom_long num_channels, double sample_rate);
+void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_channels, double sample_rate);
 
-void irextract_getir (t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
-void irextract_getir_internal (t_irextract *x, t_symbol *sym, short argc, t_atom *argv);
-void irextract_dump (t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
-void irextract_dump_internal (t_irextract *x, t_symbol *sym, short argc, t_atom *argv);
+void irextract_getir(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
+void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv);
+void irextract_dump(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
+void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ void irextract_dump_internal (t_irextract *x, t_symbol *sym, short argc, t_atom 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
     this_class = class_new ("irextract~",
 							(method) irextract_new, 
@@ -159,22 +159,22 @@ int main (void)
 }
 
 
-void *irextract_new (t_symbol *s, short argc, t_atom *argv)
+void *irextract_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irextract *x = (t_irextract *)object_alloc (this_class);
+    t_irextract *x = (t_irextract *)object_alloc(this_class);
 
 	x->process_done = bangout(x);
 	
 	init_HIRT_common_attributes(x);
 	
 	x->bandlimit = 1;
-	x->amp = -1;
+	x->amp = -1.0;
 	x->inv_amp = 0;
 	
 	x->fft_size = 0;
-	x->sample_rate = 0;
-	x->out_length_samps = 0;
-	x->out_length = 0;
+	x->sample_rate = 0.0;
+	x->out_length = 0.0;
+    x->out_length_samps = 0;
 	x->gen_length = 0;
 	
 	alloc_mem_swap(&x->out_mem, 0, 0);
@@ -197,7 +197,7 @@ void irextract_free(t_irextract *x)
 }
 
 
-void irextract_assist (t_irextract *x, void *b, long m, long a, char *s)
+void irextract_assist(t_irextract *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -211,7 +211,7 @@ void irextract_assist (t_irextract *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-double irextract_param_check (t_irextract *x, char *name, double val, double min, double max)
+double irextract_param_check(t_irextract *x, char *name, double val, double min, double max)
 {
 	AH_Boolean changed = false;
 	double new_val = val;
@@ -240,21 +240,21 @@ double irextract_param_check (t_irextract *x, char *name, double val, double min
 //////////////////////////////////////////////////////////////////////////
 
 
-void irextract_sweep (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
+void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 {			
-	double f1 = 20;
-	double f2 = 22050;
-	double length = 30000;
-	double fade_in = 50;
-	double fade_out = 10;
-	double out_length = 0;
+	double f1 = 20.0;
+	double f2 = 22050.0;
+	double length = 30000.0;
+	double fade_in = 50.0;
+	double fade_out = 10.0;
+	double out_length = 0.0;
 	double sample_rate;
 	
 	double amp_curve[33];
 	
 	t_atom_long num_channels = 1;
 	
-	t_symbol *rec_buffer = 0;
+	t_symbol *rec_buffer = NULL;
 	
 	// Load parameters
 
@@ -262,7 +262,7 @@ void irextract_sweep (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 	{
 		rec_buffer = atom_getsym(argv++);
 		sample_rate = buffer_sample_rate(rec_buffer);
-		f2 = sample_rate / 2.;
+		f2 = sample_rate / 2.0;
 	}
 	if (argc > 1)
 		f1 = atom_getfloat(argv++);
@@ -287,19 +287,19 @@ void irextract_sweep (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 		return;
 	}
 	
-	f1 = irextract_param_check(x, "low frequency", f1, 0.0001, sample_rate / 2);
-	f2 = irextract_param_check(x, "high frequency", f2, f2, sample_rate / 2);
-	length = irextract_param_check(x, "length", length, 0., HUGE_VAL);
-	fade_in = irextract_param_check(x, "fade in time", fade_in, 0., length / 2);
-	fade_out = irextract_param_check(x, "fade out time", fade_out, 0., length / 2);
+	f1 = irextract_param_check(x, "low frequency", f1, 0.0001, sample_rate / 2.0);
+	f2 = irextract_param_check(x, "high frequency", f2, f2, sample_rate / 2.0);
+	length = irextract_param_check(x, "length", length, 0.0, HUGE_VAL);
+	fade_in = irextract_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
+	fade_out = irextract_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
 	num_channels = (t_atom_long) irextract_param_check(x, "number of channels", (double) num_channels, 1, HIRT_MAX_MEASURE_CHANS);
-	x->out_length = irextract_param_check(x, "output length", out_length, 0., HUGE_VAL) / 1000.;
+	x->out_length = irextract_param_check(x, "output length", out_length, 0.0, HUGE_VAL) / 1000.0;
 	
 	// Check length of sweep and memory allocation
 	
 	fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
 	
-	if (ess_params(&x->sweep_params, f1, f2, fade_in / 1000., fade_out / 1000., length / 1000., sample_rate, db_to_a(x->amp), amp_curve))
+	if (ess_params(&x->sweep_params, f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve))
 	{
 		// Process
 		
@@ -311,15 +311,15 @@ void irextract_sweep (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 }
 
 
-void irextract_mls (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
+void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	double sample_rate;
-	double out_length = 0;
+	double out_length = 0.0;
 	
 	t_atom_long num_channels = 1;
 	t_atom_long order = 18;
 	
-	t_symbol *rec_buffer = 0;
+	t_symbol *rec_buffer = NULL;
 
 	// Load parameters
 
@@ -345,7 +345,7 @@ void irextract_mls (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 	
 	order = (t_atom_long) irextract_param_check(x, "order", (double) order, 1, 24);
 	num_channels = (t_atom_long) irextract_param_check(x, "number of channels", (double) num_channels, 1, HIRT_MAX_MEASURE_CHANS);
-	x->out_length = irextract_param_check(x, "output length", out_length, 0., HUGE_VAL) / 1000.;
+	x->out_length = irextract_param_check(x, "output length", out_length, 0.0, HUGE_VAL) / 1000.0;
 
 	// Process
 	
@@ -355,19 +355,19 @@ void irextract_mls (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 }
 
 
-void irextract_noise (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
+void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 {
-	double length = 10000;
-	double fade_in = 10;
-	double fade_out = 10;
-	double amp_comp = 1.;
-	double out_length = 0;
+	double length = 10000.0;
+	double fade_in = 10.0;
+	double fade_out = 10.0;
+	double amp_comp = 1.0;
+	double out_length = 0.0;
 	double max_pink, max_brown;
 	double sample_rate;
 	
 	t_atom_long num_channels = 1;
 
-	t_symbol *rec_buffer = 0;
+	t_symbol *rec_buffer = NULL;
 	
 	t_noise_mode noise_mode = NOISE_MODE_WHITE;
 	
@@ -402,20 +402,20 @@ void irextract_noise (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 		return;
 	}
 	
-	length = irextract_param_check(x, "length", length, 0., HUGE_VAL);
-	fade_in = irextract_param_check(x, "fade in time", fade_in, 0., length / 2);
-	fade_out = irextract_param_check(x, "fade out time", fade_out, 0., length / 2);
+	length = irextract_param_check(x, "length", length, 0.0, HUGE_VAL);
+	fade_in = irextract_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
+	fade_out = irextract_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
 	num_channels = (t_atom_long) irextract_param_check(x, "number of channels", (double) num_channels, 1, HIRT_MAX_MEASURE_CHANS);
-	x->out_length = irextract_param_check(x, "output length", out_length, 0., HUGE_VAL) / 1000.;
+	x->out_length = irextract_param_check(x, "output length", out_length, 0.0, HUGE_VAL) / 1000.0;
 
 	// Process
 
 	x->measure_mode = NOISE;
-	coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000., fade_out / 1000., length / 1000., sample_rate, db_to_a(x->amp) / amp_comp);
+	coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
 	
 	if (noise_mode != NOISE_MODE_WHITE)
 	{
-		coloured_noise_measure(&x->noise_params, (int) (length * sample_rate * 1000.), &max_pink, &max_brown);
+		coloured_noise_measure(&x->noise_params, (int) (length * sample_rate * 1000.0), &max_pink, &max_brown);
 		coloured_noise_reset(&x->noise_params);
 	}
 	if (noise_mode == NOISE_MODE_BROWN)
@@ -427,7 +427,7 @@ void irextract_noise (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 }
 
 
-void irextract_clear (t_irextract *x)
+void irextract_clear(t_irextract *x)
 {	
 	x->fft_size = 0;
 	clear_mem_swap(&x->out_mem);
@@ -439,7 +439,7 @@ void irextract_clear (t_irextract *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irextract_process (t_irextract *x, t_symbol *rec_buffer, t_atom_long num_channels, double sample_rate)
+void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_channels, double sample_rate)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -602,7 +602,7 @@ void irextract_process (t_irextract *x, t_symbol *rec_buffer, t_atom_long num_ch
 	{
 		// Find maximum power to scale 
 		
-		for (i = 1, max_pow = 0; i < (fft_size >> 1); i++)
+		for (i = 1, max_pow = 0.0; i < (fft_size >> 1); i++)
 		{
 			test_pow = spectrum_2.realp[i] *spectrum_2.realp[i] + spectrum_2.imagp[i] * spectrum_2.imagp[i];
 			max_pow = test_pow > max_pow ? test_pow : max_pow;
@@ -643,13 +643,13 @@ void irextract_process (t_irextract *x, t_symbol *rec_buffer, t_atom_long num_ch
 //////////////////////////////////////////////////////////////////////////
 
 
-void irextract_getir (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
+void irextract_getir(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irextract_getir_internal, sym, (short) argc, argv);
 }
 
 
-void irextract_getir_internal (t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
+void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_buffer_write_error error;
 	t_symbol *buffer;
@@ -747,22 +747,22 @@ void irextract_getir_internal (t_irextract *x, t_symbol *sym, short argc, t_atom
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }
 
-void irextract_dump (t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
+void irextract_dump(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irextract_dump_internal, sym, (short) argc, argv);
 }
 
 
-void irextract_dump_internal (t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
+void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
 {	
 	double *out_mem;
 	
 	t_buffer_write_error error;
-	t_symbol *buffer = 0;
+	t_symbol *buffer = NULL;
 	
 	AH_UIntPtr fft_size = x->fft_size;
 	AH_UIntPtr mem_size;
@@ -795,6 +795,6 @@ void irextract_dump_internal (t_irextract *x, t_symbol *sym, short argc, t_atom 
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }

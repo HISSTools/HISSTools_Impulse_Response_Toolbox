@@ -43,15 +43,15 @@ typedef struct _iraverage
 
 // Function prototypes
 
-void *iraverage_new (t_symbol *s, short argc, t_atom *argv);
-void iraverage_free (t_iraverage *x);
-void iraverage_assist (t_iraverage *x, void *b, long m, long a, char *s);
+void *iraverage_new(t_symbol *s, short argc, t_atom *argv);
+void iraverage_free(t_iraverage *x);
+void iraverage_assist(t_iraverage *x, void *b, long m, long a, char *s);
 
-void iraverage_process (t_iraverage *x, t_symbol *sym, long argc, t_atom *argv);
-void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_atom *argv);
+void iraverage_process(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv);
+void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv);
 
-void iraverage_average (t_iraverage *x, t_symbol *sym, long argc, t_atom *argv);
-void iraverage_average_internal (t_iraverage *x, t_symbol *sym, short argc, t_atom *argv);
+void iraverage_average(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv);
+void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -59,9 +59,9 @@ void iraverage_average_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("iraverage~",
+    this_class = class_new("iraverage~",
 							(method) iraverage_new, 
 							(method)iraverage_free, 
 							sizeof(t_iraverage), 
@@ -69,10 +69,10 @@ int main (void)
 							A_GIMME,
 							0);
 		
-	class_addmethod (this_class, (method)iraverage_process, "process", A_GIMME, 0L);
-	class_addmethod (this_class, (method)iraverage_average, "average", A_GIMME, 0L);
+	class_addmethod(this_class, (method)iraverage_process, "process", A_GIMME, 0L);
+	class_addmethod(this_class, (method)iraverage_average, "average", A_GIMME, 0L);
 		
-	class_addmethod (this_class, (method)iraverage_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)iraverage_assist, "assist", A_CANT, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 	
@@ -84,9 +84,9 @@ int main (void)
 }
 
 
-void *iraverage_new (t_symbol *s, short argc, t_atom *argv)
+void *iraverage_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_iraverage *x = (t_iraverage *)object_alloc (this_class);
+    t_iraverage *x = (t_iraverage *)object_alloc(this_class);
 
 	x->process_done = bangout(x);
 							  	
@@ -103,7 +103,7 @@ void iraverage_free(t_iraverage *x)
 }
 
 
-void iraverage_assist (t_iraverage *x, void *b, long m, long a, char *s)
+void iraverage_assist(t_iraverage *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -117,13 +117,13 @@ void iraverage_assist (t_iraverage *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-void iraverage_process (t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
+void iraverage_process(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) iraverage_process_internal, sym, (short) argc, argv);
 }
 
 
-void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
+void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 
@@ -135,8 +135,8 @@ void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 	t_symbol *target;
 	t_symbol *buffer_names[128];
 
-	double time_mul = 1.;
-	double sample_rate = 0;
+	double time_mul = 1.0;
+	double sample_rate = 0.0;
 	
 	AH_SIntPtr lengths[128];
 	
@@ -165,7 +165,7 @@ void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 		time_mul = atom_getfloat(argv++);
 		argc--;
 		
-		if (time_mul < 1.)
+		if (time_mul < 1.0)
 		{
 			object_warn((t_object *) x, " time multiplier cannot be less than 1 (using 1)");
 			time_mul = 1;
@@ -209,8 +209,8 @@ void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 	
 	for (j = 0; j < (AH_SIntPtr) fft_size; j++)
 	{
-		spectrum_1.realp[j] = 0.;
-		spectrum_1.imagp[j] = 0.;
+		spectrum_1.realp[j] = 0.0;
+		spectrum_1.imagp[j] = 0.0;
 	}
 		
 	// Take FFTs and average
@@ -232,13 +232,13 @@ void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 	// Do smoothing
 	
 	if (x->num_smooth)
-		smooth_power_spectrum(spectrum_1, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0., x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
+		smooth_power_spectrum(spectrum_1, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0.0, x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
 
 	// Change phase - convert to time domain - copy out to buffer
 	
 	variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase_retriever(x->out_phase), false);
 	spectrum_to_time(fft_setup, temp, spectrum_1, fft_size, SPECTRUM_FULL);
-	error = buffer_write(target, temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+	error = buffer_write(target, temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 	buffer_write_error((t_object *) x, target, error);
 
 	// Free Resources
@@ -251,13 +251,13 @@ void iraverage_process_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 }
 
 
-void iraverage_average (t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
+void iraverage_average(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) iraverage_average_internal, sym, (short) argc, argv);
 }
 
 
-void iraverage_average_internal (t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
+void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	double *accum;
 	float *temp;			
@@ -274,7 +274,7 @@ void iraverage_average_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 	AH_SIntPtr i, j;
 	
 	double num_buf_recip;
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	
 	t_buffer_write_error error;
 	
@@ -314,7 +314,7 @@ void iraverage_average_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 	// Zero accumulation 
 	
 	for (j = 0; j < max_length; j++)
-		accum[j] = 0.;
+		accum[j] = 0.0;
 	
 	// Average
 	
@@ -333,7 +333,7 @@ void iraverage_average_internal (t_iraverage *x, t_symbol *sym, short argc, t_at
 	
 	// Copy out to buffer
 	
-	error = buffer_write(target, accum, max_length, x->write_chan - 1, x->resize, sample_rate, 1.);
+	error = buffer_write(target, accum, max_length, x->write_chan - 1, x->resize, sample_rate, 1.0);
 	buffer_write_error((t_object *) x, target, error);
 	
 	// Free Resources

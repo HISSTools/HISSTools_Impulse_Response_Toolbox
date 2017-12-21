@@ -79,15 +79,15 @@ typedef struct _irreference
 
 // Function protypes
 
-void *irreference_new (t_symbol *s, short argc, t_atom *argv);
-void irreference_free (t_irreference *x);
-void irreference_assist (t_irreference *x, void *b, long m, long a, char *s);
+void *irreference_new(t_symbol *s, short argc, t_atom *argv);
+void irreference_free(t_irreference *x);
+void irreference_assist(t_irreference *x, void *b, long m, long a, char *s);
 
 AH_SIntPtr irreference_calc_mem_size(t_irreference *x, long active_ins);
 
 double irreference_param_check (t_irreference *x, char *name, double val, double min, double max);
 
-void irreference_rec (t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
+void irreference_rec(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
 void irreference_stop(t_irreference *x);
 void irreference_finish(t_irreference *x);
 void irreference_clear (t_irreference *x);
@@ -96,14 +96,14 @@ void irreference_active_ins (t_irreference *x, t_atom_long num_active_ins);
 
 void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT_SPLIT_COMPLEX_D temp_full_spectrum, long mode, AH_UIntPtr fft_size, double smooth_lo, double smooth_hi);
 void irreference_reprocess(t_irreference *x);
-void irreference_process (t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
+void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
 
-void irreference_extract (t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
-void irreference_extract_internal (t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
-void irreference_dump (t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
-void irreference_dump_internal (t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
-void irreference_getir (t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
-void irreference_getir_internal (t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
+void irreference_extract(t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
+void irreference_extract_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
+void irreference_dump(t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
+void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
+void irreference_getir(t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
+void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
 
 t_int *irreference_perform(t_int *w);
 void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
@@ -118,9 +118,9 @@ void irreference_dsp64 (t_irreference *x, t_object *dsp64, short *count, double 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irreference~",
+    this_class = class_new("irreference~",
 							(method) irreference_new, 
 							(method)irreference_free, 
 							sizeof(t_irreference), 
@@ -128,22 +128,22 @@ int main (void)
 							A_GIMME,
 							0);
 
-	class_addmethod (this_class, (method)irreference_assist, "assist", A_CANT, 0L);
-	class_addmethod (this_class, (method)irreference_dsp, "dsp", A_CANT, 0L);
-	class_addmethod (this_class, (method)irreference_dsp64, "dsp64", A_CANT, 0L);
+	class_addmethod(this_class, (method)irreference_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irreference_dsp, "dsp", A_CANT, 0L);
+	class_addmethod(this_class, (method)irreference_dsp64, "dsp64", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)irreference_rec, "rec", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irreference_stop, "stop", 0L);
-	class_addmethod (this_class, (method)irreference_finish, "finish", 0L);
-	class_addmethod (this_class, (method)irreference_clear, "clear", 0L);
+	class_addmethod(this_class, (method)irreference_rec, "rec", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irreference_stop, "stop", 0L);
+	class_addmethod(this_class, (method)irreference_finish, "finish", 0L);
+	class_addmethod(this_class, (method)irreference_clear, "clear", 0L);
 
-	class_addmethod (this_class, (method)irreference_active_ins, "activeins", A_LONG, 0L);
+	class_addmethod(this_class, (method)irreference_active_ins, "activeins", A_LONG, 0L);
 
-	class_addmethod (this_class, (method)irreference_reprocess, "reprocess", 0L);
+	class_addmethod(this_class, (method)irreference_reprocess, "reprocess", 0L);
 	
-	class_addmethod (this_class, (method)irreference_extract, "extract", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irreference_dump, "dump", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irreference_getir, "getir", A_GIMME, 0L);	
+	class_addmethod(this_class, (method)irreference_extract, "extract", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irreference_dump, "dump", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irreference_getir, "getir", A_GIMME, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 	
@@ -162,9 +162,9 @@ int main (void)
 }
 
 
-void *irreference_new (t_symbol *s, short argc, t_atom *argv)
+void *irreference_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irreference *x = (t_irreference *)object_alloc (this_class);
+    t_irreference *x = (t_irreference *)object_alloc(this_class);
 	t_atom_long num_in_chans = 1;
 	
 	if (argc && atom_gettype(argv) == A_LONG)
@@ -192,14 +192,15 @@ void *irreference_new (t_symbol *s, short argc, t_atom *argv)
 	x->sample_rate = sys_getsr();
 	
 	if (!x->sample_rate)
-		x->sample_rate = 44100;
+		x->sample_rate = 44100.0;
 	
 	alloc_mem_swap(&x->rec_mem, 0, 0);
 	alloc_mem_swap(&x->out_mem, 0, 0);
 	
+    x->length = 0.0;
 	x->current_length = 0;
-	x->current_out_length = 0;
-	x->out_length = 0;
+	x->current_out_length = 0.0;
+	x->out_length = 0.0;
 	x->num_in_chans = (long) num_in_chans;
 	x->num_active_ins = (long) num_in_chans;
 	x->current_num_active_ins = (long) num_in_chans;
@@ -225,7 +226,7 @@ void irreference_free(t_irreference *x)
 }
 
 
-void irreference_assist (t_irreference *x, void *b, long m, long a, char *s)
+void irreference_assist(t_irreference *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_OUTLET)
 	{
@@ -263,7 +264,7 @@ AH_SIntPtr irreference_calc_mem_size(t_irreference *x, long active_ins)
 
 
 
-double irreference_param_check (t_irreference *x, char *name, double val, double min, double max)
+double irreference_param_check(t_irreference *x, char *name, double val, double min, double max)
 {
 	AH_Boolean changed = false;
 	double new_val = val;
@@ -292,10 +293,10 @@ double irreference_param_check (t_irreference *x, char *name, double val, double
 //////////////////////////////////////////////////////////////////////////
 
 
-void irreference_rec (t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
+void irreference_rec(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 {		
-	double length = 30000;
-	double out_length = 5000;	
+	double length = 30000.0;
+	double out_length = 5000.0;
 	
 	long num_active_ins = x->num_active_ins;
 	
@@ -310,13 +311,13 @@ void irreference_rec (t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 	
 	// Check parameters
 	
-	length = irreference_param_check(x, "length", length, 0., HUGE_VAL);
-	out_length = irreference_param_check(x, "ir length", out_length, 0., length);
+	length = irreference_param_check(x, "length", length, 0.0, HUGE_VAL);
+	out_length = irreference_param_check(x, "ir length", out_length, 0.0, length);
 	
 	// Store parameters
 	
-	x->length = length / 1000.;
-	x->out_length = out_length / 1000.;
+	x->length = length / 1000.0;
+	x->out_length = out_length / 1000.0;
 	
 	// Check length of recording and memory allocation
 	
@@ -355,7 +356,7 @@ void irreference_finish(t_irreference *x)
 }
 
 
-void irreference_clear (t_irreference *x)
+void irreference_clear(t_irreference *x)
 {
 	irreference_stop(x);
 	
@@ -370,7 +371,7 @@ void irreference_clear (t_irreference *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irreference_active_ins (t_irreference *x, t_atom_long num_active_ins)
+void irreference_active_ins(t_irreference *x, t_atom_long num_active_ins)
 {
 	if (num_active_ins < 1)
 	{
@@ -435,7 +436,7 @@ void irreference_reprocess(t_irreference *x)
 }
 
 
-void irreference_process (t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
+void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -500,7 +501,7 @@ void irreference_process (t_irreference *x, t_symbol *sym, short argc, t_atom *a
 		spectrum_4.imagp = spectrum_4.realp + fft_size;
 	}
 	else
-		spectrum_4.realp = 0;
+		spectrum_4.realp = NULL;
 
 	if (!fft_setup || !spectrum_1.realp || (smoothing_on && !spectrum_4.realp) || (filter_length && !filter_in))
 	{
@@ -533,7 +534,7 @@ void irreference_process (t_irreference *x, t_symbol *sym, short argc, t_atom *a
 
 	time_to_halfspectrum_double(fft_setup, rec_mem1, rec_length, spectrum_2, fft_size);
 	if (smoothing_on)
-		irreference_smooth(fft_setup, spectrum_2, spectrum_4, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0., x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
+		irreference_smooth(fft_setup, spectrum_2, spectrum_4, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0.0, x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
 	
 	// Fill deconvolution filter specifiers - read filter from buffer (if specified) - make deconvolution filter - delay filter
 	
@@ -556,7 +557,7 @@ void irreference_process (t_irreference *x, t_symbol *sym, short argc, t_atom *a
 		
 		time_to_halfspectrum_double(fft_setup, rec_mem2, rec_length, spectrum_1, fft_size);
 		if (smoothing_on)
-			irreference_smooth(fft_setup, spectrum_1, spectrum_4, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0., x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
+			irreference_smooth(fft_setup, spectrum_1, spectrum_4, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0.0, x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
 		deconvolve_with_filter(spectrum_1, spectrum_2, spectrum_3, fft_size, SPECTRUM_REAL);
 		spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
 	}
@@ -579,19 +580,19 @@ void irreference_process (t_irreference *x, t_symbol *sym, short argc, t_atom *a
 //////////////////////////////////////////////////////////////////////////
 
 
-void irreference_extract (t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
+void irreference_extract(t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irreference_extract_internal, sym, (short) argc, argv);
 }
 
 
-void irreference_extract_internal (t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
+void irreference_extract_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 {	
 	double *rec_mem;
 	
 	t_buffer_write_error error;
 	t_atom_long in_chan = 1;
-	t_symbol *buffer = 0;
+	t_symbol *buffer = NULL;
 	
 	AH_SIntPtr rec_length = x->current_length;
 	
@@ -631,24 +632,24 @@ void irreference_extract_internal (t_irreference *x, t_symbol *sym, short argc, 
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, rec_mem + rec_length * in_chan, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, rec_mem + rec_length * in_chan, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }
 
 
-void irreference_dump (t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
+void irreference_dump(t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irreference_dump_internal, sym, (short) argc, argv);
 }
 
 
-void irreference_dump_internal (t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
+void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 {	
 	double *out_mem;
 	
 	t_buffer_write_error error;
 	t_atom_long in_chan = 1;
-	t_symbol *buffer = 0;
+	t_symbol *buffer = NULL;
 	
 	AH_UIntPtr fft_size = x->fft_size;
 	AH_UIntPtr mem_size;
@@ -694,20 +695,20 @@ void irreference_dump_internal (t_irreference *x, t_symbol *sym, short argc, t_a
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 	
 	// Free temporary memory
 }
 
 
-void irreference_getir (t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
+void irreference_getir(t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irreference_getir_internal, sym, (short) argc, argv);
 }
 
 
-void irreference_getir_internal (t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
+void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_buffer_write_error error;
 	t_symbol *buffer;
@@ -767,7 +768,7 @@ void irreference_getir_internal (t_irreference *x, t_symbol *sym, short argc, t_
 	
 	// Write to buffer
 	
-	error = buffer_write(buffer, out_mem, L, x->write_chan - 1, x->resize, x->sample_rate, 1.);
+	error = buffer_write(buffer, out_mem, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 }
 
@@ -777,7 +778,7 @@ void irreference_getir_internal (t_irreference *x, t_symbol *sym, short argc, t_
 //////////////////////////////////////////////////////////////////////////
 
 
-t_int *irreference_perform (t_int *w)
+t_int *irreference_perform(t_int *w)
 {		
 	// Set pointers
 	
@@ -791,7 +792,7 @@ t_int *irreference_perform (t_int *w)
 	double *rec_mem;
 	
 	double sample_rate = x->sample_rate;
-	double progress_mul = 1.;
+	double progress_mul = 1.0;
 	
 	AH_SIntPtr T;
 	AH_SIntPtr current_t;
@@ -850,10 +851,10 @@ t_int *irreference_perform (t_int *w)
 	}
 	
 	if (x->abs_progress)
-		progress_mul = 1000. / sample_rate;
+		progress_mul = 1000.0 / sample_rate;
 	else
 		if (T)
-			progress_mul = 1. / T;
+			progress_mul = 1.0 / T;
 	
 	for (i = 0, current_t2 = current_t; i < vec_size && current_t2 < T && mem_check; i++)		
 		*out++ = (float) (current_t2++ * progress_mul);
@@ -873,7 +874,7 @@ t_int *irreference_perform (t_int *w)
 }
 
 
-void irreference_perform64 (t_irreference *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
+void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
 {			
 	double *out = outs[0];
 	
@@ -882,7 +883,7 @@ void irreference_perform64 (t_irreference *x, t_object *dsp64, double **ins, lon
 	double *rec_mem;
 	
 	double sample_rate = x->sample_rate;
-	double progress_mul = 1.;
+	double progress_mul = 1.0;
 	
 	AH_SIntPtr T;
 	AH_SIntPtr current_t;
@@ -941,10 +942,10 @@ void irreference_perform64 (t_irreference *x, t_object *dsp64, double **ins, lon
 	}
 	
 	if (x->abs_progress)
-		progress_mul = 1000. / sample_rate;
+		progress_mul = 1000.0 / sample_rate;
 	else
 		if (T)
-			progress_mul = 1. / T;
+			progress_mul = 1.0 / T;
 	
 	for (i = 0, current_t2 = current_t; i < vec_size && current_t2 < T && mem_check; i++)		
 		*out++ = current_t2++ * progress_mul;
@@ -999,7 +1000,7 @@ void irreference_dsp_common(t_irreference *x, double samplerate)
 }
 
 
-void irreference_dsp (t_irreference *x, t_signal **sp, short *count)
+void irreference_dsp(t_irreference *x, t_signal **sp, short *count)
 {		
 	long i;
 
@@ -1013,7 +1014,7 @@ void irreference_dsp (t_irreference *x, t_signal **sp, short *count)
 }
 
 
-void irreference_dsp64 (t_irreference *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
+void irreference_dsp64(t_irreference *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {		
 	irreference_dsp_common(x, samplerate);	
 	object_method(dsp64, gensym("dsp_add64"), x, irreference_perform64, 0, NULL);

@@ -62,20 +62,20 @@ typedef struct _irsweeps
 
 // Function prototypes
 
-void *irsweeps_new (t_symbol *s, short argc, t_atom *argv);
-void irsweeps_free (t_irsweeps *x);
-void irsweeps_assist (t_irsweeps *x, void *b, long m, long a, char *s);
+void *irsweeps_new(t_symbol *s, short argc, t_atom *argv);
+void irsweeps_free(t_irsweeps *x);
+void irsweeps_assist(t_irsweeps *x, void *b, long m, long a, char *s);
 
-double irsweeps_param_check (t_irsweeps *x, char *name, double val, double min, double max);
+double irsweeps_param_check(t_irsweeps *x, char *name, double val, double min, double max);
 
 void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, AH_SIntPtr sig_length, void *params, double sample_rate);
 
-void irsweeps_sweep (t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
-void irsweeps_sweep_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
-void irsweeps_noise (t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
-void irsweeps_noise_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
-void irsweeps_mls (t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
-void irsweep_mls_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
+void irsweeps_sweep(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
+void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
+void irsweeps_noise(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
+void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
+void irsweeps_mls(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
+void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -83,9 +83,9 @@ void irsweep_mls_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *arg
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irsweeps~",
+    this_class = class_new("irsweeps~",
 							(method) irsweeps_new, 
 							(method)irsweeps_free, 
 							sizeof(t_irsweeps), 
@@ -93,14 +93,14 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irsweeps_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irsweeps_assist, "assist", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)irsweeps_sweep, "sweep", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irsweeps_sweep, "invsweep", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irsweeps_mls, "mls", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irsweeps_noise, "white", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irsweeps_noise, "pink", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irsweeps_noise, "brown", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irsweeps_sweep, "sweep", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irsweeps_sweep, "invsweep", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irsweeps_mls, "mls", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irsweeps_noise, "white", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irsweeps_noise, "pink", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irsweeps_noise, "brown", A_GIMME, 0L);
 
 	
 	class_register(CLASS_BOX, this_class);
@@ -119,15 +119,15 @@ int main (void)
 }
 
 
-void *irsweeps_new (t_symbol *s, short argc, t_atom *argv)
+void *irsweeps_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irsweeps *x = (t_irsweeps *)object_alloc (this_class);
+    t_irsweeps *x = (t_irsweeps *)object_alloc(this_class);
 
 	x->process_done = bangout(x);
 	
 	init_HIRT_common_attributes(x);
 	
-	x->amp = -1;
+	x->amp = -1.0;
 	x->inv_amp = 0;
 		
 	attr_args_process(x, argc, argv);
@@ -142,7 +142,7 @@ void irsweeps_free(t_irsweeps *x)
 }
 
 
-void irsweeps_assist (t_irsweeps *x, void *b, long m, long a, char *s)
+void irsweeps_assist(t_irsweeps *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -156,7 +156,7 @@ void irsweeps_assist (t_irsweeps *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-double irsweeps_param_check (t_irsweeps *x, char *name, double val, double min, double max)
+double irsweeps_param_check(t_irsweeps *x, char *name, double val, double min, double max)
 {
 	double new_val = val;
 	AH_Boolean changed = false;
@@ -222,7 +222,7 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
 		
 	// Write to buffer
 
-	error = buffer_write_float(buffer, temp_buf, sig_length, x->resize, x->write_chan - 1, sample_rate, 1.);
+	error = buffer_write_float(buffer, temp_buf, sig_length, x->resize, x->write_chan - 1, sample_rate, 1.0);
 	buffer_write_error((t_object *) x, buffer, error);
 
 	// Free temporary memory
@@ -239,19 +239,19 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
 //////////////////////////////////////////////////////////////////////////
 
 
-void irsweeps_sweep (t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
+void irsweeps_sweep(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irsweeps_sweep_internal, sym, (short) argc, argv);
 }
 
-void irsweeps_sweep_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
+void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
 {		
-	t_symbol *buffer = 0;
-	double f1 = 20;
-	double f2 = sys_getsr() / 2;
-	double length = 30000;
-	double fade_in = 50;
-	double fade_out = 10;
+	t_symbol *buffer = NULL;
+	double f1 = 20.0;
+	double f2 = sys_getsr() / 2.0;
+	double length = 30000.0;
+	double fade_in = 50.0;
+	double fade_out = 10.0;
 	double sample_rate = sys_getsr();
 	
 	double amp_curve[33];
@@ -284,17 +284,17 @@ void irsweeps_sweep_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *
 	
 	// Check ranges
 	
-	f1 = irsweeps_param_check(x, "low frequency", f1, 0.0001, sys_getsr() / 2);
-	f2 = irsweeps_param_check(x, "high frequency", f2, f2, sys_getsr() / 2);
-	length = irsweeps_param_check(x, "length", length, 0., HUGE_VAL);
-	fade_in = irsweeps_param_check(x, "fade in time", fade_in, 0., length / 2);
-	fade_out = irsweeps_param_check(x, "fade out time", fade_out, 0., length / 2);
+	f1 = irsweeps_param_check(x, "low frequency", f1, 0.0001, sys_getsr() / 2.0);
+	f2 = irsweeps_param_check(x, "high frequency", f2, f2, sys_getsr() / 2.0);
+	length = irsweeps_param_check(x, "length", length, 0.0, HUGE_VAL);
+	fade_in = irsweeps_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
+	fade_out = irsweeps_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
 	sample_rate = irsweeps_param_check(x, "sampling rate", sample_rate, 0.0001, HUGE_VAL);
 	
 	// Get sweep length and allocate temmporary memory
 	
 	fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
-	sweep_length = ess_params(&sweep_params, f1, f2, fade_in / 1000., fade_out / 1000., length / 1000., sample_rate, db_to_a(x->amp), amp_curve);
+	sweep_length = ess_params(&sweep_params, f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve);
 	
 	if (!sweep_length)
 	{
@@ -305,14 +305,14 @@ void irsweeps_sweep_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *
 	irsweeps_gen(x, buffer, sym == gensym("sweep") ? SWEEP : INV_SWEEP, sweep_length, &sweep_params, sample_rate);
 }
 
-void irsweeps_mls (t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
+void irsweeps_mls(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irsweep_mls_internal, sym, (short) argc, argv);
 }
 
-void irsweep_mls_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
+void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
 {	
-	t_symbol *buffer = 0;
+	t_symbol *buffer = NULL;
 	t_atom_long order = 18;
 	double sample_rate = sys_getsr();
 
@@ -343,22 +343,22 @@ void irsweep_mls_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *arg
 }
 
 
-void irsweeps_noise (t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
+void irsweeps_noise(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irsweeps_noise_internal, sym, (short) argc, argv);
 }
 
-void irsweeps_noise_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
+void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
 {
-	t_symbol *buffer = 0;
-	double length = 10000;
-	double fade_in = 10;
-	double fade_out = 10;
+	t_symbol *buffer = NULL;
+	double length = 10000.0;
+	double fade_in = 10.0;
+	double fade_out = 10.0;
 	double sample_rate = sys_getsr();
 	
 	double max_amp_pink;
 	double max_amp_brown;
-	double amp_comp = 1.;
+	double amp_comp = 1.0;
 	
 	t_noise_mode filter_mode = NOISE_MODE_WHITE;
 	t_noise_params noise_params;
@@ -388,13 +388,13 @@ void irsweeps_noise_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *
 	if (argc > 4)
 		sample_rate = atom_getfloat(argv++);
 	
-	length = irsweeps_param_check(x, "length", length, 0., HUGE_VAL);
-	fade_in = irsweeps_param_check(x, "fade in time", fade_in, 0., length / 2);
-	fade_out = irsweeps_param_check(x, "fade out time", fade_out, 0., length / 2);
+	length = irsweeps_param_check(x, "length", length, 0.0, HUGE_VAL);
+	fade_in = irsweeps_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
+	fade_out = irsweeps_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
 	
 	coloured_noise_params(&noise_params, 0, 0, 0, 1, sample_rate, 1);
 	if (filter_mode != NOISE_MODE_WHITE)
-		coloured_noise_measure(&noise_params, (AH_UIntPtr) (sample_rate * length / 1000.), &max_amp_pink, &max_amp_brown);
+		coloured_noise_measure(&noise_params, (AH_UIntPtr) (sample_rate * length / 1000.0), &max_amp_pink, &max_amp_brown);
 	coloured_noise_reset(&noise_params);
 	
 	if (filter_mode == NOISE_MODE_BROWN)
@@ -402,7 +402,7 @@ void irsweeps_noise_internal (t_irsweeps *x, t_symbol *sym, short argc, t_atom *
 	if (filter_mode == NOISE_MODE_PINK)
 		amp_comp = max_amp_pink;
 	
-	coloured_noise_params(&noise_params, filter_mode, fade_in / 1000., fade_out / 1000., length / 1000., sample_rate, db_to_a(x->amp) / amp_comp);
+	coloured_noise_params(&noise_params, filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
 	noise_length = coloured_noise_get_length(&noise_params);
 	
 	irsweeps_gen(x, buffer, NOISE, noise_length, &noise_params, sample_rate);

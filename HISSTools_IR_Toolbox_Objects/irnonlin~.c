@@ -43,12 +43,12 @@ typedef struct _irnonlin
 
 // Function prototypes
 
-void *irnonlin_new (t_symbol *s, short argc, t_atom *argv);
-void irnonlin_free (t_irnonlin *x);
-void irnonlin_assist (t_irnonlin *x, void *b, long m, long a, char *s);
+void *irnonlin_new(t_symbol *s, short argc, t_atom *argv);
+void irnonlin_free(t_irnonlin *x);
+void irnonlin_assist(t_irnonlin *x, void *b, long m, long a, char *s);
 
-void irnonlin_nonlin (t_irnonlin *x, t_symbol *sym, long argc, t_atom *argv);
-void irnonlin_nonlin_internal (t_irnonlin *x, t_symbol *sym, short argc, t_atom *argv);
+void irnonlin_nonlin(t_irnonlin *x, t_symbol *sym, long argc, t_atom *argv);
+void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -56,9 +56,9 @@ void irnonlin_nonlin_internal (t_irnonlin *x, t_symbol *sym, short argc, t_atom 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irnonlin~",
+    this_class = class_new("irnonlin~",
 							(method) irnonlin_new, 
 							(method)irnonlin_free, 
 							sizeof(t_irnonlin), 
@@ -66,10 +66,10 @@ int main (void)
 							A_GIMME,	
 							0);
 	
-	class_addmethod (this_class, (method)irnonlin_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irnonlin_assist, "assist", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)irnonlin_nonlin, "convert", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irnonlin_nonlin, "convertto", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irnonlin_nonlin, "convert", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irnonlin_nonlin, "convertto", A_GIMME, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 		
@@ -82,9 +82,9 @@ int main (void)
 
 
 
-void *irnonlin_new (t_symbol *s, short argc, t_atom *argv)
+void *irnonlin_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irnonlin *x = (t_irnonlin *)object_alloc (this_class);
+    t_irnonlin *x = (t_irnonlin *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 	
@@ -101,7 +101,7 @@ void irnonlin_free(t_irnonlin *x)
 }
 
 
-void irnonlin_assist (t_irnonlin *x, void *b, long m, long a, char *s)
+void irnonlin_assist(t_irnonlin *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -116,7 +116,7 @@ void irnonlin_assist (t_irnonlin *x, void *b, long m, long a, char *s)
 
 // These functions are used to calculate the necessary matrix for inversion in order to the multiplication coefficients for conversion
 
-COMPLEX_DOUBLE m1_cpow (AH_UIntPtr i, AH_UIntPtr j)
+COMPLEX_DOUBLE m1_cpow(AH_UIntPtr i, AH_UIntPtr j)
 {
 	COMPLEX_DOUBLE val = CSET(1, 0);
 	AH_UIntPtr int_part = (i << 1) + (j >> 1);
@@ -131,13 +131,13 @@ COMPLEX_DOUBLE m1_cpow (AH_UIntPtr i, AH_UIntPtr j)
 }
 
 
-double factorial (double k)
+double factorial(double k)
 {
 	return (k <= 1) ? 1 : k * factorial (k - 1);
 }
 
 
-double binom (double n, double k)
+double binom(double n, double k)
 {
 	if (k <= 0) 
 		return 1;
@@ -169,7 +169,7 @@ t_matrix_complex *matrix_non_linear(AH_UIntPtr size)
 		for(j = 1; j <= size; j++)
 		{
 			if ((i >= j) && ((i + j + 1) & 1))
-				MATRIX_ELEMENT(mat, j - 1, i - 1) = CDIV(CMUL(m1_cpow(i, j), CSET(binom((double) i, (double) ((i - j) / 2)), 0)), CSET(pow(2, (double) (i - 1)), 0));
+				MATRIX_ELEMENT(mat, j - 1, i - 1) = CDIV(CMUL(m1_cpow(i, j), CSET(binom((double) i, (double) ((i - j) / 2)), 0)), CSET(pow(2.0, (double) (i - 1)), 0));
 			else
 				MATRIX_ELEMENT(mat, j - 1, i - 1) = CSET(0, 0);
 		}
@@ -209,7 +209,7 @@ t_matrix_complex *matrix_non_linear(AH_UIntPtr size)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irnonlin_nonlin (t_irnonlin *x, t_symbol *sym, long argc, t_atom *argv)
+void irnonlin_nonlin(t_irnonlin *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irnonlin_nonlin_internal, sym, (short) argc, argv);
 }
@@ -217,7 +217,7 @@ void irnonlin_nonlin (t_irnonlin *x, t_symbol *sym, long argc, t_atom *argv)
 
 // Converts from harmonic IRs to harmerstein model IRs
 
-void irnonlin_nonlin_internal (t_irnonlin *x, t_symbol *sym, short argc, t_atom *argv)
+void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -227,7 +227,7 @@ void irnonlin_nonlin_internal (t_irnonlin *x, t_symbol *sym, short argc, t_atom 
 	t_symbol *out_buffer_names[128];
 	AH_SIntPtr lengths[128];
 	
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	double current_coeff;
 	double real;
 	double imag;
@@ -361,8 +361,8 @@ void irnonlin_nonlin_internal (t_irnonlin *x, t_symbol *sym, short argc, t_atom 
 
 			// Zero DC / Nyquist (need to be real for real signal)
 			
-			impulses[i].realp[0] = 0;
-			impulses[i].imagp[0] = 0;
+			impulses[i].realp[0] = 0.0;
+			impulses[i].imagp[0] = 0.0;
 
 			for (j = 1; j < ((AH_SIntPtr) fft_size >> 1); j++)
 			{
@@ -393,7 +393,7 @@ void irnonlin_nonlin_internal (t_irnonlin *x, t_symbol *sym, short argc, t_atom 
 	for (i = 0; i < num_buffers; i++)
 	{		
 		spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
-		error = buffer_write(out_buffer_names[i], temp_buffer_d, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
+		error = buffer_write(out_buffer_names[i], temp_buffer_d, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 		overall_error = error ? true : error;
 		buffer_write_error((t_object *) x, out_buffer_names[i], error);
 	}

@@ -56,14 +56,14 @@ typedef struct _irphase
 
 // Function prototypes
 
-void *irphase_new (t_symbol *s, short argc, t_atom *argv);
-void irphase_free (t_irphase *x);
-void irphase_assist (t_irphase *x, void *b, long m, long a, char *s);
+void *irphase_new(t_symbol *s, short argc, t_atom *argv);
+void irphase_free(t_irphase *x);
+void irphase_assist(t_irphase *x, void *b, long m, long a, char *s);
 
-void irphase_userphase (t_irphase *x, t_symbol *sym, long argc, t_atom *argv);
+void irphase_userphase(t_irphase *x, t_symbol *sym, long argc, t_atom *argv);
 
-void irphase_process (t_irphase *x, t_symbol *target, t_symbol *source, double phase, double time_mul, t_phase_type mode);
-void irphase_process_internal (t_irphase *x, t_symbol *sym, short argc, t_atom *argv);
+void irphase_process(t_irphase *x, t_symbol *target, t_symbol *source, double phase, double time_mul, t_phase_type mode);
+void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -71,9 +71,9 @@ void irphase_process_internal (t_irphase *x, t_symbol *sym, short argc, t_atom *
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irphase~",
+    this_class = class_new("irphase~",
 							(method) irphase_new, 
 							(method)irphase_free, 
 							sizeof(t_irphase), 
@@ -81,13 +81,13 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irphase_userphase, "minphase", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irphase_userphase, "maxphase", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irphase_userphase, "linphase", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irphase_userphase, "mixedphase", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irphase_userphase, "allpass", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irphase_userphase, "minphase", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irphase_userphase, "maxphase", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irphase_userphase, "linphase", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irphase_userphase, "mixedphase", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irphase_userphase, "allpass", A_GIMME, 0L);
 
-	class_addmethod (this_class, (method)irphase_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irphase_assist, "assist", A_CANT, 0L);
 	class_register(CLASS_BOX, this_class);
 	
 	declare_HIRT_common_attributes(this_class);
@@ -97,9 +97,9 @@ int main (void)
 }
 
 
-void *irphase_new (t_symbol *s, short argc, t_atom *argv)
+void *irphase_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irphase *x = (t_irphase *)object_alloc (this_class);
+    t_irphase *x = (t_irphase *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 	
@@ -123,7 +123,7 @@ void irphase_free(t_irphase *x)
 }
 
 
-void irphase_assist (t_irphase *x, void *b, long m, long a, char *s)
+void irphase_assist(t_irphase *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -137,12 +137,12 @@ void irphase_assist (t_irphase *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irphase_userphase (t_irphase *x, t_symbol *sym, long argc, t_atom *argv)
+void irphase_userphase(t_irphase *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	t_symbol *target;
 	t_symbol *source;
 	double phase;
-	double time_mul = 1.;
+	double time_mul = 1.0;
 	t_phase_type mode;
 	
 	if ((sym != gensym("mixedphase") && argc < 2) || (sym == gensym("mixedphase") && argc < 3))
@@ -203,7 +203,7 @@ void irphase_userphase (t_irphase *x, t_symbol *sym, long argc, t_atom *argv)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irphase_process (t_irphase *x, t_symbol *target, t_symbol *source, double phase, double time_mul, t_phase_type mode)
+void irphase_process(t_irphase *x, t_symbol *target, t_symbol *source, double phase, double time_mul, t_phase_type mode)
 {
 	t_atom args[5];
 
@@ -217,7 +217,7 @@ void irphase_process (t_irphase *x, t_symbol *target, t_symbol *source, double p
 }
 
 
-void irphase_process_internal (t_irphase *x, t_symbol *sym, short argc, t_atom *argv)
+void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -264,12 +264,12 @@ void irphase_process_internal (t_irphase *x, t_symbol *sym, short argc, t_atom *
 	
 	// Calculate fft size
 	
-	time_mul = time_mul == 0. ? 1 : time_mul;		
+	time_mul = time_mul == 0.0 ? 1.0 : time_mul;
 
-	if (time_mul < 1)
+	if (time_mul < 1.0)
 	{
 		object_warn((t_object *) x, " time multiplier cannot be less than 1 (using 1)");
-		time_mul = 1;
+		time_mul = 1.0;
 	}
 	
 	fft_size = calculate_fft_size((long) (max_length * time_mul), &fft_size_log2);

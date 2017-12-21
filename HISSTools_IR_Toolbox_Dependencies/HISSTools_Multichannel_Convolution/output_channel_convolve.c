@@ -102,7 +102,7 @@ void output_channel_convolve_process_double(t_output_channel_convolve *x, vFloat
 	// Zero out temp
 	
 	for (j = 0; j < vec_size; j++)
-		out_temp[j] = 0;
+		out_temp[j] = 0.f;
 		
 	// Convolve
 	

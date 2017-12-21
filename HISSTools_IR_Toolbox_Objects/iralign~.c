@@ -42,15 +42,15 @@ typedef struct _iralign
 
 // Function prototypes
 
-void *iralign_new (t_symbol *s, short argc, t_atom *argv);
-void iralign_free (t_iralign *x);
-void iralign_assist (t_iralign *x, void *b, long m, long a, char *s);
+void *iralign_new(t_symbol *s, short argc, t_atom *argv);
+void iralign_free(t_iralign *x);
+void iralign_assist(t_iralign *x, void *b, long m, long a, char *s);
 
-AH_SIntPtr align_find_max (double *in, AH_SIntPtr length);
-void align_pad (double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr length);
+AH_SIntPtr align_find_max(double *in, AH_SIntPtr length);
+void align_pad(double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr length);
 
-void iralign_align (t_iralign *x, t_symbol *sym, long argc, t_atom *argv);
-void iralign_align_internal (t_iralign *x, t_symbol *sym, short argc, t_atom *argv);
+void iralign_align(t_iralign *x, t_symbol *sym, long argc, t_atom *argv);
+void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -58,9 +58,9 @@ void iralign_align_internal (t_iralign *x, t_symbol *sym, short argc, t_atom *ar
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("iralign~",
+    this_class = class_new("iralign~",
 							(method) iralign_new, 
 							(method)iralign_free, 
 							sizeof(t_iralign), 
@@ -68,10 +68,10 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)iralign_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)iralign_assist, "assist", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)iralign_align, "align", A_GIMME, 0L);
-	class_addmethod (this_class, (method)iralign_align, "alignto", A_GIMME, 0L);
+	class_addmethod(this_class, (method)iralign_align, "align", A_GIMME, 0L);
+	class_addmethod(this_class, (method)iralign_align, "alignto", A_GIMME, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 		
@@ -83,9 +83,9 @@ int main (void)
 }
 
 
-void *iralign_new (t_symbol *s, short argc, t_atom *argv)
+void *iralign_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_iralign *x = (t_iralign *)object_alloc (this_class);
+    t_iralign *x = (t_iralign *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 
@@ -102,7 +102,7 @@ void iralign_free(t_iralign *x)
 }
 
 
-void iralign_assist (t_iralign *x, void *b, long m, long a, char *s)
+void iralign_assist(t_iralign *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -116,9 +116,9 @@ void iralign_assist (t_iralign *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr align_find_max (double *in, AH_SIntPtr length)
+AH_SIntPtr align_find_max(double *in, AH_SIntPtr length)
 {
-	double max = 0.;
+	double max = 0.0;
 	double max_test;
 	
 	AH_SIntPtr max_pos = 0;
@@ -141,12 +141,12 @@ AH_SIntPtr align_find_max (double *in, AH_SIntPtr length)
 }
 
 
-void align_pad (double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr length)
+void align_pad(double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr length)
 {
 	AH_SIntPtr i;
 	
 	for (i = 0; i < pad; i++)
-		*out_buf++ = 0.;
+		*out_buf++ = 0.0;
 	
 	for (i = 0; i < length; i++)
 		*out_buf++ = *in_buf++;
@@ -158,13 +158,13 @@ void align_pad (double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr leng
 //////////////////////////////////////////////////////////////////////////
 
 
-void iralign_align (t_iralign *x, t_symbol *sym, long argc, t_atom *argv)
+void iralign_align(t_iralign *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) iralign_align_internal, sym, (short) argc, argv);
 }
 
 
-void iralign_align_internal (t_iralign *x, t_symbol *sym, short argc, t_atom *argv)
+void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_symbol *in_buffer_names[128];
 	t_symbol *out_buffer_names[128];
@@ -173,7 +173,7 @@ void iralign_align_internal (t_iralign *x, t_symbol *sym, short argc, t_atom *ar
 	AH_SIntPtr lengths[128];
 	AH_SIntPtr max_pos[128];
 	
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	
 	double *temp_buf_d;
 	float *temp_buf_f;
@@ -255,7 +255,7 @@ void iralign_align_internal (t_iralign *x, t_symbol *sym, short argc, t_atom *ar
 	{
 		align_pad (temp_buf_d, samples[i], overall_max_pos - max_pos[i], lengths[i]);
 	
-		error = buffer_write(out_buffer_names[i], temp_buf_d, lengths[i] + overall_max_pos - max_pos[i], x->write_chan - 1, x->resize, sample_rate, 1.);
+		error = buffer_write(out_buffer_names[i], temp_buf_d, lengths[i] + overall_max_pos - max_pos[i], x->write_chan - 1, x->resize, sample_rate, 1.0);
 		buffer_write_error((t_object *) x, out_buffer_names[i], error);
 	
 		if (error)

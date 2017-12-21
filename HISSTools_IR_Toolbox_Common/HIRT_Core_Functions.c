@@ -597,7 +597,7 @@ void mixed_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D 
 	// do nyquist
 	
 	spectrum.realp[fft_size_halved] = exp(spectrum.realp[fft_size_halved]);
-	spectrum.imagp[fft_size_halved] = 0;
+	spectrum.imagp[fft_size_halved] = 0.0;
 
 	// copy upper half of spectrum
 	
@@ -701,7 +701,7 @@ void make_freq_dependent_power_array(double *power_array, double *specifier_arra
 			{
 				// End of list reached
 				
-				gradient = 0;
+				gradient = 0.0;
 				offset = specifier_array[(list_pos << 1) - 1];
 				next_log_freq = HUGE_VAL;
 			}
@@ -999,7 +999,7 @@ void make_regularisation_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denom
 		real2[i] = real2[fft_size - i];
 
 	for (i = 0; i < fft_size; i++)
-		imag2[i] = 0;
+		imag2[i] = 0.0;
 	
 	variable_phase_from_power_spectrum(fft_setup, filter_spectrum, fft_size, phase, true);
 	
@@ -1054,7 +1054,7 @@ void make_clip_filter(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D denominator_spe
 		real2[i] = real2[fft_size - i];
 	
 	for (i = 0; i < fft_size; i++)
-		imag2[i] = 0;
+		imag2[i] = 0.0;
 	
 	variable_phase_from_power_spectrum(fft_setup, filter_spectrum, fft_size, phase, true);
 	
@@ -1218,9 +1218,9 @@ void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectru
 	spectrum.realp[0] = 1;
 	
 	if (format == SPECTRUM_FULL)
-		spectrum.imagp[0] = 0;
+		spectrum.imagp[0] = 0.0;
 	else 
-		spectrum.imagp[0] = 1;
+		spectrum.imagp[0] = 1.0;
 	
 	for (i = 1; i < fft_size >> 1; i++)
 	{
@@ -1231,8 +1231,8 @@ void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectru
 	
 	if (format == SPECTRUM_FULL)
 	{
-		spectrum.realp[i] = 1;
-		spectrum.imagp[i] = 0;
+		spectrum.realp[i] = 1.0;
+		spectrum.imagp[i] = 0.0;
 		
 		for (i++; i < fft_size; i++)
 		{

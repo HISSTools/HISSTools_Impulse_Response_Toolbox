@@ -56,16 +56,16 @@ typedef struct _PLA_data
 
 // Function prototypes
 
-void *irpiecewiseapprox_new (t_symbol *s, short argc, t_atom *argv);
-void irpiecewiseapprox_free (t_irpiecewiseapprox *x);
-void irpiecewiseapprox_assist (t_irpiecewiseapprox *x, void *b, long m, long a, char *s);
+void *irpiecewiseapprox_new(t_symbol *s, short argc, t_atom *argv);
+void irpiecewiseapprox_free(t_irpiecewiseapprox *x);
+void irpiecewiseapprox_assist(t_irpiecewiseapprox *x, void *b, long m, long a, char *s);
 
-void irpiecewiseapprox_process (t_irpiecewiseapprox *x, t_symbol *source);
-void irpiecewiseapprox_process_internal (t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv);
+void irpiecewiseapprox_process(t_irpiecewiseapprox *x, t_symbol *source);
+void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv);
 
-t_PLA_data *calc_PLA (double *x_vals, double *y_vals, long target_segments, AH_UIntPtr N);
-void PLA_bottom_up (double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr target_segments, AH_UIntPtr num_segments);
-double PLA_calc_merged_cost (double *x_vals, double *y_vals, AH_UIntPtr start_pos, AH_UIntPtr end_pos);
+t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, AH_UIntPtr N);
+void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr target_segments, AH_UIntPtr num_segments);
+double PLA_calc_merged_cost(double *x_vals, double *y_vals, AH_UIntPtr start_pos, AH_UIntPtr end_pos);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -73,9 +73,9 @@ double PLA_calc_merged_cost (double *x_vals, double *y_vals, AH_UIntPtr start_po
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main()
 {
-    this_class = class_new ("irplapprox~",
+    this_class = class_new("irplapprox~",
 							(method) irpiecewiseapprox_new, 
 							(method)irpiecewiseapprox_free, 
 							sizeof(t_irpiecewiseapprox), 
@@ -83,9 +83,9 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irpiecewiseapprox_process, "approx", A_SYM, 0L);
+	class_addmethod(this_class, (method)irpiecewiseapprox_process, "approx", A_SYM, 0L);
 	
-	class_addmethod (this_class, (method)irpiecewiseapprox_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irpiecewiseapprox_assist, "assist", A_CANT, 0L);
 	class_register(CLASS_BOX, this_class);
 	
 	declare_HIRT_common_attributes(this_class);
@@ -104,9 +104,9 @@ int main (void)
 }
 
 
-void *irpiecewiseapprox_new (t_symbol *s, short argc, t_atom *argv)
+void *irpiecewiseapprox_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irpiecewiseapprox *x = (t_irpiecewiseapprox *)object_alloc (this_class);
+    t_irpiecewiseapprox *x = (t_irpiecewiseapprox *)object_alloc(this_class);
 	
 	x->approximation_outlet = listout(x);
 	
@@ -131,7 +131,7 @@ void irpiecewiseapprox_free(t_irpiecewiseapprox *x)
 }
 
 
-void irpiecewiseapprox_assist (t_irpiecewiseapprox *x, void *b, long m, long a, char *s)
+void irpiecewiseapprox_assist(t_irpiecewiseapprox *x, void *b, long m, long a, char *s)
 {
 	sprintf(s,"Instructions In");
 }
@@ -142,13 +142,13 @@ void irpiecewiseapprox_assist (t_irpiecewiseapprox *x, void *b, long m, long a, 
 //////////////////////////////////////////////////////////////////////////
 
 
-void irpiecewiseapprox_process (t_irpiecewiseapprox *x, t_symbol *source)
+void irpiecewiseapprox_process(t_irpiecewiseapprox *x, t_symbol *source)
 {
 	defer(x, (method) irpiecewiseapprox_process_internal, source, 0, 0);
 }
 
 
-void irpiecewiseapprox_process_internal (t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv)
+void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv)
 {
  	FFT_SETUP_D fft_setup;
 	
@@ -163,7 +163,7 @@ void irpiecewiseapprox_process_internal (t_irpiecewiseapprox *x, t_symbol *sourc
 	t_atom out_list[HIRT_MAX_SPECIFIER_ITEMS];
 	
 	double sample_rate;
-	double max_val = 0;
+	double max_val = 0.0;
 	
 	AH_UIntPtr num_output_pairs;
 	AH_UIntPtr pos;
@@ -214,7 +214,7 @@ void irpiecewiseapprox_process_internal (t_irpiecewiseapprox *x, t_symbol *sourc
 	// Smooth
 
 	if (x->num_smooth)
-		smooth_power_spectrum(spectrum_1, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0., x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
+		smooth_power_spectrum(spectrum_1, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0.0, x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
 	
 	// Calculate log frequencies and  convert powers to db
 	
@@ -273,9 +273,9 @@ void irpiecewiseapprox_process_internal (t_irpiecewiseapprox *x, t_symbol *sourc
 //////////////////////////////////////////////////////////////////////////
 
 
-t_PLA_data *calc_PLA (double *x_vals, double *y_vals, long target_segments, AH_UIntPtr N)
+t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, AH_UIntPtr N)
 {
-	t_PLA_data *PLA_data = 0;
+	t_PLA_data *PLA_data = NULL;
 	AH_UIntPtr i;
 	
 	// Allocate Resources
@@ -283,7 +283,7 @@ t_PLA_data *calc_PLA (double *x_vals, double *y_vals, long target_segments, AH_U
 	PLA_data = malloc(sizeof(t_PLA_data) * ((N >> 1) + 1));
 	
 	if (!PLA_data)
-		return 0;
+		return NULL;
 	
 	// Prepare Linear Approximation 
 	
@@ -296,7 +296,7 @@ t_PLA_data *calc_PLA (double *x_vals, double *y_vals, long target_segments, AH_U
 	
 	PLA_data[i].start_pos = (i * 2);
 	PLA_data[i].end_pos = (i * 2);
-	PLA_data[i].next_data = 0;
+	PLA_data[i].next_data = NULL;
 	
 	// Do Bottom up PLA
 	
@@ -306,10 +306,10 @@ t_PLA_data *calc_PLA (double *x_vals, double *y_vals, long target_segments, AH_U
 }
 
 
-void PLA_bottom_up (double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr target_segments, AH_UIntPtr num_segments)
+void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr target_segments, AH_UIntPtr num_segments)
 {		
 	t_PLA_data *current_data;
-	t_PLA_data *merge_data = 0;
+	t_PLA_data *merge_data = NULL;
 
 	double min_cost;
 	double cost;
@@ -344,7 +344,7 @@ double PLA_calc_merged_cost(double *x_vals, double *y_vals, AH_UIntPtr start_pos
 	double gradient = (y_vals[end_pos] - y_vals[start_pos]) / (x_vals[end_pos] - x_vals[start_pos]);
 	double offset = y_vals[start_pos] - (x_vals[start_pos] * gradient);
 	double difference;
-	double sum = 0.;
+	double sum = 0.0;
 	
 	AH_UIntPtr i;
 	

@@ -239,7 +239,7 @@ t_max_err range_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *arg
 
 double delay_retriever(t_atom delay, AH_UIntPtr fft_size, double sample_rate)
 {
-	return (atom_gettype(&delay) == A_SYM) ? (fft_size >> 1) : (atom_getfloat(&delay) * sample_rate) / 1000.;
+	return (atom_gettype(&delay) == A_SYM) ? (fft_size >> 1) : (atom_getfloat(&delay) * sample_rate) / 1000.0;
 }
 
 
@@ -459,8 +459,8 @@ static __inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
 		free(x->deconvolve_filter_specifier);
 		free(x->deconvolve_range_specifier);
 		
-		x->deconvolve_filter_specifier = 0;
-		x->deconvolve_range_specifier = 0;
+		x->deconvolve_filter_specifier = NULL;
+		x->deconvolve_range_specifier = NULL;
 		
 		object_error((t_object *) x, "could not allocate space for attribute storage");
 		
