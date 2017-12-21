@@ -84,16 +84,16 @@ static __inline AH_UIntPtr coloured_noise_get_length (t_noise_params *x)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void coloured_noise_params (t_noise_params *x, t_noise_mode mode, double fade_in, double fade_out, double length, double sample_rate, double amp);
-void coloured_noise_reset (t_noise_params *x);
+void coloured_noise_params(t_noise_params *x, t_noise_mode mode, double fade_in, double fade_out, double length, double sample_rate, double amp);
+void coloured_noise_reset(t_noise_params *x);
 
-void coloured_noise_gen_float (t_noise_params *x, float *out, AH_UIntPtr startN, AH_UIntPtr N);
-void coloured_noise_gen_double (t_noise_params *x, double *in, AH_UIntPtr startN, AH_UIntPtr N);
+void coloured_noise_gen_float(t_noise_params *x, float *out, AH_UIntPtr startN, AH_UIntPtr N);
+void coloured_noise_gen_double(t_noise_params *x, double *out, AH_UIntPtr startN, AH_UIntPtr N);
 
-void coloured_noise_gen_block (t_noise_params *x, void *in, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision);
-void coloured_noise_gen (t_noise_params *x, void *in, AH_Boolean double_precision);
+void coloured_noise_gen_block(t_noise_params *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision);
+void coloured_noise_gen(t_noise_params *x, void *out, AH_Boolean double_precision);
 
-void coloured_noise_measure (t_noise_params *x, AH_UIntPtr N, double *max_out_pink, double *max_out_brown);
+void coloured_noise_measure(t_noise_params *x, AH_UIntPtr N, double *max_out_pink, double *max_out_brown);
 
 
 #endif	/* __HIRT_COLOURED_NOISE__ */

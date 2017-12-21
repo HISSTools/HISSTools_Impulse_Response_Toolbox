@@ -7,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-double buffer_sample_rate (t_symbol *buffer)
+double buffer_sample_rate(t_symbol *buffer)
 {
 	void *ptr = ibuffer_get_ptr(buffer);
 	
@@ -18,7 +18,7 @@ double buffer_sample_rate (t_symbol *buffer)
 }
 
 
-AH_SIntPtr buffer_length (t_symbol *buffer)
+AH_SIntPtr buffer_length(t_symbol *buffer)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -43,7 +43,7 @@ AH_SIntPtr buffer_length (t_symbol *buffer)
 
 // Returns 0 for a valid buffer (or zero value symbol pointer), otherwise 1
 
-long buffer_check (t_object *x, t_symbol *buffer)
+long buffer_check(t_object *x, t_symbol *buffer)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -77,7 +77,7 @@ long buffer_check (t_object *x, t_symbol *buffer)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr buffer_read (t_symbol *buffer, long chan, float *out, AH_SIntPtr max_length)
+AH_SIntPtr buffer_read(t_symbol *buffer, long chan, float *out, AH_SIntPtr max_length)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -102,7 +102,7 @@ AH_SIntPtr buffer_read (t_symbol *buffer, long chan, float *out, AH_SIntPtr max_
 }
 
 
-AH_SIntPtr buffer_read_part (t_symbol *buffer, long chan, float *out, AH_SIntPtr offset, AH_SIntPtr read_length)
+AH_SIntPtr buffer_read_part(t_symbol *buffer, long chan, float *out, AH_SIntPtr offset, AH_SIntPtr read_length)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -129,7 +129,7 @@ AH_SIntPtr buffer_read_part (t_symbol *buffer, long chan, float *out, AH_SIntPtr
 //////////////////////////////////////////////////////////////////////////
 
 
-void buffer_write_error (t_object *x, t_symbol *buffer, t_buffer_write_error error)
+void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error error)
 {
 	if (error == BUFFER_WRITE_ERR_NOT_FOUND)
 		object_error((t_object *) x, "no buffer of name %s", buffer->s_name);
@@ -142,7 +142,7 @@ void buffer_write_error (t_object *x, t_symbol *buffer, t_buffer_write_error err
 }
 
 
-t_buffer_write_error buffer_write (t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul)
+t_buffer_write_error buffer_write(t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -199,7 +199,7 @@ t_buffer_write_error buffer_write (t_symbol *buffer, double *in, AH_SIntPtr writ
 }
 
 
-t_buffer_write_error buffer_write_float (t_symbol *buffer, float *in, AH_SIntPtr write_length, long resize, long chan, double sample_rate, float mul)
+t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr write_length, long resize, long chan, double sample_rate, float mul)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
