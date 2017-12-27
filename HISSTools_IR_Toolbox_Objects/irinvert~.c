@@ -43,17 +43,17 @@ typedef struct _irinvert
 
 // Function prototypes
 
-void *irinvert_new (t_symbol *s, short argc, t_atom *argv);
-void irinvert_free (t_irinvert *x);
-void irinvert_assist (t_irinvert *x, void *b, long m, long a, char *s);
+void *irinvert_new(t_symbol *s, short argc, t_atom *argv);
+void irinvert_free(t_irinvert *x);
+void irinvert_assist(t_irinvert *x, void *b, long m, long a, char *s);
 
-void irinvert_process (t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
-void irinvert_process_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
+void irinvert_process(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
+void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
 
-long irinvert_matrix_mimo (t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, double regularization);
-long irinvert_mimo_deconvolution (t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, AH_UIntPtr fft_size, t_atom_long sources, t_atom_long receivers, double *regularization);
-void irinvert_mimo (t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
-void irinvert_mimo_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
+long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, t_matrix_complex *temp1, t_matrix_complex *temp2, double regularization);
+long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, AH_UIntPtr fft_size, t_atom_long sources, t_atom_long receivers, double *regularization);
+void irinvert_mimo(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
+void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -63,7 +63,7 @@ void irinvert_mimo_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *a
 
 int main (void)
 {
-    this_class = class_new ("irinvert~",
+    this_class = class_new("irinvert~",
 							(method) irinvert_new, 
 							(method)irinvert_free, 
 							sizeof(t_irinvert), 
@@ -71,10 +71,10 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irinvert_process, "invert", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irinvert_mimo, "mimo", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irinvert_mimo, "mimoto", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irinvert_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irinvert_process, "invert", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irinvert_mimo, "mimo", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irinvert_mimo, "mimoto", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irinvert_assist, "assist", A_CANT, 0L);
 
 	declare_HIRT_common_attributes(this_class);
 
@@ -88,7 +88,7 @@ int main (void)
 
 void *irinvert_new (t_symbol *s, short argc, t_atom *argv)
 {
-    t_irinvert *x = (t_irinvert *)object_alloc (this_class);
+    t_irinvert *x = (t_irinvert *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 	
@@ -435,7 +435,7 @@ void irinvert_mimo_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *a
 	
 	AH_SIntPtr lengths[128];
 	
-	double sample_rate = 0;
+	double sample_rate = 0.0;
 	double time_mul = 1.;
 	double deconvolve_delay;
 	

@@ -57,7 +57,7 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 
 int main (void)
 {
-    this_class = class_new ("bufconvolve~",
+    this_class = class_new("bufconvolve~",
 							(method) bufconvolve_new, 
 							(method)bufconvolve_free, 
 							sizeof(t_bufconvolve), 
@@ -65,10 +65,11 @@ int main (void)
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)bufconvolve_process, "convolve", A_GIMME, 0L);
-	class_addmethod (this_class, (method)bufconvolve_process, "deconvolve", A_GIMME, 0L);
+	class_addmethod(this_class, (method)bufconvolve_process, "convolve", A_GIMME, 0L);
+	class_addmethod(this_class, (method)bufconvolve_process, "deconvolve", A_GIMME, 0L);
+    class_addmethod(this_class, (method)bufconvolve_process, "accel", A_GIMME, 0L);
 		
-	class_addmethod (this_class, (method)bufconvolve_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)bufconvolve_assist, "assist", A_CANT, 0L);
 	class_register(CLASS_BOX, this_class);
 	
 	declare_HIRT_common_attributes(this_class);
@@ -82,7 +83,7 @@ int main (void)
 void *bufconvolve_new  (t_symbol *s, short argc, t_atom *argv)
 
 {
-    t_bufconvolve *x = (t_bufconvolve *)object_alloc (this_class);
+    t_bufconvolve *x = (t_bufconvolve *)object_alloc(this_class);
 	
 	x->process_done = bangout(x);
 	

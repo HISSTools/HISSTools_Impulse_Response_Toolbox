@@ -118,8 +118,8 @@ AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
 	double K2 = x->K2;
 	double amp = x->amp;
 	double sample_rate = x->sample_rate;
-	double FiN = x->fade_in * sample_rate * 2.;
-	double FoN = x->fade_out * sample_rate * 2.;
+	double FiN = x->fade_in * sample_rate * 2.0;
+	double FoN = x->fade_out * sample_rate * 2.0;
 	double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 	
 	AH_UIntPtr T = x->T;
@@ -132,8 +132,8 @@ AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
 		return 0;
 	
 	N = (startN + N > T) ? T - startN : N;
-	FiN = (FiN < 1.) ? 1. : FiN;
-	FoN = (FoN < 1.) ? 1. : FoN;
+	FiN = (FiN < 1.0) ? 1.0 : FiN;
+	FoN = (FoN < 1.0) ? 1.0 : FoN;
 	
 	for (i = startN; i < startN + N; i++)
 	{
@@ -184,8 +184,8 @@ AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N,
 		return 0;
 	
 	N = (startN + N > T) ? T - startN : N;
-	FiN = (FiN < 1.) ? 1. : FiN;
-	FoN = (FoN < 1.) ? 1. : FoN;
+	FiN = (FiN < 1.0) ? 1.0 : FiN;
+	FoN = (FoN < 1.0) ? 1.0 : FoN;
 	
 	for (i = startN; i < startN + N; i++)
 	{
@@ -221,8 +221,8 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
 	double K2 = x->K2;
 	double amp = x->amp;
 	double sample_rate = x->sample_rate;
-	double FiN = x->fade_in * sample_rate * 2.;
-	double FoN = x->fade_out * sample_rate * 2.;
+	double FiN = x->fade_in * sample_rate * 2.0;
+	double FoN = x->fade_out * sample_rate * 2.0;
 	double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 	
 	AH_UIntPtr T = x->T;
@@ -235,8 +235,8 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
 		return 0;
 	
 	N = (startN + N > T) ? T - startN : N;
-	FiN = (FiN < 1.) ? 1. : FiN;
-	FoN = (FoN < 1.) ? 1. : FoN;
+	FiN = (FiN < 1.0) ? 1.0 : FiN;
+	FoN = (FoN < 1.0) ? 1.0 : FoN;
 	
 	for (i = startN; i < startN + N; i++)
 	{
@@ -287,8 +287,8 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
 		return 0;
 	
 	N = (startN + N > T) ? T - startN : N;
-	FiN = (FiN < 1.) ? 1. : FiN;
-	FoN = (FoN < 1.) ? 1. : FoN;
+	FiN = (FiN < 1.0) ? 1.0 : FiN;
+	FoN = (FoN < 1.0) ? 1.0 : FoN;
 	
 	for (i = startN; i < startN + N; i++)
 	{
