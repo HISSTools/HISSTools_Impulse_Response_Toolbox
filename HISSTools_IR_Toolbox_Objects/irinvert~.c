@@ -50,7 +50,7 @@ void irinvert_assist(t_irinvert *x, void *b, long m, long a, char *s);
 void irinvert_process(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
 void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
 
-long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, t_matrix_complex *temp1, t_matrix_complex *temp2, double regularization);
+long irinvert_matrix_mimo (t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, double regularization);
 long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, AH_UIntPtr fft_size, t_atom_long sources, t_atom_long receivers, double *regularization);
 void irinvert_mimo(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
 void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
