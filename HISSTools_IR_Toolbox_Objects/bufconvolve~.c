@@ -79,7 +79,7 @@ int main (void)
 }
 
 
-void *bufconvolve_new  (t_symbol *s, short argc, t_atom *argv)
+void *bufconvolve_new(t_symbol *s, short argc, t_atom *argv)
 
 {
     t_bufconvolve *x = (t_bufconvolve *)object_alloc(this_class);
@@ -99,7 +99,7 @@ void bufconvolve_free(t_bufconvolve *x)
 }
 
 
-void bufconvolve_assist (t_bufconvolve *x, void *b, long m, long a, char *s)
+void bufconvolve_assist(t_bufconvolve *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -113,7 +113,7 @@ void bufconvolve_assist (t_bufconvolve *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-void bufconvolve_process (t_bufconvolve *x, t_symbol *sym, long argc, t_atom *argv)
+void bufconvolve_process(t_bufconvolve *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	t_atom temp_argv[4];
 	double time_mul = 1.;

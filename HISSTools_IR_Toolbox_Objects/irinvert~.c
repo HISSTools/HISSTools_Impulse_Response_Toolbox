@@ -86,7 +86,7 @@ int main (void)
 }
 
 
-void *irinvert_new (t_symbol *s, short argc, t_atom *argv)
+void *irinvert_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_irinvert *x = (t_irinvert *)object_alloc(this_class);
 	
@@ -105,7 +105,7 @@ void irinvert_free(t_irinvert *x)
 }
 
 
-void irinvert_assist (t_irinvert *x, void *b, long m, long a, char *s)
+void irinvert_assist(t_irinvert *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -119,7 +119,7 @@ void irinvert_assist (t_irinvert *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irinvert_process (t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
+void irinvert_process(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	t_atom temp_argv[3];
 	double time_mul = 1.;
@@ -151,7 +151,7 @@ void irinvert_process (t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
 }
 
 
-void irinvert_process_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *argv)
+void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
@@ -412,13 +412,13 @@ mimo_bail:
 }
 
 
-void irinvert_mimo (t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
+void irinvert_mimo(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
 {
 	defer(x, (method) irinvert_mimo_internal, sym, (short) argc, argv);
 }
 
 
-void irinvert_mimo_internal (t_irinvert *x, t_symbol *sym, short argc, t_atom *argv)
+void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	FFT_SETUP_D fft_setup;
 	
