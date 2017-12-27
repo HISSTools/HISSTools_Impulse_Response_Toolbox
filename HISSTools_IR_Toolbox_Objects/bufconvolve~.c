@@ -67,7 +67,6 @@ int main (void)
 	
 	class_addmethod(this_class, (method)bufconvolve_process, "convolve", A_GIMME, 0L);
 	class_addmethod(this_class, (method)bufconvolve_process, "deconvolve", A_GIMME, 0L);
-    class_addmethod(this_class, (method)bufconvolve_process, "accel", A_GIMME, 0L);
 		
 	class_addmethod(this_class, (method)bufconvolve_assist, "assist", A_CANT, 0L);
 	class_register(CLASS_BOX, this_class);
