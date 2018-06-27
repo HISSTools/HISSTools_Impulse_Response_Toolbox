@@ -2817,6 +2817,11 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
 	
 	jf = jfont_create(jbox_get_fontname((t_object *) x)->s_name, jbox_get_font_slant((t_object *) x), jbox_get_font_weight((t_object *) x), jbox_get_fontsize((t_object *) x));
 	
+    // Clip drawing
+    
+    jgraphics_save(g);
+    jgraphics_clip(g, x_offset, y_offset, width, height);
+    
 	// Clip mouse positions and convert
 	
 	mouse_x = clip(mouse_x, 0, 1);
@@ -3043,6 +3048,8 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
 		jtextlayout_draw(jtl, g);
 		jtextlayout_destroy(jtl);
 		jfont_destroy(jf);
+        
+        jgraphics_restore(g);
 	}
 }
 
@@ -3110,7 +3117,7 @@ void spectrumdraw_paint(t_spectrumdraw *x, t_object *patcherview)
 		sel_max_freq = swap;
 	}
 	
-	zoom_factor = patcherview_get_zoomfactor (patcherview);
+	zoom_factor = patcherview_get_zoomfactor(patcherview);
 	sub_sample_render = 0.5;
 	
 	// Draw Background / Grid / Curves
