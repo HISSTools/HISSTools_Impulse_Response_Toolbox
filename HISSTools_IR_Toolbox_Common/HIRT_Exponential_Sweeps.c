@@ -1,6 +1,6 @@
 
 #include "HIRT_Exponential_Sweeps.h"
-
+#include "ext.h"
 
 //////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// Helper ////////////////////////////////
@@ -33,7 +33,7 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
     double final_phase;
     double NNT;
 	
-	double last_db_val;
+	double last_db_val = 0;
 	
 	long num_items;
 	long i;
