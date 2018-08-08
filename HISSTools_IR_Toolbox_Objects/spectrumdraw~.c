@@ -3048,9 +3048,9 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
 		jtextlayout_draw(jtl, g);
 		jtextlayout_destroy(jtl);
 		jfont_destroy(jf);
-        
-        jgraphics_restore(g);
 	}
+    
+    jgraphics_restore(g);
 }
 
 
