@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B81AF9E7143A1BBA0014A77A"
-               BuildableName = "All HISSTool Externals"
-               BlueprintName = "All HISSTool Externals"
+               BuildableName = "All HIRT Externals"
+               BlueprintName = "All HIRT Externals"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B81AF9E7143A1BBA0014A77A"
-            BuildableName = "All HISSTool Externals"
-            BlueprintName = "All HISSTool Externals"
+            BuildableName = "All HIRT Externals"
+            BlueprintName = "All HIRT Externals"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

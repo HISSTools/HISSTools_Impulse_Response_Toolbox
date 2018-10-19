@@ -181,12 +181,13 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 	AH_UIntPtr fft_size;
 	AH_UIntPtr fft_size_log2; 
 	
+    long read_chan = x->read_chan - 1;
 	long deconvolve_mode = x->deconvolve_mode;
 	t_buffer_write_error error;
 			
 	// Check input buffers
 	
-	if (buffer_check((t_object *) x, source_1))
+	if (buffer_check((t_object *) x, source_1, read_chan))
 		return;
 	
 	// Check and calculate length
@@ -232,7 +233,7 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 	// Create modelling spike - get input - convert to frequency domain
 
 	spike_spectrum(spectrum_1, fft_size, SPECTRUM_REAL, deconvolve_delay);
-	buffer_read(source_1, x->read_chan - 1, in_temp, source_length_1);	
+	buffer_read(source_1, read_chan, in_temp, source_length_1);
 	time_to_halfspectrum_float(fft_setup, in_temp, source_length_1, spectrum_2, fft_size);
 		
 	// Fill deconvolution filter specifiers - read filter from buffer (if specified) - deconvolve
@@ -453,7 +454,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 	
 	t_buffer_write_error error;
 	long in_place = 1;
-	
+    long read_chan = x->read_chan - 1;
 		
 	AH_Boolean overall_error = false;
 	
@@ -500,7 +501,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 	
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	
-	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, in_place, 128, &overall_length, &max_length, &sample_rate);
+	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, in_place, 128, &overall_length, &max_length, &sample_rate);
 	
 	if (!num_buffers)
 		return;
@@ -558,7 +559,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 	
 	for (i = 0; i < receivers * sources; i++)
 	{
-		length = buffer_read(in_buffer_names[i], x->read_chan - 1, temp_buffer_f, fft_size);
+		length = buffer_read(in_buffer_names[i], read_chan, temp_buffer_f, fft_size);
 		time_to_halfspectrum_float(fft_setup, temp_buffer_f, length, impulses[i], fft_size);
 	}
 	

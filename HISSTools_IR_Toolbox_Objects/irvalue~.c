@@ -200,13 +200,15 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 	AH_UIntPtr fft_size;
 	AH_UIntPtr fft_size_log2;
 		
+    long read_chan = x->read_chan - 1;
+
 	// Get input buffer lengths
 	
 	AH_SIntPtr source_length = buffer_length(source);
 	
 	// Check input buffers
 	
-	if (buffer_check((t_object *) x, source))
+	if (buffer_check((t_object *) x, source, read_chan))
 		return;
 	
 	// Calculate fft size
@@ -243,7 +245,7 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 	
 	// Get input - convert to frequency domain - get power spectrum - convert phase
 	
-	buffer_read(source, x->read_chan - 1, in, fft_size);
+	buffer_read(source, read_chan, in, fft_size);
 	time_to_halfspectrum_float(fft_setup, in, source_length, spectrum_1, fft_size);
 	
     power_full_spectrum_from_half_spectrum(spectrum_1, fft_size);

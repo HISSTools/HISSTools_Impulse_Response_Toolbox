@@ -463,7 +463,8 @@ void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_cha
 	
 	long deconvolve_mode = x->deconvolve_mode;
 	long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
-	
+    long read_chan = x->read_chan - 1;
+    
 	AH_SIntPtr rec_length = buffer_length(rec_buffer);
 	AH_SIntPtr gen_length = 0;
 	AH_SIntPtr filter_length = buffer_length(filter);
@@ -473,7 +474,7 @@ void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_cha
 	AH_UIntPtr fft_size_log2;
 	AH_UIntPtr i;
 	
-	if (buffer_check((t_object *)x, rec_buffer) || !rec_length)
+	if (buffer_check((t_object *)x, rec_buffer, read_chan) || !rec_length)
 		return;
 	
 	switch (x->measure_mode)
@@ -620,7 +621,7 @@ void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_cha
 		
 	// Read recording from buffer / do transform into spectrum_1 for measurement recording - deconvolve - transform back
 
-	buffer_read(rec_buffer, x->read_chan - 1, rec_mem, rec_length);
+	buffer_read(rec_buffer, read_chan, rec_mem, rec_length);
 	time_to_halfspectrum_float(fft_setup, rec_mem, rec_length, spectrum_1, fft_size);
 	deconvolve_with_filter(spectrum_1, spectrum_2, spectrum_3, fft_size, SPECTRUM_REAL);
 	spectrum_to_time(fft_setup, out_mem, spectrum_1, fft_size, SPECTRUM_REAL);

@@ -43,7 +43,7 @@ AH_SIntPtr buffer_length(t_symbol *buffer)
 
 // Returns 0 for a valid buffer (or zero value symbol pointer), otherwise 1
 
-long buffer_check(t_object *x, t_symbol *buffer)
+long buffer_check(t_object *x, t_symbol *buffer, long chan)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -67,6 +67,12 @@ long buffer_check(t_object *x, t_symbol *buffer)
 		object_error((t_object *) x, "buffer %s is not valid", buffer->s_name);
 		return 1;
 	}
+    
+    if (chan >= n_chans)
+    {
+        object_error((t_object *) x, "buffer %s does not have enough channels", buffer->s_name);
+        return 1;
+    }
 	
 	return 0;
 }
@@ -91,6 +97,9 @@ AH_SIntPtr buffer_read(t_symbol *buffer, long chan, float *out, AH_SIntPtr max_l
 	if (!ibuffer_info(b, &samps, &length, &n_chans, &format))
 		return 0;
 	
+    if (chan >= n_chans)
+        return 0;
+    
 	if (length > max_length || !length)
 		return 0;
 	
@@ -139,6 +148,9 @@ void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error erro
 	
 	if (error == BUFFER_WRITE_ERR_TOO_SMALL)
 		object_error((t_object *) x, "not enough room in buffer %s", buffer->s_name);
+    
+    if (error == BUFFER_WRITE_ERR_CHANNEL_INVALID)
+        object_error((t_object *) x, "not enough channels in buffer %s", buffer->s_name);
 }
 
 
@@ -162,6 +174,9 @@ t_buffer_write_error buffer_write(t_symbol *buffer, double *in, AH_SIntPtr write
 	if (!ibuffer_info(b, &samps, &length, &n_chans, &format))
 		return BUFFER_WRITE_ERR_INVALID;
 	
+    if (chan >= n_chans)
+        return BUFFER_WRITE_ERR_CHANNEL_INVALID;
+    
 	if (resize)
 	{
 		t_atom temp_atom[2];
@@ -176,7 +191,6 @@ t_buffer_write_error buffer_write(t_symbol *buffer, double *in, AH_SIntPtr write
 	ibuffer_increment_inuse(b);
 	
 	samples = (float *) samps;
-	chan = chan % n_chans;
 	
 	for (i = 0; i < write_length; i++)
 		samples[i * n_chans + chan] = (float) (in[i] * mul);
@@ -219,6 +233,9 @@ t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr 
 	if (!ibuffer_info(b, &samps, &length, &n_chans, &format))
 		return BUFFER_WRITE_ERR_INVALID;
 	
+    if (chan >= n_chans)
+        return BUFFER_WRITE_ERR_CHANNEL_INVALID;
+    
 	if (resize)
 	{
 		t_atom temp_atom[2];
@@ -263,7 +280,7 @@ t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr 
 //////////////////////////////////////////////////////////////////////////
 
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, long chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
 {
 	AH_SIntPtr overall_length = 0;
 	AH_SIntPtr max_length = 0;
@@ -301,7 +318,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 			return 0;
 		}
 		
-		if (buffer_check(x, atom_getsym(argv + i)))
+		if (buffer_check(x, atom_getsym(argv + i), chan))
 			return 0;
 		
 		if (in_place)
@@ -314,7 +331,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 			new_length = buffer_length (atom_getsym(argv + i + argc));
 			new_sample_rate = buffer_sample_rate(atom_getsym(argv + i + argc));
 			
-			if (buffer_check(x, atom_getsym(argv + i + argc)))
+			if (buffer_check(x, atom_getsym(argv + i + argc), chan))
 				return 0;
 		}
 		

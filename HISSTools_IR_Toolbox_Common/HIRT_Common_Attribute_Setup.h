@@ -355,7 +355,7 @@ static __inline void declare_HIRT_common_attributes(void *c)
 
 #ifdef OBJ_USES_HIRT_WRITE_ATTR
 	CLASS_ATTR_LONG(c, "writechan", 0L, OBJ_CLASSNAME, write_chan);
-	CLASS_ATTR_FILTER_CLIP(c, "writechan", 1, 4);
+	CLASS_ATTR_FILTER_MIN(c, "writechan", 1);
 	CLASS_ATTR_LABEL(c,"writechan", 0L, "Buffer Write Channel");
 	
 	CLASS_ATTR_LONG(c, "resize", 0L, OBJ_CLASSNAME, resize);
@@ -364,7 +364,7 @@ static __inline void declare_HIRT_common_attributes(void *c)
 	
 #ifdef OBJ_USES_HIRT_READ_ATTR
 	CLASS_ATTR_LONG(c, "readchan", 0L, OBJ_CLASSNAME, read_chan);	
-	CLASS_ATTR_FILTER_CLIP(c, "readchan", 1, 4);
+	CLASS_ATTR_FILTER_MIN(c, "readchan", 1);
 	CLASS_ATTR_LABEL(c,"readchan", 0L, "Buffer Read Channel");
 #endif
 	

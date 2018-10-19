@@ -1458,6 +1458,8 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 	t_symbol *buffer; 
 	t_atom_long display = 0;
 	
+    long read_chan = x->read_chan - 1;
+    
 	// Get arguments
 	
 	if (!argc)
@@ -1477,7 +1479,7 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 	
 	// Check input buffer
 	
-	if (buffer_check((t_object *) x, buffer))
+	if (buffer_check((t_object *) x, buffer, read_chan))
 		return;
 	
 	length = buffer_length(buffer);
@@ -1553,7 +1555,7 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 		
 		// Read buffer and do FFT
 		
-		buffer_read_part(buffer, x->read_chan - 1, in_buf, offset, length);
+		buffer_read_part(buffer, read_chan, in_buf, offset, length);
 		time_to_halfspectrum_float(fft_setup, in_buf, length, spectrum, fft_size);
 		
 		// Calculate Powers and Phases

@@ -250,7 +250,8 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 	
 	t_buffer_write_error error;
 	long deconvolve_mode;
-	
+	long read_chan = x->read_chan - 1;
+    
 	// Get input buffer lengths
 	
 	AH_SIntPtr source_length_1 = buffer_length(source);
@@ -259,7 +260,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 	
 	// Check input buffers
 	
-	if (buffer_check((t_object *) x, source))
+	if (buffer_check((t_object *) x, source, read_chan))
 		return;
 	
 	// Calculate fft size
@@ -313,7 +314,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 	
 	// Get input - convert to frequency domain - get power spectrum - convert phase
 	
-	buffer_read(source, x->read_chan - 1, in, fft_size);
+	buffer_read(source, read_chan, in, fft_size);
 	time_to_spectrum_float(fft_setup, in, source_length_1, spectrum_1, fft_size);
 	power_spectrum(spectrum_1, fft_size, SPECTRUM_FULL);
 	variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase, false);			

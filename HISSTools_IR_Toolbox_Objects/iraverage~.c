@@ -149,6 +149,8 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 	AH_SIntPtr overall_length;
 	AH_SIntPtr i, j;
 	
+    long read_chan = x->read_chan - 1;
+    
 	t_buffer_write_error error;
 	
 	if (!argc)
@@ -174,7 +176,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 				
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	
-	num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, 1, 128, &overall_length, &max_length, &sample_rate);
+	num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, read_chan, 1, 128, &overall_length, &max_length, &sample_rate);
 	
 	if (!num_buffers)
 		return;
@@ -219,7 +221,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 	{		
 		// Read buffer - convert to frequency domain - take power spectrum
 		
-		read_length = buffer_read(buffer_names[i], x->read_chan - 1, (float *) temp, fft_size);
+		read_length = buffer_read(buffer_names[i], read_chan, (float *) temp, fft_size);
 		time_to_spectrum_float(fft_setup, (float *) temp, read_length, spectrum_2, fft_size);
 		power_spectrum(spectrum_2, fft_size, SPECTRUM_FULL);
 		
@@ -276,6 +278,8 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 	double num_buf_recip;
 	double sample_rate = 0.0;
 	
+    long read_chan = x->read_chan - 1;
+    
 	t_buffer_write_error error;
 	
 	// Check there are some arguments
@@ -291,7 +295,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 		
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	
-	num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, 1, 128, &overall_length, &max_length, &sample_rate);
+	num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, read_chan, 1, 128, &overall_length, &max_length, &sample_rate);
 	num_buf_recip = 1.0 / num_buffers;
 	
 	if (!num_buffers)
@@ -320,7 +324,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 	
 	for (i = 0; i < num_buffers; i++)
 	{		
-		read_length = buffer_read(buffer_names[i], x->read_chan - 1, (float *) temp, max_length);
+		read_length = buffer_read(buffer_names[i], read_chan, (float *) temp, max_length);
 		
 		for (j = 0; j < read_length; j++)
 			accum[j] += temp[j];

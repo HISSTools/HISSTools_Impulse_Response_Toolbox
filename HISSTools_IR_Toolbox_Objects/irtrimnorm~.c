@@ -426,6 +426,8 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	AH_SIntPtr offset = 0;
 	AH_SIntPtr i, j;
 	
+    long read_chan = x->read_chan - 1;
+
 	short num_buffers = 0;
 	
 	AH_Boolean overall_error = false;
@@ -468,7 +470,7 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	
-	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("crop"), 128, &overall_length, &max_length, &sample_rate);
+	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, sym == gensym("crop"), 128, &overall_length, &max_length, &sample_rate);
 	
 	if (!num_buffers)
 		return;
@@ -553,7 +555,7 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	for (i = 0; i < num_buffers; i++)
 	{
 		samples[i] = samples[0] + offset;
-		buffer_read(in_buffer_names[i], x->read_chan - 1, temp_buf_f, lengths[i]);
+		buffer_read(in_buffer_names[i], read_chan, temp_buf_f, lengths[i]);
 		
 		for (j = 0; j < lengths[i]; j++)
 			samples[i][j] = temp_buf_f[j];
@@ -703,6 +705,8 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	AH_SIntPtr offset = 0;
 	AH_SIntPtr i, j;
 	
+    long read_chan = x->read_chan - 1;
+    
 	short num_buffers = 0;
 
 	AH_Boolean overall_error = false;
@@ -751,7 +755,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	
-	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("trim"), 128, &overall_length, &max_length, &sample_rate);
+	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, sym == gensym("trim"), 128, &overall_length, &max_length, &sample_rate);
 	
 	if (!num_buffers)
 		return;
@@ -807,7 +811,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	for (i = 0; i < num_buffers; i++)
 	{
 		samples[i] = samples[0] + offset;
-		buffer_read(in_buffer_names[i], x->read_chan - 1, temp_buf_f, lengths[i]);
+		buffer_read(in_buffer_names[i], read_chan, temp_buf_f, lengths[i]);
 		
 		for (j = 0; j < lengths[i]; j++)
 			 samples[i][j] = temp_buf_f[j];

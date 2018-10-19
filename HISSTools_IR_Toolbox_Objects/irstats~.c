@@ -1253,7 +1253,8 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 	double sample_rate;
 	
 	long time_mode = !x->time_in_samples;
-	
+    long read_chan = x->read_chan - 1;
+    
 	AH_SIntPtr max_window_size;
 	AH_SIntPtr i;
 	
@@ -1274,7 +1275,7 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 		
 	// Check input buffers
 	
-	if (buffer_check((t_object *) x, source))
+	if (buffer_check((t_object *) x, source, read_chan))
 		return;
 	
 	// Get length
@@ -1344,7 +1345,7 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 	
 	// Get input
 	
-	buffer_read(source, x->read_chan - 1, stats.in, stats.in_length);
+	buffer_read(source, read_chan, stats.in, stats.in_length);
 		
 	// Get Stats
 	

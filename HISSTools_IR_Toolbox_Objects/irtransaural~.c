@@ -184,11 +184,13 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 	AH_UIntPtr i;
 	
 	long deconvolve_mode = x->deconvolve_mode;
+    long read_chan = x->read_chan - 1;
+    
 	t_buffer_write_error error;
 	
 	// Check input buffers
 	
-	if (buffer_check((t_object *) x, source_1) || buffer_check((t_object *) x, source_2))
+	if (buffer_check((t_object *) x, source_1, read_chan) || buffer_check((t_object *) x, source_2, read_chan))
 		return;
 	
 	// Check and calculate length
@@ -246,9 +248,9 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 
 	// Get inputs - convert to frequency domain 
 	
-	buffer_read(source_1, x->read_chan - 1, in_temp, source_length_1);
+	buffer_read(source_1, read_chan, in_temp, source_length_1);
 	time_to_halfspectrum_float(fft_setup, in_temp, source_length_1, spectrum_1, fft_size);
-	buffer_read(source_2, x->read_chan - 1, in_temp, source_length_2);
+	buffer_read(source_2, read_chan, in_temp, source_length_2);
 	time_to_halfspectrum_float(fft_setup, in_temp, source_length_2, spectrum_2, fft_size);
 	
 	if (sym == gensym("shuffler"))
