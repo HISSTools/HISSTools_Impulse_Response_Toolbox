@@ -39,7 +39,7 @@ GENERATE_PKGINFO_FILE = YES
 
 // Turn off C99 to minimise time spent working in Visual Studio
 
-WARNING_CFLAGS = -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -Wdeclaration-after-statement -Wno-deprecated-declarations -Werror 
+WARNING_CFLAGS = -Wall -Wno-four-char-constants -Wno-unknown-pragmas -Wdeclaration-after-statement -Wno-deprecated-declarations -Werror 
 
 // Flags to enforce some build-time checks for the symbols used while not actually performing a hard link
 C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
