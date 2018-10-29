@@ -225,7 +225,7 @@ static const vDouble Vec_Ops_F64_One = {1.0,1.0};
 // These routines are taken directly from the apple SSE migration guide
 // The guide can be found at http://developer.apple.com/legacy/mac/library/documentation/Performance/Conceptual/Accelerate_sse_migration/Accelerate_sse_migration.pdf
 
-#if defined(__APPLE__) && (!defined(__SSE4_1__))
+#if defined(__APPLE__) && (!defined(_SMMINTRIN_H))
 static __inline vSInt32 _mm_min_epi32(vSInt32 a, vSInt32 b) FORCE_INLINE;
 static __inline vSInt32 _mm_min_epi32(vSInt32 a, vSInt32 b) 
 { 
