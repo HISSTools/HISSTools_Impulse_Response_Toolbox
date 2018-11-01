@@ -3,14 +3,21 @@
 #include <ext_obex.h>
 #include <z_dsp.h>
 
+#include <HIRT_Core_Functions.h>
 #include <HIRT_Buffer_Access.h>
-#include <AH_Win_Math.h>
 #include <AH_Memory_Swap.h>
-#include <AH_Types.h>
 
+// Define common attributes and the class name (for the common attributes file)
+
+#define OBJ_CLASSNAME t_bufresample
+#define OBJ_USES_HIRT_WRITE_ATTR
+#define OBJ_USES_HIRT_READ_ATTR
+
+#include <HIRT_Common_Attribute_Vars.h>
+
+// Object class and structure
 
 void *this_class;
-
 
 typedef struct _ibuffer_info
 {
@@ -19,7 +26,7 @@ typedef struct _ibuffer_info
 	
 	AH_SIntPtr length;
 	
-	long chan;
+	t_atom_long chan;
     long n_chans; 
 	long format;
 	
@@ -34,11 +41,9 @@ typedef struct _bufresample
 		
 	t_safe_mem_swap filter;
 	
-	// Attributes
-	
-	long read_chan;
-	long write_chan;
-	long resize;
+    // Attributes
+    
+    HIRT_COMMON_ATTR
 		
 	// Bang Outlet
 	
@@ -47,15 +52,22 @@ typedef struct _bufresample
 } t_bufresample;
 
 
-void *bufresample_new ();
-void bufresample_free (t_bufresample *x);
-void bufresample_assist (t_bufresample *x, void *b, long m, long a, char *s);
+// This include deals with setup of common attributes - requires the object structure to be defined
 
-void bufresample_process (t_bufresample *x, t_symbol *sym, long argc, t_atom *argv);
-void bufresample_process_internal (t_bufresample *x, t_symbol *sym, short argc, t_atom *argv);
+#include <HIRT_Common_Attribute_Setup.h>
+
+
+// Function prototypes
+
+void *bufresample_new();
+void bufresample_free(t_bufresample *x);
+void bufresample_assist(t_bufresample *x, void *b, long m, long a, char *s);
+
+void bufresample_process(t_bufresample *x, t_symbol *sym, long argc, t_atom *argv);
+void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t_atom *argv);
 
 double *generate_filter(t_bufresample *x, long nzero, long npoints, double cf, double alpha);
-void bufresample_set_filter (t_bufresample *x, t_symbol *sym, long argc, t_atom *argv);
+void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *argv);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,7 +75,7 @@ void bufresample_set_filter (t_bufresample *x, t_symbol *sym, long argc, t_atom 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main(void)
 {
     this_class = class_new ("bufresample~",
 							(method) bufresample_new, 
@@ -72,26 +84,13 @@ int main (void)
 							0L,
 							0);
 		
-	class_addmethod (this_class, (method)bufresample_process, "both", A_GIMME, 0L);
-	class_addmethod (this_class, (method)bufresample_process, "resample", A_GIMME, 0L);
-	class_addmethod (this_class, (method)bufresample_process, "transpose", A_GIMME, 0L);
-	class_addmethod (this_class, (method)bufresample_set_filter, "filter", A_GIMME, 0L);
-	class_addmethod (this_class, (method)bufresample_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)bufresample_process, "both", A_GIMME, 0L);
+	class_addmethod(this_class, (method)bufresample_process, "resample", A_GIMME, 0L);
+	class_addmethod(this_class, (method)bufresample_process, "transpose", A_GIMME, 0L);
+	class_addmethod(this_class, (method)bufresample_set_filter, "filter", A_GIMME, 0L);
+	class_addmethod(this_class, (method)bufresample_assist, "assist", A_CANT, 0L);
 	
-	CLASS_STICKY_ATTR(this_class, "category", 0L, "Buffer");
-	
-	CLASS_ATTR_LONG(this_class, "writechan", 0L, t_bufresample, write_chan);
-	CLASS_ATTR_FILTER_CLIP(this_class, "writechan", 1, 4);
-	CLASS_ATTR_LABEL(this_class,"writechan", 0L, "Buffer Write Channel");
-	
-	CLASS_ATTR_LONG(this_class, "resize", 0L, t_bufresample, resize);
-	CLASS_ATTR_STYLE_LABEL(this_class,"resize", 0L, "onoff","Buffer Resize");
-	
-	CLASS_ATTR_LONG(this_class, "readchan", 0L, t_bufresample, read_chan);	
-	CLASS_ATTR_FILTER_CLIP(this_class, "readchan", 1, 4);
-	CLASS_ATTR_LABEL(this_class,"readchan", 0L, "Buffer Read Channel");
-	
-	CLASS_STICKY_ATTR_CLEAR(this_class, "category");	
+    declare_HIRT_common_attributes(this_class);
 	
 	class_register(CLASS_BOX, this_class);
 	
@@ -106,15 +105,12 @@ void *bufresample_new()
     t_bufresample *x = (t_bufresample *)object_alloc (this_class);
 
 	x->process_done = bangout(x);	
-	
-	x->read_chan = 1;
-	x->write_chan = 1;
-	x->resize = 1;
-	
-	alloc_mem_swap(&x->filter, 0, 0);
-	
+		
+	alloc_mem_swap(&x->filter, 0, 0);	
 	generate_filter(x, 10, 16384, 0.455, 11);
+    init_HIRT_common_attributes(x);
 
+    
 	return(x);
 }
 
@@ -211,7 +207,7 @@ double *generate_filter(t_bufresample *x, long nzero, long npoints, double cf, d
 
 // Arguments are - number of zero-crossings / number of points / centre frequency / alpha
 
-void bufresample_set_filter (t_bufresample *x, t_symbol *sym, long argc, t_atom *argv)
+void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *argv)
 {	
 	t_atom_long nzero = (argc > 0) ? atom_getlong(argv + 0): 10; 
 	t_atom_long npoints = (argc > 1) ? atom_getlong(argv + 1): 16384; 
@@ -290,7 +286,7 @@ void rate_as_ratio(double rate, AH_SIntPtr *ret_num, AH_SIntPtr *ret_denom)
 
 // Get a filter value from a position 0-nzero on the RHS wing (translate for LHS) - filter_position **MUST** be in range 0 to nzero inclusive
 
-double get_filter_value_direct (double *filter, long npoints, double filter_position)
+double get_filter_value_direct(double *filter, long npoints, double filter_position)
 {
 	double index; 
 	double fract;
@@ -358,7 +354,7 @@ double *bufresample_calc_temp_filters(double *filter, long nzero, long npoints, 
 
 // Get samples safely from the buffer (buffer should already be inuse)
 
-void get_buffer_samples (t_ibuffer_info *bufinfo, float *samples, AH_SIntPtr offset, AH_SIntPtr nsamps)
+void get_buffer_samples(t_ibuffer_info *bufinfo, float *samples, AH_SIntPtr offset, AH_SIntPtr nsamps)
 {
 	AH_SIntPtr temp_offset = 0;
 	AH_SIntPtr temp_nsamps = nsamps;
@@ -498,7 +494,7 @@ __inline double sum_filter_mul_vector(vDouble *a, float *b, AH_SIntPtr N)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-double *resample_fixed_ratio (t_ibuffer_info *bufinfo, double *filter, long nzero, long npoints, AH_SIntPtr nsamps, AH_SIntPtr num, AH_SIntPtr denom)
+double *resample_fixed_ratio(t_ibuffer_info *bufinfo, double *filter, long nzero, long npoints, AH_SIntPtr nsamps, AH_SIntPtr num, AH_SIntPtr denom)
 {
 	double *current_filter;
 	
@@ -640,13 +636,13 @@ double *bufresample_copy(t_ibuffer_info *bufinfo, AH_SIntPtr nsamps)
 //	- both: transposition ratio / target sample rate
 
 
-void bufresample_process (t_bufresample *x, t_symbol *sym, long argc, t_atom *argv)
+void bufresample_process(t_bufresample *x, t_symbol *sym, long argc, t_atom *argv)
 {	
 	defer(x, (method) bufresample_process_internal, sym, (short) argc, argv);
 }
 
 
-void bufresample_process_internal (t_bufresample *x, t_symbol *sym, short argc, t_atom *argv)
+void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_symbol *target;
 	t_symbol *source;
@@ -767,7 +763,7 @@ void bufresample_process_internal (t_bufresample *x, t_symbol *sym, short argc, 
 
 // Get a filter value from a position 0-1 on the RHS wing (translate for LHS) - filter_position **MUST** be in range 0 to 1 inclusive
 
-double get_filter_value (double *filter, long half_length, double filter_position)
+double get_filter_value(double *filter, long half_length, double filter_position)
 {
 	double index;
 	double fract;
@@ -788,7 +784,7 @@ double get_filter_value (double *filter, long half_length, double filter_positio
 
 // Calculate one sample 
 
-double calc_sample (t_ibuffer_info *bufinfo, float *samples, double *filter, long nzero, long npoints, double position, double rate)
+double calc_sample(t_ibuffer_info *bufinfo, float *samples, double *filter, long nzero, long npoints, double position, double rate)
 {
 	double per_samp = rate > 1. ? 1. / (rate * nzero) : 1. / nzero;
 	double one_over_per_samp = rate > 1. ? nzero * rate : nzero;
@@ -832,7 +828,7 @@ double calc_sample (t_ibuffer_info *bufinfo, float *samples, double *filter, lon
 
 // Resample given a fixed rate as a double
 
-double *resample_fixed_rate (t_ibuffer_info *bufinfo, double *filter, long nzero, long npoints, double offset, AH_SIntPtr nsamps, double rate)
+double *resample_fixed_rate(t_ibuffer_info *bufinfo, double *filter, long nzero, long npoints, double offset, AH_SIntPtr nsamps, double rate)
 {
 	double one_over_per_samp = rate > 1. ? nzero * rate : nzero;
 	double mul = rate > 1. ? 1. / rate : 1;

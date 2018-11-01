@@ -3,22 +3,28 @@
 #include <ext_obex.h>
 #include <z_dsp.h>
 
+#include <HIRT_Core_Functions.h>
 #include <HIRT_Buffer_Access.h>
-#include <AH_Types.h>
 
+// Define common attributes and the class name (for the common attributes file)
+
+#define OBJ_CLASSNAME t_bufreverse
+#define OBJ_USES_HIRT_WRITE_ATTR
+#define OBJ_USES_HIRT_READ_ATTR
+
+#include <HIRT_Common_Attribute_Vars.h>
+
+// Object class and structure
 
 void *this_class;
-
 
 typedef struct _bufreverse
 {
     t_pxobject x_obj;
 
-	// Attributes
-	
-	long read_chan;
-	long write_chan;
-	long resize;
+    // Attributes
+    
+    HIRT_COMMON_ATTR
 		
 	// Bang Outlet
 	
@@ -27,15 +33,22 @@ typedef struct _bufreverse
 } t_bufreverse;
 
 
-void *bufreverse_new ();
-void bufreverse_free (t_bufreverse *x);
-void bufreverse_assist (t_bufreverse *x, void *b, long m, long a, char *s);
+// This include deals with setup of common attributes - requires the object structure to be defined
 
-void bufreverse_process (t_bufreverse *x, t_symbol *target, t_symbol *source);
-void bufreverse_process_internal (t_bufreverse *x, t_symbol *sym, short argc, t_atom *argv);
+#include <HIRT_Common_Attribute_Setup.h>
 
 
-int main (void)
+// Function prototypes
+
+void *bufreverse_new();
+void bufreverse_free(t_bufreverse *x);
+void bufreverse_assist(t_bufreverse *x, void *b, long m, long a, char *s);
+
+void bufreverse_process(t_bufreverse *x, t_symbol *target, t_symbol *source);
+void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_atom *argv);
+
+
+int main(void)
 {
     this_class = class_new ("bufreverse~",
 							(method) bufreverse_new, 
@@ -44,42 +57,25 @@ int main (void)
 							0L,
 							0);
 		
-	class_addmethod (this_class, (method)bufreverse_process, "process", A_SYM, A_SYM, 0L);		
+	class_addmethod(this_class, (method)bufreverse_process, "process", A_SYM, A_SYM, 0L);
 
-	class_addmethod (this_class, (method)bufreverse_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)bufreverse_assist, "assist", A_CANT, 0L);
 	
-	CLASS_STICKY_ATTR(this_class, "category", 0L, "Buffer");
-	
-	CLASS_ATTR_LONG(this_class, "writechan", 0L, t_bufreverse, write_chan);
-	CLASS_ATTR_FILTER_CLIP(this_class, "writechan", 1, 4);
-	CLASS_ATTR_LABEL(this_class,"writechan", 0L, "Buffer Write Channel");
-	
-	CLASS_ATTR_LONG(this_class, "resize", 0L, t_bufreverse, resize);
-	CLASS_ATTR_STYLE_LABEL(this_class,"resize", 0L, "onoff","Buffer Resize");
-	
-	CLASS_ATTR_LONG(this_class, "readchan", 0L, t_bufreverse, read_chan);	
-	CLASS_ATTR_FILTER_CLIP(this_class, "readchan", 1, 4);
-	CLASS_ATTR_LABEL(this_class,"readchan", 0L, "Buffer Read Channel");
-	
-	CLASS_STICKY_ATTR_CLEAR(this_class, "category");
-	
-	class_register(CLASS_BOX, this_class);
-	
+    declare_HIRT_common_attributes(this_class);
+
 	buffer_access_init();
 	
 	return 0;
 }
 
 
-void *bufreverse_new ()
+void *bufreverse_new()
 {
     t_bufreverse *x = (t_bufreverse *)object_alloc (this_class);
 
 	x->process_done = bangout(x);
-	
-	x->read_chan = 1;
-	x->write_chan = 1;
-	x->resize = 1;
+    
+    init_HIRT_common_attributes(x);
 	
 	return(x);
 }
@@ -90,7 +86,7 @@ void bufreverse_free(t_bufreverse *x)
 }
 
 
-void bufreverse_assist (t_bufreverse *x, void *b, long m, long a, char *s)
+void bufreverse_assist(t_bufreverse *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -101,7 +97,7 @@ void bufreverse_assist (t_bufreverse *x, void *b, long m, long a, char *s)
 
 // Arguments are - target buffer / source buffer (can alias)
 
-void bufreverse_process (t_bufreverse *x, t_symbol *target, t_symbol *source)
+void bufreverse_process(t_bufreverse *x, t_symbol *target, t_symbol *source)
 {	
 	t_atom args[2];
 	
@@ -112,7 +108,7 @@ void bufreverse_process (t_bufreverse *x, t_symbol *target, t_symbol *source)
 }
 
 
-void bufreverse_process_internal (t_bufreverse *x, t_symbol *sym, short argc, t_atom *argv)
+void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_symbol *target = atom_getsym(argv++);
 	t_symbol *source = atom_getsym(argv++);
@@ -126,7 +122,7 @@ void bufreverse_process_internal (t_bufreverse *x, t_symbol *sym, short argc, t_
 	AH_SIntPtr i;
 	
 	double sample_rate = 0;
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 				
 	// Check source buffer
 	

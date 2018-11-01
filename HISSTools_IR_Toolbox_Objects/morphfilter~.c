@@ -3,12 +3,20 @@
 #include <ext_obex.h>
 #include <z_dsp.h>
 
+#include <HIRT_Core_Functions.h>
 #include <HIRT_Buffer_Access.h>
-#include <AH_Types.h>
 
+// Define common attributes and the class name (for the common attributes file)
+
+#define OBJ_CLASSNAME t_morphfilter
+#define OBJ_USES_HIRT_WRITE_ATTR
+#define OBJ_USES_HIRT_READ_ATTR
+
+#include <HIRT_Common_Attribute_Vars.h>
+
+// Object class and structure
 
 void *this_class;
-
 
 typedef enum
 {
@@ -17,12 +25,11 @@ typedef enum
 	HI_SHELF,
 	PEAKING
 	
-} t_filter_type;
-
+} t_iir_filter_type;
 
 typedef struct _filter_params
 {
-    t_filter_type filter_type;
+    t_iir_filter_type filter_type;
 	
 	double f0;
 	double qs;
@@ -32,7 +39,6 @@ typedef struct _filter_params
 	
 } t_filter_params;
 
-
 typedef struct _morphfilter
 {
     t_pxobject x_obj;
@@ -41,11 +47,7 @@ typedef struct _morphfilter
 	
 	long nfilters;
 	
-	// Attributes
-	
-	long read_chan;
-	long write_chan;
-	long resize;
+	HIRT_COMMON_ATTR
 		
 	// Bang Outlet
 	
@@ -54,19 +56,26 @@ typedef struct _morphfilter
 } t_morphfilter;
 
 
-void *morphfilter_new ();
-void morphfilter_free (t_morphfilter *x);
-void morphfilter_assist (t_morphfilter *x, void *b, long m, long a, char *s);
+// This include deals with setup of common attributes - requires the object structure to be defined
 
-void morphfilter_addfilter (t_morphfilter *x, t_symbol *sym, long argc, t_atom *argv);
-
-void morphfilter_clear (t_morphfilter *x);
-
-void morphfilter_process (t_morphfilter *x, t_symbol *target, t_symbol *source);
-void morphfilter_process_internal (t_morphfilter *x, t_symbol *sym, short argc, t_atom *argv);
+#include <HIRT_Common_Attribute_Setup.h>
 
 
-int main (void)
+// Function prototypes
+
+void *morphfilter_new();
+void morphfilter_free(t_morphfilter *x);
+void morphfilter_assist(t_morphfilter *x, void *b, long m, long a, char *s);
+
+void morphfilter_addfilter(t_morphfilter *x, t_symbol *sym, long argc, t_atom *argv);
+
+void morphfilter_clear(t_morphfilter *x);
+
+void morphfilter_process(t_morphfilter *x, t_symbol *target, t_symbol *source);
+void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t_atom *argv);
+
+
+int main(void)
 {
     this_class = class_new ("morphfilter~",
 							(method) morphfilter_new, 
@@ -75,27 +84,14 @@ int main (void)
 							0L,
 							0);
 		
-	class_addmethod (this_class, (method)morphfilter_process, "process", A_SYM, A_SYM, 0L);
-	class_addmethod (this_class, (method)morphfilter_addfilter, "addfilter", A_GIMME, 0L);
+	class_addmethod(this_class, (method)morphfilter_process, "process", A_SYM, A_SYM, 0L);
+	class_addmethod(this_class, (method)morphfilter_addfilter, "addfilter", A_GIMME, 0L);
 	
-	class_addmethod (this_class, (method)morphfilter_clear, "clear", 0L);
+	class_addmethod(this_class, (method)morphfilter_clear, "clear", 0L);
 
-	class_addmethod (this_class, (method)morphfilter_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)morphfilter_assist, "assist", A_CANT, 0L);
 	
-	CLASS_STICKY_ATTR(this_class, "category", 0L, "Buffer");
-	
-	CLASS_ATTR_LONG(this_class, "writechan", 0L, t_morphfilter, write_chan);
-	CLASS_ATTR_FILTER_CLIP(this_class, "writechan", 1, 4);
-	CLASS_ATTR_LABEL(this_class,"writechan", 0L, "Buffer Write Channel");
-	
-	CLASS_ATTR_LONG(this_class, "resize", 0L, t_morphfilter, resize);
-	CLASS_ATTR_STYLE_LABEL(this_class,"resize", 0L, "onoff","Buffer Resize");
-	
-	CLASS_ATTR_LONG(this_class, "readchan", 0L, t_morphfilter, read_chan);	
-	CLASS_ATTR_FILTER_CLIP(this_class, "readchan", 1, 4);
-	CLASS_ATTR_LABEL(this_class,"readchan", 0L, "Buffer Read Channel");
-	
-	CLASS_STICKY_ATTR_CLEAR(this_class, "category");
+    declare_HIRT_common_attributes(this_class);
 	
 	class_register(CLASS_BOX, this_class);
 	
@@ -105,16 +101,14 @@ int main (void)
 }
 
 
-void *morphfilter_new ()
+void *morphfilter_new()
 {
     t_morphfilter *x = (t_morphfilter *)object_alloc (this_class);
 
 	x->process_done = bangout(x);
 	x->nfilters = 0;
 	
-	x->read_chan = 1;
-	x->write_chan = 1;
-	x->resize = 1;	
+    init_HIRT_common_attributes(x);
 	
 	return(x);
 }
@@ -125,7 +119,7 @@ void morphfilter_free(t_morphfilter *x)
 }
 
 
-void morphfilter_assist (t_morphfilter *x, void *b, long m, long a, char *s)
+void morphfilter_assist(t_morphfilter *x, void *b, long m, long a, char *s)
 {
 	if (m == ASSIST_INLET)
 		sprintf(s,"Instructions In");
@@ -136,10 +130,10 @@ void morphfilter_assist (t_morphfilter *x, void *b, long m, long a, char *s)
 
 // Arguments are - filter type / [centre frequency] / [q or s] / [starting gain] / [gain alteration amount] / [gain amount rate]
 
-void morphfilter_addfilter (t_morphfilter *x, t_symbol *sym, long argc, t_atom *argv)
+void morphfilter_addfilter(t_morphfilter *x, t_symbol *sym, long argc, t_atom *argv)
 {	
 	long nfilters = x->nfilters;
-	t_filter_type filter_type = GAIN;
+	t_iir_filter_type filter_type = GAIN;
 	
 	t_symbol *ftype;
 	double f0 = 0;
@@ -209,7 +203,7 @@ double dbtoa(double db)
 }
 
 
-void morphfilter_apply_filter (double *samples, t_filter_params *filter, double sr, AH_SIntPtr length)
+void morphfilter_apply_filter(double *samples, t_filter_params *filter, double sr, AH_SIntPtr length)
 {
 	double a0, a1, a2, b0, b1, b2, x1, x2, y1, y2, g_db1, g_db2, rate, A, sqrtA, f0, w0, qs, cosw, sinw;
 	double Ap1, Am1, Ap1c, Am1c;	
@@ -322,7 +316,7 @@ void morphfilter_apply_filter (double *samples, t_filter_params *filter, double 
 
 // Arguments are - target buffer / source buffer (can alias)
 
-void morphfilter_process (t_morphfilter *x, t_symbol *target, t_symbol *source)
+void morphfilter_process(t_morphfilter *x, t_symbol *target, t_symbol *source)
 {	
 	t_atom args[2];
 	
@@ -333,7 +327,7 @@ void morphfilter_process (t_morphfilter *x, t_symbol *target, t_symbol *source)
 }
 
 
-void morphfilter_process_internal (t_morphfilter *x, t_symbol *sym, short argc, t_atom *argv)
+void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t_atom *argv)
 {
 	t_symbol *target = atom_getsym(argv++);
 	t_symbol *source = atom_getsym(argv++);
@@ -347,7 +341,7 @@ void morphfilter_process_internal (t_morphfilter *x, t_symbol *sym, short argc, 
 	AH_SIntPtr full_length = length;
 	AH_SIntPtr i;
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 	double sample_rate = 0;
 				
 	// Check source buffer
