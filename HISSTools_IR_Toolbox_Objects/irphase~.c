@@ -250,7 +250,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 	
 	t_buffer_write_error error;
 	long deconvolve_mode;
-	long read_chan = x->read_chan - 1;
+	t_atom_long read_chan = x->read_chan - 1;
     
 	// Get input buffer lengths
 	

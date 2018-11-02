@@ -15,7 +15,6 @@
 
 #include <HIRT_Common_Attribute_Vars.h>
 
-
 // Object class and structure
 
 void *this_class;
@@ -55,7 +54,7 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main(void)
 {
     this_class = class_new("bufconvolve~",
 							(method) bufconvolve_new, 
@@ -181,7 +180,7 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 	AH_UIntPtr fft_size_log2; 
 	
 	long deconvolve_mode = x->deconvolve_mode;
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 	t_buffer_write_error error;
 	
 	// Check input buffers

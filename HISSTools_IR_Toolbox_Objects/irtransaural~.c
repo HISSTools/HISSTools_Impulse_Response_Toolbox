@@ -184,7 +184,7 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 	AH_UIntPtr i;
 	
 	long deconvolve_mode = x->deconvolve_mode;
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	t_buffer_write_error error;
 	

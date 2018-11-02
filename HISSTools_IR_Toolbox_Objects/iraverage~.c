@@ -149,7 +149,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 	AH_SIntPtr overall_length;
 	AH_SIntPtr i, j;
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	t_buffer_write_error error;
 	
@@ -278,7 +278,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 	double num_buf_recip;
 	double sample_rate = 0.0;
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	t_buffer_write_error error;
 	

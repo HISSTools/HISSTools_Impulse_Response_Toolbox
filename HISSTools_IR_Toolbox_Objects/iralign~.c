@@ -173,7 +173,7 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 	AH_SIntPtr lengths[128];
 	AH_SIntPtr max_pos[128];
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 	double sample_rate = 0.0;
 	
 	double *temp_buf_d;

@@ -426,7 +426,7 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	AH_SIntPtr offset = 0;
 	AH_SIntPtr i, j;
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 
 	short num_buffers = 0;
 	
@@ -705,7 +705,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 	AH_SIntPtr offset = 0;
 	AH_SIntPtr i, j;
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	short num_buffers = 0;
 

@@ -127,18 +127,18 @@ int main()
 							A_GIMME,
 							0);
 	
-	class_addmethod (this_class, (method)irextract_assist, "assist", A_CANT, 0L);
+	class_addmethod(this_class, (method)irextract_assist, "assist", A_CANT, 0L);
 	
-	class_addmethod (this_class, (method)irextract_sweep, "sweep", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irextract_mls, "mls", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irextract_noise, "white", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irextract_noise, "brown", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irextract_noise, "pink", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_sweep, "sweep", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_mls, "mls", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_noise, "white", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_noise, "brown", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_noise, "pink", A_GIMME, 0L);
 		
-	class_addmethod (this_class, (method)irextract_clear, "clear", 0L);
+	class_addmethod(this_class, (method)irextract_clear, "clear", 0L);
 
-	class_addmethod (this_class, (method)irextract_getir, "getir", A_GIMME, 0L);
-	class_addmethod (this_class, (method)irextract_dump, "dump", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_getir, "getir", A_GIMME, 0L);
+	class_addmethod(this_class, (method)irextract_dump, "dump", A_GIMME, 0L);
 	
 	declare_HIRT_common_attributes(this_class);
 	
@@ -463,7 +463,7 @@ void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_cha
 	
 	long deconvolve_mode = x->deconvolve_mode;
 	long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	AH_SIntPtr rec_length = buffer_length(rec_buffer);
 	AH_SIntPtr gen_length = 0;

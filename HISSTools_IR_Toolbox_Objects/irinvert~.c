@@ -61,7 +61,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 //////////////////////////////////////////////////////////////////////////
 
 
-int main (void)
+int main(void)
 {
     this_class = class_new("irinvert~",
 							(method) irinvert_new, 
@@ -181,7 +181,7 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 	AH_UIntPtr fft_size;
 	AH_UIntPtr fft_size_log2; 
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 	long deconvolve_mode = x->deconvolve_mode;
 	t_buffer_write_error error;
 			
@@ -454,7 +454,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 	
 	t_buffer_write_error error;
 	long in_place = 1;
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 		
 	AH_Boolean overall_error = false;
 	

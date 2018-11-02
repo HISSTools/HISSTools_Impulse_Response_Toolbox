@@ -252,7 +252,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 	
 	MATRIX_REF_COMPLEX(coeff)
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	

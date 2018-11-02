@@ -553,8 +553,8 @@ int main()
 	
 	class_addmethod(c, (method)spectrumdraw_select, "select", A_GIMME, 0);
 	
-	class_addmethod (c, (method)spectrumdraw_dsp, "dsp", A_CANT, 0L);
-	class_addmethod (c, (method)spectrumdraw_dsp64, "dsp64", A_CANT, 0L);
+	class_addmethod(c, (method)spectrumdraw_dsp, "dsp", A_CANT, 0L);
+	class_addmethod(c, (method)spectrumdraw_dsp64, "dsp64", A_CANT, 0L);
 	class_addmethod(c, (method)spectrumdraw_assist, "assist", A_CANT, 0);  
 	
 	// Messages for state setting / retrieval
@@ -1458,7 +1458,7 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 	t_symbol *buffer; 
 	t_atom_long display = 0;
 	
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	// Get arguments
 	

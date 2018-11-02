@@ -200,7 +200,7 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 	AH_UIntPtr fft_size;
 	AH_UIntPtr fft_size_log2;
 		
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
 
 	// Get input buffer lengths
 	

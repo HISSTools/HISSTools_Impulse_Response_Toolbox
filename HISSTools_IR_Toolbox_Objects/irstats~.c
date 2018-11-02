@@ -1253,7 +1253,7 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 	double sample_rate;
 	
 	long time_mode = !x->time_in_samples;
-    long read_chan = x->read_chan - 1;
+    t_atom_long read_chan = x->read_chan - 1;
     
 	AH_SIntPtr max_window_size;
 	AH_SIntPtr i;

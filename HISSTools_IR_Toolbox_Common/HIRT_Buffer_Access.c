@@ -43,7 +43,7 @@ AH_SIntPtr buffer_length(t_symbol *buffer)
 
 // Returns 0 for a valid buffer (or zero value symbol pointer), otherwise 1
 
-long buffer_check(t_object *x, t_symbol *buffer, long chan)
+long buffer_check(t_object *x, t_symbol *buffer, t_atom_long chan)
 {
 	AH_SIntPtr length;
 	long n_chans, format;
@@ -280,7 +280,7 @@ t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr 
 //////////////////////////////////////////////////////////////////////////
 
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, long chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, t_atom_long chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
 {
 	AH_SIntPtr overall_length = 0;
 	AH_SIntPtr max_length = 0;
