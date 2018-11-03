@@ -18,7 +18,6 @@
 #include <z_dsp.h>
 #include <buffer.h>
 
-#include "AH_Atomic.h"
 #include "AH_Types.h"
 
 
