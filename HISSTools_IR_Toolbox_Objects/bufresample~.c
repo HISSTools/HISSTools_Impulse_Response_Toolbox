@@ -144,7 +144,7 @@ double IZero(double x_sq)
 	
 	long i;
 
-	for (i = 1; new_term; i++)	// Gives Maximum Accuracy
+    for (i = 1; new_term > DBL_EPSILON; i++)  // Gives Maximum Accuracy With Speed!
 	{
 		new_term = new_term * x_sq * (1.0 / (4.0 * (double) i * (double) i));
 		b_func += new_term;
