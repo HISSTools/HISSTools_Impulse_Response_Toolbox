@@ -167,11 +167,11 @@ AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N,
 
 	double K1 = x->K1;
 	double K2 = x->K2;
-	double amp = x->amp;
+    double amp = (inv_amp == true) ? x->amp : 1.0;
 	double sample_rate = x->sample_rate;
 	double FiN = x->fade_in * sample_rate * 2.;
 	double FoN = x->fade_out * sample_rate * 2.;
-	double amp_const = (inv_amp == true) ? (4. / amp) * x->lo_f_act * K2 : amp;
+    double amp_const =  (4.0 * x->lo_f_act * K2) / amp;
 	double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 	
 	AH_UIntPtr T = x->T;
@@ -270,11 +270,11 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
 	
 	double K1 = x->K1;
 	double K2 = x->K2;
-	double amp = x->amp;
+    double amp = (inv_amp == true) ? x->amp : 1.0;
 	double sample_rate = x->sample_rate;
 	double FiN = x->fade_in * sample_rate * 2.;
 	double FoN = x->fade_out * sample_rate * 2.;
-	double amp_const = (inv_amp == true) ? (4. / amp) * x->lo_f_act * K2 : amp;
+	double amp_const =  (4.0 * x->lo_f_act * K2) / amp;
 	double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 	
 	AH_UIntPtr T = x->T;
