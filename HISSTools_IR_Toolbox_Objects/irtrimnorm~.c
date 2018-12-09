@@ -378,7 +378,7 @@ long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 	
 	// Crop, Fade and Pad
 
-	irtrimnorm_write_internal_buffer (samples, temp_buf, crop1, crop_length, fade_in, fade_out, pad_in, pad_out, x->fade_type);
+	irtrimnorm_write_internal_buffer(samples, temp_buf, crop1, crop_length, fade_in, fade_out, pad_in, pad_out, x->fade_type);
 	
 	// Write to buffer
 	
@@ -657,7 +657,7 @@ long irtrimnorm_trim_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 	
 	// Trim and Fade and Write To Buffer
 	
-	irtrimnorm_write_internal_buffer (samples, temp_buf, trim_offset, trim_length, fade_in, fade_out, pad_in, pad_out, x->fade_type);
+	irtrimnorm_write_internal_buffer(samples, temp_buf, trim_offset, trim_length, fade_in, fade_out, pad_in, pad_out, x->fade_type);
 	
 	// Write to buffer
 	
@@ -841,7 +841,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 		if (overall_error == false)
 		{
 			for (i = 0; i < num_buffers; i++)
-				if (irtrimnorm_trim_write_buffer (x, out_buffer_names[i], samples[i], temp_buf_d, trim_offset, trim_length, fade_in, fade_out, pad_in, pad_out, norm_factor, lengths[i], sample_rate))
+				if (irtrimnorm_trim_write_buffer(x, out_buffer_names[i], samples[i], temp_buf_d, trim_offset, trim_length, fade_in, fade_out, pad_in, pad_out, norm_factor, lengths[i], sample_rate))
 					overall_error = true;
 		}
 	}
