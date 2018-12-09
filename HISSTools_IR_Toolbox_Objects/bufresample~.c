@@ -458,7 +458,7 @@ double sum_filter_mul_double(double *a, float *b, AH_SIntPtr N)
 }
 
 #ifdef TARGET_INTEL
-__inline double sum_filter_mul_vector(vDouble *a, float *b, AH_SIntPtr N)
+static __inline double sum_filter_mul_vector(vDouble *a, float *b, AH_SIntPtr N)
 {
 	vDouble Sum = {0., 0.};
 	vFloat Temp;

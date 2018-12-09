@@ -184,7 +184,7 @@ void morphfilter_clear (t_morphfilter *x)
 }
 
 
-__inline double morphfilter_biquad (double in, double a0, double a1, double a2, double b0, double b1, double b2, double *x1, double *x2, double *y1, double *y2)
+static __inline double morphfilter_biquad (double in, double a0, double a1, double a2, double b0, double b1, double b2, double *x1, double *x2, double *y1, double *y2)
 {
 	double out = (b0 * in + b1 * *x1 + b2 * *x2 - a1 * *y1 - a2 * *y2) / a0;
 		
