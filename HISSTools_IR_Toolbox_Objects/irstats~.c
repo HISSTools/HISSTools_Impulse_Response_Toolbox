@@ -188,8 +188,8 @@ double calc_ned_average(float *ir, float *samples, double *window, AH_SIntPtr le
 AH_SIntPtr get_sample_time(double time_val, long time_in_samples, double sample_rate);
 AH_SIntPtr calc_LR_onset(float *ir, float *samples, double *window, AH_SIntPtr length, AH_SIntPtr onset, long time_in_samples, double min_mix, double max_mix, double sample_rate);
 
-double calc_center (double *integration, AH_SIntPtr length);
 double calc_clarity(double *integration, AH_SIntPtr length, double sample_rate);
+double calc_center(float *ir, AH_SIntPtr length, AH_SIntPtr onset);
 double calc_LR_onset_rms(float *ir, float *samples, double *window, AH_SIntPtr LR_onset, AH_SIntPtr length, double sample_rate);
 double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate, double *max_oct);
 
@@ -908,18 +908,18 @@ double calc_clarity(double *integration, AH_SIntPtr length, double sample_rate)
 }
 
 
-// FIX - this doesn't seemt o work quite right...
-
-double calc_center (double *integration, AH_SIntPtr length)
+double calc_center(float *ir, AH_SIntPtr length, AH_SIntPtr onset)
 {
-	double weighted_sum = 0.0;
+    double energy;
+    double weighted_sum = 0.0;
     double sum = 0.0;
 	AH_SIntPtr i;
 	
-	for (i = 0; i < length; i++)
+	for (i = onset; i < length; i++)
     {
-        weighted_sum += i * integration[i];
-        sum += integration[i];
+        energy = ir[i] * ir[i];
+        weighted_sum += i * energy;
+        sum += energy;
     }
 	
 	return weighted_sum / sum;
@@ -1117,10 +1117,10 @@ double retrieve_EDT(t_stats_calc *stats)
 double retrieve_center(t_stats_calc *stats)
 {
 	if (stats->center == -1)
-	{
-		do_integration(stats);
-		stats->center = calc_center(stats->integration, stats->ir_length);
-	}
+    {
+        retrieve_onset(stats);
+        stats->center = calc_center(stats->in, stats->ir_length, stats->onset);
+    }
 	
 	return stats->center;
 }
