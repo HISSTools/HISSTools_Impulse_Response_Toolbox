@@ -570,7 +570,7 @@ AH_SIntPtr calc_onset(float *ir, float *samples, double *window, AH_SIntPtr leng
 		}	
 	}
 	
-	energy_thresh *= max_value * max_value;
+	energy_thresh *= max_value;
 	
 	// Find max ratio increase
 	
