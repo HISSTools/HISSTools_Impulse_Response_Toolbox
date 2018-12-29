@@ -1,0 +1,5 @@
+{
+	"name" : "HIRT UI",
+	"type" : "filelist",
+	"contents" : [ "spectrumdraw~.mxo", "spectrumdraw~.maxhelp", "hirt_interface_damp.js", "hirt_interface_eq.js", "hirt_interface_mod.js", "hirt_interface_pos.js", "spectrumdraw~.mxe", "spectrumdraw~.mxe64" ]
+}

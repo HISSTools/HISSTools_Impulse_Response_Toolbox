@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="_c74_vig.xsl" type="text/xsl"?>
+<vignette name="Impulse Responses" package="HISSTools Impulse Response Toolbox (HIRT)">
+	<h1>
+	Impulse Responses
+	</h1>
+		<p>
+			The <b>HISSTools Impulse Response Toolbox</b> includes a number of <i>impulse response</i> (<i>IR</i>) files, primarily for loading into the <o>hirt.convolutionreverb~</o> and the <o>hirt.convolver~</o> abstractions. These can both accept multiple types of IRs, such as mono-mono, mono-stereo, stereo-stereo, quad-stereo ('true stereo'). IRs are listed in menus in the interfaces of both abstractions, but can also be listed in patches using the <m>collection</m> attribute to <o>umenu</o> (an example of this is included in the <o>irstats~</o> helpfile). Files are also listed in the <b>HIRT</b> section of the <b>Max Browser</b>.
+		</p>
+		<p>
+			The <b>HIRT</b> also provides means for creating your own impulse responses. Most notably the <o>hirt.irmaker~</o> abstraction, or individual objects such as <o>irmeasure~</o>, <o>irreference~</o> and <o>iruser~</o>.
+		</p>
+		<p>
+			Whilst the currently available collection of IR files may be expanded with new IRs in future updates to the package, there are many resources available for further information and for permissively licensed impulse response file downloads. Below we list some of our favourites.
+		</p>
+	<br />
+	<bluebox>
+	<h2>
+	Impulse Response Resources
+	</h2>
+		<ul>
+		<li>
+			<a href="http://www.openairlib.net/">Open Air</a>
+			(AHRC @ University of York)
+		</li>
+		<li>
+			<a href="http://legacy.spa.aalto.fi/projects/poririrs/">Concert Halls</a>
+			(Finland)
+		</li>
+		<li>
+			<a href="http://isophonics.net/content/room-impulse-response-data-set">Room Data Sets</a>
+			(not all these files are non-commercial)
+		</li>
+		<li>
+			<a href="https://fokkie.home.xs4all.nl/IR.htm">Fokke van Saane</a>
+			(esoteric collections)
+		</li>
+		<li>
+			<a href="http://www.cksde.com/f_6.htm">CKSDE</a>
+			(strange personal collection)
+		</li>
+		<li>
+			<a href="https://www.kvraudio.com/forum/viewtopic.php?f=6&amp;t=62458">KVR list</a>
+			(comprehensive and ongoing commercial and non-commercial links)
+		</li>
+		</ul>
+	</bluebox>
+	<br />
+</vignette>

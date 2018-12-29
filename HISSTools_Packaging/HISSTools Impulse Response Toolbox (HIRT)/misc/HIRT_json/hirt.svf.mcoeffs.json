@@ -1,0 +1,12 @@
+{
+	"bypass" : [ 1.0, 0.0, 0.0, 1 ],
+	"lowpass" : [ 0.0, 0.0, 1.0, 1 ],
+	"bandpass" : [ 0.0, 1.0, 0.0, 1 ],
+	"highpass" : [ 1.0, "mk", -1.0, 1 ],
+	"peak" : [ 1.0, "mk", -2.0, 1 ],
+	"notch" : [ 1.0, "mk", 0.0, 1 ],
+	"resonant" : [ 0.0, "kk", 0.0, 1 ],
+	"bell" : [ "ss", "bk", "bs", 2 ],
+	"lowshelf" : [ "ss", "lk", "ls", 2 ],
+	"highshelf" : [ "hs", "hk", "hs", 2 ]
+}

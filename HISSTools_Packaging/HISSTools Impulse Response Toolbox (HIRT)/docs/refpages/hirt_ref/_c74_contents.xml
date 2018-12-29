@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<root>
+<refpage name='irsweeps~.maxref.xml'/>
+<refpage name='irmeasure~.maxref.xml'/>
+<refpage name='irtransaural~.maxref.xml'/>
+<refpage name='irvalue~.maxref.xml'/>
+<refpage name='bufresample~.maxref.xml'/>
+<refpage name='bufconvolve~.maxref.xml'/>
+<refpage name='bufreverse~.maxref.xml'/>
+<refpage name='iralign~.maxref.xml'/>
+<refpage name='iraverage~.maxref.xml'/>
+<refpage name='irphase~.maxref.xml'/>
+<refpage name='irplapprox~.maxref.xml'/>
+<refpage name='spectrumdraw~.maxref.xml'/>
+<refpage name='irstats~.maxref.xml'/>
+<refpage name='irtrimnorm~.maxref.xml'/>
+<refpage name='irreference~.maxref.xml'/>
+<refpage name='irnonlin~.maxref.xml'/>
+<refpage name='irextract~.maxref.xml'/>
+<refpage name='morphfilter~.maxref.xml'/>
+<refpage name='iruser~.maxref.xml'/>
+<refpage name='multiconvolve~.maxref.xml'/>
+<refpage name='irinvert~.maxref.xml'/>
+<refpage name='hirt.irmaker~.maxref.xml'/>
+<refpage name='hirt.convolutionreverb~.maxref.xml'/>
+<refpage name='hirt.convolver~.maxref.xml'/>
+</root>

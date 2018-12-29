@@ -1,0 +1,19 @@
+{
+	"t20" : "T20 measure of reverb time (RT60)",
+	"t30" : "T30 measure of reverb time (RT60)",
+	"edt" : "Early Decay Time (RT50 estimated from first 10dB drop in IR)",
+	"onset" : "Estimated onset time (start of IR within buffer)",
+	"directend" : "Estimated end time of direct sound",
+	"directexists" : "1 if IR is estimated to have a direct part (0 otherwise)",
+	"mixing" : "Estimated mixing time (transitation from early to late reflections)",
+	"center" : "Center time measure (center of energy)",
+	"clarity" : "Clarity measure in dB (ratio of early to late energy)",
+	"rms" : "RMS of the buffer in dB",
+	"peak" : "Peak sample value in dB",
+	"mixingrms" : "RMS around the estimated mixing time in dB",
+	"ned" : "Average normalised echo density (0..1)",
+	"gain" : "Estimated overall gain resulting from convolving by the IR in dB",
+	"maxgain" : "Estimated maximum gain within any octave of the IR in dB",
+	"length" : "Length of buffer",
+	"sr" : "Sample rate of buffer in Hz"
+}

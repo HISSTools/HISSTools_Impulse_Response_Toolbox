@@ -1,0 +1,55 @@
+
+The HISSTools Impulse Response Toolbox (HIRT) Ñ History
+
+-----------------------------------------------------------------------------------------
+Change Log
+-----------------------------------------------------------------------------------------
+
+Changes in 2.0
+
+New complete reference documentation and updated help files
+New Abstractions including Convolution Reverb effect
+
+spectrumdraw~: clipping dots mode fix
+
+-------
+
+Changes in 1.2
+
+New Features
+
+irvalue~: new object to return dB amplitude of IR at given frequency (Hz) input
+
+New attribute for irreference~ object: ... to ...
+
+irmeasure~: can now take up to 128 inputs & outputs
+
+-------
+
+
+Changes in 1.1
+
+PLEASE NOTE
+
+irmeasure~ has changed arguments. These are now num inputs / num outputs.
+Whilst non-ideal to change argument ordering, this is more intuitive and matches multiconvolve~.
+
+New Features
+
+irextract~: new object to extract impulse responses from recorded sweeps
+irextract~/irmeasure~/irsweeps~: added control over sweep amplitude against frequency
+
+Bug Fixes
+
+multiple objects: time multiplier arguments now correct in all objects
+
+irmeasure~: i/o args have been swapped 
+irphase~ arguments are now safe
+irtrimnorm~: message cropto now correctly outputs bang on success.
+irtrimnorm: pad mode fades now correctly aligned in time
+irtrimnorm~ pad arguments corrected
+spectrumdraw~: crash with low frequency mousing
+spectrumdraw~: notes are assigned incorrectly to octaves
+
+-------
+

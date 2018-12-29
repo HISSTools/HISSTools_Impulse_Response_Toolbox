@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="./_c74_tut.xsl" type="text/xsl"?>
+
+<chapter name="HISSTools Impulse Response Toolbox Tutorials: Overview">
+
+    <openfile name="HIRT Tutorials" patch="hirt_tutorials_home.maxpat"/>
+
+    <header>hirttutorials</header>
+
+    <subhead>HIRT Tutorials Overview</subhead>
+
+    <subhead>Video Tutorials</subhead>
+    <br />
+	<body>Video Tutorial #1:</body>
+	<a href="https://vimeo.com/55440630">Creating an Impulse Response</a>
+	<br />
+	<br />
+	<body>Video Tutorial #2:</body>
+	<a href="https://vimeo.com/79202287">Loudspeaker Correction</a>
+	<br />
+	<br />
+	<body>Video Tutorial #3:</body>
+	<a href="http://www.thehiss.org">Creative Ideas</a>
+	<br />
+	<br />
+	<b>Click 'Open Tutorial' button (top right) to load patches used in linked Video Tutorials</b>
+	<br />
+	<br />
+
+
+	<subhead>Papers</subhead>
+    <br />
+	<body>Paper #1:</body>
+	<a href="http://eprints.hud.ac.uk/id/eprint/14897/1/HISSTools_IR_Toolbox.pdf">Convolution for the Masses</a>
+	<br />
+	<br />
+	<body>Paper #2:</body>
+	<a href="http://eprints.hud.ac.uk/id/eprint/18549/1/Harker_Tremblay_Rethinking_The_Box.pdf">Rethinking the Box</a>
+	<br />
+
+    <seealsolist>
+        <seealso name="hirttopic" type="vignette" module="hirt" />
+        <seealso name="impulseresponses" type="vignette" module="hirt" />
+		<seealso name="bufconvolve~" module="hirt"/>
+		<seealso name="bufresample~" module="hirt"/>
+		<seealso name="bufreverse~" module="hirt"/>
+		<seealso name="iralign~" module="hirt"/>
+		<seealso name="iraverage~" module="hirt"/>
+		<seealso name="irextract~" module="hirt"/>
+		<seealso name="irinvert~" module="hirt"/>
+		<seealso name="irmeasure~" module="hirt"/>
+		<seealso name="irnonlin~" module="hirt"/>
+		<seealso name="irphase~" module="hirt"/>
+		<seealso name="irplapprox~" module="hirt"/>
+		<seealso name="irreference~" module="hirt"/>
+		<seealso name="irstats~" module="hirt"/>
+		<seealso name="irsweeps~" module="hirt"/>
+		<seealso name="irtransaural~" module="hirt"/>
+		<seealso name="irtrimnorm~" module="hirt"/>
+		<seealso name="iruser~" module="hirt"/>
+		<seealso name="irvalue~" module="hirt"/>
+        <seealso name="morphfilter~" module="hirt"/>
+        <seealso name="multiconvolve~" module="hirt"/>
+		<seealso name="spectrumdraw~" module="hirt"/>
+		<seealso name="hirt.convolutionreverb~" module="hirt"/>
+		<seealso name="hirt.convolver~" module="hirt"/>
+		<seealso name="hirt.irmaker~" module="hirt"/>
+    </seealsolist>
+
+</chapter>

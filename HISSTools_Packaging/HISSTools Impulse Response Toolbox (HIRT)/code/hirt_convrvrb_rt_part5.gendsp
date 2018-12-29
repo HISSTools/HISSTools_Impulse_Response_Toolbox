@@ -1,0 +1,336 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 7,
+			"minor" : 3,
+			"revision" : 5,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"rect" : [ 127.0, 45.0, 989.0, 689.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 2,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 1,
+		"toolbars_unpinned_last_save" : 7,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "<none>",
+		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 884.857117, 11.5, 81.0, 35.0 ],
+					"style" : "",
+					"text" : "in 9 mix control signal"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 798.857117, 645.0, 167.0, 22.0 ],
+					"style" : "",
+					"text" : "out 3 tap for [spectrumdraw~]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 778.0, 17.0, 95.0, 22.0 ],
+					"style" : "",
+					"text" : "in 8 convEarlyR"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 671.142883, 17.0, 93.0, 22.0 ],
+					"style" : "",
+					"text" : "in 7 convEarlyL"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 564.285706, 17.0, 91.0, 22.0 ],
+					"style" : "",
+					"text" : "in 6 convLateR"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 457.428558, 17.0, 89.0, 22.0 ],
+					"style" : "",
+					"text" : "in 5 convLateL"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 350.571442, 17.0, 96.0, 22.0 ],
+					"style" : "",
+					"text" : "in 4 delayTimeB"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 243.714279, 17.0, 96.0, 22.0 ],
+					"style" : "",
+					"text" : "in 3 delayTimeA"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 457.428558, 645.0, 69.0, 22.0 ],
+					"style" : "",
+					"text" : "out 2 Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 30.0, 17.0, 70.0, 22.0 ],
+					"style" : "",
+					"text" : "in 1 dryLeft"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 136.857147, 17.0, 78.0, 22.0 ],
+					"style" : "",
+					"text" : "in 2 dryRight"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "\r\n//\t//\t//\tGLOBAL LIBRARY FUNCTIONS\r\n\r\nrequire(\"hirt_convolution_rt_library\");\r\n\r\n\r\n//\t//\t//\tLOCAL FUNCTIONS [hirt_convrvrb_rt_part5]\r\n\r\n// approx\r\n\r\ncosQ52(x) {\n\tc1 =  0.9999932946;\n\tc2 = -0.4999124376;\n\tc3 =  0.0414877472;\n\tc4 = -0.0012712095;\n\n\tx2 = x * x;\n\treturn (c1 + x2 * (c2 + x2 * (c3 + c4 * x2)));\n}\r\n\r\nctrlCosApprox(x)\n{\n\txc = x * 0.25;\n\txL = xc * twopi;\n\txR = wrap(((xc * 0.9975) - 0.25), 0, 1) * twopi;\n\tcL = cosQ52(xL) + 0.000007;\n\tcR = (cosQ52(twopi - xR) + 0.000007) * 1.000007;\n\treturn cL, cR;\n}\r\n\r\n// mixing\r\n\r\n// exact @ 100% and very close @ other ranges\r\nwidthApproxStereoPan(a, b, x)\t\t\t\t\t\t\t\t// clip x 0..0.5\n{\n\tcL, cR\t= ctrlCosApprox(x);\n\treturn\t((a * cL) + (b * cR)), ((a * cR) + (b * cL));\n}\r\n\r\n\r\n//\t//\t//\tDECLARE\r\n\r\n// post late delays\r\n\r\n// we need to build our own delay line so that we can clear it (latedelayclear) with a for-loop on 'fixed off'\r\nHistory\tconvDelPhase(0);\r\nData\tlateConvDelay(samplerate,\t2);\t\t// n.b. reduced size from original\r\n\r\n// late delay params\r\n\r\nHistory\tlatedelayclear(1);\t\t\t\t\t// init late delay buffers\r\n\r\nParam\tlatedelaytime(0, min=0, max=192000);\t\t\t// time in samples\r\nParam\tlatedelaytimeoffset(1201, min=0, max=192000);\t// offset in samples\r\nParam\tlatedelayramp(2205, min=0, max=96000);\t\t\t// in samples\t(default 50 ms @ 44.1)\r\n//Param\tlatedelaycurve(-0.333333, min=-1, max=1);\t\t// factor, -1..1 (like MSP [curve~])\r\n\r\n// gain params\r\n\r\nParam\tpostlateconvgain(1, min=0, max=10);\t\t\t// amplitude\r\nParam\tpostlateconvtime(0.01, min=0);\t\t\t\t// in seconds\t(default 10 ms)\r\nParam\tpostlatedelgain(1, min=0, max=10);\t\t\t// amplitude\r\nParam\tpostlatedeltime(0.005, min=0);\t\t\t\t// in seconds\t(default 5 ms)\r\n\r\n// mod stereo delays\r\n\r\nDelay\tmodDelL(11520, 1, feedback=0);\t\t// support up to 60ms @ up to 192kHz samplerate ...\r\nDelay\tmodDelR(11520, 1, feedback=0);\r\n\r\nParam\tmodstereo(0, min=0, max=1);\t\t\t// % 0..1\t\t('mix', default 0%, maximum actually 35% (0.35))\r\n\r\n// shape params\r\n\r\nParam\twidth(0.25, min=0, max=1);\t\t\t// % 0..1\t\t(only 0..0.5 in use)\r\n\r\n// fixed params\r\n\r\nParam\tsmooth(25, min=1, max=100);\t\t\t// ms\t\t\t[not dynamic ?]\r\n\r\n\r\n//\t//\t//\tPARSE\t(param rate)\r\n\r\nsampssmooth\t\t= mstosamps(smooth);\t\t// samples\r\nsecssmooth\t\t= smooth * 0.01;\t\t\t// seconds\r\nmatchsmooth\t\t= secssmooth * 0.333333;\t// seconds short\r\n\r\n// post late conv mixing delay\r\n\r\nlatetimeandoffset\t= latedelaytime + latedelaytimeoffset;\t// technically different to original to add here (pre)\r\n\r\n\r\n//\t//\t//\tINIT\r\n\r\ndimLCD\t= dim(lateConvDelay);\r\n\r\nif (latedelayclear) {\r\n\t// clear delay data when fixed delay time chosen from parent (like sending 'clear' message to MSP [delay~])\r\n\tfor(i = 0; i < dimLCD; i += 1) {\r\n\t\tpoke(lateConvDelay, 0, i, 0, 0, index=\"samples\");\r\n\t\tpoke(lateConvDelay, 0, i, 1, 0, index=\"samples\");\r\n\t}\r\n\r\n\tlatedelayclear\t= 0;\t\t\t\t\t// deactivate once initialised\r\n\r\n}\r\n\r\n\r\n//\t//\t//\tINPUTS\r\n\r\nmodDelayA\t= in3 + 0;\t\t\t\t\t\t// only computed if \"Mod I\" (part1) || \"Mod II\" (part5) engaged\r\nmodDelayB\t= in4 + 0;\r\n\r\ndryLeft\t\t= in1 + 0;\r\ndryRight\t= in2 + 0;\r\nconvLateL\t= in5 + 0;\r\nconvLateR\t= in6 + 0;\r\nconvEarlyL\t= in7 + 0;\r\nconvEarlyR\t= in8 + 0;\r\n\r\ncpuMix\t\t= in9 + 0;\t\t\t\t\t\t// % 0..1\t(pass through all gen~ patchers)\r\n\r\nMainLeft\t= dryLeft\t+ 0;\r\nMainRight\t= dryRight\t+ 0;\r\n\r\n//WetTap\t= 0;\r\n\r\n\r\nif (cpuMix > 0) {\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tPARSE\t(audio rate)\r\n\r\n// post late conv gain\r\n\r\nclg\t\t\t\t= expsmooth(postlateconvgain, postlateconvtime);\r\n\r\n// post mixing delay gain\r\n\r\nmdg\t\t\t\t= expsmooth(postlatedelgain, postlatedeltime);\r\n\r\n// modulation stereo\r\n\r\nmodStCtrl, mscn\t= genLine(modstereo, sampssmooth);\r\n\r\n// pan width\t// n.b. 'width' is always on\r\n\r\nwidthCtrl\t\t= expsmooth(width, matchsmooth);\r\n\r\n// post late conv mixing delay\r\n\r\ncDelPhse\t\t= wrap((convDelPhase + 1), 0, dimLCD);\r\nconvDelPhase\t= cDelPhse;\r\n\r\nmixDel\t\t\t= genLine(latetimeandoffset, latedelayramp);\r\nmixingDelay\t\t= cDelPhse - mixDel;\t// use boundmode of 'sample()' instead of extra wrap\r\n\r\n\r\n//\t//\t//\tPROCESSING\r\n\r\n// post late conv gain\r\n\r\nconvLgainL\t\t= convLateL * clg;\r\nconvLgainR\t\t= convLateR * clg;\r\n\r\n// post late conv mixing delay\r\n\r\npoke(lateConvDelay, convLgainL, cDelPhse, 0, 0, index=\"samples\");\r\npoke(lateConvDelay, convLgainR, cDelPhse, 1, 0, index=\"samples\");\r\n\r\nconvLdelL, cdl\t= sample(lateConvDelay, mixingDelay, 0, index=\"samples\", boundmode=\"wrap\", interp=\"spline\");\r\nconvLdelR, cdr\t= sample(lateConvDelay, mixingDelay, 1, index=\"samples\", boundmode=\"wrap\", interp=\"spline\");\r\n\r\n// post mixing delay gain\r\n\r\nsL\t\t\t\t= (convLdelL * mdg) + convEarlyL;\r\nsR\t\t\t\t= (convLdelR * mdg) + convEarlyR;\r\n\r\n// modulation stereo\t(this is \"ModII\", either this is active OR \"ModI\" ('modquad') from [part1], OR none)\r\n\r\nmodDelL.write(sL);\t\t\t// always write to delay lines\r\nmodDelR.write(sR);\r\n\r\nmodStereoL\t\t= sL + 0;\r\nmodStereoR\t\t= sR + 0;\r\nif (modStCtrl > 0) {\r\n\tmodDelWetL\t\t\t\t= modDelL.read(modDelayA, interp=\"spline\");\r\n\tmodDelWetR\t\t\t\t= modDelR.read(modDelayB, interp=\"spline\");\r\n\r\n\tmodStereoL, modStereoR\t= xfadeQuartApproxStereo(sL, sR, modDelWetL, modDelWetR, modStCtrl);\r\n\tmodStereoL\t\t\t\t= dcblock(modStereoL);\r\n\tmodStereoR\t\t\t\t= dcblock(modStereoR);\r\n\r\n}\r\n\r\n// pan width\r\n\r\nwidthL, widthR\t= widthApproxStereoPan(modStereoL, modStereoR, widthCtrl);\r\n\r\n// dry wet mix\r\n\r\n//WetTap\t\t\t= widthL + widthR;\r\nMainLeft, MainRight\t= xfadeQuartApproxStereo(dryLeft, dryRight, (widthL * 0.5), (widthR * 0.5), cpuMix);\r\n\r\n\r\n}\t\t\t\t\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tOUTPUTs\r\n\r\nout1\t= MainLeft;\r\nout2\t= MainRight;\r\n//out3\t= WetTap;\r\nout3\t= MainLeft + MainRight;\t// tap for [spectrumdraw~], post dry/wet mix for if master mix == 0% (like original)\r\n\r\n",
+					"fontface" : 0,
+					"fontname" : "Arial Bold",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 9,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 30.0, 54.0, 873.857117, 574.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 645.0, 61.0, 22.0 ],
+					"style" : "",
+					"text" : "out 1 Left"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 5 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 6 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 7 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-3", 8 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-13", 0 ],
+					"midpoints" : [ 894.357117, 636.0, 808.357117, 636.0 ],
+					"source" : [ "obj-3", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ],
+		"toolbarexclusions" : [ "lessonbrowser" ]
+	}
+
+}

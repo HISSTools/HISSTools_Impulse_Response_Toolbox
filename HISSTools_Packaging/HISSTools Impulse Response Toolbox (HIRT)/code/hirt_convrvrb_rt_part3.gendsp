@@ -1,0 +1,296 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 7,
+			"minor" : 3,
+			"revision" : 5,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"rect" : [ 187.0, 75.0, 914.0, 691.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 2,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 1,
+		"toolbars_unpinned_last_save" : 7,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "<none>",
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 817.0, 643.0, 84.0, 35.0 ],
+					"style" : "",
+					"text" : "out 5 mix control signal"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 817.0, 10.0, 84.0, 35.0 ],
+					"style" : "",
+					"text" : "in 5 mix control signal"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 620.25, 643.0, 141.0, 35.0 ],
+					"style" : "",
+					"text" : "out 4 to post Late Chain for Summing Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 423.5, 643.0, 144.0, 35.0 ],
+					"style" : "",
+					"text" : "out 3 to post Late Chain for Summing Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 620.25, 10.0, 110.0, 35.0 ],
+					"style" : "",
+					"text" : "in 4 post Early Convolution Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 423.5, 10.0, 106.0, 35.0 ],
+					"style" : "",
+					"text" : "in 3 post Early Convolution Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 226.75, 643.0, 105.0, 35.0 ],
+					"style" : "",
+					"text" : "out 2 to Late Convolution Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 30.0, 10.0, 100.0, 35.0 ],
+					"style" : "",
+					"text" : "in 1 Late post Modualtion Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 226.75, 10.0, 105.0, 35.0 ],
+					"style" : "",
+					"text" : "in 2 Late post Modualtion Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "\r\n//\t//\t//\tGLOBAL LIBRARY FUNCTIONS\r\n\r\nrequire(\"hirt_convolution_rt_library\");\r\n\r\n\r\n//\t//\t//\tDECLARE\r\n\r\nParam\tsmooth(25, min=1, max=100);\t\t\t\t\t// in ms\t\t[not dynamic ?]\r\n\r\nParam\tlateearlycascade(0, min=0, max=1);\t\t\t// mix % 0..1\t(early into late, vica versa if reversed ir)\r\n\r\nParam\tpostearlyconvgain1(1, min=0, max=10);\t\t// amplitude\t(default 1)\r\nParam\tpostearlyconvtime1(441, min=44, max=44100);\t// in samples\t(default 10 ms @ 44.1)\r\n\r\nParam\tpostearlyconvgain2(1, min=0, max=10);\t\t// amplitude\t(default 1)\r\nParam\tpostearlyconvtime2(0.02, min=0, max=1);\t\t// in seconds\t(default 20 ms)\r\n\r\n\r\n//\t//\t//\tPARSE\r\n\r\nsampssmooth\t\t= mstosamps(smooth);\r\n\r\n\r\n//\t//\t//\tINPUTS\r\n\r\ncpuMix\t\t\t= in5 + 0;\t\t\t\t\t// % 0..1\t(pass through all gen~ patchers)\r\n\r\nlateModL\t\t= in1 + 0;\r\nlateModR\t\t= in2 + 0;\r\nearlyConvL\t\t= in3 + 0;\r\nearlyConvR\t\t= in4 + 0;\r\n\r\ntoLateConvL\t\t= 0;\r\ntoLateConvR\t\t= 0;\r\ntoLateSumL\t\t= 0;\r\ntoLateSumR\t\t= 0;\r\n\r\n\r\n//\t//\t//\tCPU\r\n\r\nif (cpuMix > 0) {\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\nlateearlymix, len\t\t= genLine(lateearlycascade, sampssmooth);\r\npostEarlyGain1, e1n\t\t= genLine(postearlyconvgain1, postearlyconvtime1);\r\n\r\n\r\n//\t//\t//\tPROCESS\r\n\r\n// do not process if both 'lateearlycascade' and 'postearlyconvgain1' == zero\r\nif ((lateearlymix != 0) || (postEarlyGain1 != 0)) {\r\n\r\n\tpostEarlyGain2\t= 1;\t\t//\r\n\tconvGain1L\t\t= 0;\r\n\tconvGain1R\t\t= 0;\r\n\r\n\tif (postEarlyGain1 > 0) {\r\n\t\tconvGain1L\t= earlyConvL\t* postEarlyGain1;\r\n\t\tconvGain1R\t= earlyConvR\t* postEarlyGain1;\r\n\r\n\t\tpostEarlyGain2\t\t\t\t= expsmooth(postearlyconvgain2, postearlyconvtime2);// no need for exact ramp\r\n\t}\r\n\r\n\ttoLateConvL, toLateConvR\t= xfadeQuartApproxStereo(lateModL, lateModR, convGain1L, convGain1R, lateearlymix);\r\n\ttoLateSumL\t\t\t\t\t= convGain1L * postEarlyGain2;\r\n\ttoLateSumR\t\t\t\t\t= convGain1R * postEarlyGain2;\r\n\r\n}\r\n\r\n\r\n}\t\t\t\t\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tOUTPUTs\r\n\r\nout1\t= toLateConvL;\r\nout2\t= toLateConvR;\r\nout3\t= toLateSumL;\r\nout4\t= toLateSumR;\r\n\r\nout5\t= cpuMix + 0;\r\n\r\n",
+					"fontface" : 0,
+					"fontname" : "Arial Bold",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 5,
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
+					"patching_rect" : [ 30.0, 56.0, 806.0, 574.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 643.0, 100.0, 35.0 ],
+					"style" : "",
+					"text" : "out 1 to Late Convolution Left"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-3", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-3", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-3", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+ ],
+		"toolbarexclusions" : [ "lessonbrowser" ]
+	}
+
+}

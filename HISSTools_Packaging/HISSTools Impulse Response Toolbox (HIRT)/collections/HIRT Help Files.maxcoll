@@ -1,0 +1,5 @@
+{
+	"name" : "HIRT Help Files",
+	"type" : "filelist",
+	"contents" : [ "bufconvolve~.maxhelp", "bufresample~.maxhelp", "bufreverse~.maxhelp", "hammerstein~.maxhelp", "hirt.convolutionreverb~.maxhelp", "hirt.convolver~.maxhelp", "hirt.hammerstein~.maxhelp", "hirt.irmaker~.maxhelp", "iralign~.maxhelp", "iraverage~.maxhelp", "irextract~.maxhelp", "irinvert~.maxhelp", "irmeasure~.maxhelp", "irnonlin~.maxhelp", "irphase~.maxhelp", "irplapprox~.maxhelp", "irreference~.maxhelp", "irstats~.maxhelp", "irsweeps~.maxhelp", "irtransaural~.maxhelp", "irtrimnorm~.maxhelp", "iruser~.maxhelp", "irvalue~.maxhelp", "morphfilter~.maxhelp", "multiconvolve~.maxhelp", "spectrumdraw~.maxhelp" ]
+}

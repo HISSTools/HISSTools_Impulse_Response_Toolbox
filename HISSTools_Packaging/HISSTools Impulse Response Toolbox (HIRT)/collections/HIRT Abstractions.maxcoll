@@ -1,0 +1,5 @@
+{
+	"name" : "HIRT Abstractions",
+	"type" : "filelist",
+	"contents" : [ "hirt.convolutionreverb~bpatcher.maxsnip", "hirt.convolver~bpatcher.maxsnip", "hirt.irmaker~bpatcher.maxsnip", "hirt.irmaker~.maxpat", "hirt.convolver~.maxpat", "hirt.convolutionreverb~.maxpat", "hirt.convolutionreverb~.maxhelp", "hirt.convolver~.maxhelp", "hirt.irmaker~.maxhelp" ]
+}

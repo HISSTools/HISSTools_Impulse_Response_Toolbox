@@ -1,0 +1,244 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 7,
+			"minor" : 3,
+			"revision" : 5,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"rect" : [ 127.0, 45.0, 989.0, 689.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 2,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 1,
+		"toolbars_unpinned_last_save" : 7,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "<none>",
+		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 884.857117, 11.5, 81.0, 35.0 ],
+					"style" : "",
+					"text" : "in 5 mix control signal"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 798.857117, 645.0, 167.0, 22.0 ],
+					"style" : "",
+					"text" : "out 3 tap for [spectrumdraw~]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 671.142822, 17.0, 67.0, 22.0 ],
+					"style" : "",
+					"text" : "in 4 convR"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 457.428558, 17.0, 65.0, 22.0 ],
+					"style" : "",
+					"text" : "in 3 convL"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 457.428558, 645.0, 69.0, 22.0 ],
+					"style" : "",
+					"text" : "out 2 Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 30.0, 17.0, 70.0, 22.0 ],
+					"style" : "",
+					"text" : "in 1 dryLeft"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 243.714279, 17.0, 78.0, 22.0 ],
+					"style" : "",
+					"text" : "in 2 dryRight"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "\r\n//\t//\t//\tGLOBAL LIBRARY FUNCTIONS\r\n\r\nrequire(\"hirt_convolution_rt_library\");\r\nrequire(\"hirt_eq_library\");\r\n\r\n\r\n//\t//\t//\tLOCAL FUNCTIONS [hirt_convolver_rt_part3]\r\n\r\n// approx\r\n\r\ncosQ52(x) {\n\tc1 =  0.9999932946;\n\tc2 = -0.4999124376;\n\tc3 =  0.0414877472;\n\tc4 = -0.0012712095;\n\n\tx2 = x * x;\n\treturn (c1 + x2 * (c2 + x2 * (c3 + c4 * x2)));\n}\r\n\r\nctrlCosApprox(x)\n{\n\txc = x * 0.25;\n\txL = xc * twopi;\n\txR = wrap(((xc * 0.9975) - 0.25), 0, 1) * twopi;\n\tcL = cosQ52(xL) + 0.000007;\n\tcR = (cosQ52(twopi - xR) + 0.000007) * 1.000007;\n\treturn cL, cR;\n}\r\n\r\n// excellent accuracy to about +36 dB, after which you are on your own\ndbtoaApprox(db)\t\t\t\t\t\t\t\t\t// using 'expA()'\n{\n\tdbtoaA = expA(0.11512925464970 * db);\n\treturn dbtoaA + 0.000128;\t\t\t\t\t// + offset = 0 dB == 1 amplitude\n}\n\n// cheaper than above 'dbtoaApprox()', but far less accurate\ndbtoaApproxF(db)\t\t\t\t\t\t\t\t// \n{\n\treturn fastpow(10, (db * 0.05)) + 0.028652;\t// + offset = 0 dB == 1 amplitude\n}\n\r\n// mixing\r\n\r\n// better accuracy for 50% input, still exact @ 100% and very close @ other ranges\r\nwidthApproxStereoPan(a, b, x)\t\t\t\t\t\t\t\t// clip x 0..0.5\n{\n\tcL, cR\t= ctrlCosApprox(x);\n\treturn\t((a * cL) + (b * cR)), ((a * cR) + (b * cL));\n}\r\n\r\n\r\n//\t//\t//\tDECLARE\r\n\r\n// gain params\r\n\r\nParam\tpostconvgain(1, min=0, max=10);\t\t\t\t// amplitude\r\nParam\tpostconvtime(0.01, min=0);\t\t\t\t\t// in seconds\t(default 10 ms)\r\n\r\n// eq params (svf coefficients calculated externally at max schedular rate)\n\r\n// low shelf, defaults(Hz=125, dB=0, q=0.5)\nParam\tls_a1\t(0.982425,\tmin=-1,\t\tmax=1);\nParam\tls_a2\t(0.008748,\tmin=-1,\t\tmax=1);\nParam\tls_a3\t(0.000078,\tmin=-1,\t\tmax=1);\nParam\tls_m0\t(1,\t\t\tmin=1,\t\tmax=1);\t\t// always '1'\nParam\tls_m1\t(0,\t\t\tmin=-15,\tmax=50);\nParam\tls_m2\t(0,\t\t\tmin=-10,\tmax=10);\n\r\n// bell, defaults(Hz=1000, dB=0, q=0.707107)\nParam\tb1_a1\t(0.904152,\tmin=-1,\t\tmax=1);\nParam\tb1_a2\t(0.064519,\tmin=-1,\t\tmax=1);\nParam\tb1_a3\t(0.004604,\tmin=-1,\t\tmax=1);\nParam\tb1_m0\t(1,\t\t\tmin=1,\t\tmax=1);\t\t// always '1'\nParam\tb1_m1\t(0,\t\t\tmin=-50,\tmax=50);\nParam\tb1_m2\t(0,\t\t\tmin=0,\t\tmax=0);\t\t// always '0'\n\r\n// high shelf, defaults(Hz=8000, dB=0, q=0.5)\nParam\ths_a1\t(0.371425,\tmin=-1,\t\tmax=1);\nParam\ths_a2\t(0.238021,\tmin=-1,\t\tmax=1);\nParam\ths_a3\t(0.152532,\tmin=-1,\t\tmax=1);\nParam\ths_m0\t(1,\t\t\tmin=-10,\tmax=10);\nParam\ths_m1\t(0,\t\t\tmin=-105,\tmax=15);\nParam\ths_m2\t(0,\t\t\tmin=-10,\tmax=10);\n\r\nParam\teq(1, min=0, max=2);\t\t\t\t\t\t// 0=bypassed, 1=off (pre), 2=on (post)\n\r\n// saturation params (part of eq)\r\n\r\nParam\tsaturationtype(0, min=0, max=2);\t\t\t// 0=off, 1=tanh approx, 2=parabolic approx\r\nParam\tsaturationamount(0.222997, min=0.1, max=1);\t// param in max is exponential mapping 0.1..0.666666\r\n\r\n// shape params\r\n\r\nParam\twidth(0.25, min=0, max=1);\t\t\t// % 0..1\t\t(only 0..0.5 in use)\r\n\r\n// fixed params\r\n\r\nParam\tsmooth(25, min=1, max=100);\t\t\t// ms\t\t\t[not dynamic ?]\r\n\r\n\r\n//\t//\t//\tPARSE\t(param rate)\r\n\r\nsampssmooth\t\t= mstosamps(smooth);\t\t// samples\r\nsecssmooth\t\t= smooth * 0.01;\t\t\t// seconds\r\nmatchsmooth\t\t= secssmooth * 0.333333;\t// seconds short\r\n\r\n// eq\r\n\r\neqonoff\t\t= int(eq == 2);\t\t\t\t\t\t\t// if POST\r\n\r\n// saturation (part of eq)\r\n\r\nsattype\t\t= int(saturationtype);\t\t\t\t\t// 0=bypassed, 1=tanh approx, 2=parabolic approx\r\nsatactive\t= (sattype != 0);\t\t\t\t\t\t// 0=off, 1=on\r\nsatstyle\t= clip(sattype, 1, 2) - 1;\t\t\t\t// 0=tanh, 1=parabolic\r\nsattld\t\t= dbtoaApproxF(saturationamount * 2.99);// default 1.081608\nsatpbd\t\t= dbtoaApprox((saturationamount + 0.9) * 3.01);// default 1.475854\r\n\r\n\r\n//\t//\t//\tINPUTS\r\n\r\ndryLeft\t\t= in1 + 0;\r\ndryRight\t= in2 + 0;\r\n\r\nconvL\t\t= in3 + 0;\r\nconvR\t\t= in4 + 0;\r\n\r\ncpuMix\t\t= in5 + 0;\t\t\t// % 0..1\t(pass through both gen~ patchers)\r\n\r\nMainLeft\t= dryLeft\t+ 0;\r\nMainRight\t= dryRight\t+ 0;\r\n\r\n//WetTap\t= 0;\r\n\r\n\r\n//\t//\t//\tPROCESSING\r\n\r\nif (cpuMix > 0) {\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tPARSE\t(audio rate)\r\n\r\n// post late conv gain\r\n\r\ncg\t\t\t\t= expsmooth(postconvgain, postconvtime);\r\n\r\n// eq\r\n\r\neqsmooth,\teqn\t= genLine(eqonoff, sampssmooth);\r\n\r\n// pan width\t// n.b. 'width' is always on\r\n\r\nwidthCtrl\t\t= expsmooth(width, matchsmooth);\r\n\r\n\r\n//\t//\t//\tPROCESSING\r\n\r\n// post conv gain\r\n\r\nsL\t\t= convL * cg;\r\nsR\t\t= convR * cg;\r\n\r\n// eq, IF routing == POST\r\n\r\nif (eqsmooth > 0) {\t\t\t// eq on (if eq is off, smoothing and saturation are also off)\r\n\r\n\t// coefficients\r\n\r\n\t// high shelf, coefficients smoothing\r\n\ths_cH, hs_cB, hs_cL\t= multiLine3(hs_m0, hs_m1, hs_m2, sampssmooth);\t\t\t// all m's computed\r\n\ths_cB\t\t\t\t= hs_cB * eqsmooth;\t\t\t\t\t\t\t\t\t\t// smooth to 0dB gain for cpu bypass\r\n\ths_cL\t\t\t\t= hs_cL * eqsmooth;\n\r\n\t// bell, coefficients smoothing\n\tb1_cB\t\t\t\t= genLine(b1_m1, sampssmooth);\t\t\t\t\t\t\t// only m1 computed\r\n\tb1_cB\t\t\t\t= b1_cB * eqsmooth;\t\t\t\t\t\t\t\t\t\t// smooth to 0dB...\n\r\n\t// low shelf, coefficients smoothing\n\tls_cB, ls_cL\t\t= multiLine2(ls_m1, ls_m2, sampssmooth);\t\t\t\t// only m1 & m2 computed\r\n\tls_cB\t\t\t\t= ls_cB * eqsmooth;\t\t\t\t\t\t\t\t\t\t// smooth to 0dB...\r\n\tls_cL\t\t\t\t= ls_cL * eqsmooth;\n\r\n\t// cascade,\t\t(zdf svf sections based on andy simper),\tif individual band gain is 0dB, band is cpu-off\n\r\n\t// high shelf\r\n\tsL, sR\t= svfSectionStereo(sL, sR, hs_a1, hs_a2, hs_a3, hs_cH, hs_cB, hs_cL);\n\n\t// bell\n\tsL, sR\t= svfSectionStereo(sL, sR, b1_a1, b1_a2, b1_a3, b1_m0, b1_cB, b1_m2);\n\r\n\t// saturation\t(if selected, 'in' EQ)\n\tsatsmooth, sbn\t= toggleLine(satactive, sampssmooth);\t//  0 / 1 smoothed\r\n\tsatsmooth\t\t= satsmooth * eqsmooth;\r\n\tif (satsmooth > 0) {\t\t\t\t\t\t\t\t\t//  if not bypassed, compute ...\r\n\t\tsLdry\t\t= sL + 0;\r\n\t\tsRdry\t\t= sR + 0;\r\n\r\n\t\tsatselect, stn\t= toggleLine(satstyle, sampssmooth);\r\n\t\tif (satselect == 1) {\t\t\t\t\t\t\t\t// sat == 1, parabolic saturation\r\n\t\t\tpbdrive\t= expsmooth(satpbd, secssmooth);\n\t\t\tsL\t\t= parabol4x(sL, pbdrive, 1.122018);\n\t\t\tsR\t\t= parabol4x(sR, pbdrive, 1.122018);\r\n\t\t} else if ((satselect > 0) && (satselect < 1)) {\t// is ramping between tanh & parabolic...\r\n\t\t\ttldrive, pbdrive\t= expsmoothBank2(sattld, satpbd, secssmooth);\n\t\t\tsL\t\t= interp(satselect, tnhL4x(sL * tldrive), parabol4x(sL, pbdrive, 1.122018), mode=\"linear\");\r\n\t\t\tsR\t\t= interp(satselect, tnhL4x(sR * tldrive), parabol4x(sR, pbdrive, 1.122018), mode=\"linear\");\r\n\t\t} else {\t//\t(satselect == 0)\t\t\t\t\t// sat == 0, tanh approx\r\n\t\t\ttldrive\t= expsmooth(sattld, secssmooth);\n\t\t\tsL\t\t= tnhL4x(sL * tldrive);\n\t\t\tsR\t\t= tnhL4x(sR * tldrive);\n\t\t}\r\n\r\n\t\tsL\t\t\t= interp(satsmooth, sLdry, sL, mode=\"cosine\");\r\n\t\tsR\t\t\t= interp(satsmooth, sRdry, sR, mode=\"cosine\");\r\n\r\n\t\tsL\t\t= dcblock(sL);\r\n\t\tsR\t\t= dcblock(sR);\r\n\r\n\t}\t\t\t\t\t\t\t\t\t\t\t\t\t\t//  sat off (if bypassed, do not compute ...)\r\n\r\n\t// low shelf\n\tsL, sR\t= svfSectionStereo(sL, sR, ls_a1, ls_a2, ls_a3, ls_m0, ls_cB, ls_cL);\r\n\n}\t\t\t\t\t\t\t// eq off\r\n\r\n// pan width\r\n\r\nwidthL, widthR\t\t= widthApproxStereoPan(sL, sR, widthCtrl);\r\n\r\n// dry wet mix\r\n\r\n//WetTap\t\t\t= widthL + widthR;\r\nMainLeft, MainRight\t= xfadeQuartApproxStereo(dryLeft, dryRight, (widthL * 0.5), (widthR * 0.5), cpuMix);\r\n\r\n\r\n}\t\t\t\t\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tOUTPUTs\r\n\r\nout1\t= MainLeft;\r\nout2\t= MainRight;\r\n//out3\t= WetTap;\r\nout3\t= MainLeft + MainRight;\t// tap for [spectrumdraw~], post dry/wet mix for if master mix == 0% (like original)\r\n\r\n",
+					"fontface" : 0,
+					"fontname" : "Arial Bold",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 5,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 30.0, 54.0, 873.857117, 574.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 645.0, 61.0, 22.0 ],
+					"style" : "",
+					"text" : "out 1 Left"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-3", 4 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-13", 0 ],
+					"midpoints" : [ 894.357117, 636.0, 808.357117, 636.0 ],
+					"source" : [ "obj-3", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ],
+		"toolbarexclusions" : [ "lessonbrowser" ]
+	}
+
+}

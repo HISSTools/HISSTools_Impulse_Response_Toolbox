@@ -1,0 +1,122 @@
+{
+	"bufconvolve~" : 	{
+		"digest" : "Non-realtime convolution and deconvolution",
+		"description" : "bufconvolve~ performs convolution or deconvolution of two input buffers, placing the output in a third buffer. Because all processing is done using temporary memory it is safe for the output buffer to be the same as one of the input buffers."
+	}
+,
+	"bufresample~" : 	{
+		"digest" : "Resample the contents of a buffer~ to transpose or change sample rate",
+		"description" : "bufresample~ can perform resampling either for the purpose of transposition or in order to change the sample rate. A source buffer~ can be processed to arbitrary transposition (ratios) and sample rates (Hz). The results can be written to a new buffer~ or be applied in-place. Resampling is performed through a standard kaiser-windowed sinc-resampled filter which can be independently specified."
+	}
+,
+	"bufreverse~" : 	{
+		"digest" : "Reverse the contents of a buffer",
+		"description" : "The bufreverse~ object can be used to reverse the contents of a buffer and write the results to a new buffer."
+	}
+,
+	"hirt.convolutionreverb~" : 	{
+		"digest" : "The HIRT Convolution Reverb for Max",
+		"description" : "Including realtime EQ, Modulation and Virtual Positioning, as well as offline Frequency Dependent Damping and Shape Controls (IR trimming, reversal and direct sound handling control). Additionally, the Early and Late parts of the reverb may be taken from different Impulse Responses (by using Split Mode). This allows for a richer and more flexible control over the virtual space. IR selection from the HIRT set of IRs can be done using the menus, although IRs may also be dropped onto the waveform space. The abstraction is a good example of advanced use of the HIRT externals collection."
+	}
+,
+	"hirt.convolver~" : 	{
+		"digest" : "The HIRT Convolver for Max",
+		"description" : "The HIRT Convolver offers high-quality convolution using Impulse Responses. Drop an impulse (or a single channel of a true stereo impulse stored as two stereo files) to load it into the convolution engine. Offline control is offered over the decay time and size of the virtual image. The width o f the convolved image and levels can be controlled in realtime. The Convolver also features a realtime predelay time for using it as a reverb engine, and a realtime routable EQ with Saturation options for sonic shaping. The abstraction is a good example of advanced use of the HIRT externals collection."
+	}
+,
+	"hirt.irmaker~" : 	{
+		"digest" : "HIRT Impulse Response Maker - Impulse Response Measurement and Auditioning",
+		"description" : "The hirt.irmaker~ can be used to measure the impulse responses of real spaces, software, or hardware devices, for use in hirt.convolver~ and hirt.convolutionreverb~ and throughout the HIRT package ecosystem and beyond. Measurements can be made using either an exponential sweep (most suitable for real spaces and analog equipment), or an impulse (most suited to measuring digital systems). Once measured, the impulse responses can be saved to disk."
+	}
+,
+	"iralign~" : 	{
+		"digest" : "Simple time alignment of IRs",
+		"description" : "iralign~ performs simple time alignment of IRs by aligning samples"
+	}
+,
+	"iraverage~" : 	{
+		"digest" : "Average multiple IRs in the time or frequency domain",
+		"description" : "iraverage~ performs averaging on an aribtary number of IRs in either the time domain or the frequency domain."
+	}
+,
+	"irextract~" : 	{
+		"digest" : "Process recorded measurements from the irmeasure~ object",
+		"description" : "The irextract~ object corresponds to the post processing chain section of the irmeasure~ object. Recordings taken from irmeasure~ using the extract message can be later processed by irextract~ to retrieve the IRs. This allows tweaking of deconvolution parameters to suit the application. In order for this to work correctly you must supply irextract~ with exactly the same measurement parameters as the irmeasure~ object. The object processes buffers that represent one measured input channel. It is necessary to specify how many output channels were measured, so as to match the recording correctly."
+	}
+,
+	"irinvert~" : 	{
+		"digest" : "IR Inversion",
+		"description" : "irinvert~ performs inversion of an IR (or a multiple-in multiple-out system). There are various options for regularising or controlling the deconvolution process to produce useable results. \nBecause all processing is done using temporary memory it is safe for the output buffer(s) to be the same as the input buffer(s). \n"
+	}
+,
+	"irmeasure~" : 	{
+		"digest" : "Measure IRs of single or multichannel systems using a range of excitation signals",
+		"description" : "The irmeasure~ object can be used to measure IRs using the ESS (exponentially swept sine), MLS (maximum length sequences) or various coloured-noise signals (which whilst less accurate, may be preferable in occupied rooms where a rough estimate is acceptable). As well as handling multichannel situations, the object also deals with the processing and chopping of IRs (including the relative timing of non-linear components when using the ESS signal), allowing the user to retrieve the IRs directly without needing to carry out recording, deconvolution and chopping processes manually. In use, an excitation signal is sent to the measurement outputs of the object, (which are routed to the input of a system - e.g. a speaker in a room) whilst the object simultaneously records the output of the same system (captured for instance by a mic in a room) - thus it is necessary to create a loop through the system from output to input."
+	}
+,
+	"irnonlin~" : 	{
+		"digest" : "Transform IRs for harmonics of system into those required by a Hammerstein model",
+		"description" : "The ESS technique in use in the irmeasure~ object can separate the nonlinear components of a system into IRs for each harmonic. Whilst this may be fine for analysis purposes, it is not easy to apply these measurements directly to a model of the system. The Hammerstein model is a more straightforward model that requires a different but related set of IRs. The irnonlin~ object translates from harmonic IRs to the IRs required by the Hammerstein model."
+	}
+,
+	"irphase~" : 	{
+		"digest" : "Change the phase of an IR",
+		"description" : "irphase~ takes any arbitrary IR as an input and outputs an IR with the same amplitude response, but with a specified phase. Because all processing is done using temporary memory it is safe for the output buffer to be the same as the input buffer."
+	}
+,
+	"irplapprox~" : 	{
+		"digest" : "Approximate the frequency response of an IR with a set of freq/dB pairs",
+		"description" : "irplapprox~ approximates an IR with a set of freq/dB pairs appropriate for use with iruser~ or as deconvolution filter specifications (potentially with additional post-processing for auto-regularisation schemes and similar). The technique employed is piecewise linear approximation (PLA) in the log-log domain (log frequency / dB)."
+	}
+,
+	"irreference~" : 	{
+		"digest" : "Estimate system IRs by relative comparison of two recorded inputs",
+		"description" : "The irreference~ object can be used either to estimate IRs using an arbitrary excitation signal (such as music), or to estimate the relative IR between two systems."
+	}
+,
+	"irstats~" : 	{
+		"digest" : "Calculate room acoustic parameters and measurements from an IR",
+		"description" : "Given an input IR the irstats~ object will calculate estimates for room acoustic parameters such as reverb time, clarity and mixing time (the transition point between early and late reflections), as well as other parameters such as estimated overall gain, sample rate and buffer length. The statistics may be requested in any order, and internally the object tracks dependent and repeat calculations to avoiding unnecessary recalculations."
+	}
+,
+	"irsweeps~" : 	{
+		"digest" : "Generate measurement signals to a buffer",
+		"description" : "The irsweeps~ object allows the generation of the same measurement signals available in the irmeasure~ object but to a buffer, for use from another audio application or hardware device. Subsequent deconvolution can be performed using the bufconvolve~ object."
+	}
+,
+	"irtransaural~" : 	{
+		"digest" : "Generate filters for the playback of binaural material over speakers",
+		"description" : "For playback of binaural material over speakers it is necessary to cancel acoustic cross-talk. The irtransaural~ object allows one to generate cross-talk cancellation filters from two IRs (one for the same-side path and one for the cross-path). This can be done using either the lattice form (which generates same-side and cross-side filters, requiring four convolutions), or the shuffler configuration (which produces mid and side filters, requiring only two convolutions)."
+	}
+,
+	"irtrimnorm~" : 	{
+		"digest" : "Trim (by RMS level), crop, or pad multiple IRs, with or without group normalisation",
+		"description" : "The irtrimnorm~ utility allows multiple IRs to be trimmed by RMS level, cropped at specific points, or padded with zeros at the start or end of the buffer~."
+	}
+,
+	"iruser~" : 	{
+		"digest" : "Create an IR with a specified frequency response and a given output phase",
+		"description" : "iruser~ allows the user to create IRs by numerically specifiying a given amplitude response, and specifying a given output phase."
+	}
+,
+	"irvalue~" : 	{
+		"digest" : "Return dB amplitude of IR from frequency input",
+		"description" : "irvalue~ can be used to pinpoint the amplitude value (in dB) at a given input frequency (in Hz) of a file in a referenced buffer~. The result can be optionally smoothed in octave values."
+	}
+,
+	"morphfilter~" : 	{
+		"digest" : "Buffer-based filtering with morphing gain",
+		"description" : "Build and cascade shelf and peak/notch filters and apply them to the contents of a buffer, with morphing gain over the duration of the buffer in realtime playback."
+	}
+,
+	"multiconvolve~" : 	{
+		"digest" : "Multichannel realtime zero- or low- latency convolution",
+		"description" : "multiconvolve~ is the all-in-one realtime convolution solution of the HIRT"
+	}
+,
+	"spectrumdraw~" : 	{
+		"digest" : "Display spectra from realtime inputs or buffers",
+		"description" : "spectrumdraw~ supports up to four simultaneous display curves. Any realtime input may be mapped to any of the four curves."
+	}
+
+}

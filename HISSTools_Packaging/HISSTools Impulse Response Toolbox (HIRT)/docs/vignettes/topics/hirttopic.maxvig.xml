@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="_c74_vig.xsl" type="text/xsl"?>
+<vignette name="HISSTools Impulse Response Toolbox" package="HISSTools Impulse Response Toolbox (HIRT)">
+	<!-- <openfile name="HIRT Overview" patch="HISSTools.Impulse.Response.Toolbox.maxpat"/> -->
+      <h1>HISSTools Overview</h1>
+    <p>
+<br />
+<b>Overview</b> <br />
+<br />
+<b>HIRT</b> (HISSTools Impulse Response Toolbox) is a set of tools for working with convolution and IRs (Impulse Responses) in Max. This set of objects addresses tasks such as measuring IRs, spectral display from realtime input/buffers, and non-realtime convolution, deconvolution and inversion, as well as realtime zero or low latency convolution. The objects are open source and BSD licensed: <br />
+<br />
+<a href="https://github.com/HISSTools/HISSTools_Impulse_Response_Toolbox">https://github.com/HISSTools/HISSTools_Impulse_Response_Toolbox</a>
+<br />
+<br />
+These tools enable the design of solutions to a number of specific issues, such as Loudspeaker and Room Correction, Close Acoustic Capture Correction (Microphone Correction), and Creative Applications of Convolution. The toolbox can be downloaded from the <b>Max Package Manager</b>. <br />
+<br />
+<b>HIRT</b> is by Alex Harker &amp; Pierre Alexandre Tremblay, <b>CeReNeM</b> at the <b>University of Huddersfield</b>, UK. <br />
+<a href="http://www.thehiss.org">http://www.thehiss.org</a>
+<br />
+<br />
+<b>Concept</b> <br />
+<br />
+The first goal of the <b>HIRT</b> project is to allow for loudspeaker / room corrections to be generated and applied rapidly and efficiently for use in a concert environment. By extension, such corrections can also be employed in a studio setting. <br />
+<br />
+The second motivation for the <b>HIRT</b> is to improve the frequency balance of close microphone or pick-up capture. The idea is to take a close capture of an instrument that is relatively free from issues of spill and feedback, and improve the frequency balance prior to electronic processing, thus achieving better tonal balance. <br />
+<br />
+However, it was felt that creating these specific solutions would be both inflexible for the given tasks, and also limited in terms of re-application. Therefore a highly modular design has been implemented, suited to a large number of convolution and impulse response related problems. The <b>HIRT</b> is thus suitable for use in relation to several general problems, including multichannel IR measurement, multichannel convolution, FIR Design, crosstalk cancellation and convolution reverb. <br />
+<br />
+<b>The underlying technical approaches include</b>: <br />
+<br />
+FFT-based Processing <br />
+Fast Deconvolution with Regularisation <br />
+IR Measurement <br />
+Frequency Smoothing <br />
+Phase Alteration <br />
+<br />
+<b>The Max Package includes</b>: <br />
+<br />
+21 externals with full help file and reference documentation <br />
+Various examples of use <br />
+3 <m>hirt.*</m> abstractions for Reverb, Convolution and Impulse Response Authoring tasks <br />
+<br />
+For technical details see the <b>References</b> linked to from the <b>Extras</b> overview file <br />
+<br />
+    </p>
+    <seealsolist>
+        <seealso name="hirttutorials" type="tutorial" module="hirt" />
+		<seealso name="bufconvolve~" module="hirt"/>
+		<seealso name="bufresample~" module="hirt"/>
+		<seealso name="bufreverse~" module="hirt"/>
+		<seealso name="iralign~" module="hirt"/>
+		<seealso name="iraverage~" module="hirt"/>
+		<seealso name="irextract~" module="hirt"/>
+		<seealso name="irinvert~" module="hirt"/>
+		<seealso name="irmeasure~" module="hirt"/>
+		<seealso name="irnonlin~" module="hirt"/>
+		<seealso name="irphase~" module="hirt"/>
+		<seealso name="irplapprox~" module="hirt"/>
+		<seealso name="irreference~" module="hirt"/>
+		<seealso name="irstats~" module="hirt"/>
+		<seealso name="irsweeps~" module="hirt"/>
+		<seealso name="irtransaural~" module="hirt"/>
+		<seealso name="irtrimnorm~" module="hirt"/>
+		<seealso name="iruser~" module="hirt"/>
+		<seealso name="irvalue~" module="hirt"/>
+        <seealso name="morphfilter~" module="hirt"/>
+        <seealso name="multiconvolve~" module="hirt"/>
+		<seealso name="spectrumdraw~" module="hirt"/>
+		<seealso name="hirt.convolutionreverb~" module="hirt"/>
+		<seealso name="hirt.convolver~" module="hirt"/>
+		<seealso name="hirt.irmaker~" module="hirt"/>
+        <seealso name="impulseresponses" type="vignette" module="hirt" />
+    </seealsolist>
+</vignette>
+

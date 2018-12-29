@@ -1,0 +1,5 @@
+{
+	"name" : "HIRT Externals OSX",
+	"type" : "filelist",
+	"contents" : [ "bufconvolve~.mxo", "bufresample~.mxo", "bufreverse~.mxo", "iralign~.mxo", "iraverage~.mxo", "irextract~.mxo", "irinvert~.mxo", "irmeasure~.mxo", "irnonlin~.mxo", "irphase~.mxo", "irplapprox~.mxo", "irreference~.mxo", "irstats~.mxo", "irsweeps~.mxo", "irtransaural~.mxo", "irtrimnorm~.mxo", "iruser~.mxo", "irvalue~.mxo", "morphfilter~.mxo", "multiconvolve~.mxo", "spectrumdraw~.mxo" ]
+}

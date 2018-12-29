@@ -1,0 +1,319 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 7,
+			"minor" : 3,
+			"revision" : 5,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"rect" : [ 38.0, 79.0, 1186.0, 687.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 2,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 1,
+		"toolbars_unpinned_last_save" : 7,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "<none>",
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1028.0, 645.0, 133.0, 22.0 ],
+					"style" : "",
+					"text" : "out 7 mix control signal"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 30.0, 17.0, 53.0, 22.0 ],
+					"style" : "",
+					"text" : "in 1 Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1028.0, 17.0, 61.0, 22.0 ],
+					"style" : "",
+					"text" : "in 2 Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 861.666687, 645.0, 113.0, 22.0 ],
+					"style" : "",
+					"text" : "out 6 to Early Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 695.333313, 645.0, 105.0, 22.0 ],
+					"style" : "",
+					"text" : "out 5 to Early Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 529.0, 645.0, 109.0, 22.0 ],
+					"style" : "",
+					"text" : "out 4 to Late Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 362.666656, 645.0, 101.0, 22.0 ],
+					"style" : "",
+					"text" : "out 3 to Late Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 196.333328, 645.0, 159.0, 22.0 ],
+					"style" : "",
+					"text" : "out 2 Delay Time LFO Right"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 645.0, 151.0, 22.0 ],
+					"style" : "",
+					"text" : "out 1 Delay Time LFO Left"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "\r\n//\t//\t//\tGLOBAL LIBRARY FUNCTIONS\n\r\nrequire(\"hirt_convolution_rt_library\");\r\nrequire(\"hirt_eq_library\");\r\n\r\n\r\n//\t//\t//\tLOCAL FUNCTIONS [hirt_convrvrb_rt_part1]\r\n\n// mixing\n\npanQuartApproxMono(x, p)\t\t\t\t\t\t\t\t\t// p is control, must be clipped 0..1\n{\t// precision == 2 for pan (== 3 for xfades etc)\n\tpL, pR\t= quartOneParApprox(p);\t\t\t\t\t\t\t// cos/sin(/quart)\n\treturn\t(x * pL), (x * pR);\t\t\t\t\t\t\t\t// out pan L, out pan R\n}\n\npanQuartApproxDual(xL, xR, pL, pR)\t\t\t\t\t\t\t// p's are controls, must be clipped 0..1\n{\n\tyLL, yLR\t= panQuartApproxMono(xL, pL);\t\t\t\t// pan L\n\tyRL, yRR\t= panQuartApproxMono(xR, pR);\t\t\t\t// pan R\n\treturn\t\t(yLL + yRL), (yLR + yRR);\t\t\t\t\t// out sum L, out sum R\n}\n\n// utilities\n\n// pre-delay calc\ncalcDelays(delay, time)\t\t\t\t\t// delay & time in samples\n{\n\tHistory direction(-1), ramp(0), del1(0), del2(0);\t\n\n\ttest1\t= ((ramp == 0) && (del1 != delay));\n\ttest2\t= ((ramp == 1) && (del2 != delay));\n\t\n\tdel2\t= test1 ? delay : del2;\n\tdel1\t= test2 ? delay : del1;\n\t\n\tsampletime\t= 1 / time;\n\tdirection\t= (test1 || test2) ? -direction : direction;\n\tramp\t\t= clip(ramp + (direction * sampletime), 0, 1);\n\t\n\treturn\tramp,\tdel1,\tdel2;\n}\n\r\n\r\n//\t//\t//\tDECLARE\r\n\r\n// Pre Delay Delays\t(we need single-tap delay declarations because of output mixing)\r\n\r\nDelay\t leftA(38400,\t1,\tfeedback=0);\t\t// support up to 200ms @ up to 192kHz samplerate ...\r\nDelay\trightA(38400,\t1,\tfeedback=0);\r\nDelay\t leftB(38400,\t1,\tfeedback=0);\t\t// ...\r\nDelay\trightB(38400,\t1,\tfeedback=0);\r\n\r\n// Modulation Delays\t(we need single-tap delay declarations because of output mixing)\r\n\r\nDelay\t lateDelL(11520,\t1,\tfeedback=0);\t// support up to 60ms @ up to 192kHz samplerate ...\r\nDelay\t lateDelR(11520,\t1,\tfeedback=0);\r\nDelay\tearlyDelL(11520,\t1,\tfeedback=0);\t// ...\r\nDelay\tearlyDelR(11520,\t1,\tfeedback=0);\r\n\r\n// Zero Phasor\r\n\r\nHistory\trp(0),\tzp(0);\r\n\r\n// Smooth Global\r\n\r\nParam\tsmooth(25, min=1, max=100);\t\t\t\t\t// ms [not dynamic ?]\r\n\r\n// EQ Params (svf coefficients calculated externally at max schedular rate)\n\r\n// low shelf, defaults(Hz=125, dB=0, q=0.5)\nParam\tls_a1\t(0.982425,\tmin=-1,\t\tmax=1);\nParam\tls_a2\t(0.008748,\tmin=-1,\t\tmax=1);\nParam\tls_a3\t(0.000078,\tmin=-1,\t\tmax=1);\nParam\tls_m0\t(1,\t\t\tmin=1,\t\tmax=1);\t\t// always '1'\nParam\tls_m1\t(0,\t\t\tmin=-15,\tmax=50);\nParam\tls_m2\t(0,\t\t\tmin=-10,\tmax=10);\n\r\n// bell, defaults(Hz=1000, dB=0, q=0.707107)\nParam\tb1_a1\t(0.904152,\tmin=-1,\t\tmax=1);\nParam\tb1_a2\t(0.064519,\tmin=-1,\t\tmax=1);\nParam\tb1_a3\t(0.004604,\tmin=-1,\t\tmax=1);\nParam\tb1_m0\t(1,\t\t\tmin=1,\t\tmax=1);\t\t// always '1'\nParam\tb1_m1\t(0,\t\t\tmin=-50,\tmax=50);\nParam\tb1_m2\t(0,\t\t\tmin=0,\t\tmax=0);\t\t// always '0'\n\r\n// high shelf, defaults(Hz=8000, dB=0, q=0.5)\nParam\ths_a1\t(0.371425,\tmin=-1,\t\tmax=1);\nParam\ths_a2\t(0.238021,\tmin=-1,\t\tmax=1);\nParam\ths_a3\t(0.152532,\tmin=-1,\t\tmax=1);\nParam\ths_m0\t(1,\t\t\tmin=-10,\tmax=10);\nParam\ths_m1\t(0,\t\t\tmin=-105,\tmax=15);\nParam\ths_m2\t(0,\t\t\tmin=-10,\tmax=10);\n\r\nParam\teq(1, min=0, max=2);\t\t\t\t\t\t// 0=bypassed, 1=on (pre), 2=off (post)\n\r\n// Pre Delay Params\r\n\r\nParam\tpredelay(0, min=0, max=200);\t\t\t\t// ms\r\nParam\tramptime(75, min=0, max=300);\t\t\t\t// ms [not dynamic ?]\r\n\r\n// Pan Input Pan Params\r\n\r\nParam\tpanlateleft(0.5, min=0, max=1);\r\nParam\tpanlateright(0.5, min=0, max=1);\r\n\r\nParam\tpanearlyleft(0.5, min=0, max=1);\r\nParam\tpanearlyright(0.5, min=0, max=1);\r\n\r\n// Modulation Params\r\n\r\nHistory\twidthRamp(1);\t\t\t\t\t\t\t\t// for lockout, because 'widthsmooth' is twice the length of 'mqmsline'\r\n\r\nParam\tmodquad(0, min=0, max=1);\t\t\t\t\t// % 0..1 ('mix', default actually 17.5% (0.175), maximum actually 35% (0.35))\r\nParam\tmodstereo(0, min=0, max=1);\t\t\t\t\t// \"Mod II\" (part5) notification for cpu management only\r\n\r\nParam\tratephase(1, min=0.000001, max=96000);\t\t// hz\r\nParam\tdepth(2.682001, min=0, max=20);\t\t\t\t// product of 'rate' & 'amount' (maximum effect is +40 ms)\r\nParam\twiden(0, min=0, max=1);\t\t\t\t\t\t// flag 0/1 ( 0 = (*+1), 1 = (*-1 & offset) )\r\n\r\nParam\tdriftspeed(0.08, min=0.000001, max=2);\t\t// hz [not dynamic ?]\r\nParam\tdrift(1, min=0, max=5);\t\t\t\t\t\t// ms (maximum effect is actually +10 ms) [not dynamic ?]\r\nParam\toffset(1.5, min=0, max=10);\t\t\t\t\t// ms (maximum +10 ms) [not dynamic ?]\r\n\r\n// CPU Params\r\n\r\nParam\tdrywetmix(0.5, min=0, max=1);\t\t\t\t// % 0..1\t(setup here then pass signal through all gen~ patchers)\r\n\r\n\r\n//\t//\t//\tPARSE\t(param rate)\r\n\r\n// smooth\r\n\r\nsecssmooth\t= smooth * 0.001;\t\t\t\t\t\t// seconds\r\nsampssmooth\t= mstosamps(smooth);\t\t\t\t\t// samples\r\nmatchsmooth\t= secssmooth * 0.5;\t\t\t\t\t\t// quasi match 'line'\r\n\r\n// eq\r\n\r\neqonoff\t\t= int(eq == 1);\t\t\t\t\t\t\t// if PRE\r\n\r\n// pre delay\r\n\nramp\t\t= mstosamps(ramptime);\t\t\t\t\t// samps (ramp time and off delay)\r\npre\t\t\t= mstosamps(predelay);\t\t\t\t\t// samps (and cpu manage)\r\npreflag\t\t= int(pre > 0);\t\t\t\t\t\t\t// manage cpu (1 is 1, 0 is delayed by ramptime)\r\n\r\n// modulation\r\n\r\nwide\t\t= int(widen);\r\nmqcompute\t= int(modquad > 0);\r\nmscompute\t= int(modstereo > 0);\r\nmqmscomp\t= (mqcompute || mscompute);\r\n\r\nnotprime\t= (461 * 991) / (616 * 181);\t\t\t// double(4.0974653799239) [harker for modulation periodicity], parsed as const by compiler\r\n\r\n\r\n//\t//\t//\tINPUTS\r\n\r\nsL\t\t\t= in1 + 0;\nsR\t\t\t= in2 + 0;\n\r\ndelayA, delayB\t= 0;\t\t\t\t\t\t\t\t// also pass to [hirt_convrvrb_rt_part5]\r\n\r\nLateL\t\t\t= 0;\r\nLateR\t\t\t= 0;\r\nEarlyL\t\t\t= 0;\r\nEarlyR\t\t\t= 0;\r\n\r\n\r\n//\t//\t//\tCPU\t(final dry/wet mix for [hirt_convrvrb_rt_part5], but used through all gen~ patchers for cpu management)\r\n\r\ncpuMix\t\t\t= genLine(drywetmix, sampssmooth);\t\t// % 0..1\t(setup here then pass through all gen~ patchers)\r\nif (cpuMix > 0) {\t\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tPARSE\t(audio rate)\r\n\r\n// eq\r\n\r\neqsmooth,\teqn\t= genLine(eqonoff, sampssmooth);\r\n\r\n// pre delay\r\n\r\nprecompute, pcn\t= genLine(preflag, ramp);\t\t\t\t// 1 is 1, 0 is delayed by 'delayCalc()' ramptime\r\n\r\n// pan input pan\r\n\r\nplLeft, plRight, peLeft, peRight\t= expsmoothBank4(panlateleft, panlateright, panearlyleft, panearlyright, matchsmooth);\r\n\r\n// modulation\r\n\r\nledMix,\t\tdqn\t= genLine(modquad, sampssmooth);\r\nmqmsline,\tmmn\t= toggleLine(mqmscomp, sampssmooth);\r\n\r\n\r\n//\t//\t//\tEQ\t\t//\t//\t//\tIF routing == PRE\r\n\r\nhs_cH\t\t\t\t= 1;\r\nhs_cB, b1_cB, ls_cB\t= 0;\r\nhs_cL, ls_cL\t\t= 0;\r\n\r\nif (eqsmooth > 0) {\t\t\t// eq coefficients on (if eq is off, smoothing is also off)\r\n\r\n\t// coefficients\r\n\r\n\t// high shelf, coefficients smoothing\r\n\ths_cH, hs_cB, hs_cL\t= multiLine3(hs_m0, hs_m1, hs_m2, sampssmooth);\t\t\t// all m's computed\r\n\ths_cB\t\t\t\t= hs_cB * eqsmooth;\t\t\t\t\t\t\t\t\t\t// smooth to 0dB gain for cpu bypass\r\n\ths_cL\t\t\t\t= hs_cL * eqsmooth;\n\r\n\t// bell, coefficients smoothing\n\tb1_cB\t\t\t\t= genLine(b1_m1, sampssmooth);\t\t\t\t\t\t\t// only m1 computed\r\n\tb1_cB\t\t\t\t= b1_cB * eqsmooth;\t\t\t\t\t\t\t\t\t\t// smooth to 0dB...\n\r\n\t// low shelf, coefficients smoothing\n\tls_cB, ls_cL\t\t= multiLine2(ls_m1, ls_m2, sampssmooth);\t\t\t\t// only m1 & m2 computed\r\n\tls_cB\t\t\t\t= ls_cB * eqsmooth;\t\t\t\t\t\t\t\t\t\t// smooth to 0dB...\r\n\tls_cL\t\t\t\t= ls_cL * eqsmooth;\n\r\n}\t\t\t\t\t\t\t// eq coefficients off\r\n\r\n\t// cascade,\t\t(zdf svf sections based on andy simper),\tif any individual band gain is 0dB, band is cpu-off\n\r\n\t// high shelf\r\n\tsL, sR\t= svfSectionStereo(sL, sR, hs_a1, hs_a2, hs_a3, hs_cH, hs_cB, hs_cL);\n\n\t// bell\n\tsL, sR\t= svfSectionStereo(sL, sR, b1_a1, b1_a2, b1_a3, b1_m0, b1_cB, b1_m2);\n\r\n\t// low shelf\n\tsL, sR\t= svfSectionStereo(sL, sR, ls_a1, ls_a2, ls_a3, ls_m0, ls_cB, ls_cL);\r\n\r\n\r\n//\t//\t//\tPRE DELAY\r\n\r\n leftA.write(sL);\t\t\t\t\t\t\t\t\t// always write to delay lines\r\nrightA.write(sR);\r\n leftB.write(sL);\r\nrightB.write(sR);\r\n\r\npdL \t= sL + 0;\r\npdR\t\t= sR + 0;\r\nif (precompute > 0) {\t\t\t\t\t\t\t\t// manage cpu (only compute if is delayed)\r\n\r\n\tmixa \t= sL + 0;\r\n\tmixb\t= sR + 0;\r\n\tmixc\t= sL + 0;\r\n\tmixd\t= sR + 0;\r\n\r\n\tdelayramp, delA, delB\t= calcDelays(pre, ramp);// delayramp = exact (only compute required)\r\n\r\n\tpDelA\t= delA - 1;\r\n\tpDelB\t= delB - 1;\r\n\r\n\tif\t\t\t\t((delayramp > 0) && (delayramp < 1)) {\t\t// ...is ramping\r\n\t\tif (pDelA > 0) {\r\n\t\t\tmixa\t=  leftA.read(pDelA, interp=\"spline\");\r\n\t\t\tmixb\t= rightA.read(pDelA, interp=\"spline\");\r\n\t\t}\r\n\r\n\t\tif (pDelB > 0) {\r\n\t\t\tmixc\t=  leftB.read(pDelB, interp=\"spline\");\r\n\t\t\tmixd\t= rightB.read(pDelB, interp=\"spline\");\r\n\t\t}\r\n\r\n\t\tpdL, pdR\t= xfadeQuartApproxStereo(mixa, mixb, mixc, mixd, delayramp);\r\n\r\n\t} else if\t\t(delayramp == 1) {\r\n\t\tif (pDelB > 0) {\r\n\t\t\tmixc\t=  leftB.read(pDelB, interp=\"spline\");\r\n\t\t\tmixd\t= rightB.read(pDelB, interp=\"spline\");\r\n\t\t}\r\n\r\n\t\tpdL\t\t\t= mixc;\r\n\t\tpdR\t\t\t= mixd;\r\n\r\n\t} else {\t//\t(delayramp == 0)\r\n\t\tif (pDelA > 0) {\r\n\t\t\tmixa\t=  leftA.read(pDelA, interp=\"spline\");\r\n\t\t\tmixb\t= rightA.read(pDelA, interp=\"spline\");\r\n\t\t}\r\n\r\n\t\tpdL\t\t\t= mixa;\r\n\t\tpdR\t\t\t= mixb;\r\n\r\n\t}\r\n\r\n\tpdL\t\t= interp(precompute, sL + 0, pdL, mode=\"linear\");\r\n\tpdR\t\t= interp(precompute, sR + 0, pdR, mode=\"linear\");\r\n\r\n}\t\t\t\t\t\t\t\t\t\t\t\t\t// (precompute == 0) manage cpu (only compute if is delayed)\r\n\r\n\r\n//\t//\t//\tPAN INPUT PAN (Stereo Panning for late & early splits, always active)\r\n\r\npanLL, panLR\t= panQuartApproxDual(pdL, pdR, plLeft, plRight);\r\npanEL, panER\t= panQuartApproxDual(pdL, pdR, peLeft, peRight);\r\n\r\n\r\n//\t//\t//\tMODULATION (Quad)\r\n\r\ninLateL\t\t= panLL + 0;\r\ninLateR\t\t= panLR + 0;\r\ninEarlyL\t= panEL + 0;\r\ninEarlyR\t= panER + 0;\r\n\r\n lateDelL.write(inLateL);\t\t\t\t\t\t\t\t\t\t\t\t// always write to delay lines\r\n lateDelR.write(inLateR);\r\nearlyDelL.write(inEarlyL);\r\nearlyDelR.write(inEarlyR);\r\n\r\n// only compute delay time modulators if either part1 (\"Mod I\") or part5 (\"Mod II\") modulation active\r\nif ((mqmsline > 0) || (!widthRamp)) {\t\t\t\t\t\t\t\t\t// 'toggleLine()' out2 returns 0 during ramp\r\n\r\n\t// zero reset phasor\t(with random)\r\n\r\n\tcondphase\t\t= (change(ratephase) != 0) + (zp <= 0) + (zp >= 1);\r\n\tnoisephase\t\t= ((((noise() + 1) * 0.03) + 0.96) * ratephase) / samplerate;\r\n\tzerophase\t\t= latch(noisephase, condphase) + rp;\r\n\trunningphase\t= wrap(zerophase, 0, 1);\r\n\trp\t\t\t\t= runningphase;\r\n\tzp\t\t\t\t= zerophase;\r\n\r\n\t// make modulation params\r\n\r\n\tdepthsmooth\t\t= expsmooth(depth, secssmooth);\t\t\t\t\t\t// log ramp\r\n\twidthsmooth, ws\t= toggleLine(wide, (sampssmooth * 2));\t\t\t\t// exact ramp (& double ramp time)\r\n\twidthRamp\t\t= ws;\t\t\t\t\t\t\t\t\t\t\t\t// lockout this if-block whilst ramping\r\n\r\n\t// make lfos\r\n\r\n\tdriftlfo\t= ((cycle(driftspeed) + 1) * drift) + offset;\t\t\t// no need to smooth 'drift' etc params as not dynamic\r\n\tmodlfo\t\t= (cycle(runningphase, index=\"phase\") * cycle(rate(runningphase, notprime), index=\"phase\")) + 1;\r\n\r\n\t// mod delay times, return in samples\r\n\r\n\tif ((widthsmooth > 0) &&\t(widthsmooth < 1)) {\t//\tis ramping between mode 0 & 1\r\n\t\tlfoMul\t= interp(widthsmooth, depthsmooth, (-1 * depthsmooth), mode=\"cosine\");\r\n\t\tlfoAdd\t= interp(widthsmooth, driftlfo, (driftlfo + (depthsmooth * 2)), mode=\"linear\");\r\n\t\tdelayA\t= mstosamps((modlfo * lfoMul) + lfoAdd);\r\n\t} else if\t\t\t\t\t(widthsmooth == 1) {\t//\tmode 1, \"Widen\" toggle\r\n\t\tdelayA\t= mstosamps((modlfo * (-1 * depthsmooth)) + (driftlfo + (depthsmooth * 2)));\r\n\t} else {\t\t\t//\t\t(widthsmooth == 0)\t\t//\tmode 0, \"Normal\" toggle\r\n\t\tdelayA\t= mstosamps((modlfo * depthsmooth) + driftlfo);\t\t\t// max poss mod delay time is +60 ms ...\r\n\t}\r\n\tdelayB\t\t= mstosamps((modlfo * depthsmooth) + driftlfo);\t\t\t// ...\r\n\r\n\tdelayA\t\t= delayA * mqmsline;\r\n\tdelayB\t\t= delayB * mqmsline;\r\n}\r\n\r\n// just modquad computation\t\t(this is \"ModI\", either this is active OR \"ModII\" ('modstereo') from [part5], OR none)\r\n\r\nLateL\t\t\t\t= inLateL + 0;\r\nLateR\t\t\t\t= inLateR + 0;\r\nEarlyL\t\t\t\t= inEarlyL + 0;\r\nEarlyR\t\t\t\t= inEarlyR + 0;\r\nif (ledMix > 0) {\t\t\t\t\t\t\t\t\t\t\t\t\t\t//  & cpu manage\r\n\tdelLateL\t\t= lateDelL.read(delayA, interp=\"spline\");\r\n\tdelLateR\t\t= lateDelR.read(delayB, interp=\"spline\");\r\n\tdelEarlyL\t\t= earlyDelL.read(delayA, interp=\"spline\");\r\n\tdelEarlyR\t\t= earlyDelR.read(delayB, interp=\"spline\");\r\n\r\n\tLateL, LateR\t= xfadeQuartApproxStereo(inLateL, inLateR, delLateL, delLateR, ledMix);\r\n\tEarlyL, EarlyR\t= xfadeQuartApproxStereo(inEarlyL, inEarlyR, delEarlyL, delEarlyR, ledMix);\r\n\r\n\tLateL\t\t\t= dcblock(LateL);\r\n\tLateR\t\t\t= dcblock(LateR);\r\n\tEarlyL\t\t\t= dcblock(EarlyL);\r\n\tEarlyR\t\t\t= dcblock(EarlyR);\r\n}\r\n\r\n\r\n}\t\t\t\t\t\t\t//\t//\t//\tmaster bypass, do not compute if master mix == 0 % (or ui bypass == 1)\r\n\r\n\r\n//\t//\t//\tOUTPUTs\r\n\r\nout1\t= delayA;\t\t\t// pass to [hirt_convrvrb_rt_part5] (mod stereo)\r\nout2\t= delayB;\t\t\t// pass to [hirt_convrvrb_rt_part5] (mod stereo)\r\n\r\nout3\t= LateL;\t\t\t// to late processing Left [multiconvolve~ short]\r\nout4\t= LateR;\t\t\t// to late processing Right [multiconvolve~ short]\r\nout5\t= EarlyL;\t\t\t// to early convolution Left [multiconvolve~ zero]\r\nout6\t= EarlyR;\t\t\t// to early convolution Right [multiconvolve~ zero]\r\n\r\nout7\t= cpuMix;\t\t\t// pass through all gen~ patchers\r\n\r\n",
+					"fontface" : 0,
+					"fontname" : "Arial Bold",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 2,
+					"numoutlets" : 7,
+					"outlettype" : [ "", "", "", "", "", "", "" ],
+					"patching_rect" : [ 30.0, 54.0, 1017.0, 574.0 ],
+					"style" : ""
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-3", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-3", 5 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-3", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 6 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 0.6, 0.4, 0.2, 1.0 ],
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 1.0, 0.0, 1.0 ],
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-3", 2 ]
+				}
+
+			}
+ ],
+		"styles" : [ 			{
+				"name" : "AudioStatus_Menu",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"type" : "color",
+						"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
+						"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"angle" : 270.0,
+						"proportion" : 0.39,
+						"autogradient" : 0
+					}
+
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "max6box",
+				"default" : 				{
+					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "max6inlet",
+				"default" : 				{
+					"color" : [ 0.423529, 0.372549, 0.27451, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "max6message",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"type" : "gradient",
+						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
+						"color2" : [ 0.788235, 0.788235, 0.788235, 1.0 ],
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+						"angle" : 270.0,
+						"proportion" : 0.39,
+						"autogradient" : 0
+					}
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+,
+				"parentstyle" : "max6box",
+				"multi" : 0
+			}
+, 			{
+				"name" : "max6outlet",
+				"default" : 				{
+					"color" : [ 0.0, 0.454902, 0.498039, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+ ],
+		"toolbarexclusions" : [ "lessonbrowser" ]
+	}
+
+}

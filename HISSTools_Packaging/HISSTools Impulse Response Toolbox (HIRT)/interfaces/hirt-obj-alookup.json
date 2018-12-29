@@ -1,0 +1,1351 @@
+{
+	"hirt.convolutionreverb~" : 	{
+		"Damp Active" : 		{
+			"name" : "Damp Active",
+			"annotation" : "Toggles the IR Dampening on or off. Damp applies a 3 band dampening process to the IR over time. This happens offline."
+		}
+,
+		"Damp Decay High" : 		{
+			"name" : "Damp Decay High",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Damp Decay Low" : 		{
+			"name" : "Damp Decay Low",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Damp Freq High" : 		{
+			"name" : "Damp Freq High",
+			"annotation" : "Offline. Sets the center frequency of the High Frequency Dampening."
+		}
+,
+		"Damp Freq Low" : 		{
+			"name" : "Damp Freq Low",
+			"annotation" : "Offline. Sets the center frequency of the Low Frequency Dampening."
+		}
+,
+		"Damp Q Bell" : 		{
+			"name" : "Damp Q Bell",
+			"annotation" : "Offline. Adjusts the Bandwidth of the Peak Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Damp Reset" : 		{
+			"name" : "Reset",
+			"annotation" : "Reset Damp section to initial default state"
+		}
+,
+		"Damp Slope High" : 		{
+			"name" : "Damp Slope High",
+			"annotation" : "Offline. Adjusts the Slope of the High Frequency Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Damp Slope Low" : 		{
+			"name" : "Damp Slope Low",
+			"annotation" : "Offline. Adjusts the Slope of the Low Frequency Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Damping Frequency Display" : 		{
+			"name" : "Damping Frequency Display",
+			"annotation" : "Dampening curve & frequency repines of IR over time, post offline processes: Dampening, Size, Decay, Shape. Click + drag a marble in display to adjust Freq and Decay. Alt/Opt + click + drag-vertical adjusts Q/Slope. Double-click a marble to reset Decay. Cmnd/Ctrl + double-click resets Decay/Freq. Alt/Opt + Cmnd/Ctrl + double-click resets Decay/Freq/Q/Slope."
+		}
+,
+		"Dial Amount" : 		{
+			"name" : "Amount",
+			"annotation" : "Adjusts the amount of modulation."
+		}
+,
+		"Dial Cascade Shape" : 		{
+			"name" : "Cascade",
+			"annotation" : "The amount of early reflections to be sent into the late reflections (or vice versa when the IR is reversed). A Setting of 0% is the original IR. Increasing the value can make the reverb sound bigger or better blend the early and late reflections in split mode."
+		}
+,
+		"Dial Damp Decay Hi" : 		{
+			"name" : "Damp Decay High",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Dial Damp Decay Lo" : 		{
+			"name" : "Damp Decay Low",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Dial Damp Decay Mid" : 		{
+			"name" : "Damp Decay Mid",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Dial Damp Freq Hi" : 		{
+			"name" : "Damp Freq High",
+			"annotation" : "Offline. Sets the center frequency of the High Frequency Dampening."
+		}
+,
+		"Dial Damp Freq Lo" : 		{
+			"name" : "Damp Freq Low",
+			"annotation" : "Offline. Sets the center frequency of the Low Frequency Dampening."
+		}
+,
+		"Dial Damp Freq Mid" : 		{
+			"name" : "Damp Freq Mid",
+			"annotation" : "Offline. Sets the center frequency of the Peak Frequency Dampening."
+		}
+,
+		"Dial Damp Q Mid" : 		{
+			"name" : "Damp Q Bell",
+			"annotation" : "Offline. Adjusts the Bandwidth of the Peak Dampening. Has a pronounced effect of the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Dial Damp S Hi" : 		{
+			"name" : "Damp Slope High",
+			"annotation" : "Offline. Adjusts the Slope of the High Frequency Dampening. Has a pronounced effect of the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Dial Damp S Lo" : 		{
+			"name" : "Damp Slope Low",
+			"annotation" : "Offline. Adjusts the Slope of the Low Frequency Dampening. Has a pronounced effect of the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Dial Decay" : 		{
+			"name" : "Decay",
+			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
+		}
+,
+		"Dial Depth" : 		{
+			"name" : "Depth",
+			"annotation" : "Simulates repositioning of the source closer or further away in the room. This is essentially a balance between the Early and Late reflections with some delay compensation."
+		}
+,
+		"Dial Dry/Wet" : 		{
+			"name" : "Dry/Wet",
+			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
+		}
+,
+		"Dial EQ Freq Hi" : 		{
+			"name" : "EQ Freq High",
+			"annotation" : "Sets the center frequency of the Highshelf filter."
+		}
+,
+		"Dial EQ Freq Lo" : 		{
+			"name" : "EQ Freq Low",
+			"annotation" : "Sets the center frequency of the Lowshelf filter."
+		}
+,
+		"Dial EQ Freq Mid" : 		{
+			"name" : "EQ Freq Bell",
+			"annotation" : "Sets the center frequency of the Bell filter."
+		}
+,
+		"Dial EQ Gain Hi" : 		{
+			"name" : "EQ Gain High",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
+		}
+,
+		"Dial EQ Gain Lo" : 		{
+			"name" : "EQ Gain Low",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
+		}
+,
+		"Dial EQ Gain Mid" : 		{
+			"name" : "EQ Gain Bell",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
+		}
+,
+		"Dial EQ Q Mid" : 		{
+			"name" : "EQ Q Bell",
+			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Dial EQ S Hi" : 		{
+			"name" : "EQ Slope High",
+			"annotation" : "Adjusts the Resonance of the Highshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Dial EQ S Lo" : 		{
+			"name" : "EQ Slope Low",
+			"annotation" : "Adjusts the Slope of the Lowshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Dial Early Amount" : 		{
+			"name" : "Early Amount",
+			"annotation" : "Offline. Sets the percentage of the early reflections to use. The default is 100% (no alteration). Smaller values trim the start of the IR accordingly."
+		}
+,
+		"Dial Fade In" : 		{
+			"name" : "Fade In",
+			"annotation" : "Offline. Applies a fade in of the specified length to the start of the IR."
+		}
+,
+		"Dial Fade Out" : 		{
+			"name" : "Fade Out",
+			"annotation" : "Offline. Applies a fade out of the specified length to the end of the IR. When shortening an IR using the length control, the fade out control can be used to adjust the abruptness of the effect."
+		}
+,
+		"Dial Gain" : 		{
+			"name" : "Gain",
+			"annotation" : "Adjust the output volume of the wet portion of the mix."
+		}
+,
+		"Dial Length Percent" : 		{
+			"name" : "Length (Percent)",
+			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
+		}
+,
+		"Dial Length Time" : 		{
+			"name" : "Length (Time)",
+			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
+		}
+,
+		"Dial Pan" : 		{
+			"name" : "Pan",
+			"annotation" : "Adjusts the simulated position of the source in panorama. With True Stereo IRs, the signal will retain some left and right as your ears would hear it. With mono or stereo IRs, panning will remove output on the opposite side."
+		}
+,
+		"Dial Predelay" : 		{
+			"name" : "Predelay",
+			"annotation" : "Predelay controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
+		}
+,
+		"Dial Rate" : 		{
+			"name" : "Rate",
+			"annotation" : "Adjusts the rate of the semi random modulation."
+		}
+,
+		"Dial Size" : 		{
+			"name" : "Size",
+			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
+		}
+,
+		"Dial Width" : 		{
+			"name" : "Width",
+			"annotation" : "Adjusts the stereo width of the Wet signal. With 0%, the wet signal is mono. With 100% the original image is preserved. Wet signals with wider images stand out in a mix more. Wet signals with narrower images blend into a mix more."
+		}
+,
+		"Direct Mode" : 		{
+			"name" : "Direct Mode",
+			"annotation" : "Offline. Sets the direct mode. 'Remove Direct' removes both onset and any detected direct sound from the start of an IR. 'Remove Onset' removes only the onset (leaving any detected direct sound). 'No Auto Trim' loads the IR exactly as in the loaded file, without any trimming."
+		}
+,
+		"Drop A" : 		{
+			"name" : "IR Drop & Display (A)",
+			"annotation" : "This area is a drop zone for samples to be used as the convolution Impulse. It is tied to the active edit toggle (A/B above). In Single mode it displays the active IR and in Split it displays both with the active as a brighter color. The display is updated with all offline processes."
+		}
+,
+		"Drop B" : 		{
+			"name" : "IR Drop & Display (B)",
+			"annotation" : "This area is a drop zone for samples to be used as the convolution Impulse. It is tied to the active edit toggle (A/B above). In Single mode it displays the active IR and in Split it displays both with the active as a brighter color. The display is updated with all offline processes."
+		}
+,
+		"EQ Freq High" : 		{
+			"name" : "EQ Freq High",
+			"annotation" : "Sets the center frequency of the Highshelf filter."
+		}
+,
+		"EQ Freq Low" : 		{
+			"name" : "EQ Freq Low",
+			"annotation" : "Sets the center frequency of the Lowshelf filter."
+		}
+,
+		"EQ Frequency Display" : 		{
+			"name" : "EQ Frequency Display",
+			"annotation" : "Displays the EQ curve and wet output of the Reverb. Click + drag a marble in the display to adjust Frequency and Gain. Alt/Option + click + drag-vertical will adjust Q/Slope. Double-click a marble to reset the Gain. Cmnd/Ctrl + double-click to reset the Gain and Frequency. Alt/Option + Cmnd/Ctrl + double-click to reset the Gain and Frequency and Q/Slope."
+		}
+,
+		"EQ Gain Bell" : 		{
+			"name" : "EQ Gain Bell",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
+		}
+,
+		"EQ Gain High" : 		{
+			"name" : "EQ Gain High",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
+		}
+,
+		"EQ Gain Low" : 		{
+			"name" : "EQ Gain Low",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
+		}
+,
+		"EQ Q Bell" : 		{
+			"name" : "EQ Q Bell",
+			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
+		}
+,
+		"EQ Reset" : 		{
+			"name" : "Reset",
+			"annotation" : "Reset EQ section to initial default state"
+		}
+,
+		"EQ Routing" : 		{
+			"name" : "EQ Active",
+			"annotation" : "Toggles the EQ Off or On. Off also CPU disables this section."
+		}
+,
+		"Engage Info View" : 		{
+			"name" : "Show/Hide Info View",
+			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the bottom of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Global Patcher Name" : 		{
+			"name" : "User Reverb Name",
+			"annotation" : "If this reverb instance is given a name as the first argument to the abstraction, it displays here. This name is also the name used to control this instance remotely (with messages to Max) and is the name passed to the 'Global Patcher Name' variable of this abstraction (for organising via a custom Pattr system)."
+		}
+,
+		"IR Add" : 		{
+			"name" : "IR Browse",
+			"annotation" : "Click here to browse for a new Impulse Response file. Slot A or B will be populated depending on current state. Adding an IR here is identical to drag & drop, or using the @file attribute."
+		}
+,
+		"IR Length Display A" : 		{
+			"name" : "IR Length",
+			"annotation" : "Displays the current length of the active slot IR, taking into account all 'Offline' ('Shape' & 'Damp') settings."
+		}
+,
+		"IR Length Display B" : 		{
+			"name" : "IR Length",
+			"annotation" : "Displays the current length of the active slot IR, taking into account all 'Offline' ('Shape' & 'Damp') settings."
+		}
+,		
+		"Info Name" : 		{
+			"name" : "Info Name",
+			"annotation" : "Name of element under mouse displays in the left pane."
+		}
+,
+		"Info View" : 		{
+			"name" : "Info View",
+			"annotation" : "Documentation of the current element displays here."
+		}
+,
+		"Length Mode" : 		{
+			"name" : "Length Mode",
+			"annotation" : "Toggles the Length control between percentage and realtime values."
+		}
+,
+		"Master Bypass" : 		{
+			"name" : "Master Bypass",
+			"annotation" : "Bypass entire effect, passing input signals to outputs. Engaging Bypass also CPU-mutes all reatime processing. Bypass is smooth so can be safely used in realtime."
+		}
+,
+		"Menu Folder" : 		{
+			"name" : "Folder Menu",
+			"annotation" : "The IR library is arranged into folders in the HIRT Package. The IR menu below shows items in the selected folder. If a sample is dropped onto the wave display, the folder where that sample came from is added to the bottom of this menu."
+		}
+,
+		"Menu IR" : 		{
+			"name" : "IR Menu",
+			"annotation" : "Select an IR from the list in the folder above."
+		}
+,
+		"Mod X-Y Control" : 		{
+			"name" : "Mod X-Y Control",
+			"annotation" : "Two Parameters on one control. Double-click the puck to return Rate & Amount to defaults. Cmnd/Ctrl-double-click to reset Rate & Amount & Width & Type to defaults."
+		}
+,
+		"Mode IR" : 		{
+			"name" : "IR Mode",
+			"annotation" : "Mode allows switching between using Single for quick auditioning between A / B Impulse Responses (IRs), and using one sample for the early reflections and another for the late reflections. In Split mode, A is used for the closer early part of the sound, while B is used for the long tail."
+		}
+,
+		"Modulation Active" : 		{
+			"name" : "Modulation Active",
+			"annotation" : "Toggles the Modulation on or off. Off also CPU disables this section. Modulation adds subtle modulation so that the reverberation is not too static."
+		}
+,
+		"Modulation Amount" : 		{
+			"name" : "Amount",
+			"annotation" : "Adjusts the amount of modulation."
+		}
+,
+		"Modulation Rate" : 		{
+			"name" : "Rate",
+			"annotation" : "Adjusts the rate of the semi random modulation."
+		}
+,
+		"Modulation Reset" : 		{
+			"name" : "Reset",
+			"annotation" : "Reset Modulation section to initial default state"
+		}
+,
+		"Name Amount" : 		{
+			"name" : "Amount Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Cascade Shape" : 		{
+			"name" : "Cascade Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Decay Hi" : 		{
+			"name" : "Decay 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Decay Lo" : 		{
+			"name" : "Decay 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Decay Mid" : 		{
+			"name" : "Decay 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Freq Hi" : 		{
+			"name" : "Freq 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Freq Lo" : 		{
+			"name" : "Freq 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Freq Mid" : 		{
+			"name" : "Freq 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp Q Mid" : 		{
+			"name" : "Q 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp S Hi" : 		{
+			"name" : "Slope 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Damp S Lo" : 		{
+			"name" : "Slope 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Decay" : 		{
+			"name" : "Decay Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Depth" : 		{
+			"name" : "Depth Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Dry/Wet" : 		{
+			"name" : "Dry/Wet Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Freq Hi" : 		{
+			"name" : "Freq 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Freq Lo" : 		{
+			"name" : "Freq 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Freq Mid" : 		{
+			"name" : "Freq 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Gain Hi" : 		{
+			"name" : "Gain 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Gain Lo" : 		{
+			"name" : "Gain 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Gain Mid" : 		{
+			"name" : "Gain 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Q Mid" : 		{
+			"name" : "Q 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ S Hi" : 		{
+			"name" : "Slope 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ S Lo" : 		{
+			"name" : "Slope 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Early Amount" : 		{
+			"name" : "Early Amount Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Fade In" : 		{
+			"name" : "Fade In Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Fade Out" : 		{
+			"name" : "Fade Out Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Gain" : 		{
+			"name" : "Gain Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Length Percent" : 		{
+			"name" : "Length (Percent) Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Length Time" : 		{
+			"name" : "Length (Time) Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Pan" : 		{
+			"name" : "Pan Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Predelay" : 		{
+			"name" : "Predelay Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Rate" : 		{
+			"name" : "Rate Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Size" : 		{
+			"name" : "Size Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Width" : 		{
+			"name" : "Width Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Offline Tabs" : 		{
+			"name" : "Offline Tabs",
+			"annotation" : "Switch view between Offline Shape and Damp controls."
+		}
+,
+		"Output DryWet" : 		{
+			"name" : "DryWet",
+			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
+		}
+,
+		"Output Predelay" : 		{
+			"name" : "Predelay",
+			"annotation" : "Predelay controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
+		}
+,
+		"Position Active" : 		{
+			"name" : "Position Active",
+			"annotation" : "Toggles the Position adjustment on or off. Off also CPU disables this section. Position allows simulation of repositioning the source in a space."
+		}
+,
+		"Position Depth" : 		{
+			"name" : "Depth",
+			"annotation" : "Simulates repositioning of the source closer or further away in the room. This is essentially a balance between the Early and Late reflections with some delay compensation."
+		}
+,
+		"Position Graphical Display" : 		{
+			"name" : "Position Graphical Display",
+			"annotation" : "An X-Y field for adjusting the simulated position of the source in distance and panorama. Double clicking the dot will also reset it to neutral position."
+		}
+,
+		"Position Reset" : 		{
+			"name" : "Reset",
+			"annotation" : "Reset Position section to initial default state"
+		}
+,
+		"Realtime Tabs" : 		{
+			"name" : "Realtime Tabs",
+			"annotation" : "Switch view between Realtime Position and Modulation controls."
+		}
+,
+		"Reverse" : 		{
+			"name" : "Reverse",
+			"annotation" : "Offline. Reverses the IR."
+		}
+,
+		"Saturation Type" : 		{
+			"name" : "Saturation Type",
+			"annotation" : "Choose Saturation algorithm. 'Off' = bypassed in terms of audio-chain and CPU usage (default). 'Type I' is a subtle classic tanh-like analog saturator. 'Type II' is an agressive waveshaper, best used for special effects rather than clean Reverb processing. Both Saturators are inside the EQ audio path and respond to changes in filter section Gains."
+		}
+,
+		"Select IR" : 		{
+			"name" : "IR Select",
+			"annotation" : "This switch toggles between samples. In Single mode, the A / B switch allows quick auditioning between two IRs. In Split mode, A is used for the Early Reflections while B is used for Late Reflections. The sample drop zone and IR lists are tied to the channel enabled for editing."
+		}
+,
+		"Shape Active" : 		{
+			"name" : "Shape Active",
+			"annotation" : "Toggles the IR Shaping on or off."
+		}
+,
+		"Shape Decay" : 		{
+			"name" : "Decay",
+			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
+		}
+,
+		"Shape Early" : 		{
+			"name" : "Early Amount",
+			"annotation" : "Offline. Sets the percentage of the early reflections to use. The default is 100% (no alteration). Smaller values trim the start of the IR accordingly."
+		}
+,
+		"Shape Fade In" : 		{
+			"name" : "Fade In",
+			"annotation" : "Offline. Applies a fade in of the specified length to the start of the IR."
+		}
+,
+		"Shape Fade Out" : 		{
+			"name" : "Fade Out",
+			"annotation" : "Offline. Applies a fade out of the specified length to the end of the IR. When shortening an IR using the length control, the fade out control can be used to adjust the abruptness of the effect."
+		}
+,
+		"Shape Length Percent" : 		{
+			"name" : "Length (Percent)",
+			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
+		}
+,
+		"Shape Length Time" : 		{
+			"name" : "Length (Time)",
+			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
+		}
+,
+		"Shape Reset" : 		{
+			"name" : "Reset",
+			"annotation" : "Reset Shape section to initial default state"
+		}
+,
+		"Shape Size" : 		{
+			"name" : "Size",
+			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
+		}
+,
+		"Show Folder" : 		{
+			"name" : "Show Folder",
+			"annotation" : "Show the current folder location in the Finder/Explorer."
+		}
+,
+		"Show IR" : 		{
+			"name" : "Show IR",
+			"annotation" : "Show the current IR file location in the Finder/Explorer."
+		}
+,
+		"Skin" : 		{
+			"name" : "Skin",
+			"annotation" : "Toggle between LIGHT and DARK skins."
+		}
+,
+		"Solo Cascade Shape" : 		{
+			"name" : "Cascade Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Type" : 		{
+			"name" : "Type",
+			"annotation" : "In 'Mode I' the modulation is applied to the Input before the reverberation and is more natural and subtle. In 'Mode II' the modulation is applied to the wet Output for a stronger and more algorithmic or chorus sound."
+		}
+,
+		"Value Amount" : 		{
+			"name" : "Amount",
+			"annotation" : "Adjusts the amount of modulation."
+		}
+,
+		"Value Cascade Shape" : 		{
+			"name" : "Cascade",
+			"annotation" : "The amount of early reflections to be sent into the late reflections (or vice versa when the IR is reversed). A Setting of 0% is the original IR. Increasing the value can make the reverb sound bigger or better blend the early and late reflections in split mode."
+		}
+,
+		"Value Damp Decay Hi" : 		{
+			"name" : "Damp Decay High",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Value Damp Decay Lo" : 		{
+			"name" : "Damp Decay Low",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Value Damp Decay Mid" : 		{
+			"name" : "Damp Decay Mid",
+			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
+		}
+,
+		"Value Damp Freq Hi" : 		{
+			"name" : "Damp Freq High",
+			"annotation" : "Offline. Sets the center frequency of the High Frequency Dampening."
+		}
+,
+		"Value Damp Freq Lo" : 		{
+			"name" : "Damp Freq Low",
+			"annotation" : "Offline. Sets the center frequency of the Low Frequency Dampening."
+		}
+,
+		"Value Damp Freq Mid" : 		{
+			"name" : "Damp Freq Mid",
+			"annotation" : "Offline. Sets the center frequency of the Peak Frequency Dampening."
+		}
+,
+		"Value Damp Q Mid" : 		{
+			"name" : "Damp Q Bell",
+			"annotation" : "Offline. Adjusts the Bandwidth of the Peak Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Value Damp S Hi" : 		{
+			"name" : "Damp Slope High",
+			"annotation" : "Offline. Adjusts the Slope of the High Frequency Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Value Damp S Lo" : 		{
+			"name" : "Damp Slope Low",
+			"annotation" : "Offline. Adjusts the Slope of the Low Frequency Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
+		}
+,
+		"Value Decay" : 		{
+			"name" : "Decay",
+			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
+		}
+,
+		"Value Depth" : 		{
+			"name" : "Depth",
+			"annotation" : "Simulates repositioning of the source closer or further away in the room. This is essentially a balance between the Early and Late reflections with some delay compensation."
+		}
+,
+		"Value Dry/Wet" : 		{
+			"name" : "Dry/Wet",
+			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
+		}
+,
+		"Value EQ Freq Hi" : 		{
+			"name" : "EQ Freq High",
+			"annotation" : "Sets the center frequency of the Highshelf filter."
+		}
+,
+		"Value EQ Freq Lo" : 		{
+			"name" : "EQ Freq Low",
+			"annotation" : "Sets the center frequency of the Lowshelf filter."
+		}
+,
+		"Value EQ Freq Mid" : 		{
+			"name" : "EQ Freq Bell",
+			"annotation" : "Sets the center frequency of the Bell filter."
+		}
+,
+		"Value EQ Gain Hi" : 		{
+			"name" : "EQ Gain High",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
+		}
+,
+		"Value EQ Gain Lo" : 		{
+			"name" : "EQ Gain Low",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
+		}
+,
+		"Value EQ Gain Mid" : 		{
+			"name" : "EQ Gain Bell",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
+		}
+,
+		"Value EQ Q Mid" : 		{
+			"name" : "EQ Q Bell",
+			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Value EQ S Hi" : 		{
+			"name" : "EQ Slope High",
+			"annotation" : "Adjusts the Resonance of the Highshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Value EQ S Lo" : 		{
+			"name" : "EQ Slope Low",
+			"annotation" : "Adjusts the Slope of the Lowshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Value Early Amount" : 		{
+			"name" : "Early Amount",
+			"annotation" : "Offline. Sets the percentage of the early reflections to use. The default is 100% (no alteration). Smaller values trim the start of the IR accordingly."
+		}
+,
+		"Value Fade In" : 		{
+			"name" : "Fade In",
+			"annotation" : "Offline. Applies a fade in of the specified length to the start of the IR."
+		}
+,
+		"Value Fade Out" : 		{
+			"name" : "Fade Out",
+			"annotation" : "Offline. Applies a fade out of the specified length to the end of the IR. When shortening an IR using the length control, the fade out control can be used to adjust the abruptness of the effect."
+		}
+,
+		"Value Gain" : 		{
+			"name" : "Gain",
+			"annotation" : "Adjust the output volume of the wet portion of the mix."
+		}
+,
+		"Value Length Percent" : 		{
+			"name" : "Length (Percent)",
+			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
+		}
+,
+		"Value Length Time" : 		{
+			"name" : "Length (Time)",
+			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
+		}
+,
+		"Value Pan" : 		{
+			"name" : "Pan",
+			"annotation" : "Adjusts the simulated position of the source in panorama. With True Stereo IRs, the signal will retain some left and right as your ears would hear it. With mono or stereo IRs, panning will remove output on the opposite side."
+		}
+,
+		"Value Predelay" : 		{
+			"name" : "Predelay",
+			"annotation" : "Predelay controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
+		}
+,
+		"Value Rate" : 		{
+			"name" : "Rate",
+			"annotation" : "Adjusts the rate of the semi random modulation."
+		}
+,
+		"Value Size" : 		{
+			"name" : "Size",
+			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
+		}
+,
+		"Value Width" : 		{
+			"name" : "Width",
+			"annotation" : "Adjusts the stereo width of the Wet signal. With 0%, the wet signal is mono. With 100% the original image is preserved. Wet signals with wider images stand out in a mix more. Wet signals with narrower images blend into a mix more."
+		}
+,
+		"Widen" : 		{
+			"name" : "Widen",
+			"annotation" : "In Normal mode the modulation is applied exactly the same to both sides of the stereo signal. In Wide mode, the Left and Right phases are inverted from each other to create a greater stereo separation."
+		}
+,
+		"Zoom" : 		{
+			"name" : "UI Zoom Factor",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+
+	}
+,
+	"hirt.convolver~" : 	{
+		"Dial Decay" : 		{
+			"name" : "Decay",
+			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
+		}
+,
+		"Dial Dry/Wet" : 		{
+			"name" : "Dry/Wet",
+			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
+		}
+,
+		"Dial EQ Freq Hi" : 		{
+			"name" : "EQ Freq High",
+			"annotation" : "Sets the center frequency of the Highshelf filter."
+		}
+,
+		"Dial EQ Freq Lo" : 		{
+			"name" : "EQ Freq Low",
+			"annotation" : "Sets the center frequency of the Lowshelf filter."
+		}
+,
+		"Dial EQ Freq Mid" : 		{
+			"name" : "EQ Freq Bell",
+			"annotation" : "Sets the center frequency of the Bell filter."
+		}
+,
+		"Dial EQ Gain Hi" : 		{
+			"name" : "EQ Gain High",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
+		}
+,
+		"Dial EQ Gain Lo" : 		{
+			"name" : "EQ Gain Low",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
+		}
+,
+		"Dial EQ Gain Mid" : 		{
+			"name" : "EQ Gain Bell",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
+		}
+,
+		"Dial EQ Q Mid" : 		{
+			"name" : "EQ Q Bell",
+			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Dial EQ S Hi" : 		{
+			"name" : "EQ Slope High",
+			"annotation" : "Adjusts the Resonance of the Highshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Dial EQ S Lo" : 		{
+			"name" : "EQ Slope Low",
+			"annotation" : "Adjusts the Slope of the Lowshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Dial Gain" : 		{
+			"name" : "Gain",
+			"annotation" : "Adjust the output volume of the wet portion of the mix."
+		}
+,
+		"Dial Predelay" : 		{
+			"name" : "Predelay",
+			"annotation" : "Useful if using the hirt.convolver~ as a reverb. Controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
+		}
+,
+		"Dial Size" : 		{
+			"name" : "Size",
+			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
+		}
+,
+		"Dial Width" : 		{
+			"name" : "Width",
+			"annotation" : "Adjusts the stereo width of the Wet signal. With 0%, the wet signal is mono. With 100% the original image is preserved. Wet signals with wider images stand out in a mix more. Wet signals with a mono image blend into a mix more."
+		}
+,
+		"Drop IR" : 		{
+			"name" : "IR Drop & Display",
+			"annotation" : "This area is a drop zone for samples to be used as the convolver Impulse. It displays the active IR. The display is updated with the Decay & Size dials offline processes."
+		}
+,
+		"EQ Freq High" : 		{
+			"name" : "EQ Freq High",
+			"annotation" : "Sets the center frequency of the Highshelf filter."
+		}
+,
+		"EQ Freq Low" : 		{
+			"name" : "EQ Freq Low",
+			"annotation" : "Sets the center frequency of the Lowshelf filter."
+		}
+,
+		"EQ Frequency Display" : 		{
+			"name" : "EQ Frequency Display",
+			"annotation" : "Displays the EQ curve and wet output of the Reverb. Click + drag a marble in the display to adjust Frequency and Gain. Alt/Option + click + drag-vertical will adjust Q/Slope. Double-click a marble to reset the Gain. Cmnd/Ctrl + double-click to reset the Gain and Frequency. Alt/Option + Cmnd/Ctrl + double-click to reset the Gain and Frequency and Q/Slope."
+		}
+,
+		"EQ Gain Bell" : 		{
+			"name" : "EQ Gain Bell",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
+		}
+,
+		"EQ Gain High" : 		{
+			"name" : "EQ Gain High",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
+		}
+,
+		"EQ Gain Low" : 		{
+			"name" : "EQ Gain Low",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
+		}
+,
+		"EQ Q Bell" : 		{
+			"name" : "EQ Q Bell",
+			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
+		}
+,
+		"EQ Reset" : 		{
+			"name" : "Flat",
+			"annotation" : "Reset EQ section to zero state (does not affect 'Routing' or 'Saturation')"
+		}
+,
+		"EQ Routing" : 		{
+			"name" : "EQ Routing",
+			"annotation" : "EQ Off/On - Choose routing of EQ in DSP chain - PRE - pre convolution signal - POST - post convolution signal. Note that changing routing will only make a difference if 'Saturation' is engaged or if modulating filter sweeps, as otherwise the convolver is a completely linear process. OFF - CPU disables this section."
+		}
+,
+		"Engage Info View" : 		{
+			"name" : "Show/Hide Info View",
+			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the bottom of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Global Patcher Name" : 		{
+			"name" : "User Reverb Name",
+			"annotation" : "If this convolver instance is given a name as the first argument to the abstraction, it displays here. This name is also the name used to control this instance remotely (with messages to Max) and is the name passed to the 'Global Patcher Name' variable of this abstraction (for organising via a custom Pattr system)."
+		}
+,
+		"Info Name" : 		{
+			"name" : "Info Name",
+			"annotation" : "Name of element under mouse displays in the left pane."
+		}
+,
+		"Info View" : 		{
+			"name" : "Info View",
+			"annotation" : "Documentation of the current element displays here."
+		}
+,
+		"IR Add" : 		{
+			"name" : "IR Browse",
+			"annotation" : "Click here to browse for a new Impulse Response file. Adding an IR here is identical to drag & drop, or using the @file attribute."
+		}
+,
+		"IR Decay" : 		{
+			"name" : "Decay",
+			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
+		}
+,
+		"IR Length Display" : 		{
+			"name" : "IR Length",
+			"annotation" : "Displays the current length of the current IR, taking into account the 'Decay' and 'Size' settings."
+		}
+,
+		"IR Size" : 		{
+			"name" : "Size",
+			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
+		}
+,
+		"Master Bypass" : 		{
+			"name" : "Master Bypass",
+			"annotation" : "Bypass entire effect, passing input signals to outputs. Engaging Bypass also CPU-mutes all reatime processing. Bypass is smooth so can be safely used in realtime."
+		}
+,
+		"Menu Folder" : 		{
+			"name" : "Folder Menu",
+			"annotation" : "The IR library is arranged into folders in the HIRT Package. The IR menu below shows items in the selected folder. If a sample is dropped onto the wave display, the folder where that sample came from is added to the bottom of this menu."
+		}
+,
+		"Menu IR" : 		{
+			"name" : "IR Menu",
+			"annotation" : "Select an IR from the list in the folder above."
+		}
+,
+		"Name Decay" : 		{
+			"name" : "Decay Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Dry/Wet" : 		{
+			"name" : "Dry/Wet Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Freq Hi" : 		{
+			"name" : "Freq 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Freq Lo" : 		{
+			"name" : "Freq 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Freq Mid" : 		{
+			"name" : "Freq 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Gain Hi" : 		{
+			"name" : "Gain 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Gain Lo" : 		{
+			"name" : "Gain 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Gain Mid" : 		{
+			"name" : "Gain 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ Q Mid" : 		{
+			"name" : "Q 2 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ S Hi" : 		{
+			"name" : "Slope 3 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name EQ S Lo" : 		{
+			"name" : "Slope 1 Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,		
+		"Name Gain" : 		{
+			"name" : "Gain Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Predelay" : 		{
+			"name" : "Predelay Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Size" : 		{
+			"name" : "Size Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Name Width" : 		{
+			"name" : "Width Reset",
+			"annotation" : "Click dial name to reset to default."
+		}
+,
+		"Output DryWet" : 		{
+			"name" : "DryWet",
+			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
+		}
+,
+		"Output Width" : 		{
+			"name" : "Width",
+			"annotation" : "Adjusts the stereo width of the Wet signal. With 0%, the wet signal is mono. With 100% the original image is preserved. Wet signals with wider images stand out in a mix more. Wet signals with a mono image blend into a mix more."
+		}
+,
+		"RT Predelay" : 		{
+			"name" : "Predelay",
+			"annotation" : "Useful if using the hirt.convolver~ as a reverb. Controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
+		}
+,
+		"Saturation Type" : 		{
+			"name" : "Saturation Type",
+			"annotation" : "Choose Saturation algorithm. 'Off' = bypassed in terms of audio-chain and CPU usage (default). 'Type I' is a subtle classic tanh-like analog saturator. 'Type II' is an agressive waveshaper, best used for special effects rather than clean processing. Both Saturators are inside the EQ audio path and respond to changes in filter section Gains."
+		}
+,
+		"Show Folder" : 		{
+			"name" : "Show Folder",
+			"annotation" : "Show the current folder location in the Finder/Explorer."
+		}
+,
+		"Show IR" : 		{
+			"name" : "Show IR",
+			"annotation" : "Show the current IR file location in the Finder/Explorer."
+		}
+,
+		"Skin" : 		{
+			"name" : "Skin",
+			"annotation" : "Toggle between LIGHT and DARK skins."
+		}
+,
+		"Value Decay" : 		{
+			"name" : "Decay",
+			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
+		}
+,
+		"Value Dry/Wet" : 		{
+			"name" : "Dry/Wet",
+			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
+		}
+,
+		"Value EQ Freq Hi" : 		{
+			"name" : "EQ Freq High",
+			"annotation" : "Sets the center frequency of the Highshelf filter."
+		}
+,
+		"Value EQ Freq Lo" : 		{
+			"name" : "EQ Freq Low",
+			"annotation" : "Sets the center frequency of the Lowshelf filter."
+		}
+,
+		"Value EQ Freq Mid" : 		{
+			"name" : "EQ Freq Bell",
+			"annotation" : "Sets the center frequency of the Bell filter."
+		}
+,
+		"Value EQ Gain Hi" : 		{
+			"name" : "EQ Gain High",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
+		}
+,
+		"Value EQ Gain Lo" : 		{
+			"name" : "EQ Gain Low",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
+		}
+,
+		"Value EQ Gain Mid" : 		{
+			"name" : "EQ Gain Bell",
+			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
+		}
+,
+		"Value EQ Q Mid" : 		{
+			"name" : "EQ Q Bell",
+			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Value EQ S Hi" : 		{
+			"name" : "EQ Slope High",
+			"annotation" : "Adjusts the Resonance of the Highshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Value EQ S Lo" : 		{
+			"name" : "EQ Slope Low",
+			"annotation" : "Adjusts the Slope of the Lowshelf filter. Moderate to lower settings sound more natural."
+		}
+,
+		"Value Gain" : 		{
+			"name" : "Gain",
+			"annotation" : "Adjust the output volume of the wet portion of the mix."
+		}
+,
+		"Value Predelay" : 		{
+			"name" : "Predelay",
+			"annotation" : "Useful if using the hirt.convolver~ as a reverb. Controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
+		}
+,
+		"Value Size" : 		{
+			"name" : "Size",
+			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
+		}
+,
+		"Value Width" : 		{
+			"name" : "Width",
+			"annotation" : "Adjusts the stereo width of the Wet signal. With 0%, the wet signal is mono. With 100% the original image is preserved. Wet signals with wider images stand out in a mix more. Wet signals with a mono image blend into a mix more."
+		}
+,
+		"Zoom" : 		{
+			"name" : "UI Zoom Factor",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+
+	}
+,
+	"hirt.irmaker~" : 	{
+		"Amplitude" : 		{
+			"name" : "IR Amplitude",
+			"annotation" : "Sets the output amplitude of the recorded IR."
+		}
+,
+		"Audition Mode" : 		{
+			"name" : "Audition Mode",
+			"annotation" : "Allows recorded IRs to be auditioned. This may be done either by convolution with the input of hirt.irmaker~ (see the 'Input' switch), or using the buttons below."
+		}
+,
+		"Click Centre" : 		{
+			"name" : "Centre",
+			"annotation" : "Audition the response of the recorded IR to a single sample click in both input channels."
+		}
+,
+		"Click Left" : 		{
+			"name" : "Left",
+			"annotation" : "Audition the response of the recorded IR to a single sample click in the left input channel."
+		}
+,
+		"Click Right" : 		{
+			"name" : "Right",
+			"annotation" : "Audition the response of the recorded IR to a single sample click in the right input channel."
+		}
+,
+		"Currently Stored IR" : 		{
+			"name" : "Current IR",
+			"annotation" : "Details of the currently recorded IR slot display here."
+		}
+,
+		"Engage Info View" : 		{
+			"name" : "Info On/Off",
+			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the right of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Info Name" : 		{
+			"name" : "Info Name",
+			"annotation" : "Name of element under mouse displays in the top pane."
+		}
+,
+		"Info View" : 		{
+			"name" : "Info View",
+			"annotation" : "Documentation of the current element displays here."
+		}
+,
+		"IR Time" : 		{
+			"name" : "IR Length",
+			"annotation" : "Sets the expected IR length. If in doubt this value should be over-estimated, to avoid cropping the end of the IR."
+		}
+,
+		"Impulse" : 		{
+			"name" : "IR Impulse",
+			"annotation" : "Measure using an impulse signal. This signal is advisable for measurements within a digital system."
+		}
+,
+		"Input Mode" : 		{
+			"name" : "Input",
+			"annotation" : "Switches on/off auditioning using the audio input of the abstraction (see the 'Audition Mode' switch)."
+		} 
+,
+		"Measurement Done" : 		{
+			"name" : "Progress Bar",
+			"annotation" : "The IR measurement progress is displayed here once 'Sweep' or 'Impulse' is engaged. Also available as a normalised value at the penultimate (right) outlet of hirt.irmaker~"
+		}
+,
+		"Progress Bar" : 		{
+			"name" : "Progress Bar",
+			"annotation" : "The IR measurement progress is displayed here once 'Sweep' or 'Impulse' is engaged. Also available as a normalised value at the penultimate (right) outlet of hirt.irmaker~"
+		}
+,
+		"Progress Overlay" : 		{
+			"name" : "Progress Bar",
+			"annotation" : "The IR measurement progress is displayed here once 'Sweep' or 'Impulse' is engaged. Also available as a normalised value at the penultimate (right) outlet of hirt.irmaker~"
+		}
+,
+		"Progress Text" : 		{
+			"name" : "Progress Bar",
+			"annotation" : "The IR measurement progress is displayed here once 'Sweep' or 'Impulse' is engaged. Also available as a normalised value at the penultimate (right) outlet of hirt.irmaker~"
+		}
+,
+		"Save" : 		{
+			"name" : "Save",
+			"annotation" : "Save the recorded IR to disk."
+		}
+,
+		"Stereo Mode" : 		{
+			"name" : "IR Channels",
+			"annotation" : "Selects either a true stereo mode, or a mono to stereo mode. The true stereo mode takes two measurements one after the other (one for each channel). This allows the stereo response of a system to be properly recreated. Only a single measurement is required for mono to stereo mode, but the true stereo response is not captured."
+		}
+,
+		"Stop" : 		{
+			"name" : "Stop",
+			"annotation" : "Stops any measurement in progress."
+		}
+,
+		"Sweep" : 		{
+			"name" : "Sweep",
+			"annotation" : "Measure using a sweep signal. This is advisable for measuring analog equipment or real spaces."
+		}
+,
+		"Sweep Time" : 		{
+			"name" : "Sweep Length",
+			"annotation" : "Sets the sweep length. Longer sweeps produce higher quality results with a higher SNR."
+		}
+,
+		"Test Tone Channel" : 		{
+			"name" : "Tone Channel",
+			"annotation" : "Sets which channels will output a test tone."
+		}
+,
+		"Test Tone Freq" : 		{
+			"name" : "Tone Freq",
+			"annotation" : "Sets the test tone frequency."
+		}
+,
+		"Test Tone Mode" : 		{
+			"name" : "Tone Mode",
+			"annotation" : "Switches test tones on/off. Use this to set recording levels."
+		}
+,
+		"Trim and Normalize" : 		{
+			"name" : "Trim & Normalize",
+			"annotation" : "When on, recorded IRs will be normalised and automatically trimmed. Otherwise IRs are left exactly as measured."
+		}
+,
+		"Zoom" : 		{
+			"name" : "UI Zoom Factor",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+
+	}
+
+}

@@ -1,0 +1,5 @@
+{
+	"name" : "HIRT Externals Windows",
+	"type" : "filelist",
+	"contents" : [ "bufconvolve~.mxe", "bufresample~.mxe", "bufreverse~.mxe", "iralign~.mxe", "iraverage~.mxe", "irextract~.mxe", "irinvert~.mxe", "irmeasure~.mxe", "irnonlin~.mxe", "irphase~.mxe", "irplapprox~.mxe", "irreference~.mxe", "irstats~.mxe", "irsweeps~.mxe", "irtransaural~.mxe", "irtrimnorm~.mxe", "iruser~.mxe", "morphfilter~.mxe", "multiconvolve~.mxe", "spectrumdraw~.mxe", "bufconvolve~.mxe64", "bufresample~.mxe64", "bufreverse~.mxe64", "iralign~.mxe64", "iraverage~.mxe64", "irextract~.mxe64", "irinvert~.mxe64", "irmeasure~.mxe64", "irnonlin~.mxe64", "irphase~.mxe64", "irplapprox~.mxe64", "irreference~.mxe64", "irstats~.mxe64", "irsweeps~.mxe64", "irtransaural~.mxe64", "irtrimnorm~.mxe64", "iruser~.mxe64", "morphfilter~.mxe64", "multiconvolve~.mxe64", "spectrumdraw~.mxe64" ]
+}

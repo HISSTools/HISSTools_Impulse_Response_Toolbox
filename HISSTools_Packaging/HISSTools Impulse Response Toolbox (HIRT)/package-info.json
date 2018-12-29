@@ -1,0 +1,18 @@
+{
+	"name": "HISSTools Impulse Response Toolbox (HIRT)",
+	"type": "package",
+	"author": "Alex Harker, Pierre Alexandre Tremblay, CeReNeM, The University of Huddersfield",
+	"description": "A set of tools for working with convolution and impulse responses in Max. This set of objects addresses various tasks, including realtime zero-latency convolution, measuring impulse responses, spectral display from realtime data or buffers, and buffer-based convolution, deconvolution and inversion.",
+	"version": "2.0",
+	"major_version": "2",
+	"minor_version": "0",
+	"min_max_version": "7.3",
+	"min_osx_version": "10.9",
+	"min_win_version": "7",
+	"website": "http://thehiss.org/",
+	"link_mac32": "https://github.com/HISSTools/HISSTools_Impulse_Response_Toolbox",
+	"link_mac64": "https://github.com/HISSTools/HISSTools_Impulse_Response_Toolbox",
+	"link_win32": "https://github.com/HISSTools/HISSTools_Impulse_Response_Toolbox",
+	"link_win64": "https://github.com/HISSTools/HISSTools_Impulse_Response_Toolbox",
+	"relative_path": " "
+}

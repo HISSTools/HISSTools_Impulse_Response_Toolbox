@@ -1,0 +1,442 @@
+
+//	//	//	functions in common for all [gen~] patchers
+//	//	//	for HIRT Convolution Reverb & HIRT Convolver (Realtime Processing sections)
+//	//	//	other functions declared in 'hirt_eq_library' or locally
+//	//	//	Pete Dowling 2017
+
+
+// mixing
+
+// for first quarter only, optimized so that never lets sqrt(sinapprox(x)^2+cosapprox(x)^2)...
+// ...exceed 1, always gives exact results at modphase 0, 0.5, 1 (0/1, sqrt1_2, 1/0)
+quartOneParApprox(modphase)				// 'modphase' must be clipped 0..1
+{
+	C		= sqrt1_2;
+
+	x0		= modphase - 0.5;					// 1 sub
+	// first quarter							// angle = 0 .. halfpi
+	quart	= (2 - (4 * C)) * x0 * x0 + C;		// 2 mul, 1 add
+	sinq1	= quart + x0;						// 1 add
+	cosq1	= quart - x0;						// 1 sub
+
+	return	cosq1, sinq1;
+}
+
+xfadeQuartApproxStereo(a, b, c, d, q)						// q is control, must be clipped 0..1
+{
+	qL, qR	= quartOneParApprox(q);							// cos/sin
+	return	((a * qL) + (c * qR)), ((b * qL) + (d * qR));	// out mix L, out mix R
+}
+
+// smoothing
+
+// tan() approx, valid for -halfpi < x < +halfpi
+mtnA(x)
+{
+	x2		= x * x;
+	return	x * (0.999999492001 + x2 * -0.096524608111) / (1 + x2 * (-0.429867256894 + x2 * 0.009981877999));
+}
+
+// approx exp(x) (more accurate than 'fastexp()')
+expA(x0)
+{
+	x = 0.999996 + (0.031261316 + (0.00048274797 + 0.000006 * x0) * x0) * x0;
+	x *= x; x *= x; x *= x; x *= x; x *= x;
+	return x;
+}
+
+tauA(t)										// approximate 'exp(-1 / (seconds * samplerate))'
+{
+	y = expA(-1 / (t * samplerate));
+	return y + 0.000128;					// approximation has excellent accuracy above...
+}											// ...0.01 seconds (10 milliseconds) input
+
+expsmooth(x, t)		// x = value			// t is smooth time in seconds
+{
+	History w(0);
+	z = tauA(t);
+	y = (z * w) + (x * (1 - z));
+	w = y;
+	return y;
+}
+
+// for expsmooth banks
+expso(x, z)									// z is pole
+{
+	History w(0);
+	y = (z * w) + (x * (1 - z));
+	w = y;
+	return y;
+}
+
+expsmoothBank2(x1, x2, t)					// t is smooth time in seconds...
+{
+	History	expsdummy2(0);
+	z		= tauA(t);
+	y1		= expso(x1, z);
+	y2		= expso(x2, z);
+	return	y1, y2;
+}
+
+expsmoothBank3(x1, x2, x3, t)
+{
+	History	expsdummy3(0);
+	z		= tauA(t);
+	y1		= expso(x1, z);
+	y2		= expso(x2, z);
+	y3		= expso(x3, z);
+	return	y1, y2, y3;
+}
+
+expsmoothBank4(x1, x2, x3, x4, t)
+{
+	History	expsdummy4(0);
+	z		= tauA(t);
+	y1		= expso(x1, z);
+	y2		= expso(x2, z);
+	y3		= expso(x3, z);
+	y4		= expso(x4, z);
+	return	y1, y2, y3, y4;
+}
+
+// exact ramp, like MSP
+genLine(D, R)								// target, ramp time in samples
+{
+	History target(0), current(0), remain(0), increment(1);
+	notify = 1;
+	if (delta(D) != 0) {
+		target = D;
+		remain = maximum(R, 0);
+		increment = (target - current) / remain;	
+	}
+	if (remain > 0) {						// is ramping
+		current = target - increment * remain;
+		remain = remain - 1;
+		notify = 0;
+	} else {								// ramp concluded
+		current = target;
+		notify = 1;
+	}
+	return current, notify;
+}
+
+// miniscule saving, maybe useful notify
+multiLine2(D1, D2, R0)						// target, target, ramp (samples)
+{
+	History	remain1(0),	target1(0),	current1(0), increment1(1);
+	History	remain2(0),	target2(0),	current2(0), increment2(1);
+	notify1	= 1;
+	notify2	= 1;
+
+	if (delta(D1) != 0) {
+		target1		= D1;
+		remain1		= maximum(R0, 0);
+		increment1	= (target1 - current1) / remain1;	
+	}
+
+	if (delta(D2) != 0) {
+		target2		= D2;
+		remain2		= maximum(R0, 0);
+		increment2	= (target2 - current2) / remain2;	
+	}
+
+	if (remain1 > 0) {						// 1 is ramping
+		current1	= target1 - increment1 * remain1;
+		remain1		= remain1 - 1;
+		notify1		= 0;
+	} else {								// ramp 1 concluded
+		current1	= target1;
+		notify1		= 1;
+	}
+
+	if (remain2 > 0) {						// 2 is ramping
+		current2	= target2 - increment2 * remain2;
+		remain2		= remain2 - 1;
+		notify2		= 0;
+	} else {								// ramp 2 concluded
+		current2	= target2;
+		notify2		= 1;
+	}
+
+	notify0	= notify1 + notify2;
+	notify	= minimum(2 - notify0, 1);
+
+	return current1, current2, notify;
+
+}
+
+// miniscule saving, maybe useful notify
+multiLine3(D1, D2, D3, R0)					// target, target, target, ramp (samples)
+{
+	History	remain1(0),	target1(0),	current1(0), increment1(1);
+	History	remain2(0),	target2(0),	current2(0), increment2(1);
+	History	remain3(0),	target3(0),	current3(0), increment3(1);
+	notify1	= 1;
+	notify2	= 1;
+	notify3	= 1;
+
+	if (delta(D1) != 0) {
+		target1		= D1;
+		remain1		= maximum(R0, 0);
+		increment1	= (target1 - current1) / remain1;	
+	}
+
+	if (delta(D2) != 0) {
+		target2		= D2;
+		remain2		= maximum(R0, 0);
+		increment2	= (target2 - current2) / remain2;	
+	}
+
+	if (delta(D3) != 0) {
+		target3		= D3;
+		remain3		= maximum(R0, 0);
+		increment3	= (target3 - current3) / remain3;	
+	}
+
+	if (remain1 > 0) {						// 1 is ramping
+		current1	= target1 - increment1 * remain1;
+		remain1		= remain1 - 1;
+		notify1		= 0;
+	} else {								// ramp 1 concluded
+		current1	= target1;
+		notify1		= 1;
+	}
+
+	if (remain2 > 0) {						// 2 is ramping
+		current2	= target2 - increment2 * remain2;
+		remain2		= remain2 - 1;
+		notify2		= 0;
+	} else {								// ramp 2 concluded
+		current2	= target2;
+		notify2		= 1;
+	}
+
+	if (remain3 > 0) {						// 3 is ramping
+		current3	= target3 - increment3 * remain3;
+		remain3		= remain3 - 1;
+		notify3		= 0;
+	} else {								// ramp 3 concluded
+		current3	= target3;
+		notify3		= 1;
+	}
+
+	notify0	= notify1 + notify2 + notify3;
+	notify	= minimum(3 - notify0, 1);
+
+	return current1, current2, current3, notify;
+
+}
+
+// slightly cheaper version of 'genLine()' for 'lockout' (& when ONLY flag 0/1 smooths are required)
+toggleLine(toggle, rampsamples)			// toggle == flag 0/1, time in samples
+{	// there must be a way to get rid of 'timelatch' & 'direction' Historys ?!
+	History		phase(0), timelatch(0), direction(0), inlatch(1);
+
+	flag		= int(clip(latch(toggle, inlatch, init=1), 0, 1));
+	flagdelta	= delta(flag);
+//	flagup		= flagdelta < 0;
+//	flagdown	= flagdelta > 0;
+//	flagupdown	= flagup + flagdown;
+	flagupdown	= (flagdelta < 0) + (flagdelta > 0);	// 0->1 or 1->0
+
+	samplestime	= latch(rampsamples, timelatch);
+	timelatch	= flagupdown;
+
+	phasesync	= (phase < samplestime) == 0;
+	phaseup		= phasesync ? samplestime : phase;
+	phasedown	= samplestime - phaseup;
+	phase		= flagupdown ? 0 : phaseup + 1;
+
+	rampout		= (direction ? phaseup : phasedown) / samplestime;
+	direction	= flag;
+	inlatch		= phasesync;
+
+	return		rampout, phasesync;
+}
+
+// like 'genLine()' above, but with cheap cosine-like curve, still exact...
+// ...destination but for single ramps, not for constantly moving input source
+curveLine(D, R)								// target, ramp time in samples
+{
+	History	target(0), current(0), remain(0), increment(1);
+	notify	= 1;
+	if (delta(D) != 0) {
+		target		= D;
+		remain		= maximum(R, 0);
+		increment	= (target - current) / remain;	
+	}
+	if (remain > 0) {						// is ramping
+		// linear...
+		current	= target - increment * remain;
+		remain	= remain - 1;
+		// ...curve
+		c2		= current * current;		// thanks to Alex Harker for the curve (actually he insisted!)
+		rec		= (1 - current);
+		r2		= rec * rec;
+		current	= (current < 0.5) ? (c2 * 2) : (1 - (r2 * 2));
+		notify	= 0;
+	} else {								// ramp concluded
+		current	= target;
+		notify	= 1;
+	}
+	return		current, notify;
+}
+
+// like MSP [curve~], exact ramp
+genCurve(target, duration, curvature)		// target, duration in samples, curvature -1..1
+{
+	History v(0), v0(0), v1(0), vrange(0);	// value: current, from, to, range
+	History samplecount(0), samplesleft(0);	// samples elapsed, samples remaining
+	History div_durp(0), div_erp(0);		// cached values to speed up per-sample loop
+	// magic numbers
+	RFACTOR		= 4.34782608695652;			// float(1 / 0.23); would be better as double
+	PFACTOR		= 5;
+	DIV_RFACTOR	= 0.01310440558293;			// float(1 / (exp(RFACTOR) - 1)); would be better as double
+
+	// calculated only when a new target is set
+	// (one could argue the 'expA()'s in this section are not worth it, but this is gen~ and signal computations)
+	if (change(target)) {
+		samplecount = 0;					// starting a new ramp
+		samplesleft = duration;				// duration in samples
+		v0, v1 = v, target;					// ramp start & end values
+		vrange = v1 - v0;					// ramp range
+		// nonlinear mapping of -1 to 1 curve factor
+		f = 1 - abs(curvature);
+		f = PFACTOR * (expA(f * RFACTOR) - 1) * DIV_RFACTOR;
+		p = (sign(curvature) != 0) ? (sign(curvature) * f) : f;	// must do this to avoid 'curvature == 0' issue
+		// bypass really sharp curves
+		// 'p = fixdenorm(p);' does not work, values too small, +/- 0.005 fixed by Puckette / Zicarelli ?
+		p = (p >= 0 && p < 0.005) ? 0.005 : ((p < 0 && p > -0.005) ? -0.005 : p);
+		// cached factors for the per-sample curve calculation
+		div_erp = 1 / (expA(1 / p) - 1);
+		div_durp = 1 / (samplesleft * p);
+	}
+
+	value, notify = 0;
+	// per sample calculation
+	if (samplesleft > 0.5) {				// still ramping
+		value	= v;
+		notify	= 0;	
+		// compute next ramp sample
+		samplecount += 1;
+		samplesleft -= 1;
+		// compute curvature
+		curv = (expA(samplecount * div_durp) - 1) * div_erp;
+		// scale to the output range & integrate
+		v += (v0 - v) + (curv * vrange);
+	} else {								// no longer ramping
+		v		= v1;
+		value	= v;
+		notify	= 1;
+	}
+
+	return value, notify;
+}
+/*
+// for cfSmoothLinear()
+cfSmoothLinearCoeff(hz, ms)			// Hz / ms, defaults: 1, 5
+{
+	w0		= mtnA(pi * (hz / samplerate));
+	g0		= (2 * w0) / (1 + w0);
+	s0		= (1 - tauA(ms * 0.001)) * 4;
+	return	  g0, s0;
+}
+
+// for csSmoothLinear() banks
+cfSmoothLinear(x0, g0, s0)			// g0 / s0, defaults: 0.000142 / 0.018104
+{
+	History	low1(0), low2(0);
+
+	low1z	= low1;
+	low2z	= low2;
+
+	bandz	= low1z - low2z;
+	g		= minimum(g0 + s0 * abs(bandz), 1);
+
+	low1	= low1z + g * (x0 - low1z);
+	low2	= low2z + g * (low1 - low2z);
+
+	return	  low2;
+}
+
+cfSmoothLinear1(x1, hz, ms)			// 
+{
+	History	  cfsl1dummy(0);
+	g0, s0	= cfSmoothLinearCoeff(hz, ms);
+	y1		= cfSmoothLinear(x1, g0, s0);
+	return	  y1;
+}
+
+cfSmoothLinear2(x1, x2, hz, ms)
+{
+	History	  cfsl2dummy(0);
+	g0, s0	= cfSmoothLinearCoeff(hz, ms);
+	y1		= cfSmoothLinear(x1, g0, s0);
+	y2		= cfSmoothLinear(x2, g0, s0);
+	return	  y1, y2;
+}
+
+cfSmoothLinear3(x1, x2, x3, hz, ms)
+{
+	History	  cfsl3dummy(0);
+	g0, s0	= cfSmoothLinearCoeff(hz, ms);
+	y1		= cfSmoothLinear(x1, g0, s0);
+	y2		= cfSmoothLinear(x2, g0, s0);
+	y3		= cfSmoothLinear(x3, g0, s0);
+	return	  y1, y2, y3;
+}
+*/
+/*
+// based on the "simultaneous parabolic approximation of sin and cos" by Olli Niemitalo
+// @see: http://dspguru.com/book/export/html/62
+quartParApprox(modphase, precision)		// 'modphase' must be wrapped 0..1
+{
+	mphse	= modphase * 4;				// parse in quart branch
+	quart	= int(mphse);				// get quarter # (0 to 3) we are in
+
+	C		= 0;
+	if				(precision == 1) {	// optimized for minimum maximum absolute difference...
+		C	= 0.71256755058;			// ...of sqrt(sinapprox(x)^2+cosapprox(x)^2) to 1
+	} else if		(precision == 2) {	// optimized similarly to B but never lets...
+		C	= sqrt1_2;					// ...sqrt(sinapprox(x)^2+cosapprox(x)^2) exceed 1
+	} else if		(precision == 3) {	// optimized for continuous differential, which...
+		C	= 0.75;						// ...reduces high harmonics
+	} else {	//	(precision == 0)	// optimized for minimum maximum absolute
+		C	= 0.7035;					// ...difference to sin()
+	}
+
+	cosout		= 0;
+	sinout		= 0;
+
+	if 					(quart == 1) {
+        // second quarter, angle	= halfpi .. pi
+		x1		= 1.5 - mphse;							// 1 sub
+		temp	= (2 - (4 * C)) * x1 * x1 + C;			// 2 mul, 1 sub
+		sinout	= x1 + temp;							// 1 add
+		cosout	= x1 - temp;							// 1 sub
+	} else {	//		(quart == 0 || 2 || 3)
+		x0		= mphse - 0.5;							// 1 sub
+		if 				(quart == 0) {
+        // first quarter, angle		= 0 .. halfpi
+			temp	= (2 - (4 * C)) * x0 * x0 + C;		// 2 mul, 1 add
+			sinout	= temp + x0;						// 1 add
+			cosout	= temp - x0;						// 1 sub
+		} else if 		(quart == 2) {
+        // third quarter, angle		= pi .. 1.5 pi
+			x2		= x0 - 2;							// (1 sub)
+			temp	= ((4 * C) - 2) * x2 * x2 - C;		// 2 mul, 1 sub
+			sinout	= temp - x2;						// 1 sub
+			cosout	= temp + x2;						// 1 add
+		} else {	//	(quart == 3)
+        // fourth quarter, angle	= 1.5 pi .. twopi
+			x3		= x0 - 3;							// (1 sub)
+			temp	= (2 - (4 * C)) * x3 * x3 + C;		// 2 mul, 1 add
+			sinout	= x3 - temp;						// 1 sub
+			cosout	= x3 + temp;						// 1 add
+		}
+	}
+
+	return		cosout, sinout, quart;
+}
+*/
+

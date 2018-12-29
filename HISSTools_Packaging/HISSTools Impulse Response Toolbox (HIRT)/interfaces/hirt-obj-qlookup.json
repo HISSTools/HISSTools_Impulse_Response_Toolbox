@@ -1,0 +1,974 @@
+{
+  "irsweeps~": {
+    "digest": "Generate measurement signals to a buffer",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response",
+      "HIRT Measurement"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "sweep"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "hirt.irmaker~"
+    ]
+  },
+  "irmeasure~": {
+    "digest": "Measure IRs of single or multichannel systems using a range of excitation signals",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response",
+      "HIRT Measurement"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "excitation"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "hirt.irmaker~"
+    ]
+  },
+  "irtransaural~": {
+    "digest": "Generate filters for the playback of binaural material over speakers",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "transaural",
+      "cross talk",
+      "cancellation"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "irvalue~": {
+    "digest": "Return dB amplitude of IR from frequency input",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "bufresample~": {
+    "digest": "Resample the contents of a buffer~ to transpose or change sample rate",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Buffer",
+      "MSP Analysis",
+      "HIRT Resample"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "resample"
+    ],
+    "seealso": [
+      "bufconvolve~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~"
+    ]
+  },
+  "bufconvolve~": {
+    "digest": "Non-realtime convolution and deconvolution",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Convolution",
+      "MSP FFT",
+      "MSP Filters",
+      "HIRT Buffer"
+    ],
+    "keywords": [
+      "buffer",
+      "convolution",
+      "impulse response"
+    ],
+    "seealso": [
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "hirt.irmaker~"
+    ]
+  },
+  "bufreverse~": {
+    "digest": "Reverse the contents of a buffer",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Buffer"
+    ],
+    "keywords": [
+      "buffer",
+      "reverse"
+    ],
+    "seealso": [
+      "buffer~",
+      "bufconvolve~",
+      "bufresample~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~"
+    ]
+  },
+  "iralign~": {
+    "digest": "Simple time alignment of IRs",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer"
+    ],
+    "seealso": [
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "iraverage~": {
+    "digest": "Average multiple IRs in the time or frequency domain",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer"
+    ],
+    "seealso": [
+      "iralign~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "irphase~": {
+    "digest": "Change the phase of an IR",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "phase"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "irplapprox~": {
+    "digest": "Approximate the frequency response of an IR with a set of freq/dB pairs",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response",
+      "MSP Filters"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "filter",
+      "pla"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "spectrumdraw~": {
+    "digest": "Display spectra from realtime inputs or buffers",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT U/I",
+      "U/I",
+      "MSP Analysis",
+      "MSP FFT",
+      "MSP Filters",
+      "MSP U/I"
+    ],
+    "keywords": [
+      "buffer",
+      "convolution",
+      "impulse response",
+      "filter",
+      "display",
+      "visualize"
+    ],
+    "seealso": [
+      "buffer~",
+      "levelmeter~",
+      "meter~",
+      "plot~",
+      "scope~",
+      "spectroscope~",
+      "waveform~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~"
+    ],
+    "palette": {
+      "category": [
+        "HIRT",
+        "HIRT Objects",
+        "HIRT U/I",
+        "U/I",
+        "MSP Analysis",
+        "MSP FFT",
+        "MSP Filters",
+        "MSP U/I"
+      ],
+      "action": "spectrumdraw~",
+      "pic": "spectrumdraw~.svg"
+    }
+  },
+  "irstats~": {
+    "digest": "Calculate room acoustic parameters and measurements from an IR",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response",
+      "HIRT Measurement"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "estimate",
+      "room acoustic",
+      "reverb time",
+      "clarity",
+      "mixing time",
+      "early reflections",
+      "late reflections"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "irtrimnorm~": {
+    "digest": "Trim (by RMS level), crop, or pad multiple IRs, with or without group normalisation",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "pad"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "hirt.irmaker~"
+    ]
+  },
+  "irreference~": {
+    "digest": "Estimate system IRs by relative comparison of two recorded inputs",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response",
+      "HIRT Measurement"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "comparison",
+      "estimate",
+      "spectral",
+      "minimum phase"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "irnonlin~": {
+    "digest": "Transform IRs for harmonics of system into those required by a Hammerstein model",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response",
+      "HIRT Measurement",
+      "MSP Analysis"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "nonlinear",
+      "hammerstein",
+      "ess"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "irextract~": {
+    "digest": "Process recorded measurements from the irmeasure~ object",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "morphfilter~": {
+    "digest": "Buffer-based filtering with morphing gain",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Buffer",
+      "MSP Filters"
+    ],
+    "keywords": [
+      "buffer",
+      "filter"
+    ],
+    "seealso": [
+      "biquad~",
+      "buffer~",
+      "filtercoeff~",
+      "filtergraph~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "hirt.convolutionreverb~"
+    ]
+  },
+  "iruser~": {
+    "digest": "Create an IR with a specified frequency response and a given output phase",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "filter",
+      "specification",
+      "amplitude response",
+      "output phase"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "hirt.irmaker~"
+    ]
+  },
+  "multiconvolve~": {
+    "digest": "Multichannel realtime zero- or low- latency convolution",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Convolution",
+      "HIRT Reverb",
+      "MSP FFT",
+      "MSP Filters"
+    ],
+    "keywords": [
+      "buffer",
+      "convolution",
+      "impulse response",
+      "reverb",
+      "filter"
+    ],
+    "seealso": [
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "hirt.convolutionreverb~",
+      "hirt.convolver~",
+      "hirt.irmaker~"
+    ]
+  },
+  "irinvert~": {
+    "digest": "IR Inversion",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Objects",
+      "HIRT Impulse Response"
+    ],
+    "keywords": [
+      "impulse response",
+      "buffer",
+      "convolution",
+      "mimo"
+    ],
+    "seealso": [
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "hirt.irmaker~": {
+    "digest": "HIRT Impulse Response Maker - Impulse Response Measurement and Auditioning",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Abstractions",
+      "HIRT Convolution",
+      "HIRT Reverb",
+      "HIRT Impulse Response",
+      "HIRT Measurement"
+    ],
+    "keywords": [
+      "impulse response",
+      "convolution",
+      "reverb",
+      "msp"
+    ],
+    "seealso": [
+      "hirt.convolutionreverb~",
+      "hirt.convolver~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~"
+    ]
+  },
+  "hirt.convolutionreverb~": {
+    "digest": "The HIRT Convolution Reverb for Max",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Abstractions",
+      "HIRT Convolution",
+      "HIRT Reverb",
+      "MSP Effects"
+    ],
+    "keywords": [
+      "impulse response",
+      "convolution",
+      "reverb",
+      "msp"
+    ],
+    "seealso": [
+      "hirt.convolver~",
+      "hirt.irmaker~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "pattrstorage",
+      "gen~",
+      "jsui"
+    ]
+  },
+  "hirt.convolver~": {
+    "digest": "The HIRT Convolver for Max",
+    "module": "hirt",
+    "category": [
+      "HIRT",
+      "HIRT Abstractions",
+      "HIRT Convolution",
+      "HIRT Reverb",
+      "MSP Effects"
+    ],
+    "keywords": [
+      "impulse response",
+      "convolution",
+      "reverb",
+      "msp"
+    ],
+    "seealso": [
+      "hirt.convolutionreverb~",
+      "hirt.irmaker~",
+      "bufconvolve~",
+      "bufresample~",
+      "bufreverse~",
+      "morphfilter~",
+      "multiconvolve~",
+      "spectrumdraw~",
+      "iralign~",
+      "iraverage~",
+      "irextract~",
+      "irinvert~",
+      "irmeasure~",
+      "irnonlin~",
+      "irphase~",
+      "irplapprox~",
+      "irreference~",
+      "irstats~",
+      "irsweeps~",
+      "irtransaural~",
+      "irtrimnorm~",
+      "iruser~",
+      "irvalue~",
+      "pattrstorage",
+      "gen~",
+      "jsui"
+    ]
+  }
+}
