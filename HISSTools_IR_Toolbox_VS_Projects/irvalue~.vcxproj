@@ -33,7 +33,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>irvalue~</ProjectName>
-    <ProjectGuid>{ED2AC925-B0DB-4934-81DF-0B0313998C01}</ProjectGuid>
+    <ProjectGuid>{E86F0603-3B74-4610-9D72-E531362EEC1C}</ProjectGuid>
     <RootNamespace>jslider</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

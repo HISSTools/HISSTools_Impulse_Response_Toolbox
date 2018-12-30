@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bufconvolve~", "HISSTools_IR_Toolbox_VS_Projects\bufconvolve~.vcxproj", "{ED2AC925-B0DB-4934-81DF-0B0313998C01}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iralign~", "HISSTools_IR_Toolbox_VS_Projects\iralign~.vcxproj", "{2A4F339F-7B90-4B36-B7B2-B3F2AD7D5BF8}"
@@ -182,5 +184,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8343C778-38B1-4425-BB08-47E2351D5D0A}
 	EndGlobalSection
 EndGlobal
