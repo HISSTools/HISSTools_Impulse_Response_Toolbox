@@ -16,7 +16,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalLibraryDirectories>..\..\Max6_support\c74support\max-includes;.\..\..\Max6_support\c74support\msp-includes;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ModuleDefinitionFile>
@@ -34,7 +34,7 @@
       <AdditionalOptions>/EXPORT:main %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DENORM_WANT_FIX;NO_TRANSLATION_SUPPORT;WIN_VERSION;WIN32;_DEBUG;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
