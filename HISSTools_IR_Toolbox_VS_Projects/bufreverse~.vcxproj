@@ -30,7 +30,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>bufreverse~</ProjectName>
-    <ProjectGuid>{ED2AC925-B0DB-4934-81DF-0B0313998C01}</ProjectGuid>
+    <ProjectGuid>{57FA9D87-231F-4C68-B27A-6081BA2E1CC6}</ProjectGuid>
     <RootNamespace>jslider</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

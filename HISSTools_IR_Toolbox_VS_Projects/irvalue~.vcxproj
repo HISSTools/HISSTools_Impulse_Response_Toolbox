@@ -33,7 +33,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>irvalue~</ProjectName>
-    <ProjectGuid>{ED2AC925-B0DB-4934-81DF-0B0313998C01}</ProjectGuid>
+    <ProjectGuid>{4495B939-630A-40C1-8C93-970E970FA0D5}</ProjectGuid>
     <RootNamespace>jslider</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

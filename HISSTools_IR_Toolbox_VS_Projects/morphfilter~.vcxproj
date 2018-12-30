@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\Max6_support\c74support\max-includes\common\dllmain_win.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\morphfilter~.c" />
   </ItemGroup>
@@ -31,7 +30,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>morphfilter~</ProjectName>
-    <ProjectGuid>{ED2AC925-B0DB-4934-81DF-0B0313998C01}</ProjectGuid>
+    <ProjectGuid>{FB31B5AF-AF9C-44AC-99CB-77C8E064DA1B}</ProjectGuid>
     <RootNamespace>jslider</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

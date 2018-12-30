@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\Max6_support\c74support\max-includes\common\dllmain_win.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\bufresample~.c" />
   </ItemGroup>
@@ -31,7 +30,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>bufresample~</ProjectName>
-    <ProjectGuid>{ED2AC925-B0DB-4934-81DF-0B0313998C01}</ProjectGuid>
+    <ProjectGuid>{DBF44EDA-64FE-44F3-81B0-0416201125D1}</ProjectGuid>
     <RootNamespace>jslider</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
