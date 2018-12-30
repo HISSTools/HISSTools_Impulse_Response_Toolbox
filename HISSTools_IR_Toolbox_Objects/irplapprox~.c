@@ -90,10 +90,10 @@ int main()
 	
 	declare_HIRT_common_attributes(this_class);
 
-	CLASS_ATTR_LONG(this_class, "normmode", 0, t_irpiecewiseapprox, norm_mode); 
+	CLASS_ATTR_ATOM_LONG(this_class, "normmode", 0, t_irpiecewiseapprox, norm_mode);
 	CLASS_ATTR_STYLE_LABEL(this_class, "normmode",0, "onoff", "Normalise Mode");
 
-	CLASS_ATTR_LONG(this_class, "segments", 0, t_irpiecewiseapprox, target_segments); 
+	CLASS_ATTR_ATOM_LONG(this_class, "segments", 0, t_irpiecewiseapprox, target_segments); 
 	CLASS_ATTR_LABEL(this_class,"segments", 0, "Target Number of Segments");
 	CLASS_ATTR_FILTER_CLIP(this_class, "segments", 1, (HIRT_MAX_SPECIFIER_ITEMS / 2));
 

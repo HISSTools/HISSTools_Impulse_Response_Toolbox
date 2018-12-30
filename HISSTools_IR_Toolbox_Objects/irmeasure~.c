@@ -216,16 +216,16 @@ int main()
 	
 	declare_HIRT_common_attributes(this_class);
 	
-	CLASS_ATTR_LONG(this_class, "absprogress", 0, t_irmeasure, abs_progress); 
+	CLASS_ATTR_ATOM_LONG(this_class, "absprogress", 0, t_irmeasure, abs_progress); 
 	CLASS_ATTR_STYLE_LABEL(this_class,"absprogress",0,"onoff","Absolute Progress");
 	
 	CLASS_ATTR_DOUBLE(this_class, "amp", 0, t_irmeasure, amp); 
 	CLASS_ATTR_LABEL(this_class,"amp", 0, "Signal Amplitude (dB)");
 
-	CLASS_ATTR_LONG(this_class, "invamp", 0, t_irmeasure, inv_amp); 
+	CLASS_ATTR_ATOM_LONG(this_class, "invamp", 0, t_irmeasure, inv_amp);
 	CLASS_ATTR_STYLE_LABEL(this_class,"invamp",0,"onoff","Invert Amplitude");
 	
-	CLASS_ATTR_LONG(this_class, "bandlimit", 0, t_irmeasure, bandlimit); 
+	CLASS_ATTR_ATOM_LONG(this_class, "bandlimit", 0, t_irmeasure, bandlimit);
 	CLASS_ATTR_STYLE_LABEL(this_class,"bandlimit",0,"onoff","Bandlimit Sweep Measurements");	
 	
 	class_dspinit(this_class);
