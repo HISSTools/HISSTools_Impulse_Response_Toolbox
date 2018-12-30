@@ -16,7 +16,9 @@
 #include <math.h>
 #include <float.h>
 
+#ifndef isfinite
 #define isfinite _finite
+#endif
 
 #define LOG_2_RECIP 1.44269504088896340735992468100189213742664595415299
 
