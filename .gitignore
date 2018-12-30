@@ -31,3 +31,5 @@ xcuserdata/
 
 HissTools_Builds/
 HissTools_Intermediate/
+*.db
+*.ipch
