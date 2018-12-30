@@ -493,7 +493,6 @@
 		B882BBFA218B163700D6C5B1 /* bufreverse~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bufreverse~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B882BC11218B164300D6C5B1 /* morphfilter~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "morphfilter~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B882BC28218B164500D6C5B1 /* bufresample~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bufresample~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B88738581D1034CB005D16FF /* irinterp~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "irinterp~.c"; path = "HISSTools_IR_Toolbox_Objects/irinterp~.c"; sourceTree = SOURCE_ROOT; };
 		B88738701D103513005D16FF /* irvalue~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irvalue~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88738721D103559005D16FF /* irvalue~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "irvalue~.c"; path = "HISSTools_IR_Toolbox_Objects/irvalue~.c"; sourceTree = SOURCE_ROOT; };
 		B890395F13CEFB4C0090602F /* irphase~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irphase~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,7 +506,6 @@
 		B8AE9D0A13FC390100AF492F /* HIRT_Coloured_Noise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HIRT_Coloured_Noise.c; path = HISSTools_IR_Toolbox_Common/HIRT_Coloured_Noise.c; sourceTree = "<group>"; };
 		B8B5B50513FD29EE00DAE433 /* irtrimnorm~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irtrimnorm~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B5B51213FD2A5200DAE433 /* irtrimnorm~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "irtrimnorm~.c"; path = "../HISSTools_IR_Toolbox_Objects/irtrimnorm~.c"; sourceTree = "<group>"; };
-		B8B6A8771D0B113E009FD8E5 /* irshift~.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "irshift~.c"; path = "../HISSTools_IR_Toolbox_Objects/irshift~.c"; sourceTree = "<group>"; };
 		B8BB9F4013CF49B50029A8D6 /* HIRT_Max_Length_Sequences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HIRT_Max_Length_Sequences.h; path = HISSTools_IR_Toolbox_Common/HIRT_Max_Length_Sequences.h; sourceTree = "<group>"; };
 		B8BB9F4113CF49B50029A8D6 /* HIRT_Max_Length_Sequences.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HIRT_Max_Length_Sequences.c; path = HISSTools_IR_Toolbox_Common/HIRT_Max_Length_Sequences.c; sourceTree = "<group>"; };
 		B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HIRT_Core_Functions.c; path = HISSTools_IR_Toolbox_Common/HIRT_Core_Functions.c; sourceTree = "<group>"; };
@@ -897,8 +895,6 @@
 				B86704DA14EB1CD900F132B4 /* irtransaural~.c */,
 				B8B5B51213FD2A5200DAE433 /* irtrimnorm~.c */,
 				B8C5D538144B09F100910524 /* iruser~.c */,
-				B8B6A8771D0B113E009FD8E5 /* irshift~.c */,
-				B88738581D1034CB005D16FF /* irinterp~.c */,
 				B88738721D103559005D16FF /* irvalue~.c */,
 				B859422F218B397400C783CF /* morphfilter~.c */,
 				B8CF2E2D15A6FEA600EBDB95 /* multiconvolve~.c */,
