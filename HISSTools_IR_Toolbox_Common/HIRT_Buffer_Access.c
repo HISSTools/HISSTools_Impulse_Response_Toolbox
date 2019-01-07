@@ -318,7 +318,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 			return 0;
 		}
 		
-		if (buffer_check(x, atom_getsym(argv + i), read_chan))
+		if (buffer_check(x, atom_getsym(argv + i), write_chan))
 			return 0;
 		
 		if (in_place)
@@ -326,7 +326,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 			new_length = buffer_length (atom_getsym(argv + i));
 			new_sample_rate = buffer_sample_rate(atom_getsym(argv + i));
             
-            if (buffer_check(x, atom_getsym(argv + i), write_chan))
+            if (buffer_check(x, atom_getsym(argv + i), read_chan))
                 return 0;
 		}
 		else 
@@ -334,7 +334,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 			new_length = buffer_length (atom_getsym(argv + i + argc));
 			new_sample_rate = buffer_sample_rate(atom_getsym(argv + i + argc));
 			
-			if (buffer_check(x, atom_getsym(argv + i + argc), write_chan))
+			if (buffer_check(x, atom_getsym(argv + i + argc), read_chan))
 				return 0;
 		}
 		
