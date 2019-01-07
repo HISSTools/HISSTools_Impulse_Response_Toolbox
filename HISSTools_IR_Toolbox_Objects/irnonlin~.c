@@ -253,10 +253,11 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 	MATRIX_REF_COMPLEX(coeff)
 	
     t_atom_long read_chan = x->read_chan - 1;
-    
+    t_atom_long write_chan = x->write_chan - 1;
+
 	// Check buffers, storing names and lengths +  calculate total / largest length
 	
-	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, (sym == gensym("convert")), 128, &overall_length, &max_length, &sample_rate);
+	num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, write_chan, (sym == gensym("convert")), 128, &overall_length, &max_length, &sample_rate);
 
 	if (!num_buffers)
 		return;
@@ -395,7 +396,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 	for (i = 0; i < num_buffers; i++)
 	{		
 		spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
-		error = buffer_write(out_buffer_names[i], temp_buffer_d, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
+		error = buffer_write(out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.0);
 		overall_error = error ? true : error;
 		buffer_write_error((t_object *) x, out_buffer_names[i], error);
 	}

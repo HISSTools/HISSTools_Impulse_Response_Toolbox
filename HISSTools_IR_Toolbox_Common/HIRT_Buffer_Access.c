@@ -280,7 +280,7 @@ t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr 
 //////////////////////////////////////////////////////////////////////////
 
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, t_atom_long chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, t_atom_long read_chan, t_atom_long write_chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
 {
 	AH_SIntPtr overall_length = 0;
 	AH_SIntPtr max_length = 0;
@@ -318,20 +318,23 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
 			return 0;
 		}
 		
-		if (buffer_check(x, atom_getsym(argv + i), chan))
+		if (buffer_check(x, atom_getsym(argv + i), read_chan))
 			return 0;
 		
 		if (in_place)
 		{
 			new_length = buffer_length (atom_getsym(argv + i));
 			new_sample_rate = buffer_sample_rate(atom_getsym(argv + i));
+            
+            if (buffer_check(x, atom_getsym(argv + i), write_chan))
+                return 0;
 		}
 		else 
 		{
 			new_length = buffer_length (atom_getsym(argv + i + argc));
 			new_sample_rate = buffer_sample_rate(atom_getsym(argv + i + argc));
 			
-			if (buffer_check(x, atom_getsym(argv + i + argc), chan))
+			if (buffer_check(x, atom_getsym(argv + i + argc), write_chan))
 				return 0;
 		}
 		

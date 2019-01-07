@@ -52,7 +52,7 @@ void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error erro
 t_buffer_write_error buffer_write(t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul);
 t_buffer_write_error buffer_write_float(t_symbol *buffer, float *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, float mul);
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, t_atom_long chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sr_ret);
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, t_atom_long chan, t_atom_long write_chan, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sr_ret);
 
 
 #endif /* __HIRT_BUFFER_ACCESS__ */
