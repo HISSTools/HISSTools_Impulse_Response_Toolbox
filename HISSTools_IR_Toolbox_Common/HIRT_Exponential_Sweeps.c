@@ -102,7 +102,7 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
         if (x->amp_specifier[2 * i + 2] < x->amp_specifier[2 * i])
             num_invalid++;
         else
-            last_db_val = x->amp_specifier[2 * j + 3];
+            last_db_val = x->amp_specifier[2 * (i - num_invalid) + 3];
     }
         
     num_items -= num_invalid;
