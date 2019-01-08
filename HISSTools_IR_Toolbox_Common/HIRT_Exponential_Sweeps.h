@@ -42,7 +42,7 @@ typedef struct _ess
 	
 	AH_UIntPtr num_amp_specifiers;
 	
-	double amp_specifier[34];
+	double amp_specifier[36];
 	
 	
 } t_ess;

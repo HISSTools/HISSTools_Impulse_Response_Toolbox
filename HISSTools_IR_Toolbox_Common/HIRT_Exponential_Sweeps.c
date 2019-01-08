@@ -36,6 +36,7 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
 	double last_db_val;
 	
 	long num_items;
+    long num_invalid = 0;
 	long i;
 	
 	x->RT = T;
@@ -83,17 +84,29 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
 	
 	// Start of amp curve
 	
-	x->amp_specifier[0] = 0.0;
+    x->amp_specifier[0] = num_items ? log(amp_curve[0] / (f1 * sample_rate)) : 0.0;
     x->amp_specifier[1] = last_db_val = num_items ? amp_curve[1] : 0.0;
 	
+    if (x->amp_specifier[0] > 0.0)
+        x->amp_specifier[0] = 0.0;
+    
 	// Intermediate points
 	
 	for (i = 0; i < num_items; i++)
 	{
-		x->amp_specifier[2 * i + 2] = log(amp_curve[2 * i] / (f1 * sample_rate));
-		x->amp_specifier[2 * i + 3] = last_db_val = amp_curve[2 * i + 1];
+		x->amp_specifier[2 * (i - num_invalid) + 2] = log(amp_curve[2 * i] / (f1 * sample_rate));
+		x->amp_specifier[2 * (i - num_invalid) + 3] = amp_curve[2 * i + 1];
+        
+        // Sanitize values - If frequencies do not increase then ignore this pair
+        
+        if (x->amp_specifier[2 * i + 2] < x->amp_specifier[2 * i])
+            num_invalid++;
+        else
+            last_db_val = x->amp_specifier[2 * j + 3];
 	}
 		
+    num_items -= num_invalid;
+    
 	// Endstop 
 	
 	x->amp_specifier[2 * num_items + 2] = HUGE_VAL;
@@ -147,7 +160,8 @@ AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
 		
 		for ( ; time_val > amp_specifier[j + 2]; j += 2);
 		
-		interp = (time_val - amp_specifier[j]) / (amp_specifier[j + 2] - amp_specifier[j]);
+		interp = (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = interp ? ((time_val - amp_specifier[j]) / interp) : 0.0;
 		curve_db = amp_specifier[j + 1] + interp * (amp_specifier[j + 3] - amp_specifier[j + 1]);
 		curve_amp = pow(10.0, curve_db / 20.0);
 		
@@ -199,7 +213,8 @@ AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N,
 		
 		for ( ; time_val < amp_specifier[j]; j -= 2);
 		
-		interp = (time_val - amp_specifier[j]) / (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = interp ? ((time_val - amp_specifier[j]) / interp) : 0.0;
 		curve_db = amp_specifier[j + 1] + interp * (amp_specifier[j + 3] - amp_specifier[j + 1]);
 		curve_amp = pow(10.0, -curve_db / 20.0);
 		
@@ -250,7 +265,8 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
 		
 		for ( ; time_val > amp_specifier[j + 2]; j += 2);
 		
-		interp = (time_val - amp_specifier[j]) / (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = interp ? ((time_val - amp_specifier[j]) / interp) : 0.0;
 		curve_db = amp_specifier[j + 1] + interp * (amp_specifier[j + 3] - amp_specifier[j + 1]);
 		curve_amp = pow(10.0, curve_db / 20.0);
 		
@@ -302,7 +318,8 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
 		
 		for ( ; time_val < amp_specifier[j]; j -= 2);
 		
-		interp = (time_val - amp_specifier[j]) / (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = (amp_specifier[j + 2] - amp_specifier[j]);
+        interp = interp ? ((time_val - amp_specifier[j]) / interp) : 0.0;
 		curve_db = amp_specifier[j + 1] + interp * (amp_specifier[j + 3] - amp_specifier[j + 1]);
 		curve_amp = pow(10.0, -curve_db / 20.0);
 		
