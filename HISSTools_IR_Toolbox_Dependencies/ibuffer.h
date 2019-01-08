@@ -11,7 +11,7 @@
 
 
 #ifndef _IBUFFER_
-#define _IBUFFER_ 
+#define _IBUFFER_
 
 
 #include <ext.h>
@@ -54,15 +54,15 @@ typedef struct _ibuffer
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#define MASK_16_BIT            0xFFFF0000
-#define MASK_24_BIT            0xFFFFFF00
+#define MASK_16_BIT                 0xFFFF0000
+#define MASK_24_BIT                 0xFFFFFF00
 
 #ifdef _APPLE_
-#define TWO_POW_31_RECIP                0x1.0fp-31f
-#define TWO_POW_31_RECIP_DOUBLE         0x1.0fp-31
+#define TWO_POW_31_RECIP            0x1.0fp-31f
+#define TWO_POW_31_RECIP_DOUBLE     0x1.0fp-31
 #else
-#define TWO_POW_31_RECIP                0.000000000465661287f
-#define TWO_POW_31_RECIP_DOUBLE         0.00000000046566128730773925
+#define TWO_POW_31_RECIP            0.000000000465661287f
+#define TWO_POW_31_RECIP_DOUBLE     0.00000000046566128730773925
 #endif
 
 t_symbol *ps_buffer;
@@ -79,3 +79,4 @@ enum {
 };
 
 #endif        /* _IBUFFER_ */
+
