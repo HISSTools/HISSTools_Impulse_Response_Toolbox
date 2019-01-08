@@ -19,15 +19,15 @@ static const AH_UInt32 feedback_mask_vals[] = {0x0u, 0x0u, 0x2u, 0x6u, 0xCu, 0x1
 
 
 typedef struct _mls
-{		
-	AH_UInt32 feedback_mask;
-	AH_UInt32 lfsr;
-	
-	AH_UInt32 T;
-	AH_UInt32 order;
-	
-	double amp;
-		
+{        
+    AH_UInt32 feedback_mask;
+    AH_UInt32 lfsr;
+    
+    AH_UInt32 T;
+    AH_UInt32 order;
+    
+    double amp;
+        
 } t_mls;
 
 
@@ -38,7 +38,7 @@ typedef struct _mls
 
 static __inline AH_UInt32 mls_get_length (t_mls *x)
 {
-	return x->T;
+    return x->T;
 }
 
 
@@ -59,4 +59,4 @@ void mls_gen(t_mls *x, void *out, AH_Boolean double_precision);
 AH_UInt32 get_next_lfsr_int(AH_UInt32 lfsr, AH_UInt32 feedback_mask) ;
 
 
-#endif	/* __HIRT_MAXIMUM_LENGTH_SEQUENCES__ */
+#endif    /* __HIRT_MAXIMUM_LENGTH_SEQUENCES__ */

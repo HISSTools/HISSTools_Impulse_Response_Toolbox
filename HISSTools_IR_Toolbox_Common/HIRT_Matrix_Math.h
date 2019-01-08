@@ -19,14 +19,14 @@
 
 typedef struct _matrix_complex
 {
-	AH_UIntPtr m_dim;
-	AH_UIntPtr n_dim;
-	
-	AH_UIntPtr max_m_dim;
-	AH_UIntPtr max_n_dim;
-	
-	COMPLEX_DOUBLE *matrix_data;
-	
+    AH_UIntPtr m_dim;
+    AH_UIntPtr n_dim;
+    
+    AH_UIntPtr max_m_dim;
+    AH_UIntPtr max_n_dim;
+    
+    COMPLEX_DOUBLE *matrix_data;
+    
 } t_matrix_complex;
 
 
@@ -64,4 +64,4 @@ void matrix_choelsky_solve_complex(t_matrix_complex *out, t_matrix_complex *deco
 void matrix_conjugate_transpose_complex(t_matrix_complex *out, t_matrix_complex *in);
 
 
-#endif	/* HIRT_MATRIX_MATH_ */
+#endif    /* HIRT_MATRIX_MATH_ */
