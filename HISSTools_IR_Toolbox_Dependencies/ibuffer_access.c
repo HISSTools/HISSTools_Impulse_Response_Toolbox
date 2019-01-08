@@ -263,12 +263,12 @@ void ibuffer_get_samps_rev(void *samps, float *out, AH_SIntPtr offset, AH_SIntPt
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define IBUFFER_FETCH_LOOP_UNROLL(x)            \
-AH_SIntPtr i;                                    \
-for (i = 0; i < n_samps >> 3; i++)                \
-{x; x; x; x; x; x; x; x;}                        \
-for (i <<= 3; i < n_samps; i++)                    \
+AH_SIntPtr i;                                   \
+for (i = 0; i < n_samps >> 3; i++)              \
+{x; x; x; x; x; x; x; x;}                       \
+for (i <<= 3; i < n_samps; i++)                 \
 {x;}                                            \
-for (; i < ((n_samps + 3) >> 2) << 2; i++)        \
+for (; i < ((n_samps + 3) >> 2) << 2; i++)      \
 *out++ = 0;
 
 static __inline void ibuffer_fetch_samps_float(float *out, float *samps, AH_SIntPtr *offsets, AH_SIntPtr n_samps)

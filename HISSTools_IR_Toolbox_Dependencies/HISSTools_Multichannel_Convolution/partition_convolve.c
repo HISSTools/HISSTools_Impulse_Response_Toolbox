@@ -21,7 +21,7 @@
 
 // Pointer Utility Macro (cache the offset calculation explictly if we are passing in an expression)
 
-#define DSP_SPLIT_COMPLEX_POINTER_CALC(complex1, complex2, offset)    \
+#define DSP_SPLIT_COMPLEX_POINTER_CALC(complex1, complex2, offset) \
 { \
 AH_UIntPtr temp_offset = offset; \
 complex1.realp = complex2.realp + temp_offset; \
