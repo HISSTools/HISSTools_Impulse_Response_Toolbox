@@ -18,7 +18,7 @@ typedef enum {
     FADE_SQUARE_ROOT = 2,
     FADE_COS = 3,
     FADE_GOMPERTZ = 4,
-    
+
 } t_fade_type;
 
 
@@ -28,11 +28,11 @@ typedef enum {
 
 
 typedef enum {
-    
+
     RMS_RESULT_SUCCESS = 0,
     RMS_RESULT_IN_LEVEL_NOT_FOUND = 1,
     RMS_RESULT_OUT_LEVEL_NOT_FOUND = 2,
-    
+
 } t_rms_result;
 
 

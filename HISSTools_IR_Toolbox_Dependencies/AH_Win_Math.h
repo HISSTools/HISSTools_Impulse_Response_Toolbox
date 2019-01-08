@@ -100,6 +100,6 @@ static __inline float atanhf(float x)
 #define DBL_MAX 3.402823466e+38f
 #endif
 
-#endif    
+#endif
 
 #endif    /* _AH_WIN_MATH_ */

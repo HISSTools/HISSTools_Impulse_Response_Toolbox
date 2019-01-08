@@ -21,7 +21,7 @@ extern "C" {
 #define HIRT_DB_MIN -500
 
 typedef enum {
-    
+
     SMOOTH_MODE_FULL = 0,
     SMOOTH_MODE_FAST = 1,
     SMOOTH_MODE_FAST_OCT = 2,
@@ -29,14 +29,14 @@ typedef enum {
 } t_smooth_mode;
 
 typedef enum {
-    
+
     SPECTRUM_REAL,
     SPECTRUM_FULL
-    
+
 } t_spectrum_format;
 
 typedef enum {
-    
+
     FILTER_REGULARISATION = 0,
     FILTER_CLIP = 1,
     FILTER_FILTER = 2
@@ -65,15 +65,15 @@ static __inline double db_to_pow(double db)
 static __inline double a_to_db(double a)
 {
     double db;
-    
-    if (!a) 
+
+    if (!a)
         return HIRT_DB_MIN;
-    
+
     db = 20.0 * log10(a);
-    
-    if (db < HIRT_DB_MIN) 
+
+    if (db < HIRT_DB_MIN)
         db = HIRT_DB_MIN;
-    
+
     return db;
 }
 
@@ -81,15 +81,15 @@ static __inline double a_to_db(double a)
 static __inline double pow_to_db(double pow)
 {
     double db;
-    
-    if (!pow) 
+
+    if (!pow)
         return HIRT_DB_MIN;
-    
+
     db = 10.0 * log10(pow);
-    
-    if (db < HIRT_DB_MIN) 
+
+    if (db < HIRT_DB_MIN)
         db = HIRT_DB_MIN;
-    
+
     return db;
 }
 
@@ -131,7 +131,7 @@ void smooth_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH
 void zero_phase_from_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format);
 void linear_phase_from_power_spectrum (FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format);
 void minimum_phase_components_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size);
-void minimum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size);    
+void minimum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size);
 void noncausal_maximum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size);
 void maximum_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size);
 void mixed_phase_from_power_spectrum (FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, double phase, AH_Boolean zero_center);

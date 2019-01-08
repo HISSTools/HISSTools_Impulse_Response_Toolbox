@@ -21,7 +21,7 @@ t_atom_long write_chan;
 #ifdef OBJ_USES_HIRT_READ_ATTR
 #define HIRT_READ_ATTR                \
 t_atom_long read_chan;
-#else                                
+#else
 #define HIRT_READ_ATTR
 #endif
 
@@ -31,7 +31,7 @@ t_atom_long read_chan;
 
 #if defined OBJ_USES_HIRT_DECONVOLUTION_ATTR && !defined OBJ_DOES_NOT_USE_HIRT_DECONVOLUTION_DELAY
 #define HIRT_DECONVOLUTION_DELAY        \
-t_atom deconvolve_delay;                
+t_atom deconvolve_delay;
 #else
 #define HIRT_DECONVOLUTION_DELAY
 #endif
@@ -43,7 +43,7 @@ t_atom *deconvolve_range_specifier;        \
 long deconvolve_num_filter_specifiers;    \
 long deconvolve_num_range_specifiers;    \
 t_atom_long deconvolve_mode;            \
-t_atom deconvolve_phase;                
+t_atom deconvolve_phase;
 #else
 #define HIRT_DECONVOLUTION_ATTR
 #endif
@@ -54,7 +54,7 @@ t_atom deconvolve_phase;
 
 #ifdef OBJ_USES_HIRT_OUT_PHASE_ATTR
 #define HIRT_OUT_PHASE_ATTR        \
-t_atom out_phase;                        
+t_atom out_phase;
 #else
 #define HIRT_OUT_PHASE_ATTR
 #endif

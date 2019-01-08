@@ -37,15 +37,15 @@ void *this_class;
 typedef struct _irphase
 {
     t_pxobject x_obj;
-    
+
     // Attributes
-    
-    HIRT_COMMON_ATTR 
-    
+
+    HIRT_COMMON_ATTR
+
     // Bang Outlet
-    
+
     void *process_done;
-    
+
 } t_irphase;
 
 
@@ -74,13 +74,13 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 int main()
 {
     this_class = class_new("irphase~",
-                            (method) irphase_new, 
-                            (method)irphase_free, 
-                            sizeof(t_irphase), 
+                            (method) irphase_new,
+                            (method)irphase_free,
+                            sizeof(t_irphase),
                             0L,
                             A_GIMME,
                             0);
-    
+
     class_addmethod(this_class, (method)irphase_userphase, "minphase", A_GIMME, 0L);
     class_addmethod(this_class, (method)irphase_userphase, "maxphase", A_GIMME, 0L);
     class_addmethod(this_class, (method)irphase_userphase, "linphase", A_GIMME, 0L);
@@ -89,10 +89,10 @@ int main()
 
     class_addmethod(this_class, (method)irphase_assist, "assist", A_CANT, 0L);
     class_register(CLASS_BOX, this_class);
-    
+
     declare_HIRT_common_attributes(this_class);
     buffer_access_init();
-    
+
     return 0;
 }
 
@@ -100,17 +100,17 @@ int main()
 void *irphase_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_irphase *x = (t_irphase *)object_alloc(this_class);
-    
+
     x->process_done = bangout(x);
-    
+
     init_HIRT_common_attributes(x);
-    
+
     // Change filter specifier to more appropriate default
-    
+
     atom_setlong(x->deconvolve_filter_specifier + 0, -1000);
     atom_setlong(&x->deconvolve_delay, 0);
     x->deconvolve_num_filter_specifiers = 1;
-    
+
     attr_args_process(x, argc, argv);
 
     return(x);
@@ -144,56 +144,56 @@ void irphase_userphase(t_irphase *x, t_symbol *sym, long argc, t_atom *argv)
     double phase;
     double time_mul = 1.0;
     t_phase_type mode;
-    
+
     if ((sym != gensym("mixedphase") && argc < 2) || (sym == gensym("mixedphase") && argc < 3))
     {
         object_error((t_object *) x, "not enough arguments to message %s", sym->s_name);
         return;
     }
-    
+
     target = atom_getsym(argv++);
     source = atom_getsym(argv++);
     argc--;
     argc--;
-    
+
     if (sym == gensym("minphase"))
     {
         mode = MODE_MINPHASE;
         phase = 0.0;
     }
-    
+
     if (sym == gensym("maxphase"))
     {
         mode = MODE_MAXPHASE;
         phase = 1.0;
     }
-    
+
     if (sym == gensym("linphase"))
     {
         mode = MODE_LINPHASE;
         phase = 0.5;
     }
-    
+
     if (sym == gensym("allpass"))
     {
         mode = MODE_ALLPASS;
         phase = 0.0;
     }
-    
+
     if (sym == gensym("mixedphase"))
     {
         mode = MODE_MIXEDPHASE;
         phase = atom_getfloat(argv++);
         argc--;
     }
-    
+
     if (argc)
     {
         time_mul = atom_getfloat(argv++);
         argc--;
     }
-        
-        
+
+
     irphase_process(x, target, source, phase, time_mul, mode);
 }
 
@@ -212,7 +212,7 @@ void irphase_process(t_irphase *x, t_symbol *target, t_symbol *source, double ph
     atom_setfloat(args + 2, phase);
     atom_setfloat(args + 3, time_mul);
     atom_setlong(args + 4, mode);
-    
+
     defer(x, (method) irphase_process_internal, 0, 5, args);
 }
 
@@ -220,7 +220,7 @@ void irphase_process(t_irphase *x, t_symbol *target, t_symbol *source, double ph
 void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *argv)
 {
     FFT_SETUP_D fft_setup;
-    
+
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
@@ -228,43 +228,43 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
     float *in;
     float *filter_in;
     double *out_buf;
-    
+
     t_symbol *filter = filter_retriever(x->deconvolve_filter_specifier);
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source = atom_getsym(argv++);
-    
+
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
     double range_specifier[HIRT_MAX_SPECIFIER_ITEMS];
-    
+
     double phase = atom_getfloat(argv++);
-    double time_mul = atom_getfloat(argv++);    
+    double time_mul = atom_getfloat(argv++);
     double sample_rate = buffer_sample_rate(source);
     double deconvolve_delay;
     double deconvolve_phase;
-    
+
     t_phase_type mode = (t_phase_type) atom_getlong(argv++);
-    
+
     AH_UIntPtr fft_size;
     AH_UIntPtr fft_size_log2;
     AH_UIntPtr i;
-    
+
     t_buffer_write_error error;
     long deconvolve_mode;
     t_atom_long read_chan = x->read_chan - 1;
-    
+
     // Get input buffer lengths
-    
+
     AH_SIntPtr source_length_1 = buffer_length(source);
     AH_SIntPtr filter_length = buffer_length(filter);
     AH_SIntPtr max_length = source_length_1;
-    
+
     // Check input buffers
-    
+
     if (buffer_check((t_object *) x, source, read_chan))
         return;
-    
+
     // Calculate fft size
-    
+
     time_mul = time_mul == 0.0 ? 1.0 : time_mul;
 
     if (time_mul < 1.0)
@@ -272,7 +272,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
         object_warn((t_object *) x, " time multiplier cannot be less than 1 (using 1)");
         time_mul = 1.0;
     }
-    
+
     fft_size = calculate_fft_size((long) (max_length * time_mul), &fft_size_log2);
 
     if (fft_size < 8)
@@ -280,23 +280,23 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
         object_error((t_object *) x, "buffers are too short, or have no length");
         return;
     }
-    
+
     deconvolve_mode = x->deconvolve_mode;
     deconvolve_phase = phase_retriever(x->deconvolve_phase);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
-    
+
     // Allocate momory
 
     fft_setup = hisstools_create_setup_d(fft_size_log2);
-    
+
     spectrum_1.realp = ALIGNED_MALLOC(sizeof(double) * fft_size * (mode == MODE_ALLPASS ? 6 : 3));
     spectrum_1.imagp = spectrum_1.realp + fft_size;
     spectrum_2.realp = spectrum_1.imagp + fft_size;
     spectrum_2.imagp = mode == MODE_ALLPASS ? spectrum_2.realp + fft_size : 0;
     spectrum_3.realp = mode == MODE_ALLPASS ? spectrum_2.imagp + fft_size : 0;
     spectrum_3.imagp = mode == MODE_ALLPASS ? spectrum_3.realp + fft_size : 0;
-    
-    filter_in = filter_length ? ALIGNED_MALLOC(sizeof(float *) * filter_length) : 0; 
+
+    filter_in = filter_length ? ALIGNED_MALLOC(sizeof(float *) * filter_length) : 0;
 
     out_buf = mode == MODE_ALLPASS ? spectrum_3.realp : spectrum_2.realp;
     in = (float *) out_buf;
@@ -304,56 +304,56 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
     if (!spectrum_1.realp || !fft_setup || (filter_length && !filter_in))
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-        
+
         hisstools_destroy_setup_d(fft_setup);
         ALIGNED_FREE(spectrum_1.realp);
         ALIGNED_FREE(filter_in);
-        
+
         return;
     }
-    
+
     // Get input - convert to frequency domain - get power spectrum - convert phase
-    
+
     buffer_read(source, read_chan, in, fft_size);
     time_to_spectrum_float(fft_setup, in, source_length_1, spectrum_1, fft_size);
     power_spectrum(spectrum_1, fft_size, SPECTRUM_FULL);
-    variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase, false);            
+    variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase, false);
 
     if (mode == MODE_ALLPASS)
     {
-        // Copy minimum phase spectrum to spectrum_2 
-        
-        for (i = 0; i < fft_size; i++) 
+        // Copy minimum phase spectrum to spectrum_2
+
+        for (i = 0; i < fft_size; i++)
         {
             spectrum_2.realp[i] = spectrum_1.realp[i];
-            spectrum_2.imagp[i] = spectrum_1.imagp[i]; 
-            
+            spectrum_2.imagp[i] = spectrum_1.imagp[i];
+
         }
-        
+
         // Get input again
-    
+
         time_to_spectrum_float(fft_setup, in, source_length_1, spectrum_1, fft_size);
-        
+
         // Fill deconvolution filter specifiers - read filter from buffer (if specified) - deconvolve input by minimum phase spectrum
-        
+
         fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
         fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
         buffer_read(filter, 0, filter_in, fft_size);
         deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_FULL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
     }
-            
+
     // Convert to time domain - copy out to buffer
-    
+
     spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_FULL);
     error = buffer_write(target, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1);
     buffer_write_error((t_object *) x, target, error);
-    
+
     // Free memory
-    
+
     hisstools_destroy_setup_d(fft_setup);
     ALIGNED_FREE(spectrum_1.realp);
     ALIGNED_FREE(filter_in);
-    
+
     if (!error)
         outlet_bang(x->process_done);
 }

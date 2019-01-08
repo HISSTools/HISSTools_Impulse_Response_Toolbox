@@ -14,13 +14,13 @@
 
 
 typedef enum {
-    
+
     BUFFER_WRITE_ERR_NONE = 0,
     BUFFER_WRITE_ERR_NOT_FOUND = 1,
     BUFFER_WRITE_ERR_INVALID = 2,
     BUFFER_WRITE_ERR_TOO_SMALL = 3,
     BUFFER_WRITE_ERR_CHANNEL_INVALID = 4,
-    
+
 } t_buffer_write_error;
 
 

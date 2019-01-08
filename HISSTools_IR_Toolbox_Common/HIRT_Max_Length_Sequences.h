@@ -19,15 +19,15 @@ static const AH_UInt32 feedback_mask_vals[] = {0x0u, 0x0u, 0x2u, 0x6u, 0xCu, 0x1
 
 
 typedef struct _mls
-{        
+{
     AH_UInt32 feedback_mask;
     AH_UInt32 lfsr;
-    
+
     AH_UInt32 T;
     AH_UInt32 order;
-    
+
     double amp;
-        
+
 } t_mls;
 
 

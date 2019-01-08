@@ -11,8 +11,8 @@
 #else
 #ifdef _WIN64
 #define AH_64BIT
-#endif 
-#endif  
+#endif
+#endif
 
 
 // Pointer-sized Integer definitions

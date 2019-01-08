@@ -8,43 +8,43 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////// ESS Structure  /////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 typedef struct _ess
-{        
+{
     // Internal only
-    
+
     AH_UIntPtr T;
     double K1, K2;
 
     double lo_f_act;
     double hi_f_act;
-    
+
     double f1;
     double f2;
-    
+
     // Parameters requested
-    
+
     double RT;
     double rf1, rf2;
-    
+
     double fade_in;
     double fade_out;
-    
+
     double sample_rate;
     double amp;
-    
+
     // Amplitude curve
-    
+
     AH_UIntPtr num_amp_specifiers;
-    
+
     double amp_specifier[36];
-    
-    
+
+
 } t_ess;
 
 

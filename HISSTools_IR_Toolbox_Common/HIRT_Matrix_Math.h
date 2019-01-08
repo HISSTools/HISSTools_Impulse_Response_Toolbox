@@ -21,12 +21,12 @@ typedef struct _matrix_complex
 {
     AH_UIntPtr m_dim;
     AH_UIntPtr n_dim;
-    
+
     AH_UIntPtr max_m_dim;
     AH_UIntPtr max_n_dim;
-    
+
     COMPLEX_DOUBLE *matrix_data;
-    
+
 } t_matrix_complex;
 
 

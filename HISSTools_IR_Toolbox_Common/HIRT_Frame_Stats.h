@@ -12,12 +12,12 @@
 
 
 typedef enum {
-    
+
     MODE_COPY = 0,
     MODE_PEAKS = 1,
     MODE_SMOOTH = 2,
     MODE_ACCUMULATE = 3,
-    
+
 } t_frame_mode;
 
 
@@ -30,18 +30,18 @@ typedef struct frame_stats
 {
     double *current_frame;
     AH_UInt32 *ages;
-    
+
     double alpha_u;
     double alpha_d;
 
     AH_UInt32 max_age;
-    
+
     AH_UIntPtr frames;
     AH_UIntPtr max_N;
     AH_UIntPtr last_N;
-    
+
     t_frame_mode mode;
-    
+
 } t_frame_stats;
 
 

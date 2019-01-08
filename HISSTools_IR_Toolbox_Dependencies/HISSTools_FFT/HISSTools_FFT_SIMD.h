@@ -1,6 +1,6 @@
 
 #ifndef _HISSTOOLS_FFT_SIMD_
-#define _HISSTOOLS_FFT_SIMD_ 
+#define _HISSTOOLS_FFT_SIMD_
 
 #ifdef __APPLE__
 #define ALIGNED_MALLOC malloc
@@ -48,16 +48,16 @@ static __inline int SSE2_check()
     int SSE2_flag = 0;
     int CPUInfo[4] = {-1, 0, 0, 0};
     int nIds;
-    
+
     __cpuid(CPUInfo, 0);
     nIds = CPUInfo[0];
-    
+
     if (nIds > 0)
     {
         __cpuid(CPUInfo, 1);
         SSE2_flag = (CPUInfo[3] >> 26) & 0x1;
     }
-    
+
     return SSE2_flag;
 #endif
 }

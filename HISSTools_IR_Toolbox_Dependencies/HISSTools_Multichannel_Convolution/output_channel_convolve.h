@@ -1,5 +1,5 @@
 
-    
+
 #include <AH_VectorOps.h>
 
 #include "zero_latency_convolve.h"
@@ -13,9 +13,9 @@
 typedef struct _output_channel_convolve
 {
     t_zero_latency_convolve *convolvers[MAX_CHANS];
-    
+
     AH_UIntPtr num_in_chans;
-        
+
 } t_output_channel_convolve;
 
 #endif //__OUTPUTCHANCONVOLVE_STRUCT__

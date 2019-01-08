@@ -18,7 +18,7 @@ typedef enum
     CONVOLVE_ERR_FFT_SIZE_MAX_NON_POWER_OF_TWO = 10,
     CONVOLVE_ERR_FFT_SIZE_OUT_OF_RANGE = 11,
     CONVOLVE_ERR_FFT_SIZE_NON_POWER_OF_TWO = 12,
-    
+
 } t_convolve_error;
 
 

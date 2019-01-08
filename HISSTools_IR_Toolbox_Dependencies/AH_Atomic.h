@@ -10,15 +10,15 @@
 
 #include <ext_atomic.h>
 
-#else            
+#else
 
-// Local macros 
+// Local macros
 
 #ifdef __APPLE__    // Apple
 
 #include <libkern/OSAtomic.h>
 
-typedef int32_t t_int32_atomic; 
+typedef int32_t t_int32_atomic;
 
 #define ATOMIC_INCREMENT OSAtomicIncrement32
 #define ATOMIC_DECREMENT OSAtomicDecrement32
@@ -65,17 +65,17 @@ static __inline long Atomic_Compare_And_Swap_Barrier(t_int32_atomic Comparand, t
 static __inline long Atomic_Get_And_Zero(t_int32_atomic *theValue, t_int32_atomic *theOldValue)
 {
     t_int32_atomic compare_value;
-    long exchanged; 
-    
+    long exchanged;
+
     compare_value = *theValue;
     exchanged = Atomic_Compare_And_Swap_Barrier (compare_value, 0, theValue);
-    
+
     if (exchanged)
     {
         *theOldValue = compare_value;
         return 1;
     }
-    
+
     return 0;
 }
 

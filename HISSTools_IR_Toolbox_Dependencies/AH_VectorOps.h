@@ -76,16 +76,16 @@ static __inline int SSE2_check()
     int SSE2_flag = 0;
     int CPUInfo[4] = {-1, 0, 0, 0};
     int nIds;
-    
+
     __cpuid(CPUInfo, 0);
     nIds = CPUInfo[0];
-    
+
     if (nIds > 0)
     {
         __cpuid(CPUInfo, 1);
         SSE2_flag = (CPUInfo[3] >> 26) & 0x1;
     }
-    
+
     return SSE2_flag;
 #endif
 }
@@ -333,12 +333,12 @@ static __inline vFloat float2vector (float floatval) FORCE_INLINE_DEFINITION
 {
     vFloat TheVector;
     float *TheFloatArray = (float *) &TheVector;
-    
+
     TheFloatArray[0] = floatval;
     TheFloatArray[1] = floatval;
     TheFloatArray[2] = floatval;
     TheFloatArray[3] = floatval;
-    
+
     return TheVector;
 }
 
@@ -352,7 +352,7 @@ static inline vFloat vec_uload(unsigned char *target)
 {
     vector unsigned char MSQ, LSQ;
     vector unsigned char mask;
-    
+
     MSQ = vec_ld(0, target);                            // most significant quadword
     LSQ = vec_ld(15, target);                           // least significant quadword
     mask = vec_lvsl(0, target);                         // create the permute mask

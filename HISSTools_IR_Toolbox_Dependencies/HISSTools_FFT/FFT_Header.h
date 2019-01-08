@@ -36,7 +36,7 @@ typedef struct _SplitDouble
 {
     double *realp;
     double *imagp;
-    
+
 } SplitDouble;
 
 
@@ -44,24 +44,24 @@ typedef struct _SplitFloat
 {
     float *realp;
     float *imagp;
-    
+
 } SplitFloat;
 
 
 typedef struct _FFTSetupDouble
 {
     HstFFT_UInt max_fft_log2;
-    
+
     SplitDouble tables[28];
-    
+
 } FFTSetupDouble;
 
 typedef struct _FFTSetupFloat
 {
     HstFFT_UInt max_fft_log2;
-    
+
     SplitFloat tables[28];
-    
+
 } FFTSetupFloat;
 
 

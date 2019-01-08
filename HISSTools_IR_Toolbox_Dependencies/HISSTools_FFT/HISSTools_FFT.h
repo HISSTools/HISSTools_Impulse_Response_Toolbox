@@ -47,7 +47,7 @@ extern "C"  {
 
 // FFT Routines
 
-// Complex 
+// Complex
 
 void hisstools_fft_d (FFT_SETUP_D setup, FFT_SPLIT_COMPLEX_D *input, HstFFT_UInt log2n);
 void hisstools_fft_f (FFT_SETUP_F setup, FFT_SPLIT_COMPLEX_F *input, HstFFT_UInt log2n);

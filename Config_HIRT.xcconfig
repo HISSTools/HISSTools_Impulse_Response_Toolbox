@@ -1,5 +1,5 @@
 
-// Xcode target configuration settings 
+// Xcode target configuration settings
 
 PRODUCT_NAME = $TARGET_NAME
 
@@ -25,7 +25,7 @@ MACOSX_DEPLOYMENT_TARGET = 10.5
 
 // Build a Universal Binary with 32/64 bit versions
 
-ARCHS = i386 x86_64 
+ARCHS = i386 x86_64
 
 // We define this so as to support backward compatibility (this prevents using Max6 only translation symbol generation)
 
@@ -39,7 +39,7 @@ GENERATE_PKGINFO_FILE = YES
 
 // Turn off C99 to minimise time spent working in Visual Studio
 
-WARNING_CFLAGS = -Wall -Wno-four-char-constants -Wno-unknown-pragmas -Wdeclaration-after-statement -Wno-deprecated-declarations -Werror 
+WARNING_CFLAGS = -Wall -Wno-four-char-constants -Wno-unknown-pragmas -Wdeclaration-after-statement -Wno-deprecated-declarations -Werror
 
 // Flags to enforce some build-time checks for the symbols used while not actually performing a hard link
 C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
