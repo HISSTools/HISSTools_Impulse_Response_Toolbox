@@ -5,10 +5,10 @@
 
 typedef enum
 {
-	CONVOLVE_LATENCY_ZERO = 0,
-	CONVOLVE_LATENCY_SHORT = 1,
-	CONVOLVE_LATENCY_MEDIUM = 2,
-	
+    CONVOLVE_LATENCY_ZERO = 0,
+    CONVOLVE_LATENCY_SHORT = 1,
+    CONVOLVE_LATENCY_MEDIUM = 2,
+    
 } t_convolve_latency_mode;
 
 

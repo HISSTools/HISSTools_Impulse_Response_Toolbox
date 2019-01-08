@@ -2,7 +2,7 @@
 /*
  *  AH_Win_Math
  *
- *	This header file provides definitions or code for math.h functions not present under Windows using Visual Studio
+ *    This header file provides definitions or code for math.h functions not present under Windows using Visual Studio
  *
  */
 
@@ -37,39 +37,39 @@ static __inline double round(double r)
 
 static __inline double log2(double n)
 {
-	return log(n) * LOG_2_RECIP;
+    return log(n) * LOG_2_RECIP;
 }
 
 static __inline double exp2(double n)
 {
-	return pow(2, n);
+    return pow(2, n);
 }
 
 static __inline long isnan(double n)
 {
-	return !(n == n);
+    return !(n == n);
 }
 
 static __inline long isinf(double n)
 {
-	return n == n * 2;
+    return n == n * 2;
 }
 
 static __inline double copysign(double a, double b)
 {
-	double val = fabs(a);
+    double val = fabs(a);
 
-	return b < 0 ? -val : val;
+    return b < 0 ? -val : val;
 }
 
 static __inline double asinh(double x)
 {
-	return log(x + sqrt((x * x) + 1));
+    return log(x + sqrt((x * x) + 1));
 }
 
 static __inline double acosh(double x)
 {
-	return log(x + sqrt((x * x) - 1));
+    return log(x + sqrt((x * x) - 1));
 }
 
 static __inline double atanh(double x)
@@ -79,17 +79,17 @@ static __inline double atanh(double x)
 
 static __inline float asinhf(float x)
 {
-	return (float) asinh(x);
+    return (float) asinh(x);
 }
 
 static __inline float acoshf(float x)
 {
-	return (float) acosh(x);
+    return (float) acosh(x);
 }
 
 static __inline float atanhf(float x)
 {
-	return (float) atanh(x);
+    return (float) atanh(x);
 }
 
 #ifndef FLT_MAX
@@ -100,6 +100,6 @@ static __inline float atanhf(float x)
 #define DBL_MAX 3.402823466e+38f
 #endif
 
-#endif	
+#endif    
 
-#endif	/* _AH_WIN_MATH_ */
+#endif    /* _AH_WIN_MATH_ */

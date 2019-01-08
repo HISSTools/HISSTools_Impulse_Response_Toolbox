@@ -15,8 +15,8 @@
 #include <Accelerate/Accelerate.h>
 #else
 #include <emmintrin.h>
-typedef	__m128  vFloat;
-typedef	__m128d vDouble;
+typedef    __m128  vFloat;
+typedef    __m128d vDouble;
 #endif
 
 
@@ -43,22 +43,22 @@ typedef	__m128d vDouble;
 static __inline int SSE2_check()
 {
 #ifdef __APPLE__
-	return 1;
+    return 1;
 #else
-	int SSE2_flag = 0;
-	int CPUInfo[4] = {-1, 0, 0, 0};
-	int nIds;
-	
-	__cpuid(CPUInfo, 0);
-	nIds = CPUInfo[0];
-	
-	if (nIds > 0)
-	{
-		__cpuid(CPUInfo, 1);
-		SSE2_flag = (CPUInfo[3] >> 26) & 0x1;
-	}
-	
-	return SSE2_flag;
+    int SSE2_flag = 0;
+    int CPUInfo[4] = {-1, 0, 0, 0};
+    int nIds;
+    
+    __cpuid(CPUInfo, 0);
+    nIds = CPUInfo[0];
+    
+    if (nIds > 0)
+    {
+        __cpuid(CPUInfo, 1);
+        SSE2_flag = (CPUInfo[3] >> 26) & 0x1;
+    }
+    
+    return SSE2_flag;
 #endif
 }
 
@@ -71,22 +71,22 @@ static __inline int SSE2_check()
 
 // Floating point 32 bit intrinsics or functions defined here
 
-#define F32_VEC_MUL_OP					_mm_mul_ps
-#define F32_VEC_ADD_OP					_mm_add_ps
-#define F32_VEC_SUB_OP					_mm_sub_ps
-#define F32_VEC_SHUFFLE					_mm_shuffle_ps
+#define F32_VEC_MUL_OP                    _mm_mul_ps
+#define F32_VEC_ADD_OP                    _mm_add_ps
+#define F32_VEC_SUB_OP                    _mm_sub_ps
+#define F32_VEC_SHUFFLE                    _mm_shuffle_ps
 
-#define F32_SHUFFLE_CONST(z, y, x, w)	((z<<6)|(y<<4)|(x<<2)|w)
+#define F32_SHUFFLE_CONST(z, y, x, w)    ((z<<6)|(y<<4)|(x<<2)|w)
 
 // Double precision (64 bit) floating point vector ops (intel only - test for intel compile before using)
 
-#define F64_VEC_MUL_OP					_mm_mul_pd
-#define F64_VEC_ADD_OP					_mm_add_pd
-#define F64_VEC_SUB_OP					_mm_sub_pd
-#define F64_VEC_SHUFFLE					_mm_shuffle_pd
+#define F64_VEC_MUL_OP                    _mm_mul_pd
+#define F64_VEC_ADD_OP                    _mm_add_pd
+#define F64_VEC_SUB_OP                    _mm_sub_pd
+#define F64_VEC_SHUFFLE                    _mm_shuffle_pd
 
-#define F64_SHUFFLE_CONST(y, x)			((y<<1)|x)
+#define F64_SHUFFLE_CONST(y, x)            ((y<<1)|x)
 
-#endif	/* TARGET_INTEL */
+#endif    /* TARGET_INTEL */
 
-#endif	/* _HISSTOOLS_FFT_SIMD_ */
+#endif    /* _HISSTOOLS_FFT_SIMD_ */

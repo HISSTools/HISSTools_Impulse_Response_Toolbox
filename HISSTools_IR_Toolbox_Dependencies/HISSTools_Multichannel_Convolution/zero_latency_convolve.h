@@ -12,16 +12,16 @@
 
 typedef struct _zero_latency_convolve
 {
-	t_time_domain_convolve *time1;
-	t_partition_convolve *part1;
-	t_partition_convolve *part2;
-	t_partition_convolve *part3;
-	
-	t_memory_swap part4;
-	
-	AH_UIntPtr impulse_length;
-	t_convolve_latency_mode latency_mode;
-	
+    t_time_domain_convolve *time1;
+    t_partition_convolve *part1;
+    t_partition_convolve *part2;
+    t_partition_convolve *part3;
+    
+    t_memory_swap part4;
+    
+    AH_UIntPtr impulse_length;
+    t_convolve_latency_mode latency_mode;
+    
 } t_zero_latency_convolve;
 
 #endif // __ZEROLATENCYCONVOLVE_STRUCT__

@@ -19,12 +19,12 @@ typedef volatile long t_ah_atomic_32;
 static __inline long Generic_Atomic_Compare_And_Swap_Barrier(t_ah_atomic_32 Comparand, t_ah_atomic_32 Exchange, t_ah_atomic_32 *Destination)
 {
 #ifdef __APPLE__
-	if (OSAtomicCompareAndSwap32Barrier(Comparand, Exchange, (int32_t *) Destination))
+    if (OSAtomicCompareAndSwap32Barrier(Comparand, Exchange, (int32_t *) Destination))
 #else
-	if (InterlockedCompareExchange  (Destination, Exchange, Comparand) == Comparand)
+    if (InterlockedCompareExchange  (Destination, Exchange, Comparand) == Comparand)
 #endif
-		return 1;
-	return 0;
+        return 1;
+    return 0;
 }
 
 
@@ -40,14 +40,14 @@ typedef void (*free_method) (void *);
 
 typedef struct _memory_swap
 {
-	t_ah_atomic_32 lock;
-	
-	void *current_ptr;
-	
-	free_method current_free_method;
-	
-	AH_UIntPtr current_size;
-	
+    t_ah_atomic_32 lock;
+    
+    void *current_ptr;
+    
+    free_method current_free_method;
+    
+    AH_UIntPtr current_size;
+    
 } t_memory_swap;
 
 
@@ -55,7 +55,7 @@ typedef struct _memory_swap
 
 static __inline void unlock_memory_swap(t_memory_swap *mem_struct)
 {
-	Generic_Atomic_Compare_And_Swap_Barrier(1, 0, &mem_struct-> lock);
+    Generic_Atomic_Compare_And_Swap_Barrier(1, 0, &mem_struct-> lock);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,30 +70,30 @@ static __inline void unlock_memory_swap(t_memory_swap *mem_struct)
 
 static __inline long alloc_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
 {
-	long fail = 0;
-	
-	mem_struct->lock = 0;
-	
-	if (size)
-		mem_struct->current_ptr = ALIGNED_MALLOC(size);
-	else
-		mem_struct->current_ptr = NULL;
+    long fail = 0;
+    
+    mem_struct->lock = 0;
+    
+    if (size)
+        mem_struct->current_ptr = ALIGNED_MALLOC(size);
+    else
+        mem_struct->current_ptr = NULL;
 
-	if (size && mem_struct->current_ptr)
-	{
-		mem_struct->current_size = nom_size;
-		mem_struct->current_free_method = ALIGNED_FREE;
-	}
-	else 
-	{
-		mem_struct->current_size = 0;
-		mem_struct->current_free_method = NULL;
-		
-		if (size) 
-			fail = 1;
-	}
-	
-	return fail;
+    if (size && mem_struct->current_ptr)
+    {
+        mem_struct->current_size = nom_size;
+        mem_struct->current_free_method = ALIGNED_FREE;
+    }
+    else 
+    {
+        mem_struct->current_size = 0;
+        mem_struct->current_free_method = NULL;
+        
+        if (size) 
+            fail = 1;
+    }
+    
+    return fail;
 }
 
 
@@ -101,8 +101,8 @@ static __inline long alloc_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr siz
 
 static __inline void clear_memory_swap(t_memory_swap *mem_struct)
 {
-	if (mem_struct->current_free_method)
-		mem_struct->current_free_method(mem_struct->current_ptr);
+    if (mem_struct->current_free_method)
+        mem_struct->current_free_method(mem_struct->current_ptr);
 }
 
 
@@ -110,19 +110,19 @@ static __inline void clear_memory_swap(t_memory_swap *mem_struct)
 
 static __inline void free_memory_swap(t_memory_swap *mem_struct)
 {
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
-	
-	clear_memory_swap(mem_struct);
-		
-	mem_struct->current_ptr = NULL;
-	mem_struct->current_size = 0;
-	mem_struct->current_free_method = NULL;
-	
-	// This should never fail as this thread has the lock 
-	
-	Generic_Atomic_Compare_And_Swap_Barrier(1, 0, &mem_struct-> lock);
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+    
+    clear_memory_swap(mem_struct);
+        
+    mem_struct->current_ptr = NULL;
+    mem_struct->current_size = 0;
+    mem_struct->current_free_method = NULL;
+    
+    // This should never fail as this thread has the lock 
+    
+    Generic_Atomic_Compare_And_Swap_Barrier(1, 0, &mem_struct-> lock);
 }
 
 
@@ -138,16 +138,16 @@ static __inline void free_memory_swap(t_memory_swap *mem_struct)
 
 static __inline void *access_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
 {
-	void *return_ptr;
-	
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
-	
-	*nom_size = mem_struct->current_size;
-	return_ptr = mem_struct->current_ptr;
-	
-	return return_ptr;	
+    void *return_ptr;
+    
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+    
+    *nom_size = mem_struct->current_size;
+    return_ptr = mem_struct->current_ptr;
+    
+    return return_ptr;    
 }
 
 
@@ -155,17 +155,17 @@ static __inline void *access_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *
 
 static __inline void *attempt_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr *nom_size)
 {
-	void *return_ptr = NULL;
-		
-	if (Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct->lock))
-	{
-		*nom_size = mem_struct->current_size;
-		return_ptr = mem_struct->current_ptr;
-	}
-	else
-		*nom_size = 0;
-	
-	return return_ptr;
+    void *return_ptr = NULL;
+        
+    if (Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct->lock))
+    {
+        *nom_size = mem_struct->current_size;
+        return_ptr = mem_struct->current_ptr;
+    }
+    else
+        *nom_size = 0;
+    
+    return return_ptr;
 }
 
 
@@ -181,66 +181,66 @@ static __inline void *attempt_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr 
 // This pointer will *NOT* be freed by the memory_swap routines
 
 static __inline void swap_memory_swap(t_memory_swap *mem_struct, void *ptr, long nom_size)
-{	
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
-	
-	clear_memory_swap(mem_struct);
-		
-	mem_struct->current_ptr = ptr;
-	mem_struct->current_size = nom_size;
-	mem_struct->current_free_method = NULL;
+{    
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+    
+    clear_memory_swap(mem_struct);
+        
+    mem_struct->current_ptr = ptr;
+    mem_struct->current_size = nom_size;
+    mem_struct->current_free_method = NULL;
 }
 
 
 // Grow - this routine will lock to get access to the memory struct and allocate new memory if required, swapping it in safely
 
 static __inline void *grow_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
-{	
-	void *return_ptr;
-	
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+{    
+    void *return_ptr;
+    
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
 
-	if (mem_struct->current_size < nom_size)
-	{
-		clear_memory_swap(mem_struct);
-		
-		mem_struct->current_ptr = return_ptr = ALIGNED_MALLOC(size);
-		mem_struct->current_size = return_ptr ? nom_size: 0;
-		mem_struct->current_free_method = ALIGNED_FREE;
-	}
-	else 
-		return_ptr = mem_struct->current_ptr;
+    if (mem_struct->current_size < nom_size)
+    {
+        clear_memory_swap(mem_struct);
+        
+        mem_struct->current_ptr = return_ptr = ALIGNED_MALLOC(size);
+        mem_struct->current_size = return_ptr ? nom_size: 0;
+        mem_struct->current_free_method = ALIGNED_FREE;
+    }
+    else 
+        return_ptr = mem_struct->current_ptr;
 
-	return return_ptr;
+    return return_ptr;
 }
 
 
 //  Equal - This routine will lock to get access to the memory struct and allocate new memory unless the sizes are equal, placing the memory in the new slots
 
 static __inline void *equal_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr size, AH_UIntPtr nom_size)
-{	
-	void *return_ptr; 
-	
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
-	
-	if (mem_struct->current_size != nom_size)
-	{
-		clear_memory_swap(mem_struct);
-			
-		mem_struct->current_ptr = return_ptr = ALIGNED_MALLOC(size);
-		mem_struct->current_size = return_ptr ? nom_size: 0;
-		mem_struct->current_free_method = ALIGNED_FREE;
-	}
-	else
-		return_ptr = mem_struct->current_ptr;
-	
-	return return_ptr;
+{    
+    void *return_ptr; 
+    
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+    
+    if (mem_struct->current_size != nom_size)
+    {
+        clear_memory_swap(mem_struct);
+            
+        mem_struct->current_ptr = return_ptr = ALIGNED_MALLOC(size);
+        mem_struct->current_size = return_ptr ? nom_size: 0;
+        mem_struct->current_free_method = ALIGNED_FREE;
+    }
+    else
+        return_ptr = mem_struct->current_ptr;
+    
+    return return_ptr;
 }
 
 
@@ -256,81 +256,81 @@ static __inline void *equal_memory_swap(t_memory_swap *mem_struct, AH_UIntPtr si
 
 static __inline long alloc_memory_swap_custom(t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
 {
-	long fail = 0;
-	
-	mem_struct-> lock = 0;
-	
-	if (size)
-		mem_struct->current_ptr = alloc_method_ptr(size, nom_size);
-	else
-		mem_struct->current_ptr = NULL;
-	
-	if (size && mem_struct->current_ptr)
-	{
-		mem_struct->current_size = nom_size;
-		mem_struct->current_free_method = free_method_ptr;
-	}
-	else 
-	{
-		mem_struct->current_size = 0;
-		mem_struct->current_free_method = NULL;
-		
-		if (size) 
-			fail = 1;
-	}
-	
-	return fail;
+    long fail = 0;
+    
+    mem_struct-> lock = 0;
+    
+    if (size)
+        mem_struct->current_ptr = alloc_method_ptr(size, nom_size);
+    else
+        mem_struct->current_ptr = NULL;
+    
+    if (size && mem_struct->current_ptr)
+    {
+        mem_struct->current_size = nom_size;
+        mem_struct->current_free_method = free_method_ptr;
+    }
+    else 
+    {
+        mem_struct->current_size = 0;
+        mem_struct->current_free_method = NULL;
+        
+        if (size) 
+            fail = 1;
+    }
+    
+    return fail;
 }
 
 
 // This routine will lock to get access to the memory struct and allocate new memory if required
 
 static __inline void *grow_memory_swap_custom(t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
-{	
-	void *return_ptr;
-	
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
-	
-	if (mem_struct->current_size < nom_size)
-	{		
-		clear_memory_swap(mem_struct);
+{    
+    void *return_ptr;
+    
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+    
+    if (mem_struct->current_size < nom_size)
+    {        
+        clear_memory_swap(mem_struct);
 
-		mem_struct->current_ptr = return_ptr = alloc_method_ptr(size, nom_size);
-		mem_struct->current_size = return_ptr ? nom_size: 0;
-		mem_struct->current_free_method = free_method_ptr;
-	}
-	else 
-		return_ptr = mem_struct->current_ptr;
-		
-	return return_ptr;
+        mem_struct->current_ptr = return_ptr = alloc_method_ptr(size, nom_size);
+        mem_struct->current_size = return_ptr ? nom_size: 0;
+        mem_struct->current_free_method = free_method_ptr;
+    }
+    else 
+        return_ptr = mem_struct->current_ptr;
+        
+    return return_ptr;
 }
 
 
 // This routine will lock to get access to the memory struct and allocate new memory unless the sizes are equal
 
 static __inline void *equal_memory_swap_custom(t_memory_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, AH_UIntPtr size, AH_UIntPtr nom_size)
-{	
-	void *return_ptr; 
-	
-	// Spin on the lock
-	
-	while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
-	
-	if (mem_struct->current_size != nom_size)
-	{
-		clear_memory_swap(mem_struct);
-		
-		mem_struct->current_ptr = return_ptr = alloc_method_ptr(size, nom_size);
-		mem_struct->current_size = return_ptr ? nom_size: 0;
-		mem_struct->current_free_method = free_method_ptr;
-	}
-	else 
-		return_ptr = mem_struct->current_ptr;
-	
-	return return_ptr;
+{    
+    void *return_ptr; 
+    
+    // Spin on the lock
+    
+    while (!Generic_Atomic_Compare_And_Swap_Barrier(0, 1, &mem_struct-> lock));
+    
+    if (mem_struct->current_size != nom_size)
+    {
+        clear_memory_swap(mem_struct);
+        
+        mem_struct->current_ptr = return_ptr = alloc_method_ptr(size, nom_size);
+        mem_struct->current_size = return_ptr ? nom_size: 0;
+        mem_struct->current_free_method = free_method_ptr;
+    }
+    else 
+        return_ptr = mem_struct->current_ptr;
+    
+    return return_ptr;
 }
 
 
-#endif		/* _AH_GENERIC_MEMORY_SWAP_	*/
+#endif        /* _AH_GENERIC_MEMORY_SWAP_    */
