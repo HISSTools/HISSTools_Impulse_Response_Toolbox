@@ -238,7 +238,7 @@ int main()
     class_register(CLASS_BOX, this_class);
 
     declare_HIRT_common_attributes(this_class);
-    CLASS_ATTR_ATOM_LONG(this_class, "timeinsamps", 0, OBJ_CLASSNAME, time_in_samples);
+    CLASS_ATTR_LONG(this_class, "timeinsamps", 0, OBJ_CLASSNAME, time_in_samples);
     CLASS_ATTR_STYLE_LABEL(this_class,"timeinsamps", 0,"onoff","Times in Samples");
 
     CLASS_ATTR_DOUBLE_VARSIZE(this_class, "clipmixing", 0, OBJ_CLASSNAME, clip_mixing, num_clip_mixing, 2);

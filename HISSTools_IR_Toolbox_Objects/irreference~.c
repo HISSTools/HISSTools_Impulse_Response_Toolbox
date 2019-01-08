@@ -147,7 +147,7 @@ int main()
 
     declare_HIRT_common_attributes(this_class);
 
-    CLASS_ATTR_ATOM_LONG(this_class, "absprogress", 0, t_irreference, abs_progress);
+    CLASS_ATTR_LONG(this_class, "absprogress", 0, t_irreference, abs_progress);
     CLASS_ATTR_STYLE_LABEL(this_class,"absprogress",0,"onoff","Absolute Progress");
 
     buffer_access_init();

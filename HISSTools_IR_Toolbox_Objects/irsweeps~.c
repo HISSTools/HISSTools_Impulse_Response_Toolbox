@@ -110,7 +110,7 @@ int main()
     CLASS_ATTR_DOUBLE(this_class, "amp", 0, t_irsweeps, amp);
     CLASS_ATTR_LABEL(this_class,"amp", 0, "Maximum Amplitude (dB)");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "invamp", 0, t_irsweeps, inv_amp);
+    CLASS_ATTR_LONG(this_class, "invamp", 0, t_irsweeps, inv_amp);
     CLASS_ATTR_STYLE_LABEL(this_class,"invamp",0,"onoff","Invert Amplitude");
 
     buffer_access_init();

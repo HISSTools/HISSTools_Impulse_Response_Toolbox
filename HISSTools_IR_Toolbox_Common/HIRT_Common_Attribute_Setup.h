@@ -358,7 +358,7 @@ static __inline void declare_HIRT_common_attributes(void *c)
     CLASS_ATTR_FILTER_MIN(c, "writechan", 1);
     CLASS_ATTR_LABEL(c,"writechan", 0L, "Buffer Write Channel");
 
-    CLASS_ATTR_ATOM_LONG(c, "resize", 0L, OBJ_CLASSNAME, resize);
+    CLASS_ATTR_LONG(c, "resize", 0L, OBJ_CLASSNAME, resize);
     CLASS_ATTR_STYLE_LABEL(c,"resize", 0L,"onoff","Buffer Resize");
 #endif
 
@@ -379,7 +379,7 @@ static __inline void declare_HIRT_common_attributes(void *c)
 #ifdef OBJ_USES_HIRT_SMOOTH_ATTR
     CLASS_STICKY_ATTR(c, "category", 0L, "Smoothing");
 
-    CLASS_ATTR_ATOM_LONG(c, "smoothmode", 0L, OBJ_CLASSNAME, smooth_mode);
+    CLASS_ATTR_LONG(c, "smoothmode", 0L, OBJ_CLASSNAME, smooth_mode);
     CLASS_ATTR_ENUMINDEX(c,"smoothmode", 0L, "Hi-Quality Fast");
     CLASS_ATTR_FILTER_CLIP(c, "smoothmode", 0, 3);
     CLASS_ATTR_LABEL(c,"smoothmode", 0L, "Smoothing Mode");
@@ -414,7 +414,7 @@ static __inline void declare_HIRT_common_attributes(void *c)
     CLASS_ATTR_ACCESSORS(c, "deconvrange", (method) range_specification_getter, (method) range_specification_setter);
     CLASS_ATTR_LABEL(c, "deconvrange", 0 , "Deconvolution Filter Range");
 
-    CLASS_ATTR_ATOM_LONG(c, "deconvmode", 0, OBJ_CLASSNAME, deconvolve_mode);
+    CLASS_ATTR_LONG(c, "deconvmode", 0, OBJ_CLASSNAME, deconvolve_mode);
     CLASS_ATTR_ENUMINDEX(c,"deconvmode", 0, "Regularisation Clipping Filter");
     CLASS_ATTR_FILTER_CLIP(c, "deconvmode", 0, 2);
     CLASS_ATTR_LABEL(c,"deconvmode", 0, "Deconvolution Filter Mode");

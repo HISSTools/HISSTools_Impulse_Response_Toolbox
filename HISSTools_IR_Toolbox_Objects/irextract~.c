@@ -145,10 +145,10 @@ int main()
     CLASS_ATTR_DOUBLE(this_class, "amp", 0, t_irextract, amp);
     CLASS_ATTR_LABEL(this_class,"amp", 0, "Signal Amplitude (dB)");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "invamp", 0, t_irextract, inv_amp);
+    CLASS_ATTR_LONG(this_class, "invamp", 0, t_irextract, inv_amp);
     CLASS_ATTR_STYLE_LABEL(this_class,"invamp",0,"onoff","Invert Amplitude");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "bandlimit", 0, t_irextract, bandlimit);
+    CLASS_ATTR_LONG(this_class, "bandlimit", 0, t_irextract, bandlimit);
     CLASS_ATTR_STYLE_LABEL(this_class,"bandlimit",0,"onoff","Bandlimit Sweep Measurements");
 
     class_register(CLASS_BOX, this_class);

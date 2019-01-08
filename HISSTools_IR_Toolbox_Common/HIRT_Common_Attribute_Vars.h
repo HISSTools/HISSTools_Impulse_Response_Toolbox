@@ -8,7 +8,7 @@
 
 #ifdef OBJ_USES_HIRT_WRITE_ATTR
 #define HIRT_WRITE_ATTR \
-t_atom_long resize; \
+long resize; \
 t_atom_long write_chan;
 #else
 #define HIRT_WRITE_ATTR
@@ -42,7 +42,7 @@ t_atom *deconvolve_filter_specifier; \
 t_atom *deconvolve_range_specifier; \
 long deconvolve_num_filter_specifiers; \
 long deconvolve_num_range_specifiers; \
-t_atom_long deconvolve_mode; \
+long deconvolve_mode; \
 t_atom deconvolve_phase;
 #else
 #define HIRT_DECONVOLUTION_ATTR
@@ -65,7 +65,7 @@ t_atom out_phase;
 
 #ifdef OBJ_USES_HIRT_SMOOTH_ATTR
 #define HIRT_SMOOTH_ATTR \
-t_atom_long smooth_mode; \
+long smooth_mode; \
 long num_smooth; \
 double smooth[2];
 #else

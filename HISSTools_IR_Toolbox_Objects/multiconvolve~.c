@@ -146,7 +146,7 @@ int main()
     class_addmethod(this_class, (method)multiconvolve_set, "set", A_GIMME, 0L);
     class_addmethod(this_class, (method)multiconvolve_clear, "clear", 0L);
 
-    CLASS_ATTR_ATOM_LONG(this_class, "fixedsize", 0L, t_multiconvolve, fixed_impulse_length);
+    CLASS_ATTR_LONG(this_class, "fixedsize", 0L, t_multiconvolve, fixed_impulse_length);
     CLASS_ATTR_ACCESSORS(this_class, "fixedsize", 0L, multiconvolve_fixed_size_set);
 
     // The macro in the SDK for this is not C89 friendly

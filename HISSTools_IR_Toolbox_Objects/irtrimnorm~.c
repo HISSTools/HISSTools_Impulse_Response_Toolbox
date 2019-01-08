@@ -119,7 +119,7 @@ int main()
 
     declare_HIRT_common_attributes(this_class);
 
-    CLASS_ATTR_ATOM_LONG(this_class, "fadetype", 0, t_irtrimnorm, fade_type);
+    CLASS_ATTR_LONG(this_class, "fadetype", 0, t_irtrimnorm, fade_type);
     CLASS_ATTR_ENUMINDEX(this_class,"fadetype", 0, "Linear Square \"Square Root\" Cosine Sigmoid");
     CLASS_ATTR_FILTER_CLIP(this_class, "fadetype", 0, 4);
     CLASS_ATTR_LABEL(this_class,"fadetype", 0, "Fade Type");
@@ -127,7 +127,7 @@ int main()
     CLASS_ATTR_DOUBLE(this_class, "normlevel", 0, t_irtrimnorm, normalize);
     CLASS_ATTR_LABEL(this_class,"normlevel", 0, "Normalization Level (dB)");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "normmode", 0, t_irtrimnorm, norm_mode);
+    CLASS_ATTR_LONG(this_class, "normmode", 0, t_irtrimnorm, norm_mode);
     CLASS_ATTR_ENUMINDEX(this_class,"normmode", 0, "Off On");
     CLASS_ATTR_FILTER_CLIP(this_class, "normmode", 0, 1);
     CLASS_ATTR_LABEL(this_class,"normmode", 0, "Normalization Mode");
@@ -136,16 +136,16 @@ int main()
     CLASS_ATTR_FILTER_MIN(this_class, "integrationtimes", 1.0);
     CLASS_ATTR_LABEL(this_class,"integrationtimes", 0, "Integration Times");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "cropinsamps", 0 , OBJ_CLASSNAME, crop_in_samples);
+    CLASS_ATTR_LONG(this_class, "cropinsamps", 0 , OBJ_CLASSNAME, crop_in_samples);
     CLASS_ATTR_STYLE_LABEL(this_class,"cropinsamps", 0,"onoff","Crop Times in Samples");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "fadeinsamps", 0, OBJ_CLASSNAME, fade_in_samples);
+    CLASS_ATTR_LONG(this_class, "fadeinsamps", 0, OBJ_CLASSNAME, fade_in_samples);
     CLASS_ATTR_STYLE_LABEL(this_class,"fadeinsamps", 0,"onoff","Fade Times in Samples");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "padinsamps", 0, OBJ_CLASSNAME, pad_in_samples);
+    CLASS_ATTR_LONG(this_class, "padinsamps", 0, OBJ_CLASSNAME, pad_in_samples);
     CLASS_ATTR_STYLE_LABEL(this_class,"padinsamps", 0,"onoff","Pad Times in Samples");
 
-    CLASS_ATTR_ATOM_LONG(this_class, "limitedwarnings", 0 , OBJ_CLASSNAME, limited_warnings);
+    CLASS_ATTR_LONG(this_class, "limitedwarnings", 0 , OBJ_CLASSNAME, limited_warnings);
     CLASS_ATTR_STYLE_LABEL(this_class,"limitedwarnings", 0,"onoff","Limited Warnings");
 
     class_dspinit(this_class);
