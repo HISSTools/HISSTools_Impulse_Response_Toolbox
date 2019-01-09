@@ -3,36 +3,42 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>10K549</string>
+	<string>16G1710</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>morphfilter~</string>
 	<key>CFBundleIdentifier</key>
-	<string>AHarker.morphfilter~</string>
+	<string>HISSTools.morphfilter-</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>iLaX</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>2.0.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>DTCompiler</key>
-	<string>com.apple.compilers.llvmgcc42</string>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>10M2518</string>
+	<string>9C40b</string>
 	<key>DTPlatformVersion</key>
-	<string>PG</string>
+	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>10K549</string>
+	<string>17C76</string>
 	<key>DTSDKName</key>
-	<string></string>
+	<string>macosx10.13</string>
 	<key>DTXcode</key>
-	<string>0400</string>
+	<string>0920</string>
 	<key>DTXcodeBuild</key>
-	<string>10M2518</string>
+	<string>9C40b</string>
 </dict>
 </plist>
