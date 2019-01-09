@@ -220,7 +220,7 @@ AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N,
 
         // Final value
 
-        val = curve_amp * amp_const * fade_in * fade_out * exp(time_val) * sin (K1 * (exp(time_val) - 1));
+        val = curve_amp * amp_const * fade_in * fade_out * exp(time_val) * sin(K1 * (exp(time_val) - 1));
         *out++ = (float) val;
     }
 
@@ -272,7 +272,7 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
 
         // Final value
 
-        val = curve_amp * amp * fade_in * fade_out * sin (K1 * (exp(time_val) - 1));
+        val = curve_amp * amp * fade_in * fade_out * sin(K1 * (exp(time_val) - 1));
         *out++ = val;
     }
 
@@ -325,7 +325,7 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
 
         // Final value
 
-        val = curve_amp * amp_const * fade_in * fade_out * exp(time_val) * sin (K1 * (exp(time_val) - 1));
+        val = curve_amp * amp_const * fade_in * fade_out * exp(time_val) * sin(K1 * (exp(time_val) - 1));
         *out++ = val;
     }
 
@@ -336,9 +336,9 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
 AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision)
 {
     if (double_precision)
-        return ess_gen_double (x, out, startN, N);
+        return ess_gen_double(x, out, startN, N);
     else
-        return ess_gen_float (x, out, startN, N);
+        return ess_gen_float(x, out, startN, N);
 }
 
 
@@ -354,9 +354,9 @@ AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, 
 AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision)
 {
     if (double_precision)
-        return ess_gen_double (x, out, 0, x->T);
+        return ess_gen_double(x, out, 0, x->T);
     else
-        return ess_gen_float (x, out, 0, x->T);
+        return ess_gen_float(x, out, 0, x->T);
 }
 
 
