@@ -147,7 +147,7 @@ void irvalue_float(t_irvalue *x, double freq)
     db_lo = x->db_spectrum[lo_bin];
     db_hi = x->db_spectrum[lo_bin + 1];
 
-    outlet_float(x->value_outlet, db_hi + bin * (db_hi - db_hi));
+    outlet_float(x->value_outlet, db_lo + bin * (db_hi - db_lo));
 }
 
 
