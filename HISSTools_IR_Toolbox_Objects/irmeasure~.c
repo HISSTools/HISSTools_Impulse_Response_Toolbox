@@ -836,7 +836,7 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     {
         // Calculate standard filter for bandlimited deconvolution (sweep * inv sweep)
 
-        ess_igen(&sweep_params, excitation_sig, true, true);
+        ess_igen(&sweep_params, excitation_sig, INVERT_ALL, true);
         time_to_halfspectrum_double(fft_setup, excitation_sig, gen_length, spectrum_3, fft_size);
         convolve(spectrum_3, spectrum_2, fft_size, SPECTRUM_REAL);
 

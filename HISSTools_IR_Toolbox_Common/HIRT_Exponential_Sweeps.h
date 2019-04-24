@@ -13,7 +13,15 @@ extern "C" {
 ///////////////////////////////////////////////////////// ESS Structure  /////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+typedef enum
+{
+    
+    INVERT_USER_CURVE_TO_FIXED_REFERENCE = 0,   // Output at fixed level, inverting only the user amp curve
+    INVERT_USER_CURVE_AND_SWEEP = 1,            // Output inverting the user amp curve and sweep but not the overall amplitude
+    INVERT_ALL = 2,                             // Output inverting the user amp curve, sweep and the overall amplitude
+    
+} t_invert_mode;
+    
 typedef struct _ess
 {
     // Internal only
@@ -49,7 +57,7 @@ typedef struct _ess
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////// Get Length / HArm Offsets ///////////////////////////////////////////////
+//////////////////////////////////////////////////// Get Length / Harm Offsets ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -73,14 +81,14 @@ static __inline double ess_harm_offset(t_ess *x, AH_UIntPtr harm)
 AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fade_out, double T, double sample_rate, double amp, double *amp_curve);
 
 AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N);
-AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp);
+AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp);
 AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N);
-AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp);
+AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp);
 
 AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision);
-AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp, AH_Boolean double_precision);
+AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp, AH_Boolean double_precision);
 AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision);
-AH_UIntPtr ess_igen(t_ess *x, void *out, AH_Boolean inv_amp, AH_Boolean double_precision);
+AH_UIntPtr ess_igen(t_ess *x, void *out, t_invert_mode inv_amp, AH_Boolean double_precision);
 
 #ifdef __cplusplus
 }

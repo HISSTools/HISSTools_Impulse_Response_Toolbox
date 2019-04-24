@@ -208,7 +208,7 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
             break;
 
         case INV_SWEEP:
-            ess_igen((t_ess *) params, temp_buf, x->inv_amp, false);
+            ess_igen((t_ess *) params, temp_buf, x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
             break;
 
         case MLS:

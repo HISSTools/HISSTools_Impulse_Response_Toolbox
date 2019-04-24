@@ -586,7 +586,7 @@ void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_cha
     {
         // Calculate standard filter for bandlimited deconvolution (sweep * inv sweep)
 
-        ess_igen(&x->sweep_params, excitation_sig, true, true);
+        ess_igen(&x->sweep_params, excitation_sig, INVERT_ALL, true);
         time_to_halfspectrum_double(fft_setup, excitation_sig, gen_length, spectrum_3, fft_size);
         convolve(spectrum_3, spectrum_2, fft_size, SPECTRUM_REAL);
 

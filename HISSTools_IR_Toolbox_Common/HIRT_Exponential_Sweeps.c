@@ -175,17 +175,17 @@ AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
 }
 
 
-AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp)
+AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp)
 {
     double *amp_specifier = x->amp_specifier;
 
     double K1 = x->K1;
     double K2 = x->K2;
-    double amp = (inv_amp == true) ? x->amp : 1.0;
+    double amp = (inv_amp == INVERT_ALL) ? x->amp : 1.0;
     double sample_rate = x->sample_rate;
     double FiN = x->fade_in * sample_rate * 2.0;
     double FoN = x->fade_out * sample_rate * 2.0;
-    double amp_const = (4.0 * x->lo_f_act * K2) / amp;
+    double amp_const = (inv_amp == INVERT_USER_CURVE_TO_FIXED_REFERENCE) ? x->amp : (4.0 * x->lo_f_act * K2) / amp;
     double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 
     AH_UIntPtr T = x->T;
@@ -280,17 +280,17 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
 }
 
 
-AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp)
+AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp)
 {
     double *amp_specifier = x->amp_specifier;
 
     double K1 = x->K1;
     double K2 = x->K2;
-    double amp = (inv_amp == true) ? x->amp : 1.0;
+    double amp = (inv_amp == INVERT_ALL) ? x->amp : 1.0;
     double sample_rate = x->sample_rate;
     double FiN = x->fade_in * sample_rate * 2.0;
     double FoN = x->fade_out * sample_rate * 2.0;
-    double amp_const = (4.0 * x->lo_f_act * K2) / amp;
+    double amp_const = (inv_amp == INVERT_USER_CURVE_TO_FIXED_REFERENCE) ? x->amp : (4.0 * x->lo_f_act * K2) / amp;
     double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 
     AH_UIntPtr T = x->T;
@@ -342,7 +342,7 @@ AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, A
 }
 
 
-AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean inv_amp, AH_Boolean double_precision)
+AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp, AH_Boolean double_precision)
 {
     if (double_precision)
         return ess_igen_double(x, out, startN, N, inv_amp);
@@ -360,7 +360,7 @@ AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision)
 }
 
 
-AH_UIntPtr ess_igen(t_ess *x, void *out, AH_Boolean inv_amp, AH_Boolean double_precision)
+AH_UIntPtr ess_igen(t_ess *x, void *out, t_invert_mode inv_amp, AH_Boolean double_precision)
 {
     if (double_precision)
         return ess_igen_double(x, out, 0, x->T, inv_amp);
