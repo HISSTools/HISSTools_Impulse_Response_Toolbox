@@ -30,7 +30,7 @@ void zero_latency_convolve_free(t_zero_latency_convolve *x)
 {
     if (!x)
         return;
-
+    
     time_domain_convolve_free(x->time1);
     partition_convolve_free(x->part1);
     partition_convolve_free(x->part2);
@@ -44,55 +44,55 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 {
     t_zero_latency_convolve *x = malloc(sizeof(t_zero_latency_convolve));
     long fail = 0;
-
+    
     if (!x)
         return 0;
-
+    
     latency_mode = latency_mode > 2 ? 2 : latency_mode;
-
+    
     switch (latency_mode)
     {
         case CONVOLVE_LATENCY_ZERO:
-
+            
             x->time1 = time_domain_convolve_new(0, 128);
             x->part1 = partition_convolve_new(256, 384, 128, 384);
             x->part2 = partition_convolve_new(1024, 1536, 512, 1536);
             x->part3 = partition_convolve_new(4096, 6144, 2048, 6144);
             fail = alloc_memory_swap_custom(&x->part4, largest_partition_time_alloc, largest_partition_free, max_length, max_length);
-
+            
             break;
-
+            
         case CONVOLVE_LATENCY_SHORT:
-
+            
             x->time1 = NULL;
             x->part1 = partition_convolve_new(256, 384, 0, 384);
             x->part2 = partition_convolve_new(1024, 1536, 384, 1536);
             x->part3 = partition_convolve_new(4096, 6144, 1920, 6144);
             fail = alloc_memory_swap_custom(&x->part4, largest_partition_fft1_alloc, largest_partition_free, max_length, max_length);
-
+            
             break;
-
+            
         case CONVOLVE_LATENCY_MEDIUM:
-
+            
             x->time1 = NULL;
             x->part1 = NULL;
             x->part2 = partition_convolve_new(1024, 1536, 0, 1536);
             x->part3 = partition_convolve_new(4096, 6144, 1536, 6144);
             fail = alloc_memory_swap_custom(&x->part4, largest_partition_fft2_alloc, largest_partition_free, max_length, max_length);
-
+            
             break;
-
+            
     }
-
+    
     x->latency_mode = latency_mode;
     x->impulse_length = 0;
-
+    
     if ((!latency_mode && !x->time1) || (latency_mode < 2 && !x->part1) || !x->part2 || !x->part3 || fail)
     {
         zero_latency_convolve_free(x);
         return 0;
     }
-
+    
     return (x);
 }
 
@@ -103,7 +103,7 @@ t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, A
     alloc_method allocator = largest_partition_time_alloc;
     
     x->impulse_length = 0;
-
+    
     switch (x->latency_mode)
     {
         case CONVOLVE_LATENCY_ZERO:         allocator = largest_partition_time_alloc;       break;
@@ -115,7 +115,7 @@ t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, A
     
     if (keep_lock == false)
         unlock_memory_swap(&x->part4);
-
+    
     return return_part;
 }
 
@@ -124,11 +124,11 @@ t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *in
 {
     t_partition_convolve *part4 = 0;
     AH_UIntPtr max_impulse;
-
+    
     x->impulse_length = 0;
-
+    
     // Lock first to ensure that audio finishes processing before we replace
-
+    
     if (resize)
     {
         part4 = zero_latency_convolve_resize(x, impulse_length, true);
@@ -136,7 +136,7 @@ t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *in
     }
     else
         part4 = access_memory_swap(&x->part4, &max_impulse);
-
+    
     if (part4)
     {
         if (x->latency_mode < 1)
@@ -147,17 +147,17 @@ t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *in
         partition_convolve_set(x->part3, input, impulse_length);
         partition_convolve_set(part4, input, impulse_length);
     }
-
+    
     x->impulse_length = impulse_length;
-
+    
     unlock_memory_swap(&x->part4);
-
+    
     if (impulse_length && !part4)
         return CONVOLVE_ERR_MEM_UNAVAILABLE;
-
+    
     if (impulse_length > max_impulse)
         return CONVOLVE_ERR_MEM_ALLOC_TOO_SMALL;
-
+    
     return CONVOLVE_ERR_NONE;
 }
 
@@ -209,9 +209,9 @@ void zero_latency_convolve_process(t_zero_latency_convolve *x, float *in, float 
 {
     AH_UIntPtr max_impulse = 0;
     t_partition_convolve *part4 = attempt_memory_swap(&x->part4, &max_impulse);
-
+    
     // N.B. This function DOES NOT zero the output buffer as this is done elsewhere
-
+    
     if (x->impulse_length && x->impulse_length <= max_impulse && part4)
     {
         if (x->latency_mode == 0)
@@ -231,7 +231,7 @@ void zero_latency_convolve_process(t_zero_latency_convolve *x, float *in, float 
         if (partition_convolve_process(part4, in, temp, vec_size) == true)
             zero_latency_convolve_process_sum(out, temp, vec_size);
     }
-
+    
     if (part4)
         unlock_memory_swap(&x->part4);
 }

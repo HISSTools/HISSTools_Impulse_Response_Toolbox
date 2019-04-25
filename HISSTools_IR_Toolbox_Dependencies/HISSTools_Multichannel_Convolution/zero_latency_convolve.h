@@ -16,12 +16,12 @@ typedef struct _zero_latency_convolve
     t_partition_convolve *part1;
     t_partition_convolve *part2;
     t_partition_convolve *part3;
-
+    
     t_memory_swap part4;
-
+    
     AH_UIntPtr impulse_length;
     t_convolve_latency_mode latency_mode;
-
+    
 } t_zero_latency_convolve;
 
 #endif // __ZEROLATENCYCONVOLVE_STRUCT__
@@ -35,4 +35,3 @@ t_convolve_error zero_latency_convolve_reset(t_zero_latency_convolve *x);
 
 void zero_latency_convolve_process_sum(float *out, float *add, AH_UIntPtr vec_size);
 void zero_latency_convolve_process(t_zero_latency_convolve *x, float *in, float *temp, float *out, AH_UIntPtr vec_size);
-

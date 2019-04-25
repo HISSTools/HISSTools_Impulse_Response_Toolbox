@@ -31,7 +31,7 @@ void time_domain_convolve_free(t_time_domain_convolve *x)
 {
     if (!x)
         return;
-
+    
     ALIGNED_FREE(x->impulse_buffer);
     ALIGNED_FREE(x->input_buffer);
     free(x);
@@ -41,20 +41,20 @@ void time_domain_convolve_free(t_time_domain_convolve *x)
 t_time_domain_convolve *time_domain_convolve_new(AH_UIntPtr offset, AH_UIntPtr length)
 {
     t_time_domain_convolve *x = malloc(sizeof(t_time_domain_convolve));
-
+    
     if (!x)
         return 0;
-
+    
     // Set default initial variables
-
+    
     x->input_position = 0;
     x->impulse_length = 0;
-
+    
     time_domain_convolve_offset_set(x, offset);
     time_domain_convolve_length_set(x, length);
-
+    
     // Allocate impulse buffer and input bufferr
-
+    
     x->impulse_buffer = ALIGNED_MALLOC (sizeof(float) * 2048);
     x->input_buffer = ALIGNED_MALLOC (sizeof(float) * 8192);
     
@@ -63,7 +63,7 @@ t_time_domain_convolve *time_domain_convolve_new(AH_UIntPtr offset, AH_UIntPtr l
         time_domain_convolve_free(x);
         return 0;
     }
-
+    
     // Zero buffers
     
     memset(x->impulse_buffer, 0, 2048 * sizeof(float));
@@ -82,15 +82,15 @@ void time_domain_convolve_offset_set(t_time_domain_convolve *x, AH_UIntPtr offse
 t_convolve_error time_domain_convolve_length_set(t_time_domain_convolve *x, AH_UIntPtr length)
 {
     t_convolve_error error = CONVOLVE_ERR_NONE;
-
+    
     if (length > 2044)
     {
         error = CONVOLVE_ERR_TIME_LENGTH_OUT_OF_RANGE;
         length = 2044;
     }
-
+    
     x->length = length;
-
+    
     return error;
 }
 
@@ -99,32 +99,32 @@ t_convolve_error time_domain_convolve_set(t_time_domain_convolve *x, float *inpu
 {
     AH_UIntPtr offset = x->offset;
     AH_UIntPtr length = x->length;
-
+    
     float *impulse_buffer = x->impulse_buffer;
-
+    
     t_convolve_error error = CONVOLVE_ERR_NONE;
-
+    
 #ifndef __APPLE__
     AH_UIntPtr impulse_offset;
 #endif
-
+    
     x->impulse_length = 0;
-
+    
     // Calculate impulse length
-
+    
     if (!input || impulse_length < offset)
         impulse_length = 0;
-
+    
     impulse_length -= offset;
     if (length && length < impulse_length)
         impulse_length = length;
-
+    
     if (impulse_length > 2044)
     {
         error = CONVOLVE_ERR_TIME_IMPULSE_TOO_LONG;
         impulse_length = 2044;
     }
-
+    
 #ifdef __APPLE__
     if (impulse_length)
     {
@@ -135,18 +135,18 @@ t_convolve_error time_domain_convolve_set(t_time_domain_convolve *x, float *inpu
     if (impulse_length)
     {
         impulse_offset = pad_length(impulse_length) - impulse_length;
-
+        
         for (AH_UIntPtr i = 0; i < impulse_offset; i++)
             impulse_buffer[i] = 0.f;
-
+        
         for (AH_UIntPtr i = impulse_length, j = 0; i > 0; i--, j++)
             impulse_buffer[j + impulse_offset] = input[i + offset - 1];
     }
 #endif
-
+    
     x->reset_flag = true;
     x->impulse_length = impulse_length;
-
+    
     return error;
 }
 
@@ -163,20 +163,20 @@ void ah_conv(float *in, vFloat *impulse, float *output, AH_UIntPtr N, AH_UIntPtr
     vFloat output_accum;
     float *input;
     float results[4];
-
+    
     AH_UIntPtr i, j;
-
+    
     L = pad_length(L);
-
+    
     for (i = 0; i < N; i++)
     {
         output_accum = float2vector(0.f);
         input = in - L + 1 + i;
-
+        
         for (j = 0; j < L >> 2; j += 4)
         {
             // Load vals
-
+            
             output_accum = F32_VEC_ADD_OP(output_accum, F32_VEC_MUL_OP(impulse[j], F32_VEC_ULOAD(input)));
             input += 4;
             output_accum = F32_VEC_ADD_OP(output_accum, F32_VEC_MUL_OP(impulse[j + 1], F32_VEC_ULOAD(input)));
@@ -186,9 +186,9 @@ void ah_conv(float *in, vFloat *impulse, float *output, AH_UIntPtr N, AH_UIntPtr
             output_accum = F32_VEC_ADD_OP(output_accum, F32_VEC_MUL_OP(impulse[j + 3], F32_VEC_ULOAD(input)));
             input += 4;
         }
-
+        
         F32_VEC_USTORE(results, output_accum);
-
+        
         *output++ = results[0] + results[1] + results[2] + results[3];
     }
 }
@@ -199,20 +199,20 @@ void ah_conv_scalar(float *in, float *impulse, float *output, AH_UIntPtr N, AH_U
 {
     float output_accum;
     float *input;
-
+    
     AH_UIntPtr i, j;
-
+    
     L = pad_length(L);
-
+    
     for (i = 0; i < N; i++)
     {
         output_accum = 0.f;
         input = in - L + 1 + i;
-
+        
         for (j = 0; j < L; j += 8)
         {
             // Load vals
-
+            
             output_accum += impulse[j+0] * *input++;
             output_accum += impulse[j+1] * *input++;
             output_accum += impulse[j+2] * *input++;
@@ -222,7 +222,7 @@ void ah_conv_scalar(float *in, float *impulse, float *output, AH_UIntPtr N, AH_U
             output_accum += impulse[j+6] * *input++;
             output_accum += impulse[j+7] * *input++;
         }
-
+        
         *output++ = output_accum;
     }
 }
@@ -235,23 +235,23 @@ void time_domain_convolve_process_scalar(t_time_domain_convolve *x, float *in, f
     AH_UIntPtr input_position = x->input_position;
     AH_UIntPtr impulse_length = x->impulse_length;
     AH_UIntPtr current_loop;
-
+    
     while ((current_loop = (input_position + vec_size) > 4096 ? (4096 - input_position) : ((vec_size > 2048) ? 2048 : vec_size)))
     {
         // Copy input twice (allows us to read input out in one go)
-
+        
         memcpy(input_buffer + input_position, in, sizeof(float) * current_loop);
         memcpy(input_buffer + 4096 + input_position, in, sizeof(float) * current_loop);
         
         // Advance pointer
-
+        
         input_position += current_loop;
         if (input_position >= 4096)
             input_position -= 4096;
         x->input_position = input_position;
-
+        
         // Do convolution
-
+        
         ah_conv_scalar(input_buffer + 4096 + (input_position - current_loop), impulse_buffer, out, current_loop, impulse_length);
         
         // Updates
@@ -270,23 +270,23 @@ void time_domain_convolve_process_simd(t_time_domain_convolve *x, float *in, flo
     AH_UIntPtr input_position = x->input_position;
     AH_UIntPtr impulse_length = x->impulse_length;
     AH_UIntPtr current_loop;
-
+    
     while ((current_loop = (input_position + vec_size) > 4096 ? (4096 - input_position) : ((vec_size > 2048) ? 2048 : vec_size)))
     {
         // Copy input twice (allows us to read input out in one go)
-
+        
         memcpy(input_buffer + input_position, in, sizeof(float) * current_loop);
         memcpy(input_buffer + 4096 + input_position, in, sizeof(float) * current_loop);
         
         // Advance pointer
-
+        
         input_position += current_loop;
         if (input_position >= 4096)
             input_position -= 4096;
         x->input_position = input_position;
-
+        
         // Do convolution
-
+        
 #ifdef __APPLE__
         vDSP_conv(input_buffer + 4096 + input_position - (impulse_length + current_loop) + 1, (vDSP_Stride) 1, impulse_buffer, (vDSP_Stride) 1, out, (vDSP_Stride) 1, (vDSP_Length) current_loop, impulse_length);
 #else

@@ -13,12 +13,12 @@
 typedef struct _output_channel_convolve
 {
     t_zero_latency_convolve *convolvers[MAX_CHANS];
-
+    
     AH_UIntPtr num_in_chans;
-
+    
 } t_output_channel_convolve;
 
-#endif // __OUTPUTCHANCONVOLVE_STRUCT__ 
+#endif // __OUTPUTCHANCONVOLVE_STRUCT__
 
 void output_channel_convolve_free(t_output_channel_convolve *x);
 t_output_channel_convolve *output_channel_convolve_new(AH_UIntPtr input_chans, AH_UIntPtr max_length, t_convolve_latency_mode latency_mode);
@@ -29,4 +29,3 @@ t_convolve_error output_channel_convolve_reset(t_output_channel_convolve *x, AH_
 
 void output_channel_convolve_process_float(t_output_channel_convolve *x, float **ins, float *out, float *temp1, AH_UIntPtr vec_size, AH_UIntPtr active_in_chans);
 void output_channel_convolve_process_double(t_output_channel_convolve *x, float **ins, double *out, float *temp1, float *temp2, AH_UIntPtr vec_size, AH_UIntPtr active_in_chans);
-

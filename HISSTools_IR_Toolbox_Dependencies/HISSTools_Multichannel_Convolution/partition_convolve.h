@@ -11,44 +11,44 @@
 typedef struct _partition_convolve
 {
     // FFT variables
-
+    
     FFT_SETUP_F fft_setup_real;
-
+    
     AH_UIntPtr max_fft_size;
     AH_UIntPtr max_fft_size_log2;
     AH_UIntPtr fft_size;
     AH_UIntPtr fft_size_log2;
-
+    
     AH_UIntPtr rw_counter;
     
     // Scheduling variables
-
+    
     AH_UIntPtr input_position;
     
     AH_UIntPtr partitions_done;
     AH_UIntPtr last_partition;
-
+    
     AH_UIntPtr num_partitions;
     AH_UIntPtr valid_partitions;
-
+    
     // Internal buffers
-
+    
     vFloat *fft_buffers[4];
-
+    
     FFT_SPLIT_COMPLEX_F     impulse_buffer;
     FFT_SPLIT_COMPLEX_F     input_buffer;
     FFT_SPLIT_COMPLEX_F     accum_buffer;
     FFT_SPLIT_COMPLEX_F     partition_temp;
-
+    
     AH_UIntPtr max_impulse_length;
-
+    
     // Attributes
-
+    
     AH_UIntPtr offset;
     AH_UIntPtr length;
-
+    
     // Flags
-
+    
     AH_Boolean reset_flag;                // reset fft data on next perform call
     
 } t_partition_convolve;

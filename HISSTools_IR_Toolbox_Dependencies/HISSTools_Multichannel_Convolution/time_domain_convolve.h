@@ -13,13 +13,13 @@ typedef struct _time_domain_convolve
     
     float *impulse_buffer;
     float *input_buffer;
-
+    
     AH_UIntPtr input_position;
     AH_UIntPtr impulse_length;
-
+    
     AH_UIntPtr offset;
     AH_UIntPtr length;
-
+    
     // Flags
     
     AH_Boolean reset_flag;
