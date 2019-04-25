@@ -31,7 +31,8 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 
 t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, AH_UIntPtr impulse_length, AH_Boolean keep_lock);
 t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *input, AH_UIntPtr impulse_length, AH_Boolean resize);
+t_convolve_error zero_latency_convolve_reset(t_zero_latency_convolve *x);
 
-void zero_latency_convolve_process_sum(vFloat *out, vFloat *add, AH_UIntPtr vec_size);
-void zero_latency_convolve_process(t_zero_latency_convolve *x, vFloat *in, vFloat *temp, vFloat *out, AH_UIntPtr vec_size);
+void zero_latency_convolve_process_sum(float *out, float *add, AH_UIntPtr vec_size);
+void zero_latency_convolve_process(t_zero_latency_convolve *x, float *in, float *temp, float *out, AH_UIntPtr vec_size);
 

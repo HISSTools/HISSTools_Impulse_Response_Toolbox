@@ -4,7 +4,7 @@
  *
  *    partition convolve performs FFT-based partitioned convolution.
  *
- *    Typically partition_convolve~ might be used in conjuction with time_domain_convolve for zero-latency convolution with longer impulses.
+ *    Typically partition_convolve might be used in conjuction with time_domain_convolve for zero-latency convolution with longer impulses.
  *
  *  Copyright 2012 Alex Harker. All rights reserved.
  *
@@ -13,6 +13,7 @@
 #include "partition_convolve.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #ifndef __APPLE__
 #include <Windows.h>
@@ -314,14 +315,20 @@ t_convolve_error partition_convolve_set(t_partition_convolve *x, float *input, A
         DSP_SPLIT_COMPLEX_POINTER_CALC(buffer_temp2, buffer_temp2, fft_size_halved);
     }
 
-    x->reset_flag = 1;
+    x->reset_flag = true;
     x->num_partitions = num_partitions;
 
     return error;
 }
 
 
-AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloat *out, AH_UIntPtr vec_size)
+void partition_convolve_reset(t_partition_convolve *x)
+{
+    x->reset_flag = true;
+}
+
+
+AH_Boolean partition_convolve_process(t_partition_convolve *x, float *in, float *out, AH_UIntPtr vec_size)
 {
     FFT_SPLIT_COMPLEX_F impulse_buffer = x->impulse_buffer;
     FFT_SPLIT_COMPLEX_F input_buffer = x->input_buffer;
@@ -339,34 +346,30 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
     AH_SIntPtr num_partitions_to_do;
 
     AH_UIntPtr input_position = x->input_position;
-    AH_UIntPtr schedule_counter = x->schedule_counter;
 
     // FFT variables
 
     FFT_SETUP_F fft_setup_real = x->fft_setup_real;
 
     vFloat **fft_buffers = x->fft_buffers;
-    vFloat *temp_vpointer1, *temp_vpointer2;
-
+    vFloat *temp_vpointer;
+    
     AH_UIntPtr fft_size = x->fft_size;
     AH_UIntPtr fft_size_halved = fft_size >> 1 ;
-    AH_UIntPtr fft_size_over_4 = fft_size >> 2;
     AH_UIntPtr fft_size_halved_over_4 = fft_size_halved >> 2;
     AH_UIntPtr fft_size_log2 = x->fft_size_log2;
 
-    AH_UIntPtr till_next_fft = x->till_next_fft;
-    AH_UIntPtr rw_pointer1 = x->rw_pointer1;
-    AH_UIntPtr rw_pointer2 = x->rw_pointer2;
-
-    AH_UIntPtr vec_remain = vec_size >> 2;
+    AH_UIntPtr rw_counter = x->rw_counter;
+    AH_UIntPtr hop_mask = fft_size_halved - 1;
+    
+    AH_UIntPtr vec_remain = vec_size;
     AH_UIntPtr loop_size;
-    AH_UIntPtr i;
-
-    AH_SIntPtr random_fft_offset;
-    char reset_flag = x->reset_flag;
-
+    AH_UIntPtr hi_counter;
+    
+    AH_Boolean fft_now;
+    AH_Boolean reset_flag = x->reset_flag;
+    
     vFloat vscale_mult = float2vector((float) (1.0 / (double) (fft_size << 2)));
-    vFloat Zero = {0.f,0.f,0.f,0.f};
 
     if  (!num_partitions)
         return false;
@@ -377,62 +380,66 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
     {
         // Reset fft buffers + accum buffer
 
-        for (i = 0; i < (x->max_fft_size >> 2) * 5; i++)
-            fft_buffers[0][i] = Zero;
-
-        // Reset fft offset (randomly)
-
-        while (fft_size_halved_over_4 <= (AH_UIntPtr) (random_fft_offset = rand() / (RAND_MAX / fft_size_halved_over_4)));
-
-        till_next_fft = random_fft_offset;
-        rw_pointer1 = (fft_size_halved_over_4) - till_next_fft;
-        rw_pointer2 = rw_pointer1 + (fft_size_halved_over_4);
-
+        memset(fft_buffers[0], 0, x->max_fft_size * 5 * sizeof(float));
+        
+        // Reset fft rw_counter (randomly)
+        
+        while (fft_size_halved < (AH_UIntPtr) (rw_counter = rand() / (RAND_MAX / fft_size_halved)));
+        
         // Reset scheduling variables
 
         input_position = 0;
-        schedule_counter = 0;
         partitions_done = 0;
         last_partition = 0;
         valid_partitions = 1;
 
         // Set reset flag off
 
-        x->reset_flag = 0;
+        x->reset_flag = false;
     }
 
     // Main loop
 
     while (vec_remain > 0)
     {
-        // How many vFloats to deal with this loop (depending on whether there is an fft to do before the end of the signal vector)
-
+        // Calculate how many IO samples to deal with this loop (depending on whether there is an fft to do before the end of the signal vector)
+        
+        AH_UIntPtr till_next_fft = (fft_size_halved - (rw_counter & hop_mask));
         loop_size = vec_remain < till_next_fft ? vec_remain : till_next_fft;
-        till_next_fft -= loop_size;
-        vec_remain -= loop_size;
-
+        hi_counter = (rw_counter + fft_size_halved) & (fft_size - 1);
+        
         // Load input into buffer (twice) and output from the output buffer
 
-        for (i = 0; i < loop_size; i++)
+        memcpy(((float *) fft_buffers[0]) + rw_counter, in, loop_size * sizeof(float));
+        
+        if ((hi_counter + loop_size) > fft_size)
         {
-            *(fft_buffers[0] + rw_pointer1) = *in;
-            *(fft_buffers[1] + rw_pointer2) = *in;
-
-            *out++ = *(fft_buffers[3] + rw_pointer1);
-
-            rw_pointer1++;
-            rw_pointer2++;
-            in++;
+            AH_UIntPtr hi_loop = fft_size - hi_counter;
+            memcpy(((float *) fft_buffers[1]) + hi_counter, in, hi_loop * sizeof(float));
+            memcpy(((float *) fft_buffers[1]), in + hi_loop, (loop_size - hi_loop) * sizeof(float));
         }
-
+        else
+            memcpy(((float *) fft_buffers[1]) + hi_counter, in, loop_size * sizeof(float));
+        
+        memcpy(out, ((float *) fft_buffers[3]) + rw_counter, loop_size * sizeof(float));
+        
+        // Updates to pointers and counters
+        
+        vec_remain -= loop_size;
+        rw_counter += loop_size;
+        in += loop_size;
+        out += loop_size;
+        
+        fft_now = !(rw_counter & hop_mask);
+        
         // Work loop and scheduling - this is where most of the convolution is done
-        // How many partitions to do this vector (make sure that all partitions are done before we need to do the next fft)?
-
-        if (++schedule_counter >= (fft_size_halved / vec_size) - 1)
+        // How many partitions to do this vector? (make sure that all partitions are done before we need to do the next fft)
+        
+        if (fft_now)
             num_partitions_to_do = (valid_partitions - partitions_done) - 1;
         else
-            num_partitions_to_do = ((schedule_counter * (valid_partitions - 1)) / ((fft_size_halved / vec_size) - 1)) - partitions_done;
-
+            num_partitions_to_do = (((valid_partitions - 1) * (rw_counter & hop_mask)) / fft_size_halved) - partitions_done;
+        
         while (num_partitions_to_do > 0)
         {
             // Calculate buffer wraparounds (if wraparound is in the middle of this set of partitions this loop will run again)
@@ -448,7 +455,7 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
 
             // Do processing
 
-            for (i = next_partition; i < last_partition; i++)
+            for (AH_UIntPtr i = next_partition; i < last_partition; i++)
             {
                 partition_convolve_process_partition(buffer_temp, impulse_temp, accum_buffer, fft_size_halved_over_4);
                 DSP_SPLIT_COMPLEX_POINTER_CALC(impulse_temp, impulse_temp, fft_size_halved);
@@ -457,19 +464,18 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
             }
         }
 
-        // FFT processing - this is where we deal with the fft, any windowing, the first partition and overlapping
-        // First check that there is a new FFTs worth of buffer
-
-        if (till_next_fft == 0)
+        // FFT processing - this is where we deal with the fft, the first partition and inverse fft
+        
+        if (fft_now)
         {
             // Calculate the position to do the fft from/ to and calculate relevant pointers
 
-            temp_vpointer1 = (rw_pointer1 == fft_size_over_4) ? fft_buffers[1] : fft_buffers[0];
+            temp_vpointer = (rw_counter == fft_size) ? fft_buffers[1] : fft_buffers[0];
             DSP_SPLIT_COMPLEX_POINTER_CALC(buffer_temp, input_buffer, (input_position * fft_size_halved));
 
             // Do the fft and put into the input buffer
 
-            hisstools_unzip_f((float *) temp_vpointer1, &buffer_temp, fft_size_log2);
+            hisstools_unzip_f((float *) temp_vpointer, &buffer_temp, fft_size_log2);
             hisstools_rfft_f(fft_setup_real, &buffer_temp, fft_size_log2);
 
             // Process first partition here and accumulate the output (we need it now!)
@@ -481,52 +487,29 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
             hisstools_rifft_f(fft_setup_real, &accum_buffer, fft_size_log2);
             hisstools_zip_f(&accum_buffer, (float *) fft_buffers[2], fft_size_log2);
 
-            // Calculate temporary output pointers
-
-            if (rw_pointer1 == fft_size_over_4)
-            {
-                temp_vpointer1 = fft_buffers[3];
-                temp_vpointer2 = fft_buffers[3] + fft_size_halved_over_4;
-            }
-            else
-            {
-                temp_vpointer1 = fft_buffers[3] + fft_size_halved_over_4;
-                temp_vpointer2 = fft_buffers[3];
-            }
-
+            // Calculate temporary output pointer
+            
+            temp_vpointer = (rw_counter == fft_size) ? fft_buffers[3] : fft_buffers[3] + fft_size_halved_over_4;
+            
             // Scale and store into output buffer (overlap-save)
 
-            for (i = 0; i < fft_size_halved_over_4; i++)
-                *(temp_vpointer1++) = F32_VEC_MUL_OP(*(fft_buffers[2] + i), vscale_mult);
-
+            for (AH_UIntPtr i = 0; i < fft_size_halved_over_4; i++)
+                *(temp_vpointer++) = F32_VEC_MUL_OP(*(fft_buffers[2] + i), vscale_mult);
+            
             // Clear accumulation buffer
 
-            for (i = 0; i < fft_size_halved; i++)
-                accum_buffer.realp[i] = 0;
-            for (i = 0; i < fft_size_halved; i++)
-                accum_buffer.imagp[i] = 0;
-
-            // Reset rw_pointers
-
-            if (rw_pointer1 == fft_size_over_4)
-                rw_pointer1 = 0;
-            else
-                rw_pointer2 = 0;
-
-            // Set fft variables
-
-            till_next_fft = fft_size_halved_over_4;
-
+            memset(accum_buffer.realp, 0, fft_size_halved * sizeof(float));
+            memset(accum_buffer.imagp, 0, fft_size_halved * sizeof(float));
+            
+            // Update rw_counter
+            
+            rw_counter = rw_counter & (fft_size - 1);
+            
             // Set scheduling variables
 
-            if (++valid_partitions > num_partitions)
-                valid_partitions = num_partitions;
-
-            if (input_position-- == 0)
-                input_position = num_partitions - 1;
-
+            valid_partitions = (valid_partitions == num_partitions) ? valid_partitions : valid_partitions + 1;
+            input_position = input_position ? input_position - 1 : num_partitions - 1;
             last_partition = input_position + 1;
-            schedule_counter = 0;
             partitions_done = 0;
         }
     }
@@ -534,11 +517,8 @@ AH_Boolean partition_convolve_process(t_partition_convolve *x, vFloat *in, vFloa
     // Write all variables back into the object struct
 
     x->input_position = input_position;
-    x->till_next_fft = till_next_fft;
-    x->rw_pointer1 = rw_pointer1;
-    x->rw_pointer2 = rw_pointer2;
-
-    x->schedule_counter = schedule_counter;
+    x->rw_counter = rw_counter;
+    
     x->valid_partitions = valid_partitions;
     x->partitions_done = partitions_done;
     x->last_partition = last_partition;
@@ -556,14 +536,11 @@ void partition_convolve_process_partition(FFT_SPLIT_COMPLEX_F in1, FFT_SPLIT_COM
     vFloat *out_real = (vFloat *) out.realp;
     vFloat *out_imag = (vFloat *) out.imagp;
 
-    float nyquist1, nyquist2;
-    AH_UIntPtr i;
-
     //    Do Nyquist Calculation and then zero these bins
 
-    nyquist1 = in1.imagp[0];
-    nyquist2 = in2.imagp[0];
-
+    float nyquist1 = in1.imagp[0];
+    float nyquist2 = in2.imagp[0];
+    
     out.imagp[0] += nyquist1 * nyquist2;
 
     in1.imagp[0] = 0.f;
@@ -571,7 +548,7 @@ void partition_convolve_process_partition(FFT_SPLIT_COMPLEX_F in1, FFT_SPLIT_COM
 
     // Do other bins (loop unrolled)
 
-    for (i = 0; i + 3 < num_vecs; i += 4)
+    for (AH_UIntPtr i = 0; i + 3 < num_vecs; i += 4)
     {
         out_real[i+0] = F32_VEC_ADD_OP(out_real[i+0], F32_VEC_SUB_OP(F32_VEC_MUL_OP(in_real1[i+0], in_real2[i+0]), F32_VEC_MUL_OP(in_imag1[i+0], in_imag2[i+0])));
         out_imag[i+0] = F32_VEC_ADD_OP(out_imag[i+0], F32_VEC_ADD_OP(F32_VEC_MUL_OP(in_real1[i+0], in_imag2[i+0]), F32_VEC_MUL_OP(in_imag1[i+0], in_real2[i+0])));
@@ -588,4 +565,3 @@ void partition_convolve_process_partition(FFT_SPLIT_COMPLEX_F in1, FFT_SPLIT_COM
     in1.imagp[0] = nyquist1;
     in2.imagp[0] = nyquist2;
 }
-

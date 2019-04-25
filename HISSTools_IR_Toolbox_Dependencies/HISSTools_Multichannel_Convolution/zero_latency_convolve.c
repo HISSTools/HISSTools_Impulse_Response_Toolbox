@@ -100,23 +100,19 @@ t_zero_latency_convolve *zero_latency_convolve_new(AH_UIntPtr max_length, t_conv
 t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, AH_UIntPtr impulse_length, AH_Boolean keep_lock)
 {
     t_partition_convolve *return_part = NULL;
+    alloc_method allocator = largest_partition_time_alloc;
+    
     x->impulse_length = 0;
 
     switch (x->latency_mode)
     {
-        case 0:
-            return_part = equal_memory_swap_custom(&x->part4, largest_partition_time_alloc, largest_partition_free, impulse_length, impulse_length);
-            break;
-
-        case 1:
-            return_part = equal_memory_swap_custom(&x->part4, largest_partition_fft1_alloc, largest_partition_free, impulse_length, impulse_length);
-            break;
-
-        case 2:
-            return_part = equal_memory_swap_custom(&x->part4, largest_partition_fft2_alloc, largest_partition_free, impulse_length, impulse_length);
-            break;
+        case CONVOLVE_LATENCY_ZERO:         allocator = largest_partition_time_alloc;       break;
+        case CONVOLVE_LATENCY_SHORT:        allocator = largest_partition_fft1_alloc;       break;
+        case CONVOLVE_LATENCY_MEDIUM:       allocator = largest_partition_fft2_alloc;       break;
     }
-
+    
+    return_part = equal_memory_swap_custom(&x->part4, allocator, largest_partition_free, impulse_length, impulse_length);
+    
     if (keep_lock == false)
         unlock_memory_swap(&x->part4);
 
@@ -126,7 +122,7 @@ t_partition_convolve *zero_latency_convolve_resize(t_zero_latency_convolve *x, A
 
 t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *input, AH_UIntPtr impulse_length, AH_Boolean resize)
 {
-    t_partition_convolve *part4 = NULL;
+    t_partition_convolve *part4 = 0;
     AH_UIntPtr max_impulse;
 
     x->impulse_length = 0;
@@ -166,16 +162,50 @@ t_convolve_error zero_latency_convolve_set(t_zero_latency_convolve *x, float *in
 }
 
 
-void zero_latency_convolve_process_sum(vFloat *out, vFloat *add, AH_UIntPtr vec_size)
+t_convolve_error zero_latency_convolve_reset(t_zero_latency_convolve *x)
 {
-    AH_UIntPtr i;
-
-    for (i = 0; i < (vec_size >> 2); i++, out++)
-        *out = F32_VEC_ADD_OP(*out, *add++);
+    AH_UIntPtr max_impulse;
+    
+    // Lock first to ensure that audio finishes processing before we replace
+    
+    t_partition_convolve *part4 = access_memory_swap(&x->part4, &max_impulse);
+    
+    if (part4)
+    {
+        if (x->latency_mode < 1)
+            time_domain_convolve_reset(x->time1);
+        if (x->latency_mode < 2)
+            partition_convolve_reset(x->part1);
+        partition_convolve_reset(x->part2);
+        partition_convolve_reset(x->part3);
+        partition_convolve_reset(part4);
+    }
+    
+    unlock_memory_swap(&x->part4);
+    
+    return CONVOLVE_ERR_NONE;
 }
 
 
-void zero_latency_convolve_process(t_zero_latency_convolve *x, vFloat *in, vFloat *temp, vFloat *out, AH_UIntPtr vec_size)
+void zero_latency_convolve_process_sum(float *out, float *add, AH_UIntPtr vec_size)
+{
+    if ((vec_size % 4) || (((AH_UIntPtr) out) % 16) || (((AH_UIntPtr) add) % 16))
+    {
+        for (AH_UIntPtr i = 0; i < vec_size; i++)
+            *out++ += *add++;
+    }
+    else
+    {
+        vFloat *vout = (vFloat *) out;
+        vFloat *vadd = (vFloat *) add;
+        
+        for (AH_UIntPtr i = 0; i < (vec_size >> 2); i++, vout++)
+            *vout = F32_VEC_ADD_OP(*vout, *vadd++);
+    }
+}
+
+
+void zero_latency_convolve_process(t_zero_latency_convolve *x, float *in, float *temp, float *out, AH_UIntPtr vec_size)
 {
     AH_UIntPtr max_impulse = 0;
     t_partition_convolve *part4 = attempt_memory_swap(&x->part4, &max_impulse);
@@ -186,7 +216,7 @@ void zero_latency_convolve_process(t_zero_latency_convolve *x, vFloat *in, vFloa
     {
         if (x->latency_mode == 0)
         {
-            time_domain_convolve_process(x->time1, (float *)in, (float *)temp, vec_size);
+            time_domain_convolve_process(x->time1, in, temp, vec_size);
             zero_latency_convolve_process_sum(out, temp, vec_size);
         }
         if (x->latency_mode < 2)
@@ -205,4 +235,3 @@ void zero_latency_convolve_process(t_zero_latency_convolve *x, vFloat *in, vFloa
     if (part4)
         unlock_memory_swap(&x->part4);
 }
-
