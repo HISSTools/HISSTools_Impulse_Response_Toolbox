@@ -754,20 +754,20 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     switch (x->measure_mode)
     {
         case SWEEP:
-            ess_params(&sweep_params, x->sweep_params.rf1, x->sweep_params.rf2, x->sweep_params.fade_in, x->sweep_params.fade_out, x->sweep_params.RT, x->sweep_params.sample_rate, (x->inv_amp ? x->sweep_params.amp : 1) * db_to_a(x->ir_gain), x->amp_curve);
+            ess_params(&sweep_params, x->sweep_params.rf1, x->sweep_params.rf2, x->sweep_params.fade_in, x->sweep_params.fade_out, x->sweep_params.RT, x->sweep_params.sample_rate, (x->inv_amp ? x->sweep_params.amp : 1) * db_to_a(-x->ir_gain), x->amp_curve);
             gen_length = ess_get_length(&sweep_params);
             break;
 
         case MLS:
 
-            mls_params(&max_length_params, x->max_length_params.order, (x->inv_amp ? x->max_length_params.amp : 1) * db_to_a(x->ir_gain));
+            mls_params(&max_length_params, x->max_length_params.order, (x->inv_amp ? x->max_length_params.amp : 1) * db_to_a(-x->ir_gain));
             gen_length = mls_get_length(&max_length_params);
 
             break;
 
         case NOISE:
 
-            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate, (x->inv_amp ? x->noise_params.amp : 1) * db_to_a(x->ir_gain));
+            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate, (x->inv_amp ? x->noise_params.amp : 1) * db_to_a(-x->ir_gain));
             gen_length = coloured_noise_get_length(&noise_params);
             break;
     }
