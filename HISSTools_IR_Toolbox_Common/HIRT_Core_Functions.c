@@ -317,8 +317,6 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
     AH_SIntPtr limit = fft_size_m1;
     AH_SIntPtr i, j;
 
-    // CHECK THIS (I think there is a danger with the upper branch if the smoothing hi is 1
-
     smooth_lo = smooth_lo > 1.0 ? 1.0 : smooth_lo;
     smooth_hi = smooth_hi > 1.0 ? 1.0 : smooth_hi;
     smooth_mul = smooth_hi - smooth_lo;
@@ -345,6 +343,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
                 // Linear relationship between bin and width
 
                 half_width = (AH_SIntPtr) (((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo) * (double) nyquist_bin);
+                half_width = (half_width >= nyquist_bin) ? nyquist_bin - 1 : half_width;
                 filter_val = spectrum_in[i];
                 half_width_recip = half_width > 1 ? 2.0 / (2 * half_width - 1): 1.0;
 
