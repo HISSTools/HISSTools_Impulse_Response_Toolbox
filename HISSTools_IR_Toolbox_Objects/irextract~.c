@@ -78,7 +78,8 @@ typedef struct _irextract
     long bandlimit;
 
     double amp;
-
+    double ir_gain;
+    
     // Bang Outlet
 
     void *process_done;
@@ -148,6 +149,9 @@ int main()
     CLASS_ATTR_LONG(this_class, "invamp", 0, t_irextract, inv_amp);
     CLASS_ATTR_STYLE_LABEL(this_class,"invamp",0,"onoff","Invert Amplitude");
 
+    CLASS_ATTR_DOUBLE(this_class, "irgain", 0, t_irextractx, ir_gain);
+    CLASS_ATTR_LABEL(this_class,"irgain", 0, "IR Gain (dB)");
+    
     CLASS_ATTR_LONG(this_class, "bandlimit", 0, t_irextract, bandlimit);
     CLASS_ATTR_STYLE_LABEL(this_class,"bandlimit",0,"onoff","Bandlimit Sweep Measurements");
 
@@ -170,6 +174,7 @@ void *irextract_new(t_symbol *s, short argc, t_atom *argv)
     x->bandlimit = 1;
     x->amp = -1.0;
     x->inv_amp = 0;
+    x->ir_gain = 0.0;
 
     x->fft_size = 0;
     x->sample_rate = 0.0;
@@ -411,18 +416,20 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     // Process
 
     x->measure_mode = NOISE;
-    coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
-
+    
     if (noise_mode != NOISE_MODE_WHITE)
     {
         coloured_noise_measure(&x->noise_params, (int) (length * sample_rate * 1000.0), &max_pink, &max_brown);
         coloured_noise_reset(&x->noise_params);
     }
+    
     if (noise_mode == NOISE_MODE_BROWN)
         amp_comp = max_brown;
     if (noise_mode == NOISE_MODE_PINK)
         amp_comp = max_pink;
 
+    coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
+    
     irextract_process(x, rec_buffer, num_channels, sample_rate);
 }
 

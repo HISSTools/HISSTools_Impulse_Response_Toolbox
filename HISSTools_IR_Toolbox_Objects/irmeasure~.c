@@ -116,6 +116,7 @@ typedef struct _irmeasure
     long bandlimit;
 
     double amp;
+    double ir_gain;
 
     // Bang Outlet
 
@@ -225,6 +226,9 @@ int main()
     CLASS_ATTR_LONG(this_class, "invamp", 0, t_irmeasure, inv_amp);
     CLASS_ATTR_STYLE_LABEL(this_class,"invamp",0,"onoff","Invert Amplitude");
 
+    CLASS_ATTR_DOUBLE(this_class, "irgain", 0, t_irmeasure, ir_gain);
+    CLASS_ATTR_LABEL(this_class,"irgain", 0, "IR Gain (dB)");
+    
     CLASS_ATTR_LONG(this_class, "bandlimit", 0, t_irmeasure, bandlimit);
     CLASS_ATTR_STYLE_LABEL(this_class,"bandlimit",0,"onoff","Bandlimit Sweep Measurements");
 
@@ -273,6 +277,7 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv)
     x->abs_progress = 0;
     x->amp = -1.0;
     x->inv_amp = 0;
+    x->ir_gain = 0.0;
 
     x->T2 = 0;
     x->current_t = 0;
@@ -749,20 +754,20 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     switch (x->measure_mode)
     {
         case SWEEP:
-            ess_params(&sweep_params, x->sweep_params.rf1, x->sweep_params.rf2, x->sweep_params.fade_in, x->sweep_params.fade_out, x->sweep_params.RT, x->sweep_params.sample_rate, x->inv_amp ? x->sweep_params.amp : 1, x->amp_curve);
+            ess_params(&sweep_params, x->sweep_params.rf1, x->sweep_params.rf2, x->sweep_params.fade_in, x->sweep_params.fade_out, x->sweep_params.RT, x->sweep_params.sample_rate, (x->inv_amp ? x->sweep_params.amp : 1) * db_to_a(x->ir_gain), x->amp_curve);
             gen_length = ess_get_length(&sweep_params);
             break;
 
         case MLS:
 
-            mls_params(&max_length_params, x->max_length_params.order, x->inv_amp ? x->max_length_params.amp : 1);
+            mls_params(&max_length_params, x->max_length_params.order, (x->inv_amp ? x->max_length_params.amp : 1) * db_to_a(x->ir_gain));
             gen_length = mls_get_length(&max_length_params);
 
             break;
 
         case NOISE:
 
-            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate,   x->inv_amp ? x->noise_params.amp : 1);
+            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate, (x->inv_amp ? x->noise_params.amp : 1) * db_to_a(x->ir_gain));
             gen_length = coloured_noise_get_length(&noise_params);
             break;
     }
