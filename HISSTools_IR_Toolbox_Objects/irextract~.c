@@ -149,7 +149,7 @@ int main()
     CLASS_ATTR_LONG(this_class, "invamp", 0, t_irextract, inv_amp);
     CLASS_ATTR_STYLE_LABEL(this_class,"invamp",0,"onoff","Invert Amplitude");
 
-    CLASS_ATTR_DOUBLE(this_class, "irgain", 0, t_irextractx, ir_gain);
+    CLASS_ATTR_DOUBLE(this_class, "irgain", 0, t_irextract, ir_gain);
     CLASS_ATTR_LABEL(this_class,"irgain", 0, "IR Gain (dB)");
     
     CLASS_ATTR_LONG(this_class, "bandlimit", 0, t_irextract, bandlimit);
