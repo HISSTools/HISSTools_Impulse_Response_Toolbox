@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir>../HISSTools_Builds/</OutDir>
+    <OutDir>../HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/</OutDir>
   </PropertyGroup>
   <PropertyGroup>
     <IntDir>../HISSTools_Intermediate/$(ProjectName)/</IntDir>
