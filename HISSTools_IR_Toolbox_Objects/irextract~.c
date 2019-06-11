@@ -304,7 +304,7 @@ void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
     fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
 
-    if (ess_params(&x->sweep_params, f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve))
+    if (ess_params(&x->sweep_params, f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(x->ir_gain), amp_curve))
     {
         // Process
 
@@ -355,7 +355,7 @@ void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     // Process
 
     x->measure_mode = MLS;
-    mls_params(&x->max_length_params, (long) order, db_to_a(x->amp));
+    mls_params(&x->max_length_params, (long) order, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(x->ir_gain));
     irextract_process(x, rec_buffer, num_channels, sample_rate);
 }
 
@@ -428,7 +428,7 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     if (noise_mode == NOISE_MODE_PINK)
         amp_comp = max_pink;
 
-    coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
+    coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(x->ir_gain) / amp_comp);
     
     irextract_process(x, rec_buffer, num_channels, sample_rate);
 }
