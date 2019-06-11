@@ -734,7 +734,8 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     double max_pow;
     double sample_rate = x->sample_rate;
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
-
+    double amp_comp = 1.0;
+    
     long deconvolve_mode = x->deconvolve_mode;
     long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
 
@@ -767,7 +768,12 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
         case NOISE:
 
-            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate, (x->inv_amp ? x->noise_params.amp : 1) * db_to_a(-x->ir_gain));
+            if (x->noise_params.mode == NOISE_MODE_BROWN)
+                amp_comp = x->max_amp_brown;
+            if (x->noise_params.mode == NOISE_MODE_PINK)
+                amp_comp = x->max_amp_pink;
+            
+            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate, (x->inv_amp ? x->noise_params.amp : 1) * db_to_a(-x->ir_gain) / amp_comp);
             gen_length = coloured_noise_get_length(&noise_params);
             break;
     }
