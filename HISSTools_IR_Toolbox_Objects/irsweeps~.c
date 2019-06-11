@@ -48,6 +48,12 @@ typedef struct _irsweeps
 
     double amp;
 
+    // Internal
+    
+    double last_sample_rate;
+    double max_amp_pink;
+    double max_amp_brown;
+    
     // Bang Outlet
 
     void *process_done;
@@ -102,7 +108,6 @@ int main()
     class_addmethod(this_class, (method)irsweeps_noise, "pink", A_GIMME, 0L);
     class_addmethod(this_class, (method)irsweeps_noise, "brown", A_GIMME, 0L);
 
-
     class_register(CLASS_BOX, this_class);
 
     declare_HIRT_common_attributes(this_class);
@@ -129,7 +134,11 @@ void *irsweeps_new(t_symbol *s, short argc, t_atom *argv)
 
     x->amp = -1.0;
     x->inv_amp = 0;
-
+    
+    x->last_sample_rate = 0.0;
+    x->max_amp_pink = 0.0;
+    x->max_amp_brown = 0.0;
+    
     attr_args_process(x, argc, argv);
 
     return(x);
@@ -356,8 +365,6 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     double fade_out = 10.0;
     double sample_rate = sys_getsr();
 
-    double max_amp_pink;
-    double max_amp_brown;
     double amp_comp = 1.0;
 
     t_noise_mode filter_mode = NOISE_MODE_WHITE;
@@ -392,15 +399,19 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     fade_in = irsweeps_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
     fade_out = irsweeps_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
 
-    coloured_noise_params(&noise_params, 0, 0, 0, 1, sample_rate, 1);
-    if (filter_mode != NOISE_MODE_WHITE)
-        coloured_noise_measure(&noise_params, (AH_UIntPtr) (sample_rate * length / 1000.0), &max_amp_pink, &max_amp_brown);
-    coloured_noise_reset(&noise_params);
-
+    if (filter_mode != NOISE_MODE_WHITE && x->last_sample_rate != sample_rate)
+    {
+        coloured_noise_params(&noise_params, 0, 0, 0, 1, sample_rate, 1);
+        coloured_noise_measure(&noise_params, (1 << 25), &x->max_amp_pink, &x->max_amp_brown);
+        coloured_noise_reset(&noise_params);
+        
+        x->last_sample_rate = sample_rate;
+    }
+    
     if (filter_mode == NOISE_MODE_BROWN)
-        amp_comp = max_amp_brown;
+        amp_comp = x->max_amp_brown;
     if (filter_mode == NOISE_MODE_PINK)
-        amp_comp = max_amp_pink;
+        amp_comp = x->max_amp_pink;
 
     coloured_noise_params(&noise_params, filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
     noise_length = coloured_noise_get_length(&noise_params);

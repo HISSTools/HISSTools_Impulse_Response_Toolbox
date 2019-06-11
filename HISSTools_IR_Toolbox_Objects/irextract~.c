@@ -53,6 +53,12 @@ typedef struct _irextract
 
     AH_SIntPtr fft_size;
 
+    // Internal
+    
+    double last_sample_rate;
+    double max_amp_pink;
+    double max_amp_brown;
+    
     double sample_rate;
 
     AH_SIntPtr out_length_samps;
@@ -176,6 +182,10 @@ void *irextract_new(t_symbol *s, short argc, t_atom *argv)
     x->inv_amp = 0;
     x->ir_gain = 0.0;
 
+    x->last_sample_rate = 0.0;
+    x->max_amp_pink = 0.0;
+    x->max_amp_brown = 0.0;
+    
     x->fft_size = 0;
     x->sample_rate = 0.0;
     x->out_length = 0.0;
@@ -367,7 +377,6 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     double fade_out = 10.0;
     double amp_comp = 1.0;
     double out_length = 0.0;
-    double max_pink, max_brown;
     double sample_rate;
 
     t_atom_long num_channels = 1;
@@ -419,15 +428,23 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     
     if (noise_mode != NOISE_MODE_WHITE)
     {
-        coloured_noise_measure(&x->noise_params, (AH_UIntPtr) (length * sample_rate / 1000.0), &max_pink, &max_brown);
-        coloured_noise_reset(&x->noise_params);
+        if (x->last_sample_rate != sample_rate)
+        {
+            t_noise_params noise_params;
+            
+            coloured_noise_params(&noise_params, 0, 0, 0, 1, sample_rate, 1);
+            coloured_noise_measure(&noise_params, (1 << 25), &x->max_amp_pink, &x->max_amp_brown);
+            
+            x->last_sample_rate = sample_rate;
+        }
     }
     
     if (noise_mode == NOISE_MODE_BROWN)
-        amp_comp = max_brown;
+        amp_comp = x->max_amp_brown;
     if (noise_mode == NOISE_MODE_PINK)
-        amp_comp = max_pink;
+        amp_comp = x->max_amp_pink;
 
+    coloured_noise_reset(&x->noise_params);
     coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain) / amp_comp);
     
     irextract_process(x, rec_buffer, num_channels, sample_rate);
