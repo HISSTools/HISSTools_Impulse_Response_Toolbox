@@ -101,12 +101,12 @@ void irtrimnorm_pad(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
 int main()
 {
     this_class = class_new("irtrimnorm~",
-                            (method) irtrimnorm_new,
-                            (method)irtrimnorm_free,
-                            sizeof(t_irtrimnorm),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irtrimnorm_new,
+                          (method)irtrimnorm_free,
+                          sizeof(t_irtrimnorm),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irtrimnorm_assist, "assist", A_CANT, 0L);
 

@@ -76,12 +76,12 @@ double PLA_calc_merged_cost(double *x_vals, double *y_vals, AH_UIntPtr start_pos
 int main()
 {
     this_class = class_new("irplapprox~",
-                            (method) irpiecewiseapprox_new,
-                            (method)irpiecewiseapprox_free,
-                            sizeof(t_irpiecewiseapprox),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irpiecewiseapprox_new,
+                          (method)irpiecewiseapprox_free,
+                          sizeof(t_irpiecewiseapprox),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irpiecewiseapprox_process, "approx", A_SYM, 0L);
 

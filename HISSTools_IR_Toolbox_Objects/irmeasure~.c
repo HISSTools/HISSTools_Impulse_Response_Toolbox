@@ -185,12 +185,12 @@ void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double sampl
 int main()
 {
     this_class = class_new("irmeasure~",
-                            (method) irmeasure_new,
-                            (method)irmeasure_free,
-                            sizeof(t_irmeasure),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irmeasure_new,
+                          (method)irmeasure_free,
+                          sizeof(t_irmeasure),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irmeasure_assist, "assist", A_CANT, 0L);
     class_addmethod(this_class, (method)irmeasure_dsp, "dsp", A_CANT, 0L);

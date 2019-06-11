@@ -58,12 +58,12 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 int main()
 {
     this_class = class_new("irtransaural~",
-                            (method) irtransaural_new,
-                            (method)irtransaural_free,
-                            sizeof(t_irtransaural),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irtransaural_new,
+                          (method)irtransaural_free,
+                          sizeof(t_irtransaural),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irtransaural_process, "lattice", A_GIMME, 0L);
     class_addmethod(this_class, (method)irtransaural_process, "shuffler", A_GIMME, 0L);

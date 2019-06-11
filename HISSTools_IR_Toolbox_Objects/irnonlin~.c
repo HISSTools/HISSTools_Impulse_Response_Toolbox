@@ -59,12 +59,12 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 int main()
 {
     this_class = class_new("irnonlin~",
-                            (method) irnonlin_new,
-                            (method)irnonlin_free,
-                            sizeof(t_irnonlin),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irnonlin_new,
+                          (method)irnonlin_free,
+                          sizeof(t_irnonlin),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irnonlin_assist, "assist", A_CANT, 0L);
 

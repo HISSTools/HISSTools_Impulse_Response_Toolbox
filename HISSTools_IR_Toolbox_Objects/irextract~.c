@@ -120,13 +120,13 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 
 int main()
 {
-    this_class = class_new ("irextract~",
-                            (method) irextract_new,
-                            (method)irextract_free,
-                            sizeof(t_irextract),
-                            0L,
-                            A_GIMME,
-                            0);
+    this_class = class_new("irextract~",
+                          (method) irextract_new,
+                          (method)irextract_free,
+                          sizeof(t_irextract),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irextract_assist, "assist", A_CANT, 0L);
 

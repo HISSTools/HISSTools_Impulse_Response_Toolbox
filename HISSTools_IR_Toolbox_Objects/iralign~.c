@@ -61,12 +61,12 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 int main()
 {
     this_class = class_new("iralign~",
-                            (method) iralign_new,
-                            (method)iralign_free,
-                            sizeof(t_iralign),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) iralign_new,
+                          (method)iralign_free,
+                          sizeof(t_iralign),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)iralign_assist, "assist", A_CANT, 0L);
 

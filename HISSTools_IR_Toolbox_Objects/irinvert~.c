@@ -64,12 +64,12 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 int main(void)
 {
     this_class = class_new("irinvert~",
-                            (method) irinvert_new,
-                            (method)irinvert_free,
-                            sizeof(t_irinvert),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irinvert_new,
+                          (method)irinvert_free,
+                          sizeof(t_irinvert),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irinvert_process, "invert", A_GIMME, 0L);
     class_addmethod(this_class, (method)irinvert_mimo, "mimo", A_GIMME, 0L);

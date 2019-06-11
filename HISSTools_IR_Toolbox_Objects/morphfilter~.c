@@ -77,12 +77,12 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
 
 int main(void)
 {
-    this_class = class_new ("morphfilter~",
-                            (method) morphfilter_new,
-                            (method)morphfilter_free,
-                            sizeof(t_morphfilter),
-                            0L,
-                            0);
+    this_class = class_new("morphfilter~",
+                          (method) morphfilter_new,
+                          (method)morphfilter_free,
+                          sizeof(t_morphfilter),
+                          0L,
+                          0);
 
     class_addmethod(this_class, (method)morphfilter_process, "process", A_SYM, A_SYM, 0L);
     class_addmethod(this_class, (method)morphfilter_addfilter, "addfilter", A_GIMME, 0L);

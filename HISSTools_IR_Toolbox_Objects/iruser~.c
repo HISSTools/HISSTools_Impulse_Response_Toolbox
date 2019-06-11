@@ -123,12 +123,12 @@ t_max_err response_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *
 int main()
 {
     this_class = class_new("iruser~",
-                            (method) iruser_new,
-                            (method)iruser_free,
-                            sizeof(t_iruser),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) iruser_new,
+                          (method)iruser_free,
+                          sizeof(t_iruser),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)iruser_make, "make", A_GIMME, 0L);
     class_addmethod(this_class, (method)iruser_assist, "assist", A_CANT, 0L);

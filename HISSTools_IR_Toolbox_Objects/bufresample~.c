@@ -77,12 +77,12 @@ void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *
 
 int main(void)
 {
-    this_class = class_new ("bufresample~",
-                            (method) bufresample_new,
-                            (method)bufresample_free,
-                            sizeof(t_bufresample),
-                            0L,
-                            0);
+    this_class = class_new("bufresample~",
+                          (method) bufresample_new,
+                          (method)bufresample_free,
+                          sizeof(t_bufresample),
+                          0L,
+                          0);
 
     class_addmethod(this_class, (method)bufresample_process, "both", A_GIMME, 0L);
     class_addmethod(this_class, (method)bufresample_process, "resample", A_GIMME, 0L);

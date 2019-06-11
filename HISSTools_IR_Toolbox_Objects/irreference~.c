@@ -121,12 +121,12 @@ void irreference_dsp64 (t_irreference *x, t_object *dsp64, short *count, double 
 int main()
 {
     this_class = class_new("irreference~",
-                            (method) irreference_new,
-                            (method)irreference_free,
-                            sizeof(t_irreference),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irreference_new,
+                          (method)irreference_free,
+                          sizeof(t_irreference),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irreference_assist, "assist", A_CANT, 0L);
     class_addmethod(this_class, (method)irreference_dsp, "dsp", A_CANT, 0L);

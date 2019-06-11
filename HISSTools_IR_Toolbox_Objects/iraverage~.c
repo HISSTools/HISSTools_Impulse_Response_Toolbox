@@ -62,12 +62,12 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 int main()
 {
     this_class = class_new("iraverage~",
-                            (method) iraverage_new,
-                            (method)iraverage_free,
-                            sizeof(t_iraverage),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) iraverage_new,
+                          (method)iraverage_free,
+                          sizeof(t_iraverage),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)iraverage_process, "process", A_GIMME, 0L);
     class_addmethod(this_class, (method)iraverage_average, "average", A_GIMME, 0L);

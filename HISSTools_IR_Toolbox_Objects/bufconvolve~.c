@@ -57,12 +57,12 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 int main(void)
 {
     this_class = class_new("bufconvolve~",
-                            (method) bufconvolve_new,
-                            (method)bufconvolve_free,
-                            sizeof(t_bufconvolve),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) bufconvolve_new,
+                          (method)bufconvolve_free,
+                          sizeof(t_bufconvolve),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)bufconvolve_process, "convolve", A_GIMME, 0L);
     class_addmethod(this_class, (method)bufconvolve_process, "deconvolve", A_GIMME, 0L);

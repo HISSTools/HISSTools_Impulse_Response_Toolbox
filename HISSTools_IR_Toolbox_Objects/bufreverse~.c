@@ -50,12 +50,12 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
 
 int main(void)
 {
-    this_class = class_new ("bufreverse~",
-                            (method) bufreverse_new,
-                            (method)bufreverse_free,
-                            sizeof(t_bufreverse),
-                            0L,
-                            0);
+    this_class = class_new("bufreverse~",
+                          (method) bufreverse_new,
+                          (method)bufreverse_free,
+                          sizeof(t_bufreverse),
+                          0L,
+                          0);
 
     class_addmethod(this_class, (method)bufreverse_process, "process", A_SYM, A_SYM, 0L);
 
@@ -71,7 +71,7 @@ int main(void)
 
 void *bufreverse_new()
 {
-    t_bufreverse *x = (t_bufreverse *)object_alloc (this_class);
+    t_bufreverse *x = (t_bufreverse *)object_alloc(this_class);
 
     x->process_done = bangout(x);
 

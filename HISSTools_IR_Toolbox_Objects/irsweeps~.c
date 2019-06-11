@@ -86,12 +86,12 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
 int main()
 {
     this_class = class_new("irsweeps~",
-                            (method) irsweeps_new,
-                            (method)irsweeps_free,
-                            sizeof(t_irsweeps),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irsweeps_new,
+                          (method)irsweeps_free,
+                          sizeof(t_irsweeps),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irsweeps_assist, "assist", A_CANT, 0L);
 

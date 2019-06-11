@@ -63,12 +63,12 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth);
 int main()
 {
     this_class = class_new("irvalue~",
-                            (method) irvalue_new,
-                            (method)irvalue_free,
-                            sizeof(t_irvalue),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irvalue_new,
+                          (method)irvalue_free,
+                          sizeof(t_irvalue),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irvalue_set, "set", A_SYM, A_DEFFLOAT, 0L);
     class_addmethod(this_class, (method)irvalue_float, "float", A_FLOAT, 0L);

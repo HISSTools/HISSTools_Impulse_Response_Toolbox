@@ -74,12 +74,12 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 int main()
 {
     this_class = class_new("irphase~",
-                            (method) irphase_new,
-                            (method)irphase_free,
-                            sizeof(t_irphase),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irphase_new,
+                          (method)irphase_free,
+                          sizeof(t_irphase),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irphase_userphase, "minphase", A_GIMME, 0L);
     class_addmethod(this_class, (method)irphase_userphase, "maxphase", A_GIMME, 0L);

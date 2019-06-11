@@ -132,12 +132,12 @@ int main()
     t_object *attr_temp;
 
     this_class = class_new("multiconvolve~",
-                            (method)multiconvolve_new,
-                            (method)multiconvolve_free,
-                            sizeof(t_multiconvolve),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method)multiconvolve_new,
+                          (method)multiconvolve_free,
+                          sizeof(t_multiconvolve),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)multiconvolve_assist, "assist", A_CANT, 0L);
     class_addmethod(this_class, (method)multiconvolve_dsp64, "dsp64", A_CANT, 0L);

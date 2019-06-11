@@ -225,12 +225,12 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv);
 int main()
 {
     this_class = class_new("irstats~",
-                            (method) irstats_new,
-                            (method)irstats_free,
-                            sizeof(t_irstats),
-                            0L,
-                            A_GIMME,
-                            0);
+                          (method) irstats_new,
+                          (method)irstats_free,
+                          sizeof(t_irstats),
+                          0L,
+                          A_GIMME,
+                          0);
 
     class_addmethod(this_class, (method)irstats_stats, "stats", A_GIMME, 0L);
     class_addmethod(this_class, (method)irstats_assist, "assist", A_CANT, 0L);
