@@ -696,7 +696,7 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
 
     if (!fft_size)
     {
-        object_error ((t_object *) x, "no stored impulse responses - you may still be recording");
+        object_error ((t_object *) x, "no stored impulse responses");
         return;
     }
 
@@ -787,7 +787,7 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 
     if (!fft_size)
     {
-        object_error ((t_object *) x, "no stored impulse responses - you may still be recording");
+        object_error ((t_object *) x, "no stored impulse responses");
         return;
     }
 
