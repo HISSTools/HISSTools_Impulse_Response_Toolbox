@@ -28,9 +28,12 @@ xcuserdata/
 !default.mode2v3
 !default.perspectivev3
 
-# Windows Build Directories
+# Windows Build Directories / Files
 
-HissTools_Builds/
-HissTools_Intermediate/
+HISSTools_Builds/
+HISSTools_Intermediate/
 *.db
 *.ipch
+*.ipch
+*.iobj
+*.ipdb
