@@ -31,10 +31,17 @@ ARCHS = i386 x86_64
 
 GCC_PREPROCESSOR_DEFINITIONS = "DENORM_WANT_FIX = 1" "NO_TRANSLATION_SUPPORT = 1"
 
+// To turn of install on build set SKIP_INSTALL to YES or set DSTROOT to the desired location if different
+
+SKIP_INSTALL = NO
+DEPLOYMENT_LOCATION = YES
+DSTROOT = $(SRCROOT)/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_OSX
+INSTALL_PATH = /
+COPY_PHASE_STRIP = NO
+
 // Static Configuration (don't change these)
 
 WRAPPER_EXTENSION = mxo
-DEPLOYMENT_LOCATION = NO
 GENERATE_PKGINFO_FILE = YES
 
 // Turn off C99 to minimise time spent working in Visual Studio
