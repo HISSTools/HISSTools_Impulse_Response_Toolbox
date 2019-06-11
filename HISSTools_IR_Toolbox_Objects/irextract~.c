@@ -419,7 +419,7 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     
     if (noise_mode != NOISE_MODE_WHITE)
     {
-        coloured_noise_measure(&x->noise_params, (int) (length * sample_rate * 1000.0), &max_pink, &max_brown);
+        coloured_noise_measure(&x->noise_params, (AH_UIntPtr) (length * sample_rate / 1000.0), &max_pink, &max_brown);
         coloured_noise_reset(&x->noise_params);
     }
     
