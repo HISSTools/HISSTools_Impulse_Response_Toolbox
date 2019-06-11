@@ -63,6 +63,8 @@ int main(void)
 
     declare_HIRT_common_attributes(this_class);
 
+    class_register(CLASS_BOX, this_class);
+
     buffer_access_init();
 
     return 0;
