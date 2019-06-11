@@ -7,10 +7,32 @@ Change Log
 
 Changes in 2.0
 
+New Features
+
+Moved to package format
 New complete reference documentation and updated help files
 New Abstractions including Convolution Reverb effect
 
-spectrumdraw~: clipping dots mode fix
+morphfilter~: new object for use in the convolution reverb (for IR damping)
+bufreverse~: new  object for use in the convolution reverb (for IR reversal)
+bufresample~: new  object for use in the convolution reverb (for IR resampling)
+
+All objects - can now access limitless channels of a buffer~
+
+Bug Fixes
+
+iralign~/iraverage~/irinvert~/irnonlin~/irtrimnorm~: fixed bug with checking buffers when using multiple names
+irinvert~: fixed to allow source and receiver size mismatches in MIMO mode
+irextract~: fixed the amplitude of results, according to the parameter settings
+irextract~/irmeasure~: added the organ attribute for real-world IR measurements
+irextract~/irmeasure~/irsweeps~: fixed bugs with amplitudes of outputs/deconvolution for sweeps
+irextract~/irmeasure~/irsweeps~: fixed bug with results when no amplitude curve is set
+irstats~: fixed a minor bug with the onset detection code
+irstats~: fixed bugs in the calculation of the center stat
+irvalue~: corrected linear interpolation of values
+multiconvolve~: fixed bugs with missing parts of an IR for block sizes of >= 256 
+Multiconvolve~: object now functions with block sizes < 4
+spectrumdraw~: clipping of drawing has been corrected to fix a bug with incorrect look
 
 -------
 
@@ -19,10 +41,13 @@ Changes in 1.2
 New Features
 
 irvalue~: new object to return dB amplitude of IR at given frequency (Hz) input
-
-New attribute for irreference~ object: ... to ...
-
 irmeasure~: can now take up to 128 inputs & outputs
+
+
+Bug Fixes
+
+irmeasure~: fixed bug with progress reporting when measuring with less channels than present in the object.
+irstats~: fixed bugs that prevented reporting center and t30 stats correctly
 
 -------
 
