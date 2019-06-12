@@ -33,7 +33,6 @@
 #define CSUB(a, b) (a - b)
 #define CMUL(a, b) (a * b)
 #define CDIV(a, b) (a / b)
-#define CSMUL(a, b) (a * b)
 
 #else
 
@@ -44,7 +43,6 @@
 #define CSUB(a, b) cm_csub(a, b)
 #define CMUL(a, b) _Cmulcc(a, b)
 #define CDIV(a, b) cm_cdiv(a, b)
-#define CSMUL(a, b) _Cmulcr(a, b)
 
 static __inline COMPLEX_DOUBLE cm_cadd(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 {
@@ -53,7 +51,7 @@ static __inline COMPLEX_DOUBLE cm_cadd(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 	double c = CREAL(in2);
 	double d = CIMAG(in2);
 
-    return _Cbuild(a + c, b + d);
+    return CSET(a + c, b + d);
 }
 
 static __inline COMPLEX_DOUBLE cm_csub(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
@@ -63,7 +61,7 @@ static __inline COMPLEX_DOUBLE cm_csub(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 	double c = CREAL(in2);
 	double d = CIMAG(in2);
 
-	return _Cbuild(a - c, b - d);
+	return CSET(a - c, b - d);
 }
 
 static __inline COMPLEX_DOUBLE cm_cdiv(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
@@ -77,7 +75,7 @@ static __inline COMPLEX_DOUBLE cm_cdiv(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
     double real = (a*c + b*d) * e;
     double imag = (b*c - a*d) * e;
 
-    return _Cbuild(real, imag);
+    return CSET(real, imag);
 }
 
 #endif
