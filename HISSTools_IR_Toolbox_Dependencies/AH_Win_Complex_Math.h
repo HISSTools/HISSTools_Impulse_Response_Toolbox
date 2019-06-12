@@ -81,7 +81,6 @@ static __inline COMPLEX_DOUBLE cm_csub(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 	return _Cbuild(a - c, b - d);
 }
 
-
 static __inline COMPLEX_DOUBLE cm_csdiv(COMPLEX_DOUBLE in1, double in2)
 {
     double recip = 1.0 / in2;
@@ -91,8 +90,6 @@ static __inline COMPLEX_DOUBLE cm_csdiv(COMPLEX_DOUBLE in1, double in2)
 
 static __inline COMPLEX_DOUBLE cm_cdiv(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 {
-	COMPLEX_DOUBLE ret;
-
 	double a = CREAL(in1);
 	double b = CIMAG(in1);
 	double c = CREAL(in2);
