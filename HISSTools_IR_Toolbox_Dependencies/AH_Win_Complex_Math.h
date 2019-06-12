@@ -182,7 +182,7 @@ static __inline t_complex_double cm_cdiv(t_complex_double in1, t_complex_double 
     double e = 1.0 / (c*c + d*d);
 
     ret.real = (a*c + b*d) * e;
-    ret.imag = (a*d - b*c) * e;
+    ret.imag = (b*c - a*d) * e;
 
     return ret;
 }
