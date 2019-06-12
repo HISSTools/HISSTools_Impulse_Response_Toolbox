@@ -81,7 +81,6 @@ int main()
 }
 
 
-
 void *irnonlin_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_irnonlin *x = (t_irnonlin *)object_alloc(this_class);
