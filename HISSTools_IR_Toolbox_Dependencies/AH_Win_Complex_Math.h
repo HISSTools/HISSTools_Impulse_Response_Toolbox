@@ -107,7 +107,7 @@ static __inline COMPLEX_DOUBLE cm_cdiv(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 
 #endif
 
-static  COMPLEX_DOUBLE cm_cneg(COMPLEX_DOUBLE in)
+static __inline COMPLEX_DOUBLE cm_cneg(COMPLEX_DOUBLE in)
 {
     COMPLEX_DOUBLE ret = CSET(-CREAL(in), -CIMAG(in));
 
