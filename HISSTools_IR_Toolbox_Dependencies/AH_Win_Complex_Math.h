@@ -39,176 +39,75 @@
 
 #include <math.h>
 #include "AH_Win_Math.h"
+#include <complex.h>
 
-typedef struct _complex_double
-{
-    double real;
-    double imag;
+#define COMPLEX_DOUBLE _Dcomplex 
 
-} t_complex_double;
-
-#define COMPLEX_DOUBLE t_complex_double
-
-#define CREAL(a) (a).real
-#define CIMAG(a) (a).imag
+#define CREAL(a) creal(a)
+#define CIMAG(a) cimag(a)
 #define CNEG(a) cm_cneg(a)
-#define CABS(a) cm_cabs(a)
+#define CABS(a) cabs(a)
 #define CABS_SQ(a) cm_cabs_sq(a)
-#define CARG(a) cm_carg(a)
-#define CONJ(a) cm_conj(a)
-#define CSET(a, b) cm_cset(a, b)
+#define CARG(a) carg(a)
+#define CONJ(a) conj(a)
+#define CSET(a, b) _Cbuild(a, b)
 #define CADD(a, b) cm_cadd(a, b)
 #define CSUB(a, b) cm_csub(a, b)
-#define CMUL(a, b) cm_cmul(a, b)
+#define CMUL(a, b) _Cmulcc(a, b)
 #define CDIV(a, b) cm_cdiv(a, b)
-#define CSMUL(a, b) cm_csmul(a, b)
+#define CSMUL(a, b) _Cmulcr(a, b)
 #define CSDIV(a, b) cm_csdiv(a, b)
-#define CEXP(a) cm_cexp(a)
-#define CLOG(a) cm_clog(a)
+#define CEXP(a) cexp(a)
+#define CLOG(a) clog(a)
 #define CPOLAR(a, b) cm_cpolar(a, b)
 
-static __inline t_complex_double cm_cset(double a, double b)
+static __inline COMPLEX_DOUBLE cm_cadd(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 {
-    t_complex_double ret;
+	double a = CREAL(in1);
+	double b = CIMAG(in1);
+	double c = CREAL(in2);
+	double d = CIMAG(in2);
 
-    ret.real = a;
-    ret.imag = b;
-
-    return ret;
+    return _Cbuild(a + c, b + d);
 }
 
-static __inline double cm_cabs(t_complex_double in)
+static __inline COMPLEX_DOUBLE cm_csub(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 {
-    double a = in.real;
-    double b = in.imag;
+	double a = CREAL(in1);
+	double b = CIMAG(in1);
+	double c = CREAL(in2);
+	double d = CIMAG(in2);
 
-    return sqrt((a * a) + (b * b));
-}
-
-static __inline double cm_carg(t_complex_double in)
-{
-    double a = in.real;
-    double b = in.imag;
-
-    return atan2(b, a);
-}
-
-static __inline t_complex_double cm_conj(t_complex_double in)
-{
-    t_complex_double ret;
-
-    ret.real = in.real;
-    ret.imag = -in.imag;
-
-    return ret;
+	return _Cbuild(a - c, b - d);
 }
 
 
-static __inline t_complex_double cm_cadd(t_complex_double in1, t_complex_double in2)
+static __inline COMPLEX_DOUBLE cm_csdiv(COMPLEX_DOUBLE in1, double in2)
 {
-    t_complex_double ret;
-
-    double a = in1.real;
-    double b = in1.imag;
-    double c = in2.real;
-    double d = in2.imag;
-
-    ret.real = a + c;
-    ret.imag = b + d;
-
-    return ret;
-}
-
-static __inline t_complex_double cm_csub(t_complex_double in1, t_complex_double in2)
-{
-    t_complex_double ret;
-
-    double a = in1.real;
-    double b = in1.imag;
-    double c = in2.real;
-    double d = in2.imag;
-
-    ret.real = a - c;
-    ret.imag = b - d;
-
-    return ret;
-}
-
-static __inline t_complex_double cm_cmul(t_complex_double in1, t_complex_double in2)
-{
-    t_complex_double ret;
-
-    double a = in1.real;
-    double b = in1.imag;
-    double c = in2.real;
-    double d = in2.imag;
-
-    ret.real = a*c - b*d;
-    ret.imag = a*d + b*c;
-
-    return ret;
-}
-
-static __inline t_complex_double cm_csmul(t_complex_double in1, double in2)
-{
-    t_complex_double ret;
-
-    ret.real = in1.real * in2;
-    ret.imag = in1.imag * in2;
-
-    return ret;
-}
-
-static __inline t_complex_double cm_csdiv(t_complex_double in1, double in2)
-{
-    t_complex_double ret;
-
     double recip = 1.0 / in2;
 
-    ret.real = in1.real * recip;
-    ret.imag = in1.imag * recip;
-
-    return ret;
+    return _Cbuild(CREAL(in1) * recip, CIMAG(in1) * recip);
 }
 
-static __inline t_complex_double cm_cdiv(t_complex_double in1, t_complex_double in2)
+static __inline COMPLEX_DOUBLE cm_cdiv(COMPLEX_DOUBLE in1, COMPLEX_DOUBLE in2)
 {
-    t_complex_double ret;
+	COMPLEX_DOUBLE ret;
 
-    double a = in1.real;
-    double b = in1.imag;
-    double c = in2.real;
-    double d = in2.imag;
+	double a = CREAL(in1);
+	double b = CIMAG(in1);
+	double c = CREAL(in2);
+	double d = CIMAG(in2);
     double e = 1.0 / (c*c + d*d);
 
-    ret.real = (a*c + b*d) * e;
-    ret.imag = (b*c - a*d) * e;
+    double real = (a*c + b*d) * e;
+    double imag = (b*c - a*d) * e;
 
-    return ret;
-}
-
-static __inline t_complex_double cm_cexp(t_complex_double in1)
-{
-    t_complex_double ret;
-
-    double a = exp(in1.real);
-    double b = in1.imag;
-
-    ret = cm_cset(a * cos(b), a * sin(b));
-
-    return ret;
-}
-
-static __inline t_complex_double cm_clog(t_complex_double in1)
-{
-    t_complex_double ret = cm_cset(log(cm_cabs(in1)), cm_carg(in1));
-
-    return ret;
+    return _Cbuild(real, imag);
 }
 
 #endif
 
-static __inline COMPLEX_DOUBLE cm_cneg(COMPLEX_DOUBLE in)
+static  COMPLEX_DOUBLE cm_cneg(COMPLEX_DOUBLE in)
 {
     COMPLEX_DOUBLE ret = CSET(-CREAL(in), -CIMAG(in));
 
