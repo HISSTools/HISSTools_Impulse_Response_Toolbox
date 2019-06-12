@@ -112,6 +112,7 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
 void irextract_clear(t_irextract *x);
 
 void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_channels, double sample_rate);
+void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv);
 
 void irextract_getir(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
 void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv);
@@ -465,6 +466,22 @@ void irextract_clear(t_irextract *x)
 
 void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_channels, double sample_rate)
 {
+    t_atom arguments[3];
+    
+    atom_setsym(arguments + 0, rec_buffer);
+    atom_setlong(arguments + 1, num_channels);
+    atom_setfloat(arguments + 2, sample_rate);
+    
+    defer(x, (method) irextract_process_internal, NULL, (short) 3, arguments);
+}
+
+
+void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
+{
+    t_symbol *rec_buffer = atom_getsym(argv + 0);
+    t_atom_long num_channels = atom_getlong(argv + 1);
+    double sample_rate = atom_getfloat(argv + 2);
+    
     FFT_SETUP_D fft_setup;
 
     FFT_SPLIT_COMPLEX_D spectrum_1;
@@ -774,6 +791,10 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
 
     error = buffer_write(buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
     buffer_write_error((t_object *) x, buffer, error);
+    
+    // Done
+    
+    outlet_bang(x->process_done);
 }
 
 void irextract_dump(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
@@ -822,4 +843,8 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 
     error = buffer_write(buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
     buffer_write_error((t_object *) x, buffer, error);
+    
+    // Done
+    
+    outlet_bang(x->process_done);
 }
