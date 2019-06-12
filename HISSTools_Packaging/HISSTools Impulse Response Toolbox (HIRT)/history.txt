@@ -9,26 +9,28 @@ Changes in 2.0
 
 New Features
 
-Moved to package format
-New complete reference documentation and updated help files
-New Abstractions including Convolution Reverb effect
+moved to package format
+new complete reference documentation and updated help files
+new abstractions including Convolution Reverb effect
 
 morphfilter~: new object for use in the convolution reverb (for IR damping)
 bufreverse~: new  object for use in the convolution reverb (for IR reversal)
 bufresample~: new  object for use in the convolution reverb (for IR resampling)
 
-All objects - can now access limitless channels of a buffer~
+all objects: can now access limitless channels of a buffer~
 
 Bug Fixes
 
 iralign~/iraverage~/irinvert~/irnonlin~/irtrimnorm~: fixed bug with checking buffers when using multiple names
 irextract~: fixed the use of coloured noise inputs to prevent hang
 irextract~: fixed the amplitude of results, according to the parameter settings
-irextract~/irmeasure~: added the organ attribute for real-world IR measurements
+irextract~: fixed error string when no contents present
+irextract~/irmeasure~: added the irgain attribute for real-world IR measurements
 irextract~/irmeasure~: fixed scaling with coloured noise measurements
 irextract~/irmeasure~/irsweeps~: fixed bugs with amplitudes of outputs/deconvolution for sweeps
 irextract~/irmeasure~/irsweeps~: fixed bug with results when no amplitude curve is set
 irinvert~: fixed to allow source and receiver size mismatches in MIMO mode
+irinvert~/irnonlin~: fixed a bug with complex division on windows that resulted in incorrect outputs
 irstats~: fixed a minor bug with the onset detection code
 irstats~: fixed bugs in the calculation of the center stat
 irvalue~: corrected linear interpolation of values
