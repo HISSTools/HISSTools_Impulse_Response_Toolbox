@@ -2,7 +2,7 @@
 #ifndef __HIRT_COLOURED_NOISE__
 #define __HIRT_COLOURED_NOISE__
 
-#include <AH_Win_Math.h>
+#include <AH_Math.h>
 #include <AH_Types.h>
 
 

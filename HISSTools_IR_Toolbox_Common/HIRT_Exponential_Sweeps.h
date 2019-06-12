@@ -2,7 +2,7 @@
 #ifndef __HIRT_EXPONENTIAL_SWEEPS__
 #define __HIRT_EXPONENTIAL_SWEEPS__
 
-#include <AH_Win_Math.h>
+#include <AH_Math.h>
 #include <AH_Types.h>
 
 #ifdef __cplusplus

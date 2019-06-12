@@ -2,7 +2,7 @@
 #ifndef __TRIM_NORMALISE__
 #define __TRIM_NORMALISE__
 
-#include <AH_Win_Math.h>
+#include <AH_Math.h>
 #include <AH_Types.h>
 
 

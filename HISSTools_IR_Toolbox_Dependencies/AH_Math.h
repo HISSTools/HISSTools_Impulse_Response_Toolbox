@@ -1,6 +1,6 @@
 
 /*
- *  AH_Win_Math
+ *  AH_Math
  *
  *    This header file provides definitions or code for math.h functions not present under Windows using Visual Studio
  *
