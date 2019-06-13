@@ -28,11 +28,11 @@
 
 #define COMPLEX_DOUBLE complex double
 
-#define CSET(a, b) (a + I * b)
-#define CADD(a, b) (a + b)
-#define CSUB(a, b) (a - b)
-#define CMUL(a, b) (a * b)
-#define CDIV(a, b) (a / b)
+#define CSET(a, b) ((a) + (I * (b)))
+#define CADD(a, b) ((a) + (b))
+#define CSUB(a, b) ((a) - (b))
+#define CMUL(a, b) ((a) * (b))
+#define CDIV(a, b) ((a) / (b))
 
 #else
 
