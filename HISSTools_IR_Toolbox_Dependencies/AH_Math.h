@@ -36,7 +36,7 @@ static __inline long isnan(double n)
 
 static __inline long isinf(double n)
 {
-    return n == n * 2;
+    return !isnan(n) & isnan(n - n);
 }
 
 #endif
