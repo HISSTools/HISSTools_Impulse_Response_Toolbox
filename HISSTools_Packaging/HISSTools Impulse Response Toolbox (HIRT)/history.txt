@@ -38,6 +38,8 @@ multiconvolve~: fixed bugs with missing parts of an IR for block sizes of >= 256
 multiconvolve~: object now functions with block sizes < 4
 spectrumdraw~: clipping of drawing has been corrected to fix a bug with incorrect look
 
+all objects (windows only): fixed code relating to deconvolution filters and amp specifiers
+
 -------
 
 Changes in 1.2
