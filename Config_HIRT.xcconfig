@@ -5,7 +5,7 @@ PRODUCT_NAME = $TARGET_NAME
 
 // Paths
 
-C74SUPPORT = $(SRCROOT)/../AHarker_Externals/AH_Max_SDK/c74support
+C74SUPPORT = $(SRCROOT)/../max-sdk-8.0.3/source/c74support
 HEADER_SEARCH_PATHS = "$(SRCROOT)/HISSTools_IR_Toolbox_Dependencies/" "$(SRCROOT)/HISSTools_IR_Toolbox_Common/" "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes" "$(C74SUPPORT)/jit-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes" "$(C74SUPPORT)/jit-includes"
 
