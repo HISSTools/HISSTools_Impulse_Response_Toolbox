@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 2,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 2,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1010,14 +1010,14 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_enum" : [ "Direct", "Onset", "Off" ],
+							"parameter_type" : 1,
+							"parameter_linknames" : 1,
 							"parameter_longname" : "Direct Mode",
 							"parameter_initial_enable" : 1,
 							"parameter_mmax" : 2.0,
 							"parameter_initial" : [ 0.0 ],
-							"parameter_shortname" : "Direct Mode",
-							"parameter_enum" : [ "Direct", "Onset", "Off" ],
-							"parameter_type" : 1,
-							"parameter_linknames" : 1
+							"parameter_shortname" : "Direct Mode"
 						}
 
 					}
@@ -1050,14 +1050,14 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_enum" : [ "Percent", "Time" ],
+							"parameter_type" : 1,
+							"parameter_linknames" : 1,
 							"parameter_longname" : "Length Mode",
 							"parameter_initial_enable" : 1,
 							"parameter_mmax" : 1.0,
 							"parameter_initial" : [ 0.0 ],
-							"parameter_shortname" : "Length Mode",
-							"parameter_enum" : [ "Percent", "Time" ],
-							"parameter_type" : 1,
-							"parameter_linknames" : 1
+							"parameter_shortname" : "Length Mode"
 						}
 
 					}
@@ -1090,14 +1090,14 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_enum" : [ "Off", "On" ],
+							"parameter_type" : 1,
+							"parameter_linknames" : 1,
 							"parameter_longname" : "Reverse",
 							"parameter_initial_enable" : 1,
 							"parameter_mmax" : 1.0,
 							"parameter_initial" : [ 0 ],
-							"parameter_shortname" : "Reverse",
-							"parameter_enum" : [ "Off", "On" ],
-							"parameter_type" : 1,
-							"parameter_linknames" : 1
+							"parameter_shortname" : "Reverse"
 						}
 
 					}
@@ -1213,7 +1213,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Size", "Size", "@range", 200.0, "@bipolar", 1, "@initial", 100.0, "@offline", 1, "@units", "%", "@appearance", "Large" ],
+					"args" : [ "Size", "Size", "@range", 50.0, 200.0, "@bipolar", 1, "@initial", 100.0, "@exponent", 1.58, "@offline", 1, "@units", "%", "@appearance", "Large" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -1237,7 +1237,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Decay", "Decay", "@range", 200.0, "@bipolar", 1, "@initial", 100.0, "@offline", 1, "@units", "%", "@appearance", "Large" ],
+					"args" : [ "Decay", "Decay", "@range", 1.0, 200.0, "@bipolar", 1, "@initial", 100.0, "@exponent", 1.01, "@offline", 1, "@units", "%", "@appearance", "Large" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -1341,7 +1341,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 2,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2564,7 +2564,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
 					"midpoints" : [ 145.5, 217.75, 398.0, 217.75 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-70", 0 ]
 				}
 
@@ -2573,7 +2573,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-97", 0 ],
 					"midpoints" : [ 145.5, 217.75, 291.0, 217.75 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-70", 0 ]
 				}
 
@@ -2633,7 +2633,7 @@
 					"color" : [ 0.74902, 0.74902, 0.74902, 0.0 ],
 					"destination" : [ "obj-48", 0 ],
 					"hidden" : 1,
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-77", 0 ]
 				}
 
@@ -2673,7 +2673,7 @@
 					"color" : [ 0.74902, 0.74902, 0.74902, 0.0 ],
 					"destination" : [ "obj-97", 0 ],
 					"hidden" : 1,
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-77", 0 ]
 				}
 
@@ -2796,17 +2796,73 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-45::obj-70" : [ "hirt.val[4]", "hirt.val", 0 ],
-			"obj-97::obj-70" : [ "hirt.val[9]", "hirt.val", 0 ],
-			"obj-44::obj-70" : [ "hirt.val[3]", "hirt.val", 0 ],
-			"obj-9" : [ "Reverse", "Reverse", 0 ],
 			"obj-12::obj-70" : [ "hirt.val[2]", "hirt.val", 0 ],
+			"obj-9" : [ "Reverse", "Reverse", 0 ],
 			"obj-47::obj-70" : [ "hirt.val[6]", "hirt.val", 0 ],
-			"obj-53" : [ "Direct Mode", "Direct Mode", 0 ],
-			"obj-46::obj-70" : [ "hirt.val[5]", "hirt.val", 0 ],
 			"obj-49" : [ "Length Mode", "Length Mode", 0 ],
-			"obj-48::obj-70" : [ "hirt.val[8]", "hirt.val", 0 ],
+			"obj-46::obj-70" : [ "hirt.val[5]", "hirt.val", 0 ],
+			"obj-45::obj-70" : [ "hirt.val[4]", "hirt.val", 0 ],
+			"obj-53" : [ "Direct Mode", "Direct Mode", 0 ],
+			"obj-44::obj-70" : [ "hirt.val[3]", "hirt.val", 0 ],
 			"parameterbanks" : 			{
+
+			}
+,
+			"parameter_overrides" : 			{
+				"obj-12::obj-70" : 				{
+					"parameter_longname" : "hirt.val[2]",
+					"parameter_invisible" : 1,
+					"parameter_exponent" : 2.5,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2,
+					"parameter_initial" : 15000.0,
+					"parameter_range" : [ 100.0, 30000.0 ]
+				}
+,
+				"obj-47::obj-70" : 				{
+					"parameter_longname" : "hirt.val[6]",
+					"parameter_invisible" : 1,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 100.0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-46::obj-70" : 				{
+					"parameter_longname" : "hirt.val[5]",
+					"parameter_invisible" : 1,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 100.0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-45::obj-70" : 				{
+					"parameter_longname" : "hirt.val[4]",
+					"parameter_invisible" : 1,
+					"parameter_exponent" : 2.0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2,
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ 0.0, 1000.0 ]
+				}
+,
+				"obj-44::obj-70" : 				{
+					"parameter_longname" : "hirt.val[3]",
+					"parameter_invisible" : 1,
+					"parameter_exponent" : 2.0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2,
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ 0.0, 1000.0 ]
+				}
 
 			}
 
@@ -2814,14 +2870,14 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1

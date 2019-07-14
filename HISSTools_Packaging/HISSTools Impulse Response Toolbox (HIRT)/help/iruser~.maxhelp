@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 100.0, 45.0, 741.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -51,7 +52,6 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js hirt.helpstarter.js iruser~"
 				}
 
@@ -65,13 +65,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 100.0, 71.0, 741.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
@@ -108,7 +109,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 405.0, 384.0, 39.0, 23.0 ],
-									"style" : "",
 									"text" : "clear"
 								}
 
@@ -128,8 +128,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 41.0, 146.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
-									"text" : "2",
+									"text" : "3",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
 
@@ -149,7 +148,6 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 263.5, 352.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -170,8 +168,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 540.0, 261.5, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
-									"text" : "1",
+									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
 
@@ -185,8 +182,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 619.859924, 523.5, 97.0, 21.0 ],
-									"style" : "",
+									"patching_rect" : [ 619.859923999999978, 523.5, 97.0, 21.0 ],
 									"text" : "Output Buffer",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 									"textjustification" : 2
@@ -202,8 +198,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 504.214966, 499.5, 97.0, 21.0 ],
-									"style" : "",
+									"patching_rect" : [ 504.214966000000004, 499.5, 97.0, 21.0 ],
 									"text" : "Display Length",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -219,7 +214,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 401.0, 499.5, 85.0, 21.0 ],
-									"style" : "",
 									"text" : "Display Start",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -236,9 +230,22 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 508.214966, 522.5, 67.0, 23.0 ],
-									"style" : ""
+									"parameter_enable" : 1,
+									"parameter_mappable" : 0,
+									"patching_rect" : [ 508.214966000000004, 522.5, 67.0, 23.0 ],
+									"saved_attribute_attributes" : 									{
+										"valueof" : 										{
+											"parameter_longname" : "number",
+											"parameter_initial_enable" : 1,
+											"parameter_invisible" : 1,
+											"parameter_initial" : [ 6.0 ],
+											"parameter_shortname" : "number",
+											"parameter_type" : 3
+										}
+
+									}
+,
+									"varname" : "number"
 								}
 
 							}
@@ -254,8 +261,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 405.0, 522.5, 67.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 405.0, 522.5, 67.0, 23.0 ]
 								}
 
 							}
@@ -269,8 +275,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 405.0, 547.5, 311.859924, 134.0 ],
-									"style" : ""
+									"patching_rect" : [ 405.0, 547.5, 311.859923999999978, 134.0 ]
 								}
 
 							}
@@ -285,7 +290,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 457.0, 233.0, 186.0, 25.0 ],
-									"style" : "",
 									"text" : "Set the frequency response"
 								}
 
@@ -301,7 +305,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 41.0, 194.0, 169.0, 23.0 ],
-									"style" : "",
 									"text" : "make userout 16384 44100"
 								}
 
@@ -317,7 +320,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 86.0, 260.0, 369.0, 23.0 ],
-									"style" : "",
 									"text" : "response 20 10 60 0 120 0 150 12 500 -30 12000 -50 15000 0"
 								}
 
@@ -333,7 +335,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 212.0, 167.0, 438.0, 25.0 ],
-									"style" : "",
 									"text" : "The make message creates the specified response in a specified buffer"
 								}
 
@@ -349,7 +350,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 26.0, 168.0, 162.0, 23.0 ],
-									"style" : "",
 									"text" : "make userout 8192 44100"
 								}
 
@@ -365,7 +365,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 200.0, 325.0, 147.0, 25.0 ],
-									"style" : "",
 									"text" : "Linear Phase Output"
 								}
 
@@ -381,7 +380,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 188.0, 299.0, 163.0, 25.0 ],
-									"style" : "",
 									"text" : "Minimum Phase Output"
 								}
 
@@ -397,7 +395,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 116.0, 300.0, 70.0, 23.0 ],
-									"style" : "",
 									"text" : "phase min"
 								}
 
@@ -413,7 +410,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 135.0, 326.0, 63.0, 23.0 ],
-									"style" : "",
 									"text" : "phase lin"
 								}
 
@@ -428,7 +424,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 26.0, 505.0, 362.0, 21.0 ],
-									"style" : "",
 									"text" : "Output Frequency Response",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 									"textjustification" : 1
@@ -464,7 +459,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 26.0, 480.0, 75.0, 23.0 ],
-									"style" : "",
 									"text" : "set userout"
 								}
 
@@ -480,7 +474,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
 									"patching_rect" : [ 405.0, 432.0, 109.0, 23.0 ],
-									"style" : "",
 									"text" : "buffer~ userout 1"
 								}
 
@@ -495,7 +488,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 52.0, 433.0, 222.0, 21.0 ],
-									"style" : "",
 									"text" : "Bang on successful completion",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -508,8 +500,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 26.0, 432.0, 24.0, 24.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 26.0, 432.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -524,7 +516,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 71.0, 234.0, 356.0, 23.0 ],
-									"style" : "",
 									"text" : "response 20 -90 800 0 1900 0 300 -30 18000 -30 22000 -90"
 								}
 
@@ -537,7 +528,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"patching_rect" : [ 26.0, 383.0, 51.0, 23.0 ],
-									"style" : "",
 									"text" : "iruser~"
 								}
 
@@ -552,7 +542,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 228.5, 195.0, 421.5, 21.0 ],
-									"style" : "",
 									"text" : "output buffer / [FFT Size = 4096] / [sample rate = global sr]",
 									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
 								}
@@ -573,7 +562,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 395.859924, 11.0, 321.0, 54.0 ],
+									"patching_rect" : [ 395.859923999999978, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
 								}
@@ -650,7 +639,26 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"hidden" : 1,
+									"order" : 0,
+									"source" : [ "obj-25", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-15", 0 ],
+									"hidden" : 1,
+									"order" : 1,
+									"source" : [ "obj-25", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-51", 0 ],
+									"order" : 2,
 									"source" : [ "obj-25", 0 ]
 								}
 
@@ -702,11 +710,9 @@
 						"digest" : "",
 						"fontsize" : 13.0,
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic",
 					"varname" : "basic_tab"
 				}
@@ -724,7 +730,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 152.205109, 57.567627 ]
+					"patching_rect" : [ 10.0, 10.0, 152.205108999999993, 57.567627000000002 ]
 				}
 
 			}
@@ -737,13 +743,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 741.0, 695.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -776,16 +783,14 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 117.205109, 85.0, 45.0, 23.0 ],
+					"patching_rect" : [ 117.205108999999993, 85.0, 45.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?",
 					"varname" : "q_tab"
 				}
@@ -793,6 +798,14 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-1::obj-14" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+
+			}
+
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "helpname.js",
 				"bootpath" : "C74:/help/resources",
@@ -807,21 +820,21 @@
 			}
 , 			{
 				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
 				"patcherrelativepath" : "../misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG ",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -837,13 +850,7 @@
  ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
 	}
 
 }

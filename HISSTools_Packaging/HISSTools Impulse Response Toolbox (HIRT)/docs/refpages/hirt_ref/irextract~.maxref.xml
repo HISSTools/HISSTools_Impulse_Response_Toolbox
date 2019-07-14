@@ -301,6 +301,20 @@
 				<attribute name="style" get="1" set="1" type="symbol" size="1" value="onoff" />
 			</attributelist>
 		</attribute>
+		<attribute name="irgain" get="1" set="1" type="float" size="1">
+			<digest>
+				Overall Gain in dB
+			</digest>
+			<description>
+				An arbitrary gain factor in <b>dB</b> can be applied to any recording. <br />
+				This is so that in a situation where a plain recording may produce very high or very low overall gains, one can mitigate this for quick testing purposes. <br />
+				<b>units: dB, float, default: 0</b>
+			</description>
+			<attributelist>
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Overall Gain in dB" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="dB" />
+			</attributelist>
+		</attribute>
 		<attribute name="readchan" get="1" set="1" type="int" size="1">
 			<digest>
 				Buffer Read Channel

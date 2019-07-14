@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 100.0, 45.0, 739.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -51,7 +52,6 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js hirt.helpstarter.js irvalue~"
 				}
 
@@ -65,13 +65,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 100.0, 71.0, 739.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
@@ -108,7 +109,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 419.0, 158.0, 63.0, 23.0 ],
-									"style" : "",
 									"text" : "tosymbol"
 								}
 
@@ -122,7 +122,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 336.75, 67.0, 277.0, 23.0 ],
-									"style" : "",
 									"text" : "loadmess symbol \"Templeworks Holbeck.wav\""
 								}
 
@@ -135,7 +134,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 419.0, 186.0, 104.0, 23.0 ],
-									"style" : "",
 									"text" : "prepend replace"
 								}
 
@@ -145,14 +143,13 @@
 									"autopopulate" : 1,
 									"collection" : "HIRT Impulse Responses",
 									"id" : "obj-5",
-									"items" : [ "Cabinet.wav", ",", "Amplifier.wav", ",", "Huddersfield Town Hall.wav", ",", "Templeworks Holbeck.wav", ",", "Phipps Mono.wav", ",", "St Pauls Mono.wav", ",", "Studio 2.wav", ",", "Clothworkers Leeds Narrow 1-1.wav", ",", "Clothworkers Leeds Narrow 1-2.wav", ",", "Clothworkers Leeds Narrow 2-1.wav", ",", "Clothworkers Leeds Narrow 2-2.wav", ",", "Clothworkers Leeds Wide 1-1.wav", ",", "Clothworkers Leeds Wide 1-2.wav", ",", "Clothworkers Leeds Wide 2-1.wav", ",", "Clothworkers Leeds Wide 2-2.wav", ",", "Huddersfield Town Hall Far 1-1.wav", ",", "Huddersfield Town Hall Far 1-2.wav", ",", "Huddersfield Town Hall Far 2-1.wav", ",", "Huddersfield Town Hall Far 2-2.wav", ",", "Huddersfield Town Hall Near 1-1.wav", ",", "Huddersfield Town Hall Near 1-2.wav", ",", "Huddersfield Town Hall Near 2-1.wav", ",", "Huddersfield Town Hall Near 2-2.wav", ",", "Phipps Far 1-1.wav", ",", "Phipps Far 1-2.wav", ",", "Phipps Far 2-1.wav", ",", "Phipps Far 2-2.wav", ",", "Phipps Near 1-1.wav", ",", "Phipps Near 1-2.wav", ",", "Phipps Near 2-1.wav", ",", "Phipps Near 2-2.wav", ",", "St Pauls 1-1.wav", ",", "St Pauls 1-2.wav", ",", "St Pauls 2-1.wav", ",", "St Pauls 2-2.wav", ",", "York Rymer Auditorium Narrow 1-1.wav", ",", "York Rymer Auditorium Narrow 1-2.wav", ",", "York Rymer Auditorium Narrow 2-1.wav", ",", "York Rymer Auditorium Narrow 2-2.wav", ",", "York Rymer Auditorium Wide 1-1.wav", ",", "York Rymer Auditorium Wide 1-2.wav", ",", "York Rymer Auditorium Wide 2-1.wav", ",", "York Rymer Auditorium Wide 2-2.wav", ",", "Bass Head 90s EQ.wav", ",", "Bass Head 90s.wav", ",", "Spring Cheap.wav", ",", "Spring Long.wav", ",", "Spring Mid.wav", ",", "Spring Short.wav", ",", "Tape Machine.wav" ],
+									"items" : [ "Huddersfield Town Hall.wav", ",", "Templeworks Holbeck.wav", ",", "Phipps Mono.wav", ",", "St Pauls Mono.wav", ",", "Studio 2.wav", ",", "Clothworkers Leeds Narrow 1-1.wav", ",", "Clothworkers Leeds Narrow 1-2.wav", ",", "Clothworkers Leeds Narrow 2-1.wav", ",", "Clothworkers Leeds Narrow 2-2.wav", ",", "Clothworkers Leeds Wide 1-1.wav", ",", "Clothworkers Leeds Wide 1-2.wav", ",", "Clothworkers Leeds Wide 2-1.wav", ",", "Clothworkers Leeds Wide 2-2.wav", ",", "Huddersfield Town Hall Far 1-1.wav", ",", "Huddersfield Town Hall Far 1-2.wav", ",", "Huddersfield Town Hall Far 2-1.wav", ",", "Huddersfield Town Hall Far 2-2.wav", ",", "Huddersfield Town Hall Near 1-1.wav", ",", "Huddersfield Town Hall Near 1-2.wav", ",", "Huddersfield Town Hall Near 2-1.wav", ",", "Huddersfield Town Hall Near 2-2.wav", ",", "Phipps Far 1-1.wav", ",", "Phipps Far 1-2.wav", ",", "Phipps Far 2-1.wav", ",", "Phipps Far 2-2.wav", ",", "Phipps Near 1-1.wav", ",", "Phipps Near 1-2.wav", ",", "Phipps Near 2-1.wav", ",", "Phipps Near 2-2.wav", ",", "St Pauls 1-1.wav", ",", "St Pauls 1-2.wav", ",", "St Pauls 2-1.wav", ",", "St Pauls 2-2.wav", ",", "York Rymer Auditorium Narrow 1-1.wav", ",", "York Rymer Auditorium Narrow 1-2.wav", ",", "York Rymer Auditorium Narrow 2-1.wav", ",", "York Rymer Auditorium Narrow 2-2.wav", ",", "York Rymer Auditorium Wide 1-1.wav", ",", "York Rymer Auditorium Wide 1-2.wav", ",", "York Rymer Auditorium Wide 2-1.wav", ",", "York Rymer Auditorium Wide 2-2.wav", ",", "Cabinet.wav", ",", "Amplifier.wav", ",", "Bass Head 90s EQ.wav", ",", "Bass Head 90s.wav", ",", "Spring Cheap.wav", ",", "Spring Long.wav", ",", "Spring Mid.wav", ",", "Spring Short.wav", ",", "Tape Machine.wav" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 336.75, 130.0, 183.5, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 336.75, 130.0, 183.5, 23.0 ]
 								}
 
 							}
@@ -171,7 +168,6 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 523.0, 131.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "3",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -186,7 +182,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 314.0, 186.0, 60.0, 23.0 ],
-									"style" : "",
 									"text" : "deferlow"
 								}
 
@@ -200,7 +195,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 314.0, 158.0, 88.0, 23.0 ],
-									"style" : "",
 									"text" : "loadmess 69."
 								}
 
@@ -214,7 +208,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 124.0, 238.0, 79.0, 23.0 ],
-									"style" : "",
 									"text" : "prepend set"
 								}
 
@@ -228,7 +221,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 124.0, 186.0, 50.0, 23.0 ],
-									"style" : "",
 									"text" : "ftom 0."
 								}
 
@@ -246,7 +238,6 @@
 									"patching_rect" : [ 332.0, 541.0, 372.0, 128.0 ],
 									"setminmax" : [ -40.0, 40.0 ],
 									"slidercolor" : [ 1.0, 0.0, 0.0, 1.0 ],
-									"style" : "",
 									"thickness" : 1
 								}
 
@@ -266,7 +257,6 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 162.0, 269.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -287,7 +277,6 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 124.0, 159.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -308,7 +297,6 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 321.0, 269.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -324,8 +312,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 64.0, 518.0, 94.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 64.0, 518.0, 94.0, 23.0 ]
 								}
 
 							}
@@ -333,13 +320,13 @@
 								"box" : 								{
 									"hidden" : 1,
 									"id" : "obj-39",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 259.5, 353.0, 110.0, 23.0 ],
-									"style" : "",
-									"text" : "getattr amprange"
+									"patching_rect" : [ 237.5, 345.5, 125.0, 38.0 ],
+									"text" : "getattr amprange @listen 1"
 								}
 
 							}
@@ -351,8 +338,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 259.5, 408.0, 125.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 237.5, 408.0, 125.0, 23.0 ],
 									"text" : "prepend setminmax"
 								}
 
@@ -372,16 +358,16 @@
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_longname" : "number[1]",
-											"parameter_shortname" : "number[1]",
-											"parameter_type" : 3,
 											"parameter_initial_enable" : 1,
+											"parameter_invisible" : 1,
+											"parameter_mmax" : 3.0,
 											"parameter_initial" : [ 0.0 ],
-											"parameter_invisible" : 1
+											"parameter_shortname" : "number[1]",
+											"parameter_type" : 3
 										}
 
 									}
 ,
-									"style" : "",
 									"varname" : "number[1]"
 								}
 
@@ -390,12 +376,12 @@
 								"box" : 								{
 									"attr" : "amprange",
 									"id" : "obj-32",
+									"lock" : 1,
 									"maxclass" : "attrui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 365.0, 463.0, 178.0, 23.0 ],
-									"style" : "",
 									"text_width" : 83.0
 								}
 
@@ -409,7 +395,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 179.0, 463.0, 109.0, 23.0 ],
-									"style" : "",
 									"text" : "prepend markers"
 								}
 
@@ -422,7 +407,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 419.0, 268.0, 94.0, 23.0 ],
-									"style" : "",
 									"text" : "set irvaluehelp"
 								}
 
@@ -435,8 +419,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 419.0, 320.5, 286.0, 88.0 ],
-									"style" : ""
+									"patching_rect" : [ 419.0, 320.5, 286.0, 88.0 ]
 								}
 
 							}
@@ -449,8 +432,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 64.0, 408.0, 94.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 64.0, 408.0, 94.0, 23.0 ]
 								}
 
 							}
@@ -462,7 +444,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 64.0, 463.0, 43.0, 23.0 ],
-									"style" : "",
 									"text" : "dbtoa"
 								}
 
@@ -478,8 +459,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 64.0, 268.0, 94.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 64.0, 268.0, 94.0, 23.0 ]
 								}
 
 							}
@@ -495,7 +475,6 @@
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 64.0, 158.0, 56.0, 23.0 ],
-									"style" : "",
 									"varname" : "number"
 								}
 
@@ -508,7 +487,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 64.0, 213.0, 36.0, 23.0 ],
-									"style" : "",
 									"text" : "mtof"
 								}
 
@@ -521,7 +499,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 205.0, 268.0, 112.0, 23.0 ],
-									"style" : "",
 									"text" : "set irvaluehelp $1"
 								}
 
@@ -534,7 +511,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
 									"patching_rect" : [ 419.0, 213.0, 299.0, 23.0 ],
-									"style" : "",
 									"text" : "buffer~ irvaluehelp \"Templeworks Holbeck.wav\" -1"
 								}
 
@@ -547,7 +523,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
 									"patching_rect" : [ 64.0, 353.0, 56.0, 23.0 ],
-									"style" : "",
 									"text" : "irvalue~"
 								}
 
@@ -582,7 +557,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 17.0, 407.0, 45.0, 25.0 ],
-									"style" : "",
 									"text" : "dB"
 								}
 
@@ -596,7 +570,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 17.0, 267.0, 45.0, 25.0 ],
-									"style" : "",
 									"text" : "Hz"
 								}
 
@@ -625,7 +598,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 259.5, 214.0, 157.5, 21.0 ],
-									"style" : "",
 									"text" : "octave smoothing"
 								}
 
@@ -651,12 +623,12 @@
 								"box" : 								{
 									"attr" : "linearmode",
 									"id" : "obj-30",
+									"lock" : 1,
 									"maxclass" : "attrui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 591.0, 463.0, 114.0, 23.0 ],
-									"style" : "",
 									"text_width" : 91.0
 								}
 
@@ -839,7 +811,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-33", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 269.0, 448.5, 341.5, 448.5 ],
+									"midpoints" : [ 247.0, 448.5, 341.5, 448.5 ],
 									"source" : [ "obj-37", 0 ]
 								}
 
@@ -848,7 +820,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 314.5, 446.5, 314.5, 446.5 ],
+									"midpoints" : [ 300.0, 503.5, 314.5, 503.5 ],
 									"source" : [ "obj-39", 1 ]
 								}
 
@@ -907,11 +879,9 @@
 						"digest" : "",
 						"fontsize" : 13.0,
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic",
 					"varname" : "basic_tab"
 				}
@@ -929,7 +899,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 173.375, 57.567627 ]
+					"patching_rect" : [ 10.0, 10.0, 173.375, 57.567627000000002 ]
 				}
 
 			}
@@ -942,13 +912,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 739.0, 695.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -986,11 +957,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?",
 					"varname" : "q_tab"
 				}
@@ -999,7 +968,11 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
-			"obj-6::obj-35" : [ "number[1]", "number[1]", 0 ]
+			"obj-6::obj-35" : [ "number[1]", "number[1]", 0 ],
+			"parameterbanks" : 			{
+
+			}
+
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -1016,21 +989,21 @@
 			}
 , 			{
 				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
 				"patcherrelativepath" : "../misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG ",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -1046,13 +1019,7 @@
  ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
 	}
 
 }
