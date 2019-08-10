@@ -308,14 +308,14 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
 {
     double *spectrum_out = spectrum.realp;
     double *spectrum_in = spectrum.imagp;
+    double *temp_filter;
+    
+    double filter_val, half_width_recip, oct_width, accum, smooth_mul;
 
-    double filter, filter_val, half_width_recip, oct_width, accum, smooth_mul;
-
-    AH_SIntPtr lo, hi, left, half_width;
+    AH_SIntPtr lo, hi, half_width, current_half_width, loop_size;
     AH_SIntPtr nyquist_bin = (fft_size >> 1);
-    AH_SIntPtr fft_size_m1 = fft_size - 1;
-    AH_SIntPtr limit = fft_size_m1;
-    AH_SIntPtr i, j;
+    AH_SIntPtr limit = fft_size - 1;
+    AH_SIntPtr i, j, k;
 
     smooth_lo = smooth_lo > 1.0 ? 1.0 : smooth_lo;
     smooth_hi = smooth_hi > 1.0 ? 1.0 : smooth_hi;
@@ -338,21 +338,37 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, AH_
                 hann_setup_flag = 1;
             }
 
+            current_half_width = -1;
+            temp_filter = spectrum_out + nyquist_bin + 1;
+            
             for (i = 0; i < nyquist_bin + 1; i++)
             {
                 // Linear relationship between bin and width
 
                 half_width = (AH_SIntPtr) (((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo) * (double) nyquist_bin);
                 half_width = (half_width >= nyquist_bin) ? nyquist_bin - 1 : half_width;
-                filter_val = spectrum_in[i];
-                half_width_recip = half_width > 1 ? 2.0 / (2 * half_width - 1): 1.0;
-
-                for (j = 1; j < half_width; j++)
+                
+                // Make a temporary filter each time half_width changes
+                
+                if (current_half_width != half_width)
                 {
-                    left = (i - j) & fft_size_m1;
-                    filter = fast_hann_wind(j * half_width_recip);
-                    filter_val += filter * (spectrum_in[left] + spectrum_in[i + j]);
+                    current_half_width = half_width;
+                    half_width_recip = half_width > 1 ? 2.0 / (2 * half_width - 1): 1.0;
+
+                    for (j = 1; j < half_width; j++)
+                        temp_filter[j - 1] =  fast_hann_wind(j * half_width_recip);
                 }
+
+                // Apply filter
+                
+                loop_size = i < half_width ? i + 1 : half_width;
+                filter_val = spectrum_in[i];
+
+                for (j = 1; j < loop_size; j++)
+                    filter_val += temp_filter[j - 1] * (spectrum_in[i - j] + spectrum_in[i + j]);
+                
+                for (k = 1; j < half_width; j++, k++)
+                    filter_val += temp_filter[j - 1] * (spectrum_in[k] + spectrum_in[i + j]);
 
                 spectrum_out[i] = filter_val * half_width_recip;
             }
