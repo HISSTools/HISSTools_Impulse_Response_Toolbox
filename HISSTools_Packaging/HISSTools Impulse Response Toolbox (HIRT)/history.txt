@@ -19,6 +19,10 @@ bufresample~: new  object for use in the convolution reverb (for IR resampling)
 
 all objects: can now access limitless channels of a buffer~
 
+Improvements
+
+iraverage~/irplapprox~/irreference:~ - Hi-Quality smoothing code is now significantly faster
+
 Bug Fixes
 
 iralign~/iraverage~/irinvert~/irnonlin~/irtrimnorm~: fixed bug with checking buffers when using multiple names
