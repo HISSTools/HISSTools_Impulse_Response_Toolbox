@@ -42,6 +42,8 @@ multiconvolve~: fixed bugs with missing parts of an IR for block sizes of >= 256
 multiconvolve~: object now functions with block sizes < 4
 spectrumdraw~: clipping of drawing has been corrected to fix a bug with incorrect look
 
+All objects: buffer reading is now as documented when requesting a channel above the number in the buffer.
+
 all objects (windows only): fixed code relating to deconvolution filters and amp specifiers
 
 -------
