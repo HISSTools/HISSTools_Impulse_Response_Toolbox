@@ -691,7 +691,7 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
 
     bufinfo.buffer = ibuffer_get_ptr(source);
     bufinfo.chan = x->read_chan - 1;
-    if (buffer_check((t_object *) x, source, bufinfo.chan) || !bufinfo.buffer)
+    if (buffer_check((t_object *) x, source) || !bufinfo.buffer)
         return;
     if (!ibuffer_info(bufinfo.buffer, &bufinfo.samps, &bufinfo.length, &bufinfo.n_chans, &bufinfo.format))
         return;

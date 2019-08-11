@@ -427,7 +427,6 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     AH_SIntPtr i, j;
 
     t_atom_long read_chan = x->read_chan - 1;
-    t_atom_long write_chan = x->write_chan - 1;
 
     short num_buffers = 0;
 
@@ -471,7 +470,7 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, write_chan, sym == gensym("crop"), 128, &overall_length, &max_length, &sample_rate);
+    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("crop"), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
@@ -707,7 +706,6 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     AH_SIntPtr i, j;
 
     t_atom_long read_chan = x->read_chan - 1;
-    t_atom_long write_chan = x->write_chan - 1;
 
     short num_buffers = 0;
 
@@ -757,7 +755,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, write_chan, sym == gensym("trim"), 128, &overall_length, &max_length, &sample_rate);
+    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("trim"), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;

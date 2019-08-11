@@ -334,7 +334,7 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
 
     // Check buffer
 
-    if (buffer_check((t_object *) x, buffer, read_chan))
+    if (buffer_check((t_object *) x, buffer))
         return;
 
     // Load to temporary buffer

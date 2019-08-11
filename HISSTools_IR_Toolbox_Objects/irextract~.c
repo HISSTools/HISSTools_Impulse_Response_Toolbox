@@ -515,7 +515,7 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     AH_UIntPtr fft_size_log2;
     AH_UIntPtr i;
 
-    if (buffer_check((t_object *)x, rec_buffer, read_chan) || !rec_length)
+    if (buffer_check((t_object *)x, rec_buffer) || !rec_length)
         return;
 
     switch (x->measure_mode)

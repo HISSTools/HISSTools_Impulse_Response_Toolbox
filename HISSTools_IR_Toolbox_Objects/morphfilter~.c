@@ -346,7 +346,7 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
 
     // Check source buffer
 
-    if (buffer_check((t_object *) x, source, read_chan))
+    if (buffer_check((t_object *) x, source))
         return;
     sample_rate = buffer_sample_rate(source);
 

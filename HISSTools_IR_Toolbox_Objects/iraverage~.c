@@ -177,7 +177,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, read_chan, write_chan, 1, 128, &overall_length, &max_length, &sample_rate);
+    num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, 1, 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
@@ -297,7 +297,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, read_chan, write_chan, 1, 128, &overall_length, &max_length, &sample_rate);
+    num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, 1, 128, &overall_length, &max_length, &sample_rate);
     num_buf_recip = 1.0 / num_buffers;
 
     if (!num_buffers)

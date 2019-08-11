@@ -185,7 +185,7 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 
     // Check input buffers
 
-    if (buffer_check((t_object *) x, source_1, read_chan) || buffer_check((t_object *) x, source_2, read_chan))
+    if (buffer_check((t_object *) x, source_1) || buffer_check((t_object *) x, source_2))
         return;
 
     // Check sample rates

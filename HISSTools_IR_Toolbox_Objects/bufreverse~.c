@@ -128,7 +128,7 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
 
     // Check source buffer
 
-    if (buffer_check((t_object *) x, source, read_chan))
+    if (buffer_check((t_object *) x, source))
         return;
     sample_rate = buffer_sample_rate(source);
 

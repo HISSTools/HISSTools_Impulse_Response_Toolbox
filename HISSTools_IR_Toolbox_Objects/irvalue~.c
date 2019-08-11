@@ -208,7 +208,7 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 
     // Check input buffers
 
-    if (buffer_check((t_object *) x, source, read_chan))
+    if (buffer_check((t_object *) x, source))
         return;
 
     // Calculate fft size

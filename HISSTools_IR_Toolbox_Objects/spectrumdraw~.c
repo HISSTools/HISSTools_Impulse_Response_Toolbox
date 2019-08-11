@@ -1479,7 +1479,7 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 
     // Check input buffer
 
-    if (buffer_check((t_object *) x, buffer, read_chan))
+    if (buffer_check((t_object *) x, buffer))
         return;
 
     length = buffer_length(buffer);

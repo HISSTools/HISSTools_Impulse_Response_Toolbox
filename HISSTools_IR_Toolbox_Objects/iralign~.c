@@ -192,7 +192,7 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, read_chan, write_chan, (sym == gensym("align")), 128, &overall_length, &max_length, &sample_rate);
+    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, (sym == gensym("align")), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;

@@ -1275,7 +1275,7 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Check input buffers
 
-    if (buffer_check((t_object *) x, source, read_chan))
+    if (buffer_check((t_object *) x, source))
         return;
 
     // Get length

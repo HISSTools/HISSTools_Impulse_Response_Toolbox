@@ -260,7 +260,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 
     // Check input buffers
 
-    if (buffer_check((t_object *) x, source, read_chan))
+    if (buffer_check((t_object *) x, source))
         return;
 
     // Calculate fft size
