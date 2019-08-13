@@ -40,7 +40,8 @@ irstats~: fixed bugs in the calculation of the center stat
 irvalue~: corrected linear interpolation of values
 multiconvolve~: fixed bugs with missing parts of an IR for block sizes of >= 256 
 multiconvolve~: object now functions with block sizes < 4
-spectrumdraw~: clipping of drawing has been corrected to fix a bug with incorrect look
+spectrumdraw~: clipping of drawing has been corrected to fix a bug with incorrect appearance
+spectrumdraw~: the ÔHannÕ window is now correctly named
 
 All objects: buffer reading is now as documented when requesting a channel above the number in the buffer.
 
