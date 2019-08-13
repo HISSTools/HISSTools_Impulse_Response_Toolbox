@@ -879,7 +879,7 @@ int main()
 
     CLASS_ATTR_LONG(c, "windowtype", 0, t_spectrumdraw, window_type);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "windowtype", 0, "0");
-    CLASS_ATTR_ENUMINDEX(c,"windowtype", 0, "\"von Hann\" Hamming Kaiser Triangle Blackman \"Blackman 62\" \"Blackman 70\" \"Blackman 74\" \"Blackman 92\" Blackman-Harris \"Flat Top\" Rectangle");
+    CLASS_ATTR_ENUMINDEX(c,"windowtype", 0, "\"Hann\" Hamming Kaiser Triangle Blackman \"Blackman 62\" \"Blackman 70\" \"Blackman 74\" \"Blackman 92\" Blackman-Harris \"Flat Top\" Rectangle");
     CLASS_ATTR_FILTER_CLIP(c, "windowtype", 0, 11);
     CLASS_ATTR_LABEL(c,"windowtype",0,"Window Type");
 
