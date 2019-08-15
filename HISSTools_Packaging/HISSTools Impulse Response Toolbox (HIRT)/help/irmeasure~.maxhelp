@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -94,7 +94,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -621,7 +621,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 291.66668701171875, 504.979248046875, 95.5, 23.0 ],
-					"text" : "8.0.7",
+					"text" : "8.0.8",
 					"textjustification" : 2
 				}
 
@@ -718,13 +718,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 831.0, 695.0 ],
+						"rect" : [ 100.0, 126.0, 831.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -765,7 +765,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 465.0, 379.567627000000016, 20.0, 20.0 ],
+									"patching_rect" : [ 475.0, 379.567627000000016, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -786,11 +786,11 @@
 									"patching_rect" : [ 236.0, 378.0, 50.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_shortname" : "number[5]",
+											"parameter_type" : 0,
 											"parameter_longname" : "number[5]",
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 0.0 ],
-											"parameter_shortname" : "number[5]",
-											"parameter_type" : 0
+											"parameter_initial" : [ 0.0 ]
 										}
 
 									}
@@ -824,7 +824,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1633,8 +1633,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 288.0, 369.5, 175.0, 40.0 ],
-									"text" : "optionally set overall gain (in dB) of extracted IR"
+									"patching_rect" : [ 288.0, 369.5, 184.0, 40.0 ],
+									"text" : "optionally apply an overall gain (in dB) to extracted IR"
 								}
 
 							}
@@ -1816,7 +1816,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1862,7 +1862,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2655,7 +2655,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2727,7 +2727,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3251,12 +3251,12 @@
 									"patching_rect" : [ 694.0, 137.567626999999987, 53.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_shortname" : "number",
+											"parameter_type" : 3,
 											"parameter_longname" : "number",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 2 ],
-											"parameter_shortname" : "number",
-											"parameter_type" : 3
+											"parameter_initial" : [ 2 ]
 										}
 
 									}
@@ -3281,12 +3281,12 @@
 									"patching_rect" : [ 613.0, 137.567626999999987, 53.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_shortname" : "number[1]",
+											"parameter_type" : 3,
 											"parameter_longname" : "number[1]",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 2 ],
-											"parameter_shortname" : "number[1]",
-											"parameter_type" : 3
+											"parameter_initial" : [ 2 ]
 										}
 
 									}
@@ -3785,7 +3785,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3879,7 +3879,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4453,7 +4453,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4513,14 +4513,14 @@
 													"patching_rect" : [ 408.0, 160.0, 50.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_shortname" : "number[2]",
+															"parameter_type" : 3,
 															"parameter_mmin" : 0.1,
 															"parameter_longname" : "number[2]",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 18.0,
-															"parameter_initial" : [ 2.0 ],
-															"parameter_shortname" : "number[2]",
-															"parameter_type" : 3
+															"parameter_initial" : [ 2.0 ]
 														}
 
 													}
@@ -4543,14 +4543,14 @@
 													"patching_rect" : [ 311.0, 160.0, 50.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_shortname" : "number[3]",
+															"parameter_type" : 3,
 															"parameter_mmin" : -18.0,
 															"parameter_longname" : "number[3]",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 18.0,
-															"parameter_initial" : [ 1.0 ],
-															"parameter_shortname" : "number[3]",
-															"parameter_type" : 3
+															"parameter_initial" : [ 1.0 ]
 														}
 
 													}
@@ -4573,14 +4573,14 @@
 													"patching_rect" : [ 211.333313000000004, 160.0, 50.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_shortname" : "number[4]",
+															"parameter_type" : 3,
 															"parameter_mmin" : 30.0,
 															"parameter_longname" : "number[4]",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 18000.0,
-															"parameter_initial" : [ 800.0 ],
-															"parameter_shortname" : "number[4]",
-															"parameter_type" : 3
+															"parameter_initial" : [ 800.0 ]
 														}
 
 													}
@@ -4601,14 +4601,14 @@
 													"patching_rect" : [ 131.5, 58.0, 100.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_shortname" : "umenu",
+															"parameter_enum" : [ "Bypass", "Lowpass", "Bandpass", "Highpass", "Peak", "Notch", "Resonant", "Bell", "Lowshelf", "Highshelf" ],
+															"parameter_type" : 3,
 															"parameter_longname" : "umenu",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 9.0,
-															"parameter_initial" : [ 1 ],
-															"parameter_shortname" : "umenu",
-															"parameter_enum" : [ "Bypass", "Lowpass", "Bandpass", "Highpass", "Peak", "Notch", "Resonant", "Bell", "Lowshelf", "Highshelf" ],
-															"parameter_type" : 3
+															"parameter_initial" : [ 1 ]
 														}
 
 													}
@@ -4655,7 +4655,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 0,
-															"revision" : 7,
+															"revision" : 8,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -4908,9 +4908,9 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -4928,6 +4928,7 @@
 , 											{
 												"name" : "max6message",
 												"default" : 												{
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"bgfillcolor" : 													{
 														"type" : "gradient",
 														"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -4937,8 +4938,7 @@
 														"proportion" : 0.39,
 														"autogradient" : 0
 													}
-,
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 												}
 ,
 												"parentstyle" : "max6box",
@@ -5644,9 +5644,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5664,6 +5664,7 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -5673,8 +5674,7 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-,
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 								}
 ,
 								"parentstyle" : "max6box",
@@ -5733,13 +5733,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 831.0, 695.0 ],
+						"rect" : [ 0.0, 26.0, 831.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -6493,7 +6493,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -6664,13 +6664,13 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-19::obj-14" : [ "number", "number", 0 ],
 			"obj-9::obj-84::obj-11" : [ "number[3]", "number[3]", 0 ],
-			"obj-19::obj-13" : [ "number[1]", "number[1]", 0 ],
 			"obj-22::obj-34" : [ "number[5]", "number[5]", 0 ],
-			"obj-9::obj-84::obj-12" : [ "number[2]", "number[2]", 0 ],
-			"obj-9::obj-84::obj-10" : [ "number[4]", "number[4]", 0 ],
 			"obj-9::obj-84::obj-4" : [ "umenu", "umenu", 0 ],
+			"obj-9::obj-84::obj-12" : [ "number[2]", "number[2]", 0 ],
+			"obj-19::obj-13" : [ "number[1]", "number[1]", 0 ],
+			"obj-9::obj-84::obj-10" : [ "number[4]", "number[4]", 0 ],
+			"obj-19::obj-14" : [ "number", "number", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -6772,9 +6772,9 @@
 , 			{
 				"name" : "max6box",
 				"default" : 				{
-					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -6792,6 +6792,7 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -6801,8 +6802,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "max6box",
@@ -6856,8 +6856,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
