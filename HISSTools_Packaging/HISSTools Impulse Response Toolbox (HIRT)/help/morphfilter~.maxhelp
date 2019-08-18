@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 831.0, 721.0 ],
+		"rect" : [ 34.0, 45.0, 831.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -41,6 +41,29 @@
 		"showontab" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 359.0, 165.0, 68.0, 23.0 ],
+					"text" : "closebang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 359.0, 245.0, 157.0, 23.0 ],
+					"text" : "s globalclose_mp_helpfile"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -50,7 +73,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -169,7 +192,7 @@
 								"box" : 								{
 									"autofit" : 1,
 									"forceaspect" : 1,
-									"frozen_box_attributes" : [ "forceaspect", "pic", "autofit" ],
+									"frozen_box_attributes" : [ "pic", "forceaspect", "autofit" ],
 									"id" : "obj-1",
 									"ignoreclick" : 1,
 									"maxclass" : "fpic",
@@ -186,20 +209,20 @@
 									"hidden" : 1,
 									"id" : "obj-15",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
+									"numinlets" : 3,
 									"numoutlets" : 0,
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 853.0, 343.0, 449.0, 298.0 ],
+										"rect" : [ 625.0, 343.0, 540.0, 271.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 13.0,
@@ -229,13 +252,39 @@
 										"boxes" : [ 											{
 												"box" : 												{
 													"hidden" : 1,
-													"id" : "obj-3",
+													"id" : "obj-15",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 88.0, 199.0, 157.0, 23.0 ],
+													"text" : "s globalclose_mp_helpfile"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"hidden" : 1,
+													"id" : "obj-13",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
 													"numoutlets" : 1,
-													"outlettype" : [ "open" ],
-													"patching_rect" : [ 34.0, 187.0, 45.0, 23.0 ],
-													"text" : "t open"
+													"outlettype" : [ "bang" ],
+													"patching_rect" : [ 88.0, 81.0, 23.0, 23.0 ],
+													"text" : "t b"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"hidden" : 1,
+													"id" : "obj-12",
+													"index" : 2,
+													"maxclass" : "inlet",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "bang" ],
+													"patching_rect" : [ 88.0, 34.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -245,11 +294,23 @@
 													"id" : "obj-2",
 													"maxclass" : "newobj",
 													"numinlets" : 2,
-													"numoutlets" : 3,
-													"outlettype" : [ "signal", "signal", "" ],
-													"patching_rect" : [ 34.0, 242.0, 325.0, 23.0 ],
-													"text" : "hirt.convolutionreverb~ \"morphfilter help file\" @damp 1",
-													"varname" : "hirt.convolutionreverb~"
+													"numoutlets" : 2,
+													"outlettype" : [ "", "" ],
+													"patching_rect" : [ 34.0, 121.0, 211.0, 23.0 ],
+													"text" : "zl.reg morphfilter.convolutionreverb"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"hidden" : 1,
+													"id" : "obj-3",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "bang" ],
+													"patching_rect" : [ 34.0, 81.0, 23.0, 23.0 ],
+													"text" : "t b"
 												}
 
 											}
@@ -261,7 +322,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 289.0, 147.0, 84.0, 23.0 ],
+													"patching_rect" : [ 380.0, 159.0, 84.0, 23.0 ],
 													"text" : "prepend load"
 												}
 
@@ -274,7 +335,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 289.0, 109.0, 112.0, 23.0 ],
+													"patching_rect" : [ 380.0, 121.0, 112.0, 23.0 ],
 													"text" : "sprintf %s.maxpat"
 												}
 
@@ -289,7 +350,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 34.0, 49.0, 30.0, 30.0 ]
+													"patching_rect" : [ 34.0, 34.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -301,7 +362,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 186.0, 109.0, 86.0, 23.0 ],
+													"patching_rect" : [ 277.0, 121.0, 86.0, 23.0 ],
 													"text" : "prepend help"
 												}
 
@@ -314,7 +375,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 186.0, 187.0, 57.0, 23.0 ],
+													"patching_rect" : [ 277.0, 199.0, 57.0, 23.0 ],
 													"text" : "pcontrol"
 												}
 
@@ -324,12 +385,12 @@
 													"comment" : "",
 													"hidden" : 1,
 													"id" : "obj-14",
-													"index" : 2,
+													"index" : 3,
 													"maxclass" : "inlet",
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 186.0, 49.0, 30.0, 30.0 ]
+													"patching_rect" : [ 277.0, 34.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -341,7 +402,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 34.0, 88.0, 150.0, 65.0 ],
+													"patching_rect" : [ 336.0, 184.0, 150.0, 65.0 ],
 													"text" : "!! the hirt.convolutionreverb~ helpfile can take a long time to load !!"
 												}
 
@@ -351,7 +412,33 @@
 												"patchline" : 												{
 													"destination" : [ "obj-3", 0 ],
 													"hidden" : 1,
+													"midpoints" : [ 43.5, 72.0, 43.5, 72.0 ],
 													"source" : [ "obj-1", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-13", 0 ],
+													"hidden" : 1,
+													"source" : [ "obj-12", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-15", 0 ],
+													"hidden" : 1,
+													"source" : [ "obj-13", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-5", 0 ],
+													"hidden" : 1,
+													"midpoints" : [ 43.5, 151.0, 389.5, 151.0 ],
+													"source" : [ "obj-2", 0 ]
 												}
 
 											}
@@ -359,6 +446,7 @@
 												"patchline" : 												{
 													"destination" : [ "obj-2", 0 ],
 													"hidden" : 1,
+													"midpoints" : [ 43.5, 112.0, 43.5, 112.0 ],
 													"source" : [ "obj-3", 0 ]
 												}
 
@@ -367,7 +455,7 @@
 												"patchline" : 												{
 													"destination" : [ "obj-5", 0 ],
 													"hidden" : 1,
-													"midpoints" : [ 298.5, 139.0, 298.5, 139.0 ],
+													"midpoints" : [ 389.5, 151.0, 389.5, 151.0 ],
 													"source" : [ "obj-4", 0 ]
 												}
 
@@ -376,7 +464,7 @@
 												"patchline" : 												{
 													"destination" : [ "obj-35", 0 ],
 													"hidden" : 1,
-													"midpoints" : [ 298.5, 178.0, 195.5, 178.0 ],
+													"midpoints" : [ 389.5, 190.0, 286.5, 190.0 ],
 													"source" : [ "obj-5", 0 ]
 												}
 
@@ -385,7 +473,7 @@
 												"patchline" : 												{
 													"destination" : [ "obj-35", 0 ],
 													"hidden" : 1,
-													"midpoints" : [ 195.5, 159.0, 195.5, 159.0 ],
+													"midpoints" : [ 286.5, 171.0, 286.5, 171.0 ],
 													"source" : [ "obj-7", 0 ]
 												}
 
@@ -404,6 +492,19 @@
 ,
 									"text" : "p load",
 									"varname" : "load"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-4",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 306.439453000000015, 378.261719000000028, 68.0, 23.0 ],
+									"text" : "closebang"
 								}
 
 							}
@@ -457,7 +558,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-15", 1 ],
+									"destination" : [ "obj-15", 2 ],
 									"hidden" : 1,
 									"source" : [ "obj-32", 1 ]
 								}
@@ -468,6 +569,14 @@
 									"destination" : [ "obj-15", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-32", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-15", 1 ],
+									"hidden" : 1,
+									"source" : [ "obj-4", 0 ]
 								}
 
 							}
@@ -493,8 +602,8 @@
 , 							{
 								"name" : "DP.M4L",
 								"default" : 								{
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ]
 								}
 ,
@@ -504,8 +613,8 @@
 , 							{
 								"name" : "DP.M4L-New",
 								"default" : 								{
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ],
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ]
 								}
 ,
@@ -530,8 +639,8 @@
 , 							{
 								"name" : "max6box",
 								"default" : 								{
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 								}
 ,
@@ -550,6 +659,7 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -559,8 +669,7 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-,
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 								}
 ,
 								"parentstyle" : "max6box",
@@ -640,7 +749,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1613,7 +1722,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1735,10 +1844,6 @@
 									"patching_rect" : [ 363.333344000000011, 207.5, 69.0, 19.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_units" : "_",
-											"parameter_mmin" : 100.0,
-											"parameter_exponent" : 3.0,
-											"parameter_longname" : "filter_tab_gainrate",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 1000.0,
@@ -1747,7 +1852,11 @@
 											"parameter_defer" : 1,
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 2,
-											"parameter_linknames" : 1
+											"parameter_linknames" : 1,
+											"parameter_units" : "_",
+											"parameter_mmin" : 100.0,
+											"parameter_exponent" : 3.0,
+											"parameter_longname" : "filter_tab_gainrate"
 										}
 
 									}
@@ -1771,10 +1880,6 @@
 									"patching_rect" : [ 194.333344000000011, 207.5, 69.0, 19.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_units" : "_",
-											"parameter_mmin" : -9.0,
-											"parameter_exponent" : 0.666667,
-											"parameter_longname" : "filter_tab_gainalt",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 3.0,
@@ -1783,7 +1888,11 @@
 											"parameter_defer" : 1,
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_linknames" : 1
+											"parameter_linknames" : 1,
+											"parameter_units" : "_",
+											"parameter_mmin" : -9.0,
+											"parameter_exponent" : 0.666667,
+											"parameter_longname" : "filter_tab_gainalt"
 										}
 
 									}
@@ -2067,9 +2176,6 @@
 									"patching_rect" : [ 378.0, 156.0, 69.0, 19.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_units" : "_",
-											"parameter_mmin" : -20.0,
-											"parameter_longname" : "filter_tab_gain",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 20.0,
@@ -2078,7 +2184,10 @@
 											"parameter_defer" : 1,
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_linknames" : 1
+											"parameter_linknames" : 1,
+											"parameter_units" : "_",
+											"parameter_mmin" : -20.0,
+											"parameter_longname" : "filter_tab_gain"
 										}
 
 									}
@@ -2102,10 +2211,6 @@
 									"patching_rect" : [ 277.0, 156.0, 69.0, 19.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_units" : "Q",
-											"parameter_mmin" : 0.05,
-											"parameter_exponent" : 2.0,
-											"parameter_longname" : "filter_tab_q",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 2.0,
@@ -2114,7 +2219,11 @@
 											"parameter_defer" : 1,
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 9,
-											"parameter_linknames" : 1
+											"parameter_linknames" : 1,
+											"parameter_units" : "Q",
+											"parameter_mmin" : 0.05,
+											"parameter_exponent" : 2.0,
+											"parameter_longname" : "filter_tab_q"
 										}
 
 									}
@@ -2138,9 +2247,6 @@
 									"patching_rect" : [ 176.0, 156.0, 69.0, 19.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmin" : 30.0,
-											"parameter_exponent" : 3.333333,
-											"parameter_longname" : "filter_tab_freq",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 18000.0,
@@ -2149,7 +2255,10 @@
 											"parameter_defer" : 1,
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 3,
-											"parameter_linknames" : 1
+											"parameter_linknames" : 1,
+											"parameter_mmin" : 30.0,
+											"parameter_exponent" : 3.333333,
+											"parameter_longname" : "filter_tab_freq"
 										}
 
 									}
@@ -2998,7 +3107,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3033,6 +3142,19 @@
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-4",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 619.0, 441.5, 62.0, 23.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
 									"fontname" : "Arial Bold",
@@ -3104,7 +3226,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 7,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3214,10 +3336,6 @@
 													"presentation_rect" : [ 486.0, 46.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "_",
-															"parameter_mmin" : 10.0,
-															"parameter_exponent" : 2.0,
-															"parameter_longname" : "cascade_tab_rt60",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 2000.0,
@@ -3226,7 +3344,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 2,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "_",
+															"parameter_mmin" : 10.0,
+															"parameter_exponent" : 2.0,
+															"parameter_longname" : "cascade_tab_rt60"
 														}
 
 													}
@@ -3252,10 +3374,6 @@
 													"presentation_rect" : [ 384.0, 46.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "_",
-															"parameter_mmin" : 20.0,
-															"parameter_exponent" : 1.189901,
-															"parameter_longname" : "cascade_tab_decay_gain",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 200.0,
@@ -3264,7 +3382,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 5,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "_",
+															"parameter_mmin" : 20.0,
+															"parameter_exponent" : 1.189901,
+															"parameter_longname" : "cascade_tab_decay_gain"
 														}
 
 													}
@@ -3506,10 +3628,6 @@
 													"presentation_rect" : [ 238.0, 46.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "_",
-															"parameter_mmin" : 20.0,
-															"parameter_exponent" : 1.189901,
-															"parameter_longname" : "cascade_tab_decay_high",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 200.0,
@@ -3518,7 +3636,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 5,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "_",
+															"parameter_mmin" : 20.0,
+															"parameter_exponent" : 1.189901,
+															"parameter_longname" : "cascade_tab_decay_high"
 														}
 
 													}
@@ -3544,10 +3666,6 @@
 													"presentation_rect" : [ 238.0, 66.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "Q",
-															"parameter_mmin" : 0.05,
-															"parameter_exponent" : 2.0,
-															"parameter_longname" : "cascade_tab_slope_high",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 2.0,
@@ -3556,7 +3674,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 9,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "Q",
+															"parameter_mmin" : 0.05,
+															"parameter_exponent" : 2.0,
+															"parameter_longname" : "cascade_tab_slope_high"
 														}
 
 													}
@@ -3582,9 +3704,6 @@
 													"presentation_rect" : [ 238.0, 26.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_mmin" : 30.0,
-															"parameter_exponent" : 3.333333,
-															"parameter_longname" : "cascade_tab_freq_high",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 18000.0,
@@ -3593,7 +3712,10 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 3,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_mmin" : 30.0,
+															"parameter_exponent" : 3.333333,
+															"parameter_longname" : "cascade_tab_freq_high"
 														}
 
 													}
@@ -3619,10 +3741,6 @@
 													"presentation_rect" : [ 34.0, 46.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "_",
-															"parameter_mmin" : 20.0,
-															"parameter_exponent" : 1.189901,
-															"parameter_longname" : "cascade_tab_decay_low",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 200.0,
@@ -3631,7 +3749,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 5,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "_",
+															"parameter_mmin" : 20.0,
+															"parameter_exponent" : 1.189901,
+															"parameter_longname" : "cascade_tab_decay_low"
 														}
 
 													}
@@ -3657,10 +3779,6 @@
 													"presentation_rect" : [ 34.0, 66.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "Q",
-															"parameter_mmin" : 0.05,
-															"parameter_exponent" : 2.0,
-															"parameter_longname" : "cascade_tab_slope_low",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 2.0,
@@ -3669,7 +3787,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 9,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "Q",
+															"parameter_mmin" : 0.05,
+															"parameter_exponent" : 2.0,
+															"parameter_longname" : "cascade_tab_slope_low"
 														}
 
 													}
@@ -3695,9 +3817,6 @@
 													"presentation_rect" : [ 34.0, 26.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_mmin" : 30.0,
-															"parameter_exponent" : 3.333333,
-															"parameter_longname" : "cascade_tab_freq_low",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 18000.0,
@@ -3706,7 +3825,10 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 3,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_mmin" : 30.0,
+															"parameter_exponent" : 3.333333,
+															"parameter_longname" : "cascade_tab_freq_low"
 														}
 
 													}
@@ -3792,10 +3914,6 @@
 													"presentation_rect" : [ 136.0, 46.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "_",
-															"parameter_mmin" : 20.0,
-															"parameter_exponent" : 1.189901,
-															"parameter_longname" : "cascade_tab_decay_mid",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 200.0,
@@ -3804,7 +3922,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 5,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "_",
+															"parameter_mmin" : 20.0,
+															"parameter_exponent" : 1.189901,
+															"parameter_longname" : "cascade_tab_decay_mid"
 														}
 
 													}
@@ -3830,10 +3952,6 @@
 													"presentation_rect" : [ 136.0, 66.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_units" : "Q",
-															"parameter_mmin" : 0.05,
-															"parameter_exponent" : 2.0,
-															"parameter_longname" : "cascade_tab_q_mid",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 2.0,
@@ -3842,7 +3960,11 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 9,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_units" : "Q",
+															"parameter_mmin" : 0.05,
+															"parameter_exponent" : 2.0,
+															"parameter_longname" : "cascade_tab_q_mid"
 														}
 
 													}
@@ -3868,9 +3990,6 @@
 													"presentation_rect" : [ 136.0, 26.238281000000001, 69.0, 19.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_mmin" : 30.0,
-															"parameter_exponent" : 3.333333,
-															"parameter_longname" : "cascade_tab_freq_mid",
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
 															"parameter_mmax" : 18000.0,
@@ -3879,7 +3998,10 @@
 															"parameter_defer" : 1,
 															"parameter_type" : 0,
 															"parameter_unitstyle" : 3,
-															"parameter_linknames" : 1
+															"parameter_linknames" : 1,
+															"parameter_mmin" : 30.0,
+															"parameter_exponent" : 3.333333,
+															"parameter_longname" : "cascade_tab_freq_mid"
 														}
 
 													}
@@ -4286,8 +4408,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 												}
 ,
@@ -4306,6 +4428,7 @@
 , 											{
 												"name" : "max6message",
 												"default" : 												{
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"bgfillcolor" : 													{
 														"type" : "gradient",
 														"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -4315,8 +4438,7 @@
 														"proportion" : 0.39,
 														"autogradient" : 0
 													}
-,
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 												}
 ,
 												"parentstyle" : "max6box",
@@ -4980,6 +5102,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-28", 0 ],
+									"hidden" : 1,
+									"midpoints" : [ 628.5, 472.5, 402.5, 472.5 ],
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-28", 0 ],
 									"midpoints" : [ 346.0, 472.0, 402.5, 472.0 ],
 									"source" : [ "obj-43", 0 ]
 								}
@@ -5058,8 +5189,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 								}
 ,
@@ -5078,6 +5209,7 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -5087,8 +5219,7 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-,
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 								}
 ,
 								"parentstyle" : "max6box",
@@ -5148,13 +5279,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 831.0, 695.0 ],
+						"rect" : [ 34.0, 71.0, 831.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -5863,7 +5994,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 270.031586000000004, 57.567627000000002 ]
+					"patching_rect" : [ 10.0, 10.0, 270.007965087890625, 57.599853515625 ]
 				}
 
 			}
@@ -5878,7 +6009,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5930,459 +6061,32 @@
 
 			}
  ],
-		"lines" : [  ],
-		"parameters" : 		{
-			"obj-7::obj-15::obj-2::obj-31::obj-54::obj-70" : [ "hirt.val[46]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-21" : [ "EQ Routing", "Active", 0 ],
-			"obj-3::obj-10::obj-33" : [ "cascade_tab_decay_gain", "decay", 0 ],
-			"obj-7::obj-15::obj-2::obj-108::obj-90" : [ "number", "number", 0 ],
-			"obj-3::obj-10::obj-52" : [ "cascade_tab_decay_mid", "decay", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[18]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-88::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
-			"obj-6::obj-52" : [ "filter_tab_gain", "gain", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-3::obj-64::obj-70" : [ "hirt.val[55]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-19::obj-70" : [ "hirt.val[51]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-24::obj-2::obj-8::obj-70" : [ "hirt.val[43]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-36::obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-45::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-11" : [ "Modulation Active", "Active", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-44::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
-			"obj-3::obj-10::obj-9" : [ "cascade_tab_slope_low", "q", 0 ],
-			"obj-7::obj-15::obj-2::obj-24::obj-2::obj-49" : [ "Type", "Type", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-79::obj-70" : [ "hirt.val[30]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-53::obj-70" : [ "hirt.val[47]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-24::obj-2::obj-25" : [ "Widen", "Widen", 0 ],
-			"obj-7::obj-15::obj-2::obj-36::obj-53" : [ "Mode IR", "Mode", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-47::obj-70" : [ "hirt.val[27]", "hirt.val", 0 ],
-			"obj-3::obj-10::obj-14" : [ "cascade_tab_slope_high", "q", 0 ],
-			"obj-7::obj-15::obj-2::obj-3::obj-65::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
-			"obj-3::obj-10::obj-50" : [ "cascade_tab_freq_mid", "freq", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-81::obj-70" : [ "hirt.val[37]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-17::obj-70" : [ "hirt.val[52]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-79" : [ "Offline Tabs", "Offline", 0 ],
-			"obj-6::obj-50" : [ "filter_tab_freq", "freq", 0 ],
-			"obj-6::obj-56" : [ "filter_tab_gainalt", "alt", 0 ],
-			"obj-7::obj-15::obj-2::obj-36::obj-114::obj-35" : [ "Drop A", "live.drop", 0 ],
-			"obj-7::obj-15::obj-2::obj-36::obj-49" : [ "Select IR", "Select", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-12::obj-70" : [ "hirt.val[19]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-36::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-51::obj-70" : [ "hirt.val[48]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-24::obj-1::obj-29::obj-70" : [ "hirt.val[40]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
-			"obj-7::obj-15::obj-2::obj-3::obj-59::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-5" : [ "Realtime Tabs", "Realtime", 0 ],
-			"obj-7::obj-15::obj-2::obj-14" : [ "Position Active", "Active", 0 ],
-			"obj-3::obj-10::obj-8" : [ "cascade_tab_decay_low", "decay", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-56::obj-70" : [ "hirt.val[44]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-100::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-49" : [ "Length Mode", "Length Mode", 0 ],
-			"obj-7::obj-15::obj-2::obj-3::obj-62::obj-70" : [ "hirt.val[53]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-50::obj-70" : [ "hirt.val[49]", "hirt.val", 0 ],
-			"obj-3::obj-10::obj-13" : [ "cascade_tab_decay_high", "decay", 0 ],
-			"obj-7::obj-15::obj-2::obj-24::obj-1::obj-28::obj-70" : [ "hirt.val[41]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-28" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
-			"obj-3::obj-10::obj-51" : [ "cascade_tab_q_mid", "q", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-101::obj-70" : [ "hirt.val[29]", "hirt.val", 0 ],
-			"obj-6::obj-57" : [ "filter_tab_gainrate", "rate", 0 ],
-			"obj-6::obj-51" : [ "filter_tab_q", "q", 0 ],
-			"obj-7::obj-15::obj-2::obj-10" : [ "Damp Active", "Active", 0 ],
-			"obj-7::obj-15::obj-2::obj-36::obj-114::obj-65" : [ "Drop B", "live.drop", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-55::obj-70" : [ "hirt.val[45]", "hirt.val", 0 ],
-			"obj-3::obj-10::obj-10" : [ "cascade_tab_freq_low", "freq", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-99::obj-70" : [ "hirt.val[28]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-9" : [ "Reverse", "Reverse", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-92::obj-70" : [ "hirt.val[39]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-3::obj-63::obj-70" : [ "hirt.val[54]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-31::obj-22::obj-70" : [ "hirt.val[50]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-24::obj-2::obj-29::obj-70" : [ "hirt.val[42]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-46::obj-70" : [ "hirt.val[32]", "hirt.val", 0 ],
-			"obj-3::obj-10::obj-15" : [ "cascade_tab_freq_high", "freq", 0 ],
-			"obj-3::obj-10::obj-35" : [ "cascade_tab_rt60", "decay", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-1::obj-53" : [ "Direct Mode", "Direct Mode", 0 ],
-			"obj-7::obj-15::obj-2::obj-1::obj-2::obj-96::obj-70" : [ "hirt.val[38]", "hirt.val", 0 ],
-			"obj-7::obj-15::obj-2::obj-8" : [ "Shape Active", "Active", 0 ],
-			"parameterbanks" : 			{
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
 
 			}
-,
-			"parameter_overrides" : 			{
-				"obj-7::obj-15::obj-2::obj-31::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[46]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[18]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 200.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-88::obj-70" : 				{
-					"parameter_longname" : "hirt.val[36]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-97::obj-70" : 				{
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 200.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "hirt.val[55]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-19::obj-70" : 				{
-					"parameter_longname" : "hirt.val[51]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-24::obj-2::obj-8::obj-70" : 				{
-					"parameter_longname" : "hirt.val[43]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-45::obj-70" : 				{
-					"parameter_longname" : "hirt.val[33]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-44::obj-70" : 				{
-					"parameter_longname" : "hirt.val[34]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-79::obj-70" : 				{
-					"parameter_longname" : "hirt.val[30]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-53::obj-70" : 				{
-					"parameter_longname" : "hirt.val[47]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-47::obj-70" : 				{
-					"parameter_longname" : "hirt.val[27]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-3::obj-65::obj-70" : 				{
-					"parameter_longname" : "hirt.val[56]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-81::obj-70" : 				{
-					"parameter_longname" : "hirt.val[37]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[52]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-12::obj-70" : 				{
-					"parameter_longname" : "hirt.val[19]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.5,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 15000.0,
-					"parameter_range" : [ 100.0, 30000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-36::obj-70" : 				{
-					"parameter_longname" : "hirt.val[35]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[48]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-24::obj-1::obj-29::obj-70" : 				{
-					"parameter_longname" : "hirt.val[40]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 6,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -50.0, 50.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-3::obj-59::obj-70" : 				{
-					"parameter_longname" : "hirt.val[57]",
-					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[44]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-100::obj-70" : 				{
-					"parameter_longname" : "hirt.val[20]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-3::obj-62::obj-70" : 				{
-					"parameter_longname" : "hirt.val[53]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-50::obj-70" : 				{
-					"parameter_longname" : "hirt.val[49]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-24::obj-1::obj-28::obj-70" : 				{
-					"parameter_longname" : "hirt.val[41]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -100.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-101::obj-70" : 				{
-					"parameter_longname" : "hirt.val[29]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-55::obj-70" : 				{
-					"parameter_longname" : "hirt.val[45]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-99::obj-70" : 				{
-					"parameter_longname" : "hirt.val[28]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-92::obj-70" : 				{
-					"parameter_longname" : "hirt.val[39]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-3::obj-63::obj-70" : 				{
-					"parameter_longname" : "hirt.val[54]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-31::obj-22::obj-70" : 				{
-					"parameter_longname" : "hirt.val[50]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-15::obj-2::obj-24::obj-2::obj-29::obj-70" : 				{
-					"parameter_longname" : "hirt.val[42]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-1::obj-46::obj-70" : 				{
-					"parameter_longname" : "hirt.val[32]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-15::obj-2::obj-1::obj-2::obj-96::obj-70" : 				{
-					"parameter_longname" : "hirt.val[38]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
+ ],
+		"parameters" : 		{
+			"obj-6::obj-57" : [ "filter_tab_gainrate", "rate", 0 ],
+			"obj-6::obj-52" : [ "filter_tab_gain", "gain", 0 ],
+			"obj-3::obj-10::obj-15" : [ "cascade_tab_freq_high", "freq", 0 ],
+			"obj-3::obj-10::obj-51" : [ "cascade_tab_q_mid", "q", 0 ],
+			"obj-3::obj-10::obj-13" : [ "cascade_tab_decay_high", "decay", 0 ],
+			"obj-3::obj-10::obj-10" : [ "cascade_tab_freq_low", "freq", 0 ],
+			"obj-6::obj-56" : [ "filter_tab_gainalt", "alt", 0 ],
+			"obj-3::obj-10::obj-35" : [ "cascade_tab_rt60", "decay", 0 ],
+			"obj-6::obj-51" : [ "filter_tab_q", "q", 0 ],
+			"obj-3::obj-10::obj-8" : [ "cascade_tab_decay_low", "decay", 0 ],
+			"obj-3::obj-10::obj-50" : [ "cascade_tab_freq_mid", "freq", 0 ],
+			"obj-3::obj-10::obj-14" : [ "cascade_tab_slope_high", "q", 0 ],
+			"obj-3::obj-10::obj-52" : [ "cascade_tab_decay_mid", "decay", 0 ],
+			"obj-3::obj-10::obj-33" : [ "cascade_tab_decay_gain", "decay", 0 ],
+			"obj-6::obj-50" : [ "filter_tab_freq", "freq", 0 ],
+			"obj-3::obj-10::obj-9" : [ "cascade_tab_slope_low", "q", 0 ],
+			"parameterbanks" : 			{
 
 			}
 
@@ -6436,342 +6140,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.convolutionreverb~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb",
-				"patcherrelativepath" : "../patchers/HIRT_reverb",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tabs_offline.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_shape.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_damp.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_damp.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tabs_realtime.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_position.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_pos.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_modulation.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_mod.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_ir.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_loading.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_loading_scheme.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_set.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_check.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_base_name.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_folder.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_data_colls.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_ir_display.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_filter_type.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_picker.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_cr_info_view.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_output.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_clientlist_alias.txt",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convrvrb.realtime~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolvestereo~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part1.gendsp",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part3.gendsp",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part5.gendsp",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_params.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_late.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_fix_length.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_nan_fix.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_early.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_copy_buffers.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_and_display.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.size.resample.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_size_resample_feed.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "hcr_damp_image.png",
 				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/media/HIRT_help_media",
 				"patcherrelativepath" : "../media/HIRT_help_media",
@@ -6784,42 +6152,6 @@
 			}
 , 			{
 				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "iraverage~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irdisplay~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irtrimnorm~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irstats~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irmix~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ircropfade~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bufreverse~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bufresample~.mxo",
 				"type" : "iLaX"
 			}
  ],

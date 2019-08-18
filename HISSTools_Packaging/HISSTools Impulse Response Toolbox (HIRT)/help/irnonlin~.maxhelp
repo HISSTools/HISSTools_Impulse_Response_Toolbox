@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 2,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 831.0, 721.0 ],
+		"rect" : [ 34.0, 45.0, 831.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -83,7 +83,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 2,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -145,13 +145,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 2,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 831.0, 695.0 ],
+						"rect" : [ 34.0, 71.0, 831.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -191,7 +191,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 2,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -339,7 +339,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 10.5390625, 465.975189208984375, 50.654541015625, 23.0 ],
+									"patching_rect" : [ 13.5390625, 471.975189, 50.654541015625, 23.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -360,7 +360,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 11.0, 426.975189208984375, 81.38720703125, 22.5234375 ],
+									"patching_rect" : [ 14.0, 426.975189, 81.38720703125, 22.5234375 ],
 									"text" : "irmeasure~",
 									"texton" : "irmeasure~",
 									"truncate" : 0,
@@ -556,14 +556,14 @@
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 0,
+									"fontface" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
 									"id" : "obj-86",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 42.0, 182.975189, 291.0, 21.0 ],
+									"patching_rect" : [ 42.0, 182.975189, 295.5, 21.0 ],
 									"text" : "1. Measure Nonlinear System (irmeasure~)",
 									"textcolor" : [ 0.200000002980232, 0.200000002980232, 0.200000002980232, 1.0 ]
 								}
@@ -571,14 +571,14 @@
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 0,
+									"fontface" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
 									"id" : "obj-89",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 635.628661999999963, 11.0, 233.0, 21.0 ],
+									"patching_rect" : [ 635.628661999999963, 11.0, 194.387023999999997, 21.0 ],
 									"text" : "2. Convert IRs (irnonlin~)",
 									"textcolor" : [ 0.200000002980232, 0.200000002980232, 0.200000002980232, 1.0 ]
 								}
@@ -770,13 +770,13 @@
 									"patching_rect" : [ 657.628661999999963, 423.453796000000011, 157.628661999999991, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "umenu",
-											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 2.0,
 											"parameter_initial" : [ 1 ],
 											"parameter_shortname" : "umenu",
-											"parameter_type" : 3
+											"parameter_type" : 3,
+											"parameter_longname" : "umenu",
+											"parameter_initial_enable" : 1
 										}
 
 									}
@@ -905,7 +905,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 0,
-											"revision" : 2,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1935,7 +1935,7 @@
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 0,
+									"fontface" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
 									"id" : "obj-96",
@@ -1943,7 +1943,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 635.628661999999963, 343.453796000000011, 179.628661999999991, 36.0 ],
+									"patching_rect" : [ 635.628661999999963, 343.453796000000011, 179.628661999999963, 36.0 ],
 									"text" : "3. Audition original / model\n   (multiconvolve~)",
 									"textcolor" : [ 0.200000002980232, 0.200000002980232, 0.200000002980232, 1.0 ]
 								}
@@ -1980,7 +1980,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 954.628661999999963, 490.453796000000011, 223.0, 55.0 ],
-									"text" : "Custom abstraction for poly~ wrapping the multiconvolve~ object"
+									"text" : "Custom abstraction for poly~ wrapping the multiconvolve~ object",
+									"textjustification" : 1
 								}
 
 							}
@@ -2346,8 +2347,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2425,21 +2426,21 @@
 			}
 , 			{
 				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
 				"patcherrelativepath" : "../misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"patcherrelativepath" : "../misc/HIRT_image",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.hammerstein~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
@@ -2452,7 +2453,7 @@
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
