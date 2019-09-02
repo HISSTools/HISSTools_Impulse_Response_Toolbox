@@ -996,7 +996,7 @@ double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate,
 
     // Zero nyquist for ease
 
-        spectrum.imagp[0] = 0;
+    spectrum.imagp[0] = 0;
 
     for (i = 0, overall_gain = 0.0; i < 9; i++)
     {
