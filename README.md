@@ -8,7 +8,7 @@ CeReNeM - The University of Huddersfield
 
 **Contact:**
 
-* a.harker@huhd.ac.uk / p.a.tremblay@hud.ac.uk
+* a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
 * http://thehiss.org/
 
 HISSTools first release is a set of tools for working with convolution and impulse responses in Max. This set of object addresses various tasks, including measuring impulse responses, spectral display from realtime data/ buffers, and buffer-based convolution, deconvolution and inversion.
