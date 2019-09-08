@@ -48,26 +48,40 @@
 	<outletlist>
 		<outlet id="0" type="INLET_TYPE">
 			<digest>
-				The Left measured and/or auditioned signal output
+				The Left measurement signal output (connect to measurement target)
 			</digest>
 			<description>
 			</description>
 		</outlet>
 		<outlet id="1" type="INLET_TYPE">
 			<digest>
-				The Right measured and/or auditioned signal output
+				The Right measurement signal output (connect to measurement target)
 			</digest>
 			<description>
 			</description>
 		</outlet>
 		<outlet id="2" type="INLET_TYPE">
 			<digest>
-				<b>0..1</b> Measurement Progress signal
+				The Left auditioning outlet (connect to dac)
 			</digest>
 			<description>
 			</description>
 		</outlet>
 		<outlet id="3" type="INLET_TYPE">
+			<digest>
+				The Right auditioning outlet (connect to dac)
+			</digest>
+			<description>
+			</description>
+		</outlet>
+		<outlet id="4" type="INLET_TYPE">
+			<digest>
+				<b>0..1</b> Measurement Progress signal
+			</digest>
+			<description>
+			</description>
+		</outlet>
+		<outlet id="5" type="INLET_TYPE">
 			<digest>
 				<m>Bang</m> on completion of process
 			</digest>
@@ -429,20 +443,30 @@
 	<misc name = "Output">
 		<entry name ="Outlet 1 (signal)">
 			<description>
-				The Left measured and/or auditioned signal output.
+				The Left measurement signal output (connect to measurement target).
 			</description>
 		</entry>
 		<entry name ="Outlet 2 (signal)">
 			<description>
-				The Right measured and/or auditioned signal output.
+				The Right measurement signal output (connect to measurement target).
 			</description>
 		</entry>
 		<entry name ="Outlet 3 (signal)">
 			<description>
+				The Left auditioning outlet (connect to dac).
+			</description>
+		</entry>
+		<entry name ="Outlet 4 (signal)">
+			<description>
+				The Right auditioning outlet (connect to dac).
+			</description>
+		</entry>
+		<entry name ="Outlet 5 (signal)">
+			<description>
 				<b>0..1</b> Measurement Progress signal.
 			</description>
 		</entry>
-		<entry name ="Outlet 4 (bang)">
+		<entry name ="Outlet 6 (bang)">
 			<description>
 				<m>Bang</m> on completion of process.
 			</description>
