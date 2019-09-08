@@ -204,7 +204,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 340.0, 471.0, 218.0, 69.0 ],
+									"patching_rect" : [ 353.0, 471.0, 218.0, 69.0 ],
 									"text" : "...after this, cmnd/ctrl-e to go into edit mode, then cmnd/ctrl-click the \"View\" button"
 								}
 
@@ -219,7 +219,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 148.0, 400.0, 346.0, 69.0 ],
+									"patching_rect" : [ 161.0, 400.0, 346.0, 69.0 ],
 									"text" : "to explore the abstraction either right-click an instantiated abstraction and choose \"Object > Open Original...\", or open the original from the Max browser..."
 								}
 
@@ -696,11 +696,26 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.99,
+									"bubbleside" : 0,
+									"id" : "obj-21",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 49.350000000000023, 429.0, 148.299999999999955, 40.0 ],
+									"text" : "measurement outlets",
+									"textjustification" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 214.800000000000011, 412.0, 43.899999999999977, 23.0 ],
+									"patching_rect" : [ 224.400000000000006, 406.0, 48.700000000000017, 23.0 ],
 									"text" : "dac~"
 								}
 
@@ -714,7 +729,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 327.0, 365.0, 23.0, 23.0 ]
+									"patching_rect" : [ 357.0, 350.0, 23.0, 23.0 ]
 								}
 
 							}
@@ -726,7 +741,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 300.0, 544.567627000000016, 120.0, 23.0 ],
+									"patching_rect" : [ 314.0, 559.567627000000016, 120.0, 23.0 ],
 									"text" : "send~ makerloopR"
 								}
 
@@ -740,7 +755,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 300.0, 489.567627000000016, 82.0, 23.0 ],
+									"patching_rect" : [ 314.0, 504.567627000000016, 82.0, 23.0 ],
 									"text" : "svf~ 400 0.7"
 								}
 
@@ -754,7 +769,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 312.0, 311.0, 134.0, 23.0 ],
+									"patching_rect" : [ 314.0, 296.0, 134.0, 23.0 ],
 									"text" : "receive~ makerloopR"
 								}
 
@@ -766,7 +781,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 87.0, 544.567627000000016, 61.0, 23.0 ],
+									"patching_rect" : [ 87.0, 559.567627000000016, 61.0, 23.0 ],
 									"text" : "adc~ 3 4"
 								}
 
@@ -777,7 +792,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 87.0, 489.567627000000016, 61.0, 23.0 ],
+									"patching_rect" : [ 87.0, 504.567627000000016, 61.0, 23.0 ],
 									"text" : "dac~ 5 6"
 								}
 
@@ -791,7 +806,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 422.0, 531.067627000000016, 270.0, 50.0 ],
+									"patching_rect" : [ 436.0, 546.067627000000016, 270.0, 50.0 ],
 									"text" : "The output of the system (e.g. mics in a room) is returned to the object's inputs (here we use send~ and receive~ to do this).",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -806,7 +821,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 165.0, 311.0, 132.0, 23.0 ],
+									"patching_rect" : [ 165.0, 296.0, 132.0, 23.0 ],
 									"text" : "receive~ makerloopL"
 								}
 
@@ -820,7 +835,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 384.0, 476.067627000000016, 294.0, 50.0 ],
+									"patching_rect" : [ 398.0, 491.067627000000016, 294.0, 50.0 ],
 									"text" : "measurement outputs need to go into the system to be measured (out to a speaker for instance; here we measure two svf~ objects)",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -834,7 +849,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 165.0, 544.567627000000016, 118.0, 23.0 ],
+									"patching_rect" : [ 165.0, 559.567627000000016, 118.0, 23.0 ],
 									"text" : "send~ makerloopL"
 								}
 
@@ -848,7 +863,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 165.0, 489.567627000000016, 82.0, 23.0 ],
+									"patching_rect" : [ 165.0, 504.567627000000016, 82.0, 23.0 ],
 									"text" : "svf~ 800 0.5"
 								}
 
@@ -859,7 +874,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 34.0, 545.567627000000016, 51.0, 21.0 ],
+									"patching_rect" : [ 34.0, 560.567627000000016, 51.0, 21.0 ],
 									"text" : "e.g.",
 									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
 									"textjustification" : 2
@@ -872,7 +887,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 34.0, 490.567627000000016, 51.0, 21.0 ],
+									"patching_rect" : [ 34.0, 505.567627000000016, 51.0, 21.0 ],
 									"text" : "e.g.",
 									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
 									"textjustification" : 2
@@ -892,7 +907,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 239.5, 265.5, 20.0, 20.0 ],
+									"patching_rect" : [ 240.5, 250.5, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "4",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -908,7 +923,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 157.5, 264.0, 79.0, 25.0 ],
+									"patching_rect" : [ 157.5, 249.0, 79.0, 25.0 ],
 									"text" : " save IR"
 								}
 
@@ -926,7 +941,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 113.5, 206.400024000000002, 20.0, 20.0 ],
+									"patching_rect" : [ 113.5, 191.400024000000002, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -943,7 +958,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 33.0, 204.0, 79.0, 40.0 ],
+									"patching_rect" : [ 33.0, 189.0, 79.0, 40.0 ],
 									"text" : "create IR",
 									"textjustification" : 1
 								}
@@ -956,7 +971,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 117.5, 265.0, 38.0, 23.0 ],
+									"patching_rect" : [ 117.5, 250.0, 38.0, 23.0 ],
 									"text" : "save"
 								}
 
@@ -968,7 +983,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 322.600000000000023, 411.0, 189.0, 25.0 ],
+									"patching_rect" : [ 341.800000000000011, 405.0, 191.999999999999943, 25.0 ],
 									"text" : "wait for process to complete"
 								}
 
@@ -986,7 +1001,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 514.600000000000023, 413.5, 20.0, 20.0 ],
+									"patching_rect" : [ 535.799999999999955, 407.5, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "3",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -1050,7 +1065,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "float" ],
-									"patching_rect" : [ 264.600000000000023, 412.0, 56.0, 23.0 ],
+									"patching_rect" : [ 283.800000000000011, 406.0, 56.0, 23.0 ],
 									"sig" : 0.0
 								}
 
@@ -1062,7 +1077,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 45.0, 246.0, 55.0, 23.0 ],
+									"patching_rect" : [ 45.0, 231.0, 55.0, 23.0 ],
 									"text" : "impulse"
 								}
 
@@ -1074,7 +1089,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 6,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "bang" ],
-									"patching_rect" : [ 165.0, 366.0, 143.5, 23.0 ],
+									"patching_rect" : [ 165.0, 351.0, 167.5, 23.0 ],
 									"text" : "hirt.irmaker~",
 									"varname" : "hirt.irmaker~"
 								}
@@ -1089,9 +1104,25 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 352.0, 366.0, 222.0, 21.0 ],
+									"patching_rect" : [ 382.0, 351.0, 222.0, 21.0 ],
 									"text" : "Bang on successful completion",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.01,
+									"bubbleside" : 0,
+									"id" : "obj-20",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 240.5, 429.0, 293.299999999999955, 40.0 ],
+									"presentation_linecount" : 2,
+									"text" : "auditioning outlets - connect to dac~ if required",
+									"textjustification" : 1
 								}
 
 							}
@@ -1146,7 +1177,7 @@
 									"mode" : 1,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 34.0, 476.067627000000016, 668.0, 105.0 ],
+									"patching_rect" : [ 34.0, 491.067627000000016, 668.0, 105.0 ],
 									"proportion" : 0.39
 								}
 
@@ -1162,7 +1193,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 1 ],
-									"midpoints" : [ 321.5, 350.0, 299.0, 350.0 ],
 									"source" : [ "obj-14", 0 ]
 								}
 
@@ -1184,7 +1214,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
-									"midpoints" : [ 299.0, 399.0, 317.75, 399.0, 317.75, 354.0, 336.5, 354.0 ],
+									"midpoints" : [ 323.0, 384.0, 345.75, 384.0, 345.75, 339.0, 366.5, 339.0 ],
 									"source" : [ "obj-7", 5 ]
 								}
 
@@ -1192,7 +1222,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-19", 0 ],
-									"midpoints" : [ 199.400000000000006, 460.783813000000009, 309.5, 460.783813000000009 ],
+									"midpoints" : [ 204.199999999999989, 479.783813500000008, 323.5, 479.783813500000008 ],
 									"source" : [ "obj-7", 1 ]
 								}
 
@@ -1337,129 +1367,129 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
-			"obj-3::obj-7::obj-130" : [ "Test Tone Mode[1]", "Tone", 0 ],
-			"obj-2::obj-7::obj-133" : [ "Trim and Normalize", "Trim", 0 ],
-			"obj-6::obj-7::obj-130" : [ "Test Tone Mode[4]", "Tone", 0 ],
+			"obj-3::obj-1::obj-130" : [ "Test Tone Mode[2]", "Tone", 0 ],
+			"obj-6::obj-7::obj-2" : [ "Test Tone Channel[4]", "Channel", 0 ],
+			"obj-3::obj-7::obj-127" : [ "Audition Mode[1]", "Audition", 0 ],
+			"obj-2::obj-7::obj-126" : [ "Input Mode", "Input", 0 ],
+			"obj-6::obj-7::obj-64" : [ "PATCH/PRESS[4]", "PATCH/PRESS", 0 ],
 			"obj-3::obj-7::obj-126" : [ "Input Mode[1]", "Input", 0 ],
-			"obj-6::obj-7::obj-3" : [ "IR Time[4]", "IR Time", 0 ],
-			"obj-3::obj-7::obj-108::obj-90" : [ "number[1]", "number", 0 ],
-			"obj-2::obj-7::obj-50" : [ "Amplitude", "Amp", 0 ],
+			"obj-2::obj-7::obj-57" : [ "Sweep Time", "Sweep Time", 0 ],
+			"obj-3::obj-1::obj-108::obj-90" : [ "number[2]", "number", 0 ],
 			"obj-3::obj-1::obj-26" : [ "Stereo Mode[2]", "Stereo", 0 ],
-			"obj-3::obj-1::obj-127" : [ "Audition Mode[2]", "Audition", 0 ],
+			"obj-3::obj-1::obj-126" : [ "Input Mode[2]", "Input", 0 ],
+			"obj-2::obj-7::obj-127" : [ "Audition Mode", "Audition", 0 ],
+			"obj-6::obj-7::obj-130" : [ "Test Tone Mode[4]", "Tone", 0 ],
+			"obj-3::obj-7::obj-133" : [ "Trim and Normalize[1]", "Trim", 0 ],
+			"obj-2::obj-7::obj-3" : [ "IR Time", "IR Time", 0 ],
+			"obj-6::obj-7::obj-50" : [ "Amplitude[4]", "Amp", 0 ],
+			"obj-2::obj-7::obj-64" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
+			"obj-3::obj-7::obj-45" : [ "Test Tone Freq[1]", "Freq", 0 ],
+			"obj-6::obj-7::obj-57" : [ "Sweep Time[4]", "Sweep Time", 0 ],
+			"obj-2::obj-7::obj-130" : [ "Test Tone Mode", "Tone", 0 ],
+			"obj-3::obj-1::obj-2" : [ "Test Tone Channel[2]", "Channel", 0 ],
+			"obj-3::obj-1::obj-45" : [ "Test Tone Freq[2]", "Freq", 0 ],
+			"obj-3::obj-7::obj-108::obj-90" : [ "number[1]", "number", 0 ],
+			"obj-6::obj-7::obj-127" : [ "Audition Mode[4]", "Audition", 0 ],
+			"obj-3::obj-7::obj-3" : [ "IR Time[1]", "IR Time", 0 ],
+			"obj-6::obj-7::obj-45" : [ "Test Tone Freq[4]", "Freq", 0 ],
 			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
 			"obj-3::obj-7::obj-64" : [ "PATCH/PRESS[1]", "PATCH/PRESS", 0 ],
-			"obj-2::obj-7::obj-26" : [ "Stereo Mode", "Stereo", 0 ],
-			"obj-2::obj-7::obj-45" : [ "Test Tone Freq", "Freq", 0 ],
-			"obj-6::obj-7::obj-108::obj-90" : [ "number[3]", "number", 0 ],
-			"obj-3::obj-7::obj-133" : [ "Trim and Normalize[1]", "Trim", 0 ],
+			"obj-2::obj-7::obj-2" : [ "Test Tone Channel", "Channel", 0 ],
+			"obj-3::obj-1::obj-57" : [ "Sweep Time[2]", "Sweep Time", 0 ],
+			"obj-3::obj-1::obj-50" : [ "Amplitude[2]", "Amp", 0 ],
+			"obj-3::obj-1::obj-64" : [ "PATCH/PRESS[2]", "PATCH/PRESS", 0 ],
 			"obj-6::obj-7::obj-126" : [ "Input Mode[4]", "Input", 0 ],
 			"obj-3::obj-7::obj-2" : [ "Test Tone Channel[1]", "Channel", 0 ],
-			"obj-6::obj-7::obj-127" : [ "Audition Mode[4]", "Audition", 0 ],
-			"obj-3::obj-1::obj-45" : [ "Test Tone Freq[2]", "Freq", 0 ],
-			"obj-6::obj-7::obj-64" : [ "PATCH/PRESS[4]", "PATCH/PRESS", 0 ],
-			"obj-2::obj-7::obj-126" : [ "Input Mode", "Input", 0 ],
-			"obj-3::obj-1::obj-50" : [ "Amplitude[2]", "Amp", 0 ],
-			"obj-2::obj-7::obj-57" : [ "Sweep Time", "Sweep Time", 0 ],
-			"obj-3::obj-7::obj-3" : [ "IR Time[1]", "IR Time", 0 ],
-			"obj-6::obj-7::obj-2" : [ "Test Tone Channel[4]", "Channel", 0 ],
-			"obj-3::obj-7::obj-50" : [ "Amplitude[1]", "Amp", 0 ],
-			"obj-6::obj-7::obj-57" : [ "Sweep Time[4]", "Sweep Time", 0 ],
-			"obj-2::obj-7::obj-127" : [ "Audition Mode", "Audition", 0 ],
-			"obj-3::obj-1::obj-130" : [ "Test Tone Mode[2]", "Tone", 0 ],
-			"obj-2::obj-7::obj-3" : [ "IR Time", "IR Time", 0 ],
-			"obj-3::obj-1::obj-126" : [ "Input Mode[2]", "Input", 0 ],
-			"obj-2::obj-7::obj-130" : [ "Test Tone Mode", "Tone", 0 ],
 			"obj-6::obj-7::obj-133" : [ "Trim and Normalize[4]", "Trim", 0 ],
-			"obj-3::obj-7::obj-127" : [ "Audition Mode[1]", "Audition", 0 ],
-			"obj-6::obj-7::obj-26" : [ "Stereo Mode[4]", "Stereo", 0 ],
 			"obj-3::obj-7::obj-57" : [ "Sweep Time[1]", "Sweep Time", 0 ],
-			"obj-3::obj-1::obj-108::obj-90" : [ "number[2]", "number", 0 ],
-			"obj-3::obj-1::obj-2" : [ "Test Tone Channel[2]", "Channel", 0 ],
-			"obj-3::obj-1::obj-133" : [ "Trim and Normalize[2]", "Trim", 0 ],
-			"obj-3::obj-1::obj-64" : [ "PATCH/PRESS[2]", "PATCH/PRESS", 0 ],
-			"obj-2::obj-7::obj-2" : [ "Test Tone Channel", "Channel", 0 ],
-			"obj-3::obj-7::obj-45" : [ "Test Tone Freq[1]", "Freq", 0 ],
-			"obj-6::obj-7::obj-45" : [ "Test Tone Freq[4]", "Freq", 0 ],
-			"obj-3::obj-7::obj-26" : [ "Stereo Mode[1]", "Stereo", 0 ],
-			"obj-2::obj-7::obj-64" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
-			"obj-6::obj-7::obj-50" : [ "Amplitude[4]", "Amp", 0 ],
-			"obj-3::obj-1::obj-57" : [ "Sweep Time[2]", "Sweep Time", 0 ],
+			"obj-2::obj-7::obj-133" : [ "Trim and Normalize", "Trim", 0 ],
+			"obj-3::obj-1::obj-127" : [ "Audition Mode[2]", "Audition", 0 ],
 			"obj-3::obj-1::obj-3" : [ "IR Time[2]", "IR Time", 0 ],
+			"obj-2::obj-7::obj-50" : [ "Amplitude", "Amp", 0 ],
+			"obj-6::obj-7::obj-108::obj-90" : [ "number[3]", "number", 0 ],
+			"obj-3::obj-7::obj-50" : [ "Amplitude[1]", "Amp", 0 ],
+			"obj-6::obj-7::obj-3" : [ "IR Time[4]", "IR Time", 0 ],
+			"obj-3::obj-7::obj-130" : [ "Test Tone Mode[1]", "Tone", 0 ],
+			"obj-2::obj-7::obj-26" : [ "Stereo Mode", "Stereo", 0 ],
+			"obj-6::obj-7::obj-26" : [ "Stereo Mode[4]", "Stereo", 0 ],
+			"obj-3::obj-7::obj-26" : [ "Stereo Mode[1]", "Stereo", 0 ],
+			"obj-2::obj-7::obj-45" : [ "Test Tone Freq", "Freq", 0 ],
+			"obj-3::obj-1::obj-133" : [ "Trim and Normalize[2]", "Trim", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
-				"obj-6::obj-7::obj-3" : 				{
-					"parameter_longname" : "IR Time[4]"
+				"obj-6::obj-7::obj-2" : 				{
+					"parameter_longname" : "Test Tone Channel[4]"
 				}
 ,
 				"obj-3::obj-1::obj-26" : 				{
 					"parameter_longname" : "Stereo Mode[2]"
 				}
 ,
-				"obj-3::obj-7::obj-2" : 				{
-					"parameter_longname" : "Test Tone Channel[1]"
-				}
-,
-				"obj-3::obj-1::obj-45" : 				{
-					"parameter_longname" : "Test Tone Freq[2]"
-				}
-,
-				"obj-3::obj-1::obj-50" : 				{
-					"parameter_longname" : "Amplitude[2]"
-				}
-,
-				"obj-3::obj-7::obj-3" : 				{
-					"parameter_longname" : "IR Time[1]"
-				}
-,
-				"obj-6::obj-7::obj-2" : 				{
-					"parameter_longname" : "Test Tone Channel[4]"
-				}
-,
-				"obj-3::obj-7::obj-50" : 				{
-					"parameter_longname" : "Amplitude[1]"
-				}
-,
-				"obj-6::obj-7::obj-57" : 				{
-					"parameter_longname" : "Sweep Time[4]"
-				}
-,
-				"obj-6::obj-7::obj-26" : 				{
-					"parameter_longname" : "Stereo Mode[4]"
-				}
-,
-				"obj-3::obj-7::obj-57" : 				{
-					"parameter_longname" : "Sweep Time[1]"
-				}
-,
-				"obj-3::obj-1::obj-2" : 				{
-					"parameter_longname" : "Test Tone Channel[2]"
+				"obj-6::obj-7::obj-50" : 				{
+					"parameter_longname" : "Amplitude[4]"
 				}
 ,
 				"obj-3::obj-7::obj-45" : 				{
 					"parameter_longname" : "Test Tone Freq[1]"
 				}
 ,
+				"obj-6::obj-7::obj-57" : 				{
+					"parameter_longname" : "Sweep Time[4]"
+				}
+,
+				"obj-3::obj-1::obj-2" : 				{
+					"parameter_longname" : "Test Tone Channel[2]"
+				}
+,
+				"obj-3::obj-1::obj-45" : 				{
+					"parameter_longname" : "Test Tone Freq[2]"
+				}
+,
+				"obj-3::obj-7::obj-3" : 				{
+					"parameter_longname" : "IR Time[1]"
+				}
+,
 				"obj-6::obj-7::obj-45" : 				{
 					"parameter_longname" : "Test Tone Freq[4]"
-				}
-,
-				"obj-3::obj-7::obj-26" : 				{
-					"parameter_longname" : "Stereo Mode[1]"
-				}
-,
-				"obj-6::obj-7::obj-50" : 				{
-					"parameter_longname" : "Amplitude[4]"
 				}
 ,
 				"obj-3::obj-1::obj-57" : 				{
 					"parameter_longname" : "Sweep Time[2]"
 				}
 ,
+				"obj-3::obj-1::obj-50" : 				{
+					"parameter_longname" : "Amplitude[2]"
+				}
+,
+				"obj-3::obj-7::obj-2" : 				{
+					"parameter_longname" : "Test Tone Channel[1]"
+				}
+,
+				"obj-3::obj-7::obj-57" : 				{
+					"parameter_longname" : "Sweep Time[1]"
+				}
+,
 				"obj-3::obj-1::obj-3" : 				{
 					"parameter_longname" : "IR Time[2]"
+				}
+,
+				"obj-3::obj-7::obj-50" : 				{
+					"parameter_longname" : "Amplitude[1]"
+				}
+,
+				"obj-6::obj-7::obj-3" : 				{
+					"parameter_longname" : "IR Time[4]"
+				}
+,
+				"obj-6::obj-7::obj-26" : 				{
+					"parameter_longname" : "Stereo Mode[4]"
+				}
+,
+				"obj-3::obj-7::obj-26" : 				{
+					"parameter_longname" : "Stereo Mode[1]"
 				}
 
 			}
@@ -1480,42 +1510,42 @@
 			}
 , 			{
 				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
 				"patcherrelativepath" : "../misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"patcherrelativepath" : "../misc/HIRT_image",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.irmaker~.maxpat",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_ir_maker",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_ir_maker",
 				"patcherrelativepath" : "../patchers/HIRT_ir_maker",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_im_info_view.maxpat",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_ir_maker/HIRT_ir_maker_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_ir_maker/HIRT_ir_maker_support",
 				"patcherrelativepath" : "../patchers/HIRT_ir_maker/HIRT_ir_maker_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1

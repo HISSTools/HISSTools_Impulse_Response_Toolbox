@@ -686,16 +686,16 @@
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
-						"gridonopen" : 1,
+						"gridonopen" : 2,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
 						"objectsnaponopen" : 1,
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
+						"lefttoolbarpinned" : 1,
+						"toptoolbarpinned" : 1,
+						"righttoolbarpinned" : 1,
+						"bottomtoolbarpinned" : 1,
 						"toolbars_unpinned_last_save" : 0,
 						"tallnewobj" : 0,
 						"boxanimatetime" : 200,
@@ -725,7 +725,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 459.0, 156.0, 158.0, 20.0 ],
+									"patching_rect" : [ 444.0, 151.0, 173.0, 20.0 ],
 									"text" : "calculate interpolation factor"
 								}
 
@@ -736,7 +736,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 262.0, 45.0, 286.0, 20.0 ],
+									"patching_rect" : [ 252.0, 45.0, 296.0, 20.0 ],
 									"text" : "lower max by 7dB before calculation of differences"
 								}
 
@@ -747,7 +747,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 210.0, 189.0, 65.0, 20.0 ],
+									"patching_rect" : [ 198.0, 190.0, 77.0, 20.0 ],
 									"text" : "interpolate"
 								}
 
@@ -832,7 +832,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 229.5, 141.5, 123.0, 141.5 ],
+									"midpoints" : [ 229.5, 133.5, 123.0, 133.5 ],
 									"order" : 1,
 									"source" : [ "obj-4", 0 ]
 								}
@@ -841,7 +841,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 229.5, 139.0, 432.5, 139.0 ],
+									"midpoints" : [ 229.5, 133.0, 432.5, 133.0 ],
 									"order" : 0,
 									"source" : [ "obj-4", 0 ]
 								}
@@ -1428,6 +1428,16 @@
 					"patching_rect" : [ 130.0, 461.5, 205.0, 33.0 ],
 					"text" : "<< (unsupported in HIRT, specific fix for hirt.convolutionreverb~ only) >>",
 					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-62",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 62.5, 909.0, 87.0, 20.0 ]
 				}
 
 			}
@@ -2119,7 +2129,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "hirt_nan_fix.maxpat",
-				"bootpath" : "~/Documents/Max Externals/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
@@ -2137,9 +2147,9 @@
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{
+					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -2157,7 +2167,6 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -2167,7 +2176,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",
