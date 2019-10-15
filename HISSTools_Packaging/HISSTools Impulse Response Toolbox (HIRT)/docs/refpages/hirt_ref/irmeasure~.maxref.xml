@@ -514,6 +514,7 @@
 		<seealso name="multiconvolve~" />
 		<seealso name="spectrumdraw~" />
 		<seealso name="hirt.irmaker~" />
+        <seealso name="hirttutorials" type="tutorial" module="hirt" />
 	</seealsolist>
 
 	<misc name = "Input">

@@ -402,6 +402,7 @@
 		<seealso name="hirt.convolutionreverb~" />
 		<seealso name="hirt.convolver~" />
 		<seealso name="impulseresponses" type="vignette" module="hirt" />
+        <seealso name="hirttutorials" type="tutorial" module="hirt" />
 		<seealso name="iralign~" />
 		<seealso name="iraverage~" />
 		<seealso name="irextract~" />

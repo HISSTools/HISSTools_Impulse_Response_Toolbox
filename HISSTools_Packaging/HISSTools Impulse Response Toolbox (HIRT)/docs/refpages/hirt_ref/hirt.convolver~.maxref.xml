@@ -397,6 +397,7 @@
 		<seealso name="hirt.convolutionreverb~" />
 		<seealso name="hirt.irmaker~" />
 		<seealso name="impulseresponses" type="vignette" module="hirt" />
+        <seealso name="hirttutorials" type="tutorial" module="hirt" />
 		<seealso name="bufconvolve~" />
 		<seealso name="bufresample~" />
 		<seealso name="bufreverse~" />

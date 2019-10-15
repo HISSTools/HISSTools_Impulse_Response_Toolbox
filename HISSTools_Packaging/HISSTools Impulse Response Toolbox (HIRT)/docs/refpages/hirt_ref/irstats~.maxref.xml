@@ -206,6 +206,7 @@
 		<seealso name="morphfilter~" />
 		<seealso name="multiconvolve~" />
 		<seealso name="spectrumdraw~" />
+        <seealso name="hirttutorials" type="tutorial" module="hirt" />
 	</seealsolist>
 
 	<misc name = "Input">

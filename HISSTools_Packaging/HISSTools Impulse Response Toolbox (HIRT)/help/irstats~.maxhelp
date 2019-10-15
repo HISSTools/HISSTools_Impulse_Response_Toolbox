@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 100.0, 96.0, 741.0, 670.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 101.0, 79.0, 741.0, 640.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -22,10 +23,10 @@
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
 		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 2,
+		"toptoolbarpinned" : 1,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 2,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 100,
 		"enablehscroll" : 1,
@@ -51,7 +52,6 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js hirt.helpstarter.js irstats~"
 				}
 
@@ -65,14 +65,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 100.0, 122.0, 741.0, 644.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 101.0, 105.0, 741.0, 614.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -107,8 +108,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 117.0, 305.0, 63.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 117.0, 294.0, 63.0, 23.0 ],
 									"text" : "tosymbol"
 								}
 
@@ -121,8 +121,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 57.5, 178.0, 226.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 57.5, 167.0, 226.0, 23.0 ],
 									"text" : "loadmess symbol \"Phipps Mono.wav\""
 								}
 
@@ -134,8 +133,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 117.0, 345.0, 104.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 117.0, 334.0, 104.0, 23.0 ],
 									"text" : "prepend replace"
 								}
 
@@ -145,14 +143,13 @@
 									"autopopulate" : 1,
 									"collection" : "HIRT Impulse Responses",
 									"id" : "obj-14",
-									"items" : [ "Cabinet.wav", ",", "Amplifier.wav", ",", "Huddersfield Town Hall.wav", ",", "Templeworks Holbeck.wav", ",", "Phipps Mono.wav", ",", "St Pauls Mono.wav", ",", "Studio 2.wav", ",", "Clothworkers Leeds Narrow 1-1.wav", ",", "Clothworkers Leeds Narrow 1-2.wav", ",", "Clothworkers Leeds Narrow 2-1.wav", ",", "Clothworkers Leeds Narrow 2-2.wav", ",", "Clothworkers Leeds Wide 1-1.wav", ",", "Clothworkers Leeds Wide 1-2.wav", ",", "Clothworkers Leeds Wide 2-1.wav", ",", "Clothworkers Leeds Wide 2-2.wav", ",", "Huddersfield Town Hall Far 1-1.wav", ",", "Huddersfield Town Hall Far 1-2.wav", ",", "Huddersfield Town Hall Far 2-1.wav", ",", "Huddersfield Town Hall Far 2-2.wav", ",", "Huddersfield Town Hall Near 1-1.wav", ",", "Huddersfield Town Hall Near 1-2.wav", ",", "Huddersfield Town Hall Near 2-1.wav", ",", "Huddersfield Town Hall Near 2-2.wav", ",", "Phipps Far 1-1.wav", ",", "Phipps Far 1-2.wav", ",", "Phipps Far 2-1.wav", ",", "Phipps Far 2-2.wav", ",", "Phipps Near 1-1.wav", ",", "Phipps Near 1-2.wav", ",", "Phipps Near 2-1.wav", ",", "Phipps Near 2-2.wav", ",", "St Pauls 1-1.wav", ",", "St Pauls 1-2.wav", ",", "St Pauls 2-1.wav", ",", "St Pauls 2-2.wav", ",", "York Rymer Auditorium Narrow 1-1.wav", ",", "York Rymer Auditorium Narrow 1-2.wav", ",", "York Rymer Auditorium Narrow 2-1.wav", ",", "York Rymer Auditorium Narrow 2-2.wav", ",", "York Rymer Auditorium Wide 1-1.wav", ",", "York Rymer Auditorium Wide 1-2.wav", ",", "York Rymer Auditorium Wide 2-1.wav", ",", "York Rymer Auditorium Wide 2-2.wav", ",", "Bass Head 90s EQ.wav", ",", "Bass Head 90s.wav", ",", "Spring Cheap.wav", ",", "Spring Long.wav", ",", "Spring Mid.wav", ",", "Spring Short.wav", ",", "Tape Machine.wav" ],
+									"items" : [ "Huddersfield Town Hall.wav", ",", "Templeworks Holbeck.wav", ",", "Phipps Mono.wav", ",", "St Pauls Mono.wav", ",", "Studio 2.wav", ",", "Clothworkers Leeds Narrow 1-1.wav", ",", "Clothworkers Leeds Narrow 1-2.wav", ",", "Clothworkers Leeds Narrow 2-1.wav", ",", "Clothworkers Leeds Narrow 2-2.wav", ",", "Clothworkers Leeds Wide 1-1.wav", ",", "Clothworkers Leeds Wide 1-2.wav", ",", "Clothworkers Leeds Wide 2-1.wav", ",", "Clothworkers Leeds Wide 2-2.wav", ",", "Huddersfield Town Hall Far 1-1.wav", ",", "Huddersfield Town Hall Far 1-2.wav", ",", "Huddersfield Town Hall Far 2-1.wav", ",", "Huddersfield Town Hall Far 2-2.wav", ",", "Huddersfield Town Hall Near 1-1.wav", ",", "Huddersfield Town Hall Near 1-2.wav", ",", "Huddersfield Town Hall Near 2-1.wav", ",", "Huddersfield Town Hall Near 2-2.wav", ",", "Phipps Far 1-1.wav", ",", "Phipps Far 1-2.wav", ",", "Phipps Far 2-1.wav", ",", "Phipps Far 2-2.wav", ",", "Phipps Near 1-1.wav", ",", "Phipps Near 1-2.wav", ",", "Phipps Near 2-1.wav", ",", "Phipps Near 2-2.wav", ",", "St Pauls 1-1.wav", ",", "St Pauls 1-2.wav", ",", "St Pauls 2-1.wav", ",", "St Pauls 2-2.wav", ",", "York Rymer Auditorium Narrow 1-1.wav", ",", "York Rymer Auditorium Narrow 1-2.wav", ",", "York Rymer Auditorium Narrow 2-1.wav", ",", "York Rymer Auditorium Narrow 2-2.wav", ",", "York Rymer Auditorium Wide 1-1.wav", ",", "York Rymer Auditorium Wide 1-2.wav", ",", "York Rymer Auditorium Wide 2-1.wav", ",", "York Rymer Auditorium Wide 2-2.wav", ",", "Cabinet.wav", ",", "Amplifier.wav", ",", "Bass Head 90s EQ.wav", ",", "Bass Head 90s.wav", ",", "Spring Cheap.wav", ",", "Spring Long.wav", ",", "Spring Mid.wav", ",", "Spring Short.wav", ",", "Tape Machine.wav" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 57.5, 266.0, 138.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 57.5, 255.0, 138.0, 23.0 ]
 								}
 
 							}
@@ -169,8 +166,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 444.5, 499.0, 181.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 444.5, 499.0, 181.0, 23.0 ]
 								}
 
 							}
@@ -184,13 +180,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 5,
+											"major" : 8,
+											"minor" : 1,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 290.0, 80.0, 315.0, 465.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -226,7 +223,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 103.0, 270.5, 78.0, 23.0 ],
-													"style" : "",
 													"text" : "fromsymbol"
 												}
 
@@ -240,7 +236,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 161.0, 111.0, 134.0, 23.0 ],
-													"style" : "",
 													"text" : "import hirt.irstats.json"
 												}
 
@@ -253,7 +248,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 103.0, 310.5, 79.0, 23.0 ],
-													"style" : "",
 													"text" : "prepend set"
 												}
 
@@ -266,7 +260,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "set" ],
 													"patching_rect" : [ 103.0, 230.5, 56.0, 23.0 ],
-													"style" : "",
 													"text" : "t s set"
 												}
 
@@ -279,7 +272,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 103.0, 190.5, 51.0, 23.0 ],
-													"style" : "",
 													"text" : "route 0"
 												}
 
@@ -292,7 +284,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 49.0, 111.0, 80.0, 23.0 ],
-													"style" : "",
 													"text" : "prepend get"
 												}
 
@@ -307,10 +298,10 @@
 													"patching_rect" : [ 49.0, 151.0, 181.0, 23.0 ],
 													"saved_object_attributes" : 													{
 														"embed" : 0,
-														"parameter_enable" : 0
+														"parameter_enable" : 0,
+														"parameter_mappable" : 0
 													}
 ,
-													"style" : "",
 													"text" : "dict irstatshelp hirt.irstats.json"
 												}
 
@@ -324,8 +315,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 49.0, 49.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 49.0, 49.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -338,8 +328,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 135.0, 49.0, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 135.0, 49.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -351,8 +340,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 140.0, 395.5, 30.0, 30.0 ],
-													"style" : ""
+													"patching_rect" : [ 140.0, 395.5, 30.0, 30.0 ]
 												}
 
 											}
@@ -441,17 +429,15 @@
  ]
 									}
 ,
-									"patching_rect" : [ 444.5, 401.0, 105.0, 23.0 ],
+									"patching_rect" : [ 444.5, 390.0, 105.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"fontsize" : 13.0,
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p getDescription"
 								}
 
@@ -463,8 +449,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 350.0, 553.0, 29.5, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 350.0, 542.0, 29.5, 23.0 ],
 									"text" : "set"
 								}
 
@@ -482,9 +467,8 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 384.0, 266.5, 20.0, 20.0 ],
+									"patching_rect" : [ 384.0, 255.5, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -503,9 +487,8 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 26.0, 204.0, 20.0, 20.0 ],
+									"patching_rect" : [ 26.0, 193.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -525,9 +508,8 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 37.5, 267.5, 20.0, 20.0 ],
+									"patching_rect" : [ 37.5, 256.5, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"style" : "",
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
@@ -540,8 +522,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 444.5, 305.0, 105.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 444.5, 294.0, 105.0, 23.0 ],
 									"text" : "t s s s"
 								}
 
@@ -553,8 +534,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 487.5, 345.0, 138.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 487.5, 334.0, 138.0, 23.0 ],
 									"text" : "prepend stats statsbuf"
 								}
 
@@ -569,8 +549,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 197.5, 263.5, 160.0, 25.0 ],
-									"style" : "",
+									"patching_rect" : [ 197.5, 252.5, 160.0, 25.0 ],
 									"text" : "Load an IR for analysis"
 								}
 
@@ -585,8 +564,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 117.0, 401.0, 231.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 117.0, 390.0, 231.0, 23.0 ],
 									"text" : "buffer~ statsbuf \"Phipps Mono.wav\" -1"
 								}
 
@@ -598,8 +576,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 350.0, 225.0, 113.0, 25.0 ],
-									"style" : "",
+									"patching_rect" : [ 350.0, 214.0, 113.0, 25.0 ],
 									"text" : "Calculate stats"
 								}
 
@@ -613,8 +590,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 212.0, 499.0, 136.0, 21.0 ],
-									"style" : "",
+									"patching_rect" : [ 212.0, 488.0, 136.0, 21.0 ],
 									"text" : "Rounding for display",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
@@ -630,8 +606,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 498.0, 184.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 26.0, 487.0, 184.0, 23.0 ],
 									"text" : "vexpr int((10 * $f1) + 0.5) / 10."
 								}
 
@@ -648,8 +623,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 553.0, 322.0, 23.0 ],
-									"style" : ""
+									"patching_rect" : [ 26.0, 542.0, 322.0, 23.0 ]
 								}
 
 							}
@@ -663,8 +637,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 226.0, 322.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 26.0, 215.0, 322.0, 23.0 ],
 									"text" : "stats statsbuf t30 edt clarity onset mixing mixingrms sr"
 								}
 
@@ -678,8 +651,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 465.0, 227.0, 264.0, 21.0 ],
-									"style" : "",
+									"patching_rect" : [ 465.0, 216.0, 264.0, 21.0 ],
 									"text" : "input buffer / requested stat 1 2 3 etc  ......",
 									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
 								}
@@ -697,8 +669,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 46.0, 436.0, 241.0, 40.0 ],
-									"style" : "",
+									"patching_rect" : [ 46.0, 425.0, 241.0, 40.0 ],
 									"text" : "Outputs list of results in requested order"
 								}
 
@@ -712,20 +683,20 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 406.0, 265.0, 96.0, 23.0 ],
+									"patching_rect" : [ 406.0, 254.0, 96.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "umenu",
 											"parameter_shortname" : "umenu",
 											"parameter_type" : 3,
+											"parameter_longname" : "umenu",
 											"parameter_initial_enable" : 1,
-											"parameter_initial" : [ 0 ],
-											"parameter_invisible" : 1
+											"parameter_invisible" : 1,
+											"parameter_mmax" : 18.0,
+											"parameter_initial" : [ 0 ]
 										}
 
 									}
 ,
-									"style" : "",
 									"varname" : "umenu"
 								}
 
@@ -737,8 +708,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "list" ],
-									"patching_rect" : [ 26.0, 401.0, 53.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 26.0, 390.0, 53.0, 23.0 ],
 									"text" : "irstats~"
 								}
 
@@ -750,8 +720,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 26.0, 578.0, 322.0, 36.0 ],
-									"style" : "",
+									"patching_rect" : [ 26.0, 567.0, 322.0, 36.0 ],
 									"text" : "N.B. Times are given in milliseconds unless @timeinsamps is on (which returns time in samples)",
 									"textcolor" : [ 0.501961, 0.501961, 0.501961, 1.0 ]
 								}
@@ -764,8 +733,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 504.0, 264.0, 225.0, 25.0 ],
-									"style" : "",
+									"patching_rect" : [ 504.0, 253.0, 225.0, 25.0 ],
 									"text" : "Return single stat and description"
 								}
 
@@ -779,8 +747,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 549.5, 455.0, 76.0, 40.0 ],
-									"style" : "",
+									"patching_rect" : [ 549.5, 444.0, 76.0, 40.0 ],
 									"text" : "Description"
 								}
 
@@ -794,8 +761,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 406.0, 442.0, 174.0, 23.0 ],
-									"style" : "",
+									"patching_rect" : [ 406.0, 431.0, 174.0, 23.0 ],
 									"text" : "clearchecks, checkitem $1 1"
 								}
 
@@ -829,7 +795,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 109.0, 208.0, 235.0, 5.0 ]
+									"patching_rect" : [ 109.0, 197.0, 235.0, 5.0 ]
 								}
 
 							}
@@ -841,7 +807,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 344.0, 208.0, 5.0, 16.0 ]
+									"patching_rect" : [ 344.0, 197.0, 5.0, 16.0 ]
 								}
 
 							}
@@ -853,7 +819,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 109.0, 208.0, 5.0, 16.0 ]
+									"patching_rect" : [ 109.0, 197.0, 5.0, 16.0 ]
 								}
 
 							}
@@ -866,8 +832,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 350.0, 191.0, 245.0, 25.0 ],
-									"style" : "",
+									"patching_rect" : [ 350.0, 180.0, 245.0, 25.0 ],
 									"text" : "Request multiple stats simultaneously"
 								}
 
@@ -893,7 +858,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 35.5, 460.5, 35.5, 460.5 ],
+									"midpoints" : [ 35.5, 449.5, 35.5, 449.5 ],
 									"source" : [ "obj-1", 0 ]
 								}
 
@@ -901,7 +866,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-36", 1 ],
-									"midpoints" : [ 35.5, 536.5, 338.5, 536.5 ],
+									"midpoints" : [ 35.5, 525.5, 338.5, 525.5 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -944,7 +909,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
-									"midpoints" : [ 35.5, 317.0, 35.5, 317.0 ],
+									"midpoints" : [ 35.5, 306.0, 35.5, 306.0 ],
 									"source" : [ "obj-16", 0 ]
 								}
 
@@ -960,7 +925,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 415.5, 475.0, 376.5, 475.0, 376.5, 254.0, 415.5, 254.0 ],
+									"midpoints" : [ 415.5, 464.0, 376.5, 464.0, 376.5, 243.0, 415.5, 243.0 ],
 									"source" : [ "obj-19", 0 ]
 								}
 
@@ -969,7 +934,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-14", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 67.0, 256.0, 67.0, 256.0 ],
+									"midpoints" : [ 67.0, 245.0, 67.0, 245.0 ],
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -978,7 +943,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-36", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 359.5, 616.0, 14.5, 616.0, 14.5, 542.0, 35.5, 542.0 ],
+									"midpoints" : [ 359.5, 605.0, 14.5, 605.0, 14.5, 531.0, 35.5, 531.0 ],
 									"order" : 1,
 									"source" : [ "obj-29", 0 ]
 								}
@@ -988,7 +953,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 359.5, 616.0, 414.75, 616.0, 414.75, 487.0, 454.0, 487.0 ],
+									"midpoints" : [ 359.5, 605.0, 414.75, 605.0, 414.75, 476.0, 454.0, 476.0 ],
 									"order" : 0,
 									"source" : [ "obj-29", 0 ]
 								}
@@ -1005,7 +970,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-19", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 415.5, 364.5, 415.5, 364.5 ],
+									"midpoints" : [ 415.5, 353.5, 415.5, 353.5 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1020,7 +985,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
-									"midpoints" : [ 497.0, 384.0, 35.5, 384.0 ],
+									"midpoints" : [ 497.0, 373.0, 35.5, 373.0 ],
 									"source" : [ "obj-8", 0 ]
 								}
 
@@ -1034,11 +999,9 @@
 						"digest" : "",
 						"fontsize" : 13.0,
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic",
 					"varname" : "basic_tab"
 				}
@@ -1056,7 +1019,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 161.373917, 57.567627 ]
+					"patching_rect" : [ 10.0, 10.0, 161.360000610351562, 57.599853515625 ]
 				}
 
 			}
@@ -1069,14 +1032,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 741.0, 644.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 741.0, 614.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1108,16 +1072,14 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 126.373917, 85.0, 45.0, 23.0 ],
+					"patching_rect" : [ 126.373917000000006, 85.0, 45.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?",
 					"varname" : "q_tab"
 				}
@@ -1126,7 +1088,11 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
-			"obj-2::obj-3" : [ "umenu", "umenu", 0 ]
+			"obj-2::obj-3" : [ "umenu", "umenu", 0 ],
+			"parameterbanks" : 			{
+
+			}
+
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -1143,21 +1109,21 @@
 			}
 , 			{
 				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
 				"patcherrelativepath" : "../misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG ",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -1169,13 +1135,7 @@
  ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
 	}
 
 }
