@@ -349,12 +349,12 @@
 									"patching_rect" : [ 431.0, 584.0, 50.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "number",
-											"parameter_type" : 3,
 											"parameter_longname" : "number",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 100.0 ]
+											"parameter_initial" : [ 100.0 ],
+											"parameter_shortname" : "number",
+											"parameter_type" : 3
 										}
 
 									}
@@ -778,7 +778,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 138.0, 570.0, 177.0, 40.0 ],
+									"patching_rect" : [ 106.0, 570.0, 177.0, 40.0 ],
 									"text" : "wait for process to complete"
 								}
 
@@ -876,7 +876,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 208.0, 609.0, 107.0, 21.0 ],
+									"patching_rect" : [ 176.0, 609.0, 107.0, 21.0 ],
 									"text" : "(after 2000 ms)",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 									"textjustification" : 2
@@ -1665,12 +1665,12 @@
 									"patching_rect" : [ 593.0, 137.567626999999987, 53.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "number[1]",
-											"parameter_type" : 3,
 											"parameter_longname" : "number[2]",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 2 ]
+											"parameter_initial" : [ 2 ],
+											"parameter_shortname" : "number[1]",
+											"parameter_type" : 3
 										}
 
 									}
@@ -2476,13 +2476,13 @@
 									"patching_rect" : [ 772.0, 130.0, 71.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "umenu",
-											"parameter_type" : 3,
 											"parameter_longname" : "umenu",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_mmax" : 1.0,
-											"parameter_initial" : [ 1 ]
+											"parameter_initial" : [ 1 ],
+											"parameter_shortname" : "umenu",
+											"parameter_type" : 3
 										}
 
 									}
@@ -3099,12 +3099,12 @@
 									"patching_rect" : [ 26.0, 265.0, 53.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "number",
-											"parameter_type" : 3,
 											"parameter_longname" : "number[1]",
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 0.01 ]
+											"parameter_initial" : [ 0.01 ],
+											"parameter_shortname" : "number",
+											"parameter_type" : 3
 										}
 
 									}
@@ -4409,8 +4409,8 @@
 		"lines" : [  ],
 		"parameters" : 		{
 			"obj-19::obj-13" : [ "number[2]", "number[1]", 0 ],
-			"obj-3::obj-53" : [ "umenu", "umenu", 0 ],
 			"obj-22::obj-11" : [ "number", "number", 0 ],
+			"obj-3::obj-53" : [ "umenu", "umenu", 0 ],
 			"obj-3::obj-7" : [ "number[1]", "number", 0 ],
 			"parameterbanks" : 			{
 

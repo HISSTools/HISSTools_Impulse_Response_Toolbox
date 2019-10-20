@@ -153,21 +153,21 @@
 												"filekind" : "audiofile",
 												"loop" : 1,
 												"content_state" : 												{
-													"formantcorrection" : [ 0 ],
-													"originallengthms" : [ 0.0 ],
-													"mode" : [ "basic" ],
-													"speed" : [ 1.0 ],
-													"play" : [ 0 ],
-													"originallength" : [ 0.0, "ticks" ],
+													"pitchcorrection" : [ 0 ],
+													"slurtime" : [ 0.0 ],
+													"followglobaltempo" : [ 0 ],
+													"quality" : [ "basic" ],
 													"pitchshift" : [ 1.0 ],
+													"timestretch" : [ 0 ],
+													"originallengthms" : [ 0.0 ],
+													"formantcorrection" : [ 0 ],
+													"play" : [ 0 ],
+													"speed" : [ 1.0 ],
+													"mode" : [ "basic" ],
+													"originallength" : [ 0.0, "ticks" ],
 													"formant" : [ 1.0 ],
 													"originaltempo" : [ 120.0 ],
-													"basictuning" : [ 440 ],
-													"quality" : [ "basic" ],
-													"pitchcorrection" : [ 0 ],
-													"followglobaltempo" : [ 0 ],
-													"slurtime" : [ 0.0 ],
-													"timestretch" : [ 0 ]
+													"basictuning" : [ 440 ]
 												}
 
 											}
@@ -492,13 +492,12 @@
 , 							{
 								"box" : 								{
 									"dontreplace" : 1,
-									"frozen_box_attributes" : [ "patching_rect" ],
 									"id" : "obj-31",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 151.0, 594.0, 302.0, 23.0 ]
+									"patching_rect" : [ 151.0, 578.0, 302.0, 23.0 ]
 								}
 
 							}
@@ -815,6 +814,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-31", 1 ],
+									"midpoints" : [ 565.5, 568.5, 443.5, 568.5 ],
 									"source" : [ "obj-28", 1 ]
 								}
 
@@ -1789,8 +1789,8 @@
 								"name" : "DP.M4L",
 								"default" : 								{
 									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ]
+									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
+									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1799,9 +1799,9 @@
 , 							{
 								"name" : "DP.M4L-New",
 								"default" : 								{
+									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ],
 									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ],
-									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1825,9 +1825,9 @@
 , 							{
 								"name" : "max6box",
 								"default" : 								{
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2023,21 +2023,21 @@
 												"filekind" : "audiofile",
 												"loop" : 0,
 												"content_state" : 												{
-													"formantcorrection" : [ 0 ],
-													"originallengthms" : [ 0.0 ],
-													"mode" : [ "basic" ],
-													"speed" : [ 1.0 ],
-													"play" : [ 0 ],
-													"originallength" : [ 0.0, "ticks" ],
+													"pitchcorrection" : [ 0 ],
+													"slurtime" : [ 0.0 ],
+													"followglobaltempo" : [ 0 ],
+													"quality" : [ "basic" ],
 													"pitchshift" : [ 1.0 ],
+													"timestretch" : [ 0 ],
+													"originallengthms" : [ 0.0 ],
+													"formantcorrection" : [ 0 ],
+													"play" : [ 0 ],
+													"speed" : [ 1.0 ],
+													"mode" : [ "basic" ],
+													"originallength" : [ 0.0, "ticks" ],
 													"formant" : [ 1.0 ],
 													"originaltempo" : [ 120.0 ],
-													"basictuning" : [ 440 ],
-													"quality" : [ "basic" ],
-													"pitchcorrection" : [ 0 ],
-													"followglobaltempo" : [ 0 ],
-													"slurtime" : [ 0.0 ],
-													"timestretch" : [ 0 ]
+													"basictuning" : [ 440 ]
 												}
 
 											}
@@ -2047,21 +2047,21 @@
 												"filekind" : "audiofile",
 												"loop" : 1,
 												"content_state" : 												{
-													"formantcorrection" : [ 0 ],
-													"originallengthms" : [ 0.0 ],
-													"mode" : [ "basic" ],
-													"speed" : [ 1.0 ],
-													"play" : [ 0 ],
-													"originallength" : [ 0.0, "ticks" ],
+													"pitchcorrection" : [ 0 ],
+													"slurtime" : [ 0.0 ],
+													"followglobaltempo" : [ 0 ],
+													"quality" : [ "basic" ],
 													"pitchshift" : [ 1.0 ],
+													"timestretch" : [ 0 ],
+													"originallengthms" : [ 0.0 ],
+													"formantcorrection" : [ 0 ],
+													"play" : [ 0 ],
+													"speed" : [ 1.0 ],
+													"mode" : [ "basic" ],
+													"originallength" : [ 0.0, "ticks" ],
 													"formant" : [ 1.0 ],
 													"originaltempo" : [ 120.0 ],
-													"basictuning" : [ 440 ],
-													"quality" : [ "basic" ],
-													"pitchcorrection" : [ 0 ],
-													"followglobaltempo" : [ 0 ],
-													"slurtime" : [ 0.0 ],
-													"timestretch" : [ 0 ]
+													"basictuning" : [ 440 ]
 												}
 
 											}
@@ -2441,58 +2441,58 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-7::obj-1::obj-1::obj-59::obj-70" : [ "hirt.val[86]", "hirt.val", 0 ],
-			"obj-2::obj-35" : [ "toggle", "toggle", 0 ],
-			"obj-2::obj-7::obj-1::obj-48::obj-70" : [ "hirt.val[31]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-3::obj-64::obj-70" : [ "Gain.val.1367", "Gain.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-3" : [ "EQ Routing", "EQ", 0 ],
-			"obj-2::obj-7::obj-10::obj-21" : [ "Saturation Type", "Saturation", 0 ],
-			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
-			"obj-2::obj-7::obj-10::obj-50::obj-70" : [ "hirt.val", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-50::obj-70" : [ "hirt.val[55]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-3" : [ "EQ Routing[5]", "EQ", 0 ],
-			"obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[87]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-17::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-3::obj-64::obj-70" : [ "hirt.val[85]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-53::obj-70" : [ "hirt.val[30]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-17::obj-70" : [ "hirt.val[83]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-108::obj-90" : [ "number[3]", "number", 0 ],
-			"obj-7::obj-1::obj-10::obj-53::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-28" : [ "PATCH/PRESS[5]", "PATCH/PRESS", 0 ],
+			"obj-2::obj-7::obj-1::obj-59::obj-70" : [ "hirt.val[21]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-55::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
 			"obj-2::obj-7::obj-10::obj-19::obj-70" : [ "hirt.val[37]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-54::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-53::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-51::obj-70" : [ "hirt.val[80]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-3::obj-63::obj-70" : [ "hirt.val[63]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-36::obj-131::obj-10" : [ "Category Menu[5]", "Category Menu", 0 ],
+			"obj-2::obj-7::obj-10::obj-21" : [ "Saturation Type", "Saturation", 0 ],
 			"obj-2::obj-7::obj-3::obj-63::obj-70" : [ "Width.val.1368", "Width.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
-			"obj-7::obj-1::obj-10::obj-19::obj-70" : [ "hirt.val[84]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-21" : [ "Saturation Type[5]", "Saturation", 0 ],
-			"obj-7::obj-1::obj-10::obj-56::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-50::obj-70" : [ "hirt.val", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
+			"obj-2::obj-35" : [ "toggle", "toggle", 0 ],
+			"obj-2::obj-7::obj-10::obj-51::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-56::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
 			"obj-2::obj-7::obj-10::obj-22::obj-70" : [ "hirt.val[38]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-59::obj-70" : [ "hirt.val[21]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-54::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
+			"obj-7::obj-1::obj-10::obj-56::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-21" : [ "Saturation Type[5]", "Saturation", 0 ],
 			"obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[64]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-36::obj-35" : [ "Drop IR[5]", "live.drop", 3 ],
-			"obj-7::obj-1::obj-10::obj-54::obj-70" : [ "hirt.val[81]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
+			"obj-2::obj-7::obj-10::obj-3" : [ "EQ Routing", "EQ", 0 ],
 			"obj-7::obj-1::obj-3::obj-65::obj-70" : [ "hirt.val[62]", "hirt.val", 0 ],
 			"obj-2::obj-7::obj-3::obj-65::obj-70" : [ "Dry/Wet.val.1366", "Dry/Wet.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
-			"obj-2::obj-7::obj-10::obj-55::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-22::obj-70" : [ "hirt.val[58]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-35" : [ "Drop IR", "live.drop", 3 ],
-			"obj-7::obj-1::obj-36::obj-131::obj-11" : [ "IR Menu[5]", "IR Menu", 0 ],
 			"obj-2::obj-7::obj-1::obj-97::obj-70" : [ "hirt.val[39]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-55::obj-70" : [ "hirt.val[82]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-51::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-51::obj-70" : [ "hirt.val[80]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-17::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-48::obj-70" : [ "hirt.val[31]", "hirt.val", 0 ],
 			"obj-2::obj-7::obj-28" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
-			"obj-2::obj-7::obj-10::obj-56::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-22::obj-70" : [ "hirt.val[58]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-17::obj-70" : [ "hirt.val[83]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-36::obj-131::obj-11" : [ "IR Menu[5]", "IR Menu", 0 ],
+			"obj-7::obj-1::obj-28" : [ "PATCH/PRESS[5]", "PATCH/PRESS", 0 ],
+			"obj-7::obj-1::obj-10::obj-55::obj-70" : [ "hirt.val[82]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-1::obj-59::obj-70" : [ "hirt.val[86]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-19::obj-70" : [ "hirt.val[84]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-53::obj-70" : [ "hirt.val[30]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-3" : [ "EQ Routing[5]", "EQ", 0 ],
+			"obj-2::obj-7::obj-3::obj-64::obj-70" : [ "Gain.val.1367", "Gain.val", 0 ],
+			"obj-7::obj-1::obj-108::obj-90" : [ "number[3]", "number", 0 ],
+			"obj-2::obj-7::obj-36::obj-35" : [ "Drop IR", "live.drop", 3 ],
+			"obj-7::obj-1::obj-10::obj-54::obj-70" : [ "hirt.val[81]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-50::obj-70" : [ "hirt.val[55]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[87]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-3::obj-64::obj-70" : [ "hirt.val[85]", "hirt.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
-				"obj-7::obj-1::obj-1::obj-59::obj-70" : 				{
-					"parameter_longname" : "hirt.val[86]",
+				"obj-2::obj-7::obj-1::obj-59::obj-70" : 				{
+					"parameter_longname" : "hirt.val[21]",
 					"parameter_exponent" : 2.0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
@@ -2502,98 +2502,32 @@
 					"parameter_range" : [ 0.0, 200.0 ]
 				}
 ,
-				"obj-2::obj-7::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[31]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "Gain.val.1367",
-					"parameter_shortname" : "Gain.val",
+				"obj-2::obj-7::obj-10::obj-55::obj-70" : 				{
+					"parameter_longname" : "hirt.val[34]",
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
 					"parameter_unitstyle" : 4,
 					"parameter_units" : " ",
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_range" : [ -18.0, 18.0 ],
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-50::obj-70" : 				{
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-7::obj-1::obj-10::obj-50::obj-70" : 				{
-					"parameter_longname" : "hirt.val[55]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[87]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-10::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[36]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-7::obj-1::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "hirt.val[85]",
+				"obj-2::obj-7::obj-10::obj-19::obj-70" : 				{
+					"parameter_longname" : "hirt.val[37]",
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
 					"parameter_unitstyle" : 4,
 					"parameter_units" : " ",
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_range" : [ -18.0, 18.0 ],
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-53::obj-70" : 				{
-					"parameter_longname" : "hirt.val[30]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-1::obj-10::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[83]",
+				"obj-2::obj-7::obj-10::obj-54::obj-70" : 				{
+					"parameter_longname" : "hirt.val[33]",
 					"parameter_exponent" : 3.0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
@@ -2614,8 +2548,8 @@
 					"parameter_range" : [ 10.0, 18000.0 ]
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-19::obj-70" : 				{
-					"parameter_longname" : "hirt.val[37]",
+				"obj-7::obj-1::obj-10::obj-51::obj-70" : 				{
+					"parameter_longname" : "hirt.val[80]",
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
@@ -2653,8 +2587,18 @@
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-19::obj-70" : 				{
-					"parameter_longname" : "hirt.val[84]",
+				"obj-2::obj-7::obj-10::obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.707107,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-2::obj-7::obj-10::obj-51::obj-70" : 				{
+					"parameter_longname" : "hirt.val[20]",
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
@@ -2665,8 +2609,8 @@
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[57]",
+				"obj-2::obj-7::obj-10::obj-56::obj-70" : 				{
+					"parameter_longname" : "hirt.val[35]",
 					"parameter_exponent" : 4.0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
@@ -2687,26 +2631,15 @@
 					"parameter_range" : [ 10.0, 18000.0 ]
 				}
 ,
-				"obj-2::obj-7::obj-1::obj-59::obj-70" : 				{
-					"parameter_longname" : "hirt.val[21]",
-					"parameter_exponent" : 2.0,
+				"obj-7::obj-1::obj-10::obj-56::obj-70" : 				{
+					"parameter_longname" : "hirt.val[57]",
+					"parameter_exponent" : 4.0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-10::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[33]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
+					"parameter_unitstyle" : 3,
+					"parameter_initial" : 8000.0,
+					"parameter_range" : [ 10.0, 18000.0 ]
 				}
 ,
 				"obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
@@ -2722,17 +2655,6 @@
 ,
 				"obj-7::obj-1::obj-36::obj-35" : 				{
 					"parameter_longname" : "Drop IR[5]"
-				}
-,
-				"obj-7::obj-1::obj-10::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[81]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
 				}
 ,
 				"obj-7::obj-1::obj-3::obj-65::obj-70" : 				{
@@ -2758,16 +2680,37 @@
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-55::obj-70" : 				{
-					"parameter_longname" : "hirt.val[34]",
+				"obj-2::obj-7::obj-1::obj-97::obj-70" : 				{
+					"parameter_longname" : "hirt.val[39]",
+					"parameter_invisible" : 1,
+					"parameter_exponent" : 1.01,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 100.0,
+					"parameter_range" : [ 1.0, 200.0 ]
+				}
+,
+				"obj-2::obj-7::obj-10::obj-17::obj-70" : 				{
+					"parameter_longname" : "hirt.val[36]",
+					"parameter_exponent" : 3.0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.5,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-2::obj-7::obj-1::obj-48::obj-70" : 				{
+					"parameter_longname" : "hirt.val[31]",
+					"parameter_invisible" : 1,
+					"parameter_exponent" : 1.58,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 100.0,
+					"parameter_range" : [ 50.0, 200.0 ]
 				}
 ,
 				"obj-7::obj-1::obj-10::obj-22::obj-70" : 				{
@@ -2781,19 +2724,19 @@
 					"parameter_range" : [ 10.0, 18000.0 ]
 				}
 ,
-				"obj-7::obj-1::obj-36::obj-131::obj-11" : 				{
-					"parameter_longname" : "IR Menu[5]"
-				}
-,
-				"obj-2::obj-7::obj-1::obj-97::obj-70" : 				{
-					"parameter_longname" : "hirt.val[39]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.01,
+				"obj-7::obj-1::obj-10::obj-17::obj-70" : 				{
+					"parameter_longname" : "hirt.val[83]",
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 1.0, 200.0 ]
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.5,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-7::obj-1::obj-36::obj-131::obj-11" : 				{
+					"parameter_longname" : "IR Menu[5]"
 				}
 ,
 				"obj-7::obj-1::obj-10::obj-55::obj-70" : 				{
@@ -2808,8 +2751,19 @@
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[20]",
+				"obj-7::obj-1::obj-1::obj-59::obj-70" : 				{
+					"parameter_longname" : "hirt.val[86]",
+					"parameter_exponent" : 2.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2,
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ 0.0, 200.0 ]
+				}
+,
+				"obj-7::obj-1::obj-10::obj-19::obj-70" : 				{
+					"parameter_longname" : "hirt.val[84]",
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
@@ -2820,27 +2774,73 @@
 					"parameter_exponent" : 1.0
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[80]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-10::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[35]",
+				"obj-2::obj-7::obj-10::obj-53::obj-70" : 				{
+					"parameter_longname" : "hirt.val[30]",
 					"parameter_exponent" : 4.0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_type" : 0,
 					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
+					"parameter_initial" : 1000.0,
 					"parameter_range" : [ 10.0, 18000.0 ]
+				}
+,
+				"obj-2::obj-7::obj-3::obj-64::obj-70" : 				{
+					"parameter_longname" : "Gain.val.1367",
+					"parameter_shortname" : "Gain.val",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 4,
+					"parameter_units" : " ",
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-7::obj-1::obj-10::obj-54::obj-70" : 				{
+					"parameter_longname" : "hirt.val[81]",
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.5,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-7::obj-1::obj-10::obj-50::obj-70" : 				{
+					"parameter_longname" : "hirt.val[55]",
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.707107,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
+					"parameter_longname" : "hirt.val[87]",
+					"parameter_invisible" : 1,
+					"parameter_exponent" : 1.58,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 100.0,
+					"parameter_range" : [ 50.0, 200.0 ]
+				}
+,
+				"obj-7::obj-1::obj-3::obj-64::obj-70" : 				{
+					"parameter_longname" : "hirt.val[85]",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 4,
+					"parameter_units" : " ",
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_exponent" : 1.0
 				}
 
 			}
