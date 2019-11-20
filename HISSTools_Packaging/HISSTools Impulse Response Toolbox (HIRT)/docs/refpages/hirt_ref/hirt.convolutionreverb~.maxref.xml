@@ -380,13 +380,12 @@
 		</attribute>
 		<attribute name="eq" get="1" set="1" type="int" size="1">
 			<digest>
-				EQ section on/off and routing
+				EQ section on/off
 			</digest>
 			<description>
-				EQ Off/On - Choose routing of EQ in DSP chain. <br />
+				EQ Off/On - Choose EQ Off/On in DSP chain. <br />
 				OFF (<b>0</b>) - no EQ, also CPU disables this section. <br />
-				PRE (<b>1</b>) - pre early convolution signal. <br />
-				POST (<b>2</b>) - post late convolution signal. <br />
+				ON (<b>1</b>) - EQ pre early convolution signal. <br />
 			</description>
 			<attributelist>
 				<attribute name="label" get="1" set="1" type="symbol" size="1" value="EQ section on/off and routing" />
