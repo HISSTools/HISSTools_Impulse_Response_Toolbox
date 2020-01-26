@@ -166,9 +166,9 @@ double *generate_filter(t_bufresample *x, long nzero, long npoints, double cf, d
     long half_filter_length = nzero * npoints;
     long i;
 
-    // Assign and check memory
+    // Assign and check memory (N.B. + 2 points for the end point + one guard sample)
 
-    filter = schedule_equal_mem_swap(&x->filter, (sizeof(double) * (half_filter_length + 1)), npoints | (nzero << 0x10));
+    filter = schedule_equal_mem_swap(&x->filter, (sizeof(double) * (half_filter_length + 2)), npoints | (nzero << 0x10));
 
     if (!filter)
         return 0;
@@ -199,7 +199,7 @@ double *generate_filter(t_bufresample *x, long nzero, long npoints, double cf, d
 
     // Guard sample for linear interpolation
 
-    filter [half_filter_length + 1] = 0;
+    filter[half_filter_length + 1] = 0;
 
     return filter;
 }
