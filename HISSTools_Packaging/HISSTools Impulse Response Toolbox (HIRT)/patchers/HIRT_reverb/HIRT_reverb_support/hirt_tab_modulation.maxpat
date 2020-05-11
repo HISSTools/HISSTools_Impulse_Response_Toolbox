@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 2,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-21",
@@ -141,8 +142,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -175,6 +176,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "PeteSubDefault10",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-27",
@@ -1534,11 +1536,38 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-8::obj-70" : [ "Amount.val.1226", "Amount.val", 0 ],
-			"obj-29::obj-70" : [ "Rate.val.1227", "Rate.val", 0 ],
-			"obj-25" : [ "Widen", "Widen", 0 ],
-			"obj-49" : [ "Type", "Type", 0 ],
+			"obj-25" : [ "Widen", "", 0 ],
+			"obj-29::obj-70" : [ "Rate.val.1227", "", 0 ],
+			"obj-49" : [ "Type", "", 0 ],
+			"obj-8::obj-70" : [ "Amount.val.1226", "", 0 ],
 			"parameterbanks" : 			{
+
+			}
+,
+			"parameter_overrides" : 			{
+				"obj-29::obj-70" : 				{
+					"parameter_longname" : "Rate.val.1227",
+					"parameter_shortname" : "Rate.val",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3,
+					"parameter_initial" : 1.0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-8::obj-70" : 				{
+					"parameter_longname" : "Amount.val.1226",
+					"parameter_shortname" : "Amount.val",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 50.0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_exponent" : 1.0
+				}
 
 			}
 
@@ -1609,7 +1638,7 @@
 				"multi" : 0
 			}
  ],
-		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ]
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 	}
 
 }

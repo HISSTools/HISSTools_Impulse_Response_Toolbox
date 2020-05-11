@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 2,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 0.0, 45.0, 875.0, 660.0 ],
+		"rect" : [ 0.0, 45.0, 1289.0, 660.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"hidden" : 1,
@@ -498,8 +499,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -532,6 +533,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-12",
@@ -947,13 +949,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 4,
 					"numoutlets" : 5,
-					"outlettype" : [ "", "", "int", "bang", "int" ],
+					"outlettype" : [ "", "int", "int", "bang", "int" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -986,6 +988,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-12",
@@ -1490,8 +1493,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1524,6 +1527,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "PeteSubDefault10",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -2575,8 +2579,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2609,6 +2613,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-15",
@@ -3045,8 +3050,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3079,6 +3084,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -3579,8 +3585,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3613,6 +3619,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -3782,8 +3789,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 2,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3816,6 +3823,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-18",
@@ -5055,7 +5063,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 45.0, 0.5, 62.5, 20.0 ],
 					"text" : "EQ",
-					"textcolor" : [ 0.093999996781349, 0.118000000715256, 0.136999994516373, 1.0 ],
+					"textcolor" : [ 0.094, 0.118, 0.137, 1.0 ],
 					"textjustification" : 2
 				}
 
@@ -5911,17 +5919,121 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-21" : [ "EQ Routing", "Active", 0 ],
-			"obj-17::obj-70" : [ "hirt.val[4]", "hirt.val", 0 ],
-			"obj-56::obj-70" : [ "hirt.val[3]", "hirt.val", 0 ],
-			"obj-53::obj-70" : [ "hirt.val[1]", "hirt.val", 0 ],
-			"obj-50::obj-70" : [ "hirt.val", "hirt.val", 0 ],
-			"obj-51::obj-70" : [ "hirt.val[6]", "hirt.val", 0 ],
-			"obj-22::obj-70" : [ "hirt.val[5]", "hirt.val", 0 ],
-			"obj-54::obj-70" : [ "hirt.val[2]", "hirt.val", 0 ],
-			"obj-55::obj-70" : [ "hirt.val[7]", "hirt.val", 0 ],
-			"obj-19::obj-70" : [ "hirt.val[8]", "hirt.val", 0 ],
+			"obj-55::obj-70" : [ "hirt.val[7]", "", 0 ],
+			"obj-19::obj-70" : [ "hirt.val[8]", "", 0 ],
+			"obj-53::obj-70" : [ "hirt.val[1]", "", 0 ],
+			"obj-50::obj-70" : [ "hirt.val", "", 0 ],
+			"obj-17::obj-70" : [ "hirt.val[4]", "", 0 ],
+			"obj-56::obj-70" : [ "hirt.val[3]", "", 0 ],
+			"obj-54::obj-70" : [ "hirt.val[2]", "", 0 ],
+			"obj-51::obj-70" : [ "hirt.val[6]", "", 0 ],
+			"obj-21" : [ "EQ Routing", "", 0 ],
+			"obj-22::obj-70" : [ "hirt.val[5]", "", 0 ],
 			"parameterbanks" : 			{
+
+			}
+,
+			"parameter_overrides" : 			{
+				"obj-55::obj-70" : 				{
+					"parameter_longname" : "hirt.val[7]",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 4,
+					"parameter_units" : " ",
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-19::obj-70" : 				{
+					"parameter_longname" : "hirt.val[8]",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 4,
+					"parameter_units" : " ",
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-53::obj-70" : 				{
+					"parameter_longname" : "hirt.val[1]",
+					"parameter_exponent" : 4.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3,
+					"parameter_initial" : 1000.0,
+					"parameter_range" : [ 10.0, 18000.0 ]
+				}
+,
+				"obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.707107,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-17::obj-70" : 				{
+					"parameter_longname" : "hirt.val[4]",
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.5,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-56::obj-70" : 				{
+					"parameter_longname" : "hirt.val[3]",
+					"parameter_exponent" : 4.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3,
+					"parameter_initial" : 8000.0,
+					"parameter_range" : [ 10.0, 18000.0 ]
+				}
+,
+				"obj-54::obj-70" : 				{
+					"parameter_longname" : "hirt.val[2]",
+					"parameter_exponent" : 3.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10,
+					"parameter_initial" : 0.5,
+					"parameter_range" : [ 0.05, 18.0 ]
+				}
+,
+				"obj-51::obj-70" : 				{
+					"parameter_longname" : "hirt.val[6]",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 4,
+					"parameter_units" : " ",
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-22::obj-70" : 				{
+					"parameter_longname" : "hirt.val[5]",
+					"parameter_exponent" : 4.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3,
+					"parameter_initial" : 125.0,
+					"parameter_range" : [ 10.0, 18000.0 ]
+				}
 
 			}
 
@@ -6003,7 +6115,7 @@
 				"multi" : 0
 			}
  ],
-		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ]
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 	}
 
 }

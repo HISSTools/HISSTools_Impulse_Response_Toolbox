@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 2,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "PeteSubDefault10",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-14",
@@ -847,9 +848,36 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-29::obj-70" : [ "Pan.val.1231", "Pan.val", 0 ],
-			"obj-28::obj-70" : [ "Depth.val.1230", "Depth.val", 0 ],
+			"obj-28::obj-70" : [ "Depth.val.1230", "", 0 ],
+			"obj-29::obj-70" : [ "Pan.val.1231", "", 0 ],
 			"parameterbanks" : 			{
+
+			}
+,
+			"parameter_overrides" : 			{
+				"obj-28::obj-70" : 				{
+					"parameter_longname" : "Depth.val.1230",
+					"parameter_shortname" : "Depth.val",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5,
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -100.0, 100.0 ],
+					"parameter_exponent" : 1.0
+				}
+,
+				"obj-29::obj-70" : 				{
+					"parameter_longname" : "Pan.val.1231",
+					"parameter_shortname" : "Pan.val",
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 6,
+					"parameter_initial" : 0.0,
+					"parameter_range" : [ -50.0, 50.0 ],
+					"parameter_exponent" : 1.0
+				}
 
 			}
 
@@ -874,8 +902,8 @@
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
 				}
 ,
