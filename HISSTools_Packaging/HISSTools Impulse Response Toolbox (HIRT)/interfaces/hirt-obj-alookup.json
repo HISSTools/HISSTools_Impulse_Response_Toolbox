@@ -292,7 +292,7 @@
 ,
 		"IR Add" : 		{
 			"name" : "IR Browse",
-			"annotation" : "Click here to browse for a new Impulse Response file. Slot A or B will be populated depending on current state. Adding an IR here is identical to drag & drop, or using the @file attribute."
+			"annotation" : "Click here to browse for a new Impulse Response file. Slot A or B will be populated depending on current state. Adding an IR here is identical to drag & drop, or using the @file[] attributes."
 		}
 ,
 		"IR Length Display A" : 		{
