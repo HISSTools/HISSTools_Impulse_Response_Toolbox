@@ -4,65 +4,52 @@
 
 #include <AH_Types.h>
 #include <HISSTools_FFT.h>
+#include <SIMDSupport.hpp>
+#include <complex>
 
-#ifdef __cplusplus
-extern "C" {
-#else
-#include <AH_Complex_Math.h>
-#endif
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////// Definitions and Enums //////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
+// Definitions and Enums
 
 #define HIRT_MAX_MEASURE_CHANS 128
 #define HIRT_MAX_SPECIFIER_ITEMS 2048
 #define HIRT_DB_MIN -500
 
-typedef enum {
-
+enum t_smooth_mode
+{
     SMOOTH_MODE_FULL = 0,
     SMOOTH_MODE_FAST = 1,
     SMOOTH_MODE_FAST_OCT = 2,
+};
 
-} t_smooth_mode;
-
-typedef enum {
-
+enum t_spectrum_format
+{
     SPECTRUM_REAL,
     SPECTRUM_FULL
+};
 
-} t_spectrum_format;
-
-typedef enum {
-
+enum t_filter_type
+{
     FILTER_REGULARISATION = 0,
     FILTER_CLIP = 1,
     FILTER_FILTER = 2
-
-} t_filter_type;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////// Single Value Conversions /////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+};
 
 
-static __inline double db_to_a(double db)
+// Single Value Conversions
+
+static inline double db_to_a(double db)
 {
     return pow(10.0, db / 20.0);
 }
 
 
-static __inline double db_to_pow(double db)
+static inline double db_to_pow(double db)
 {
     return pow(10.0, db / 10.0);
 }
 
 
-
-static __inline double a_to_db(double a)
+static inline double a_to_db(double a)
 {
     double db;
 
@@ -78,7 +65,7 @@ static __inline double a_to_db(double a)
 }
 
 
-static __inline double pow_to_db(double pow)
+static inline double pow_to_db(double pow)
 {
     double db;
 
@@ -94,10 +81,7 @@ static __inline double pow_to_db(double pow)
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////// Function Prototypes ///////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Function Prototypes
 
 // FFT Size Calculations
 
@@ -170,9 +154,5 @@ void deconvolve(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT
 
 void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double spike);
 void delay_spectrum(FFT_SPLIT_COMPLEX_D spectrum, AH_UIntPtr fft_size, t_spectrum_format format, double delay);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -5,13 +5,9 @@
 
 #include <AH_Types.h>
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////// Phase Parsing and Retrieval ///////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Phase Parsing and Retrieval
 
 #if defined OBJ_USES_HIRT_OUT_PHASE_ATTR || defined OBJ_USES_HIRT_DECONVOLUTION_ATTR
-
 t_atom phase_parser(t_atom a)
 {
     if (atom_gettype(&a) == A_FLOAT || atom_gettype(&a) == A_LONG)
@@ -34,7 +30,6 @@ t_atom phase_parser(t_atom a)
     return a;
 }
 
-
 double phase_retriever(t_atom a)
 {
     t_symbol *sym = atom_getsym(&a);
@@ -53,14 +48,10 @@ double phase_retriever(t_atom a)
 
     return 0;
 }
-
 #endif
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////// Fill a Power Array Specifier from an Array of t_atom Specifiers (single db val, or freq/db pairs) //////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Fill a Power Array Specifier from an Array of t_atom Specifiers (single db val, or freq/db pairs)
 
 void fill_power_array_specifier(double *array, t_atom *specifier, long num_specifiers)
 {
@@ -82,14 +73,9 @@ void fill_power_array_specifier(double *array, t_atom *specifier, long num_speci
         array[i] = HUGE_VAL;
 }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////// Deconvolution Attribute Getters / Setters / Retrieval ///////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Deconvolution Attribute Getters / Setters / Retrieval
 
 #if defined OBJ_USES_HIRT_DECONVOLUTION_ATTR && !defined OBJ_DOES_NOT_USE_HIRT_DECONVOLUTION_DELAY
-
 t_max_err deconvolve_delay_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {
     if (argc && argv && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
@@ -102,12 +88,9 @@ t_max_err deconvolve_delay_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t
 
     return MAX_ERR_NONE;
 }
-
 #endif
 
-
 #ifdef OBJ_USES_HIRT_DECONVOLUTION_ATTR
-
 t_max_err deconvolve_phase_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {
     if (argc && argv)
@@ -117,7 +100,6 @@ t_max_err deconvolve_phase_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t
 
     return MAX_ERR_NONE;
 }
-
 
 t_max_err filter_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {
@@ -171,7 +153,6 @@ t_max_err filter_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long arg
     return MAX_ERR_NONE;
 }
 
-
 t_max_err filter_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *argc, t_atom **argv)
 {
     char alloc;
@@ -184,7 +165,6 @@ t_max_err filter_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *ar
 
     return MAX_ERR_NONE;
 }
-
 
 t_max_err range_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {
@@ -222,7 +202,6 @@ t_max_err range_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long argc
     return MAX_ERR_NONE;
 }
 
-
 t_max_err range_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *argc, t_atom **argv)
 {
     char alloc;
@@ -236,12 +215,10 @@ t_max_err range_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *arg
     return MAX_ERR_NONE;
 }
 
-
 double delay_retriever(t_atom delay, AH_UIntPtr fft_size, double sample_rate)
 {
     return (atom_gettype(&delay) == A_SYM) ? (fft_size >> 1) : (atom_getfloat(&delay) * sample_rate) / 1000.0;
 }
-
 
 t_symbol *filter_retriever(t_atom *specifier)
 {
@@ -250,17 +227,12 @@ t_symbol *filter_retriever(t_atom *specifier)
     else
         return 0;
 }
-
 #endif
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////// Output Phase Attribute Setter //////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Output Phase Attribute Setter
 
 #ifdef OBJ_USES_HIRT_OUT_PHASE_ATTR
-
 t_max_err phase_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {
     if (argc && argv)
@@ -270,17 +242,11 @@ t_max_err phase_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv
 
     return MAX_ERR_NONE;
 }
-
 #endif
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////// Declare Common Attributes ////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Amp Specifications
 
 #ifdef OBJ_USES_HIRT_SWEEP_AMP_CURVE_ATTR
-
 t_max_err amp_curve_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long argc, t_atom *argv)
 {
     long i;
@@ -316,7 +282,6 @@ t_max_err amp_curve_specification_setter(OBJ_CLASSNAME *x, t_object *attr, long 
     return MAX_ERR_NONE;
 }
 
-
 t_max_err amp_curve_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *argc, t_atom **argv)
 {
     char alloc;
@@ -330,7 +295,6 @@ t_max_err amp_curve_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long 
     return MAX_ERR_NONE;
 }
 
-
 void fill_amp_curve_specifier(double *array, t_atom *specifier, long num_specifiers)
 {
     long i;
@@ -340,16 +304,11 @@ void fill_amp_curve_specifier(double *array, t_atom *specifier, long num_specifi
 
     array[i] = HUGE_VAL;
 }
-
 #endif
 
+// Declare Common Attributes
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////// Declare Common Attributes ////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-static __inline void declare_HIRT_common_attributes(void *c)
+static inline void declare_HIRT_common_attributes(t_class *c)
 {
     CLASS_STICKY_ATTR(c, "category", 0L, "Buffer");
 
@@ -427,18 +386,12 @@ static __inline void declare_HIRT_common_attributes(void *c)
     CLASS_ATTR_ACCESSORS(c, "ampcurve", (method) amp_curve_specification_getter, (method) amp_curve_specification_setter);
     CLASS_ATTR_LABEL(c, "ampcurve", 0 , "Sweep Amplitude Curve Specification");
 #endif
-
 }
 
+// Init Common Attributes
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////// Init Common Attributes //////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-static __inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
+static inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
 {
-
 #ifdef OBJ_USES_HIRT_WRITE_ATTR
     x->write_chan = 1;
     x->resize = 1;
@@ -451,8 +404,8 @@ static __inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
 #ifdef OBJ_USES_HIRT_DECONVOLUTION_ATTR
     x->deconvolve_mode = 0;
 
-    x->deconvolve_filter_specifier = malloc(sizeof(t_atom) * HIRT_MAX_SPECIFIER_ITEMS);
-    x->deconvolve_range_specifier = malloc(sizeof(t_atom) * HIRT_MAX_SPECIFIER_ITEMS);
+    x->deconvolve_filter_specifier = (t_atom *) malloc(sizeof(t_atom) * HIRT_MAX_SPECIFIER_ITEMS);
+    x->deconvolve_range_specifier = (t_atom *) malloc(sizeof(t_atom) * HIRT_MAX_SPECIFIER_ITEMS);
 
     if (!x->deconvolve_filter_specifier || !x->deconvolve_range_specifier)
     {
@@ -488,15 +441,10 @@ static __inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
     return 0;
 }
 
+// Free Common Attributes
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////// Free Common Attributes //////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-static __inline void free_HIRT_common_attributes(OBJ_CLASSNAME *x)
+static inline void free_HIRT_common_attributes(OBJ_CLASSNAME *x)
 {
-
 #ifdef OBJ_USES_HIRT_DECONVOLUTION_ATTR
 
     free(x->deconvolve_filter_specifier);
@@ -504,6 +452,5 @@ static __inline void free_HIRT_common_attributes(OBJ_CLASSNAME *x)
 
 #endif
 }
-
 
 #endif  /* __HIRT_COMMON_ATTRIBUTE_SETUP__ */

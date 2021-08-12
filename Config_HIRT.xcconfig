@@ -18,10 +18,15 @@ INFOPLIST_FILE = Info.plist
 
 GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 
+// C++ Version
+
+CLANG_CXX_LANGUAGE_STANDARD = c++11
+CLANG_CXX_LIBRARY = libc++
+
 // This matches with Cycling's maximum backward compatibility
 
-BASE_SDK = 10.5
-MACOSX_DEPLOYMENT_TARGET = 10.5
+BASE_SDK = 10.7
+MACOSX_DEPLOYMENT_TARGET = 10.7
 
 // Build a Universal Binary with 32/64 bit versions
 
@@ -51,7 +56,7 @@ WARNING_CFLAGS = -Wall -Wno-four-char-constants -Wno-unknown-pragmas -Wdeclarati
 // Flags to enforce some build-time checks for the symbols used while not actually performing a hard link
 C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
 
-OTHER_LDFLAGS = $(C74_SYM_LINKER_FLAGS)
+OTHER_LDFLAGS = -framework MaxAudioAPI -framework Accelerate $(C74_SYM_LINKER_FLAGS)
 
 // hide all symbols by default
 // mark a function to be exported with the C74_EXPORT macro -- most likely this will only apply to the main() function

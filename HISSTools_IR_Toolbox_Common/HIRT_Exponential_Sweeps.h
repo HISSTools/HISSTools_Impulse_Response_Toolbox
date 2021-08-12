@@ -2,27 +2,19 @@
 #ifndef __HIRT_EXPONENTIAL_SWEEPS__
 #define __HIRT_EXPONENTIAL_SWEEPS__
 
-#include <AH_Math.h>
 #include <AH_Types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+// ESS Structure
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////// ESS Structure  /////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-typedef enum
+enum t_invert_mode
 {
     
     INVERT_USER_CURVE_TO_FIXED_REFERENCE = 0,   // Output at fixed level, inverting only the user amp curve
     INVERT_USER_CURVE_AND_SWEEP = 1,            // Output inverting the user amp curve and sweep but not the overall amplitude
     INVERT_ALL = 2,                             // Output inverting the user amp curve, sweep and the overall amplitude
+};
     
-} t_invert_mode;
-    
-typedef struct _ess
+struct t_ess
 {
     // Internal only
 
@@ -51,32 +43,21 @@ typedef struct _ess
     AH_UIntPtr num_amp_specifiers;
 
     double amp_specifier[36];
+};
 
+// Get Length / Harm Offsets
 
-} t_ess;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////// Get Length / Harm Offsets ///////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-static __inline AH_UIntPtr ess_get_length (t_ess *x)
+static inline AH_UIntPtr ess_get_length (t_ess *x)
 {
     return x->T;
 }
 
-
-static __inline double ess_harm_offset(t_ess *x, AH_UIntPtr harm)
+static inline double ess_harm_offset(t_ess *x, AH_UIntPtr harm)
 {
     return x->T / log(x->hi_f_act/x->lo_f_act) * log((double) harm);
 }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////// Function Prototypes ///////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Function Prototypes
 
 AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fade_out, double T, double sample_rate, double amp, double *amp_curve);
 
@@ -89,9 +70,5 @@ AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, A
 AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp, AH_Boolean double_precision);
 AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision);
 AH_UIntPtr ess_igen(t_ess *x, void *out, t_invert_mode inv_amp, AH_Boolean double_precision);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __HIRT_EXPONENTIAL_SWEEPS__ */
