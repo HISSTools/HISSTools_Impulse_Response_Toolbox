@@ -4,7 +4,7 @@
 #include <ext_obex_util.h>
 #include <z_dsp.h>
 
-#include <HIRT_Buffer_Access.h>
+#include <HIRT_Buffer_Access.hpp>
 #include <HIRT_Multichannel_Convolution/Convolver.h>
 
 

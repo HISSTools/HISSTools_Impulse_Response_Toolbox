@@ -5,12 +5,12 @@
 #include <z_dsp.h>
 
 #include <AH_Memory_Swap.h>
-#include <HIRT_Core_Functions.h>
-#include <HIRT_Buffer_Access.h>
+#include <HIRT_Core_Functions.hpp>
+#include <HIRT_Buffer_Access.hpp>
 
-#include <HIRT_Exponential_Sweeps.h>
-#include <HIRT_Coloured_Noise.h>
-#include <HIRT_Max_Length_Sequences.h>
+#include <HIRT_Exponential_Sweeps.hpp>
+#include <HIRT_Coloured_Noise.hpp>
+#include <HIRT_Max_Length_Sequences.hpp>
 
 // Define common attributes and the class name (for the common attributes file)
 
@@ -20,7 +20,7 @@
 #define OBJ_DOES_NOT_USE_HIRT_DECONVOLUTION_DELAY
 #define OBJ_USES_HIRT_SWEEP_AMP_CURVE_ATTR
 
-#include <HIRT_Common_Attribute_Vars.h>
+#include <HIRT_Common_Attribute_Vars.hpp>
 
 
 // Excitation signal type enum
@@ -125,7 +125,7 @@ struct t_irmeasure
 
 // This include deals with setup of common attributes - requires the object structure to be defined
 
-#include <HIRT_Common_Attribute_Setup.h>
+#include <HIRT_Common_Attribute_Setup.hpp>
 
 
 // Function prototypes

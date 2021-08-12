@@ -4,9 +4,9 @@
 #include <ext_obex_util.h>
 #include <z_dsp.h>
 
-#include <HIRT_Core_Functions.h>
-#include <HIRT_Buffer_Access.h>
-#include <HIRT_Matrix_Math.h>
+#include <HIRT_Core_Functions.hpp>
+#include <HIRT_Buffer_Access.hpp>
+#include <HIRT_Matrix_Math.hpp>
 
 // Define common attributes and the class name (for the common attributes file)
 
@@ -14,7 +14,7 @@
 #define OBJ_USES_HIRT_WRITE_ATTR
 #define OBJ_USES_HIRT_READ_ATTR
 
-#include <HIRT_Common_Attribute_Vars.h>
+#include <HIRT_Common_Attribute_Vars.hpp>
 
 
 // Object class and structure
@@ -37,7 +37,7 @@ struct t_irnonlin
 
 // This include deals with setup of common attributes - requires the object structure to be defined
 
-#include <HIRT_Common_Attribute_Setup.h>
+#include <HIRT_Common_Attribute_Setup.hpp>
 
 
 // Function prototypes

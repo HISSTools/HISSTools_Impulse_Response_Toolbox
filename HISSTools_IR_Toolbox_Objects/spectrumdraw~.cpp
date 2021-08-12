@@ -6,16 +6,16 @@
 #include <z_dsp.h>
 
 #include <AH_Memory_Swap.h>
-#include <HIRT_Core_Functions.h>
-#include <HIRT_Buffer_Access.h>
-#include <HIRT_Frame_Stats.h>
+#include <HIRT_Core_Functions.hpp>
+#include <HIRT_Buffer_Access.hpp>
+#include <HIRT_Frame_Stats.hpp>
 
 // Define common attributes and the class name (for the common attributes file)
 
 #define OBJ_CLASSNAME t_spectrumdraw
 #define OBJ_USES_HIRT_READ_ATTR
 
-#include <HIRT_Common_Attribute_Vars.h>
+#include <HIRT_Common_Attribute_Vars.hpp>
 
 
 // Defines
@@ -190,7 +190,7 @@ struct t_spectrumdraw
 
 // This include deals with setup of common attributes - requires the object structure to be defined
 
-#include <HIRT_Common_Attribute_Setup.h>
+#include <HIRT_Common_Attribute_Setup.hpp>
 
 
 // Scale vals structure

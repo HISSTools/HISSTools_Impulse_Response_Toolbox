@@ -1,6 +1,6 @@
 
 
-#include "HIRT_Frame_Stats.h"
+#include "HIRT_Frame_Stats.hpp"
 
 #ifndef __APPLE__
 #include <stdio.h>

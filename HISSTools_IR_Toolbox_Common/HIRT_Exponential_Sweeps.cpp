@@ -1,5 +1,5 @@
 
-#include "HIRT_Exponential_Sweeps.h"
+#include "HIRT_Exponential_Sweeps.hpp"
 #include "ext.h"
 
 //////////////////////////////////////////////////////////////////////////

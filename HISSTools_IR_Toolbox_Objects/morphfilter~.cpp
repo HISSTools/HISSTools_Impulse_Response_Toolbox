@@ -3,8 +3,8 @@
 #include <ext_obex.h>
 #include <z_dsp.h>
 
-#include <HIRT_Core_Functions.h>
-#include <HIRT_Buffer_Access.h>
+#include <HIRT_Core_Functions.hpp>
+#include <HIRT_Buffer_Access.hpp>
 
 // Define common attributes and the class name (for the common attributes file)
 
@@ -12,7 +12,7 @@
 #define OBJ_USES_HIRT_WRITE_ATTR
 #define OBJ_USES_HIRT_READ_ATTR
 
-#include <HIRT_Common_Attribute_Vars.h>
+#include <HIRT_Common_Attribute_Vars.hpp>
 
 // Object class and structure
 
@@ -55,7 +55,7 @@ struct t_morphfilter
 
 // This include deals with setup of common attributes - requires the object structure to be defined
 
-#include <HIRT_Common_Attribute_Setup.h>
+#include <HIRT_Common_Attribute_Setup.hpp>
 
 
 // Function prototypes
