@@ -120,12 +120,12 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
     
     float *write_samples = samples + chan;
     
-    for (size_t i = 0; i < write_length; i++, samples += info.b_nchans)
+    for (size_t i = 0; i < write_length; i++, write_samples += info.b_nchans)
         *write_samples = static_cast<float>(in[i] * mul);
     
     if (!resize)
     {
-        for (size_t i = write_length; i < info.b_frames; i++, samples += info.b_nchans)
+        for (size_t i = write_length; i < info.b_frames; i++, write_samples += info.b_nchans)
             *write_samples = 0.f;
     }
     
