@@ -54,7 +54,7 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main(void)
+int C74_EXPORT main()
 {
     this_class = class_new("bufconvolve~",
                           (method) bufconvolve_new,
@@ -86,7 +86,7 @@ void *bufconvolve_new(t_symbol *s, short argc, t_atom *argv)
     init_HIRT_common_attributes(x);
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

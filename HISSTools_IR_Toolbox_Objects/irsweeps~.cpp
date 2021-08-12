@@ -87,7 +87,7 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irsweeps~",
                           (method) irsweeps_new,
@@ -137,7 +137,7 @@ void *irsweeps_new(t_symbol *s, short argc, t_atom *argv)
     
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

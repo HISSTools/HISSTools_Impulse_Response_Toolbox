@@ -69,7 +69,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irphase~",
                           (method) irphase_new,
@@ -110,7 +110,7 @@ void *irphase_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

@@ -180,7 +180,7 @@ void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double sampl
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irmeasure~",
                           (method) irmeasure_new,
@@ -303,7 +303,7 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

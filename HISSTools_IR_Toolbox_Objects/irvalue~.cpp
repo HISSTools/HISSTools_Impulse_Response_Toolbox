@@ -60,7 +60,7 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth);
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irvalue~",
                           (method) irvalue_new,
@@ -96,7 +96,7 @@ void *irvalue_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

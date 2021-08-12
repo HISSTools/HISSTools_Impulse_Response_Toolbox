@@ -59,7 +59,7 @@ void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-int main(void)
+int C74_EXPORT main()
 {
     this_class = class_new("bufresample~",
                           (method) bufresample_new,
@@ -93,7 +93,7 @@ void *bufresample_new()
     init_HIRT_common_attributes(x);
 
 
-    return(x);
+    return x;
 }
 
 

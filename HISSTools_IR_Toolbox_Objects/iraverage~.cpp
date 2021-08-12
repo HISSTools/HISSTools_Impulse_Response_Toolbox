@@ -58,7 +58,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("iraverage~",
                           (method) iraverage_new,
@@ -90,7 +90,7 @@ void *iraverage_new(t_symbol *s, short argc, t_atom *argv)
     init_HIRT_common_attributes(x);
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

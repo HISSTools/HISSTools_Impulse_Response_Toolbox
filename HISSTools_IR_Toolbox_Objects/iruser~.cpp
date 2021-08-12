@@ -119,7 +119,7 @@ t_max_err response_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("iruser~",
                           (method) iruser_new,
@@ -163,7 +163,7 @@ void *iruser_new(t_symbol *s, short argc, t_atom *argv)
     init_HIRT_common_attributes(x);
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

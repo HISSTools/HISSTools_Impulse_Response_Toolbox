@@ -97,7 +97,7 @@ void irtrimnorm_pad(t_irtrimnorm *x, t_symbol *sym, long argc, t_atom *argv);
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irtrimnorm~",
                           (method) irtrimnorm_new,
@@ -178,7 +178,7 @@ void *irtrimnorm_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

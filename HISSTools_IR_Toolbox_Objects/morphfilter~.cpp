@@ -72,7 +72,7 @@ void morphfilter_process(t_morphfilter *x, t_symbol *target, t_symbol *source);
 void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t_atom *argv);
 
 
-int main(void)
+int C74_EXPORT main()
 {
     this_class = class_new("morphfilter~",
                           (method) morphfilter_new,
@@ -105,7 +105,7 @@ void *morphfilter_new()
 
     init_HIRT_common_attributes(x);
 
-    return(x);
+    return x;
 }
 
 

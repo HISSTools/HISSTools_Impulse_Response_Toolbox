@@ -72,7 +72,7 @@ double PLA_calc_merged_cost(double *x_vals, double *y_vals, AH_UIntPtr start_pos
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irplapprox~",
                           (method) irpiecewiseapprox_new,
@@ -117,7 +117,7 @@ void *irpiecewiseapprox_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

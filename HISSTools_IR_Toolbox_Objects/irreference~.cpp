@@ -117,7 +117,7 @@ void irreference_dsp64 (t_irreference *x, t_object *dsp64, short *count, double 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irreference~",
                           (method) irreference_new,
@@ -206,7 +206,7 @@ void *irreference_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

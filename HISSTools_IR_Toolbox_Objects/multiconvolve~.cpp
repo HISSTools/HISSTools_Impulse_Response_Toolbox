@@ -126,7 +126,7 @@ t_atom_long multiconvolve_arg_check(t_multiconvolve *x, const char *name, t_atom
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     t_object *attr_temp;
 
@@ -228,7 +228,7 @@ void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
     
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

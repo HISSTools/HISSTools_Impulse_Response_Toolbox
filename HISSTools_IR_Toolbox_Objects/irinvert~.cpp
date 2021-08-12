@@ -60,7 +60,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 //////////////////////////////////////////////////////////////////////////
 
 
-int main(void)
+int C74_EXPORT main()
 {
     this_class = class_new("irinvert~",
                           (method) irinvert_new,
@@ -92,7 +92,7 @@ void *irinvert_new(t_symbol *s, short argc, t_atom *argv)
     init_HIRT_common_attributes(x);
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

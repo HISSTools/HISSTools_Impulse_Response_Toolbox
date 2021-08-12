@@ -2148,6 +2148,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ALTIVEC_EXTENSIONS = YES;
+				LLVM_LTO = YES;
 			};
 			name = Default;
 		};
@@ -2533,6 +2534,7 @@
 			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_ALTIVEC_EXTENSIONS = YES;
+				LLVM_LTO = YES;
 			};
 			name = Deployment;
 		};
@@ -2811,6 +2813,7 @@
 			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_ALTIVEC_EXTENSIONS = YES;
+				LLVM_LTO = YES;
 			};
 			name = Development;
 		};

@@ -123,7 +123,7 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     this_class = class_new("irextract~",
                           (method) irextract_new,
@@ -195,7 +195,7 @@ void *irextract_new(t_symbol *s, short argc, t_atom *argv)
 
     attr_args_process(x, argc, argv);
 
-    return(x);
+    return x;
 }
 
 

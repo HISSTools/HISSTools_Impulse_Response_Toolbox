@@ -529,7 +529,7 @@ static inline void spectrumdraw_set_fft_scaling(t_scale_vals *scale, AH_UIntPtr 
 //////////////////////////////////////////////////////////////////////////
 
 
-int main()
+int C74_EXPORT main()
 {
     t_class *c;
     short i;
