@@ -791,7 +791,6 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
     // Write to buffer
 
     error = buffer_write((t_object *) x, buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
-    buffer_write_error((t_object *) x, buffer, error);
     
     // Done
     
@@ -843,7 +842,6 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
     // Write to buffer
 
     error = buffer_write((t_object *) x, buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
-    buffer_write_error((t_object *) x, buffer, error);
     
     // Done
     

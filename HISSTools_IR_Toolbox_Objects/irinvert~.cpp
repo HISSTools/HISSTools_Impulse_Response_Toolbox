@@ -244,7 +244,6 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
     error = buffer_write((t_object *)x, target, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
-    buffer_write_error((t_object *) x, target, error);
 
     // Free resources
 
@@ -567,7 +566,6 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
             delay_spectrum(impulses[i], fft_size, SPECTRUM_REAL, deconvolve_delay);
             spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
             error = buffer_write((t_object*)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.);
-            buffer_write_error((t_object *) x, out_buffer_names[i], error);
 
             if (error)
                 overall_error = true;

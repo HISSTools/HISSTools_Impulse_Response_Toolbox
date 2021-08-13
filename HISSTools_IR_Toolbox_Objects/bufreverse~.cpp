@@ -29,7 +29,6 @@ struct t_bufreverse
     // Bang Outlet
 
     void *process_done;
-
 };
 
 
@@ -156,7 +155,6 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
     // Copy out to buffer
 
     error = buffer_write((t_object *)x, target, temp2, full_length, x->write_chan - 1, x->resize, sample_rate, 1.);
-    buffer_write_error((t_object *)x, target, error);
 
     // Free Resources
 

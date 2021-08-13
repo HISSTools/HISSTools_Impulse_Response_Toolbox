@@ -717,7 +717,6 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
     // Copy out to buffer
 
     error = buffer_write((t_object *)x, target, output, nsamps, x->write_chan - 1, x->resize, sample_rate, 1.);
-    buffer_write_error((t_object *)x, target, error);
 
     // Free Resources
 

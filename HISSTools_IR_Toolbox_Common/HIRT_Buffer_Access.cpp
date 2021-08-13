@@ -144,12 +144,16 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
 
 t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul)
 {
-    return buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
+    auto error =  buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
+    buffer_write_error(owner, buffer, error);
+    return error;
 }
 
 t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, AH_SIntPtr write_length, long resize, long chan, double sample_rate, float mul)
 {
-    return buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
+    auto error =  buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
+    buffer_write_error(owner, buffer, error);
+    return error;
 }
 
 //////////////////////////////////////////////////////////////////////////

@@ -228,7 +228,6 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
     // Write to buffer
 
     error = buffer_write_float((t_object *)x, buffer, temp_buf, sig_length, x->resize, x->write_chan - 1, sample_rate, 1.0);
-    buffer_write_error((t_object *) x, buffer, error);
 
     // Free temporary memory
 

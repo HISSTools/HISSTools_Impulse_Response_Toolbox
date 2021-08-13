@@ -276,7 +276,6 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
         deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-        buffer_write_error((t_object *) x, target_1, error);
 
         // Deconvolve - convert to time domain - copy out to buffer
 
@@ -284,7 +283,6 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
         deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-        buffer_write_error((t_object *) x, target_2, error);
     }
     else
     {
@@ -324,14 +322,12 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
         deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-        buffer_write_error((t_object *) x, target_1, error);
 
         // Deconvolve - convert to time domain - copy out to buffer
 
         deconvolve(fft_setup, spectrum_2, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_2, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-        buffer_write_error((t_object *) x, target_2, error);
     }
 
     // Free resources

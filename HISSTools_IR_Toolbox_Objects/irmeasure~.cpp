@@ -965,7 +965,6 @@ void irmeasure_extract_internal(t_irmeasure *x, t_symbol *sym, short argc, t_ato
     // Write to buffer
 
     error = buffer_write((t_object *) x, buffer, rec_mem + rec_length * in_chan, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
-    buffer_write_error((t_object *) x, buffer, error);
 }
 
 
@@ -1028,7 +1027,6 @@ void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *
     // Write to buffer
 
     error = buffer_write((t_object *) x, buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
-    buffer_write_error((t_object *) x, buffer, error);
 }
 
 
@@ -1157,7 +1155,6 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
     // Write to buffer
 
     error = buffer_write((t_object *) x, buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
-    buffer_write_error((t_object *) x, buffer, error);
 }
 
 

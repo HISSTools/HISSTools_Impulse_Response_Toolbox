@@ -398,7 +398,6 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
         spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.0);
         overall_error = error ? true : overall_error;
-        buffer_write_error((t_object *) x, out_buffer_names[i], error);
     }
 
     // Free Resources

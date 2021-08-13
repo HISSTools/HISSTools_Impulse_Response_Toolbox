@@ -239,7 +239,6 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase_retriever(x->out_phase), false);
     spectrum_to_time(fft_setup, temp, spectrum_1, fft_size, SPECTRUM_FULL);
     error = buffer_write((t_object *)x, target, temp, fft_size, write_chan, x->resize, sample_rate, 1.0);
-    buffer_write_error((t_object *) x, target, error);
 
     // Free Resources
 
@@ -338,7 +337,6 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     // Copy out to buffer
 
     error = buffer_write((t_object *)x, target, accum, max_length, write_chan, x->resize, sample_rate, 1.0);
-    buffer_write_error((t_object *) x, target, error);
 
     // Free Resources
 

@@ -276,7 +276,6 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 
     spectrum_to_time(fft_setup, out_temp, spectrum_1, fft_size, SPECTRUM_FULL);
     error = buffer_write((t_object *)x, target, out_temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-    buffer_write_error((t_object *) x, target, error);
 
     // Free Resources
 

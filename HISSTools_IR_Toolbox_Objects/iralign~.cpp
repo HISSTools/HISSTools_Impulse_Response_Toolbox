@@ -256,7 +256,6 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
         align_pad (temp_buf_d, samples[i], overall_max_pos - max_pos[i], lengths[i]);
 
         error = buffer_write((t_object *)x, out_buffer_names[i], temp_buf_d, lengths[i] + overall_max_pos - max_pos[i], write_chan, x->resize, sample_rate, 1.0);
-        buffer_write_error((t_object *) x, out_buffer_names[i], error);
 
         if (error)
             overall_error = true;

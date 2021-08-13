@@ -261,7 +261,6 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 
     spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
     error = buffer_write((t_object *) x, target, out_buf, (convolve_mode == true ? source_length_1 + source_length_2 - 1 : fft_size), x->write_chan - 1, x->resize, sample_rate, 1.);
-    buffer_write_error((t_object *) x, target, error);
 
     // Free resources
 

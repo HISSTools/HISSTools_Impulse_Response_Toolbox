@@ -343,7 +343,6 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 
     spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_FULL);
     error = buffer_write((t_object *)x, target, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1);
-    buffer_write_error((t_object *) x, target, error);
 
     // Free memory
 

@@ -338,8 +338,6 @@ long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 {
     AH_SIntPtr crop_length = crop2 - crop1;
 
-    t_buffer_write_error error;
-
     // Check length
 
     if (crop2 == 0 || L < crop2)
@@ -379,10 +377,7 @@ long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 
     // Write to buffer
 
-    error = buffer_write((t_object *)x, buffer, temp_buf, crop_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor);
-    buffer_write_error((t_object *) x, buffer, error);
-
-    return (long) error;
+    return (long) buffer_write((t_object *)x, buffer, temp_buf, crop_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor);
 }
 
 
@@ -620,8 +615,6 @@ long irtrimnorm_trim_check_write(t_irtrimnorm *x, t_symbol *buffer, AH_SIntPtr t
 
 long irtrimnorm_trim_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, AH_SIntPtr trim_offset, AH_SIntPtr trim_length, AH_SIntPtr fade_in, AH_SIntPtr fade_out, AH_SIntPtr pad_in, AH_SIntPtr pad_out, double norm_factor, AH_SIntPtr L, double sample_rate)
 {
-    t_buffer_write_error error;
-
     // Check length
 
     if (L < trim_offset + trim_length)
@@ -658,10 +651,7 @@ long irtrimnorm_trim_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 
     // Write to buffer
 
-    error = buffer_write((t_object *)x, buffer, temp_buf, trim_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor);
-    buffer_write_error((t_object *) x, buffer, error);
-
-    return (long) error;
+    return (long) buffer_write((t_object *)x, buffer, temp_buf, trim_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor);
 }
 
 

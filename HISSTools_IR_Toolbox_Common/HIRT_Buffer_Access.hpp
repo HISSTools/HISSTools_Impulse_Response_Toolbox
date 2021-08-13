@@ -28,7 +28,6 @@ long buffer_check(t_object *x, t_symbol *buffer);
 AH_SIntPtr buffer_read(t_symbol *buffer, long chan, float *out, AH_SIntPtr max_length);
 AH_SIntPtr buffer_read_part(t_symbol *buffer, long chan, float *out, AH_SIntPtr offset, AH_SIntPtr read_length);
 
-void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error error);
 t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul);
 t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, float mul);
 
