@@ -2,7 +2,9 @@
 #ifndef __HIRT_FRAME_STATS_
 #define __HIRT_FRAME_STATS_
 
+#include <algorithm>
 #include <cstdint>
+#include <vector>
 
 // Mode Enum
 
@@ -16,34 +18,36 @@ enum t_frame_mode
 
 // Frame Stats Struct
 
-struct t_frame_stats
+class t_frame_stats
 {
-    double *current_frame;
-    uint32_t *ages;
+public:
+        
+    t_frame_stats(uintptr_t max_N);
+    
+    void reset(bool full);
+    
+    void set_mode(t_frame_mode mode);
+    void set_max_age(uintptr_t max_age);
+    void set_alpha(double alpha_u, double alpha_d);
+    
+    void write(float *in, uintptr_t N);
+    void read(float *out, uintptr_t N);
+    
+private:
+    
+    std::vector<double> m_current_frame;
+    std::vector<uintptr_t> m_ages;
 
-    double alpha_u;
-    double alpha_d;
+    double m_alpha_u;
+    double m_alpha_d;
 
-    uint32_t max_age;
+    uintptr_t m_max_age;
 
-    uintptr_t frames;
-    uintptr_t max_N;
-    uintptr_t last_N;
+    uintptr_t m_frames;
+    uintptr_t m_max_N;
+    uintptr_t m_last_N;
 
-    t_frame_mode mode;
+    t_frame_mode m_mode;
 };
-
-// Function Prototypes
-
-t_frame_stats *create_frame_stats(uintptr_t max_N);
-void destroy_frame_stats(t_frame_stats *stats);
-
-void frame_stats_reset(t_frame_stats *stats, bool full);
-void frame_stats_mode(t_frame_stats *stats, t_frame_mode mode);
-void frame_stats_max_age(t_frame_stats *stats, uint32_t max_age);
-void frame_stats_alpha(t_frame_stats *stats, double alpha_u, double alpha_d);
-
-void frame_stats_write(t_frame_stats *stats, float *in, uintptr_t N);
-void frame_stats_read(t_frame_stats *stats, float *out, uintptr_t N);
 
 #endif /*__HIRT_FRAME_STATS_ */

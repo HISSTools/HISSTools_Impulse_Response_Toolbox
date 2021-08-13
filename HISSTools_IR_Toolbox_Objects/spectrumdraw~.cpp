@@ -1030,7 +1030,7 @@ void *alloc_fft_setup(uintptr_t size, uintptr_t nom_size)
 
 void free_fft_stats(void *frame_stats)
 {
-    destroy_frame_stats((t_frame_stats *)frame_stats);
+    delete (t_frame_stats *)frame_stats;
 }
 
 
@@ -1047,7 +1047,7 @@ void *alloc_realtime_data(uintptr_t size, uintptr_t nom_size)
 
 void *alloc_fft_stats(uintptr_t size, uintptr_t nom_size)
 {
-    return create_frame_stats(size);
+    return new t_frame_stats(size);
 }
 
 
@@ -1814,13 +1814,13 @@ void spectrumdraw_realtime(t_spectrumdraw *x, float *read_from, long phase_mode,
 
         frame_stats = (t_frame_stats *) x->realtime_stats[j].current_ptr;
 
-        frame_stats_mode(frame_stats, (t_frame_mode) (curve_mode - 1));
-        frame_stats_max_age(frame_stats, (uint32_t) ceil(x->peak_hold / x->redraw_time));
-        frame_stats_alpha(frame_stats, 2 / ((x->time_smooth[0] / x->redraw_time) + 1.0), 2 / ((x->time_smooth[1] / x->redraw_time) + 1.0));
+        frame_stats->set_mode((t_frame_mode) (curve_mode - 1));
+        frame_stats->set_max_age((uint32_t) ceil(x->peak_hold / x->redraw_time));
+        frame_stats->set_alpha(2.0 / ((x->time_smooth[0] / x->redraw_time) + 1.0), 2.0 / ((x->time_smooth[1] / x->redraw_time) + 1.0));
 
         // Do stats
 
-        frame_stats_write(frame_stats, in_temp_f, (fft_size >> 1) + 1);
+        frame_stats->write(in_temp_f, (fft_size >> 1) + 1);
 
         // Check freeze status
 
@@ -1829,7 +1829,7 @@ void spectrumdraw_realtime(t_spectrumdraw *x, float *read_from, long phase_mode,
 
         // Store amps
 
-        frame_stats_read(frame_stats, amp_vals, (fft_size >> 1) + 1);
+        frame_stats->read(amp_vals, (fft_size >> 1) + 1);
 
         if (phase_mode)
         {

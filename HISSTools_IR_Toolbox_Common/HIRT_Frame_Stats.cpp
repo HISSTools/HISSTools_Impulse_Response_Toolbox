@@ -2,265 +2,175 @@
 
 #include "HIRT_Frame_Stats.hpp"
 
-#ifndef __APPLE__
-#include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
-#endif
-
-
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////// Create / Destroy ////////////////////////////
+////////////////////////////// Constructor ///////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-
-t_frame_stats *create_frame_stats(uintptr_t max_N)
+t_frame_stats::t_frame_stats(uintptr_t max_N)
+: m_current_frame(max_N, 0.0)
+, m_ages(max_N, 0.0)
+, m_max_N(max_N)
 {
-    t_frame_stats *stats = (t_frame_stats *)malloc(sizeof(t_frame_stats));
-
-    if (stats)
-    {
-        stats->max_N = max_N;
-        stats->current_frame = (double *) malloc(sizeof(double) * max_N);
-        stats->ages = (uint32_t *) malloc(sizeof(uint32_t) * max_N);
-
-        if (stats->current_frame)
-            frame_stats_reset(stats, true);
-        else
-        {
-            free(stats->current_frame);
-            free(stats->ages);
-            free(stats);
-            stats = NULL;
-        }
-    }
-
-    return stats;
+    reset(true);
 }
-
-
-void destroy_frame_stats(t_frame_stats *stats)
-{
-    if (stats)
-    {
-        free(stats->current_frame);
-        free(stats->ages);
-    }
-
-    free(stats);
-}
-
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////// Reset and Set Parameters ////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-
-void frame_stats_reset(t_frame_stats *stats, bool full)
+void t_frame_stats::reset(bool full)
 {
-    double *current_frame = stats->current_frame;
-    uint32_t *ages = stats->ages;
-    uintptr_t i;
+    m_last_N = 0;
+    m_frames = 0;
 
-    stats->last_N = 0;
-    stats->frames = 0;
-
-    if (full == true)
+    if (full)
     {
-        stats->mode = MODE_COPY;
-        stats->max_age = 30;
-        stats->alpha_u = 0.5;
-        stats->alpha_d = 0.5;
+        m_mode = MODE_COPY;
+        m_max_age = 30;
+        m_alpha_u = 0.5;
+        m_alpha_d = 0.5;
 
-        for (i = 0; i < stats->max_N; i++)
+        for (uintptr_t i = 0; i < m_max_N; i++)
         {
-            current_frame[i] = 0.0;
-            ages[i] = 0;
+            m_current_frame[i] = 0.0;
+            m_ages[i] = 0;
         }
     }
 }
 
-
-void frame_stats_mode(t_frame_stats *stats, t_frame_mode mode)
+void t_frame_stats::set_mode(t_frame_mode mode)
 {
-    t_frame_mode old_mode = stats->mode;
+    t_frame_mode old_mode = m_mode;
 
     switch (mode)
     {
-        case MODE_COPY:
-            stats->mode = MODE_COPY;
-            break;
-
-        case MODE_ACCUMULATE:
-            stats->mode = MODE_ACCUMULATE;
-            break;
-
-        case MODE_PEAKS:
-            stats->mode = MODE_PEAKS;
-            break;
-
-        case MODE_SMOOTH:
-            stats->mode = MODE_SMOOTH;
-            break;
-
+        case MODE_COPY:         m_mode = MODE_COPY;         break;
+        case MODE_ACCUMULATE:   m_mode = MODE_ACCUMULATE;   break;
+        case MODE_PEAKS:        m_mode = MODE_PEAKS;        break;
+        case MODE_SMOOTH:       m_mode = MODE_SMOOTH;       break;
         default:
-            stats->mode = MODE_COPY;
+            m_mode = MODE_COPY;
 
     }
 
-    if (old_mode != stats->mode)
-        frame_stats_reset(stats, false);
+    if (old_mode != m_mode)
+        reset(false);
 }
 
-
-void frame_stats_max_age(t_frame_stats *stats, uint32_t max_age)
+void t_frame_stats::set_max_age(uintptr_t max_age)
 {
-    stats->max_age = max_age;
+    m_max_age = max_age;
 }
 
-
-void frame_stats_alpha(t_frame_stats *stats, double alpha_u, double alpha_d)
+void t_frame_stats::set_alpha(double alpha_u, double alpha_d)
 {
-    if (alpha_u > 1.0)
-        alpha_u = 1.0;
-    if (alpha_u < 0.0)
-        alpha_u = 0.0;
-
-    if (alpha_d > 1.0)
-        alpha_d = 1.0;
-    if (alpha_d < 0.0)
-        alpha_d = 0.0;
-
-    stats->alpha_u = alpha_u;
-    stats->alpha_d = alpha_d;
+    m_alpha_u = std::max(0.0, std::min(1.0, alpha_u));
+    m_alpha_d = std::max(0.0, std::min(1.0, alpha_d));
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Read and Write /////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-
-void frame_stats_write(t_frame_stats *stats, float *in, uintptr_t N)
+void t_frame_stats::write(float *in, uintptr_t N)
 {
-    double *current_frame = stats->current_frame;
-    double alpha_u = stats->alpha_u;
-    double alpha_d = stats->alpha_d;
-    double alpha;
+    if (N != m_last_N)
+        reset(false);
 
-    uint32_t *ages = stats->ages;
-    uint32_t max_age = stats->max_age;
-    uintptr_t i;
-
-    if (N != stats->last_N)
-        frame_stats_reset(stats, false);
-
-    switch (stats->mode)
+    switch (m_mode)
     {
         case MODE_COPY:
 
-            for (i = 0; i < N; i++)
-                current_frame[i] = in[i];
-            stats->frames = 1;
-
+            for (uintptr_t i = 0; i < N; i++)
+                m_current_frame[i] = in[i];
+            m_frames = 1;
             break;
 
         case MODE_ACCUMULATE:
 
-            if (stats->frames)
+            if (m_frames)
             {
-                for (i = 0; i < N; i++)
-                    current_frame[i] += in[i];
+                for (uintptr_t i = 0; i < N; i++)
+                    m_current_frame[i] += in[i];
             }
             else
             {
-                for (i = 0; i < N; i++)
-                    current_frame[i] = in[i];
+                for (uintptr_t i = 0; i < N; i++)
+                    m_current_frame[i] = in[i];
             }
-            stats->frames++;
-
+            m_frames++;
             break;
 
         case MODE_PEAKS:
 
-            if (stats->frames)
+            if (m_frames)
             {
-                for (i = 0; i < N; i++)
+                for (uintptr_t i = 0; i < N; i++)
                 {
-                    if (++ages[i] > max_age || in[i] > current_frame[i])
+                    if (++m_ages[i] > m_max_age || in[i] > m_current_frame[i])
                     {
-                        current_frame[i] = in[i];
-                        ages[i] = 0;
+                        m_current_frame[i] = in[i];
+                        m_ages[i] = 0;
                     }
                 }
             }
             else
             {
-                for (i = 0; i < N; i++)
+                for (uintptr_t i = 0; i < N; i++)
                 {
-                    current_frame[i] = in[i];
-                    ages[i] = 0;
+                    m_current_frame[i] = in[i];
+                    m_ages[i] = 0;
                 }
             }
-            stats->frames = 1;
-
+            m_frames = 1;
             break;
 
         case MODE_SMOOTH:
 
-            if (stats->frames)
+            if (m_frames)
             {
+                double alpha;
                 double in_val;
                 double last_val;
 
-                for (i = 0; i < N; i++)
+                for (uintptr_t i = 0; i < N; i++)
                 {
                     in_val = in[i];
-                    last_val = current_frame[i];
+                    last_val = m_current_frame[i];
 
                     if (in_val > last_val)
-                        alpha = alpha_u;
+                        alpha = m_alpha_u;
                     else
-                        alpha = alpha_d;
+                        alpha = m_alpha_d;
 
-                    current_frame[i] = last_val + alpha * (in_val - last_val);
+                    m_current_frame[i] = last_val + alpha * (in_val - last_val);
                 }
             }
             else
             {
-                for (i = 0; i < N; i++)
-                    current_frame[i] = in[i];
+                for (uintptr_t i = 0; i < N; i++)
+                    m_current_frame[i] = in[i];
             }
-
-            stats->frames = 1;
-
+            m_frames = 1;
             break;
 
     }
 
-    stats->last_N = N;
+    m_last_N = N;
 }
 
-
-void frame_stats_read(t_frame_stats *stats, float *out, uintptr_t N)
+void t_frame_stats::read(float *out, uintptr_t N)
 {
-    double *current_frame = stats->current_frame;
-    double recip = 1.0 / stats->frames;
+    double recip = m_mode == MODE_ACCUMULATE ? 1.0 / m_frames : 1.0;
 
-    uintptr_t i;
-
-    if (stats->mode != MODE_ACCUMULATE)
-        recip = 1.0;
-
-    if (stats->frames)
+    if (m_frames)
     {
-        for (i = 0; i < N; i++)
-            out[i] = (float) (current_frame[i] * recip);
+        for (uintptr_t i = 0; i < N; i++)
+            out[i] = static_cast<float>(m_current_frame[i] * recip);
     }
     else
     {
-        for (i = 0; i < N; i++)
+        for (uintptr_t i = 0; i < N; i++)
             out[i] = 0.f;
     }
 }
-
