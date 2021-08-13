@@ -206,8 +206,6 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
     double alpha, alpha_shelf, alpha_mul_A, alpha_div_A;
     double gain_mul;
 
-    intptr_t i;
-
     f0 = filter->f0;
     rate = filter->rate;
     g_db1 = filter->g_db0;
@@ -227,7 +225,7 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
     {
         case GAIN:
 
-            for (i = 0; i < length; i++, A *= gain_mul)
+            for (intptr_t i = 0; i < length; i++, A *= gain_mul)
                 samples[i] = samples[i] * A;
             break;
 
@@ -236,7 +234,7 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
             sqrtA = sqrt(A);
             gain_mul = sqrt(gain_mul);
 
-            for (i = 0; i < length; i++, sqrtA *= gain_mul)
+            for (intptr_t i = 0; i < length; i++, sqrtA *= gain_mul)
             {
                 alpha = sinw / (2.0 * qs);
                 alpha_shelf = 2.0 * sqrtA * alpha;
@@ -265,7 +263,7 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
             sqrtA = sqrt(A);
             gain_mul = sqrt(gain_mul);
 
-            for (i = 0; i < length; i++, sqrtA *= gain_mul)
+            for (intptr_t i = 0; i < length; i++, sqrtA *= gain_mul)
             {
                 alpha = sinw / (2.0 * qs);
                 alpha_shelf = 2.0 * sqrtA * alpha;
@@ -291,7 +289,7 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
 
         case PEAKING:
 
-            for (i = 0; i < length; i++, A *= gain_mul)
+            for (intptr_t i = 0; i < length; i++, A *= gain_mul)
             {
                 alpha = sinw / (2.0 * qs);
                 alpha_mul_A = alpha * A;
@@ -329,17 +327,14 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
     t_symbol *source = atom_getsym(argv++);
 
     intptr_t length = buffer_length(source);
-    intptr_t full_length = length;
-    intptr_t i;
-
-    t_atom_long read_chan = x->read_chan - 1;
-    double sample_rate = 0;
 
     // Check source buffer
 
     if (buffer_check((t_object *) x, source))
         return;
-    sample_rate = buffer_sample_rate(source);
+    
+    t_atom_long read_chan = x->read_chan - 1;
+    double sample_rate = buffer_sample_rate(source);
 
     // Allocate Memory
 
@@ -360,12 +355,12 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
 
     // Copy to double precision version
 
-    for (i = 0; i < full_length; i++)
+    for (intptr_t i = 0; i < length; i++)
          temp2[i] = temp1[i];
 
     // Do filtering
 
-    for (i = 0; i < x->nfilters; i++)
+    for (intptr_t i = 0; i < x->nfilters; i++)
         morphfilter_apply_filter(temp2.get(), x->filter + i, sample_rate, length);
 
     // Copy out to buffer

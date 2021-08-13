@@ -56,7 +56,7 @@ struct t_irtrimnorm
 double atom_getdouble(t_atom *a)
 {
     if (atom_gettype(a) == A_LONG)
-        return (double) atom_getlong(a);
+        return static_cast<double>(atom_getlong(a));
 
     if (atom_gettype(a) == A_FLOAT)
         return atom_getfloat(a);
@@ -77,7 +77,7 @@ long irtrimnorm_check_db(t_atom *a, double *db);
 void irtrimnorm_write_internal_buffer(double *samples, double *internal_buffer, intptr_t offset, intptr_t length, intptr_t fade_in, intptr_t fade_out, intptr_t pad_in, intptr_t pad_out, t_fade_type fade_type);
 
 double irtrimnorm_calculate_norm(t_irtrimnorm *x, double **samples, intptr_t *lengths, short N);
-double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, intptr_t *lengths, intptr_t max_length, intptr_t total_length, short N, double in_db, double out_db, double sample_rate, intptr_t *trim_offset, intptr_t *trim_length);
+double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, intptr_t *lengths, intptr_t max_length, intptr_t total_length, short N, double in_db, double out_db, double sample_rate, intptr_t& trim_offset, intptr_t& trim_length);
 
 long irtrimnorm_crop_check_write(t_irtrimnorm *x, t_symbol *buffer, intptr_t crop1, intptr_t crop2, intptr_t pad_in, intptr_t pad_out, intptr_t L);
 long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *samples, double *temp_buf, intptr_t crop1, intptr_t crop2, intptr_t fade_in, intptr_t fade_out, intptr_t pad_in, intptr_t pad_out, double norm_factor, intptr_t L, double sample_rate);
@@ -239,16 +239,14 @@ long irtrimnorm_check_db(t_atom *a, double *db)
 
 void irtrimnorm_write_internal_buffer(double *samples, double *internal_buffer, intptr_t offset, intptr_t length, intptr_t fade_in, intptr_t fade_out, intptr_t pad_in, intptr_t pad_out, t_fade_type fade_type)
 {
-    intptr_t i;
-
-    for (i = 0; i < pad_in; i++)
+    for (intptr_t i = 0; i < pad_in; i++)
         internal_buffer[i] = 0.0;
 
     trim_copy_part(internal_buffer + pad_in, samples, offset, length);
     fade_calc_fade_in(internal_buffer + pad_in, fade_in, length, fade_type);
     fade_calc_fade_out(internal_buffer + pad_in, fade_out, length, fade_type);
 
-    for (i = pad_in + length; i < (pad_in + length + pad_out); i++)
+    for (intptr_t i = pad_in + length; i < (pad_in + length + pad_out); i++)
         internal_buffer[i] = 0.0;
 }
 
@@ -263,11 +261,10 @@ double irtrimnorm_calculate_norm(t_irtrimnorm *x, double **samples, intptr_t *le
     // Calculate Normalisation Factor
 
     double max = 0.0;
-    short i;
 
     if (x->norm_mode)
     {
-        for (i = 0; i < N; i++)
+        for (short i = 0; i < N; i++)
             max = norm_find_max(samples[i], lengths[i], max);
     }
 
@@ -278,36 +275,35 @@ double irtrimnorm_calculate_norm(t_irtrimnorm *x, double **samples, intptr_t *le
 }
 
 
-double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, intptr_t *lengths, intptr_t max_length, intptr_t total_length, short N, double in_db, double out_db, double sample_rate, intptr_t *trim_offset, intptr_t *trim_length)
+double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, intptr_t *lengths, intptr_t max_length, intptr_t total_length, short N, double in_db, double out_db, double sample_rate, intptr_t& trim_offset, intptr_t& trim_length)
 {
     uintptr_t current_start = max_length;
     uintptr_t current_end = 0;
-    short no_success = 1;
-    short i;
-
-    double mul;
+    uintptr_t window_in  = static_cast<uintptr_t>(x->integration_times[0] * sample_rate / 1000.0);
+    uintptr_t window_out = static_cast<uintptr_t>(x->integration_times[1] * sample_rate / 1000.0);
+    bool success = false;
 
     // Calculate Normalisation Factor
 
-    mul = irtrimnorm_calculate_norm(x, samples, lengths, N);
+    const double mul = irtrimnorm_calculate_norm(x, samples, lengths, N);
 
     // Calculate Trim
 
-    for (i = 0; i < N; i++)
+    for (short i = 0; i < N; i++)
     {
-        if (!trim_find_crossings_rms(samples[i], lengths[i], (uintptr_t) (x->integration_times[0] * sample_rate / 1000.0), (uintptr_t) (x->integration_times[1] * sample_rate / 1000.0), in_db, out_db, mul, &current_start, &current_end))
-            no_success = 0;
+        if (!trim_find_crossings_rms(samples[i], lengths[i], window_in, window_out, in_db, out_db, mul, &current_start, &current_end))
+            success = true;
     }
 
-    if (no_success)
+    if (!success)
     {
-        *trim_offset = 0;
-        *trim_length = 0;
+        trim_offset = 0;
+        trim_length = 0;
     }
     else
     {
-        *trim_offset = current_start;
-        *trim_length = current_end - current_start;
+        trim_offset = current_start;
+        trim_length = current_end - current_start;
     }
 
     return mul;
@@ -395,29 +391,15 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     double *samples[128];
     intptr_t lengths[128];
 
-    double crop1_time;
-    double crop2_time;
-    double fade_in_time;
-    double fade_out_time;
     double pad_in_time = 0.0;
     double pad_out_time = 0.0;
-    double norm_factor;
     double sample_rate = 0.0;
 
-    intptr_t crop1;
-    intptr_t crop2;
-    intptr_t fade_in;
-    intptr_t fade_out;
-    intptr_t pad_in;
-    intptr_t pad_out;
     intptr_t overall_length = 0;
     intptr_t max_length = 0;
     intptr_t offset = 0;
-    intptr_t i, j;
 
     t_atom_long read_chan = x->read_chan - 1;
-
-    short num_buffers = 0;
 
     bool overall_error = false;
 
@@ -451,47 +433,46 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Get crop and fade times
 
-    crop1_time = atom_getdouble(argv + argc - 4);
-    crop2_time = atom_getdouble(argv + argc - 3);
-    fade_in_time = atom_getdouble(argv + argc - 2);
-    fade_out_time = atom_getdouble(argv + argc - 1);
+    const double crop1_time = atom_getdouble(argv + argc - 4);
+    const double crop2_time = atom_getdouble(argv + argc - 3);
+    const double fade_in_time = atom_getdouble(argv + argc - 2);
+    const double fade_out_time = atom_getdouble(argv + argc - 1);
     argc -= 4;
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("crop"), 128, &overall_length, &max_length, &sample_rate);
+    short num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("crop"), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
 
     // Store raw times (default)
 
-    fade_in = (intptr_t) fade_in_time;
-    fade_out = (intptr_t) fade_out_time;
-    crop1 = (intptr_t) crop1_time;
-    crop2 = (intptr_t) crop2_time;
-    pad_in = (intptr_t) pad_in_time;
-    pad_out = (intptr_t) pad_out_time;
-
+    intptr_t fade_in  = static_cast<intptr_t>(fade_in_time);
+    intptr_t fade_out = static_cast<intptr_t>(fade_out_time);
+    intptr_t crop1    = static_cast<intptr_t>(crop1_time);
+    intptr_t crop2    = static_cast<intptr_t>(crop2_time);
+    intptr_t pad_in   = static_cast<intptr_t>(pad_in_time);
+    intptr_t pad_out  = static_cast<intptr_t>(pad_out_time);
 
     // Convert if relevant
 
     if (!x->fade_in_samples)
     {
-        fade_in = (intptr_t) (fade_in_time * sample_rate / 1000.0);
-        fade_out = (intptr_t) (fade_out_time * sample_rate / 1000.0);
+        fade_in  = static_cast<intptr_t>(fade_in_time   * sample_rate / 1000.0);
+        fade_out = static_cast<intptr_t>(fade_out_time * sample_rate / 1000.0);
     }
 
     if (!x->crop_in_samples)
     {
-        crop1 = (intptr_t) (crop1_time * sample_rate / 1000.0);
-        crop2 = (intptr_t) (crop2_time * sample_rate / 1000.0);
+        crop1 = static_cast<intptr_t>(crop1_time * sample_rate / 1000.0);
+        crop2 = static_cast<intptr_t>(crop2_time * sample_rate / 1000.0);
     }
 
     if (!x->pad_in_samples)
     {
-        pad_in = (intptr_t) (pad_in_time * sample_rate / 1000.0);
-        pad_out = (intptr_t) (pad_out_time * sample_rate / 1000.0);
+        pad_in  = static_cast<intptr_t>(pad_in_time  * sample_rate / 1000.0);
+        pad_out = static_cast<intptr_t>(pad_out_time * sample_rate / 1000.0);
     }
 
     // Check arguments
@@ -540,21 +521,23 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
         return;
     }
 
-    for (i = 0; i < num_buffers; i++)
+    // Process
+
+    for (short i = 0; i < num_buffers; i++)
     {
         samples[i] = samples[0] + offset;
         buffer_read(in_buffer_names[i], read_chan, temp_buf_f, lengths[i]);
 
-        for (j = 0; j < lengths[i]; j++)
+        for (intptr_t j = 0; j < lengths[i]; j++)
             samples[i][j] = temp_buf_f[j];
         offset += lengths[i];
     }
 
-    norm_factor = irtrimnorm_calculate_norm (x, samples, lengths, num_buffers);
+    const double norm_factor = irtrimnorm_calculate_norm(x, samples, lengths, num_buffers);
 
     if (!x->resize)
     {
-        for (i = 0; i < num_buffers; i++)
+        for (short i = 0; i < num_buffers; i++)
         {
             if (irtrimnorm_crop_check_write(x, out_buffer_names[i], crop1, crop2, pad_in, pad_out, lengths[i]));
             {
@@ -564,9 +547,9 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
         }
     }
 
-    if (overall_error == false)
+    if (!overall_error)
     {
-        for (i = 0; i < num_buffers; i++)
+        for (short i = 0; i < num_buffers; i++)
             if (irtrimnorm_crop_write_buffer(x, out_buffer_names[i], samples[i], temp_buf_d, crop1, crop2, fade_in, fade_out, pad_in, pad_out, norm_factor, lengths[i], sample_rate))
                 overall_error = true;
     }
@@ -664,27 +647,17 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     double in_db = -HUGE_VAL;
     double out_db = -HUGE_VAL;
-    double fade_in_time;
-    double fade_out_time;
     double pad_in_time = 0.0;
     double pad_out_time = 0.0;
     double sample_rate = 0.0;
-    double norm_factor;
 
     intptr_t trim_offset;
     intptr_t trim_length;
-    intptr_t fade_in;
-    intptr_t fade_out;
-    intptr_t pad_in;
-    intptr_t pad_out;
     intptr_t overall_length = 0;
     intptr_t max_length = 0;
     intptr_t offset = 0;
-    intptr_t i, j;
 
     t_atom_long read_chan = x->read_chan - 1;
-
-    short num_buffers = 0;
 
     bool overall_error = false;
 
@@ -726,36 +699,36 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Get fade times - N.B We retrieve the dB values above
 
-    fade_in_time = atom_getdouble(argv + argc - 2);
-    fade_out_time = atom_getdouble(argv + argc - 1);
+    const double fade_in_time = atom_getdouble(argv + argc - 2);
+    const double fade_out_time = atom_getdouble(argv + argc - 1);
     argc -= 4;
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("trim"), 128, &overall_length, &max_length, &sample_rate);
+    short num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, sym == gensym("trim"), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
 
     // Store raw times
 
-    fade_in = (intptr_t) fade_in_time;
-    fade_out = (intptr_t) fade_out_time;
-    pad_in = (intptr_t) pad_in_time;
-    pad_out = (intptr_t) pad_out_time;
+    intptr_t fade_in  = static_cast<intptr_t>(fade_in_time);
+    intptr_t fade_out = static_cast<intptr_t>(fade_out_time);
+    intptr_t pad_in   = static_cast<intptr_t>(pad_in_time);
+    intptr_t pad_out  = static_cast<intptr_t>(pad_out_time);
 
     // Convert times if relevant
 
     if (!x->fade_in_samples)
     {
-        fade_in = (intptr_t) (fade_in_time * sample_rate / 1000.0);
-        fade_out = (intptr_t) (fade_out_time * sample_rate / 1000.0);
+        fade_in  = static_cast<intptr_t>(fade_in_time  * sample_rate / 1000.0);
+        fade_out = static_cast<intptr_t>(fade_out_time * sample_rate / 1000.0);
     }
 
     if (!x->pad_in_samples)
     {
-        pad_in = (intptr_t) (pad_in_time * sample_rate / 1000.0);
-        pad_out = (intptr_t) (pad_out_time * sample_rate / 1000.0);
+        pad_in  = static_cast<intptr_t>(pad_in_time  * sample_rate / 1000.0);
+        pad_out = static_cast<intptr_t>(pad_out_time * sample_rate / 1000.0);
     }
 
     // Check times
@@ -784,17 +757,17 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Process
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         samples[i] = samples[0] + offset;
         buffer_read(in_buffer_names[i], read_chan, temp_buf_f, lengths[i]);
 
-        for (j = 0; j < lengths[i]; j++)
+        for (intptr_t j = 0; j < lengths[i]; j++)
              samples[i][j] = temp_buf_f[j];
         offset += lengths[i];
     }
 
-    norm_factor = irtrimnorm_calculate_trim(x, samples, lengths, max_length, overall_length, num_buffers, in_db, out_db, sample_rate, &trim_offset, &trim_length);
+    const double norm_factor = irtrimnorm_calculate_trim(x, samples, lengths, max_length, overall_length, num_buffers, in_db, out_db, sample_rate, trim_offset, trim_length);
 
     if (trim_length == 0)
     {
@@ -804,7 +777,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     {
         if (!x->resize)
         {
-            for (i = 0; i < num_buffers; i++)
+            for (short i = 0; i < num_buffers; i++)
             {
                 if (irtrimnorm_trim_check_write(x, out_buffer_names[i], trim_offset, trim_length, fade_in, fade_out, pad_in, pad_out, lengths[i], sample_rate))
                 {
@@ -814,9 +787,9 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
             }
         }
 
-        if (overall_error == false)
+        if (!overall_error)
         {
-            for (i = 0; i < num_buffers; i++)
+            for (short i = 0; i < num_buffers; i++)
                 if (irtrimnorm_trim_write_buffer(x, out_buffer_names[i], samples[i], temp_buf_d, trim_offset, trim_length, fade_in, fade_out, pad_in, pad_out, norm_factor, lengths[i], sample_rate))
                     overall_error = true;
         }

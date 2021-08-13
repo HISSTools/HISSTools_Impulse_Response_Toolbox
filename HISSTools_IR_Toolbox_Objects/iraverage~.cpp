@@ -125,7 +125,6 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
 
-    t_symbol *target;
     t_symbol *buffer_names[128];
 
     double time_mul = 1.0;
@@ -133,14 +132,9 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     intptr_t lengths[128];
 
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-
-    intptr_t num_buffers;
     intptr_t max_length;
     intptr_t read_length;
     intptr_t overall_length;
-    intptr_t i, j;
 
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
@@ -151,7 +145,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
         return;
     }
 
-    target = atom_getsym(argv++);
+    t_symbol *target = atom_getsym(argv++);
     argc--;
 
     if (argc && (atom_gettype(argv) == A_LONG || atom_gettype(argv) == A_FLOAT))
@@ -168,14 +162,15 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, 1, 128, &overall_length, &max_length, &sample_rate);
+    short num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, true, 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
 
     // Calculate FFT size
 
-    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>(max_length * time_mul), fft_size_log2);
 
     // Allocate Memory
 
@@ -200,7 +195,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Zero accumulation
 
-    for (j = 0; j < (intptr_t) fft_size; j++)
+    for (uintptr_t j = 0; j < fft_size; j++)
     {
         spectrum_1.realp[j] = 0.0;
         spectrum_1.imagp[j] = 0.0;
@@ -208,7 +203,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Take FFTs and average
 
-    for (i = 0; i < argc; i++)
+    for (short i = 0; i < argc; i++)
     {
         // Read buffer - convert to frequency domain - take power spectrum
 
@@ -218,7 +213,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
         // Accumulate
 
-        for (j = 0; j < (intptr_t) fft_size; j++)
+        for (uintptr_t j = 0; j < fft_size; j++)
             spectrum_1.realp[j] += spectrum_2.realp[j] / num_buffers;
     }
 
@@ -246,18 +241,14 @@ void iraverage_average(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
 
 void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    t_symbol *target;
     t_symbol *buffer_names[128];
 
     intptr_t lengths[128];
 
-    intptr_t num_buffers;
     intptr_t max_length;
     intptr_t read_length;
     intptr_t overall_length;
-    intptr_t i, j;
 
-    double num_buf_recip;
     double sample_rate = 0.0;
 
     t_atom_long read_chan = x->read_chan - 1;
@@ -271,13 +262,13 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
         return;
     }
 
-    target = atom_getsym(argv++);
+    t_symbol *target = atom_getsym(argv++);
     argc--;
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, 1, 128, &overall_length, &max_length, &sample_rate);
-    num_buf_recip = 1.0 / num_buffers;
+    short num_buffers = buffer_multiple_names((t_object *) x, buffer_names, buffer_names, lengths, argc, argv, true, 128, &overall_length, &max_length, &sample_rate);
+    double num_buf_recip = 1.0 / num_buffers;
 
     if (!num_buffers)
         return;
@@ -297,22 +288,22 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Zero accumulation
 
-    for (j = 0; j < max_length; j++)
+    for (intptr_t j = 0; j < max_length; j++)
         accum[j] = 0.0;
 
     // Average
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         read_length = buffer_read(buffer_names[i], read_chan, temp.get(), max_length);
 
-        for (j = 0; j < read_length; j++)
+        for (intptr_t j = 0; j < read_length; j++)
             accum[j] += temp[j];
     }
 
     // Divide by number of buffers
 
-    for (j = 0; j < max_length; j++)
+    for (intptr_t j = 0; j < max_length; j++)
         accum[j] *= num_buf_recip;
 
     // Copy out to buffer

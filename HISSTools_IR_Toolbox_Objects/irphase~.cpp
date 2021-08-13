@@ -230,20 +230,16 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
     double phase = atom_getfloat(argv++);
     double time_mul = atom_getfloat(argv++);
     double sample_rate = buffer_sample_rate(source);
+    double deconvolve_phase = phase_retriever(x->deconvolve_phase);
     double deconvolve_delay;
-    double deconvolve_phase;
 
     t_phase_type mode = (t_phase_type) atom_getlong(argv++);
 
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-    uintptr_t i;
-
-    t_filter_type deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
     t_atom_long read_chan = x->read_chan - 1;
 
     // Get input buffer lengths
-
+    
     intptr_t source_length_1 = buffer_length(source);
     intptr_t filter_length = buffer_length(filter);
     intptr_t max_length = source_length_1;
@@ -263,7 +259,8 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
         time_mul = 1.0;
     }
 
-    fft_size = calculate_fft_size((long) (max_length * time_mul), fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>(max_length * time_mul), fft_size_log2);
 
     if (fft_size < 8)
     {
@@ -271,8 +268,6 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
         return;
     }
 
-    deconvolve_mode = (t_filter_type) x->deconvolve_mode;
-    deconvolve_phase = phase_retriever(x->deconvolve_phase);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
     
     // Allocate momory
@@ -309,7 +304,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
     {
         // Copy minimum phase spectrum to spectrum_2
 
-        for (i = 0; i < fft_size; i++)
+        for (uintptr_t i = 0; i < fft_size; i++)
         {
             spectrum_2.realp[i] = spectrum_1.realp[i];
             spectrum_2.imagp[i] = spectrum_1.imagp[i];

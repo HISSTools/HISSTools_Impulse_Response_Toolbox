@@ -43,7 +43,7 @@ struct t_irreference
     intptr_t current_length;
     intptr_t T;
     intptr_t current_t;
-    intptr_t fft_size;
+    uintptr_t fft_size;
 
     long start_rec;
     long stop_rec;
@@ -82,9 +82,9 @@ void *irreference_new(t_symbol *s, short argc, t_atom *argv);
 void irreference_free(t_irreference *x);
 void irreference_assist(t_irreference *x, void *b, long m, long a, char *s);
 
-intptr_t irreference_calc_mem_size(t_irreference *x, long active_ins);
+uintptr_t irreference_calc_mem_size(t_irreference *x, long active_ins);
 
-double irreference_param_check(t_irreference *x, const char *name, double val, double min, double max);
+double irreference_param_check(t_irreference *x, char *name, double val, double min, double max);
 
 void irreference_rec(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
 void irreference_stop(t_irreference *x);
@@ -170,7 +170,7 @@ void *irreference_new(t_symbol *s, short argc, t_atom *argv)
         argc--;
     }
 
-    dsp_setup((t_pxobject *)x, (long) (num_in_chans + 1));
+    dsp_setup((t_pxobject *)x, static_cast<long>(num_in_chans + 1));
 
     x->process_done = bangout(x);
     outlet_new(x, "signal");
@@ -196,9 +196,9 @@ void *irreference_new(t_symbol *s, short argc, t_atom *argv)
     x->current_length = 0;
     x->current_out_length = 0.0;
     x->out_length = 0.0;
-    x->num_in_chans = (long) num_in_chans;
-    x->num_active_ins = (long) num_in_chans;
-    x->current_num_active_ins = (long) num_in_chans;
+    x->num_in_chans = static_cast<long>(num_in_chans);
+    x->num_active_ins = static_cast<long>(num_in_chans);
+    x->current_num_active_ins = static_cast<long>(num_in_chans);
 
     x->smooth_mode = 1;
 
@@ -245,9 +245,9 @@ void irreference_assist(t_irreference *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-intptr_t irreference_calc_mem_size(t_irreference *x, long active_ins)
+uintptr_t irreference_calc_mem_size(t_irreference *x, long active_ins)
 {
-    intptr_t rec_length = (intptr_t) (x->length * x->sample_rate);
+    uintptr_t rec_length = static_cast<uintptr_t>(x->length * x->sample_rate);
 
     return rec_length * sizeof(double) * (1 + active_ins);
 }
@@ -276,7 +276,7 @@ double irreference_param_check(t_irreference *x, const char *name, double val, d
         new_val = max;
     }
 
-    if (changed == true)
+    if (changed)
         object_error((t_object *) x, "parameter out of range: setting %s to %lf", name, new_val);
 
     return new_val;
@@ -294,8 +294,6 @@ void irreference_rec(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
     double out_length = 5000.0;
 
     long num_active_ins = x->num_active_ins;
-
-    intptr_t mem_size;
 
     // Load arguments
 
@@ -318,7 +316,7 @@ void irreference_rec(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 
     if (length)
     {
-        mem_size = irreference_calc_mem_size(x, num_active_ins);
+        uintptr_t mem_size = irreference_calc_mem_size(x, num_active_ins);
         if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
             object_error((t_object *) x, "not able to allocate adequate memory for recording");
 
@@ -380,7 +378,7 @@ void irreference_active_ins(t_irreference *x, t_atom_long num_active_ins)
         num_active_ins = x->num_in_chans;
     }
 
-    x->num_active_ins = (long) num_active_ins;
+    x->num_active_ins = static_cast<long>(num_active_ins);
 }
 
 
@@ -391,11 +389,9 @@ void irreference_active_ins(t_irreference *x, t_atom_long num_active_ins)
 
 void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT_SPLIT_COMPLEX_D temp_full_spectrum, long mode, uintptr_t fft_size, double smooth_lo, double smooth_hi)
 {
-    uintptr_t i;
-
     // Copy spectrum to temp
 
-    for (i = 0; i < fft_size >> 1; i++)
+    for (uintptr_t i = 0; i < fft_size >> 1; i++)
     {
         temp_full_spectrum.realp[i] = spectrum.realp[i];
         temp_full_spectrum.imagp[i] = spectrum.imagp[i];
@@ -407,7 +403,7 @@ void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT
 
     // Copy back to original spectrum
 
-    for (i = 0; i < fft_size >> 1; i++)
+    for (uintptr_t i = 0; i < fft_size >> 1; i++)
     {
         spectrum.realp[i] = temp_full_spectrum.realp[i];
         spectrum.imagp[i] = temp_full_spectrum.imagp[i];
@@ -415,7 +411,7 @@ void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT
 
     // Copy nyquist
 
-    spectrum.imagp[0] = temp_full_spectrum.realp[i];
+    spectrum.imagp[0] = temp_full_spectrum.realp[fft_size >> 1];
 }
 
 
@@ -438,11 +434,6 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
     FFT_SPLIT_COMPLEX_D spectrum_3;
     FFT_SPLIT_COMPLEX_D spectrum_4;
 
-    double *rec_mem1;
-    double *rec_mem2;
-    double *out_mem;
-    double *out_buf;
-
     t_symbol *filter = filter_retriever(x->deconvolve_filter_specifier);
 
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
@@ -452,17 +443,12 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
     double deconvolve_delay;
 
-    long deconvolve_mode = deconvolve_mode = x->deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
     long smoothing_on = x->num_smooth;
 
     intptr_t alloc_rec_length = x->T;
     intptr_t rec_length = x->current_length;
     intptr_t filter_length = buffer_length(filter);
-
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-    uintptr_t mem_size;
-    uintptr_t i;
 
     // Sanity check
 
@@ -471,7 +457,8 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(rec_length * 2, fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(rec_length * 2, fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     // Allocate Temporary Memory
@@ -509,8 +496,9 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
 
     // Allocate output memory and get record memory
 
-    rec_mem1 = (double *) access_mem_swap(&x->rec_mem, &mem_size);
-    out_mem = (double *) grow_mem_swap(&x->out_mem, fft_size * x->current_num_active_ins * sizeof(double), fft_size);
+    uintptr_t mem_size;
+    double *rec_mem1 = (double *) access_mem_swap(&x->rec_mem, &mem_size);
+    double *out_mem = (double *) grow_mem_swap(&x->out_mem, fft_size * x->current_num_active_ins * sizeof(double), fft_size);
 
     if (!out_mem)
     {
@@ -529,25 +517,25 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
     fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
     fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
     buffer_read(filter, 0, filter_in.get(), fft_size);
-    make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, sample_rate);
+    make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, sample_rate);
     delay_spectrum(spectrum_3, fft_size, SPECTRUM_REAL, deconvolve_delay);
 
     // Deconvolve each input
 
-    for (i = 0; i < (uintptr_t) x->current_num_active_ins; i++)
+    for (long i = 0; i < x->current_num_active_ins; i++)
     {
         // Get current input and output buffers
 
-        rec_mem2 = rec_mem1 + ((i + 1) * alloc_rec_length);
-        out_buf = out_mem + (i * fft_size);
+        double *rec_ptr = rec_mem1 + ((i + 1) * alloc_rec_length);
+        double *out_ptr = out_mem + (i * fft_size);
 
         // Do transform into spectrum_1 - [smooth] - deconvolve - [delay] - transform back
 
-        time_to_halfspectrum_double(fft_setup, rec_mem2, rec_length, spectrum_1, fft_size);
+        time_to_halfspectrum_double(fft_setup, rec_ptr, rec_length, spectrum_1, fft_size);
         if (smoothing_on)
             irreference_smooth(fft_setup, spectrum_1, spectrum_4, x->smooth_mode, fft_size, x->num_smooth > 1 ? x->smooth[0] : 0.0, x->num_smooth > 1 ? x->smooth[1] : x->smooth[0]);
         deconvolve_with_filter(spectrum_1, spectrum_2, spectrum_3, fft_size, SPECTRUM_REAL);
-        spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
+        spectrum_to_time(fft_setup, out_ptr, spectrum_1, fft_size, SPECTRUM_REAL);
     }
 
     // Done
@@ -571,9 +559,6 @@ void irreference_extract_internal(t_irreference *x, t_symbol *sym, short argc, t
 {
     double *rec_mem;
 
-    t_atom_long in_chan = 1;
-    t_symbol *buffer = NULL;
-
     intptr_t rec_length = x->current_length;
 
     uintptr_t fft_size = x->fft_size;
@@ -589,8 +574,8 @@ void irreference_extract_internal(t_irreference *x, t_symbol *sym, short argc, t
         return;
     }
 
-    in_chan = argc > 1 ? atom_getlong(argv++) : 1;
-    buffer = atom_getsym(argv++);
+    t_atom_long in_chan = argc > 1 ? atom_getlong(argv++) : 1;
+    t_symbol *buffer = atom_getsym(argv++);
 
     // Range check
 
@@ -612,7 +597,8 @@ void irreference_extract_internal(t_irreference *x, t_symbol *sym, short argc, t
 
     // Write to buffer
 
-    buffer_write((t_object *)x, buffer, rec_mem + rec_length * in_chan, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    double *rec_ptr = rec_mem + rec_length * in_chan;
+    buffer_write((t_object *)x, buffer, rec_ptr, rec_length, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 }
 
 
@@ -623,14 +609,8 @@ void irreference_dump(t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
 
 
 void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
-{
-    double *out_mem;
-
-    t_atom_long in_chan = 1;
-    t_symbol *buffer = NULL;
-
+{    
     uintptr_t fft_size = x->fft_size;
-    uintptr_t mem_size;
 
     // Get arguments
 
@@ -640,8 +620,8 @@ void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_at
         return;
     }
 
-    in_chan = argc > 1 ? atom_getlong(argv++) : 1;
-    buffer = atom_getsym(argv++);
+    t_atom_long in_chan = argc > 1 ? atom_getlong(argv++) : 1;
+    t_symbol *buffer = atom_getsym(argv++);
 
     // Range check
 
@@ -663,7 +643,8 @@ void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_at
 
     // Get and check memory
 
-    out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size) + (in_chan * fft_size);
+    uintptr_t mem_size;
+    double *out_ptr = (double *) access_mem_swap(&x->out_mem, &mem_size) + (in_chan * fft_size);
 
     if (mem_size < fft_size)
     {
@@ -673,7 +654,7 @@ void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_at
 
     // Write to buffer
 
-    buffer_write((t_object *)x, buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    buffer_write((t_object *)x, buffer, out_ptr, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 }
 
 
@@ -685,14 +666,7 @@ void irreference_getir(t_irreference *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    t_symbol *buffer;
-
-    double *out_mem;
-
     uintptr_t fft_size = x->fft_size;
-    uintptr_t mem_size;
-
-    intptr_t L;
 
     t_atom_long in_chan = 1;
 
@@ -707,7 +681,7 @@ void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_a
     if (argc > 1)
         in_chan = atom_getlong(argv++);
 
-    buffer = atom_getsym(argv++);
+    t_symbol *buffer = atom_getsym(argv++);
 
     // Range check
 
@@ -729,7 +703,8 @@ void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_a
 
     // Get and check memory
 
-    out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
+    uintptr_t mem_size;
+    double *out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
 
     if (mem_size < fft_size)
     {
@@ -737,12 +712,12 @@ void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_a
         return;
     }
 
-    out_mem += fft_size * in_chan;
-    L = (intptr_t) (x->sample_rate * x->current_out_length);
+    double *out_ptr = out_mem + fft_size * in_chan;
+    intptr_t L = static_cast<intptr_t>(x->sample_rate * x->current_out_length);
 
     // Write to buffer
 
-    buffer_write((t_object *)x, buffer, out_mem, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    buffer_write((t_object *)x, buffer, out_ptr, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 }
 
 
@@ -755,32 +730,22 @@ t_int *irreference_perform(t_int *w)
 {
     // Set pointers
 
-    long vec_size = (long) w[1];
-    t_irreference *x = (t_irreference *) w[2];
+    long vec_size = static_cast<long>(w[1]);
+    t_irreference *x = reinterpret_cast<t_irreference *>(w[2]);
 
-    float *out = (float *) w[3];
-    float *in;
-
-    double *rec_ptr;
-    double *rec_mem;
+    float *out = reinterpret_cast<float *>(w[3]);
 
     double sample_rate = x->sample_rate;
     double progress_mul = 1.0;
 
-    intptr_t T;
-    intptr_t current_t;
-    intptr_t current_t2;
-    intptr_t mem_size;
-    intptr_t i, j;
-
-    long record_on = 0;
-    long mem_check;
+    bool record_on = false;
+    bool mem_check;
 
     // Check for stop / start
 
     if (x->start_rec)
     {
-        x->T = (intptr_t) (sample_rate * x->length);
+        x->T = static_cast<intptr_t>(sample_rate * x->length);
         x->current_length = x->T;
         x->current_out_length = x->out_length;
         x->current_t = 0;
@@ -795,29 +760,30 @@ t_int *irreference_perform(t_int *w)
 
     x->start_rec = 0;
     x->stop_rec = 0;
-    T = x->T;
-
+    intptr_t T = x->T;
+    intptr_t i;
+    
     // Get counters
 
-    current_t = x->current_t;
-    current_t2 = current_t;
+    intptr_t current_t = x->current_t;
+    intptr_t current_t2 = current_t;
     record_on = record_on || current_t2 < T;
 
     // Check memory
 
     attempt_mem_swap(&x->rec_mem);
-    rec_mem = (double *) x->rec_mem.current_ptr;
-    mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
+    double *rec_mem = (double *) x->rec_mem.current_ptr;
+    uintptr_t mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
     mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
 
     if (mem_check)
     {
         // Record Inputs
 
-        for (j = 0; j < x->current_num_active_ins + 1; j++)
+        for (long j = 0; j < x->current_num_active_ins + 1; j++)
         {
-            in = (float *) x->in_chans[j];
-            rec_ptr = rec_mem + (j * T);
+            float *in = reinterpret_cast<float *>(x->in_chans[j]);
+            double *rec_ptr = rec_mem + (j * T);
             for (i = 0, current_t2 = current_t; (i < vec_size) && (current_t2 < T); i++, current_t2++)
                 rec_ptr[current_t2] = *in++;
         }
@@ -829,9 +795,9 @@ t_int *irreference_perform(t_int *w)
         progress_mul = 1.0 / T;
 
     for (i = 0, current_t2 = current_t; i < vec_size && current_t2 < T && mem_check; i++)
-        *out++ = (float) (current_t2++ * progress_mul);
+        *out++ = static_cast<float>(current_t2++ * progress_mul);
     for (; i < vec_size; i++)
-        *out++ = (float) (progress_mul * T);
+        *out++ = static_cast<float>(progress_mul * T);
 
     // Store accumulators
 
@@ -850,27 +816,17 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
 {
     double *out = outs[0];
 
-    double *rec_ptr;
-    double *in;
-    double *rec_mem;
-
     double sample_rate = x->sample_rate;
     double progress_mul = 1.0;
 
-    intptr_t T;
-    intptr_t current_t;
-    intptr_t current_t2;
-    intptr_t mem_size;
-    intptr_t i, j;
-
-    long record_on = 0;
-    long mem_check;
+    bool record_on = false;
+    bool mem_check;
 
     // Check for stop / start
 
     if (x->start_rec)
     {
-        x->T = (intptr_t) (sample_rate * x->length);
+        x->T = static_cast<intptr_t>(sample_rate * x->length);
         x->current_length = x->T;
         x->current_out_length = x->out_length;
         x->current_t = 0;
@@ -885,29 +841,30 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
 
     x->start_rec = 0;
     x->stop_rec = 0;
-    T = x->T;
-
+    intptr_t T = x->T;
+    intptr_t i;
+    
     // Get counters
 
-    current_t = x->current_t;
-    current_t2 = current_t;
+    intptr_t current_t = x->current_t;
+    intptr_t current_t2 = current_t;
     record_on = record_on || current_t2 < T;
 
     // Check memory
 
     attempt_mem_swap(&x->rec_mem);
-    rec_mem = (double *) x->rec_mem.current_ptr;
-    mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
+    double *rec_mem = (double *) x->rec_mem.current_ptr;
+    uintptr_t mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
     mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
 
     if (mem_check)
     {
         // Record Inputs
 
-        for (j = 0; j < x->current_num_active_ins + 1; j++)
+        for (long j = 0; j < x->current_num_active_ins + 1; j++)
         {
-            in = ins[j];
-            rec_ptr = rec_mem + (j * T);
+            double *in = ins[j];
+            double *rec_ptr = rec_mem + (j * T);
             for (i = 0, current_t2 = current_t; (i < vec_size) && (current_t2 < T); i++, current_t2++)
                 rec_ptr[current_t2] = *in++;
         }
@@ -941,47 +898,39 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
 
 void irreference_dsp_common(t_irreference *x, double samplerate)
 {
-    double old_sr;
-
-    uintptr_t mem_size;
-
     // Store sample rate
 
-    old_sr = x->sample_rate;
+    const double old_sr = x->sample_rate;
     x->sample_rate = samplerate;
 
     if (x->start_rec)
     {
         // Resize memory if we are just about to record
 
-        mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
+        uintptr_t mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
 
         if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
             object_error((t_object *) x, "not able to allocate adequate memory for recording");
     }
     else
     {
-        if (x->sample_rate != old_sr)
-        {
-            // Clear memory if the sample rate has changed and we have not just started measuring
+        // Clear memory if the sample rate has changed and we have not just started measuring
 
+        if (x->sample_rate != old_sr)
             irreference_clear(x);
-        }
     }
 }
 
 
 void irreference_dsp(t_irreference *x, t_signal **sp, short *count)
 {
-    long i;
-
     // Store pointers to ins and outs
 
-    for (i = 0; i < x->num_in_chans + 1; i++)
+    for (long i = 0; i < x->num_in_chans + 1; i++)
         x->in_chans[i] = sp[i]->s_vec;
 
     irreference_dsp_common(x, sp[0]->s_sr);
-    dsp_add ((t_perfroutine)irreference_perform, 3, sp[0]->s_n, x, sp[x->num_in_chans + 1]->s_vec);
+    dsp_add((t_perfroutine)irreference_perform, 3, sp[0]->s_n, x, sp[x->num_in_chans + 1]->s_vec);
 }
 
 

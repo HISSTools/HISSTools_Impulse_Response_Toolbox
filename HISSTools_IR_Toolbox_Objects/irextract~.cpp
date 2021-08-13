@@ -50,7 +50,7 @@ struct t_irextract
 
     // Internal
 
-    intptr_t fft_size;
+    uintptr_t fft_size;
 
     // Internal
     
@@ -101,8 +101,6 @@ struct t_irextract
 void *irextract_new(t_symbol *s, short argc, t_atom *argv);
 void irextract_free(t_irextract *x);
 void irextract_assist(t_irextract *x, void *b, long m, long a, char *s);
-
-double irextract_param_check(t_irextract *x, const char *name, double val, double min, double max);
 
 void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
 void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
@@ -223,10 +221,11 @@ void irextract_assist(t_irextract *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-double irextract_param_check(t_irextract *x, const char *name, double val, double min, double max)
+template<typename T>
+T irextract_param_check(t_irextract *x, const char *name, T val, T min, T max)
 {
     bool changed = false;
-    double new_val = val;
+    T new_val = val;
 
     if (val < min)
     {
@@ -240,10 +239,18 @@ double irextract_param_check(t_irextract *x, const char *name, double val, doubl
         new_val = max;
     }
 
-    if (changed == true)
+    if (changed)
         object_error((t_object *) x, "parameter out of range: setting %s to %lf", name, new_val);
 
     return new_val;
+}
+
+
+// Type forwaring
+
+t_atom_long irextract_param_check(t_irextract *x, const char *name, t_atom_long val, int min, int max)
+{
+    return irextract_param_check(x, name, val, static_cast<t_atom_long>(min), static_cast<t_atom_long>(max));
 }
 
 
@@ -304,13 +311,13 @@ void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     length = irextract_param_check(x, "length", length, 0.0, HUGE_VAL);
     fade_in = irextract_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
     fade_out = irextract_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
-    num_channels = (t_atom_long) irextract_param_check(x, "number of channels", (double) num_channels, 1, HIRT_MAX_MEASURE_CHANS);
+    num_channels = irextract_param_check(x, "number of channels", num_channels, 1, HIRT_MAX_MEASURE_CHANS);
     x->out_length = irextract_param_check(x, "output length", out_length, 0.0, HUGE_VAL) / 1000.0;
 
     // Check length of sweep and memory allocation
 
     fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
-
+    
     x->sweep_params = t_ess(f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain), amp_curve);
     
     if (x->sweep_params.length())
@@ -357,14 +364,14 @@ void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
         return;
     }
 
-    order = (t_atom_long) irextract_param_check(x, "order", (double) order, 1, 24);
-    num_channels = (t_atom_long) irextract_param_check(x, "number of channels", (double) num_channels, 1, HIRT_MAX_MEASURE_CHANS);
+    order = irextract_param_check(x, "order", order, 1, 24);
+    num_channels = irextract_param_check(x, "number of channels", num_channels, 1, HIRT_MAX_MEASURE_CHANS);
     x->out_length = irextract_param_check(x, "output length", out_length, 0.0, HUGE_VAL) / 1000.0;
 
     // Process
 
     x->measure_mode = MLS;
-    x->max_length_params = t_mls((long) order, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain));
+    x->max_length_params = t_mls(static_cast<uint32_t>(order), (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain));
     irextract_process(x, rec_buffer, num_channels, sample_rate);
 }
 
@@ -418,7 +425,7 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     length = irextract_param_check(x, "length", length, 0.0, HUGE_VAL);
     fade_in = irextract_param_check(x, "fade in time", fade_in, 0.0, length / 2.0);
     fade_out = irextract_param_check(x, "fade out time", fade_out, 0.0, length / 2.0);
-    num_channels = (t_atom_long) irextract_param_check(x, "number of channels", (double) num_channels, 1, HIRT_MAX_MEASURE_CHANS);
+    num_channels = irextract_param_check(x, "number of channels", num_channels, 1, HIRT_MAX_MEASURE_CHANS);
     x->out_length = irextract_param_check(x, "output length", out_length, 0.0, HUGE_VAL) / 1000.0;
 
     // Process
@@ -481,29 +488,20 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
 
-    double *out_mem;
-    
     t_symbol *filter = filter_retriever(x->deconvolve_filter_specifier);
 
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
     double range_specifier[HIRT_MAX_SPECIFIER_ITEMS];
 
-    double test_pow;
-    double max_pow;
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
 
-    long deconvolve_mode = x->deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
     long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
     t_atom_long read_chan = x->read_chan - 1;
 
     intptr_t rec_length = buffer_length(rec_buffer);
-    intptr_t gen_length = 0;
     intptr_t filter_length = buffer_length(filter);
-    intptr_t out_length_samps;
-
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-    uintptr_t i;
+    intptr_t gen_length = 0;
 
     if (buffer_check((t_object *)x, rec_buffer) || !rec_length)
         return;
@@ -517,7 +515,8 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(rec_length + gen_length, fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(rec_length + gen_length, fft_size_log2);
 
     if (rec_length % num_channels)
         object_warn ((t_object *) x, "buffer length is not a multiple of the number of channels - number may be wrong");
@@ -528,14 +527,14 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
         return;
     }
 
-    out_length_samps = ((rec_length / num_channels) - gen_length);
+    intptr_t out_length_samps = ((rec_length / num_channels) - gen_length);
 
     if (x->out_length)
     {
         if (out_length_samps < (x->out_length * sample_rate))
             object_warn ((t_object *) x, "buffer is not long enough for requested output length");
         else
-            out_length_samps = (intptr_t) (x->out_length * sample_rate);
+            out_length_samps = static_cast<intptr_t>(x->out_length * sample_rate);
     }
 
     // Allocate Temporary Memory
@@ -568,7 +567,7 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
     // Allocate output memory and get record memory
 
-    out_mem = (double *) grow_mem_swap(&x->out_mem, fft_size * sizeof(double), fft_size);
+    double *out_mem = (double *) grow_mem_swap(&x->out_mem, fft_size * sizeof(double), fft_size);
 
     if (!out_mem)
     {
@@ -610,10 +609,12 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     {
         // Find maximum power to scale
 
-        for (i = 1, max_pow = 0.0; i < (fft_size >> 1); i++)
+        double max_pow = 0.0;
+        
+        for (uintptr_t i = 1; i < (fft_size >> 1); i++)
         {
-            test_pow = spectrum_2.realp[i] *spectrum_2.realp[i] + spectrum_2.imagp[i] * spectrum_2.imagp[i];
-            max_pow = test_pow > max_pow ? test_pow : max_pow;
+            const double test_pow = spectrum_2.realp[i] * spectrum_2.realp[i] + spectrum_2.imagp[i] * spectrum_2.imagp[i];
+            max_pow = std::max(test_pow, max_pow);
         }
 
         max_pow = pow_to_db(max_pow);
@@ -623,7 +624,7 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
         fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
         fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
         buffer_read(filter, 0, filter_in.get(), fft_size);
-        make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, max_pow, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, sample_rate);
+        make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, max_pow, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, sample_rate);
     }
 
     // Read recording from buffer / do transform into spectrum_1 for measurement recording - deconvolve - transform back
@@ -652,23 +653,14 @@ void irextract_getir(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    t_symbol *buffer;
-
-    double *out_buf;
-    double *out_mem;
-
     uintptr_t fft_size = x->fft_size;
-    uintptr_t mem_size;
 
     intptr_t T_minus;
-    intptr_t L;
-    intptr_t T;
     intptr_t out_length_samps = x->out_length_samps;
+    intptr_t chan_offset = static_cast<intptr_t>(out_length_samps + x->gen_length);
 
     t_atom_long harmonic = 1;
     t_atom_long out_chan = 1;
-
-    intptr_t chan_offset = (intptr_t) out_length_samps + x->gen_length;
 
     // Get arguments
 
@@ -678,7 +670,7 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
         return;
     }
 
-    buffer = atom_getsym(argv++);
+    t_symbol *buffer = atom_getsym(argv++);
 
     if (argc > 1)
         out_chan = atom_getlong(argv++);
@@ -710,7 +702,8 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
 
     // Get and check memory
 
-    out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
+    uintptr_t mem_size;
+    double *out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
 
     if (mem_size < fft_size)
     {
@@ -721,29 +714,29 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
     // Calculate offset in internal buffer
 
     if (x->measure_mode == SWEEP)
-        T_minus = (intptr_t) x->sweep_params.harm_offset(harmonic);
+        T_minus = static_cast<intptr_t>(x->sweep_params.harm_offset(harmonic));
     else
         T_minus = 0;
 
-    L = out_length_samps;
+    intptr_t L = out_length_samps;
 
     if (harmonic > 1)
     {
-        intptr_t T_minus_prev = x->sweep_params.harm_offset(harmonic - 1);
+        intptr_t T_minus_prev = static_cast<intptr_t>(x->sweep_params.harm_offset(harmonic - 1));
         intptr_t L2 = T_minus - T_minus_prev;
 
         if (L2 < L)
             L = L2;
     }
 
-    T = (chan_offset * out_chan) - T_minus;
+    intptr_t T = (chan_offset * out_chan) - T_minus;
 
     // Wrap offset
 
     while (T < 0)
         T += fft_size;
 
-    out_buf = out_mem + T;
+    double *out_buf = out_mem + T;
 
     // Write to buffer
 
@@ -763,12 +756,7 @@ void irextract_dump(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    double *out_mem;
-
-    t_symbol *buffer = NULL;
-
     uintptr_t fft_size = x->fft_size;
-    uintptr_t mem_size;
 
     // Get arguments
 
@@ -778,7 +766,7 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
         return;
     }
 
-    buffer = atom_getsym(argv++);
+    t_symbol *buffer = atom_getsym(argv++);
 
     if (!fft_size)
     {
@@ -788,7 +776,8 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 
     // Get and check memory
 
-    out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
+    uintptr_t mem_size;
+    double *out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
 
     if (mem_size < fft_size)
     {

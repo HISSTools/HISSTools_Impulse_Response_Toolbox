@@ -13,7 +13,7 @@
 
 t_class *this_class;
 
-#define MAXIMUM_MSP_CHANS 64
+constexpr int MAXIMUM_MSP_CHANS = 64;
 
 
 struct t_multiconvolve
@@ -58,35 +58,36 @@ void multiconvolve_dsp64(t_multiconvolve *x, t_object *dsp64, short *count, doub
 
 t_max_err multiconvolve_fixed_size_set(t_multiconvolve *x, t_object *attr, long argc, t_atom *argv)
 {
-    long i, j;
     long error = 0;
 
     if (argc)
     {
         t_atom_long new_fixed_size = atom_getlong(argv);
-
+        
         new_fixed_size = new_fixed_size < 0 ? 0 : new_fixed_size;
 
+        uintptr_t final_size = new_fixed_size ? static_cast<uintptr_t>(new_fixed_size) : uintptr_t(16384u);
+        
         if (new_fixed_size != x->fixed_impulse_length && x->multi)
         {
             if (!x->parallel_mode)
             {
-                for (i = 0; i < x->num_out_chans; i++)
-                    for (j = 0; j < x->num_in_chans; j++)
-                        if (x->multi->resize(j, i, new_fixed_size ? (uintptr_t) new_fixed_size : (uintptr_t) 16384) == CONVOLVE_ERR_MEM_UNAVAILABLE)
+                for (long i = 0; i < x->num_out_chans; i++)
+                    for (long j = 0; j < x->num_in_chans; j++)
+                        if (x->multi->resize(j, i, final_size) == CONVOLVE_ERR_MEM_UNAVAILABLE)
                             error = 1;
             }
             else
             {
-                for (i = 0; i < x->num_in_chans; i++)
-                    if (x->multi->resize(i, i, new_fixed_size ? (uintptr_t) new_fixed_size : (uintptr_t) 16384) == CONVOLVE_ERR_MEM_UNAVAILABLE)
+                for (long i = 0; i < x->num_in_chans; i++)
+                    if (x->multi->resize(i, i, final_size) == CONVOLVE_ERR_MEM_UNAVAILABLE)
                         error = 1;
             }
 
             if (error)
                 object_error((t_object *) x, "could not allocate memory for fixed size");
         }
-        x->fixed_impulse_length = (long) new_fixed_size;
+        x->fixed_impulse_length = static_cast<long>(new_fixed_size);
     }
 
     return 0;
@@ -173,7 +174,6 @@ void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
     LatencyMode latency_mode = kLatencyZero;
 
     long actual_num_out_chans;
-    long i;
 
     if (!x)
         return x;
@@ -207,10 +207,10 @@ void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
         argc--;
     }
 
-    actual_num_out_chans = (long) (num_out_chans <= 0 ? num_in_chans : num_out_chans);
+    actual_num_out_chans = static_cast<long>(num_out_chans <= 0 ? num_in_chans : num_out_chans);
 
-    dsp_setup((t_pxobject *)x, (long) num_in_chans);
-    for (i = 0; i < actual_num_out_chans; i++)
+    dsp_setup((t_pxobject *)x, static_cast<long>(num_in_chans));
+    for (long i = 0; i < actual_num_out_chans; i++)
         outlet_new(x, "signal");
 
     if (!num_out_chans)
@@ -219,7 +219,7 @@ void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
         x->parallel_mode = 0;
 
     x->fixed_impulse_length = 0;
-    x->num_in_chans = (long) num_in_chans;
+    x->num_in_chans = static_cast<long>(num_in_chans);
     x->num_out_chans = actual_num_out_chans;
 
     if (x->parallel_mode)
@@ -277,8 +277,6 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
     t_atom_long in_chan;
     t_atom_long out_chan;
     t_atom_long read_chan;
-
-    intptr_t impulse_length;
 
     if (argc < 1)
     {
@@ -339,7 +337,7 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
 
     // Load to temporary buffer
 
-    impulse_length = buffer_length(buffer);
+    intptr_t impulse_length = buffer_length(buffer);
     temp_ptr<float> temp(impulse_length);
 
     if (!temp)
@@ -371,8 +369,8 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
 
 t_int *multiconvolve_perform(t_int *w)
 {
-    t_multiconvolve *x = (t_multiconvolve *) w[1];
-    long vec_size = (long) w[2];
+    t_multiconvolve *x = reinterpret_cast<t_multiconvolve *>(w[1]);
+    long vec_size = static_cast<long>(w[2]);
 
     x->multi->process(x->ins, x->outs, x->num_in_chans, x->num_out_chans, vec_size);
 
@@ -392,12 +390,10 @@ void multiconvolve_perform64(t_multiconvolve *x, t_object *dsp64, double **ins, 
 
 void multiconvolve_dsp(t_multiconvolve *x, t_signal **sp, short *count)
 {
-    long i;
-
-    for (i = 0; i < x->num_in_chans; i++)
-        x->ins[i] = (float *) sp[i]->s_vec;
-    for (i = 0; i < x->num_out_chans; i++)
-        x->outs[i] = (float *) sp[i + x->num_in_chans]->s_vec;
+    for (long i = 0; i < x->num_in_chans; i++)
+        x->ins[i] = reinterpret_cast<float *>(sp[i]->s_vec);
+    for (long i = 0; i < x->num_out_chans; i++)
+        x->outs[i] = reinterpret_cast<float *>(sp[i + x->num_in_chans]->s_vec);
 
     if (x->multi)
         dsp_add(multiconvolve_perform, 2, x, sp[0]->s_n);

@@ -57,9 +57,9 @@ void generate_filter(t_bufresample *x, long nzero, long npoints, double cf, doub
 void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *argv);
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+/////////////////////// Main / New / Free / Assist ///////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
 int C74_EXPORT main()
@@ -102,6 +102,7 @@ void *bufresample_new()
 
 void bufresample_free(t_bufresample *x)
 {
+    free_HIRT_common_attributes(x);
     free_mem_swap(&x->filter);
 }
 
@@ -115,9 +116,9 @@ void bufresample_assist(t_bufresample *x, void *b, long m, long a, char *s)
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+///////////////////////////// Create Filters /////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
 // Make filter
@@ -127,9 +128,7 @@ double IZero(double x_sq)
     double new_term = 1;
     double b_func = 1;
 
-    long i;
-
-    for (i = 1; new_term > DBL_EPSILON; i++)  // Gives Maximum Accuracy With Speed!
+    for (long i = 1; new_term > DBL_EPSILON; i++)  // Gives Maximum Accuracy With Speed!
     {
         new_term = new_term * x_sq * (1.0 / (4.0 * (double) i * (double) i));
         b_func += new_term;
@@ -139,28 +138,22 @@ double IZero(double x_sq)
 }
 
 
+// Generate Filters
+
 void generate_filter(t_bufresample *x, long nzero, long npoints, double cf, double alpha)
 {
-    double *filter;
-
-    double alpha_bessel_recip;
-    double sinc_arg;
-    double val;
-    double x_sq;
-
     long half_filter_length = nzero * npoints;
-    long i;
 
     // Assign and check memory (N.B. + 2 points for the end point + one guard sample)
 
-    filter = (double *) schedule_equal_mem_swap(&x->filter, (sizeof(double) * (half_filter_length + 2)), npoints | (nzero << 0x10));
+    double *filter = (double *) schedule_equal_mem_swap(&x->filter, (sizeof(double) * (half_filter_length + 2)), npoints | (nzero << 0x10));
 
     if (!filter)
         return;
 
     // First find bessel function of alpha
 
-    alpha_bessel_recip = 1 / IZero(alpha * alpha);
+    const double alpha_bessel_recip = 1.0 / IZero(alpha * alpha);
 
     // Calculate second half of filter only
 
@@ -168,18 +161,18 @@ void generate_filter(t_bufresample *x, long nzero, long npoints, double cf, doub
 
     filter[0] = 2 * cf;
 
-    for (i = 1; i < half_filter_length + 1; i++)
+    for (long i = 1; i < half_filter_length + 1; i++)
     {
         // Kaiser Window
 
-        val = ((double) i) / half_filter_length;
-        x_sq = (1 - val * val) * alpha * alpha;
-        val = IZero(x_sq) * alpha_bessel_recip;
+        const double v1 = ((double) i) / half_filter_length;
+        const double x_sq = (1 - v1 * v1) * alpha * alpha;
+        const double v2 = IZero(x_sq) * alpha_bessel_recip;
 
         // Multiply with Sinc Function
 
-        sinc_arg = M_PI * (double) i / npoints;
-        filter[i] = (sin (2 * cf * sinc_arg) / sinc_arg) * val;
+        const double sinc_arg = M_PI * (double) i / npoints;
+        filter[i] = (sin (2 * cf * sinc_arg) / sinc_arg) * v2;
     }
 
     // Guard sample for linear interpolation
@@ -208,63 +201,54 @@ void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *
 
     alpha = (alpha <= 0.) ? 1.0 : alpha;
 
-    generate_filter(x, (long) nzero, (long) npoints, cf, alpha);
+    generate_filter(x, static_cast<long>(nzero),  static_cast<long>(npoints), cf, alpha);
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+///////////////////////////// Rate To Ratio //////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
-void rate_as_ratio(double rate, intptr_t *ret_num, intptr_t *ret_denom)
+void rate_as_ratio(double rate, intptr_t& num, intptr_t& denom)
 {
     intptr_t Cf[256];
 
-    double npart =fabs(rate);
-    double ipart;
-
-    intptr_t num = 1;
-    intptr_t denom = 1;
-    intptr_t swap;
-
+    double npart = fabs(rate);
     short length = 0;
-    short i, j;
+
+    num = 1;
+    denom = 1;
 
     for (; npart < 1000 && npart > 0 && length < 256; length++)
     {
-        ipart = floor(npart);
+        const double ipart = std::floor(npart);
         npart = npart - ipart;
         npart = npart ? 1 / npart : 0;
 
-        Cf[length] = (intptr_t) ipart;
+        Cf[length] = static_cast<intptr_t>(ipart);
     }
 
-    for (i = length - 1; i >= 0; i--)
+    for (short i = length - 1; i >= 0; i--)
     {
         num = Cf[i];
         denom = 1;
 
-        for (j = i - 1; j >= 0 && denom < 1000; j--)
+        for (short j = i - 1; j >= 0 && denom < 1000; j--)
         {
-            swap = num;
-            num = denom;
-            denom = swap;
+            std::swap(num, denom);
             num = num + (denom * Cf[j]);
         }
 
         if (denom < 1000)
             break;
     }
-
-    *ret_num = num;
-    *ret_denom = denom;
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+///////////////////////////// Filter Values //////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
 // Get a filter value from a position 0-nzero on the RHS wing (translate for LHS) - filter_position **MUST** be in range 0 to nzero inclusive
@@ -289,18 +273,15 @@ double get_filter_value_direct(double *filter, long npoints, double filter_posit
 }
 
 
-temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, long npoints, intptr_t num, intptr_t denom, intptr_t *ret_max_filter_length, intptr_t *ret_filter_offset)
+temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, long npoints, intptr_t num, intptr_t denom, intptr_t& max_filter_length, intptr_t& filter_offset)
 {
     double per_samp = num > denom ? (double) denom / (double) num : (double) 1;
     double one_over_per_samp = num > denom ? nzero * (double) num / (double) denom : nzero;
     double filter_position;
     double mul = num > denom ? (double) denom / (double) num : 1.;
 
-    intptr_t max_filter_length = (intptr_t) (one_over_per_samp + one_over_per_samp + 1);
-    intptr_t filter_offset = max_filter_length >> 1;
-    intptr_t current_num;
-    intptr_t i, j;
-
+    max_filter_length = static_cast<intptr_t>(one_over_per_samp + one_over_per_samp + 1);
+    filter_offset = max_filter_length >> 1;
     max_filter_length += (4 - (max_filter_length % 4));
     
     temp_ptr<double> temp_filters(denom * max_filter_length);
@@ -309,27 +290,24 @@ temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, lon
     if (!temp_filters)
         return std::move(temp_ptr<double>(0));
 
-    for (i = 0, current_num = 0; i < denom; i++, current_filter += max_filter_length, current_num += num)
+    for (intptr_t i = 0, current_num = 0; i < denom; i++, current_filter += max_filter_length, current_num += num)
     {
-        for (j = 0; j < max_filter_length; j++)
+        for (intptr_t j = 0; j < max_filter_length; j++)
         {
             while (current_num >= denom)
                 current_num -= denom;
             filter_position = fabs(per_samp * (j - (double) current_num / (double) denom - filter_offset));
-            current_filter[j] = filter_position <= nzero ? mul * get_filter_value_direct(filter, npoints, filter_position) : 0;
+            current_filter[j] = filter_position <= nzero ? mul * get_filter_value(filter, npoints, filter_position) : 0;
         }
     }
 
-    *ret_max_filter_length = max_filter_length;
-    *ret_filter_offset = filter_offset;
-    
     return std::move(temp_filters);
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////// Get Samples From a Buffer ///////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
 // Get samples safely from the buffer (buffer should already be inuse)
@@ -338,7 +316,6 @@ void get_buffer_samples(ibuffer_data& bufdata, float *samples, intptr_t offset, 
 {
     intptr_t temp_offset = 0;
     intptr_t temp_nsamps = nsamps;
-    intptr_t i;
 
     // Do not read before the buffer
 
@@ -363,13 +340,13 @@ void get_buffer_samples(ibuffer_data& bufdata, float *samples, intptr_t offset, 
     if (temp_nsamps < 0)
         temp_nsamps = 0;
 
-    for (i = 0; i < temp_offset; i++)
+    for (intptr_t i = 0; i < temp_offset; i++)
         samples[i] = 0;
 
     if (temp_nsamps)
         ibuffer_get_samps(bufdata, samples + temp_offset, offset, temp_nsamps, chan);
     
-    for (i = temp_offset + temp_nsamps; i < nsamps; i++)
+    for (intptr_t i = temp_offset + temp_nsamps; i < nsamps; i++)
         samples[i] = 0;
 }
 
@@ -378,7 +355,6 @@ void get_buffer_samples_local(ibuffer_data& bufdata, float *buf_samps, float *sa
 {
     intptr_t temp_offset = 0;
     intptr_t temp_nsamps = nsamps;
-    intptr_t i;
 
     // Do not read before the buffer
 
@@ -403,23 +379,24 @@ void get_buffer_samples_local(ibuffer_data& bufdata, float *buf_samps, float *sa
     if (temp_nsamps < 0)
         temp_nsamps = 0;
 
-    for (i = 0; i < temp_offset; i++)
+    for (intptr_t i = 0; i < temp_offset; i++)
         samples[i] = 0;
 
-    for (i = 0; i < temp_nsamps; i++)
+    for (intptr_t i = 0; i < temp_nsamps; i++)
         samples[i + temp_offset] = buf_samps[i + offset];
 
-    for (i = temp_offset + temp_nsamps; i < nsamps; i++)
+    for (intptr_t i = temp_offset + temp_nsamps; i < nsamps; i++)
         samples[i] = 0;
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+///////////////////////////// Convolve Filter ////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
-double sum_filter_mul_double(double *a, float *b, intptr_t N)
+
+double sum_filter_mul(double *a, float *b, intptr_t N)
 {
     double Sum = 0.;
     intptr_t i;
@@ -438,7 +415,7 @@ double sum_filter_mul_double(double *a, float *b, intptr_t N)
 }
 
 #ifdef TARGET_INTEL
-static inline double sum_filter_mul_vector(vDouble *a, float *b, intptr_t N)
+static inline double sum_filter_mul(vDouble *a, float *b, intptr_t N)
 {
     vDouble Sum = {0., 0.};
     vFloat Temp;
@@ -468,10 +445,9 @@ static inline double sum_filter_mul_vector(vDouble *a, float *b, intptr_t N)
 }
 #endif
 
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+////////////////////////// Fast Resample or Copy /////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
 temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, long nzero, long npoints, intptr_t nsamps, intptr_t num, intptr_t denom, long chan)
@@ -479,18 +455,13 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
     double *current_filter;
 
     intptr_t current_offset;
-    intptr_t buf_offset;
-    intptr_t filter_offset;
     intptr_t max_filter_length;
-    intptr_t first;
-    intptr_t second;
+    intptr_t filter_offset;
     intptr_t i, j, k;
-
-    double sum;
 
     // Create the relevant filters
 
-    temp_ptr<double> temp_filters = bufresample_calc_temp_filters(filter, nzero, npoints, num, denom, &max_filter_length, &filter_offset);
+    temp_ptr<double> temp_filters = bufresample_calc_temp_filters(filter, nzero, npoints, num, denom, max_filter_length, filter_offset);
 
     // Allocate memory
 
@@ -506,9 +477,9 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
 
     // Set buffer in use
 
-    first = filter_offset / num;
+    intptr_t first = filter_offset / num;
     first = (filter_offset > first * num) ? (first + 1) * denom : first * denom;
-    second = (bufdata.get_length() - (max_filter_length - filter_offset)) / num;
+    intptr_t second = (bufdata.get_length() - (max_filter_length - filter_offset)) / num;
     second *= denom;
 
     if (second > nsamps)
@@ -524,9 +495,11 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
     {
         for (j = 0, current_filter = temp_filters.get(); i < first && j < denom; i++, j++, current_filter += max_filter_length)
         {
+            double sum = 0.0;
+            
             get_buffer_samples_local(bufdata, buf_temp.get(), temp.get(), current_offset + (j * num / denom), max_filter_length);
 
-            for (k = 0, sum = 0; k < max_filter_length; k++)
+            for (k = 0; k < max_filter_length; k++)
                 sum += temp[k] * current_filter[k];
 
             output[i] = sum;
@@ -537,11 +510,11 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
     {
         for (j = 0, current_filter = temp_filters.get(); i < second && j < denom; i++, j++, current_filter += max_filter_length)
         {
-            buf_offset = current_offset + ((j * num) / denom);
+            intptr_t buf_offset = current_offset + ((j * num) / denom);
 #ifdef TARGET_INTEL
-            output[i] = sum_filter_mul_vector((vDouble *)current_filter, buf_temp.get() + buf_offset, max_filter_length);
+            output[i] = sum_filter_mul((vDouble *)current_filter, buf_temp.get() + buf_offset, max_filter_length);
 #else
-            output[i] = sum_filter_mul_double(current_filter, buf_temp.get() + buf_offset, max_filter_length);
+            output[i] = sum_filter_mul(current_filter, buf_temp.get() + buf_offset, max_filter_length);
 #endif
         }
     }
@@ -550,10 +523,11 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
     {
         for (j = 0, current_filter = temp_filters.get(); i < nsamps && j < denom; i++, j++, current_filter += max_filter_length)
         {
-            get_buffer_samples_local(bufdata, buf_temp.get(), temp.get(), current_offset + (j * num / denom), max_filter_length);
+            double sum = 0.0;
+            
             get_buffer_samples_local(bufdata, buf_temp.get(), temp.get(), current_offset + (j * num / denom), max_filter_length);
 
-            for (k = 0, sum = 0; k < max_filter_length; k++)
+            for (k = 0; k < max_filter_length; k++)
                 sum += temp[k] * current_filter[k];
 
             output[i] = sum;
@@ -568,7 +542,6 @@ temp_ptr<double>&& bufresample_copy(ibuffer_data& bufdata, intptr_t nsamps, long
 {
     temp_ptr<double> output(nsamps);
     temp_ptr<float> temp(nsamps);
-    intptr_t i;
 
     if (!temp || !output)
         return std::move(temp_ptr<double>(0));
@@ -577,16 +550,16 @@ temp_ptr<double>&& bufresample_copy(ibuffer_data& bufdata, intptr_t nsamps, long
 
     get_buffer_samples(bufdata, temp.get(), 0, nsamps, chan);
 
-    for (i = 0; i < nsamps; i++)
+    for (intptr_t i = 0; i < nsamps; i++)
         output[i] = temp[i];
 
     return std::move(output);
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+///////////////////////////// User messages //////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 
 // Arguments are - target buffer / source buffer followed by one or two more arguments depending on the message:
@@ -605,24 +578,12 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
 {
     temp_ptr<double> output(0);
 
-    t_symbol *target;
-    t_symbol *source;
-
-    double *filter;
-
-    double sr_convert = 0.;
-    double sample_rate = 0;
-    double rate;
+    double sr_convert = 0.0;
 
     intptr_t num;
     intptr_t denom;
-    intptr_t nsamps;
 
     uintptr_t nom_size;
-
-    long npoints;
-    long nzero;
-
 
     // Check arguments
 
@@ -632,11 +593,11 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
         return;
     }
 
-    target = atom_getsym(argv++);
+    t_symbol *target = atom_getsym(argv++);
     argc--;
-    source = atom_getsym(argv++);
+    t_symbol *source = atom_getsym(argv++);
     argc--;
-    rate = atom_getfloat(argv++);
+    double rate = atom_getfloat(argv++);
     argc--;
 
     if (sym == gensym("both"))
@@ -654,7 +615,7 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
     // Default is to transpose
 
     ibuffer_data bufdata(source);
-    sample_rate = bufdata.get_sample_rate();
+    double sample_rate = bufdata.get_sample_rate();
 
     if (sym == gensym("resample"))
     {
@@ -676,19 +637,20 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
 
     // Resample
 
-    nsamps = (intptr_t) ceil(bufdata.get_length() / rate);
+    double *filter = (double *) access_mem_swap(&x->filter, &nom_size);
+    long npoints = nom_size & 0x7FFF;
+    long nzero = (nom_size >> 0x10) & 0x3FF;
 
-    rate_as_ratio(rate, &num, &denom);
-    nsamps = (intptr_t) (ceil(((double) denom * (double) bufdata.get_length()) / (double) num));
-
-    filter = (double *) access_mem_swap(&x->filter, &nom_size);
-    npoints = nom_size & 0x7FFF;
-    nzero = (nom_size >> 0x10) & 0x3FF;
-
-    if (rate == 1.0)
-        output = bufresample_copy(bufdata, nsamps, chan);
-    else
-        output = resample_fixed_ratio(bufdata, filter, nzero, npoints, nsamps, num, denom, chan);
+    rate_as_ratio(rate, num, denom);
+    intptr_t nsamps = static_cast<intptr_t>(std::ceil(((double) denom * (double) bufdata.get_length()) / (double) num));
+        
+    if (filter)
+    {
+        if (rate == 1.0)
+            output = bufresample_copy(bufdata, nsamps, chan);
+        else
+            output = resample_fixed_ratio(bufdata, filter, nzero, npoints, nsamps, num, denom, chan);
+    }
 
     if (!output)
     {
@@ -705,55 +667,29 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
 }
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+///////////////////////// Slower Rate Resampling /////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
-
-// Get a filter value from a position 0-1 on the RHS wing (translate for LHS) - filter_position **MUST** be in range 0 to 1 inclusive
-
-double get_filter_value(double *filter, long half_length, double filter_position)
-{
-    double index;
-    double fract;
-    double lo;
-    double hi;
-
-    long idx;
-
-    index = half_length * filter_position;
-    idx = (long) index;
-    fract = index - idx;
-
-    lo = filter[idx];
-    hi = filter[idx + 1];
-
-    return lo + fract * (hi - lo);
-}
 
 // Calculate one sample
 
 double calc_sample(ibuffer_data& bufdata, float *samples, double *filter, long nzero, long npoints, double position, double rate, long chan)
 {
-    double per_samp = rate > 1. ? 1. / (rate * nzero) : 1. / nzero;
-    double one_over_per_samp = rate > 1. ? nzero * rate : nzero;
+    double per_samp = rate > 1.0 ? 1.0 / (rate * nzero) : 1.0 / nzero;
+    double one_over_per_samp = rate > 1.0 ? nzero * rate : nzero;
     double filter_position;
-    double fract;
-    double sum = 0.;
+    double sum = 0.0;
 
     long half_length = nzero * npoints;
 
-    intptr_t offset;
-    intptr_t nsamps;
-    intptr_t idx;
-
-    idx = (intptr_t) position;
-    fract = position - idx;
+    const intptr_t idx = static_cast<intptr_t>(position);
+    const double fract = position - idx;
 
     // Get samples
 
-    offset = (intptr_t) (position - one_over_per_samp);
-    nsamps = (intptr_t) (one_over_per_samp + one_over_per_samp + 2);
+    const intptr_t offset = static_cast<intptr_t>(position - one_over_per_samp);
+    const intptr_t nsamps = static_cast<intptr_t>(one_over_per_samp + one_over_per_samp + 2);
     get_buffer_samples(bufdata, samples, offset, nsamps, chan);
 
     // Get to first relevant sample
@@ -779,11 +715,10 @@ double calc_sample(ibuffer_data& bufdata, float *samples, double *filter, long n
 
 temp_ptr<double>&& resample_fixed_rate(ibuffer_data& bufdata, double *filter, long nzero, long npoints, double offset, intptr_t nsamps, double rate, long chan)
 {
-    double one_over_per_samp = rate > 1. ? nzero * rate : nzero;
-    double mul = rate > 1. ? 1. / rate : 1;
+    double one_over_per_samp = rate > 1.0 ? nzero * rate : nzero;
+    double mul = rate > 1.0 ? 1.0 / rate : 1.0;
 
-    intptr_t temp_length = (intptr_t) (one_over_per_samp + one_over_per_samp + 2);
-    intptr_t i;
+    intptr_t temp_length = static_cast<intptr_t>(one_over_per_samp + one_over_per_samp + 2);
 
     // Allocate memory
 
@@ -797,7 +732,7 @@ temp_ptr<double>&& resample_fixed_rate(ibuffer_data& bufdata, double *filter, lo
 
     // Resample
 
-    for (i = 0; i < nsamps; i++)
+    for (intptr_t i = 0; i < nsamps; i++)
         output[i] = mul * calc_sample(bufdata, temp.get(), filter, nzero, npoints, offset + (i * rate), rate, chan);
 
     return std::move(output);

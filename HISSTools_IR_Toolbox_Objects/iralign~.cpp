@@ -31,7 +31,6 @@ struct t_iralign
     // Bang Outlet
 
     void *process_done;
-
 };
 
 
@@ -120,11 +119,10 @@ intptr_t align_find_max(double *in, intptr_t length)
     double max_test;
 
     intptr_t max_pos = 0;
-    intptr_t i;
 
     // Find peak
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
     {
         max_test = fabs(in[i]);
 
@@ -141,12 +139,10 @@ intptr_t align_find_max(double *in, intptr_t length)
 
 void align_pad(double *out_buf, double *in_buf, intptr_t pad, intptr_t length)
 {
-    intptr_t i;
-
-    for (i = 0; i < pad; i++)
+    for (intptr_t i = 0; i < pad; i++)
         *out_buf++ = 0.0;
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
         *out_buf++ = *in_buf++;
 }
 
@@ -175,18 +171,16 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
     t_atom_long write_chan = x->write_chan - 1;
     double sample_rate = 0.0;
 
-    intptr_t num_buffers = 0;
     intptr_t overall_length = 0;
     intptr_t max_length = 0;
     intptr_t overall_max_pos = 0;
     intptr_t offset = 0;
-    intptr_t i, j;
 
     bool overall_error = false;
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, (sym == gensym("align")), 128, &overall_length, &max_length, &sample_rate);
+    short num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, (sym == gensym("align")), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
@@ -210,19 +204,19 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     // Read in buffers
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         samples[i] = samples[0] + offset;
         buffer_read(in_buffer_names[i], read_chan, temp_buf_f, lengths[i]);
 
-        for (j = 0; j < lengths[i]; j++)
+        for (intptr_t j = 0; j < lengths[i]; j++)
              samples[i][j] = temp_buf_f[j];
         offset += lengths[i];
     }
 
     // Find latest max sample
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         max_pos[i] = align_find_max(samples[i], lengths[i]);
 
@@ -234,7 +228,7 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     if (!x->resize)
     {
-        for (i = 0; i < num_buffers; i++)
+        for (short i = 0; i < num_buffers; i++)
         {
             if (buffer_length(out_buffer_names[i]) < lengths[i] + overall_max_pos - max_pos[i])
             {
@@ -246,7 +240,7 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     // Align and write to buffers
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         align_pad(temp_buf_d, samples[i], overall_max_pos - max_pos[i], lengths[i]);
 

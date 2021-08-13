@@ -112,7 +112,6 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
 {
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source = atom_getsym(argv++);
-    intptr_t i;
     
     t_atom_long read_chan = x->read_chan - 1;
 
@@ -143,7 +142,7 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
 
     // Copy in reverse to temporary storage
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
          temp2[i] = temp1[length - i - 1];
 
     // Copy out to buffer

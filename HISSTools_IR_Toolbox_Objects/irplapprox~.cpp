@@ -151,14 +151,10 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     t_atom out_list[HIRT_MAX_SPECIFIER_ITEMS];
 
-    double sample_rate;
     double max_val = 0.0;
 
     uintptr_t num_output_pairs;
     uintptr_t pos;
-    uintptr_t fft_size;
-    uintptr_t fft_size_halved;
-    uintptr_t fft_size_log2;
     uintptr_t i;
 
     // Get input lengths
@@ -167,8 +163,9 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(source_length, fft_size_log2);
-    fft_size_halved = fft_size >> 1;
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>(source_length), fft_size_log2);
+    uintptr_t fft_size_halved = fft_size >> 1;
 
     // Allocate Memory
 
@@ -191,7 +188,7 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
     // Get input and sample rate
 
     buffer_read(source, x->read_chan - 1, in.get(), source_length);
-    sample_rate = buffer_sample_rate(source);
+    double sample_rate = buffer_sample_rate(source);
 
     // Convert to frequency domain (for inversion only one buffer is given - use modelling spike for the other input)
 
@@ -206,7 +203,7 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
     // Calculate log frequencies and  convert powers to db
 
     for (i = 0; i < fft_size_halved + 1; i++)
-        log_freqs[i] = log((i / ((double) fft_size)) * sample_rate);
+        log_freqs[i] = log((i / (static_cast<double>(fft_size))) * sample_rate);
     pow_to_db_array(spectrum_1.realp, fft_size_halved + 1);
 
     // End stop frequencies and db vals with duplicates
@@ -271,22 +268,16 @@ void calc_PLA(t_PLA_data *PLA_data, double *x_vals, double *y_vals, long target_
 
 void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, uintptr_t target_segments, uintptr_t num_segments)
 {
-    t_PLA_data *current_data;
-    t_PLA_data *merge_data = NULL;
-
-    double min_cost;
-    double cost;
-
-    uintptr_t i;
+    t_PLA_data *merge_data = nullptr;
 
     while (num_segments > target_segments && num_segments >= 1)
     {
-        min_cost = HUGE_VAL;
-        current_data = data;
+        t_PLA_data *current_data = data;
+        double min_cost = HUGE_VAL;
 
-        for (i = 0; i < num_segments - 1; i++, current_data = current_data->next_data)
+        for (uintptr_t i = 0; i < num_segments - 1; i++, current_data = current_data->next_data)
         {
-            cost = PLA_calc_merged_cost(x_vals, y_vals, current_data->start_pos, current_data->next_data->end_pos);
+            double cost = PLA_calc_merged_cost(x_vals, y_vals, current_data->start_pos, current_data->next_data->end_pos);
             if (cost < min_cost)
             {
                 min_cost = cost;
@@ -306,14 +297,11 @@ double PLA_calc_merged_cost(double *x_vals, double *y_vals, uintptr_t start_pos,
 {
     double gradient = (y_vals[end_pos] - y_vals[start_pos]) / (x_vals[end_pos] - x_vals[start_pos]);
     double offset = y_vals[start_pos] - (x_vals[start_pos] * gradient);
-    double difference;
     double sum = 0.0;
 
-    uintptr_t i;
-
-    for (i = start_pos; i < end_pos; i++)
+    for (uintptr_t i = start_pos; i < end_pos; i++)
     {
-        difference = y_vals[i] - (x_vals[i] * gradient + offset);
+        double difference = y_vals[i] - (x_vals[i] * gradient + offset);
         sum += difference * difference;
     }
 

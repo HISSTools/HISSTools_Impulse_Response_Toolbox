@@ -5,6 +5,8 @@
 #include <z_dsp.h>
 
 #include <AH_Memory_Swap.h>
+#include <algorithm>
+
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
 
@@ -74,8 +76,8 @@ struct t_irmeasure
     intptr_t current_t;
     intptr_t T;
     intptr_t T2;
-    intptr_t fft_size;
     intptr_t chan_offset[HIRT_MAX_MEASURE_CHANS];
+    uintptr_t fft_size;
 
     long num_in_chans;
     long num_out_chans;
@@ -265,7 +267,7 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv)
 
     for (i = 0; i < num_out_chans + 1; i++)
         outlet_new(x, "signal");
-    dsp_setup((t_pxobject *)x, (long) num_in_chans);
+    dsp_setup((t_pxobject *)x, static_cast<long>(num_in_chans));
 
     init_HIRT_common_attributes(x);
 
@@ -287,16 +289,15 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv)
     if (!x->sample_rate)
         x->sample_rate = 44100.0;
 
-
     alloc_mem_swap(&x->rec_mem, 0, 0);
     alloc_mem_swap(&x->out_mem, 0, 0);
-
-    x->num_in_chans = (long) num_in_chans;
-    x->num_out_chans = (long) num_out_chans;
-    x->num_active_ins = (long) num_in_chans;
-    x->num_active_outs = (long) num_out_chans;
-    x->current_num_active_ins = (long) num_in_chans;
-    x->current_num_active_outs = (long) num_out_chans;
+    
+    x->num_in_chans = static_cast<long>(num_in_chans);
+    x->num_out_chans = static_cast<long>(num_out_chans);
+    x->num_active_ins = static_cast<long>(num_in_chans);
+    x->num_active_outs = static_cast<long>(num_out_chans);
+    x->current_num_active_ins = static_cast<long>(num_in_chans);
+    x->current_num_active_outs = static_cast<long>(num_out_chans);
 
     x->measure_mode = SWEEP;
     x->phase = 0.0;
@@ -411,7 +412,7 @@ double irmeasure_param_check(t_irmeasure *x, const char *name, double val, doubl
         new_val = max;
     }
 
-    if (changed == true)
+    if (changed)
         object_error((t_object *) x, "parameter out of range: setting %s to %lf", name, new_val);
 
     return new_val;
@@ -434,8 +435,6 @@ void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     long num_active_ins = x->num_active_ins;
     long num_active_outs = x->num_active_outs;
-
-    intptr_t mem_size;
 
     // Load parameters
 
@@ -472,11 +471,11 @@ void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     // Check length of sweep and memory allocation
 
-    t_ess sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), nullptr);
+    t_ess sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), 0);
     
     if (sweep_params.length())
     {
-        mem_size = num_active_ins * irmeasure_calc_sweep_mem_size(sweep_params, num_active_outs, x->out_length, x->sample_rate);
+        intptr_t mem_size = num_active_ins * irmeasure_calc_sweep_mem_size(sweep_params, num_active_outs, x->out_length, x->sample_rate);
         if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
             object_error((t_object *) x, "not able to allocate adequate memory for recording");
 
@@ -512,8 +511,6 @@ void irmeasure_mls(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     t_atom_long order = 18;
 
-    intptr_t mem_size;
-
     // Load parameters
 
     if (argc > 0)
@@ -523,17 +520,17 @@ void irmeasure_mls(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     // Check parameters
 
-    order = (t_atom_long) irmeasure_param_check(x, "order", (double) order, 1, 24);
+    order = (t_atom_long) irmeasure_param_check(x, "order", static_cast<double>(order), 1, 24);
     out_length = irmeasure_param_check(x, "ir length", out_length, 0.0, HUGE_VAL);
 
     // Store parameters
 
-    x->order = (long) order;
+    x->order = static_cast<long>(order);
     x->out_length = out_length / 1000.0;
 
     // Allocate memory
 
-    mem_size = num_active_ins * irmeasure_calc_mls_mem_size(x->order, num_active_outs, x->out_length, x->sample_rate);
+    intptr_t mem_size = num_active_ins * irmeasure_calc_mls_mem_size(x->order, num_active_outs, x->out_length, x->sample_rate);
     if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
         object_error((t_object *) x, "not able to allocate adequate memory for recording");
 
@@ -559,8 +556,6 @@ void irmeasure_noise(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     long num_active_ins = x->num_active_ins;
     long num_active_outs = x->num_active_outs;
-
-    intptr_t mem_size;
 
     t_noise_mode noise_mode = NOISE_MODE_WHITE;
 
@@ -597,7 +592,7 @@ void irmeasure_noise(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     // Allocate memory
 
-    mem_size = num_active_ins * irmeasure_calc_noise_mem_size(x->length, num_active_outs, x->out_length, x->sample_rate);
+    intptr_t mem_size = num_active_ins * irmeasure_calc_noise_mem_size(x->length, num_active_outs, x->out_length, x->sample_rate);
     if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
         object_error((t_object *) x, "not able to allocate adequate memory for recording");
 
@@ -626,7 +621,7 @@ void irmeasure_tone(t_irmeasure *x, double freq, t_atom_long chan)
 
     x->start_measurement = 0;
     x->stop_measurement = 1;
-    x->test_tone = (long) chan;
+    x->test_tone = static_cast<long>(chan);
 }
 
 
@@ -667,7 +662,7 @@ void irmeasure_active_ins(t_irmeasure *x, t_atom_long num_active_ins)
         num_active_ins = x->num_in_chans;
     }
 
-    x->num_active_ins = (long) num_active_ins;
+    x->num_active_ins = static_cast<long>(num_active_ins);
 }
 
 
@@ -685,7 +680,7 @@ void irmeasure_active_outs(t_irmeasure *x, t_atom_long num_active_outs)
         num_active_outs = x->num_out_chans;
     }
 
-    x->num_active_outs = (long) num_active_outs;
+    x->num_active_outs = static_cast<long>(num_active_outs);
 }
 
 
@@ -712,32 +707,21 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
 
-    double *measurement_rec;
-    double *rec_mem;
-    double *out_buf;
-    double *out_mem;
     t_symbol *filter = filter_retriever(x->deconvolve_filter_specifier);
 
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
     double range_specifier[HIRT_MAX_SPECIFIER_ITEMS];
 
-    double test_pow;
-    double max_pow;
     double sample_rate = x->sample_rate;
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
     double amp_comp = 1.0;
     
-    long deconvolve_mode = x->deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
     long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
 
     intptr_t rec_length = x->T2;
     intptr_t gen_length = 0;
     intptr_t filter_length = buffer_length(filter);
-
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-    uintptr_t mem_size;
-    uintptr_t i;
 
     t_ess sweep_params(x->sweep_params);
     t_mls max_length_params(x->max_length_params);
@@ -753,7 +737,6 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
         case MLS:
             max_length_params.set_amp((x->inv_amp ? max_length_params.amp() : 1.0) * db_to_a(-x->ir_gain));
             gen_length = max_length_params.length();
-
             break;
 
         case NOISE:
@@ -770,7 +753,8 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(rec_length + gen_length, fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(rec_length + gen_length, fft_size_log2);
 
     // Allocate Temporary Memory
 
@@ -796,8 +780,9 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Allocate output memory and get record memory
 
-    rec_mem = (double *) access_mem_swap(&x->rec_mem, &mem_size);
-    out_mem = (double *) grow_mem_swap(&x->out_mem, fft_size * x->current_num_active_ins * sizeof(double), fft_size * x->current_num_active_ins);
+    uintptr_t mem_size;
+    double *rec_mem = (double *) access_mem_swap(&x->rec_mem, &mem_size);
+    double *out_mem = (double *) grow_mem_swap(&x->out_mem, fft_size * x->current_num_active_ins * sizeof(double), fft_size * x->current_num_active_ins);
 
     if (!out_mem)
     {
@@ -839,10 +824,12 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     {
         // Find maximum power to scale
 
-        for (i = 1, max_pow = 0; i < (fft_size >> 1); i++)
+        double max_pow = 0.0;
+        
+        for (uintptr_t i = 1; i < (fft_size >> 1); i++)
         {
-            test_pow = spectrum_2.realp[i] *spectrum_2.realp[i] + spectrum_2.imagp[i] * spectrum_2.imagp[i];
-            max_pow = test_pow > max_pow ? test_pow : max_pow;
+            const double test_pow = spectrum_2.realp[i] * spectrum_2.realp[i] + spectrum_2.imagp[i] * spectrum_2.imagp[i];
+            max_pow = std::max(test_pow, max_pow);
         }
 
         max_pow = pow_to_db(max_pow);
@@ -852,23 +839,23 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
         fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
         fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
         buffer_read(filter, 0, filter_in.get(), fft_size);
-        make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, max_pow, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, sample_rate);
+        make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, max_pow, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, sample_rate);
     }
 
     // Deconvolve each input channel
 
-    for (i = 0; i < (uintptr_t) x->current_num_active_ins; i++)
+    for (long i = 0; i < x->current_num_active_ins; i++)
     {
         // Get current input and output buffers
 
-        measurement_rec = rec_mem + (i * rec_length);
-        out_buf = out_mem + (i * fft_size);
+        double *measurement_rec = rec_mem + (i * rec_length);
+        double *out_ptr = out_mem + (i * fft_size);
 
         // Do transform into spectrum_1 for measurement recording - deconvolve - transform back
 
         time_to_halfspectrum_double(fft_setup, measurement_rec, rec_length, spectrum_1, fft_size);
         deconvolve_with_filter(spectrum_1, spectrum_2, spectrum_3, fft_size, SPECTRUM_REAL);
-        spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
+        spectrum_to_time(fft_setup, out_ptr, spectrum_1, fft_size, SPECTRUM_REAL);
     }
 
     // Done
@@ -892,17 +879,11 @@ void irmeasure_extract(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irmeasure_extract_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    double *rec_mem;
-
-    t_atom_long in_chan = 1;
-    t_symbol *buffer = NULL;
-
     intptr_t rec_length = x->T2;
-
     uintptr_t fft_size = x->fft_size;
     uintptr_t mem_size;
 
-    rec_mem = (double *) access_mem_swap(&x->rec_mem, &mem_size);
+    double *rec_mem = (double *) access_mem_swap(&x->rec_mem, &mem_size);
 
     // Get arguments
 
@@ -912,8 +893,8 @@ void irmeasure_extract_internal(t_irmeasure *x, t_symbol *sym, short argc, t_ato
         return;
     }
 
-    in_chan = argc > 1 ? atom_getlong(argv++) : 1;
-    buffer = atom_getsym(argv++);
+    t_atom_long in_chan = argc > 1 ? atom_getlong(argv++) : 1;
+    t_symbol *buffer = atom_getsym(argv++);
 
     // Range check
 
@@ -947,13 +928,7 @@ void irmeasure_dump(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    double *out_mem;
-
-    t_atom_long in_chan = 1;
-    t_symbol *buffer = NULL;
-
     uintptr_t fft_size = x->fft_size;
-    uintptr_t mem_size;
 
     // Get arguments
 
@@ -963,8 +938,8 @@ void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *
         return;
     }
 
-    in_chan = argc > 1 ? atom_getlong(argv++) : 1;
-    buffer = atom_getsym(argv++);
+    t_atom_long in_chan = argc > 1 ? atom_getlong(argv++) : 1;
+    t_symbol *buffer = atom_getsym(argv++);
 
     // Range check
 
@@ -986,7 +961,8 @@ void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *
 
     // Get and check memory
 
-    out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size) + (in_chan * fft_size);
+    uintptr_t mem_size;
+    double *out_ptr = (double *) access_mem_swap(&x->out_mem, &mem_size) + (in_chan * fft_size);
 
     if (mem_size < fft_size * x->current_num_active_ins)
     {
@@ -996,7 +972,7 @@ void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *
 
     // Write to buffer
 
-    buffer_write((t_object *) x, buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    buffer_write((t_object *) x, buffer, out_ptr, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 }
 
 
@@ -1010,15 +986,9 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
 {
     t_symbol *buffer;
 
-    double *out_buf;
-    double *out_mem;
-
     uintptr_t fft_size = x->fft_size;
-    uintptr_t mem_size;
-
+    
     intptr_t T_minus;
-    intptr_t L;
-    intptr_t T;
 
     t_atom_long harmonic = 1;
     t_atom_long in_chan = 1;
@@ -1086,7 +1056,8 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
 
     // Get and check memory
 
-    out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
+    uintptr_t mem_size;
+    double *out_mem = (double *) access_mem_swap(&x->out_mem, &mem_size);
 
     if (mem_size < fft_size * x->current_num_active_ins)
     {
@@ -1097,33 +1068,33 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
     // Calculate offset in internal buffer
 
     if (x->measure_mode == SWEEP)
-        T_minus = (intptr_t) x->sweep_params.harm_offset(harmonic);
+        T_minus = static_cast<intptr_t>(x->sweep_params.harm_offset(harmonic));
     else
         T_minus = 0;
 
-    L = (intptr_t) (x->current_out_length * x->sample_rate);
+    intptr_t L = static_cast<intptr_t>(x->current_out_length * x->sample_rate);
 
     if (harmonic > 1)
     {
-        intptr_t T_minus_prev = (intptr_t) x->sweep_params.harm_offset(harmonic - 1);
+        intptr_t T_minus_prev = static_cast<intptr_t>(x->sweep_params.harm_offset(harmonic - 1));
         intptr_t L2 = T_minus - T_minus_prev;
 
         if (L2 < L)
             L = L2;
     }
 
-    T = x->chan_offset[out_chan] - T_minus;
+    intptr_t T = x->chan_offset[out_chan] - T_minus;
 
     // Wrap offset
 
     while (T < 0)
         T += fft_size;
 
-    out_buf = out_mem + (in_chan * fft_size) + T;
+    double *out_ptr = out_mem + (in_chan * fft_size) + T;
 
     // Write to buffer
 
-    buffer_write((t_object *) x, buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    buffer_write((t_object *) x, buffer, out_ptr, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
 }
 
 
@@ -1139,14 +1110,14 @@ void irmeasure_sweep_params(t_irmeasure *x)
 
     x->sweep_params = t_ess(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, sample_rate, db_to_a(x->amp), x->amp_curve);
     uintptr_t sweep_length = x->sweep_params.length();
-    long chan_offset = (long) ((out_length * sample_rate) + sweep_length);
-    long i;
 
-    for (i = 0; i < x->current_num_active_outs; i++)
+    intptr_t chan_offset = static_cast<intptr_t>((out_length * sample_rate) + sweep_length);
+
+    for (long i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
 
     x->T = sweep_length;
-    x->T2 = (intptr_t) (sweep_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
+    x->T2 = static_cast<intptr_t>(sweep_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
     x->current_out_length = out_length;
     x->current_t = 0;
 }
@@ -1168,7 +1139,7 @@ void irmeasure_mls_params(t_irmeasure *x)
         x->chan_offset[i] = (i * chan_offset);
 
     x->T = mls_length;
-    x->T2 = (intptr_t) (mls_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
+    x->T2 = static_cast<intptr_t>(mls_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
     x->current_out_length = out_length;
     x->current_t = 0;
 }
@@ -1194,12 +1165,12 @@ void irmeasure_noise_params(t_irmeasure *x)
         amp_comp = x->max_amp_pink;
 
     x->noise_params = t_noise_params(noise_mode, x->fade_in, x->fade_out, length, sample_rate, db_to_a(x->amp) / amp_comp);
-    
+
     for (i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
 
     x->T = noise_length;
-    x->T2 = (intptr_t) (noise_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
+    x->T2 = static_cast<intptr_t>(noise_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
     x->current_out_length = out_length;
     x->current_t = 0;
 }
@@ -1217,47 +1188,24 @@ void irmeasure_params(t_irmeasure *x)
 
 
 //////////////////////////////////////////////////////////////////////////
-//////////////////////// Min / Max Double Routines ///////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-
-static inline double min_double(double v1, double v2)
-{
-    v1 = v1 < v2 ? v1 : v2;
-
-    return v1;
-}
-
-
-static inline double max_double(double v1, double v2)
-{
-    v1 = v1 > v2 ? v1 : v2;
-
-    return v1;
-}
-
-//////////////////////////////////////////////////////////////////////////
 //////////////////////////// Perform Routines ////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 
 static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, bool double_precision)
 {
-    long start;
-    long todo;
+    // Calculate where signal starts
 
-    // Calculate where sweep starts
+    long start = std::max(0L, -current_t);
 
-    start = (long) max_double (0, -current_t);
-
-    if (double_precision == true)
-        out = ((double *) out) + start;
+    if (double_precision)
+        out = reinterpret_cast<double *>(out) + start;
     else
-        out = ((float *) out) + start;
+        out = reinterpret_cast<float *>(out) + start;
 
     // Calculate where sweep ends
 
-    todo = (long) max_double (0, min_double(vec_size - start, min_double((double) x->T, (double) (x->T - current_t))));
+    long todo = std::max(0L, std::min(vec_size - start, std::min(x->T, (x->T - current_t))));
 
     // Reset
 
@@ -1285,11 +1233,9 @@ t_int *irmeasure_perform(t_int *w)
 {
     // Set pointers
 
-    long vec_size = (long) w[1];
-    t_irmeasure *x = (t_irmeasure *) w[2];
+    long vec_size = static_cast<long>(w[1]);
+    t_irmeasure *x = reinterpret_cast<t_irmeasure *>(w[2]);
 
-    double *measurement_rec;
-    double *rec_mem;
     float *in;
     float *out;
 
@@ -1299,19 +1245,12 @@ t_int *irmeasure_perform(t_int *w)
     double sample_rate = x->sample_rate;
     double progress_mul = 0.0;
 
-    intptr_t T2;
-    intptr_t current_t;
-    intptr_t current_t2;
-    intptr_t mem_size = 0;
-    intptr_t i, j;
-
     long test_tone = x->test_tone;
-    long excitation_playing;
-    long mem_check;
     long current_num_active_ins = x->current_num_active_ins;
     long current_num_active_outs = x->current_num_active_outs;
     long num_out_chans = x->num_out_chans;
-
+    long i, j;
+    
     // Check for stop / start
 
     if (x->start_measurement)
@@ -1322,21 +1261,21 @@ t_int *irmeasure_perform(t_int *w)
 
     x->start_measurement = 0;
     x->stop_measurement = 0;
-    T2 = x->T2;
+    intptr_t T2 = x->T2;
 
     // Get counters
 
-    current_t = x->current_t;
-    current_t2 = current_t;
-    excitation_playing = current_t2 < T2;
+    intptr_t current_t = x->current_t;
+    intptr_t current_t2 = current_t;
+    bool excitation_playing = current_t2 < T2;
 
     // Check memory
 
     attempt_mem_swap(&x->rec_mem);
-    rec_mem = (double *) x->rec_mem.current_ptr;
+    double *rec_mem = (double *) x->rec_mem.current_ptr;
 
-    mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
-    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
+    intptr_t mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
+    bool mem_check = x->rec_mem.current_size >= static_cast<uintptr_t>(mem_size);
 
     if (mem_check)
     {
@@ -1344,8 +1283,8 @@ t_int *irmeasure_perform(t_int *w)
 
         for (j = 0; j < current_num_active_ins; j++)
         {
-            in = (float *) x->in_chans[j];
-            measurement_rec = rec_mem + (j * T2);
+            in = reinterpret_cast<float *>(x->in_chans[j]);
+            double *measurement_rec = rec_mem + (j * T2);
             current_t2 = current_t;
             for (i = 0; i < vec_size && current_t2 < T2; i++, current_t2++)
                 measurement_rec[current_t2] = *in++;
@@ -1355,7 +1294,7 @@ t_int *irmeasure_perform(t_int *w)
     // Zero all outputs (including progress)
 
     for (j = 0; j < num_out_chans + 1; j++)
-        for (i = 0, out = (float *) x->out_chans[j]; i < vec_size; i++)
+        for (i = 0, out = reinterpret_cast<float *>(x->out_chans[j]); i < vec_size; i++)
             *out++ = 0;
 
     // Choose between test tones and sweeps
@@ -1365,15 +1304,15 @@ t_int *irmeasure_perform(t_int *w)
         // Do Test tones
 
         if (test_tone == -1)
-            out = (float *) x->out_chans[0];
+            out = reinterpret_cast<float *>(x->out_chans[0]);
         else
-            out = (float *) x->out_chans[test_tone - 1];
+            out = reinterpret_cast<float *>(x->out_chans[test_tone - 1]);
 
         // Generate one channel of test tone
 
         for (i = 0; i < vec_size; i++)
         {
-            *out++ = (float) (amp * sin(phase * M_PI * 2));
+            *out++ = static_cast<float>(amp * sin(phase * M_PI * 2));
             phase += phase_inc;
         }
 
@@ -1388,10 +1327,10 @@ t_int *irmeasure_perform(t_int *w)
 
         if (test_tone == -1)
         {
-            for (j = 1, in = (float *) x->out_chans[0]; j < current_num_active_outs; j++)
+            for (j = 1, in = reinterpret_cast<float *>(x->out_chans[0]); j < current_num_active_outs; j++)
             {
-                for (i = 0, out = (float *) x->out_chans[j]; i < vec_size; i++)
-                    out[i] = (float) in[i];
+                for (i = 0, out = reinterpret_cast<float *>(x->out_chans[j]); i < vec_size; i++)
+                    out[i] = in[i];
             }
         }
     }
@@ -1412,12 +1351,12 @@ t_int *irmeasure_perform(t_int *w)
 
             // Progress output
 
-            out = (float *) x->out_chans[num_out_chans];
+            out = reinterpret_cast<float *>(x->out_chans[num_out_chans]);
             current_t2 = x->current_t;
             for (i = 0; i < vec_size && current_t2 < T2; i++, current_t2++)
-                out[i] = (float) (progress_mul * current_t2);
+                out[i] = static_cast<float>(progress_mul * current_t2);
             for (; i < vec_size; i++)
-                out[i] = (float) (progress_mul * T2);
+                out[i] = static_cast<float>(progress_mul * T2);
         }
     }
 
@@ -1440,7 +1379,6 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
     double *measurement_rec;
     double *in;
     double *out;
-    double *rec_mem;
 
     double phase = x->phase;
     double phase_inc = x->test_tone_freq / x->sample_rate;
@@ -1448,19 +1386,12 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
     double sample_rate = x->sample_rate;
     double progress_mul = 0.0;
 
-    intptr_t T2;
-    intptr_t current_t;
-    intptr_t current_t2;
-    intptr_t mem_size = 0;
-    intptr_t i, j;
-
     long test_tone = x->test_tone;
-    long excitation_playing;
-    long mem_check;
     long current_num_active_ins = x->current_num_active_ins;
     long current_num_active_outs = x->current_num_active_outs;
     long num_out_chans = x->num_out_chans;
-
+    long i, j;
+    
     // Check for stop / start
 
     if (x->start_measurement)
@@ -1471,21 +1402,21 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
 
     x->start_measurement = 0;
     x->stop_measurement = 0;
-    T2 = x->T2;
+    intptr_t T2 = x->T2;
 
     // Get counters
 
-    current_t = x->current_t;
-    current_t2 = current_t;
-    excitation_playing = current_t2 < T2;
+    intptr_t current_t = x->current_t;
+    intptr_t current_t2 = current_t;
+    bool excitation_playing = current_t2 < T2;
 
     // Check memory
 
     attempt_mem_swap(&x->rec_mem);
-    rec_mem = (double *) x->rec_mem.current_ptr;
-
-    mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
-    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
+    double *rec_mem = (double *) x->rec_mem.current_ptr;
+    
+    intptr_t mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
+    bool mem_check = x->rec_mem.current_size >= static_cast<uintptr_t>(mem_size);
 
     if (mem_check)
     {
@@ -1589,25 +1520,22 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
 
 void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
 {
-    double old_sr;
-
-    intptr_t mem_size = 0;
-
     // Store sample rate
 
-    old_sr = x->sample_rate;
+    const double old_sr = x->sample_rate;
     x->sample_rate = samplerate;
 
     if (x->sample_rate != old_sr || x->no_dsp)
     {
         t_noise_params noise_params(NOISE_MODE_WHITE, 0, 0, 1, x->sample_rate, 1);
         noise_params.measure((1 << 25), x->max_amp_pink, x->max_amp_brown);
-
         x->no_dsp = 0;
     }
 
     if (x->start_measurement)
     {
+        intptr_t mem_size = 0;
+        
         switch (x->measure_mode)
         {
             case SWEEP:
@@ -1631,12 +1559,10 @@ void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
     }
     else
     {
-        if (x->sample_rate != old_sr)
-        {
-            // Clear memory if the sample rate has changed and we have not just started measuring
+        // Clear memory if the sample rate has changed and we have not just started measuring
 
+        if (x->sample_rate != old_sr)
             irmeasure_clear(x);
-        }
     }
 }
 

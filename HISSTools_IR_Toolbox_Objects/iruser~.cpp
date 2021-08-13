@@ -199,13 +199,7 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 
     double impulse_specifier[HIRT_MAX_SPECIFIER_ITEMS];
 
-    t_symbol *target;
-
-    t_atom_long old_fft_size;
     t_atom_long fft_size = 4096;
-    t_atom_long i;
-
-    uintptr_t fft_size_log2;
 
     double sample_rate = 0.0;
 
@@ -217,7 +211,7 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Load in arguments
 
-    target = atom_getsym(argv++);
+    t_symbol *target = atom_getsym(argv++);
     if (argc > 1)
         fft_size = atom_getlong(argv++);
     if (argc > 2)
@@ -231,7 +225,8 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Calculate FFT size
 
-    old_fft_size = fft_size;
+    uintptr_t fft_size_log2;
+    t_atom_long old_fft_size = fft_size;
     fft_size = fft_size < 0x10 ? 0x10 : fft_size;
     fft_size = fft_size > 0x10000000 ? 0x10000000 : fft_size;
     fft_size = calculate_fft_size(fft_size, fft_size_log2);
@@ -261,7 +256,7 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 
     fill_power_array_specifier(impulse_specifier, x->response_specifier, x->num_specifiers);
     make_freq_dependent_power_array(spectrum_1.realp, impulse_specifier, fft_size, sample_rate, 0);
-    for (i = 0; i < fft_size; i++)
+    for (t_atom_long i = 0; i < fft_size; i++)
         spectrum_1.imagp[i] = 0.0;
     variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase_retriever(x->out_phase), false);
 

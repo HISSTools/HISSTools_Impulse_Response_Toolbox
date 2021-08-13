@@ -146,7 +146,7 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
-
+    
     bool convolve_mode = sym == gensym("convolve") ? true : false;
 
     t_symbol *target = atom_getsym(argv++);
@@ -169,7 +169,7 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
     uintptr_t fft_size;
     uintptr_t fft_size_log2;
 
-    long deconvolve_mode = x->deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
     t_atom_long read_chan = x->read_chan - 1;
 
     // Check input buffers
@@ -184,10 +184,10 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
 
     // Check and calculate lengths
 
-    if (convolve_mode == true)
-        fft_size = (uintptr_t) ((source_length_1 + source_length_2) * time_mul);
+    if (convolve_mode)
+        fft_size = static_cast<uintptr_t>((source_length_1 + source_length_2) * time_mul);
     else
-        fft_size = (uintptr_t) (source_length_1 < source_length_2 ? source_length_2 * time_mul : source_length_1 * time_mul);
+        fft_size = static_cast<uintptr_t>(source_length_1 < source_length_2 ? source_length_2 * time_mul : source_length_1 * time_mul);
 
     fft_size = calculate_fft_size(fft_size, fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
@@ -232,7 +232,7 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
 
     // Do deconvolution or convolution
 
-    if (convolve_mode == true)
+    if (convolve_mode)
         convolve(spectrum_1, spectrum_2, fft_size, SPECTRUM_REAL);
     else
     {
@@ -241,7 +241,7 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
         fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
         fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
         buffer_read(filter, 0, filter_in.get(), fft_size);
-        deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0.0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
+        deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0.0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
     }
 
     // Convert to time domain - copy out to buffer

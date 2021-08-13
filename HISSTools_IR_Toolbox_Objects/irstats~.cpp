@@ -3,6 +3,8 @@
 #include <ext_obex.h>
 #include <z_dsp.h>
 
+#include <algorithm>
+
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
 
@@ -16,21 +18,21 @@
 
 // Calculation Parameter Defines
 
-#define MAX_REPORT_LENGTH 64
+constexpr int MAX_REPORT_LENGTH = 64;
 
-#define ONSET_HALF_SIZE_MS 8
-#define ONSET_HOP_SIZE_MS 0.5
+constexpr int ONSET_HALF_SIZE_MS = 8;
+constexpr double ONSET_HOP_SIZE_MS = 0.5;
 
-#define NED_HALF_WINDOW_MS 30
-#define NED_HOP_SIZE_MS 2
+constexpr int NED_HALF_WINDOW_MS = 30;
+constexpr int NED_HOP_SIZE_MS = 2;
 
-#define DIRECT_HALF_WINDOW_MS 3.5
-#define DIRECT_HOP_SIZE_MS 0.5
+constexpr double DIRECT_HALF_WINDOW_MS = 3.5;
+constexpr double DIRECT_HOP_SIZE_MS = 0.5;
 
-#define DIRECT_ONSET_TO_PEAK_MS 30
-#define DIRECT_SEARCH_MS 15
+constexpr int DIRECT_ONSET_TO_PEAK_MS = 30;
+constexpr int DIRECT_SEARCH_MS = 15;
 
-#define CROSS_RMS_HALF_WINDOW_MS 25
+constexpr int CROSS_RMS_HALF_WINDOW_MS = 25;
 
 
 // Object class and structure
@@ -138,8 +140,8 @@ struct t_stats_calc
 
     // Calculation Flags
 
-    long calc_integration;
-    long calc_integration_db;
+    bool calc_integration;
+    bool calc_integration_db;
 
     // Object pointer
 
@@ -219,24 +221,24 @@ double calc_center(float *ir, intptr_t length, intptr_t onset);
 double calc_LR_onset_rms(float *ir, float *samples, double *window, intptr_t LR_onset, intptr_t length, double sample_rate);
 double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, double *max_oct);
 
-void do_integration(t_stats_calc *stats);
-void do_integration_db(t_stats_calc *stats);
+void do_integration(t_stats_calc& stats);
+void do_integration_db(t_stats_calc& stats);
 
-intptr_t retrieve_onset(t_stats_calc *stats);
-double retrieve_T20(t_stats_calc *stats);
-double retrieve_T30(t_stats_calc *stats);
-double retrieve_EDT(t_stats_calc *stats);
-double retrieve_center(t_stats_calc *stats);
-double retrieve_clarity(t_stats_calc *stats);
-double retrieve_peak(t_stats_calc *stats);
-double retrieve_rms(t_stats_calc *stats);
-double retrieve_ned(t_stats_calc *stats);
-intptr_t retrieve_LR_onset(t_stats_calc *stats);
-intptr_t retrieve_direct_end(t_stats_calc *stats);
-intptr_t retrieve_direct_exists(t_stats_calc *stats);
-double retrieve_LR_onset_rms(t_stats_calc *stats);
-double retrieve_gain(t_stats_calc *stats);
-double retrieve_maxgain(t_stats_calc *stats);
+intptr_t retrieve_onset(t_stats_calc& stats);
+double retrieve_T20(t_stats_calc& stats);
+double retrieve_T30(t_stats_calc& stats);
+double retrieve_EDT(t_stats_calc& stats);
+double retrieve_center(t_stats_calc& stats);
+double retrieve_clarity(t_stats_calc& stats);
+double retrieve_peak(t_stats_calc& stats);
+double retrieve_rms(t_stats_calc& stats);
+double retrieve_ned(t_stats_calc& stats);
+intptr_t retrieve_LR_onset(t_stats_calc& stats);
+intptr_t retrieve_direct_end(t_stats_calc& stats);
+intptr_t retrieve_direct_exists(t_stats_calc& stats);
+double retrieve_LR_onset_rms(t_stats_calc& stats);
+double retrieve_gain(t_stats_calc& stats);
+double retrieve_maxgain(t_stats_calc& stats);
 
 void time_store(t_atom *a, double time_in_samples, long mode, double sample_rate);
 void store_stat(t_atom *a, double stat);
@@ -330,7 +332,7 @@ void irstats_assist(t_irstats *x, void *b, long m, long a, char *s)
 
 intptr_t mstosamps(double ms, double sample_rate)
 {
-    return (intptr_t) (ms * (sample_rate / 1000.0));
+    return static_cast<intptr_t>(ms * (sample_rate / 1000.0));
 }
 
 
@@ -348,43 +350,34 @@ double sampstoms(double samps, double sample_rate)
 double calc_mean(double *data, intptr_t length)
 {
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
         sum += data[i];
 
-    return sum / (double) length;
+    return sum / static_cast<double>(length);
 }
 
 
 double calc_variance(double *data, double mean, intptr_t length)
 {
-    double val;
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
     {
-        val =  data[i] - mean;
+        double val =  data[i] - mean;
         sum += val * val;
     }
 
-    return sum / (double) length;
+    return sum / static_cast<double>(length);
 }
 
 
 double calc_peak(float *data, intptr_t length)
 {
-    double max = -HUGE_VAL;
-    double val = 0.0;
-    intptr_t i;
+    float max = -HUGE_VALF;
 
-    for (i = 0; i < length; i++)
-    {
-        val = fabs(data[i]);
-        if (val > max)
-            max = val;
-    }
+    for (intptr_t i = 0; i < length; i++)
+        max = std::max(max, std::fabs(data[i]));
 
     return a_to_db(max);
 }
@@ -392,34 +385,31 @@ double calc_peak(float *data, intptr_t length)
 
 double calc_norm_kurtosis(float *data, intptr_t length)
 {
-    double val;
     double var_sum = 0.0;
     double kur_sum = 0.0;
-    intptr_t i;
 
     // N.B. Data is assumed to have a zero mean
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
     {
-        val = data[i];
+        double val = data[i];
         val *= val;
         var_sum += val;
         kur_sum += val * val;
     }
 
-    return ((double)length * kur_sum / (var_sum * var_sum)) - 3.0;
+    return (static_cast<double>(length) * kur_sum / (var_sum * var_sum)) - 3.0;
 }
 
 
 double calc_rms(float *data, intptr_t length)
 {
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
         sum += data[i] * data[i];
 
-    return pow_to_db(sum / (double) length);
+    return pow_to_db(sum / static_cast<double>(length));
 }
 
 
@@ -431,9 +421,8 @@ double calc_rms(float *data, intptr_t length)
 void integrate_pow(double *integration, float *ir, intptr_t length)
 {
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
     {
         sum += ir[i] * ir[i];
         integration[i] = sum;
@@ -445,23 +434,21 @@ void backwards_integrate(double *integration_db, double *integration, intptr_t l
 {
     double max_integration = integration[length - 1];
     double max_integration_recip = 1.0 / max_integration;
-    intptr_t i;
 
     // N.B. It is a waste of CPU to convert to db more than we need, so do this separately
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
         integration_db[i] = (max_integration - integration[i]) * max_integration_recip;
 }
 
 
 intptr_t conv_db(double *integration_db, double conv_db, intptr_t conv_pos, intptr_t length)
 {
-    double val;
     intptr_t i;
-
+    
     for (i = conv_pos; i < length; i++)
     {
-        integration_db[i] = val = pow_to_db(integration_db[i]);
+        double val = integration_db[i] = pow_to_db(integration_db[i]);
 
         if (val < conv_db)
             break;
@@ -480,7 +467,6 @@ void get_samples(float *out, float *buffer, intptr_t length, intptr_t offset, in
 {
     intptr_t temp_offset = 0;
     intptr_t temp_nsamps = nsamps;
-    intptr_t i;
 
     // Do not read before the buffer
 
@@ -505,13 +491,13 @@ void get_samples(float *out, float *buffer, intptr_t length, intptr_t offset, in
     if (temp_nsamps < 0)
         temp_nsamps = 0;
 
-    for (i = 0; i < temp_offset; i++)
+    for (intptr_t i = 0; i < temp_offset; i++)
         out[i] = 0;
 
-    for (i = 0; i < temp_nsamps; i++)
+    for (intptr_t i = 0; i < temp_nsamps; i++)
         out[i + temp_offset] = buffer[i + offset];
 
-    for (i = temp_nsamps + temp_offset; i < nsamps; i++)
+    for (intptr_t i = temp_nsamps + temp_offset; i < nsamps; i++)
         out[i] = 0;
 }
 
@@ -519,36 +505,33 @@ void get_samples(float *out, float *buffer, intptr_t length, intptr_t offset, in
 void make_von_hann_window(double *window, intptr_t window_size)
 {
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
     {
-        window[i] = 0.5 - (0.5 * cos(PI * 2.0 * ((double) i / (double) window_size)));
+        window[i] = 0.5 - (0.5 * std::cos(PI * 2.0 * (static_cast<double>(i) / static_cast<double>(window_size))));
         sum += window[i];
     }
 
     sum = 1.0 / sum;
 
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
         window[i] *= sum;
 }
 
 
 void apply_window(double *output, float *samples, double *window, intptr_t window_size)
 {
-    intptr_t i;
-
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
         output[i] = samples[i] * window[i];
 }
+
 
 
 double sum_pow_window(float *samples, double *window, intptr_t window_size)
 {
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
         sum += samples[i] * samples[i] * window[i];
 
     return sum;
@@ -577,11 +560,10 @@ intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, 
     intptr_t max_ratio_offset = 0;
     intptr_t max_energy_offset = 0;
     intptr_t first_thresh_frame = -1;
-    intptr_t i;
 
     make_von_hann_window(window, window_size);
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
     {
         value = ir[i];
         value *= value;
@@ -597,7 +579,7 @@ intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, 
 
     // Find max ratio increase
 
-    for (i = 0; i < max_offset; i += hop_size)
+    for (intptr_t i = 0; i < max_offset; i += hop_size)
     {
         get_samples(samples, ir, length , i - half_window_size, window_size);
         energy = sum_pow_window(samples, window, window_size);
@@ -637,7 +619,7 @@ intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, 
 
     // Backtrack to find the earliest energy within 5dB of the maximum so far
 
-    for (i = prior_max_energy_offset - hop_size; i >= 0; i -= hop_size)
+    for (intptr_t i = prior_max_energy_offset - hop_size; i >= 0; i -= hop_size)
     {
         get_samples (samples, ir, length , i - half_window_size, window_size);
         energy = sum_pow_window (samples, window, window_size);
@@ -759,12 +741,10 @@ void linear_regression(double *data, intptr_t length, double *slope, double *off
     double xmean = (length - 1) / 2.0;
     double ymean = calc_mean(data, length);
 
-    intptr_t i;
-
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
         sum1 += (i - xmean) * (data[i] - ymean);
 
-    for (i = 0; i < length; i++)
+    for (intptr_t i = 0; i < length; i++)
         sum2 += (i - xmean) * (i - xmean);
 
     *slope = sum1 / sum2;
@@ -794,7 +774,7 @@ double calc_reverb_time(double *integration_db, intptr_t length, double hi_evalu
 
     linear_regression(integration_db + hi_offset, lo_offset - hi_offset, &slope, &offset);
 
-    if (slope == 0.0 || isnan(slope) || isinf(slope))
+    if (slope == 0.0 || std::isnan(slope) || std::isinf(slope))
         return 1.0;
 
     return ((db_intersection - offset) / slope) + hi_offset;
@@ -810,9 +790,8 @@ double calc_ned(float *sample_window, double *window, intptr_t window_size)
 {
     double variance = sum_pow_window(sample_window, window, window_size);
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
     {
         if (sample_window[i] * sample_window[i] > variance)
             sum += window[i];
@@ -826,14 +805,13 @@ double calc_ned_no_window(float *sample_window, intptr_t window_size)
 {
     double variance = 0.0;
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
         variance += sample_window[i] * sample_window[i];
 
     variance /= window_size;
 
-    for (i = 0; i < window_size; i++)
+    for (intptr_t i = 0; i < window_size; i++)
     {
         if (sample_window[i] * sample_window[i] > variance)
             sum += 1;
@@ -850,27 +828,26 @@ double calc_ned_average(float *ir, float *samples, double *window, intptr_t leng
     intptr_t half_window_size = mstosamps(NED_HALF_WINDOW_MS, sample_rate);
     intptr_t window_size = half_window_size + half_window_size + 1;
     intptr_t count = 0;
-    intptr_t i;
 
     make_von_hann_window(window, window_size);
 
-    for (i = 0; i < length; i += hop_size)
+    for (intptr_t i = 0; i < length; i += hop_size)
     {
         get_samples(samples, ir, length , i - half_window_size, window_size);
         ned += calc_ned(samples, window, window_size);
         count++;
     }
 
-    return ned / (double) count;
+    return ned / static_cast<double>(count);
 }
 
 
 intptr_t get_sample_time(double time_val, long time_in_samples, double sample_rate)
 {
     if (time_in_samples)
-        return (intptr_t) time_val;
+        return static_cast<intptr_t>(time_val);
     else
-        return (intptr_t) round(time_val * sample_rate / 1000.0);
+        return static_cast<intptr_t>(std::round(time_val * sample_rate / 1000.0));
 }
 
 
@@ -933,14 +910,12 @@ double calc_clarity(double *integration, intptr_t length, double sample_rate)
 
 double calc_center(float *ir, intptr_t length, intptr_t onset)
 {
-    double energy;
     double weighted_sum = 0.0;
     double sum = 0.0;
-    intptr_t i;
 
-    for (i = onset; i < length; i++)
+    for (intptr_t i = onset; i < length; i++)
     {
-        energy = ir[i] * ir[i];
+        double energy = ir[i] * ir[i];
         weighted_sum += i * energy;
         sum += energy;
     }
@@ -949,7 +924,7 @@ double calc_center(float *ir, intptr_t length, intptr_t onset)
 }
 
 
-double calc_LR_onset_rms (float *ir, float *samples, double *window, intptr_t LR_onset, intptr_t length, double sample_rate)
+double calc_LR_onset_rms(float *ir, float *samples, double *window, intptr_t LR_onset, intptr_t length, double sample_rate)
 {
     intptr_t half_window_size = mstosamps(CROSS_RMS_HALF_WINDOW_MS, sample_rate);
     intptr_t window_size = half_window_size + half_window_size + 1;
@@ -968,19 +943,17 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
     double max_gain = -HUGE_VAL;
     double current_octave;
     double overall_gain;
-    double fft_ratio;
 
     intptr_t octave_count = 0;
     intptr_t start, end;
     intptr_t fft_size;
     intptr_t i, j;
 
-    uintptr_t fft_size_log2;
-
     // Calculate FFT size
 
+    uintptr_t fft_size_log2;
     fft_size = calculate_fft_size(16384, fft_size_log2);
-    fft_ratio = fabs(fft_size / sample_rate);
+    double fft_ratio = fabs(fft_size / sample_rate);
 
     // Allocate and check temporary memory
 
@@ -1018,8 +991,8 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
 
     for (i = 0, overall_gain = 0.0; i < 9; i++)
     {
-        start = (intptr_t) ((double) freq_bands[i]) * fft_ratio;
-        end = (intptr_t) ((double) freq_bands[i + 1]) * fft_ratio;
+        start = static_cast<intptr_t>(freq_bands[i] * fft_ratio);
+        end = static_cast<intptr_t>(freq_bands[i + 1] * fft_ratio);
 
         // Add relevant power amount
 
@@ -1028,7 +1001,7 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
 
         if (j > start)
         {
-            current_octave = pow_to_db(current_octave / (double) (j - start));
+            current_octave = pow_to_db(current_octave / static_cast<double>(j - start));
             if (current_octave > max_gain)
                 max_gain = current_octave;
             overall_gain += current_octave;
@@ -1037,7 +1010,7 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
     }
 
     *max_oct = max_gain;
-    return overall_gain / (double) octave_count;
+    return overall_gain / static_cast<double>(octave_count);
 }
 
 
@@ -1046,28 +1019,28 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
 //////////////////////////////////////////////////////////////////////////
 
 
-void do_integration(t_stats_calc *stats)
+void do_integration(t_stats_calc& stats)
 {
-    if (!stats->calc_integration)
+    if (!stats.calc_integration)
     {
         retrieve_onset(stats);
-        integrate_pow(stats->integration.get(), stats->in.get() + stats->onset, stats->ir_length);
+        integrate_pow(stats.integration.get(), stats.in.get() + stats.onset, stats.ir_length);
     }
 
-    stats->calc_integration = 1;
+    stats.calc_integration = true;
 }
 
 
-void do_integration_db(t_stats_calc *stats)
+void do_integration_db(t_stats_calc& stats)
 {
-    if (!stats->calc_integration_db)
+    if (!stats.calc_integration_db)
     {
         do_integration(stats);
-        backwards_integrate(stats->integration_db.get(), stats->integration.get(), stats->ir_length);
+        backwards_integrate(stats.integration_db.get(), stats.integration.get(), stats.ir_length);
     }
 
-    stats->integration_conv_db_pos = conv_db(stats->integration_db.get(), stats->integration_conv_db_val, stats->integration_conv_db_pos, stats->ir_length);
-    stats->calc_integration_db = 1;
+    stats.integration_conv_db_pos = conv_db(stats.integration_db.get(), stats.integration_conv_db_val, stats.integration_conv_db_pos, stats.ir_length);
+    stats.calc_integration_db = true;
 }
 
 
@@ -1076,161 +1049,161 @@ void do_integration_db(t_stats_calc *stats)
 //////////////////////////////////////////////////////////////////////////
 
 
-intptr_t retrieve_onset(t_stats_calc *stats)
+intptr_t retrieve_onset(t_stats_calc& stats)
 {
-    if (stats->onset == -1)
-        stats->onset = calc_onset(stats->in.get(), stats->samples.get(), stats->window.get(), stats->in_length, stats->sample_rate);
+    if (stats.onset == -1)
+        stats.onset = calc_onset(stats.in.get(), stats.samples.get(), stats.window.get(), stats.in_length, stats.sample_rate);
 
-    stats->ir_length = stats->in_length - stats->onset;
+    stats.ir_length = stats.in_length - stats.onset;
 
-    return stats->onset;
+    return stats.onset;
 }
 
 
-double retrieve_T20(t_stats_calc *stats)
+double retrieve_T20(t_stats_calc& stats)
 {
-    if (stats->T20 == -1)
+    if (stats.T20 == -1)
     {
-        stats->integration_conv_db_val = -25;
+        stats.integration_conv_db_val = -25;
         do_integration_db(stats);
-        stats->T20 = calc_reverb_time(stats->integration_db.get(), stats->ir_length, -5, -25, -60);
+        stats.T20 = calc_reverb_time(stats.integration_db.get(), stats.ir_length, -5, -25, -60);
     }
 
-    return stats->T20;
+    return stats.T20;
 }
 
 
-double retrieve_T30(t_stats_calc *stats)
+double retrieve_T30(t_stats_calc& stats)
 {
-    if (stats->T30 == -1)
+    if (stats.T30 == -1)
     {
-        stats->integration_conv_db_val = -35;
+        stats.integration_conv_db_val = -35;
         do_integration_db(stats);
-        stats->T30 = calc_reverb_time(stats->integration_db.get(), stats->ir_length, -5, -35, -60);
+        stats.T30 = calc_reverb_time(stats.integration_db.get(), stats.ir_length, -5, -35, -60);
     }
 
-    return stats->T30;
+    return stats.T30;
 }
 
 
-double retrieve_EDT(t_stats_calc *stats)
+double retrieve_EDT(t_stats_calc& stats)
 {
-    if (stats->EDT == -1)
+    if (stats.EDT == -1)
     {
-        stats->integration_conv_db_val = -10;
+        stats.integration_conv_db_val = -10;
         do_integration_db(stats);
-        stats->EDT = calc_reverb_time(stats->integration_db.get(), stats->ir_length, 0, -10, -60);
+        stats.EDT = calc_reverb_time(stats.integration_db.get(), stats.ir_length, 0, -10, -60);
     }
 
-    return stats->EDT;
+    return stats.EDT;
 }
 
 
-double retrieve_center(t_stats_calc *stats)
+double retrieve_center(t_stats_calc& stats)
 {
-    if (stats->center == -1)
+    if (stats.center == -1)
     {
         retrieve_onset(stats);
-        stats->center = calc_center(stats->in.get(), stats->ir_length, stats->onset);
+        stats.center = calc_center(stats.in.get(), stats.ir_length, stats.onset);
     }
 
-    return stats->center;
+    return stats.center;
 }
 
 
-double retrieve_clarity(t_stats_calc *stats)
+double retrieve_clarity(t_stats_calc& stats)
 {
-    if (stats->clarity == HUGE_VAL)
+    if (stats.clarity == HUGE_VAL)
     {
         do_integration(stats);
-        stats->clarity = calc_clarity(stats->integration.get(), stats->ir_length, stats->sample_rate);
+        stats.clarity = calc_clarity(stats.integration.get(), stats.ir_length, stats.sample_rate);
     }
 
-    return stats->clarity;
+    return stats.clarity;
 }
 
 
-double retrieve_peak(t_stats_calc *stats)
+double retrieve_peak(t_stats_calc& stats)
 {
-    if (stats->peak == HUGE_VAL)
-        stats->peak = calc_peak(stats->in.get(), stats->in_length);
+    if (stats.peak == HUGE_VAL)
+        stats.peak = calc_peak(stats.in.get(), stats.in_length);
 
-    return stats->peak;
+    return stats.peak;
 }
 
 
-double retrieve_rms(t_stats_calc *stats)
+double retrieve_rms(t_stats_calc& stats)
 {
-    if (stats->rms == HUGE_VAL)
-        stats->rms = calc_rms(stats->in.get(), stats->in_length);
+    if (stats.rms == HUGE_VAL)
+        stats.rms = calc_rms(stats.in.get(), stats.in_length);
 
-    return stats->rms;
+    return stats.rms;
 }
 
 
-double retrieve_ned(t_stats_calc *stats)
+double retrieve_ned(t_stats_calc& stats)
 {
-    if (stats->ned == -1)
-        stats->ned = calc_ned_average(stats->in.get(), stats->samples.get(), stats->window.get(), stats->in_length, stats->sample_rate);
+    if (stats.ned == -1)
+        stats.ned = calc_ned_average(stats.in.get(), stats.samples.get(), stats.window.get(), stats.in_length, stats.sample_rate);
 
-    return stats->ned;
+    return stats.ned;
 }
 
 
-intptr_t retrieve_LR_onset(t_stats_calc *stats)
+intptr_t retrieve_LR_onset(t_stats_calc& stats)
 {
-    if (stats->LR_onset == -1)
-        stats->LR_onset = calc_LR_onset(stats->in.get(), stats->samples.get(), stats->window.get(), stats->in_length, retrieve_onset(stats), stats->time_in_samples, stats->min_mixing, stats->max_mixing, stats->sample_rate);
+    if (stats.LR_onset == -1)
+        stats.LR_onset = calc_LR_onset(stats.in.get(), stats.samples.get(), stats.window.get(), stats.in_length, retrieve_onset(stats), stats.time_in_samples, stats.min_mixing, stats.max_mixing, stats.sample_rate);
 
-    return stats->LR_onset;
+    return stats.LR_onset;
 }
 
 
-intptr_t retrieve_direct_end(t_stats_calc *stats)
+intptr_t retrieve_direct_end(t_stats_calc& stats)
 {
-    if (stats->direct_end == -1)
+    if (stats.direct_end == -1)
     {
         intptr_t onset = retrieve_onset(stats);
-        stats->direct_end = calc_direct(stats->in.get(), stats->samples.get(), stats->window.get(), onset, stats->ir_length, stats->sample_rate);
+        stats.direct_end = calc_direct(stats.in.get(), stats.samples.get(), stats.window.get(), onset, stats.ir_length, stats.sample_rate);
     }
 
-    return stats->direct_end;
+    return stats.direct_end;
 }
 
 
-intptr_t retrieve_direct_exists(t_stats_calc *stats)
+intptr_t retrieve_direct_exists(t_stats_calc& stats)
 {
-    if (stats->direct_exists == -1)
-        stats->direct_exists = calc_direct_exists(stats->in.get(), retrieve_onset(stats), retrieve_direct_end(stats), retrieve_LR_onset(stats), stats->sample_rate);
+    if (stats.direct_exists == -1)
+        stats.direct_exists = calc_direct_exists(stats.in.get(), retrieve_onset(stats), retrieve_direct_end(stats), retrieve_LR_onset(stats), stats.sample_rate);
 
-    return stats->direct_exists;
+    return stats.direct_exists;
 }
 
 
-double retrieve_LR_onset_rms(t_stats_calc *stats)
+double retrieve_LR_onset_rms(t_stats_calc& stats)
 {
-    if (stats->LR_onset_rms == HUGE_VAL)
-        stats->LR_onset_rms = calc_LR_onset_rms(stats->in.get(), stats->samples.get(), stats->window.get(), retrieve_LR_onset(stats), stats->in_length, stats->sample_rate);
+    if (stats.LR_onset_rms == HUGE_VAL)
+        stats.LR_onset_rms = calc_LR_onset_rms(stats.in.get(), stats.samples.get(), stats.window.get(), retrieve_LR_onset(stats), stats.in_length, stats.sample_rate);
 
-    return stats->LR_onset_rms;
+    return stats.LR_onset_rms;
 }
 
 
-double retrieve_gain(t_stats_calc *stats)
+double retrieve_gain(t_stats_calc& stats)
 {
-    if (stats->gain == HUGE_VAL)
-        stats->gain = calc_gain(stats->x, stats->in.get(), stats->in_length, stats->sample_rate, &stats->maxgain);
+    if (stats.gain == HUGE_VAL)
+        stats.gain = calc_gain(stats.x, stats.in.get(), stats.in_length, stats.sample_rate, &stats.maxgain);
 
-    return stats->gain;
+    return stats.gain;
 }
 
 
-double retrieve_maxgain(t_stats_calc *stats)
+double retrieve_maxgain(t_stats_calc& stats)
 {
-    if (stats->maxgain == HUGE_VAL)
-        stats->gain = calc_gain(stats->x, stats->in.get(), stats->in_length, stats->sample_rate, &stats->maxgain);
+    if (stats.maxgain == HUGE_VAL)
+        stats.gain = calc_gain(stats.x, stats.in.get(), stats.in_length, stats.sample_rate, &stats.maxgain);
 
-    return stats->maxgain;
+    return stats.maxgain;
 }
 
 
@@ -1244,7 +1217,7 @@ void time_store(t_atom *a, double time_in_samples, long mode, double sample_rate
     if (mode)
         atom_setfloat(a, sampstoms(time_in_samples, sample_rate));
     else
-        atom_setlong(a, (t_atom_long) time_in_samples);
+        atom_setlong(a, static_cast<t_atom_long>(time_in_samples));
 }
 
 
@@ -1256,7 +1229,6 @@ void store_stat(t_atom *a, double stat)
 
 void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    t_symbol *source = NULL;
     t_stats_calc stats;
 
     t_atom report[MAX_REPORT_LENGTH];
@@ -1267,16 +1239,13 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
     long time_mode = !x->time_in_samples;
     t_atom_long read_chan = x->read_chan - 1;
 
-    intptr_t max_window_size;
-    intptr_t i;
-
     if (argc < 2)
     {
         object_error((t_object *) x, "not enough arguments to message %s", sym->s_name);
         return;
     }
 
-    source = atom_getsym(argv++);
+    t_symbol *source = atom_getsym(argv++);
     argc --;
 
     if (argc > MAX_REPORT_LENGTH)
@@ -1308,7 +1277,7 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
     max_half_window_ms = NED_HALF_WINDOW_MS > max_half_window_ms ? NED_HALF_WINDOW_MS : max_half_window_ms;
     max_half_window_ms = DIRECT_HALF_WINDOW_MS > max_half_window_ms ? DIRECT_HALF_WINDOW_MS : max_half_window_ms;
 
-    max_window_size =  2 * mstosamps(max_half_window_ms, sample_rate) + 1;
+    intptr_t max_window_size =  2 * mstosamps(max_half_window_ms, sample_rate) + 1;
 
     stats.in = temp_ptr<float>(stats.in_length);
     stats.integration = temp_ptr<double>(stats.in_length);
@@ -1330,31 +1299,31 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Get Stats
 
-    for (i = 0; i < argc; i++)
+    for (short i = 0; i < argc; i++)
     {
         double current_stat = HUGE_VAL;
 
         if (atom_getsym(argv + i) == ps_t20)
         {
-            current_stat = retrieve_T20(&stats);
+            current_stat = retrieve_T20(stats);
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_t30)
         {
-            current_stat = retrieve_T30(&stats);
+            current_stat = retrieve_T30(stats);
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_edt)
         {
-            current_stat = retrieve_EDT(&stats);
+            current_stat = retrieve_EDT(stats);
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_length)
         {
-            current_stat = (double) stats.in_length;
+            current_stat = static_cast<double>(stats.in_length);
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
@@ -1366,73 +1335,73 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
         }
         if (atom_getsym(argv + i) == ps_onset)
         {
-            current_stat = (double) retrieve_onset(&stats);
+            current_stat = static_cast<double>(retrieve_onset(stats));
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_directend)
         {
-            current_stat = (double) retrieve_direct_end(&stats);
+            current_stat = static_cast<double>(retrieve_direct_end(stats));
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_directexists)
         {
-            current_stat = (double) retrieve_direct_exists(&stats);
+            current_stat = static_cast<double>(retrieve_direct_exists(stats));
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_mix)
         {
-            current_stat = (double) retrieve_LR_onset(&stats);
+            current_stat = static_cast<double>(retrieve_LR_onset(stats));
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_center)
         {
-            current_stat = retrieve_center(&stats);
+            current_stat = retrieve_center(stats);
             time_store(report + i, current_stat, time_mode, sample_rate);
             continue;
         }
         if (atom_getsym(argv + i) == ps_clarity)
         {
-            current_stat = retrieve_clarity(&stats);
+            current_stat = retrieve_clarity(stats);
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_rms)
         {
-            current_stat = retrieve_rms(&stats);
+            current_stat = retrieve_rms(stats);
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_peak)
         {
-            current_stat = retrieve_peak(&stats);
+            current_stat = retrieve_peak(stats);
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_mixrms)
         {
-            current_stat = retrieve_LR_onset_rms(&stats);
+            current_stat = retrieve_LR_onset_rms(stats);
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_ned)
         {
-            current_stat = retrieve_ned(&stats);
+            current_stat = retrieve_ned(stats);
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_gain)
         {
-            current_stat = retrieve_gain(&stats);
+            current_stat = retrieve_gain(stats);
             store_stat(report + i, current_stat);
             continue;
         }
         if (atom_getsym(argv + i) == ps_maxgain)
         {
-            current_stat = retrieve_maxgain(&stats);
+            current_stat = retrieve_maxgain(stats);
             store_stat(report + i, current_stat);
             continue;
         }

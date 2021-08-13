@@ -165,24 +165,17 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
     double sample_rate = buffer_sample_rate(source_1);
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
     double deconvolve_delay;
-    double a, b, c, d;
 
     intptr_t source_length_1 = buffer_length(source_1);
     intptr_t source_length_2 = buffer_length(source_2);
     intptr_t filter_length = buffer_length(filter);
 
-    uintptr_t fft_size;
-    uintptr_t fft_size_halved;
-    uintptr_t fft_size_log2;
-    uintptr_t i;
-
-    bool overall_error = false;
-    
-    t_filter_type deconvolve_mode = (t_filter_type) x->deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
     t_atom_long read_chan = x->read_chan - 1;
 
     t_buffer_write_error error;
-
+    bool overall_error = false;
+    
     // Check input buffers
 
     if (buffer_check((t_object *) x, source_1) || buffer_check((t_object *) x, source_2))
@@ -190,8 +183,9 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 
     // Check and calculate length
 
-    fft_size = calculate_fft_size((uintptr_t) ((source_length_1 + source_length_2) * time_mul), fft_size_log2);
-    fft_size_halved = fft_size >> 1;
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>((source_length_1 + source_length_2) * time_mul), fft_size_log2);
+    uintptr_t fft_size_halved = fft_size >> 1;
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     if (fft_size < 8)
@@ -199,10 +193,6 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
         object_error((t_object *) x, "buffers are too short, or have no length");
         return;
     }
-
-    // Get sample rate
-
-    sample_rate = buffer_sample_rate(source_1);
 
     // Allocate Memory
 
@@ -248,12 +238,12 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
     {
         // Shuffle matrix
 
-        for (i = 0; i < fft_size_halved; i++)
+        for (uintptr_t i = 0; i < fft_size_halved; i++)
         {
-            a = spectrum_1.realp[i];
-            b = spectrum_1.imagp[i];
-            c = spectrum_2.realp[i];
-            d = spectrum_2.imagp[i];
+            const double a = spectrum_1.realp[i];
+            const double b = spectrum_1.imagp[i];
+            const double c = spectrum_2.realp[i];
+            const double d = spectrum_2.imagp[i];
 
             spectrum_2.realp[i] = (a + c);
             spectrum_2.imagp[i] = (b + d);
@@ -283,24 +273,24 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
     {
         // Lattice - calculate divisor and invert the relevant channel
 
-        a = spectrum_1.realp[0];
-        b = spectrum_1.imagp[0];
-        c = spectrum_2.realp[0];
-        d = spectrum_2.imagp[0];
+        const double a = spectrum_1.realp[0];
+        const double b = spectrum_1.imagp[0];
+        const double c = spectrum_2.realp[0];
+        const double d = spectrum_2.imagp[0];
 
         spectrum_2.realp[0] = -c;
         spectrum_2.imagp[0] = -d;
         spectrum_3.realp[0] = a * a - c * c;
         spectrum_3.imagp[0] = b * b - d * d;
 
-        for (i = 1; i < fft_size_halved; i++)
+        for (uintptr_t i = 1; i < fft_size_halved; i++)
         {
             complex t1, t2, t3;
 
-            a = spectrum_1.realp[i];
-            b = spectrum_1.imagp[i];
-            c = spectrum_2.realp[i];
-            d = spectrum_2.imagp[i];
+            const double a = spectrum_1.realp[i];
+            const double b = spectrum_1.imagp[i];
+            const double c = spectrum_2.realp[i];
+            const double d = spectrum_2.imagp[i];
 
             t1 = complex(a, b);
             t2 = complex(c, d);

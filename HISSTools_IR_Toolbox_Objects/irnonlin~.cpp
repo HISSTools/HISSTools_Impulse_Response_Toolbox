@@ -152,44 +152,41 @@ t_matrix_complex&& matrix_non_linear(uintptr_t size)
 
     t_matrix_complex mat(size, size);
 
-    complex pivot_recip, row_mult;
-    uintptr_t i, j, k;
-
     // N.B. Indices offset here to 1 (and stored correctly below)
 
-    for (i = 1; i <= size; i++)
+    for (uintptr_t i = 1; i <= size; i++)
     {
-        for(j = 1; j <= size; j++)
+        for (uintptr_t j = 1; j <= size; j++)
         {
             if ((i >= j) && ((i + j + 1) & 1))
-                mat(j - 1, i - 1) = (m1_cpow(i, j) * complex(binom((double) i, (double) ((i - j) / 2)), 0)) / complex(pow(2.0, (double) (i - 1)), 0.0);
+                mat(j - 1, i - 1) = (m1_cpow(i, j) * complex(binom((double) i, (double) ((i - j) / 2)), 0)) / complex(pow(2.0, static_cast<double>(i - 1)), 0.0);
             else
                 mat(j - 1, i - 1) = complex(0.0, 0.0);
         }
     }
 
-    for (i = 0; i < size; i++)
+    for (uintptr_t i = 0; i < size; i++)
     {
         // Multiply rows
 
-        pivot_recip = complex(1.0, 0.0) / mat(i, i);
+        complex pivot_recip = complex(1.0, 0.0) / mat(i, i);
         mat(i, i) = complex(1.0, 0.0);
 
-        for (j = 0; j < size; j++)
+        for (uintptr_t j = 0; j < size; j++)
             mat(i, j) *= pivot_recip;
 
         // Subtract rows
 
-        for (j = 0; j < size; j++)
+        for (uintptr_t j = 0; j < size; j++)
         {
             if (j == i)
                 continue;
 
-            row_mult = mat(j, i);
+            complex row_mul = mat(j, i);
             mat(j, i) = complex(0.0, 0.0);
 
-            for (k = i; k < size; k++)
-                mat(j, k) -= mat(i, k) * row_mult;
+            for (uintptr_t k = i; k < size; k++)
+                mat(j, k) -= mat(i, k) * row_mul;
         }
     }
 
@@ -218,19 +215,11 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
     t_symbol *out_buffer_names[128];
     intptr_t lengths[128];
 
-    double sample_rate = 0.0;
-    double current_coeff;
-    double real;
-    double imag;
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-
-    intptr_t num_buffers = 0;
     intptr_t overall_length = 0;
     intptr_t length;
     intptr_t max_length = 0;
-    intptr_t i, j, k;
-
+    
+    double sample_rate = 0.0;
     bool overall_error = false;
 
     t_atom_long read_chan = x->read_chan - 1;
@@ -238,22 +227,23 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 
-    num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, (sym == gensym("convert")), 128, &overall_length, &max_length, &sample_rate);
+    short num_buffers = buffer_multiple_names((t_object *) x, in_buffer_names, out_buffer_names, lengths, argc, argv, (sym == gensym("convert")), 128, &overall_length, &max_length, &sample_rate);
 
     if (!num_buffers)
         return;
 
     // Calculate fft size
 
-    fft_size = calculate_fft_size(max_length, fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>(max_length), fft_size_log2);
 
     // Check length of buffers for writing
 
     if (!x->resize)
     {
-        for (i = 0; i < num_buffers; i++)
+        for (short i = 0; i < num_buffers; i++)
         {
-            if ((uintptr_t) buffer_length(out_buffer_names[i]) < fft_size)
+            if (static_cast<uintptr_t>(buffer_length(out_buffer_names[i])) < fft_size)
             {
                 object_error((t_object *) x, "buffer %s is not long enough to complete write (no buffers altered)", out_buffer_names[i]->s_name);
                 return;
@@ -285,7 +275,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Set pointers to impulses and derference the coefficient matrix
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         impulses[i].realp = impulses[0].realp + (fft_size * i);
         impulses[i].imagp = impulses[i].realp + (fft_size >> 1);
@@ -293,7 +283,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Do Transforms In
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         length = buffer_read(in_buffer_names[i], read_chan, temp_buffer_f, fft_size);
         time_to_halfspectrum_float(fft_setup, temp_buffer_f, length, impulses[i], fft_size);
@@ -301,7 +291,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Convert
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         if (!(i & 1))
         {
@@ -309,9 +299,9 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             // Copy first IR
 
-            current_coeff = coeff(i, i).real();
+            double current_coeff = coeff(i, i).real();
 
-            for (j = 0; j < ((intptr_t) fft_size >> 1); j++)
+            for (uintptr_t j = 0; j < (fft_size >> 1); j++)
             {
                 impulses[i].realp[j] *= current_coeff;
                 impulses[i].imagp[j] *= current_coeff;
@@ -319,11 +309,11 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             // Accumulate other IRs
 
-            for (k = i + 2; k < num_buffers; k += 2)
+            for (short k = i + 2; k < num_buffers; k += 2)
             {
                 current_coeff = coeff(i, k).real();
 
-                for (j = 0; j < ((intptr_t) fft_size >> 1); j++)
+                for (uintptr_t j = 0; j < (fft_size >> 1); j++)
                 {
                     impulses[i].realp[j] += impulses[k].realp[j] * current_coeff;
                     impulses[i].imagp[j] += impulses[k].imagp[j] * current_coeff;
@@ -336,28 +326,26 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             // Copy first IR (multiplying by j first)
 
-            current_coeff = coeff(i, i).imag();
+            double current_coeff = coeff(i, i).imag();
 
             // Zero DC / Nyquist (need to be real for real signal)
 
             impulses[i].realp[0] = 0.0;
             impulses[i].imagp[0] = 0.0;
 
-            for (j = 1; j < ((intptr_t) fft_size >> 1); j++)
+            for (uintptr_t j = 1; j < (fft_size >> 1); j++)
             {
-                real = -impulses[i].imagp[j];
-                imag = impulses[i].realp[j];
-                impulses[i].realp[j] = real * current_coeff;
-                impulses[i].imagp[j] = imag * current_coeff;
+                impulses[i].realp[j] = -impulses[i].imagp[j] * current_coeff;
+                impulses[i].imagp[j] =  impulses[i].realp[j] * current_coeff;
             }
 
             // Accumulate by other IRs (multiplying by j first)
 
-            for (k = i + 2; k < num_buffers; k += 2)
+            for (short k = i + 2; k < num_buffers; k += 2)
             {
-                current_coeff = coeff(i, k).imag();
+                double current_coeff = coeff(i, k).imag();
 
-                for (j = 1; j < ((intptr_t) fft_size >> 1); j++)
+                for (uintptr_t j = 1; j < (fft_size >> 1); j++)
                 {
                     impulses[i].realp[j] += -impulses[k].imagp[j] * current_coeff;
                     impulses[i].imagp[j] +=  impulses[k].realp[j] * current_coeff;
@@ -369,7 +357,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Do Transforms Out
 
-    for (i = 0; i < num_buffers; i++)
+    for (short i = 0; i < num_buffers; i++)
     {
         spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
         auto error = buffer_write((t_object *)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.0);

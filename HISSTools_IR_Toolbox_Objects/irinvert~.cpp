@@ -169,11 +169,8 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
     intptr_t source_length_1 = buffer_length(source_1);
     intptr_t filter_length = buffer_length(filter);
 
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-
     t_atom_long read_chan = x->read_chan - 1;
-    long deconvolve_mode = x->deconvolve_mode;
+    t_filter_type deconvolve_mode = static_cast<t_filter_type>(x->deconvolve_mode);
 
     // Check input buffers
 
@@ -182,7 +179,8 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     // Check and calculate length
 
-    fft_size = calculate_fft_size((uintptr_t) (source_length_1 * time_mul), fft_size_log2);
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>(source_length_1 * time_mul), fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     if (fft_size < 8)
@@ -227,7 +225,7 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
     fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
     fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
     buffer_read(filter, 0, filter_in.get(), fft_size);
-    deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, 0, sample_rate);
+    deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
 
     // Convert to time domain - copy out to buffer
 
@@ -272,11 +270,6 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, u
     using complex = std::complex<double>;
 
     uintptr_t fft_size_halved = fft_size >> 1;
-    uintptr_t i;
-
-    t_atom_long j, k;
-
-    std::complex<double> out_val;
 
     // N.B. size of out is set such as to take temporary calculation of square matrix
 
@@ -287,48 +280,48 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, u
 
     // Do DC
 
-    for (j = 0; j < receivers; j++)
-        for (k = 0; k < sources; k++)
+    for (t_atom_long j = 0; j < receivers; j++)
+        for (t_atom_long k = 0; k < sources; k++)
             in(j, k) = complex(impulses[j * sources + k].realp[0], 0.0);
 
     if (irinvert_matrix_mimo(x, out, in, temp1, temp2, regularization[0]))
         return 1;
 
-    for (j = 0; j < receivers; j++)
-        for (k = 0; k < sources; k++)
+    for (t_atom_long j = 0; j < receivers; j++)
+        for (t_atom_long k = 0; k < sources; k++)
             impulses[j * sources + k].realp[0] = out(j, k).real();
 
     // Do Nyquist
 
-    for (j = 0; j < receivers; j++)
-        for (k = 0; k < sources; k++)
+    for (t_atom_long j = 0; j < receivers; j++)
+        for (t_atom_long k = 0; k < sources; k++)
             in(j, k) = complex(impulses[j * sources + k].imagp[0], 0.0);
 
     if (irinvert_matrix_mimo(x, out, in, temp1, temp2, regularization[fft_size_halved]))
         return 1;
 
-    for (j = 0; j < receivers; j++)
-        for (k = 0; k < sources; k++)
+    for (t_atom_long j = 0; j < receivers; j++)
+        for (t_atom_long k = 0; k < sources; k++)
             impulses[j * sources + k].imagp[0] = out(j, k).real();
 
     // Do Other Bins
 
-    for (i = 1; i < fft_size_halved; i++)
+    for (uintptr_t i = 1; i < fft_size_halved; i++)
     {
-        for (j = 0; j < receivers; j++)
+        for (t_atom_long j = 0; j < receivers; j++)
         {
-            for (k = 0; k < sources; k++)
+            for (t_atom_long k = 0; k < sources; k++)
                 in(j, k) = complex(impulses[j * sources + k].realp[i], impulses[j * sources + k].imagp[i]);
         }
 
         if (irinvert_matrix_mimo(x, out, in, temp1, temp2, regularization[i]))
             break;
 
-        for (j = 0; j < receivers; j++)
+        for (t_atom_long j = 0; j < receivers; j++)
         {
-            for (k = 0; k < sources; k++)
+            for (t_atom_long k = 0; k < sources; k++)
             {
-                out_val = out(j, k);
+                auto out_val = out(j, k);
                 impulses[j * sources + k].realp[i] = out_val.real();
                 impulses[j * sources + k].imagp[i] = out_val.imag();
             }
@@ -356,6 +349,10 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     intptr_t lengths[128];
 
+    intptr_t overall_length = 0;
+    intptr_t max_length = 0;
+    intptr_t num_buffers = 0;
+    
     double sample_rate = 0.0;
     double time_mul = 1.;
     double deconvolve_delay;
@@ -363,23 +360,14 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
     t_atom_long receivers;
     t_atom_long sources;
 
-    uintptr_t fft_size;
-    uintptr_t fft_size_log2;
-
-    intptr_t overall_length = 0;
-    intptr_t max_length = 0;
-    intptr_t length;
-    intptr_t num_buffers = 0;
-    intptr_t i;
-
-    long in_place = 1;
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
 
+    bool in_place = true;
     bool overall_error = false;
 
     if (sym == gensym("mimoto"))
-        in_place = 0;
+        in_place = false;
 
     // Get number of sources / receivers
 
@@ -428,17 +416,17 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     // Calculate fft size
 
-    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), fft_size_log2);
-
+    uintptr_t fft_size_log2;
+    uintptr_t fft_size = calculate_fft_size(static_cast<uintptr_t>(max_length * time_mul), fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     // Check length of buffers for writing
 
     if (!x->resize)
     {
-        for (i = 0; i < num_buffers; i++)
+        for (t_atom_long i = 0; i < num_buffers; i++)
         {
-            if (buffer_length(out_buffer_names[i]) < (intptr_t) fft_size)
+            if (buffer_length(out_buffer_names[i]) < static_cast<intptr_t>(fft_size))
             {
                 object_error((t_object *) x, "buffer %s is not long enough to complete write (no buffers altered)", out_buffer_names[i]->s_name);
                 return;
@@ -467,7 +455,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     // Set pointers for impulses
 
-    for (i = 0; i < sources * receivers; i++)
+    for (t_atom_long i = 0; i < sources * receivers; i++)
     {
         impulses[i].realp = impulses[0].realp + (fft_size * i);
         impulses[i].imagp = impulses[i].realp + (fft_size >> 1);
@@ -475,9 +463,9 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     // Do transforms in
 
-    for (i = 0; i < receivers * sources; i++)
+    for (t_atom_long i = 0; i < receivers * sources; i++)
     {
-        length = buffer_read(in_buffer_names[i], read_chan, temp_buffer_f, fft_size);
+        intptr_t length = buffer_read(in_buffer_names[i], read_chan, temp_buffer_f, fft_size);
         time_to_halfspectrum_float(fft_setup, temp_buffer_f, length, impulses[i], fft_size);
     }
 
@@ -492,7 +480,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
     {
         // Do transforms out
 
-        for (i = 0; i < receivers * sources; i++)
+        for (t_atom_long i = 0; i < receivers * sources; i++)
         {
             delay_spectrum(impulses[i], fft_size, SPECTRUM_REAL, deconvolve_delay);
             spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
