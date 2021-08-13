@@ -416,6 +416,8 @@
 		B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Buffer_Access.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Buffer_Access.cpp; sourceTree = "<group>"; };
 		B83AA5A113A644FF00211152 /* HIRT_Exponential_Sweeps.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Exponential_Sweeps.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Exponential_Sweeps.hpp; sourceTree = "<group>"; };
 		B83AA5A213A644FF00211152 /* HIRT_Exponential_Sweeps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Exponential_Sweeps.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Exponential_Sweeps.cpp; sourceTree = "<group>"; };
+		B841F0CF26C67857002BF40C /* HIRT_FFT_Setup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HIRT_FFT_Setup.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_FFT_Setup.hpp; sourceTree = "<group>"; };
+		B841F0D026C67857002BF40C /* HIRT_Memory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Memory.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Memory.hpp; sourceTree = "<group>"; };
 		B859422D218B397300C783CF /* bufreverse~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "bufreverse~.cpp"; path = "HISSTools_IR_Toolbox_Objects/bufreverse~.cpp"; sourceTree = SOURCE_ROOT; };
 		B859422E218B397300C783CF /* bufresample~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "bufresample~.cpp"; path = "HISSTools_IR_Toolbox_Objects/bufresample~.cpp"; sourceTree = SOURCE_ROOT; };
 		B859422F218B397400C783CF /* morphfilter~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "morphfilter~.cpp"; path = "HISSTools_IR_Toolbox_Objects/morphfilter~.cpp"; sourceTree = SOURCE_ROOT; };
@@ -691,6 +693,8 @@
 		B800299C1696FF7200B0030C /* HIRT Common */ = {
 			isa = PBXGroup;
 			children = (
+				B841F0CF26C67857002BF40C /* HIRT_FFT_Setup.hpp */,
+				B841F0D026C67857002BF40C /* HIRT_Memory.hpp */,
 				B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */,
 				B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */,
 				B82801D115AAF97000D2B4F0 /* HIRT_Buffer_Access.hpp */,
