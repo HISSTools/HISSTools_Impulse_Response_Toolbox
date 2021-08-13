@@ -2,6 +2,8 @@
 #ifndef __TRIM_NORMALISE__
 #define __TRIM_NORMALISE__
 
+#include <algorithm>
+#include <cmath>
 #include <cstdint>
 
 // Fade Type Enum
