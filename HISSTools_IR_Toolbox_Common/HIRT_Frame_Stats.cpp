@@ -14,7 +14,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-t_frame_stats *create_frame_stats(AH_UIntPtr max_N)
+t_frame_stats *create_frame_stats(uintptr_t max_N)
 {
     t_frame_stats *stats = (t_frame_stats *)malloc(sizeof(t_frame_stats));
 
@@ -22,7 +22,7 @@ t_frame_stats *create_frame_stats(AH_UIntPtr max_N)
     {
         stats->max_N = max_N;
         stats->current_frame = (double *) malloc(sizeof(double) * max_N);
-        stats->ages = (AH_UInt32 *) malloc(sizeof(AH_UInt32) * max_N);
+        stats->ages = (uint32_t *) malloc(sizeof(uint32_t) * max_N);
 
         if (stats->current_frame)
             frame_stats_reset(stats, true);
@@ -56,11 +56,11 @@ void destroy_frame_stats(t_frame_stats *stats)
 //////////////////////////////////////////////////////////////////////////
 
 
-void frame_stats_reset(t_frame_stats *stats, AH_Boolean full)
+void frame_stats_reset(t_frame_stats *stats, bool full)
 {
     double *current_frame = stats->current_frame;
-    AH_UInt32 *ages = stats->ages;
-    AH_UIntPtr i;
+    uint32_t *ages = stats->ages;
+    uintptr_t i;
 
     stats->last_N = 0;
     stats->frames = 0;
@@ -113,7 +113,7 @@ void frame_stats_mode(t_frame_stats *stats, t_frame_mode mode)
 }
 
 
-void frame_stats_max_age(t_frame_stats *stats, AH_UInt32 max_age)
+void frame_stats_max_age(t_frame_stats *stats, uint32_t max_age)
 {
     stats->max_age = max_age;
 }
@@ -141,16 +141,16 @@ void frame_stats_alpha(t_frame_stats *stats, double alpha_u, double alpha_d)
 //////////////////////////////////////////////////////////////////////////
 
 
-void frame_stats_write(t_frame_stats *stats, float *in, AH_UIntPtr N)
+void frame_stats_write(t_frame_stats *stats, float *in, uintptr_t N)
 {
     double *current_frame = stats->current_frame;
     double alpha_u = stats->alpha_u;
     double alpha_d = stats->alpha_d;
     double alpha;
 
-    AH_UInt32 *ages = stats->ages;
-    AH_UInt32 max_age = stats->max_age;
-    AH_UIntPtr i;
+    uint32_t *ages = stats->ages;
+    uint32_t max_age = stats->max_age;
+    uintptr_t i;
 
     if (N != stats->last_N)
         frame_stats_reset(stats, false);
@@ -242,12 +242,12 @@ void frame_stats_write(t_frame_stats *stats, float *in, AH_UIntPtr N)
 }
 
 
-void frame_stats_read(t_frame_stats *stats, float *out, AH_UIntPtr N)
+void frame_stats_read(t_frame_stats *stats, float *out, uintptr_t N)
 {
     double *current_frame = stats->current_frame;
     double recip = 1.0 / stats->frames;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     if (stats->mode != MODE_ACCUMULATE)
         recip = 1.0;

@@ -112,12 +112,12 @@ void irnonlin_assist(t_irnonlin *x, void *b, long m, long a, char *s)
 
 // These functions are used to calculate the necessary matrix for inversion in order to the multiplication coefficients for conversion
 
-std::complex<double> m1_cpow(AH_UIntPtr i, AH_UIntPtr j)
+std::complex<double> m1_cpow(uintptr_t i, uintptr_t j)
 {
     using complex = std::complex<double>;
     
     complex val = complex(1.0, 0.0);
-    AH_UIntPtr int_part = (i << 1) + (j >> 1);
+    uintptr_t int_part = (i << 1) + (j >> 1);
 
     if (int_part & 1)
         val = complex(-1.0, 0.0);
@@ -146,7 +146,7 @@ double binom(double n, double k)
 
 // Solves the inversion of the matrix so as to determine the correct (complex) multiplication factor for each measured harmonic for the Hammerstein model
 
-t_matrix_complex *matrix_non_linear(AH_UIntPtr size)
+t_matrix_complex *matrix_non_linear(uintptr_t size)
 {
     using complex = std::complex<double>;
 
@@ -155,7 +155,7 @@ t_matrix_complex *matrix_non_linear(AH_UIntPtr size)
     MATRIX_REF_COMPLEX(mat)
 
     complex pivot_recip, row_mult;
-    AH_UIntPtr i, j, k;
+    uintptr_t i, j, k;
 
     if (!mat)
         return 0;
@@ -223,22 +223,22 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     t_symbol *in_buffer_names[128];
     t_symbol *out_buffer_names[128];
-    AH_SIntPtr lengths[128];
+    intptr_t lengths[128];
 
     double sample_rate = 0.0;
     double current_coeff;
     double real;
     double imag;
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
 
-    AH_SIntPtr num_buffers = 0;
-    AH_SIntPtr overall_length = 0;
-    AH_SIntPtr length;
-    AH_SIntPtr max_length = 0;
-    AH_SIntPtr i, j, k;
+    intptr_t num_buffers = 0;
+    intptr_t overall_length = 0;
+    intptr_t length;
+    intptr_t max_length = 0;
+    intptr_t i, j, k;
 
-    AH_Boolean overall_error = false;
+    bool overall_error = false;
 
     t_matrix_complex *coeff;
 
@@ -264,7 +264,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
     {
         for (i = 0; i < num_buffers; i++)
         {
-            if ((AH_UIntPtr) buffer_length(out_buffer_names[i]) < fft_size)
+            if ((uintptr_t) buffer_length(out_buffer_names[i]) < fft_size)
             {
                 object_error((t_object *) x, "buffer %s is not long enough to complete write (no buffers altered)", out_buffer_names[i]->s_name);
                 return;
@@ -324,7 +324,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             current_coeff = MATRIX_ELEMENT(coeff, i, i).real();
 
-            for (j = 0; j < ((AH_SIntPtr) fft_size >> 1); j++)
+            for (j = 0; j < ((intptr_t) fft_size >> 1); j++)
             {
                 impulses[i].realp[j] *= current_coeff;
                 impulses[i].imagp[j] *= current_coeff;
@@ -336,7 +336,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
             {
                 current_coeff = MATRIX_ELEMENT(coeff, i, k).real();
 
-                for (j = 0; j < ((AH_SIntPtr) fft_size >> 1); j++)
+                for (j = 0; j < ((intptr_t) fft_size >> 1); j++)
                 {
                     impulses[i].realp[j] += impulses[k].realp[j] * current_coeff;
                     impulses[i].imagp[j] += impulses[k].imagp[j] * current_coeff;
@@ -356,7 +356,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
             impulses[i].realp[0] = 0.0;
             impulses[i].imagp[0] = 0.0;
 
-            for (j = 1; j < ((AH_SIntPtr) fft_size >> 1); j++)
+            for (j = 1; j < ((intptr_t) fft_size >> 1); j++)
             {
                 real = -impulses[i].imagp[j];
                 imag = impulses[i].realp[j];
@@ -370,7 +370,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
             {
                 current_coeff = MATRIX_ELEMENT(coeff, i, k).imag();
 
-                for (j = 1; j < ((AH_SIntPtr) fft_size >> 1); j++)
+                for (j = 1; j < ((intptr_t) fft_size >> 1); j++)
                 {
                     impulses[i].realp[j] += -impulses[k].imagp[j] * current_coeff;
                     impulses[i].imagp[j] +=  impulses[k].realp[j] * current_coeff;

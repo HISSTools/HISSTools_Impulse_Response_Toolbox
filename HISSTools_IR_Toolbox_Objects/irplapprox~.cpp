@@ -46,8 +46,8 @@ struct t_irpiecewiseapprox
 
 struct t_PLA_data
 {
-    AH_UIntPtr start_pos;
-    AH_UIntPtr end_pos;
+    uintptr_t start_pos;
+    uintptr_t end_pos;
 
     t_PLA_data *next_data;
 };
@@ -62,9 +62,9 @@ void irpiecewiseapprox_assist(t_irpiecewiseapprox *x, void *b, long m, long a, c
 void irpiecewiseapprox_process(t_irpiecewiseapprox *x, t_symbol *source);
 void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv);
 
-t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, AH_UIntPtr N);
-void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr target_segments, AH_UIntPtr num_segments);
-double PLA_calc_merged_cost(double *x_vals, double *y_vals, AH_UIntPtr start_pos, AH_UIntPtr end_pos);
+t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, uintptr_t N);
+void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, uintptr_t target_segments, uintptr_t num_segments);
+double PLA_calc_merged_cost(double *x_vals, double *y_vals, uintptr_t start_pos, uintptr_t end_pos);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -156,16 +156,16 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
     double sample_rate;
     double max_val = 0.0;
 
-    AH_UIntPtr num_output_pairs;
-    AH_UIntPtr pos;
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_halved;
-    AH_UIntPtr fft_size_log2;
-    AH_UIntPtr i;
+    uintptr_t num_output_pairs;
+    uintptr_t pos;
+    uintptr_t fft_size;
+    uintptr_t fft_size_halved;
+    uintptr_t fft_size_log2;
+    uintptr_t i;
 
     // Get input lengths
 
-    AH_SIntPtr source_length = buffer_length(source);
+    intptr_t source_length = buffer_length(source);
 
     // Check and calculate lengths
 
@@ -258,10 +258,10 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 //////////////////////////////////////////////////////////////////////////
 
 
-t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, AH_UIntPtr N)
+t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, uintptr_t N)
 {
     t_PLA_data *PLA_data = NULL;
-    AH_UIntPtr i;
+    uintptr_t i;
 
     // Allocate Resources
 
@@ -291,7 +291,7 @@ t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, AH_UI
 }
 
 
-void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr target_segments, AH_UIntPtr num_segments)
+void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, uintptr_t target_segments, uintptr_t num_segments)
 {
     t_PLA_data *current_data;
     t_PLA_data *merge_data = NULL;
@@ -299,7 +299,7 @@ void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr 
     double min_cost;
     double cost;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     while (num_segments > target_segments && num_segments >= 1)
     {
@@ -324,14 +324,14 @@ void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, AH_UIntPtr 
 }
 
 
-double PLA_calc_merged_cost(double *x_vals, double *y_vals, AH_UIntPtr start_pos, AH_UIntPtr end_pos)
+double PLA_calc_merged_cost(double *x_vals, double *y_vals, uintptr_t start_pos, uintptr_t end_pos)
 {
     double gradient = (y_vals[end_pos] - y_vals[start_pos]) / (x_vals[end_pos] - x_vals[start_pos]);
     double offset = y_vals[start_pos] - (x_vals[start_pos] * gradient);
     double difference;
     double sum = 0.0;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     for (i = start_pos; i < end_pos; i++)
     {

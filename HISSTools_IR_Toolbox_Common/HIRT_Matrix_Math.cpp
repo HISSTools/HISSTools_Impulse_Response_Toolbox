@@ -8,7 +8,7 @@ using complex = std::complex<double>;
 ////////////////////// Allocation and Deallocation ///////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-t_matrix_complex *matrix_alloc_complex(AH_UIntPtr m_dim, AH_UIntPtr n_dim)
+t_matrix_complex *matrix_alloc_complex(uintptr_t m_dim, uintptr_t n_dim)
 {
     t_matrix_complex *matrix = (t_matrix_complex *) malloc(sizeof(t_matrix_complex));
 
@@ -40,7 +40,7 @@ void matrix_destroy_complex(t_matrix_complex *matrix)
 //////////////////////////////////////////////////////////////////////////
 
 
-long matrix_new_size_complex(t_matrix_complex *out, AH_UIntPtr m_dim, AH_UIntPtr n_dim)
+long matrix_new_size_complex(t_matrix_complex *out, uintptr_t m_dim, uintptr_t n_dim)
 {
     if (m_dim > out->max_m_dim || n_dim > out->max_n_dim)
         return 1;
@@ -59,10 +59,10 @@ long matrix_new_size_complex(t_matrix_complex *out, AH_UIntPtr m_dim, AH_UIntPtr
 
 void matrix_multiply_complex(t_matrix_complex *out, t_matrix_complex *in1, t_matrix_complex *in2)
 {
-    AH_UIntPtr m_dim = in1->m_dim;
-    AH_UIntPtr n_dim = in2->n_dim;
-    AH_UIntPtr z_dim;
-    AH_UIntPtr i, j, k;
+    uintptr_t m_dim = in1->m_dim;
+    uintptr_t n_dim = in2->n_dim;
+    uintptr_t z_dim;
+    uintptr_t i, j, k;
 
     MATRIX_REF_COMPLEX(out)
     MATRIX_REF_COMPLEX(in1)
@@ -112,8 +112,8 @@ void matrix_multiply_complex(t_matrix_complex *out, t_matrix_complex *in1, t_mat
 
 long matrix_choelsky_decompose_complex(t_matrix_complex *out, t_matrix_complex *in)
 {
-    AH_UIntPtr z_dim = in->m_dim;
-    AH_UIntPtr i, j, k;
+    uintptr_t z_dim = in->m_dim;
+    uintptr_t i, j, k;
 
     complex sum;
 
@@ -167,9 +167,9 @@ long matrix_choelsky_decompose_complex(t_matrix_complex *out, t_matrix_complex *
 
 void matrix_choelsky_solve_complex(t_matrix_complex *out, t_matrix_complex *decompose, t_matrix_complex *solve)
 {
-    AH_UIntPtr m_dim = solve->m_dim;
-    AH_UIntPtr n_dim = solve->n_dim;
-    AH_UIntPtr i, j, k;
+    uintptr_t m_dim = solve->m_dim;
+    uintptr_t n_dim = solve->n_dim;
+    uintptr_t i, j, k;
 
     complex sum;
 
@@ -220,9 +220,9 @@ void matrix_choelsky_solve_complex(t_matrix_complex *out, t_matrix_complex *deco
 
 void matrix_conjugate_transpose_complex(t_matrix_complex *out, t_matrix_complex *in)
 {
-    AH_UIntPtr m_dim = in->n_dim;
-    AH_UIntPtr n_dim = in->m_dim;
-    AH_UIntPtr i, j;
+    uintptr_t m_dim = in->n_dim;
+    uintptr_t n_dim = in->m_dim;
+    uintptr_t i, j;
 
     MATRIX_REF_COMPLEX(in)
     MATRIX_REF_COMPLEX(out)

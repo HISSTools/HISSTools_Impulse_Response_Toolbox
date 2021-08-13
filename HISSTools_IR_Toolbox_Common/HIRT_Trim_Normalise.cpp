@@ -7,12 +7,12 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-double norm_find_max(double *in, AH_UIntPtr length, double start_max)
+double norm_find_max(double *in, uintptr_t length, double start_max)
 {
     double norm_factor = start_max;
     double norm_test;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     // Find peak
 
@@ -33,12 +33,12 @@ double norm_find_max(double *in, AH_UIntPtr length, double start_max)
 //////////////////////////////////////////////////////////////////////////
 
 
-void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
+void fade_calc_fade_in(double *in_buf, uintptr_t fade_length, uintptr_t length, t_fade_type fade_type)
 {
     double mult = 1.0 / fade_length;
     double fade_val;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     if (fade_length > length)
         fade_length = length;
@@ -94,12 +94,12 @@ void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length
 }
 
 
-void fade_calc_fade_out(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type)
+void fade_calc_fade_out(double *in_buf, uintptr_t fade_length, uintptr_t length, t_fade_type fade_type)
 {
     double mult = 1.0 / fade_length;
     double fade_val;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     if (fade_length > length)
         fade_length = length;
@@ -167,11 +167,11 @@ struct t_rms_measure
 {
     double accum;
 
-    AH_UIntPtr last_index;
+    uintptr_t last_index;
 };
 
 
-double calculate_rms_run(t_rms_measure *rms, double *in, AH_UIntPtr length, AH_UIntPtr width, AH_UIntPtr index)
+double calculate_rms_run(t_rms_measure *rms, double *in, uintptr_t length, uintptr_t width, uintptr_t index)
 {
     // Calculate the RMS value using a running average method (rather than looping each time)
 
@@ -180,11 +180,11 @@ double calculate_rms_run(t_rms_measure *rms, double *in, AH_UIntPtr length, AH_U
 
     // Width is effectively always odd
 
-    AH_UIntPtr last_index = rms->last_index;
-    AH_UIntPtr half_length = width >> 1;
-    AH_UIntPtr pre_length = half_length;
-    AH_UIntPtr post_length = half_length + 1;
-    AH_UIntPtr i;
+    uintptr_t last_index = rms->last_index;
+    uintptr_t half_length = width >> 1;
+    uintptr_t pre_length = half_length;
+    uintptr_t post_length = half_length + 1;
+    uintptr_t i;
 
     width = (half_length << 1) + 1;
 
@@ -250,7 +250,7 @@ double calculate_rms_run(t_rms_measure *rms, double *in, AH_UIntPtr length, AH_U
 }
 
 
-void reset_rms(t_rms_measure *rms, AH_UIntPtr index_reset)
+void reset_rms(t_rms_measure *rms, uintptr_t index_reset)
 {
     // Reset for running calculation
 
@@ -259,11 +259,11 @@ void reset_rms(t_rms_measure *rms, AH_UIntPtr index_reset)
 }
 
 
-t_rms_result trim_find_crossings_rms (double *in_buf, AH_UIntPtr length, AH_UIntPtr window_in, AH_UIntPtr window_out, double in_db, double out_db, double mul, AH_UIntPtr *current_start, AH_UIntPtr *current_end)
+t_rms_result trim_find_crossings_rms (double *in_buf, uintptr_t length, uintptr_t window_in, uintptr_t window_out, double in_db, double out_db, double mul, uintptr_t *current_start, uintptr_t *current_end)
 {
-    AH_UIntPtr start_search = *current_start;
-    AH_UIntPtr end_search = *current_end;
-    AH_UIntPtr i, j;
+    uintptr_t start_search = *current_start;
+    uintptr_t end_search = *current_end;
+    uintptr_t i, j;
 
     double in_lin = pow(10.0, in_db / 20.0);
     double out_lin = pow(10.0, out_db / 20.0);
@@ -306,11 +306,11 @@ t_rms_result trim_find_crossings_rms (double *in_buf, AH_UIntPtr length, AH_UInt
 }
 
 
-void trim_copy_part(double *out_buf, double *in_buf, AH_UIntPtr offset, AH_UIntPtr length)
+void trim_copy_part(double *out_buf, double *in_buf, uintptr_t offset, uintptr_t length)
 {
     // N.B. It is safe to destructiovely copy part of a buffer onto itself, as long as you are copying to the start of the buffer
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     in_buf += offset;
 

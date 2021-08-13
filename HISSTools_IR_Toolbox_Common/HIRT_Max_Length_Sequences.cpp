@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-void mls_params(t_mls *x, AH_UInt32 log2_T, double amp)
+void mls_params(t_mls *x, uint32_t log2_T, double amp)
 {
     log2_T = (log2_T < 1) ? 1 : log2_T;
     log2_T = (log2_T > 24) ? 24 : log2_T;
@@ -32,17 +32,17 @@ void mls_reset(t_mls *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_UInt32 get_next_lfsr_int(AH_UInt32 lfsr, AH_UInt32 feedback_mask)
+uint32_t get_next_lfsr_int(uint32_t lfsr, uint32_t feedback_mask)
 {
-    return (lfsr >> 1) ^ (AH_UInt32)((0 - (lfsr & 0x1u)) & feedback_mask);
+    return (lfsr >> 1) ^ (uint32_t)((0 - (lfsr & 0x1u)) & feedback_mask);
 }
 
 
-void mls_gen_float(t_mls *x, float *out, AH_UIntPtr N)
+void mls_gen_float(t_mls *x, float *out, uintptr_t N)
 {
-    AH_UInt32 lfsr = x->lfsr;
-    AH_UInt32 feedback_mask = x->feedback_mask;
-    AH_UInt32 i;
+    uint32_t lfsr = x->lfsr;
+    uint32_t feedback_mask = x->feedback_mask;
+    uint32_t i;
 
     float amp = (float) x->amp;
     float two_amp = amp * 2;
@@ -57,11 +57,11 @@ void mls_gen_float(t_mls *x, float *out, AH_UIntPtr N)
 }
 
 
-void mls_gen_double(t_mls *x, double *out, AH_UIntPtr N)
+void mls_gen_double(t_mls *x, double *out, uintptr_t N)
 {
-    AH_UInt32 lfsr = x->lfsr;
-    AH_UInt32 feedback_mask = x->feedback_mask;
-    AH_UInt32 i;
+    uint32_t lfsr = x->lfsr;
+    uint32_t feedback_mask = x->feedback_mask;
+    uint32_t i;
 
     double amp = x->amp;
     double two_amp = amp * 2;
@@ -76,7 +76,7 @@ void mls_gen_double(t_mls *x, double *out, AH_UIntPtr N)
 }
 
 
-void mls_gen_block(t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precision)
+void mls_gen_block(t_mls *x, void *out, uintptr_t N, bool double_precision)
 {
     if (double_precision)
         mls_gen_double(x, (double *) out, N);
@@ -85,7 +85,7 @@ void mls_gen_block(t_mls *x, void *out, AH_UIntPtr N, AH_Boolean double_precisio
 }
 
 
-void mls_gen(t_mls *x, void *out, AH_Boolean double_precision)
+void mls_gen(t_mls *x, void *out, bool double_precision)
 {
     if (double_precision)
         mls_gen_double(x, (double *) out, x->T);

@@ -235,18 +235,18 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
 
     t_phase_type mode = (t_phase_type) atom_getlong(argv++);
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
-    AH_UIntPtr i;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
+    uintptr_t i;
 
     t_filter_type deconvolve_mode;
     t_atom_long read_chan = x->read_chan - 1;
 
     // Get input buffer lengths
 
-    AH_SIntPtr source_length_1 = buffer_length(source);
-    AH_SIntPtr filter_length = buffer_length(filter);
-    AH_SIntPtr max_length = source_length_1;
+    intptr_t source_length_1 = buffer_length(source);
+    intptr_t filter_length = buffer_length(filter);
+    intptr_t max_length = source_length_1;
 
     // Check input buffers
 

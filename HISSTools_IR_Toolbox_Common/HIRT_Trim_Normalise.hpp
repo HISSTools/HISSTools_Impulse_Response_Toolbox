@@ -2,7 +2,7 @@
 #ifndef __TRIM_NORMALISE__
 #define __TRIM_NORMALISE__
 
-#include <AH_Types.h>
+#include <cstdint>
 
 // Fade Type Enum
 
@@ -26,12 +26,12 @@ enum t_rms_result
 
 // Function Prototypes
 
-double norm_find_max(double *in, AH_UIntPtr length, double start_max);
+double norm_find_max(double *in, uintptr_t length, double start_max);
 
-void fade_calc_fade_in(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type);
-void fade_calc_fade_out(double *in_buf, AH_UIntPtr fade_length, AH_UIntPtr length, t_fade_type fade_type);
+void fade_calc_fade_in(double *in_buf, uintptr_t fade_length, uintptr_t length, t_fade_type fade_type);
+void fade_calc_fade_out(double *in_buf, uintptr_t fade_length, uintptr_t length, t_fade_type fade_type);
 
-t_rms_result trim_find_crossings_rms(double *in_buf, AH_UIntPtr length, AH_UIntPtr window_in, AH_UIntPtr window_out, double in_db, double out_db, double mul, AH_UIntPtr *current_start, AH_UIntPtr *current_end);
-void trim_copy_part(double *out_buf, double *in_buf, AH_UIntPtr offset, AH_UIntPtr length);
+t_rms_result trim_find_crossings_rms(double *in_buf, uintptr_t length, uintptr_t window_in, uintptr_t window_out, double in_db, double out_db, double mul, uintptr_t *current_start, uintptr_t *current_end);
+void trim_copy_part(double *out_buf, double *in_buf, uintptr_t offset, uintptr_t length);
 
 #endif /* __TRIM_NORMALISE__ */

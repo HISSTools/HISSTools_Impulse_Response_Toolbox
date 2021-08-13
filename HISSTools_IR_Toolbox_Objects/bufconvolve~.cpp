@@ -147,7 +147,7 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
 
-    AH_Boolean convolve_mode = sym == gensym("convolve") ? true : false;
+    bool convolve_mode = sym == gensym("convolve") ? true : false;
 
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source_1 = atom_getsym(argv++);
@@ -162,12 +162,12 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
     double deconvolve_delay;
 
-    AH_SIntPtr source_length_1 = buffer_length(source_1);
-    AH_SIntPtr source_length_2 = buffer_length(source_2);
-    AH_SIntPtr filter_length = buffer_length(filter);
+    intptr_t source_length_1 = buffer_length(source_1);
+    intptr_t source_length_2 = buffer_length(source_2);
+    intptr_t filter_length = buffer_length(filter);
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
 
     long deconvolve_mode = x->deconvolve_mode;
     t_atom_long read_chan = x->read_chan - 1;
@@ -185,9 +185,9 @@ void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t
     // Check and calculate lengths
 
     if (convolve_mode == true)
-        fft_size = (AH_UIntPtr) ((source_length_1 + source_length_2) * time_mul);
+        fft_size = (uintptr_t) ((source_length_1 + source_length_2) * time_mul);
     else
-        fft_size = (AH_UIntPtr) (source_length_1 < source_length_2 ? source_length_2 * time_mul : source_length_1 * time_mul);
+        fft_size = (uintptr_t) (source_length_1 < source_length_2 ? source_length_2 * time_mul : source_length_1 * time_mul);
 
     fft_size = calculate_fft_size(fft_size, &fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);

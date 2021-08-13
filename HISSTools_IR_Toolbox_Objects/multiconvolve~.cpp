@@ -278,7 +278,7 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
     t_atom_long out_chan;
     t_atom_long read_chan;
 
-    AH_SIntPtr impulse_length;
+    intptr_t impulse_length;
 
     if (argc < 1)
     {

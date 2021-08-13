@@ -205,7 +205,7 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
     t_atom_long fft_size = 4096;
     t_atom_long i;
 
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size_log2;
 
     double sample_rate = 0.0;
 

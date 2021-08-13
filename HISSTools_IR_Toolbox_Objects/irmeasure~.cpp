@@ -71,11 +71,11 @@ struct t_irmeasure
     long inv_amp;
     long no_dsp;
 
-    AH_SIntPtr current_t;
-    AH_SIntPtr T;
-    AH_SIntPtr T2;
-    AH_SIntPtr fft_size;
-    AH_SIntPtr chan_offset[HIRT_MAX_MEASURE_CHANS];
+    intptr_t current_t;
+    intptr_t T;
+    intptr_t T2;
+    intptr_t fft_size;
+    intptr_t chan_offset[HIRT_MAX_MEASURE_CHANS];
 
     long num_in_chans;
     long num_out_chans;
@@ -134,10 +134,10 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv);
 void irmeasure_free(t_irmeasure *x);
 void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s);
 
-AH_SIntPtr irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate);
-AH_SIntPtr irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate);
-AH_SIntPtr irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate);
-AH_SIntPtr irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate);
+intptr_t irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate);
+intptr_t irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate);
+intptr_t irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate);
+intptr_t irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate);
 
 double irmeasure_param_check(t_irmeasure *x, char *name, double val, double min, double max);
 
@@ -166,7 +166,7 @@ void irmeasure_mls_params(t_irmeasure *x);
 void irmeasure_noise_params(t_irmeasure *x);
 void irmeasure_params(t_irmeasure *x);
 
-static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision);
+static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, bool double_precision);
 t_int *irmeasure_perform(t_int *w);
 void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 
@@ -344,34 +344,34 @@ void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate)
+intptr_t irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate)
 {
-    AH_SIntPtr gen_length = ess_get_length(sweep_params);
-    AH_SIntPtr rec_length = (AH_SIntPtr) (num_out_chans * ((out_length * sample_rate) + gen_length));
+    intptr_t gen_length = ess_get_length(sweep_params);
+    intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
 }
 
 
-AH_SIntPtr irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate)
+intptr_t irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate)
 {
-    AH_SIntPtr gen_length = (1 << order) - 1;
-    AH_SIntPtr rec_length = (AH_SIntPtr) (num_out_chans * ((out_length * sample_rate) + gen_length));
+    intptr_t gen_length = (1 << order) - 1;
+    intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
 }
 
 
-AH_SIntPtr irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate)
+intptr_t irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate)
 {
-    AH_SIntPtr gen_length = (AH_SIntPtr) (length * sample_rate);
-    AH_SIntPtr rec_length = (AH_SIntPtr) (num_out_chans * ((out_length * sample_rate) + gen_length));
+    intptr_t gen_length = (intptr_t) (length * sample_rate);
+    intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
 }
 
 
-AH_SIntPtr irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate)
+intptr_t irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate)
 {
     switch (x->measure_mode)
     {
@@ -397,7 +397,7 @@ AH_SIntPtr irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_o
 double irmeasure_param_check(t_irmeasure *x, const char *name, double val, double min, double max)
 {
     double new_val = val;
-    AH_Boolean changed = false;
+    bool changed = false;
 
     if (val < min)
     {
@@ -437,7 +437,7 @@ void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
     long num_active_ins = x->num_active_ins;
     long num_active_outs = x->num_active_outs;
 
-    AH_SIntPtr mem_size;
+    intptr_t mem_size;
 
     // Load parameters
 
@@ -512,7 +512,7 @@ void irmeasure_mls(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     t_atom_long order = 18;
 
-    AH_SIntPtr mem_size;
+    intptr_t mem_size;
 
     // Load parameters
 
@@ -560,7 +560,7 @@ void irmeasure_noise(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
     long num_active_ins = x->num_active_ins;
     long num_active_outs = x->num_active_outs;
 
-    AH_SIntPtr mem_size;
+    intptr_t mem_size;
 
     t_noise_mode noise_mode = NOISE_MODE_WHITE;
 
@@ -730,14 +730,14 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     long deconvolve_mode = x->deconvolve_mode;
     long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
 
-    AH_SIntPtr rec_length = x->T2;
-    AH_SIntPtr gen_length = 0;
-    AH_SIntPtr filter_length = buffer_length(filter);
+    intptr_t rec_length = x->T2;
+    intptr_t gen_length = 0;
+    intptr_t filter_length = buffer_length(filter);
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
-    AH_UIntPtr mem_size;
-    AH_UIntPtr i;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
+    uintptr_t mem_size;
+    uintptr_t i;
 
     t_ess sweep_params;
     t_mls max_length_params;
@@ -865,7 +865,7 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Deconvolve each input channel
 
-    for (i = 0; i < (AH_UIntPtr) x->current_num_active_ins; i++)
+    for (i = 0; i < (uintptr_t) x->current_num_active_ins; i++)
     {
         // Get current input and output buffers
 
@@ -905,10 +905,10 @@ void irmeasure_extract_internal(t_irmeasure *x, t_symbol *sym, short argc, t_ato
     t_atom_long in_chan = 1;
     t_symbol *buffer = NULL;
 
-    AH_SIntPtr rec_length = x->T2;
+    intptr_t rec_length = x->T2;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
     rec_mem = (double *) access_mem_swap(&x->rec_mem, &mem_size);
 
@@ -960,8 +960,8 @@ void irmeasure_dump_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom *
     t_atom_long in_chan = 1;
     t_symbol *buffer = NULL;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
     // Get arguments
 
@@ -1021,12 +1021,12 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
     double *out_buf;
     double *out_mem;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
-    AH_SIntPtr T_minus;
-    AH_SIntPtr L;
-    AH_SIntPtr T;
+    intptr_t T_minus;
+    intptr_t L;
+    intptr_t T;
 
     t_atom_long harmonic = 1;
     t_atom_long in_chan = 1;
@@ -1105,16 +1105,16 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
     // Calculate offset in internal buffer
 
     if (x->measure_mode == SWEEP)
-        T_minus = (AH_SIntPtr) ess_harm_offset(&x->sweep_params, harmonic);
+        T_minus = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic);
     else
         T_minus = 0;
 
-    L = (AH_SIntPtr) (x->current_out_length * x->sample_rate);
+    L = (intptr_t) (x->current_out_length * x->sample_rate);
 
     if (harmonic > 1)
     {
-        AH_SIntPtr T_minus_prev = (AH_SIntPtr) ess_harm_offset(&x->sweep_params, harmonic - 1);
-        AH_SIntPtr L2 = T_minus - T_minus_prev;
+        intptr_t T_minus_prev = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic - 1);
+        intptr_t L2 = T_minus - T_minus_prev;
 
         if (L2 < L)
             L = L2;
@@ -1153,7 +1153,7 @@ void irmeasure_sweep_params(t_irmeasure *x)
         x->chan_offset[i] = (i * chan_offset);
 
     x->T = sweep_length;
-    x->T2 = (AH_SIntPtr) (sweep_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
+    x->T2 = (intptr_t) (sweep_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
     x->current_out_length = out_length;
     x->current_t = 0;
 }
@@ -1175,7 +1175,7 @@ void irmeasure_mls_params(t_irmeasure *x)
         x->chan_offset[i] = (i * chan_offset);
 
     x->T = mls_length;
-    x->T2 = (AH_SIntPtr) (mls_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
+    x->T2 = (intptr_t) (mls_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
     x->current_out_length = out_length;
     x->current_t = 0;
 }
@@ -1206,7 +1206,7 @@ void irmeasure_noise_params(t_irmeasure *x)
         x->chan_offset[i] = (i * chan_offset);
 
     x->T = noise_length;
-    x->T2 = (AH_SIntPtr) (noise_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
+    x->T2 = (intptr_t) (noise_length + x->chan_offset[x->current_num_active_outs - 1] + (out_length * sample_rate));
     x->current_out_length = out_length;
     x->current_t = 0;
 }
@@ -1248,7 +1248,7 @@ static inline double max_double(double v1, double v2)
 //////////////////////////////////////////////////////////////////////////
 
 
-static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, AH_Boolean double_precision)
+static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, bool double_precision)
 {
     long start;
     long todo;
@@ -1314,11 +1314,11 @@ t_int *irmeasure_perform(t_int *w)
     double sample_rate = x->sample_rate;
     double progress_mul = 0.0;
 
-    AH_SIntPtr T2;
-    AH_SIntPtr current_t;
-    AH_SIntPtr current_t2;
-    AH_SIntPtr mem_size = 0;
-    AH_SIntPtr i, j;
+    intptr_t T2;
+    intptr_t current_t;
+    intptr_t current_t2;
+    intptr_t mem_size = 0;
+    intptr_t i, j;
 
     long test_tone = x->test_tone;
     long excitation_playing;
@@ -1351,7 +1351,7 @@ t_int *irmeasure_perform(t_int *w)
     rec_mem = (double *) x->rec_mem.current_ptr;
 
     mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
-    mem_check = x->rec_mem.current_size >= (AH_UIntPtr) mem_size;
+    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
 
     if (mem_check)
     {
@@ -1463,11 +1463,11 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
     double sample_rate = x->sample_rate;
     double progress_mul = 0.0;
 
-    AH_SIntPtr T2;
-    AH_SIntPtr current_t;
-    AH_SIntPtr current_t2;
-    AH_SIntPtr mem_size = 0;
-    AH_SIntPtr i, j;
+    intptr_t T2;
+    intptr_t current_t;
+    intptr_t current_t2;
+    intptr_t mem_size = 0;
+    intptr_t i, j;
 
     long test_tone = x->test_tone;
     long excitation_playing;
@@ -1500,7 +1500,7 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
     rec_mem = (double *) x->rec_mem.current_ptr;
 
     mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
-    mem_check = x->rec_mem.current_size >= (AH_UIntPtr) mem_size;
+    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
 
     if (mem_check)
     {
@@ -1608,7 +1608,7 @@ void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
     t_noise_params noise_params;
     double old_sr;
 
-    AH_SIntPtr mem_size = 0;
+    intptr_t mem_size = 0;
 
     // Store sample rate
 

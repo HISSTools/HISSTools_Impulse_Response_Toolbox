@@ -12,7 +12,7 @@ double buffer_sample_rate(t_symbol *buffer)
     return data.get_sample_rate();
 }
 
-AH_SIntPtr buffer_length(t_symbol *buffer)
+intptr_t buffer_length(t_symbol *buffer)
 {
     ibuffer_data data(buffer);
 
@@ -47,7 +47,7 @@ long buffer_check(t_object *x, t_symbol *buffer)
 ///////////////////////////// Read Routines //////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-AH_SIntPtr buffer_read(t_symbol *buffer, long chan, float *out, AH_SIntPtr max_length)
+intptr_t buffer_read(t_symbol *buffer, long chan, float *out, intptr_t max_length)
 {
     ibuffer_data data(buffer);
 
@@ -64,7 +64,7 @@ AH_SIntPtr buffer_read(t_symbol *buffer, long chan, float *out, AH_SIntPtr max_l
     return data.get_length();
 }
 
-AH_SIntPtr buffer_read_part(t_symbol *buffer, long chan, float *out, AH_SIntPtr offset, AH_SIntPtr read_length)
+intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offset, intptr_t read_length)
 {
     ibuffer_data data(buffer);
 
@@ -92,7 +92,7 @@ void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error erro
 }
 
 template <typename T>
-t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul)
+t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in, intptr_t write_length, long chan, long resize, double sample_rate, double mul)
 {
     t_buffer_info info;
     t_atom temp_atom[2];
@@ -142,14 +142,14 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
     return BUFFER_WRITE_ERR_NONE;
 }
 
-t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul)
+t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, intptr_t write_length, long chan, long resize, double sample_rate, double mul)
 {
     auto error =  buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
     buffer_write_error(owner, buffer, error);
     return error;
 }
 
-t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, AH_SIntPtr write_length, long resize, long chan, double sample_rate, float mul)
+t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, intptr_t write_length, long resize, long chan, double sample_rate, float mul)
 {
     auto error =  buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
     buffer_write_error(owner, buffer, error);
@@ -160,11 +160,11 @@ t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float
 /////////////////// Retrieve and Check Multiple Buffers //////////////////
 //////////////////////////////////////////////////////////////////////////
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sample_rate_ret)
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, intptr_t *lengths, short argc, t_atom *argv, long in_place, short max_bufs, intptr_t *overall_len_ret, intptr_t *max_len_ret, double *sample_rate_ret)
 {
-    AH_SIntPtr overall_length = 0;
-    AH_SIntPtr max_length = 0;
-    AH_SIntPtr new_length;
+    intptr_t overall_length = 0;
+    intptr_t max_length = 0;
+    intptr_t new_length;
     short i;
 
     double sample_rate = 0.0;

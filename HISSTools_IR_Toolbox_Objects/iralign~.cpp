@@ -46,8 +46,8 @@ void *iralign_new(t_symbol *s, short argc, t_atom *argv);
 void iralign_free(t_iralign *x);
 void iralign_assist(t_iralign *x, void *b, long m, long a, char *s);
 
-AH_SIntPtr align_find_max(double *in, AH_SIntPtr length);
-void align_pad(double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr length);
+intptr_t align_find_max(double *in, intptr_t length);
+void align_pad(double *out_buf, double *in_buf, intptr_t pad, intptr_t length);
 
 void iralign_align(t_iralign *x, t_symbol *sym, long argc, t_atom *argv);
 void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *argv);
@@ -114,13 +114,13 @@ void iralign_assist(t_iralign *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr align_find_max(double *in, AH_SIntPtr length)
+intptr_t align_find_max(double *in, intptr_t length)
 {
     double max = 0.0;
     double max_test;
 
-    AH_SIntPtr max_pos = 0;
-    AH_SIntPtr i;
+    intptr_t max_pos = 0;
+    intptr_t i;
 
     // Find peak
 
@@ -139,9 +139,9 @@ AH_SIntPtr align_find_max(double *in, AH_SIntPtr length)
 }
 
 
-void align_pad(double *out_buf, double *in_buf, AH_SIntPtr pad, AH_SIntPtr length)
+void align_pad(double *out_buf, double *in_buf, intptr_t pad, intptr_t length)
 {
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < pad; i++)
         *out_buf++ = 0.0;
@@ -168,21 +168,21 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
     t_symbol *out_buffer_names[128];
     double *samples[128];
 
-    AH_SIntPtr lengths[128];
-    AH_SIntPtr max_pos[128];
+    intptr_t lengths[128];
+    intptr_t max_pos[128];
 
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
     double sample_rate = 0.0;
 
-    AH_SIntPtr num_buffers = 0;
-    AH_SIntPtr overall_length = 0;
-    AH_SIntPtr max_length = 0;
-    AH_SIntPtr overall_max_pos = 0;
-    AH_SIntPtr offset = 0;
-    AH_SIntPtr i, j;
+    intptr_t num_buffers = 0;
+    intptr_t overall_length = 0;
+    intptr_t max_length = 0;
+    intptr_t overall_max_pos = 0;
+    intptr_t offset = 0;
+    intptr_t i, j;
 
-    AH_Boolean overall_error = false;
+    bool overall_error = false;
 
     // Check buffers, storing names and lengths +  calculate total / largest length
 

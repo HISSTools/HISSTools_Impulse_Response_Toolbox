@@ -3,7 +3,7 @@
 #ifndef __HIRT_COMMON_ATTRIBUTE_SETUP__
 #define __HIRT_COMMON_ATTRIBUTE_SETUP__
 
-#include <AH_Types.h>
+#include <cstdint>
 
 // Phase Parsing and Retrieval
 
@@ -215,7 +215,7 @@ t_max_err range_specification_getter(OBJ_CLASSNAME *x, t_object *attr, long *arg
     return MAX_ERR_NONE;
 }
 
-double delay_retriever(t_atom delay, AH_UIntPtr fft_size, double sample_rate)
+double delay_retriever(t_atom delay, uintptr_t fft_size, double sample_rate)
 {
     return (atom_gettype(&delay) == A_SYM) ? (fft_size >> 1) : (atom_getfloat(&delay) * sample_rate) / 1000.0;
 }

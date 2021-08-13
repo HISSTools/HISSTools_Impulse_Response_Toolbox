@@ -106,7 +106,7 @@ struct t_stats_calc
 
     // Input properties
 
-    AH_SIntPtr in_length;
+    intptr_t in_length;
 
     long time_in_samples;
 
@@ -129,12 +129,12 @@ struct t_stats_calc
     double maxgain;
     double integration_conv_db_val;
 
-    AH_SIntPtr ir_length;
-    AH_SIntPtr onset;
-    AH_SIntPtr LR_onset;
-    AH_SIntPtr direct_end;
-    AH_SIntPtr direct_exists;
-    AH_SIntPtr integration_conv_db_pos;
+    intptr_t ir_length;
+    intptr_t onset;
+    intptr_t LR_onset;
+    intptr_t direct_end;
+    intptr_t direct_exists;
+    intptr_t integration_conv_db_pos;
 
     // Calculation Flags
 
@@ -183,46 +183,46 @@ void *irstats_new(t_symbol *s, short argc, t_atom *argv);
 void irstats_free(t_irstats *x);
 void irstats_assist(t_irstats *x, void *b, long m, long a, char *s);
 
-AH_SIntPtr mstosamps(double ms, double sample_rate);
+intptr_t mstosamps(double ms, double sample_rate);
 double sampstoms(double samps, double sample_rate);
 
-double calc_mean(double *data, AH_SIntPtr length);
-double calc_variance(double *data, double mean, AH_SIntPtr length);
-double calc_peak(float *data, AH_SIntPtr length);
-double calc_norm_kurtosis(float *data, AH_SIntPtr length);
-double calc_rms(float *data, AH_SIntPtr length);
+double calc_mean(double *data, intptr_t length);
+double calc_variance(double *data, double mean, intptr_t length);
+double calc_peak(float *data, intptr_t length);
+double calc_norm_kurtosis(float *data, intptr_t length);
+double calc_rms(float *data, intptr_t length);
 
-void integrate_pow(double *integration, float *ir, AH_SIntPtr length);
-void backwards_integrate(double *integration_db, double *integration, AH_SIntPtr length);
-AH_SIntPtr conv_db(double *integration_db, double conv_db, AH_SIntPtr conv_pos, AH_SIntPtr length);
+void integrate_pow(double *integration, float *ir, intptr_t length);
+void backwards_integrate(double *integration_db, double *integration, intptr_t length);
+intptr_t conv_db(double *integration_db, double conv_db, intptr_t conv_pos, intptr_t length);
 
-void get_samples(float *out, float *buffer, AH_SIntPtr length, AH_SIntPtr offset, AH_SIntPtr nsamps);
-void make_von_hann_window(double *window, AH_SIntPtr window_size);
-void apply_window(double *output, float *samples, double *window, AH_SIntPtr window_size);
-double sum_pow_window(float *samples, double *window, AH_SIntPtr window_size);
+void get_samples(float *out, float *buffer, intptr_t length, intptr_t offset, intptr_t nsamps);
+void make_von_hann_window(double *window, intptr_t window_size);
+void apply_window(double *output, float *samples, double *window, intptr_t window_size);
+double sum_pow_window(float *samples, double *window, intptr_t window_size);
 
-AH_SIntPtr calc_onset(float *ir, float *samples, double *window, AH_SIntPtr length, double sample_rate);
-AH_SIntPtr calc_direct(float *ir, float *samples, double *window, AH_SIntPtr onset, AH_SIntPtr length, double sample_rate);
-long calc_direct_exists(float *ir, AH_SIntPtr onset, AH_SIntPtr direct_end, AH_SIntPtr LR_onset, double sample_rate);
+intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, double sample_rate);
+intptr_t calc_direct(float *ir, float *samples, double *window, intptr_t onset, intptr_t length, double sample_rate);
+long calc_direct_exists(float *ir, intptr_t onset, intptr_t direct_end, intptr_t LR_onset, double sample_rate);
 
-void linear_regression(double *data, AH_SIntPtr length, double *slope, double *offset);
-double calc_reverb_time(double *integration_db, AH_SIntPtr length, double hi_evaluate, double lo_evaluate, double db_intersection);
+void linear_regression(double *data, intptr_t length, double *slope, double *offset);
+double calc_reverb_time(double *integration_db, intptr_t length, double hi_evaluate, double lo_evaluate, double db_intersection);
 
-double calc_ned(float *sample_window, double *window, AH_SIntPtr window_size);
-double calc_ned_no_window(float *sample_window, AH_SIntPtr window_size);
-double calc_ned_average(float *ir, float *samples, double *window, AH_SIntPtr length, double sample_rate);
-AH_SIntPtr get_sample_time(double time_val, long time_in_samples, double sample_rate);
-AH_SIntPtr calc_LR_onset(float *ir, float *samples, double *window, AH_SIntPtr length, AH_SIntPtr onset, long time_in_samples, double min_mix, double max_mix, double sample_rate);
+double calc_ned(float *sample_window, double *window, intptr_t window_size);
+double calc_ned_no_window(float *sample_window, intptr_t window_size);
+double calc_ned_average(float *ir, float *samples, double *window, intptr_t length, double sample_rate);
+intptr_t get_sample_time(double time_val, long time_in_samples, double sample_rate);
+intptr_t calc_LR_onset(float *ir, float *samples, double *window, intptr_t length, intptr_t onset, long time_in_samples, double min_mix, double max_mix, double sample_rate);
 
-double calc_clarity(double *integration, AH_SIntPtr length, double sample_rate);
-double calc_center(float *ir, AH_SIntPtr length, AH_SIntPtr onset);
-double calc_LR_onset_rms(float *ir, float *samples, double *window, AH_SIntPtr LR_onset, AH_SIntPtr length, double sample_rate);
-double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate, double *max_oct);
+double calc_clarity(double *integration, intptr_t length, double sample_rate);
+double calc_center(float *ir, intptr_t length, intptr_t onset);
+double calc_LR_onset_rms(float *ir, float *samples, double *window, intptr_t LR_onset, intptr_t length, double sample_rate);
+double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, double *max_oct);
 
 void do_integration(t_stats_calc *stats);
 void do_integration_db(t_stats_calc *stats);
 
-AH_SIntPtr retrieve_onset(t_stats_calc *stats);
+intptr_t retrieve_onset(t_stats_calc *stats);
 double retrieve_T20(t_stats_calc *stats);
 double retrieve_T30(t_stats_calc *stats);
 double retrieve_EDT(t_stats_calc *stats);
@@ -231,9 +231,9 @@ double retrieve_clarity(t_stats_calc *stats);
 double retrieve_peak(t_stats_calc *stats);
 double retrieve_rms(t_stats_calc *stats);
 double retrieve_ned(t_stats_calc *stats);
-AH_SIntPtr retrieve_LR_onset(t_stats_calc *stats);
-AH_SIntPtr retrieve_direct_end(t_stats_calc *stats);
-AH_SIntPtr retrieve_direct_exists(t_stats_calc *stats);
+intptr_t retrieve_LR_onset(t_stats_calc *stats);
+intptr_t retrieve_direct_end(t_stats_calc *stats);
+intptr_t retrieve_direct_exists(t_stats_calc *stats);
 double retrieve_LR_onset_rms(t_stats_calc *stats);
 double retrieve_gain(t_stats_calc *stats);
 double retrieve_maxgain(t_stats_calc *stats);
@@ -328,9 +328,9 @@ void irstats_assist(t_irstats *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr mstosamps(double ms, double sample_rate)
+intptr_t mstosamps(double ms, double sample_rate)
 {
-    return (AH_SIntPtr) (ms * (sample_rate / 1000.0));
+    return (intptr_t) (ms * (sample_rate / 1000.0));
 }
 
 
@@ -345,10 +345,10 @@ double sampstoms(double samps, double sample_rate)
 //////////////////////////////////////////////////////////////////////////
 
 
-double calc_mean(double *data, AH_SIntPtr length)
+double calc_mean(double *data, intptr_t length)
 {
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < length; i++)
         sum += data[i];
@@ -357,11 +357,11 @@ double calc_mean(double *data, AH_SIntPtr length)
 }
 
 
-double calc_variance(double *data, double mean, AH_SIntPtr length)
+double calc_variance(double *data, double mean, intptr_t length)
 {
     double val;
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < length; i++)
     {
@@ -373,11 +373,11 @@ double calc_variance(double *data, double mean, AH_SIntPtr length)
 }
 
 
-double calc_peak(float *data, AH_SIntPtr length)
+double calc_peak(float *data, intptr_t length)
 {
     double max = -HUGE_VAL;
     double val = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < length; i++)
     {
@@ -390,12 +390,12 @@ double calc_peak(float *data, AH_SIntPtr length)
 }
 
 
-double calc_norm_kurtosis(float *data, AH_SIntPtr length)
+double calc_norm_kurtosis(float *data, intptr_t length)
 {
     double val;
     double var_sum = 0.0;
     double kur_sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     // N.B. Data is assumed to have a zero mean
 
@@ -411,10 +411,10 @@ double calc_norm_kurtosis(float *data, AH_SIntPtr length)
 }
 
 
-double calc_rms(float *data, AH_SIntPtr length)
+double calc_rms(float *data, intptr_t length)
 {
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < length; i++)
         sum += data[i] * data[i];
@@ -428,10 +428,10 @@ double calc_rms(float *data, AH_SIntPtr length)
 //////////////////////////////////////////////////////////////////////////
 
 
-void integrate_pow(double *integration, float *ir, AH_SIntPtr length)
+void integrate_pow(double *integration, float *ir, intptr_t length)
 {
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < length; i++)
     {
@@ -441,11 +441,11 @@ void integrate_pow(double *integration, float *ir, AH_SIntPtr length)
 }
 
 
-void backwards_integrate(double *integration_db, double *integration, AH_SIntPtr length)
+void backwards_integrate(double *integration_db, double *integration, intptr_t length)
 {
     double max_integration = integration[length - 1];
     double max_integration_recip = 1.0 / max_integration;
-    AH_SIntPtr i;
+    intptr_t i;
 
     // N.B. It is a waste of CPU to convert to db more than we need, so do this separately
 
@@ -454,10 +454,10 @@ void backwards_integrate(double *integration_db, double *integration, AH_SIntPtr
 }
 
 
-AH_SIntPtr conv_db(double *integration_db, double conv_db, AH_SIntPtr conv_pos, AH_SIntPtr length)
+intptr_t conv_db(double *integration_db, double conv_db, intptr_t conv_pos, intptr_t length)
 {
     double val;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = conv_pos; i < length; i++)
     {
@@ -476,11 +476,11 @@ AH_SIntPtr conv_db(double *integration_db, double conv_db, AH_SIntPtr conv_pos, 
 //////////////////////////////////////////////////////////////////////////
 
 
-void get_samples(float *out, float *buffer, AH_SIntPtr length, AH_SIntPtr offset, AH_SIntPtr nsamps)
+void get_samples(float *out, float *buffer, intptr_t length, intptr_t offset, intptr_t nsamps)
 {
-    AH_SIntPtr temp_offset = 0;
-    AH_SIntPtr temp_nsamps = nsamps;
-    AH_SIntPtr i;
+    intptr_t temp_offset = 0;
+    intptr_t temp_nsamps = nsamps;
+    intptr_t i;
 
     // Do not read before the buffer
 
@@ -516,10 +516,10 @@ void get_samples(float *out, float *buffer, AH_SIntPtr length, AH_SIntPtr offset
 }
 
 
-void make_von_hann_window(double *window, AH_SIntPtr window_size)
+void make_von_hann_window(double *window, intptr_t window_size)
 {
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < window_size; i++)
     {
@@ -534,19 +534,19 @@ void make_von_hann_window(double *window, AH_SIntPtr window_size)
 }
 
 
-void apply_window(double *output, float *samples, double *window, AH_SIntPtr window_size)
+void apply_window(double *output, float *samples, double *window, intptr_t window_size)
 {
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < window_size; i++)
         output[i] = samples[i] * window[i];
 }
 
 
-double sum_pow_window(float *samples, double *window, AH_SIntPtr window_size)
+double sum_pow_window(float *samples, double *window, intptr_t window_size)
 {
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < window_size; i++)
         sum += samples[i] * samples[i] * window[i];
@@ -559,7 +559,7 @@ double sum_pow_window(float *samples, double *window, AH_SIntPtr window_size)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr calc_onset(float *ir, float *samples, double *window, AH_SIntPtr length, double sample_rate)
+intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, double sample_rate)
 {
     double prior_max_energy = 0.0;
     double max_ratio = 1.0;
@@ -569,15 +569,15 @@ AH_SIntPtr calc_onset(float *ir, float *samples, double *window, AH_SIntPtr leng
     double last_energy = 0.0;
     double energy_thresh = db_to_pow(-60);
 
-    AH_SIntPtr hop_size = mstosamps(ONSET_HOP_SIZE_MS, sample_rate);
-    AH_SIntPtr half_window_size = mstosamps(ONSET_HALF_SIZE_MS, sample_rate);
-    AH_SIntPtr window_size = half_window_size + half_window_size + 1;
-    AH_SIntPtr prior_max_energy_offset = 0;
-    AH_SIntPtr max_offset = 0;
-    AH_SIntPtr max_ratio_offset = 0;
-    AH_SIntPtr max_energy_offset = 0;
-    AH_SIntPtr first_thresh_frame = -1;
-    AH_SIntPtr i;
+    intptr_t hop_size = mstosamps(ONSET_HOP_SIZE_MS, sample_rate);
+    intptr_t half_window_size = mstosamps(ONSET_HALF_SIZE_MS, sample_rate);
+    intptr_t window_size = half_window_size + half_window_size + 1;
+    intptr_t prior_max_energy_offset = 0;
+    intptr_t max_offset = 0;
+    intptr_t max_ratio_offset = 0;
+    intptr_t max_energy_offset = 0;
+    intptr_t first_thresh_frame = -1;
+    intptr_t i;
 
     make_von_hann_window(window, window_size);
 
@@ -653,23 +653,23 @@ AH_SIntPtr calc_onset(float *ir, float *samples, double *window, AH_SIntPtr leng
 }
 
 
-AH_SIntPtr calc_direct(float *ir, float *samples, double *window, AH_SIntPtr onset, AH_SIntPtr length, double sample_rate)
+intptr_t calc_direct(float *ir, float *samples, double *window, intptr_t onset, intptr_t length, double sample_rate)
 {
     double energy[60 + 10];
 
     double min_value = HUGE_VAL;
     double max_value = 0.0;
 
-    AH_SIntPtr start_search;
-    AH_SIntPtr end_search;
-    AH_SIntPtr search_length = mstosamps(DIRECT_ONSET_TO_PEAK_MS, sample_rate);
-    AH_SIntPtr hop_size = mstosamps(DIRECT_HOP_SIZE_MS, sample_rate);
-    AH_SIntPtr half_window_size = mstosamps(DIRECT_HALF_WINDOW_MS, sample_rate);
-    AH_SIntPtr window_size = half_window_size + half_window_size + 1;
-    AH_SIntPtr direct_end;
-    AH_SIntPtr min_offset = -1;
-    AH_SIntPtr end;
-    AH_SIntPtr i, j;
+    intptr_t start_search;
+    intptr_t end_search;
+    intptr_t search_length = mstosamps(DIRECT_ONSET_TO_PEAK_MS, sample_rate);
+    intptr_t hop_size = mstosamps(DIRECT_HOP_SIZE_MS, sample_rate);
+    intptr_t half_window_size = mstosamps(DIRECT_HALF_WINDOW_MS, sample_rate);
+    intptr_t window_size = half_window_size + half_window_size + 1;
+    intptr_t direct_end;
+    intptr_t min_offset = -1;
+    intptr_t end;
+    intptr_t i, j;
 
     make_von_hann_window(window, window_size);
 
@@ -718,14 +718,14 @@ AH_SIntPtr calc_direct(float *ir, float *samples, double *window, AH_SIntPtr ons
 }
 
 
-long calc_direct_exists(float *ir, AH_SIntPtr onset, AH_SIntPtr direct_end, AH_SIntPtr LR_onset, double sample_rate)
+long calc_direct_exists(float *ir, intptr_t onset, intptr_t direct_end, intptr_t LR_onset, double sample_rate)
 {
     double kurtosis_value_1 = 0.0;
     double kurtosis_value_2 = 0.0;
 
-    AH_SIntPtr start = direct_end + mstosamps(15, sample_rate);
-    AH_SIntPtr length = LR_onset - start;
-    AH_SIntPtr max_search_length = mstosamps(100, sample_rate);
+    intptr_t start = direct_end + mstosamps(15, sample_rate);
+    intptr_t length = LR_onset - start;
+    intptr_t max_search_length = mstosamps(100, sample_rate);
 
     length = length > max_search_length ? max_search_length : length;
 
@@ -752,14 +752,14 @@ long calc_direct_exists(float *ir, AH_SIntPtr onset, AH_SIntPtr direct_end, AH_S
 //////////////////////////////////////////////////////////////////////////
 
 
-void linear_regression(double *data, AH_SIntPtr length, double *slope, double *offset)
+void linear_regression(double *data, intptr_t length, double *slope, double *offset)
 {
     double sum1 = 0.0;
     double sum2 = 0.0;
     double xmean = (length - 1) / 2.0;
     double ymean = calc_mean(data, length);
 
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < length; i++)
         sum1 += (i - xmean) * (data[i] - ymean);
@@ -772,15 +772,15 @@ void linear_regression(double *data, AH_SIntPtr length, double *slope, double *o
 }
 
 
-double calc_reverb_time(double *integration_db, AH_SIntPtr length, double hi_evaluate, double lo_evaluate, double db_intersection)
+double calc_reverb_time(double *integration_db, intptr_t length, double hi_evaluate, double lo_evaluate, double db_intersection)
 {
     double value = 0.0;
     double slope;
     double offset;
 
-    AH_SIntPtr hi_offset = 0;
-    AH_SIntPtr lo_offset = 0;
-    AH_SIntPtr i;
+    intptr_t hi_offset = 0;
+    intptr_t lo_offset = 0;
+    intptr_t i;
 
     for (i = 0; value > hi_evaluate && i < length; i++)
         value = integration_db[i];
@@ -806,11 +806,11 @@ double calc_reverb_time(double *integration_db, AH_SIntPtr length, double hi_eva
 //////////////////////////////////////////////////////////////////////////
 
 
-double calc_ned(float *sample_window, double *window, AH_SIntPtr window_size)
+double calc_ned(float *sample_window, double *window, intptr_t window_size)
 {
     double variance = sum_pow_window(sample_window, window, window_size);
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < window_size; i++)
     {
@@ -822,11 +822,11 @@ double calc_ned(float *sample_window, double *window, AH_SIntPtr window_size)
 }
 
 
-double calc_ned_no_window(float *sample_window, AH_SIntPtr window_size)
+double calc_ned_no_window(float *sample_window, intptr_t window_size)
 {
     double variance = 0.0;
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i < window_size; i++)
         variance += sample_window[i] * sample_window[i];
@@ -843,14 +843,14 @@ double calc_ned_no_window(float *sample_window, AH_SIntPtr window_size)
 }
 
 
-double calc_ned_average(float *ir, float *samples, double *window, AH_SIntPtr length, double sample_rate)
+double calc_ned_average(float *ir, float *samples, double *window, intptr_t length, double sample_rate)
 {
     double ned = 0.0;
-    AH_SIntPtr hop_size = mstosamps(NED_HOP_SIZE_MS, sample_rate);
-    AH_SIntPtr half_window_size = mstosamps(NED_HALF_WINDOW_MS, sample_rate);
-    AH_SIntPtr window_size = half_window_size + half_window_size + 1;
-    AH_SIntPtr count = 0;
-    AH_SIntPtr i;
+    intptr_t hop_size = mstosamps(NED_HOP_SIZE_MS, sample_rate);
+    intptr_t half_window_size = mstosamps(NED_HALF_WINDOW_MS, sample_rate);
+    intptr_t window_size = half_window_size + half_window_size + 1;
+    intptr_t count = 0;
+    intptr_t i;
 
     make_von_hann_window(window, window_size);
 
@@ -865,24 +865,24 @@ double calc_ned_average(float *ir, float *samples, double *window, AH_SIntPtr le
 }
 
 
-AH_SIntPtr get_sample_time(double time_val, long time_in_samples, double sample_rate)
+intptr_t get_sample_time(double time_val, long time_in_samples, double sample_rate)
 {
     if (time_in_samples)
-        return (AH_SIntPtr) time_val;
+        return (intptr_t) time_val;
     else
-        return (AH_SIntPtr) round(time_val * sample_rate / 1000.0);
+        return (intptr_t) round(time_val * sample_rate / 1000.0);
 }
 
 
-AH_SIntPtr calc_LR_onset(float *ir, float *samples, double *window, AH_SIntPtr length, AH_SIntPtr onset, long time_in_samples, double min_mix, double max_mix, double sample_rate)
+intptr_t calc_LR_onset(float *ir, float *samples, double *window, intptr_t length, intptr_t onset, long time_in_samples, double min_mix, double max_mix, double sample_rate)
 {
     double ned = 0.0;
-    AH_SIntPtr hop_size = mstosamps(NED_HOP_SIZE_MS, sample_rate);
-    AH_SIntPtr half_window_size = mstosamps(NED_HALF_WINDOW_MS, sample_rate);
-    AH_SIntPtr window_size = half_window_size + half_window_size + 1;
-    AH_SIntPtr min_mixing = onset + get_sample_time(min_mix, time_in_samples, sample_rate);
-    AH_SIntPtr max_mixing = length;
-    AH_SIntPtr i;
+    intptr_t hop_size = mstosamps(NED_HOP_SIZE_MS, sample_rate);
+    intptr_t half_window_size = mstosamps(NED_HALF_WINDOW_MS, sample_rate);
+    intptr_t window_size = half_window_size + half_window_size + 1;
+    intptr_t min_mixing = onset + get_sample_time(min_mix, time_in_samples, sample_rate);
+    intptr_t max_mixing = length;
+    intptr_t i;
 
     make_von_hann_window(window, window_size);
 
@@ -916,9 +916,9 @@ AH_SIntPtr calc_LR_onset(float *ir, float *samples, double *window, AH_SIntPtr l
 //////////////////////////////////////////////////////////////////////////
 
 
-double calc_clarity(double *integration, AH_SIntPtr length, double sample_rate)
+double calc_clarity(double *integration, intptr_t length, double sample_rate)
 {
-    AH_SIntPtr early_time = mstosamps(80, sample_rate);
+    intptr_t early_time = mstosamps(80, sample_rate);
     double full_integration = integration[length - 1];
     double early_integration;
 
@@ -931,12 +931,12 @@ double calc_clarity(double *integration, AH_SIntPtr length, double sample_rate)
 }
 
 
-double calc_center(float *ir, AH_SIntPtr length, AH_SIntPtr onset)
+double calc_center(float *ir, intptr_t length, intptr_t onset)
 {
     double energy;
     double weighted_sum = 0.0;
     double sum = 0.0;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = onset; i < length; i++)
     {
@@ -949,10 +949,10 @@ double calc_center(float *ir, AH_SIntPtr length, AH_SIntPtr onset)
 }
 
 
-double calc_LR_onset_rms (float *ir, float *samples, double *window, AH_SIntPtr LR_onset, AH_SIntPtr length, double sample_rate)
+double calc_LR_onset_rms (float *ir, float *samples, double *window, intptr_t LR_onset, intptr_t length, double sample_rate)
 {
-    AH_SIntPtr half_window_size = mstosamps(CROSS_RMS_HALF_WINDOW_MS, sample_rate);
-    AH_SIntPtr window_size = half_window_size + half_window_size + 1;
+    intptr_t half_window_size = mstosamps(CROSS_RMS_HALF_WINDOW_MS, sample_rate);
+    intptr_t window_size = half_window_size + half_window_size + 1;
 
     make_von_hann_window(window, window_size);
     get_samples(samples, ir, length , LR_onset - half_window_size, window_size);
@@ -961,7 +961,7 @@ double calc_LR_onset_rms (float *ir, float *samples, double *window, AH_SIntPtr 
 }
 
 
-double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate, double *max_oct)
+double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, double *max_oct)
 {
     FFT_SPLIT_COMPLEX_D spectrum;
 
@@ -970,12 +970,12 @@ double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate,
     double overall_gain;
     double fft_ratio;
 
-    AH_SIntPtr octave_count = 0;
-    AH_SIntPtr start, end;
-    AH_SIntPtr fft_size;
-    AH_SIntPtr i, j;
+    intptr_t octave_count = 0;
+    intptr_t start, end;
+    intptr_t fft_size;
+    intptr_t i, j;
 
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size_log2;
 
     // Calculate FFT size
 
@@ -1018,8 +1018,8 @@ double calc_gain(t_irstats *x, float *ir, AH_SIntPtr length, double sample_rate,
 
     for (i = 0, overall_gain = 0.0; i < 9; i++)
     {
-        start = (AH_SIntPtr) ((double) freq_bands[i]) * fft_ratio;
-        end = (AH_SIntPtr) ((double) freq_bands[i + 1]) * fft_ratio;
+        start = (intptr_t) ((double) freq_bands[i]) * fft_ratio;
+        end = (intptr_t) ((double) freq_bands[i + 1]) * fft_ratio;
 
         // Add relevant power amount
 
@@ -1076,7 +1076,7 @@ void do_integration_db(t_stats_calc *stats)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr retrieve_onset(t_stats_calc *stats)
+intptr_t retrieve_onset(t_stats_calc *stats)
 {
     if (stats->onset == -1)
         stats->onset = calc_onset(stats->in.get(), stats->samples.get(), stats->window.get(), stats->in_length, stats->sample_rate);
@@ -1177,7 +1177,7 @@ double retrieve_ned(t_stats_calc *stats)
 }
 
 
-AH_SIntPtr retrieve_LR_onset(t_stats_calc *stats)
+intptr_t retrieve_LR_onset(t_stats_calc *stats)
 {
     if (stats->LR_onset == -1)
         stats->LR_onset = calc_LR_onset(stats->in.get(), stats->samples.get(), stats->window.get(), stats->in_length, retrieve_onset(stats), stats->time_in_samples, stats->min_mixing, stats->max_mixing, stats->sample_rate);
@@ -1186,11 +1186,11 @@ AH_SIntPtr retrieve_LR_onset(t_stats_calc *stats)
 }
 
 
-AH_SIntPtr retrieve_direct_end(t_stats_calc *stats)
+intptr_t retrieve_direct_end(t_stats_calc *stats)
 {
     if (stats->direct_end == -1)
     {
-        AH_SIntPtr onset = retrieve_onset(stats);
+        intptr_t onset = retrieve_onset(stats);
         stats->direct_end = calc_direct(stats->in.get(), stats->samples.get(), stats->window.get(), onset, stats->ir_length, stats->sample_rate);
     }
 
@@ -1198,7 +1198,7 @@ AH_SIntPtr retrieve_direct_end(t_stats_calc *stats)
 }
 
 
-AH_SIntPtr retrieve_direct_exists(t_stats_calc *stats)
+intptr_t retrieve_direct_exists(t_stats_calc *stats)
 {
     if (stats->direct_exists == -1)
         stats->direct_exists = calc_direct_exists(stats->in.get(), retrieve_onset(stats), retrieve_direct_end(stats), retrieve_LR_onset(stats), stats->sample_rate);
@@ -1267,8 +1267,8 @@ void irstats_stats(t_irstats *x, t_symbol *sym, short argc, t_atom *argv)
     long time_mode = !x->time_in_samples;
     t_atom_long read_chan = x->read_chan - 1;
 
-    AH_SIntPtr max_window_size;
-    AH_SIntPtr i;
+    intptr_t max_window_size;
+    intptr_t i;
 
     if (argc < 2)
     {

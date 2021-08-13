@@ -199,14 +199,14 @@ double dbtoa(double db)
 }
 
 
-void morphfilter_apply_filter(double *samples, t_filter_params *filter, double sr, AH_SIntPtr length)
+void morphfilter_apply_filter(double *samples, t_filter_params *filter, double sr, intptr_t length)
 {
     double a0, a1, a2, b0, b1, b2, x1, x2, y1, y2, g_db1, g_db2, rate, A, sqrtA, f0, w0, qs, cosw, sinw;
     double Ap1, Am1, Ap1c, Am1c;
     double alpha, alpha_shelf, alpha_mul_A, alpha_div_A;
     double gain_mul;
 
-    AH_SIntPtr i;
+    intptr_t i;
 
     f0 = filter->f0;
     rate = filter->rate;
@@ -328,9 +328,9 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source = atom_getsym(argv++);
 
-    AH_SIntPtr length = buffer_length(source);
-    AH_SIntPtr full_length = length;
-    AH_SIntPtr i;
+    intptr_t length = buffer_length(source);
+    intptr_t full_length = length;
+    intptr_t i;
 
     t_atom_long read_chan = x->read_chan - 1;
     double sample_rate = 0;

@@ -50,7 +50,7 @@ void irinvert_process(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
 void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
 
 long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, t_matrix_complex *temp1, t_matrix_complex *temp2, double regularization);
-long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, AH_UIntPtr fft_size, t_atom_long sources, t_atom_long receivers, double *regularization);
+long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, uintptr_t fft_size, t_atom_long sources, t_atom_long receivers, double *regularization);
 void irinvert_mimo(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
 void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
 
@@ -166,11 +166,11 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
     double deconvolve_phase = phase_retriever(x->deconvolve_phase);
     double deconvolve_delay;
 
-    AH_SIntPtr source_length_1 = buffer_length(source_1);
-    AH_SIntPtr filter_length = buffer_length(filter);
+    intptr_t source_length_1 = buffer_length(source_1);
+    intptr_t filter_length = buffer_length(filter);
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
 
     t_atom_long read_chan = x->read_chan - 1;
     long deconvolve_mode = x->deconvolve_mode;
@@ -182,7 +182,7 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     // Check and calculate length
 
-    fft_size = calculate_fft_size((AH_UIntPtr) (source_length_1 * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) (source_length_1 * time_mul), &fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     if (fft_size < 8)
@@ -250,8 +250,8 @@ long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex
 {
     using complex = std::complex<double>;
     
-    AH_UIntPtr n_dim = in->n_dim;
-    AH_UIntPtr i;
+    uintptr_t n_dim = in->n_dim;
+    uintptr_t i;
 
     MATRIX_REF_COMPLEX(out)
     MATRIX_REF_COMPLEX(temp2)
@@ -276,7 +276,7 @@ long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex
 }
 
 
-long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, AH_UIntPtr fft_size, t_atom_long sources, t_atom_long receivers, double *regularization)
+long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, uintptr_t fft_size, t_atom_long sources, t_atom_long receivers, double *regularization)
 {
     using complex = std::complex<double>;
 
@@ -285,8 +285,8 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, A
     t_matrix_complex *temp1;
     t_matrix_complex *temp2;
 
-    AH_UIntPtr fft_size_halved = fft_size >> 1;
-    AH_UIntPtr i;
+    uintptr_t fft_size_halved = fft_size >> 1;
+    uintptr_t i;
 
     t_atom_long j, k;
 
@@ -397,7 +397,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
 
-    AH_SIntPtr lengths[128];
+    intptr_t lengths[128];
 
     double sample_rate = 0.0;
     double time_mul = 1.;
@@ -406,20 +406,20 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
     t_atom_long receivers;
     t_atom_long sources;
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
 
-    AH_SIntPtr overall_length = 0;
-    AH_SIntPtr max_length = 0;
-    AH_SIntPtr length;
-    AH_SIntPtr num_buffers = 0;
-    AH_SIntPtr i;
+    intptr_t overall_length = 0;
+    intptr_t max_length = 0;
+    intptr_t length;
+    intptr_t num_buffers = 0;
+    intptr_t i;
 
     long in_place = 1;
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
 
-    AH_Boolean overall_error = false;
+    bool overall_error = false;
 
     if (sym == gensym("mimoto"))
         in_place = 0;
@@ -471,7 +471,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     // Calculate fft size
 
-    fft_size = calculate_fft_size((AH_UIntPtr) (max_length * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), &fft_size_log2);
 
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
@@ -481,7 +481,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
     {
         for (i = 0; i < num_buffers; i++)
         {
-            if (buffer_length(out_buffer_names[i]) < (AH_SIntPtr) fft_size)
+            if (buffer_length(out_buffer_names[i]) < (intptr_t) fft_size)
             {
                 object_error((t_object *) x, "buffer %s is not long enough to complete write (no buffers altered)", out_buffer_names[i]->s_name);
                 return;

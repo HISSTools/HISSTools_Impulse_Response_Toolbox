@@ -112,7 +112,7 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
 {
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source = atom_getsym(argv++);
-    AH_SIntPtr i;
+    intptr_t i;
     
     t_atom_long read_chan = x->read_chan - 1;
 
@@ -121,7 +121,7 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
     if (buffer_check((t_object *) x, source))
         return;
     
-    AH_SIntPtr length = buffer_length(source);
+    intptr_t length = buffer_length(source);
     double sample_rate = buffer_sample_rate(source);
 
     // Allocate Memory

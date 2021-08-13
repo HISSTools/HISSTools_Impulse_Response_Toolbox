@@ -50,7 +50,7 @@ struct t_irextract
 
     // Internal
 
-    AH_SIntPtr fft_size;
+    intptr_t fft_size;
 
     // Internal
     
@@ -60,8 +60,8 @@ struct t_irextract
     
     double sample_rate;
 
-    AH_SIntPtr out_length_samps;
-    AH_SIntPtr gen_length;
+    intptr_t out_length_samps;
+    intptr_t gen_length;
 
     // Measurement Parameters
 
@@ -225,7 +225,7 @@ void irextract_assist(t_irextract *x, void *b, long m, long a, char *s)
 
 double irextract_param_check(t_irextract *x, const char *name, double val, double min, double max)
 {
-    AH_Boolean changed = false;
+    bool changed = false;
     double new_val = val;
 
     if (val < min)
@@ -497,14 +497,14 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     long bandlimit = x->measure_mode == SWEEP ? x->bandlimit : 0;
     t_atom_long read_chan = x->read_chan - 1;
 
-    AH_SIntPtr rec_length = buffer_length(rec_buffer);
-    AH_SIntPtr gen_length = 0;
-    AH_SIntPtr filter_length = buffer_length(filter);
-    AH_SIntPtr out_length_samps;
+    intptr_t rec_length = buffer_length(rec_buffer);
+    intptr_t gen_length = 0;
+    intptr_t filter_length = buffer_length(filter);
+    intptr_t out_length_samps;
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
-    AH_UIntPtr i;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
+    uintptr_t i;
 
     if (buffer_check((t_object *)x, rec_buffer) || !rec_length)
         return;
@@ -544,7 +544,7 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
         if (out_length_samps < (x->out_length * sample_rate))
             object_warn ((t_object *) x, "buffer is not long enough for requested output length");
         else
-            out_length_samps = (AH_SIntPtr) (x->out_length * sample_rate);
+            out_length_samps = (intptr_t) (x->out_length * sample_rate);
     }
 
     // Allocate Temporary Memory
@@ -674,18 +674,18 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
     double *out_buf;
     double *out_mem;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
-    AH_SIntPtr T_minus;
-    AH_SIntPtr L;
-    AH_SIntPtr T;
-    AH_SIntPtr out_length_samps = x->out_length_samps;
+    intptr_t T_minus;
+    intptr_t L;
+    intptr_t T;
+    intptr_t out_length_samps = x->out_length_samps;
 
     t_atom_long harmonic = 1;
     t_atom_long out_chan = 1;
 
-    AH_SIntPtr chan_offset = (AH_SIntPtr) out_length_samps + x->gen_length;
+    intptr_t chan_offset = (intptr_t) out_length_samps + x->gen_length;
 
     // Get arguments
 
@@ -738,7 +738,7 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
     // Calculate offset in internal buffer
 
     if (x->measure_mode == SWEEP)
-        T_minus = (AH_SIntPtr) ess_harm_offset(&x->sweep_params, harmonic);
+        T_minus = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic);
     else
         T_minus = 0;
 
@@ -746,8 +746,8 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
 
     if (harmonic > 1)
     {
-        AH_SIntPtr T_minus_prev = (AH_SIntPtr) ess_harm_offset(&x->sweep_params, harmonic - 1);
-        AH_SIntPtr L2 = T_minus - T_minus_prev;
+        intptr_t T_minus_prev = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic - 1);
+        intptr_t L2 = T_minus - T_minus_prev;
 
         if (L2 < L)
             L = L2;
@@ -784,8 +784,8 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 
     t_symbol *buffer = NULL;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
     // Get arguments
 

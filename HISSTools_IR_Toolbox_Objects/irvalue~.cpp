@@ -28,7 +28,7 @@ struct t_irvalue
 
     double *db_spectrum;
 
-    AH_UIntPtr fft_size;
+    uintptr_t fft_size;
 
     double sampling_rate;
 
@@ -124,7 +124,7 @@ void irvalue_assist(t_irvalue *x, void *b, long m, long a, char *s)
 void irvalue_float(t_irvalue *x, double freq)
 {
     double bin, db_lo, db_hi;
-    AH_UIntPtr lo_bin;
+    uintptr_t lo_bin;
 
     if (freq < 0 || freq > (x->sampling_rate / 2.0))
     {
@@ -150,11 +150,11 @@ void irvalue_float(t_irvalue *x, double freq)
 }
 
 
-void octave_smooth(double *in, double *out, AH_SIntPtr size, double oct_width)
+void octave_smooth(double *in, double *out, intptr_t size, double oct_width)
 {
-    AH_SIntPtr lo;
-    AH_SIntPtr hi;
-    AH_SIntPtr i;
+    intptr_t lo;
+    intptr_t hi;
+    intptr_t i;
 
     if (oct_width)
     {
@@ -168,8 +168,8 @@ void octave_smooth(double *in, double *out, AH_SIntPtr size, double oct_width)
 
         for (i = 1; i < size; i++)
         {
-            lo = (AH_SIntPtr) (i / oct_width);
-            hi = (AH_SIntPtr) (i * oct_width);
+            lo = (intptr_t) (i / oct_width);
+            hi = (intptr_t) (i * oct_width);
 
             if (lo == hi)
                 lo--;
@@ -191,14 +191,14 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 {
     FFT_SPLIT_COMPLEX_D spectrum_1;
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
 
     t_atom_long read_chan = x->read_chan - 1;
 
     // Get input buffer lengths
 
-    AH_SIntPtr source_length = buffer_length(source);
+    intptr_t source_length = buffer_length(source);
 
     // Check input buffers
 

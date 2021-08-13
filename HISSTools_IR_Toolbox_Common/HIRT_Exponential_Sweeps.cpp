@@ -20,7 +20,7 @@ static inline double min_double(double v1, double v2)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fade_out, double T, double sample_rate, double amp, double *amp_curve)
+uintptr_t ess_params(t_ess *x, double f1, double f2, double fade_in, double fade_out, double T, double sample_rate, double amp, double *amp_curve)
 {
     // All times in seconds
 
@@ -62,7 +62,7 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
 
     x->K1 = K1;
     x->K2 = K2;
-    x->T = (AH_UIntPtr) NNT;
+    x->T = (uintptr_t) NNT;
     x->lo_f_act = f1;
     x->hi_f_act = f1 * exp(NNT / L);
     x->f1 = f1;
@@ -114,7 +114,7 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
 
     x->num_amp_specifiers = num_items;
 
-    return (AH_UIntPtr) NNT;
+    return (uintptr_t) NNT;
 }
 
 
@@ -123,7 +123,7 @@ AH_UIntPtr ess_params(t_ess *x, double f1, double f2, double fade_in, double fad
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
+uintptr_t ess_gen_float(t_ess *x, float *out, uintptr_t startN, uintptr_t N)
 {
     double *amp_specifier = x->amp_specifier;
 
@@ -135,9 +135,9 @@ AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
     double FoN = x->fade_out * sample_rate * 2.0;
     double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 
-    AH_UIntPtr T = x->T;
-    AH_UIntPtr i;
-    AH_UIntPtr j = 0;
+    uintptr_t T = x->T;
+    uintptr_t i;
+    uintptr_t j = 0;
 
     // Sanity Checks
 
@@ -175,7 +175,7 @@ AH_UIntPtr ess_gen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
 }
 
 
-AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp)
+uintptr_t ess_igen_float(t_ess *x, float *out, uintptr_t startN, uintptr_t N, t_invert_mode inv_amp)
 {
     double *amp_specifier = x->amp_specifier;
 
@@ -188,9 +188,9 @@ AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N,
     double amp_const = (inv_amp == INVERT_USER_CURVE_TO_FIXED_REFERENCE) ? x->amp / exp((x->T - 1) * K2) : (4.0 * x->lo_f_act * K2) / amp;
     double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp, exp_val;
 
-    AH_UIntPtr T = x->T;
-    AH_UIntPtr i;
-    AH_UIntPtr j = 2 * x->num_amp_specifiers;
+    uintptr_t T = x->T;
+    uintptr_t i;
+    uintptr_t j = 2 * x->num_amp_specifiers;
 
     // Sanity Checks
 
@@ -229,7 +229,7 @@ AH_UIntPtr ess_igen_float(t_ess *x, float *out, AH_UIntPtr startN, AH_UIntPtr N,
 }
 
 
-AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N)
+uintptr_t ess_gen_double(t_ess *x, double *out, uintptr_t startN, uintptr_t N)
 {
     double *amp_specifier = x->amp_specifier;
 
@@ -241,9 +241,9 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
     double FoN = x->fade_out * sample_rate * 2.0;
     double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp;
 
-    AH_UIntPtr T = x->T;
-    AH_UIntPtr i;
-    AH_UIntPtr j = 0;
+    uintptr_t T = x->T;
+    uintptr_t i;
+    uintptr_t j = 0;
 
     // Sanity Checks
 
@@ -281,7 +281,7 @@ AH_UIntPtr ess_gen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N
 }
 
 
-AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp)
+uintptr_t ess_igen_double(t_ess *x, double *out, uintptr_t startN, uintptr_t N, t_invert_mode inv_amp)
 {
     double *amp_specifier = x->amp_specifier;
 
@@ -294,9 +294,9 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
     double amp_const = (inv_amp == INVERT_USER_CURVE_TO_FIXED_REFERENCE) ? x->amp / exp((x->T - 1) * K2) : (4.0 * x->lo_f_act * K2) / amp;
     double val, fade_in, fade_out, time_val, interp, curve_db, curve_amp, exp_val;
 
-    AH_UIntPtr T = x->T;
-    AH_UIntPtr i;
-    AH_UIntPtr j = 2 * x->num_amp_specifiers;
+    uintptr_t T = x->T;
+    uintptr_t i;
+    uintptr_t j = 2 * x->num_amp_specifiers;
 
     // Sanity Checks
 
@@ -335,7 +335,7 @@ AH_UIntPtr ess_igen_double(t_ess *x, double *out, AH_UIntPtr startN, AH_UIntPtr 
 }
 
 
-AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision)
+uintptr_t ess_gen_block(t_ess *x, void *out, uintptr_t startN, uintptr_t N, bool double_precision)
 {
     if (double_precision)
         return ess_gen_double(x, (double *) out, startN, N);
@@ -344,7 +344,7 @@ AH_UIntPtr ess_gen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, A
 }
 
 
-AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, t_invert_mode inv_amp, AH_Boolean double_precision)
+uintptr_t ess_igen_block(t_ess *x, void *out, uintptr_t startN, uintptr_t N, t_invert_mode inv_amp, bool double_precision)
 {
     if (double_precision)
         return ess_igen_double(x, (double *) out, startN, N, inv_amp);
@@ -353,7 +353,7 @@ AH_UIntPtr ess_igen_block(t_ess *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, 
 }
 
 
-AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision)
+uintptr_t ess_gen(t_ess *x, void *out, bool double_precision)
 {
     if (double_precision)
         return ess_gen_double(x, (double *) out, 0, x->T);
@@ -362,7 +362,7 @@ AH_UIntPtr ess_gen(t_ess *x, void *out, AH_Boolean double_precision)
 }
 
 
-AH_UIntPtr ess_igen(t_ess *x, void *out, t_invert_mode inv_amp, AH_Boolean double_precision)
+uintptr_t ess_igen(t_ess *x, void *out, t_invert_mode inv_amp, bool double_precision)
 {
     if (double_precision)
         return ess_igen_double(x, (double *) out, 0, x->T, inv_amp);

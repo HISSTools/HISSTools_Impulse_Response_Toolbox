@@ -9,17 +9,17 @@
 #endif
 
 #include <complex>
-#include <AH_Types.h>
+#include <cstdint>
 
 // Complex Matrix Structure
 
 struct t_matrix_complex
 {
-    AH_UIntPtr m_dim;
-    AH_UIntPtr n_dim;
+    uintptr_t m_dim;
+    uintptr_t n_dim;
 
-    AH_UIntPtr max_m_dim;
-    AH_UIntPtr max_n_dim;
+    uintptr_t max_m_dim;
+    uintptr_t max_n_dim;
 
     std::complex<double> *matrix_data;
 };
@@ -28,7 +28,7 @@ struct t_matrix_complex
 
 #define MATRIX_REF_COMPLEX(matrix) \
 std::complex<double> *__##matrix##_data_ptr; \
-AH_UIntPtr __##matrix##_m_dim;
+uintptr_t __##matrix##_m_dim;
 
 #define MATRIX_DEREF(matrix) \
 __##matrix##_data_ptr = matrix->matrix_data; \
@@ -39,8 +39,8 @@ __##matrix##_m_dim = matrix->m_dim;
 // Function Prototypes
 
 void matrix_destroy_complex(t_matrix_complex *matrix);
-t_matrix_complex *matrix_alloc_complex(AH_UIntPtr m_dim, AH_UIntPtr n_dim);
-long matrix_new_size_complex(t_matrix_complex *out, AH_UIntPtr m_dim, AH_UIntPtr n_dim);
+t_matrix_complex *matrix_alloc_complex(uintptr_t m_dim, uintptr_t n_dim);
+long matrix_new_size_complex(t_matrix_complex *out, uintptr_t m_dim, uintptr_t n_dim);
 
 void matrix_multiply_complex (t_matrix_complex *out, t_matrix_complex *in1, t_matrix_complex *in2);
 

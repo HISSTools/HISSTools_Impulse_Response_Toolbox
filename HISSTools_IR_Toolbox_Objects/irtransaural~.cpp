@@ -167,16 +167,16 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
     double deconvolve_delay;
     double a, b, c, d;
 
-    AH_SIntPtr source_length_1 = buffer_length(source_1);
-    AH_SIntPtr source_length_2 = buffer_length(source_2);
-    AH_SIntPtr filter_length = buffer_length(filter);
+    intptr_t source_length_1 = buffer_length(source_1);
+    intptr_t source_length_2 = buffer_length(source_2);
+    intptr_t filter_length = buffer_length(filter);
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_halved;
-    AH_UIntPtr fft_size_log2;
-    AH_UIntPtr i;
+    uintptr_t fft_size;
+    uintptr_t fft_size_halved;
+    uintptr_t fft_size_log2;
+    uintptr_t i;
 
-    AH_Boolean overall_error = false;
+    bool overall_error = false;
     
     t_filter_type deconvolve_mode = (t_filter_type) x->deconvolve_mode;
     t_atom_long read_chan = x->read_chan - 1;
@@ -190,7 +190,7 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 
     // Check and calculate length
 
-    fft_size = calculate_fft_size((AH_UIntPtr) ((source_length_1 + source_length_2) * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) ((source_length_1 + source_length_2) * time_mul), &fft_size_log2);
     fft_size_halved = fft_size >> 1;
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 

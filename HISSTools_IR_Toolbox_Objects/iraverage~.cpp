@@ -131,16 +131,16 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     double time_mul = 1.0;
     double sample_rate = 0.0;
 
-    AH_SIntPtr lengths[128];
+    intptr_t lengths[128];
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
 
-    AH_SIntPtr num_buffers;
-    AH_SIntPtr max_length;
-    AH_SIntPtr read_length;
-    AH_SIntPtr overall_length;
-    AH_SIntPtr i, j;
+    intptr_t num_buffers;
+    intptr_t max_length;
+    intptr_t read_length;
+    intptr_t overall_length;
+    intptr_t i, j;
 
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
@@ -175,7 +175,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Calculate FFT size
 
-    fft_size = calculate_fft_size((AH_UIntPtr) (max_length * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), &fft_size_log2);
 
     // Allocate Memory
 
@@ -200,7 +200,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Zero accumulation
 
-    for (j = 0; j < (AH_SIntPtr) fft_size; j++)
+    for (j = 0; j < (intptr_t) fft_size; j++)
     {
         spectrum_1.realp[j] = 0.0;
         spectrum_1.imagp[j] = 0.0;
@@ -218,7 +218,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
         // Accumulate
 
-        for (j = 0; j < (AH_SIntPtr) fft_size; j++)
+        for (j = 0; j < (intptr_t) fft_size; j++)
             spectrum_1.realp[j] += spectrum_2.realp[j] / num_buffers;
     }
 
@@ -249,13 +249,13 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     t_symbol *target;
     t_symbol *buffer_names[128];
 
-    AH_SIntPtr lengths[128];
+    intptr_t lengths[128];
 
-    AH_SIntPtr num_buffers;
-    AH_SIntPtr max_length;
-    AH_SIntPtr read_length;
-    AH_SIntPtr overall_length;
-    AH_SIntPtr i, j;
+    intptr_t num_buffers;
+    intptr_t max_length;
+    intptr_t read_length;
+    intptr_t overall_length;
+    intptr_t i, j;
 
     double num_buf_recip;
     double sample_rate = 0.0;

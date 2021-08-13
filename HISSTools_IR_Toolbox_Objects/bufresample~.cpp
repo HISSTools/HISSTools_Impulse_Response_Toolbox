@@ -217,16 +217,16 @@ void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *
 ///////////////////////////////////////////////////////////////////////
 
 
-void rate_as_ratio(double rate, AH_SIntPtr *ret_num, AH_SIntPtr *ret_denom)
+void rate_as_ratio(double rate, intptr_t *ret_num, intptr_t *ret_denom)
 {
-    AH_SIntPtr Cf[256];
+    intptr_t Cf[256];
 
     double npart =fabs(rate);
     double ipart;
 
-    AH_SIntPtr num = 1;
-    AH_SIntPtr denom = 1;
-    AH_SIntPtr swap;
+    intptr_t num = 1;
+    intptr_t denom = 1;
+    intptr_t swap;
 
     short length = 0;
     short i, j;
@@ -237,7 +237,7 @@ void rate_as_ratio(double rate, AH_SIntPtr *ret_num, AH_SIntPtr *ret_denom)
         npart = npart - ipart;
         npart = npart ? 1 / npart : 0;
 
-        Cf[length] = (AH_SIntPtr) ipart;
+        Cf[length] = (intptr_t) ipart;
     }
 
     for (i = length - 1; i >= 0; i--)
@@ -289,17 +289,17 @@ double get_filter_value_direct(double *filter, long npoints, double filter_posit
 }
 
 
-temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, long npoints, AH_SIntPtr num, AH_SIntPtr denom, AH_SIntPtr *ret_max_filter_length, AH_SIntPtr *ret_filter_offset)
+temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, long npoints, intptr_t num, intptr_t denom, intptr_t *ret_max_filter_length, intptr_t *ret_filter_offset)
 {
     double per_samp = num > denom ? (double) denom / (double) num : (double) 1;
     double one_over_per_samp = num > denom ? nzero * (double) num / (double) denom : nzero;
     double filter_position;
     double mul = num > denom ? (double) denom / (double) num : 1.;
 
-    AH_SIntPtr max_filter_length = (AH_SIntPtr) (one_over_per_samp + one_over_per_samp + 1);
-    AH_SIntPtr filter_offset = max_filter_length >> 1;
-    AH_SIntPtr current_num;
-    AH_SIntPtr i, j;
+    intptr_t max_filter_length = (intptr_t) (one_over_per_samp + one_over_per_samp + 1);
+    intptr_t filter_offset = max_filter_length >> 1;
+    intptr_t current_num;
+    intptr_t i, j;
 
     max_filter_length += (4 - (max_filter_length % 4));
     
@@ -334,11 +334,11 @@ temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, lon
 
 // Get samples safely from the buffer (buffer should already be inuse)
 
-void get_buffer_samples(ibuffer_data& bufdata, float *samples, AH_SIntPtr offset, AH_SIntPtr nsamps, long chan)
+void get_buffer_samples(ibuffer_data& bufdata, float *samples, intptr_t offset, intptr_t nsamps, long chan)
 {
-    AH_SIntPtr temp_offset = 0;
-    AH_SIntPtr temp_nsamps = nsamps;
-    AH_SIntPtr i;
+    intptr_t temp_offset = 0;
+    intptr_t temp_nsamps = nsamps;
+    intptr_t i;
 
     // Do not read before the buffer
 
@@ -374,11 +374,11 @@ void get_buffer_samples(ibuffer_data& bufdata, float *samples, AH_SIntPtr offset
 }
 
 
-void get_buffer_samples_local(ibuffer_data& bufdata, float *buf_samps, float *samples, AH_SIntPtr offset, AH_SIntPtr nsamps)
+void get_buffer_samples_local(ibuffer_data& bufdata, float *buf_samps, float *samples, intptr_t offset, intptr_t nsamps)
 {
-    AH_SIntPtr temp_offset = 0;
-    AH_SIntPtr temp_nsamps = nsamps;
-    AH_SIntPtr i;
+    intptr_t temp_offset = 0;
+    intptr_t temp_nsamps = nsamps;
+    intptr_t i;
 
     // Do not read before the buffer
 
@@ -419,10 +419,10 @@ void get_buffer_samples_local(ibuffer_data& bufdata, float *buf_samps, float *sa
 ///////////////////////////////////////////////////////////////////////
 
 
-double sum_filter_mul_double(double *a, float *b, AH_SIntPtr N)
+double sum_filter_mul_double(double *a, float *b, intptr_t N)
 {
     double Sum = 0.;
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i + 3 < N; i += 4)
     {
@@ -438,12 +438,12 @@ double sum_filter_mul_double(double *a, float *b, AH_SIntPtr N)
 }
 
 #ifdef TARGET_INTEL
-static inline double sum_filter_mul_vector(vDouble *a, float *b, AH_SIntPtr N)
+static inline double sum_filter_mul_vector(vDouble *a, float *b, intptr_t N)
 {
     vDouble Sum = {0., 0.};
     vFloat Temp;
     double results[2];
-    AH_SIntPtr i;
+    intptr_t i;
 
     for (i = 0; i + 3 < (N >> 1); i += 4)
     {
@@ -474,17 +474,17 @@ static inline double sum_filter_mul_vector(vDouble *a, float *b, AH_SIntPtr N)
 ///////////////////////////////////////////////////////////////////////
 
 
-temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, long nzero, long npoints, AH_SIntPtr nsamps, AH_SIntPtr num, AH_SIntPtr denom, long chan)
+temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, long nzero, long npoints, intptr_t nsamps, intptr_t num, intptr_t denom, long chan)
 {
     double *current_filter;
 
-    AH_SIntPtr current_offset;
-    AH_SIntPtr buf_offset;
-    AH_SIntPtr filter_offset;
-    AH_SIntPtr max_filter_length;
-    AH_SIntPtr first;
-    AH_SIntPtr second;
-    AH_SIntPtr i, j, k;
+    intptr_t current_offset;
+    intptr_t buf_offset;
+    intptr_t filter_offset;
+    intptr_t max_filter_length;
+    intptr_t first;
+    intptr_t second;
+    intptr_t i, j, k;
 
     double sum;
 
@@ -564,11 +564,11 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
 }
 
 
-temp_ptr<double>&& bufresample_copy(ibuffer_data& bufdata, AH_SIntPtr nsamps, long chan)
+temp_ptr<double>&& bufresample_copy(ibuffer_data& bufdata, intptr_t nsamps, long chan)
 {
     temp_ptr<double> output(nsamps);
     temp_ptr<float> temp(nsamps);
-    AH_SIntPtr i;
+    intptr_t i;
 
     if (!temp || !output)
         return std::move(temp_ptr<double>(0));
@@ -614,11 +614,11 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
     double sample_rate = 0;
     double rate;
 
-    AH_SIntPtr num;
-    AH_SIntPtr denom;
-    AH_SIntPtr nsamps;
+    intptr_t num;
+    intptr_t denom;
+    intptr_t nsamps;
 
-    AH_UIntPtr nom_size;
+    uintptr_t nom_size;
 
     long npoints;
     long nzero;
@@ -676,10 +676,10 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
 
     // Resample
 
-    nsamps = (AH_SIntPtr) ceil(bufdata.get_length() / rate);
+    nsamps = (intptr_t) ceil(bufdata.get_length() / rate);
 
     rate_as_ratio(rate, &num, &denom);
-    nsamps = (AH_SIntPtr) (ceil(((double) denom * (double) bufdata.get_length()) / (double) num));
+    nsamps = (intptr_t) (ceil(((double) denom * (double) bufdata.get_length()) / (double) num));
 
     filter = (double *) access_mem_swap(&x->filter, &nom_size);
     npoints = nom_size & 0x7FFF;
@@ -743,17 +743,17 @@ double calc_sample(ibuffer_data& bufdata, float *samples, double *filter, long n
 
     long half_length = nzero * npoints;
 
-    AH_SIntPtr offset;
-    AH_SIntPtr nsamps;
-    AH_SIntPtr idx;
+    intptr_t offset;
+    intptr_t nsamps;
+    intptr_t idx;
 
-    idx = (AH_SIntPtr) position;
+    idx = (intptr_t) position;
     fract = position - idx;
 
     // Get samples
 
-    offset = (AH_SIntPtr) (position - one_over_per_samp);
-    nsamps = (AH_SIntPtr) (one_over_per_samp + one_over_per_samp + 2);
+    offset = (intptr_t) (position - one_over_per_samp);
+    nsamps = (intptr_t) (one_over_per_samp + one_over_per_samp + 2);
     get_buffer_samples(bufdata, samples, offset, nsamps, chan);
 
     // Get to first relevant sample
@@ -777,13 +777,13 @@ double calc_sample(ibuffer_data& bufdata, float *samples, double *filter, long n
 
 // Resample given a fixed rate as a double
 
-temp_ptr<double>&& resample_fixed_rate(ibuffer_data& bufdata, double *filter, long nzero, long npoints, double offset, AH_SIntPtr nsamps, double rate, long chan)
+temp_ptr<double>&& resample_fixed_rate(ibuffer_data& bufdata, double *filter, long nzero, long npoints, double offset, intptr_t nsamps, double rate, long chan)
 {
     double one_over_per_samp = rate > 1. ? nzero * rate : nzero;
     double mul = rate > 1. ? 1. / rate : 1;
 
-    AH_SIntPtr temp_length = (AH_SIntPtr) (one_over_per_samp + one_over_per_samp + 2);
-    AH_SIntPtr i;
+    intptr_t temp_length = (intptr_t) (one_over_per_samp + one_over_per_samp + 2);
+    intptr_t i;
 
     // Allocate memory
 

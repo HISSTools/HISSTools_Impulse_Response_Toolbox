@@ -40,10 +40,10 @@ struct t_irreference
     double current_out_length;
     double sample_rate;
 
-    AH_SIntPtr current_length;
-    AH_SIntPtr T;
-    AH_SIntPtr current_t;
-    AH_SIntPtr fft_size;
+    intptr_t current_length;
+    intptr_t T;
+    intptr_t current_t;
+    intptr_t fft_size;
 
     long start_rec;
     long stop_rec;
@@ -82,7 +82,7 @@ void *irreference_new(t_symbol *s, short argc, t_atom *argv);
 void irreference_free(t_irreference *x);
 void irreference_assist(t_irreference *x, void *b, long m, long a, char *s);
 
-AH_SIntPtr irreference_calc_mem_size(t_irreference *x, long active_ins);
+intptr_t irreference_calc_mem_size(t_irreference *x, long active_ins);
 
 double irreference_param_check(t_irreference *x, const char *name, double val, double min, double max);
 
@@ -93,7 +93,7 @@ void irreference_clear(t_irreference *x);
 
 void irreference_active_ins (t_irreference *x, t_atom_long num_active_ins);
 
-void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT_SPLIT_COMPLEX_D temp_full_spectrum, long mode, AH_UIntPtr fft_size, double smooth_lo, double smooth_hi);
+void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT_SPLIT_COMPLEX_D temp_full_spectrum, long mode, uintptr_t fft_size, double smooth_lo, double smooth_hi);
 void irreference_reprocess(t_irreference *x);
 void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
 
@@ -245,9 +245,9 @@ void irreference_assist(t_irreference *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-AH_SIntPtr irreference_calc_mem_size(t_irreference *x, long active_ins)
+intptr_t irreference_calc_mem_size(t_irreference *x, long active_ins)
 {
-    AH_SIntPtr rec_length = (AH_SIntPtr) (x->length * x->sample_rate);
+    intptr_t rec_length = (intptr_t) (x->length * x->sample_rate);
 
     return rec_length * sizeof(double) * (1 + active_ins);
 }
@@ -261,7 +261,7 @@ AH_SIntPtr irreference_calc_mem_size(t_irreference *x, long active_ins)
 
 double irreference_param_check(t_irreference *x, const char *name, double val, double min, double max)
 {
-    AH_Boolean changed = false;
+    bool changed = false;
     double new_val = val;
 
     if (val < min)
@@ -295,7 +295,7 @@ void irreference_rec(t_irreference *x, t_symbol *sym, short argc, t_atom *argv)
 
     long num_active_ins = x->num_active_ins;
 
-    AH_SIntPtr mem_size;
+    intptr_t mem_size;
 
     // Load arguments
 
@@ -389,9 +389,9 @@ void irreference_active_ins(t_irreference *x, t_atom_long num_active_ins)
 //////////////////////////////////////////////////////////////////////////
 
 
-void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT_SPLIT_COMPLEX_D temp_full_spectrum, long mode, AH_UIntPtr fft_size, double smooth_lo, double smooth_hi)
+void irreference_smooth(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, FFT_SPLIT_COMPLEX_D temp_full_spectrum, long mode, uintptr_t fft_size, double smooth_lo, double smooth_hi)
 {
-    AH_UIntPtr i;
+    uintptr_t i;
 
     // Copy spectrum to temp
 
@@ -455,14 +455,14 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
     long deconvolve_mode = deconvolve_mode = x->deconvolve_mode;
     long smoothing_on = x->num_smooth;
 
-    AH_SIntPtr alloc_rec_length = x->T;
-    AH_SIntPtr rec_length = x->current_length;
-    AH_SIntPtr filter_length = buffer_length(filter);
+    intptr_t alloc_rec_length = x->T;
+    intptr_t rec_length = x->current_length;
+    intptr_t filter_length = buffer_length(filter);
 
-    AH_UIntPtr fft_size;
-    AH_UIntPtr fft_size_log2;
-    AH_UIntPtr mem_size;
-    AH_UIntPtr i;
+    uintptr_t fft_size;
+    uintptr_t fft_size_log2;
+    uintptr_t mem_size;
+    uintptr_t i;
 
     // Sanity check
 
@@ -534,7 +534,7 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
 
     // Deconvolve each input
 
-    for (i = 0; i < (AH_UIntPtr) x->current_num_active_ins; i++)
+    for (i = 0; i < (uintptr_t) x->current_num_active_ins; i++)
     {
         // Get current input and output buffers
 
@@ -574,10 +574,10 @@ void irreference_extract_internal(t_irreference *x, t_symbol *sym, short argc, t
     t_atom_long in_chan = 1;
     t_symbol *buffer = NULL;
 
-    AH_SIntPtr rec_length = x->current_length;
+    intptr_t rec_length = x->current_length;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
     rec_mem = (double *) access_mem_swap(&x->rec_mem, &mem_size);
 
@@ -629,8 +629,8 @@ void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_at
     t_atom_long in_chan = 1;
     t_symbol *buffer = NULL;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
     // Get arguments
 
@@ -689,10 +689,10 @@ void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_a
 
     double *out_mem;
 
-    AH_UIntPtr fft_size = x->fft_size;
-    AH_UIntPtr mem_size;
+    uintptr_t fft_size = x->fft_size;
+    uintptr_t mem_size;
 
-    AH_SIntPtr L;
+    intptr_t L;
 
     t_atom_long in_chan = 1;
 
@@ -738,7 +738,7 @@ void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_a
     }
 
     out_mem += fft_size * in_chan;
-    L = (AH_SIntPtr) (x->sample_rate * x->current_out_length);
+    L = (intptr_t) (x->sample_rate * x->current_out_length);
 
     // Write to buffer
 
@@ -767,11 +767,11 @@ t_int *irreference_perform(t_int *w)
     double sample_rate = x->sample_rate;
     double progress_mul = 1.0;
 
-    AH_SIntPtr T;
-    AH_SIntPtr current_t;
-    AH_SIntPtr current_t2;
-    AH_SIntPtr mem_size;
-    AH_SIntPtr i, j;
+    intptr_t T;
+    intptr_t current_t;
+    intptr_t current_t2;
+    intptr_t mem_size;
+    intptr_t i, j;
 
     long record_on = 0;
     long mem_check;
@@ -780,7 +780,7 @@ t_int *irreference_perform(t_int *w)
 
     if (x->start_rec)
     {
-        x->T = (AH_SIntPtr) (sample_rate * x->length);
+        x->T = (intptr_t) (sample_rate * x->length);
         x->current_length = x->T;
         x->current_out_length = x->out_length;
         x->current_t = 0;
@@ -808,7 +808,7 @@ t_int *irreference_perform(t_int *w)
     attempt_mem_swap(&x->rec_mem);
     rec_mem = (double *) x->rec_mem.current_ptr;
     mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
-    mem_check = x->rec_mem.current_size >= (AH_UIntPtr) mem_size;
+    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
 
     if (mem_check)
     {
@@ -857,11 +857,11 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
     double sample_rate = x->sample_rate;
     double progress_mul = 1.0;
 
-    AH_SIntPtr T;
-    AH_SIntPtr current_t;
-    AH_SIntPtr current_t2;
-    AH_SIntPtr mem_size;
-    AH_SIntPtr i, j;
+    intptr_t T;
+    intptr_t current_t;
+    intptr_t current_t2;
+    intptr_t mem_size;
+    intptr_t i, j;
 
     long record_on = 0;
     long mem_check;
@@ -870,7 +870,7 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
 
     if (x->start_rec)
     {
-        x->T = (AH_SIntPtr) (sample_rate * x->length);
+        x->T = (intptr_t) (sample_rate * x->length);
         x->current_length = x->T;
         x->current_out_length = x->out_length;
         x->current_t = 0;
@@ -898,7 +898,7 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
     attempt_mem_swap(&x->rec_mem);
     rec_mem = (double *) x->rec_mem.current_ptr;
     mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
-    mem_check = x->rec_mem.current_size >= (AH_UIntPtr) mem_size;
+    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
 
     if (mem_check)
     {
@@ -943,7 +943,7 @@ void irreference_dsp_common(t_irreference *x, double samplerate)
 {
     double old_sr;
 
-    AH_UIntPtr mem_size;
+    uintptr_t mem_size;
 
     // Store sample rate
 

@@ -58,7 +58,7 @@ void coloured_noise_params(t_noise_params *x, t_noise_mode mode, double fade_in,
 
     x->amp = amp;
     x->sample_rate = sample_rate;
-    x->T = (AH_UIntPtr) (length * sample_rate);
+    x->T = (uintptr_t) (length * sample_rate);
     x->RT = length;
     x->fade_in = fade_in;
     x->fade_out = fade_out;
@@ -86,7 +86,7 @@ void coloured_noise_reset(t_noise_params *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-void coloured_noise_gen_float(t_noise_params *x, float *out, AH_UIntPtr startN, AH_UIntPtr N)
+void coloured_noise_gen_float(t_noise_params *x, float *out, uintptr_t startN, uintptr_t N)
 {
     double prev_output = x->prev_output;
     double alpha = x->alpha;
@@ -116,14 +116,14 @@ void coloured_noise_gen_float(t_noise_params *x, float *out, AH_UIntPtr startN, 
     double input_val;
     double result;
 
-    AH_UInt32 xr = x->gen.x;
-    AH_UInt32 yr = x->gen.y;
-    AH_UInt32 zr = x->gen.z;
-    AH_UInt32 wr =x->gen.w;
-    AH_UInt32 r;
+    uint32_t xr = x->gen.x;
+    uint32_t yr = x->gen.y;
+    uint32_t zr = x->gen.z;
+    uint32_t wr =x->gen.w;
+    uint32_t r;
 
-    AH_UIntPtr T = x->T;
-    AH_UIntPtr i;
+    uintptr_t T = x->T;
+    uintptr_t i;
 
     FiN = (FiN < 1.0) ? 1.0 : FiN;
     FoN = (FoN < 1.0) ? 1.0 : FoN;
@@ -215,7 +215,7 @@ void coloured_noise_gen_float(t_noise_params *x, float *out, AH_UIntPtr startN, 
 }
 
 
-void coloured_noise_gen_double(t_noise_params *x, double *out, AH_UIntPtr startN, AH_UIntPtr N)
+void coloured_noise_gen_double(t_noise_params *x, double *out, uintptr_t startN, uintptr_t N)
 {
     double prev_output = x->prev_output;
     double alpha = x->alpha;
@@ -245,14 +245,14 @@ void coloured_noise_gen_double(t_noise_params *x, double *out, AH_UIntPtr startN
     double input_val;
     double result;
 
-    AH_UInt32 xr = x->gen.x;
-    AH_UInt32 yr = x->gen.y;
-    AH_UInt32 zr = x->gen.z;
-    AH_UInt32 wr =x->gen.w;
-    AH_UInt32 r;
+    uint32_t xr = x->gen.x;
+    uint32_t yr = x->gen.y;
+    uint32_t zr = x->gen.z;
+    uint32_t wr =x->gen.w;
+    uint32_t r;
 
-    AH_UIntPtr T = x->T;
-    AH_UIntPtr i;
+    uintptr_t T = x->T;
+    uintptr_t i;
 
     FiN = (FiN < 1.0) ? 1.0 : FiN;
     FoN = (FoN < 1.0) ? 1.0 : FoN;
@@ -344,7 +344,7 @@ void coloured_noise_gen_double(t_noise_params *x, double *out, AH_UIntPtr startN
 }
 
 
-void coloured_noise_gen_block(t_noise_params *x, void *out, AH_UIntPtr startN, AH_UIntPtr N, AH_Boolean double_precision)
+void coloured_noise_gen_block(t_noise_params *x, void *out, uintptr_t startN, uintptr_t N, bool double_precision)
 {
     if (double_precision)
         coloured_noise_gen_double(x, (double *) out, startN, N);
@@ -353,7 +353,7 @@ void coloured_noise_gen_block(t_noise_params *x, void *out, AH_UIntPtr startN, A
 }
 
 
-void coloured_noise_gen(t_noise_params *x, void *out, AH_Boolean double_precision)
+void coloured_noise_gen(t_noise_params *x, void *out, bool double_precision)
 {
     if (double_precision)
         coloured_noise_gen_double(x, (double *) out, 0, x->T);
@@ -367,7 +367,7 @@ void coloured_noise_gen(t_noise_params *x, void *out, AH_Boolean double_precisio
 //////////////////////////////////////////////////////////////////////////
 
 
-void coloured_noise_measure(t_noise_params *x, AH_UIntPtr N, double *max_out_pink, double *max_out_brown)
+void coloured_noise_measure(t_noise_params *x, uintptr_t N, double *max_out_pink, double *max_out_brown)
 {
     double prev_output = x->prev_output;
     double alpha = x->alpha;
@@ -392,13 +392,13 @@ void coloured_noise_measure(t_noise_params *x, AH_UIntPtr N, double *max_out_pin
     double input_val;
     double result;
 
-    AH_UInt32 xr = x->gen.x;
-    AH_UInt32 yr = x->gen.y;
-    AH_UInt32 zr = x->gen.z;
-    AH_UInt32 wr =x->gen.w;
-    AH_UInt32 r;
+    uint32_t xr = x->gen.x;
+    uint32_t yr = x->gen.y;
+    uint32_t zr = x->gen.z;
+    uint32_t wr =x->gen.w;
+    uint32_t r;
 
-    AH_UIntPtr i;
+    uintptr_t i;
 
     for (i = 0; i < N; i++)
     {

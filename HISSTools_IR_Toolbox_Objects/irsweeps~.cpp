@@ -43,7 +43,7 @@ struct t_irsweeps
 
     HIRT_COMMON_ATTR
 
-    AH_Boolean inv_amp;
+    bool inv_amp;
 
     double amp;
 
@@ -72,7 +72,7 @@ void irsweeps_assist(t_irsweeps *x, void *b, long m, long a, char *s);
 
 double irsweeps_param_check(t_irsweeps *x, char *name, double val, double min, double max);
 
-void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, AH_SIntPtr sig_length, void *params, double sample_rate);
+void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, intptr_t sig_length, void *params, double sample_rate);
 
 void irsweeps_sweep(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
 void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
@@ -164,7 +164,7 @@ void irsweeps_assist(t_irsweeps *x, void *b, long m, long a, char *s)
 double irsweeps_param_check(t_irsweeps *x, const char *name, double val, double min, double max)
 {
     double new_val = val;
-    AH_Boolean changed = false;
+    bool changed = false;
 
     if (val < min)
     {
@@ -190,7 +190,7 @@ double irsweeps_param_check(t_irsweeps *x, const char *name, double val, double 
 //////////////////////////////////////////////////////////////////////////
 
 
-void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, AH_SIntPtr sig_length, void *params, double sample_rate)
+void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, intptr_t sig_length, void *params, double sample_rate)
 {
     temp_ptr<float> temp_buf(sig_length);
 
@@ -253,7 +253,7 @@ void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     double amp_curve[33];
 
     t_ess sweep_params;
-    AH_SIntPtr sweep_length;
+    intptr_t sweep_length;
 
     if (!argc || atom_gettype(argv) != A_SYM)
     {
@@ -315,7 +315,7 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
     double sample_rate = sys_getsr();
 
     t_mls max_length_params;
-    AH_SIntPtr mls_length;
+    intptr_t mls_length;
 
     if (!argc || atom_gettype(argv) != A_SYM)
     {
@@ -334,7 +334,7 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
 
     order = (t_atom_long) irsweeps_param_check(x, "order", (double) order, 1, 24);
 
-    mls_params(&max_length_params, (AH_UInt32) order, db_to_a(x->amp));
+    mls_params(&max_length_params, (uint32_t) order, db_to_a(x->amp));
     mls_length = mls_get_length(&max_length_params);
 
     irsweeps_gen(x, buffer, MLS, mls_length, &max_length_params, sample_rate);
@@ -358,7 +358,7 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
 
     t_noise_mode filter_mode = NOISE_MODE_WHITE;
     t_noise_params noise_params;
-    AH_SIntPtr noise_length;
+    intptr_t noise_length;
 
     if (sym == gensym("brown"))
         filter_mode = NOISE_MODE_BROWN;

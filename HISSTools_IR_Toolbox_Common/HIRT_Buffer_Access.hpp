@@ -5,7 +5,7 @@
 #include <ext.h>
 #include <ext_obex.h>
 
-#include "AH_Types.h"
+#include <cstdint>
 
 #include <ibuffer_access.hpp>
 
@@ -21,16 +21,16 @@ enum t_buffer_write_error
 // Function Prototypes
 
 double buffer_sample_rate(t_symbol *buffer);
-AH_SIntPtr buffer_length(t_symbol *buffer);
+intptr_t buffer_length(t_symbol *buffer);
 
 long buffer_check(t_object *x, t_symbol *buffer);
 
-AH_SIntPtr buffer_read(t_symbol *buffer, long chan, float *out, AH_SIntPtr max_length);
-AH_SIntPtr buffer_read_part(t_symbol *buffer, long chan, float *out, AH_SIntPtr offset, AH_SIntPtr read_length);
+intptr_t buffer_read(t_symbol *buffer, long chan, float *out, intptr_t max_length);
+intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offset, intptr_t read_length);
 
-t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, double mul);
-t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, AH_SIntPtr write_length, long chan, long resize, double sample_rate, float mul);
+t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, intptr_t write_length, long chan, long resize, double sample_rate, double mul);
+t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, intptr_t write_length, long chan, long resize, double sample_rate, float mul);
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, AH_SIntPtr *lengths, short argc, t_atom *argv, long in_place, short max_bufs, AH_SIntPtr *overall_len_ret, AH_SIntPtr *max_len_ret, double *sr_ret);
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, intptr_t *lengths, short argc, t_atom *argv, long in_place, short max_bufs, intptr_t *overall_len_ret, intptr_t *max_len_ret, double *sr_ret);
 
 #endif /* __HIRT_BUFFER_ACCESS__ */
