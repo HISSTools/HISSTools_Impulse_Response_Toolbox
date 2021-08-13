@@ -251,24 +251,21 @@ void rate_as_ratio(double rate, intptr_t& num, intptr_t& denom)
 //////////////////////////////////////////////////////////////////////////
 
 
-// Get a filter value from a position 0-nzero on the RHS wing (translate for LHS) - filter_position **MUST** be in range 0 to nzero inclusive
 
-double get_filter_value_direct(double *filter, long npoints, double filter_position)
+
+// Get a filter value from a position 0-nzero on the RHS wing (translate for LHS) - EITHER
+// - filter_position *MUST* be in range 0 to nzero inclusive (passing nzero as mul) OR
+// - filter_position *MUST* be in range 0 to 1 inclusive (passing nzero * npoints / half length as mul)
+
+double get_filter_value(double *filter, long mul, double filter_position)
 {
-    double index;
-    double fract;
-    double lo;
-    double hi;
-
-    long idx;
-
-    index = npoints * filter_position;
-    idx = (long) index;
-    fract = index - idx;
-
-    lo = filter[idx];
-    hi = filter[idx + 1];
-
+    const double index = mul * filter_position;
+    const long idx = static_cast<long>(index);
+    const double fract = index - idx;
+    
+    const double lo = filter[idx];
+    const double hi = filter[idx + 1];
+    
     return lo + fract * (hi - lo);
 }
 
