@@ -205,19 +205,19 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
     switch (sig_type)
     {
         case SWEEP:
-            ess_gen((t_ess *) params, temp_buf.get(), false);
+            ((t_ess *) params)->gen(temp_buf.get(), false);
             break;
 
         case INV_SWEEP:
-            ess_igen((t_ess *) params, temp_buf.get(), x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
+            ((t_ess *) params)->igen(temp_buf.get(), x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
             break;
 
         case MLS:
-            mls_gen((t_mls *) params, temp_buf.get(), false);
+            ((t_mls *) params)->gen(temp_buf.get(), false);
             break;
 
         case NOISE:
-            coloured_noise_gen((t_noise_params *)params, temp_buf.get(), false);
+            ((t_noise_params *) params)->gen(temp_buf.get(), false);
             break;
     }
 
@@ -252,7 +252,6 @@ void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
 
     double amp_curve[33];
 
-    t_ess sweep_params;
     intptr_t sweep_length;
 
     if (!argc || atom_gettype(argv) != A_SYM)
@@ -290,7 +289,8 @@ void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     // Get sweep length and allocate temmporary memory
 
     fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
-    sweep_length = ess_params(&sweep_params, f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve);
+    t_ess sweep_params(f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve);
+    sweep_length = sweep_params.length();
 
     if (!sweep_length)
     {
@@ -314,7 +314,6 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
     t_atom_long order = 18;
     double sample_rate = sys_getsr();
 
-    t_mls max_length_params;
     intptr_t mls_length;
 
     if (!argc || atom_gettype(argv) != A_SYM)
@@ -334,8 +333,8 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
 
     order = (t_atom_long) irsweeps_param_check(x, "order", (double) order, 1, 24);
 
-    mls_params(&max_length_params, (uint32_t) order, db_to_a(x->amp));
-    mls_length = mls_get_length(&max_length_params);
+    t_mls max_length_params((uint32_t) order, db_to_a(x->amp));
+    mls_length = max_length_params.length();
 
     irsweeps_gen(x, buffer, MLS, mls_length, &max_length_params, sample_rate);
 }
@@ -357,7 +356,6 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     double amp_comp = 1.0;
 
     t_noise_mode filter_mode = NOISE_MODE_WHITE;
-    t_noise_params noise_params;
     intptr_t noise_length;
 
     if (sym == gensym("brown"))
@@ -390,9 +388,8 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
 
     if (filter_mode != NOISE_MODE_WHITE && x->last_sample_rate != sample_rate)
     {
-        coloured_noise_params(&noise_params, NOISE_MODE_WHITE, 0, 0, 1, sample_rate, 1);
-        coloured_noise_measure(&noise_params, (1 << 25), &x->max_amp_pink, &x->max_amp_brown);
-        coloured_noise_reset(&noise_params);
+        t_noise_params noise_params(NOISE_MODE_WHITE, 0, 0, 1, sample_rate, 1);
+        noise_params.measure((1 << 25), x->max_amp_pink, x->max_amp_brown);
         
         x->last_sample_rate = sample_rate;
     }
@@ -402,8 +399,8 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     if (filter_mode == NOISE_MODE_PINK)
         amp_comp = x->max_amp_pink;
 
-    coloured_noise_params(&noise_params, filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
-    noise_length = coloured_noise_get_length(&noise_params);
+    t_noise_params noise_params(filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
+    noise_length = noise_params.length();
 
     irsweeps_gen(x, buffer, NOISE, noise_length, &noise_params, sample_rate);
 }

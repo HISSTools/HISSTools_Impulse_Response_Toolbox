@@ -134,7 +134,7 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv);
 void irmeasure_free(t_irmeasure *x);
 void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s);
 
-intptr_t irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate);
+intptr_t irmeasure_calc_sweep_mem_size(t_ess& sweep_params, long num_out_chans, double out_length, double sample_rate);
 intptr_t irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate);
 intptr_t irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate);
 intptr_t irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate);
@@ -344,9 +344,9 @@ void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-intptr_t irmeasure_calc_sweep_mem_size(t_ess *sweep_params, long num_out_chans, double out_length, double sample_rate)
+intptr_t irmeasure_calc_sweep_mem_size(t_ess& sweep_params, long num_out_chans, double out_length, double sample_rate)
 {
-    intptr_t gen_length = ess_get_length(sweep_params);
+    intptr_t gen_length = sweep_params.length();
     intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
@@ -376,10 +376,10 @@ intptr_t irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out
     switch (x->measure_mode)
     {
         case SWEEP:
-            return num_in_chans * irmeasure_calc_sweep_mem_size(&x->sweep_params, num_out_chans, x->current_out_length, sample_rate);
+            return num_in_chans * irmeasure_calc_sweep_mem_size(x->sweep_params, num_out_chans, x->current_out_length, sample_rate);
 
         case MLS:
-            return num_in_chans * irmeasure_calc_mls_mem_size(x->max_length_params.order, num_out_chans, x->current_out_length, sample_rate);
+            return num_in_chans * irmeasure_calc_mls_mem_size(x->max_length_params.order(), num_out_chans, x->current_out_length, sample_rate);
 
         case NOISE:
             return num_in_chans * irmeasure_calc_noise_mem_size(x->length, num_out_chans, x->current_out_length, sample_rate);
@@ -425,8 +425,6 @@ double irmeasure_param_check(t_irmeasure *x, const char *name, double val, doubl
 
 void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 {
-    t_ess sweep_params;
-
     double f1 = 20.0;
     double f2 = sys_getsr() / 2.0;
     double length = 30000.0;
@@ -474,9 +472,11 @@ void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     // Check length of sweep and memory allocation
 
-    if (ess_params(&sweep_params, x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), 0))
+    t_ess sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), nullptr);
+    
+    if (sweep_params.length())
     {
-        mem_size = num_active_ins * irmeasure_calc_sweep_mem_size(&sweep_params, num_active_outs, x->out_length, x->sample_rate);
+        mem_size = num_active_ins * irmeasure_calc_sweep_mem_size(sweep_params, num_active_outs, x->out_length, x->sample_rate);
         if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
             object_error((t_object *) x, "not able to allocate adequate memory for recording");
 
@@ -739,32 +739,32 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     uintptr_t mem_size;
     uintptr_t i;
 
-    t_ess sweep_params;
-    t_mls max_length_params;
-    t_noise_params noise_params;
+    t_ess sweep_params(x->sweep_params);
+    t_mls max_length_params(x->max_length_params);
+    t_noise_params noise_params(x->noise_params);
 
     switch (x->measure_mode)
     {
         case SWEEP:
-            ess_params(&sweep_params, x->sweep_params.rf1, x->sweep_params.rf2, x->sweep_params.fade_in, x->sweep_params.fade_out, x->sweep_params.RT, x->sweep_params.sample_rate, (x->inv_amp ? x->sweep_params.amp : 1) * db_to_a(-x->ir_gain), x->amp_curve);
-            gen_length = ess_get_length(&sweep_params);
+            sweep_params.set_amp((x->inv_amp ? sweep_params.amp() : 1.0) * db_to_a(-x->ir_gain));
+            gen_length = sweep_params.length();
             break;
 
         case MLS:
-            mls_params(&max_length_params, x->max_length_params.order, (x->inv_amp ? x->max_length_params.amp : 1) * db_to_a(-x->ir_gain));
-            gen_length = mls_get_length(&max_length_params);
+            max_length_params.set_amp((x->inv_amp ? max_length_params.amp() : 1.0) * db_to_a(-x->ir_gain));
+            gen_length = max_length_params.length();
 
             break;
 
         case NOISE:
 
-            if (x->noise_params.mode == NOISE_MODE_BROWN)
+            if (x->noise_params.mode() == NOISE_MODE_BROWN)
                 amp_comp = x->max_amp_brown;
-            if (x->noise_params.mode == NOISE_MODE_PINK)
+            if (x->noise_params.mode() == NOISE_MODE_PINK)
                 amp_comp = x->max_amp_pink;
             
-            coloured_noise_params(&noise_params, x->noise_params.mode, x->noise_params.fade_in, x->noise_params.fade_out, x->noise_params.RT, x->noise_params.sample_rate, (x->inv_amp ? x->noise_params.amp : 1) * db_to_a(-x->ir_gain) / amp_comp);
-            gen_length = coloured_noise_get_length(&noise_params);
+            noise_params.set_amp((x->inv_amp ? noise_params.amp() : 1.0) * db_to_a(-x->ir_gain) / amp_comp);
+            gen_length = noise_params.length();
             break;
     }
 
@@ -809,17 +809,9 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
     switch (x->measure_mode)
     {
-        case SWEEP:
-            ess_gen(&sweep_params, excitation_sig.get(), true);
-            break;
-
-        case MLS:
-            mls_gen(&max_length_params, excitation_sig.get(), true);
-            break;
-
-        case NOISE:
-            coloured_noise_gen(&noise_params, excitation_sig.get(), true);
-            break;
+        case SWEEP:     sweep_params.gen(excitation_sig.get(), true);         break;
+        case MLS:       max_length_params.gen(excitation_sig.get(), true);    break;
+        case NOISE:     noise_params.gen(excitation_sig.get(), true);         break;
     }
 
     // Transform excitation signal into complex spectrum 2
@@ -830,7 +822,7 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     {
         // Calculate standard filter for bandlimited deconvolution (sweep * inv sweep)
 
-        ess_igen(&sweep_params, excitation_sig.get(), INVERT_ALL, true);
+        sweep_params.igen(excitation_sig.get(), INVERT_ALL, true);
         time_to_halfspectrum_double(fft_setup, excitation_sig.get(), gen_length, spectrum_3, fft_size);
         convolve(spectrum_3, spectrum_2, fft_size, SPECTRUM_REAL);
 
@@ -1105,7 +1097,7 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
     // Calculate offset in internal buffer
 
     if (x->measure_mode == SWEEP)
-        T_minus = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic);
+        T_minus = (intptr_t) x->sweep_params.harm_offset(harmonic);
     else
         T_minus = 0;
 
@@ -1113,7 +1105,7 @@ void irmeasure_getir_internal(t_irmeasure *x, t_symbol *sym, short argc, t_atom 
 
     if (harmonic > 1)
     {
-        intptr_t T_minus_prev = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic - 1);
+        intptr_t T_minus_prev = (intptr_t) x->sweep_params.harm_offset(harmonic - 1);
         intptr_t L2 = T_minus - T_minus_prev;
 
         if (L2 < L)
@@ -1145,7 +1137,8 @@ void irmeasure_sweep_params(t_irmeasure *x)
     double out_length = x->out_length;
     double sample_rate = x->sample_rate;
 
-    long sweep_length = (long) ess_params(&x->sweep_params, x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, sample_rate, db_to_a(x->amp), x->amp_curve);
+    x->sweep_params = t_ess(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, sample_rate, db_to_a(x->amp), x->amp_curve);
+    uintptr_t sweep_length = x->sweep_params.length();
     long chan_offset = (long) ((out_length * sample_rate) + sweep_length);
     long i;
 
@@ -1169,7 +1162,7 @@ void irmeasure_mls_params(t_irmeasure *x)
     long chan_offset = (long) ((out_length * sample_rate) + mls_length);
     long i;
 
-    mls_params(&x->max_length_params, order, db_to_a(x->amp));
+    x->max_length_params = t_mls(static_cast<uint32>(order), db_to_a(x->amp));
 
     for (i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
@@ -1200,8 +1193,8 @@ void irmeasure_noise_params(t_irmeasure *x)
     if (noise_mode == NOISE_MODE_PINK)
         amp_comp = x->max_amp_pink;
 
-    coloured_noise_params(&x->noise_params, noise_mode, x->fade_in, x->fade_out, length, sample_rate, db_to_a(x->amp) / amp_comp);
-
+    x->noise_params = t_noise_params(noise_mode, x->fade_in, x->fade_out, length, sample_rate, db_to_a(x->amp) / amp_comp);
+    
     for (i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
 
@@ -1270,8 +1263,8 @@ static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long 
 
     if (current_t <= 0 && todo)
     {
-        mls_reset(&x->max_length_params);
-        coloured_noise_reset(&x->noise_params);
+        x->max_length_params.reset();
+        x->noise_params.reset();
     }
 
     // Generate values
@@ -1280,17 +1273,9 @@ static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long 
     {
         switch (x->measure_mode)
         {
-            case SWEEP:
-                ess_gen_block(&x->sweep_params, out, current_t, todo, double_precision);
-                break;
-
-            case MLS:
-                mls_gen_block(&x->max_length_params, out, todo, double_precision);
-                break;
-
-            case NOISE:
-                coloured_noise_gen_block(&x->noise_params, out, current_t, todo, double_precision);
-                break;
+            case SWEEP:     x->sweep_params.gen(out, current_t, todo, double_precision);    break;
+            case MLS:       x->max_length_params.gen(out, todo, double_precision);          break;
+            case NOISE:     x->noise_params.gen(out, current_t, todo, double_precision);    break;
         }
     }
 }
@@ -1604,8 +1589,6 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
 
 void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
 {
-    t_ess sweep_params;
-    t_noise_params noise_params;
     double old_sr;
 
     intptr_t mem_size = 0;
@@ -1617,8 +1600,8 @@ void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
 
     if (x->sample_rate != old_sr || x->no_dsp)
     {
-        coloured_noise_params(&noise_params, NOISE_MODE_WHITE, 0, 0, 1, x->sample_rate, 1);
-        coloured_noise_measure(&noise_params, (1 << 25), &x->max_amp_pink, &x->max_amp_brown);
+        t_noise_params noise_params(NOISE_MODE_WHITE, 0, 0, 1, x->sample_rate, 1);
+        noise_params.measure((1 << 25), x->max_amp_pink, x->max_amp_brown);
 
         x->no_dsp = 0;
     }
@@ -1628,9 +1611,11 @@ void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
         switch (x->measure_mode)
         {
             case SWEEP:
-                ess_params(&sweep_params, x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), 0);
-                mem_size = x->current_num_active_ins * irmeasure_calc_sweep_mem_size(&sweep_params, x->current_num_active_outs, x->out_length, x->sample_rate);
+            {
+                t_ess sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), nullptr);
+                mem_size = x->current_num_active_ins * irmeasure_calc_sweep_mem_size(sweep_params, x->current_num_active_outs, x->out_length, x->sample_rate);
                 break;
+            }
 
             case MLS:
                 mem_size = x->current_num_active_ins * irmeasure_calc_mls_mem_size(x->order, x->current_num_active_outs, x->out_length, x->sample_rate);

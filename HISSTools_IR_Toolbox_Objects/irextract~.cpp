@@ -311,7 +311,9 @@ void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
     fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
 
-    if (ess_params(&x->sweep_params, f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain), amp_curve))
+    x->sweep_params = t_ess(f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain), amp_curve);
+    
+    if (x->sweep_params.length())
     {
         // Process
 
@@ -362,7 +364,7 @@ void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     // Process
 
     x->measure_mode = MLS;
-    mls_params(&x->max_length_params, (long) order, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain));
+    x->max_length_params = t_mls((long) order, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain));
     irextract_process(x, rec_buffer, num_channels, sample_rate);
 }
 
@@ -427,10 +429,8 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     {
         if (x->last_sample_rate != sample_rate)
         {
-            t_noise_params noise_params;
-            
-            coloured_noise_params(&noise_params, NOISE_MODE_WHITE, 0, 0, 1, sample_rate, 1);
-            coloured_noise_measure(&noise_params, (1 << 25), &x->max_amp_pink, &x->max_amp_brown);
+            t_noise_params noise_params(NOISE_MODE_WHITE, 0, 0, 1, sample_rate, 1);
+            noise_params.measure((1 << 25), x->max_amp_pink, x->max_amp_brown);
             
             x->last_sample_rate = sample_rate;
         }
@@ -441,8 +441,7 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     if (noise_mode == NOISE_MODE_PINK)
         amp_comp = x->max_amp_pink;
 
-    coloured_noise_reset(&x->noise_params);
-    coloured_noise_params(&x->noise_params, noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain) / amp_comp);
+    x->noise_params = t_noise_params(noise_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, (x->inv_amp ? db_to_a(x->amp) : 1) * db_to_a(-x->ir_gain) / amp_comp);
     
     irextract_process(x, rec_buffer, num_channels, sample_rate);
 }
@@ -511,17 +510,9 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
     switch (x->measure_mode)
     {
-        case SWEEP:
-            gen_length = ess_get_length(&x->sweep_params);
-            break;
-
-        case MLS:
-            gen_length = mls_get_length(&x->max_length_params);
-            break;
-
-        case NOISE:
-            gen_length = coloured_noise_get_length(&x->noise_params);
-            break;
+        case SWEEP:     gen_length = x->sweep_params.length();          break;
+        case MLS:       gen_length = x->max_length_params.length();     break;
+        case NOISE:     gen_length = x->noise_params.length();          break;
     }
 
     // Check and calculate lengths
@@ -589,17 +580,9 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
     switch (x->measure_mode)
     {
-        case SWEEP:
-            ess_gen(&x->sweep_params, excitation_sig.get(), true);
-            break;
-
-        case MLS:
-            mls_gen(&x->max_length_params, excitation_sig.get(), true);
-            break;
-
-        case NOISE:
-            coloured_noise_gen(&x->noise_params, excitation_sig.get(), true);
-            break;
+        case SWEEP:     x->sweep_params.gen(excitation_sig.get(), true);        break;
+        case MLS:       x->max_length_params.gen(excitation_sig.get(), true);   break;
+        case NOISE:     x->noise_params.gen(excitation_sig.get(), true);        break;
     }
 
     // Transform excitation signal into complex spectrum 2
@@ -610,7 +593,7 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     {
         // Calculate standard filter for bandlimited deconvolution (sweep * inv sweep)
 
-        ess_igen(&x->sweep_params, excitation_sig.get(), INVERT_ALL, true);
+        x->sweep_params.igen(excitation_sig.get(), INVERT_ALL, true);
         time_to_halfspectrum_double(fft_setup, excitation_sig.get(), gen_length, spectrum_3, fft_size);
         convolve(spectrum_3, spectrum_2, fft_size, SPECTRUM_REAL);
 
@@ -738,7 +721,7 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
     // Calculate offset in internal buffer
 
     if (x->measure_mode == SWEEP)
-        T_minus = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic);
+        T_minus = (intptr_t) x->sweep_params.harm_offset(harmonic);
     else
         T_minus = 0;
 
@@ -746,7 +729,7 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
 
     if (harmonic > 1)
     {
-        intptr_t T_minus_prev = (intptr_t) ess_harm_offset(&x->sweep_params, harmonic - 1);
+        intptr_t T_minus_prev = x->sweep_params.harm_offset(harmonic - 1);
         intptr_t L2 = T_minus - T_minus_prev;
 
         if (L2 < L)

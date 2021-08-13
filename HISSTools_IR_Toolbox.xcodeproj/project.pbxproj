@@ -54,17 +54,12 @@
 		B804E67D26B541B30035EA9C /* PartitionedConvolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E67026B541B30035EA9C /* PartitionedConvolve.h */; };
 		B804E67E26B541B30035EA9C /* Convolver.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E67126B541B30035EA9C /* Convolver.h */; };
 		B804E67F26B541B30035EA9C /* TimeDomainConvolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E67226B541B30035EA9C /* TimeDomainConvolve.h */; };
-		B807A89115BF08C200906950 /* HIRT_Max_Length_Sequences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BB9F4113CF49B50029A8D6 /* HIRT_Max_Length_Sequences.cpp */; };
-		B807A89215BF08C600906950 /* HIRT_Coloured_Noise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8AE9D0A13FC390100AF492F /* HIRT_Coloured_Noise.cpp */; };
 		B807D7241635830F00E3E3A6 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
 		B807D7251635830F00E3E3A6 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
 		B807D7261635830F00E3E3A6 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
 		B807D7271635830F00E3E3A6 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
 		B807D72C1635830F00E3E3A6 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B807D72D1635830F00E3E3A6 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B807D72E1635830F00E3E3A6 /* HIRT_Coloured_Noise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8AE9D0A13FC390100AF492F /* HIRT_Coloured_Noise.cpp */; };
-		B807D72F1635830F00E3E3A6 /* HIRT_Exponential_Sweeps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B83AA5A213A644FF00211152 /* HIRT_Exponential_Sweeps.cpp */; };
-		B807D7301635830F00E3E3A6 /* HIRT_Max_Length_Sequences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BB9F4113CF49B50029A8D6 /* HIRT_Max_Length_Sequences.cpp */; };
 		B807D775163584AC00E3E3A6 /* irextract~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B807D774163584AC00E3E3A6 /* irextract~.cpp */; };
 		B80D1E721653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
 		B80D1E731653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
@@ -165,14 +160,12 @@
 		B8A73659151B980B0030B923 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
 		B8A7365E151B980B0030B923 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8A7367A151B98590030B923 /* irstats~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8A73679151B98590030B923 /* irstats~.cpp */; };
-		B8AE9D2513FC3DE700AF492F /* HIRT_Coloured_Noise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8AE9D0A13FC390100AF492F /* HIRT_Coloured_Noise.cpp */; };
 		B8B5B4EF13FD29EE00DAE433 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
 		B8B5B4F013FD29EE00DAE433 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
 		B8B5B4F813FD29EE00DAE433 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8B5B4FA13FD29EE00DAE433 /* HIRT_Trim_Normalise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C0EDDB13A7B1060061554C /* HIRT_Trim_Normalise.cpp */; };
 		B8B5B51313FD2A5200DAE433 /* irtrimnorm~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8B5B51213FD2A5200DAE433 /* irtrimnorm~.cpp */; };
 		B8BB9F4213CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8BB9F4013CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp */; };
-		B8BB9F5413CF4CB70029A8D6 /* HIRT_Max_Length_Sequences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BB9F4113CF49B50029A8D6 /* HIRT_Max_Length_Sequences.cpp */; };
 		B8BE8FAA13811E1400FD97AA /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
 		B8BE8FAF13811E1400FD97AA /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8BE8FE513811E6C00FD97AA /* bufconvolve~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BE8FD213811E4B00FD97AA /* bufconvolve~.cpp */; };
@@ -204,9 +197,7 @@
 		B8CF2DCA15A6FDDA00EBDB95 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
 		B8CF2DCB15A6FDDA00EBDB95 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
 		B8CF2E2E15A6FEA600EBDB95 /* multiconvolve~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8CF2E2D15A6FEA600EBDB95 /* multiconvolve~.cpp */; };
-		B8E99DE013A654BD00636932 /* HIRT_Exponential_Sweeps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B83AA5A213A644FF00211152 /* HIRT_Exponential_Sweeps.cpp */; };
 		B8E99E4213A665B600636932 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8E99E4613A665B600636932 /* HIRT_Exponential_Sweeps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B83AA5A213A644FF00211152 /* HIRT_Exponential_Sweeps.cpp */; };
 		B8E99E4813A665B600636932 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8E99E7B13A6661600636932 /* irsweeps~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8E99E7A13A6661600636932 /* irsweeps~.cpp */; };
 		B8E9C6DC1444AB8800CBEA1B /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
@@ -415,7 +406,6 @@
 		B82801D115AAF97000D2B4F0 /* HIRT_Buffer_Access.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Buffer_Access.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Buffer_Access.hpp; sourceTree = "<group>"; };
 		B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Buffer_Access.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Buffer_Access.cpp; sourceTree = "<group>"; };
 		B83AA5A113A644FF00211152 /* HIRT_Exponential_Sweeps.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Exponential_Sweeps.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Exponential_Sweeps.hpp; sourceTree = "<group>"; };
-		B83AA5A213A644FF00211152 /* HIRT_Exponential_Sweeps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Exponential_Sweeps.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Exponential_Sweeps.cpp; sourceTree = "<group>"; };
 		B841F0CF26C67857002BF40C /* HIRT_FFT_Setup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HIRT_FFT_Setup.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_FFT_Setup.hpp; sourceTree = "<group>"; };
 		B841F0D026C67857002BF40C /* HIRT_Memory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Memory.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Memory.hpp; sourceTree = "<group>"; };
 		B859422D218B397300C783CF /* bufreverse~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "bufreverse~.cpp"; path = "HISSTools_IR_Toolbox_Objects/bufreverse~.cpp"; sourceTree = SOURCE_ROOT; };
@@ -439,11 +429,9 @@
 		B8A7366A151B980B0030B923 /* irstats~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irstats~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A73679151B98590030B923 /* irstats~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "irstats~.cpp"; path = "../HISSTools_IR_Toolbox_Objects/irstats~.cpp"; sourceTree = "<group>"; };
 		B8AE9D0913FC390100AF492F /* HIRT_Coloured_Noise.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Coloured_Noise.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Coloured_Noise.hpp; sourceTree = "<group>"; };
-		B8AE9D0A13FC390100AF492F /* HIRT_Coloured_Noise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Coloured_Noise.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Coloured_Noise.cpp; sourceTree = "<group>"; };
 		B8B5B50513FD29EE00DAE433 /* irtrimnorm~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irtrimnorm~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B5B51213FD2A5200DAE433 /* irtrimnorm~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "irtrimnorm~.cpp"; path = "../HISSTools_IR_Toolbox_Objects/irtrimnorm~.cpp"; sourceTree = "<group>"; };
 		B8BB9F4013CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Max_Length_Sequences.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Max_Length_Sequences.hpp; sourceTree = "<group>"; };
-		B8BB9F4113CF49B50029A8D6 /* HIRT_Max_Length_Sequences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Max_Length_Sequences.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Max_Length_Sequences.cpp; sourceTree = "<group>"; };
 		B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HIRT_Core_Functions.cpp; path = HISSTools_IR_Toolbox_Common/HIRT_Core_Functions.cpp; sourceTree = "<group>"; };
 		B8BE8FB813811E1400FD97AA /* bufconvolve~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bufconvolve~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BE8FD213811E4B00FD97AA /* bufconvolve~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "bufconvolve~.cpp"; path = "../HISSTools_IR_Toolbox_Objects/bufconvolve~.cpp"; sourceTree = "<group>"; };
@@ -702,11 +690,8 @@
 				B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */,
 				B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */,
 				B8AE9D0913FC390100AF492F /* HIRT_Coloured_Noise.hpp */,
-				B8AE9D0A13FC390100AF492F /* HIRT_Coloured_Noise.cpp */,
 				B83AA5A113A644FF00211152 /* HIRT_Exponential_Sweeps.hpp */,
-				B83AA5A213A644FF00211152 /* HIRT_Exponential_Sweeps.cpp */,
 				B8BB9F4013CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp */,
-				B8BB9F4113CF49B50029A8D6 /* HIRT_Max_Length_Sequences.cpp */,
 				B828018915AAF84A00D2B4F0 /* HIRT_Frame_Stats.hpp */,
 				B828018A15AAF84A00D2B4F0 /* HIRT_Frame_Stats.cpp */,
 				B8C38DFF138FA30A007023E9 /* HIRT_Matrix_Math.hpp */,
@@ -1779,9 +1764,6 @@
 			files = (
 				B807D72C1635830F00E3E3A6 /* HIRT_Core_Functions.cpp in Sources */,
 				B807D72D1635830F00E3E3A6 /* HIRT_Buffer_Access.cpp in Sources */,
-				B807D72E1635830F00E3E3A6 /* HIRT_Coloured_Noise.cpp in Sources */,
-				B807D72F1635830F00E3E3A6 /* HIRT_Exponential_Sweeps.cpp in Sources */,
-				B807D7301635830F00E3E3A6 /* HIRT_Max_Length_Sequences.cpp in Sources */,
 				B807D775163584AC00E3E3A6 /* irextract~.cpp in Sources */,
 				B80D1E7F1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
 				B80D1E911653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
@@ -1885,9 +1867,6 @@
 			files = (
 				B8A189FC137AA8CD0056CD0F /* HIRT_Core_Functions.cpp in Sources */,
 				B828027215AAFD1300D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B8AE9D2513FC3DE700AF492F /* HIRT_Coloured_Noise.cpp in Sources */,
-				B8E99DE013A654BD00636932 /* HIRT_Exponential_Sweeps.cpp in Sources */,
-				B8BB9F5413CF4CB70029A8D6 /* HIRT_Max_Length_Sequences.cpp in Sources */,
 				B89E6721137AE78C007BBD9F /* irmeasure~.cpp in Sources */,
 				B80D1E7D1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
 				B80D1E8F1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
@@ -2012,12 +1991,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B807A89215BF08C600906950 /* HIRT_Coloured_Noise.cpp in Sources */,
-				B807A89115BF08C200906950 /* HIRT_Max_Length_Sequences.cpp in Sources */,
 				B8E99E4813A665B600636932 /* HIRT_Core_Functions.cpp in Sources */,
 				B828027815AAFD3700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8C0EDF313A7C0320061554C /* HIRT_Trim_Normalise.cpp in Sources */,
-				B8E99E4613A665B600636932 /* HIRT_Exponential_Sweeps.cpp in Sources */,
 				B8E99E7B13A6661600636932 /* irsweeps~.cpp in Sources */,
 				B80D1E781653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
 				B80D1E8A1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
