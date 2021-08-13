@@ -151,7 +151,7 @@ void octave_smooth(double *in, double *out, intptr_t size, double oct_width)
     if (oct_width)
     {
         oct_width /= 2.0;
-        oct_width = pow(2.0, oct_width);
+        oct_width = std::pow(2.0, oct_width);
 
         for (intptr_t i = 1; i < size; i++)
             in[i] += in[i - 1];

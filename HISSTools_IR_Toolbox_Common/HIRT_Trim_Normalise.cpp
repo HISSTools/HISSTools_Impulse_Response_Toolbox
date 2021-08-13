@@ -12,7 +12,7 @@ double norm_find_max(double *in, uintptr_t length, double start_max)
     // Find peak
 
     for (uintptr_t i = 0; i < length; i++)
-        norm_factor = std::max(fabs(in[i]), norm_factor);
+        norm_factor = std::max(std::fabs(in[i]), norm_factor);
 
     return norm_factor;
 }
@@ -195,8 +195,8 @@ t_rms_result trim_find_crossings_rms(double *in_buf, uintptr_t length, uintptr_t
     uintptr_t end_search = *current_end;
     uintptr_t i, j;
 
-    double in_lin = pow(10.0, in_db / 20.0);
-    double out_lin = pow(10.0, out_db / 20.0);
+    double in_lin = std::pow(10.0, in_db / 20.0);
+    double out_lin = std::pow(10.0, out_db / 20.0);
 
     t_rms_measure rms;
 

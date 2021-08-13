@@ -40,12 +40,12 @@ enum t_filter_type
 
 static inline double db_to_a(double db)
 {
-    return pow(10.0, db / 20.0);
+    return std::pow(10.0, db / 20.0);
 }
 
 static inline double db_to_pow(double db)
 {
-    return pow(10.0, db / 10.0);
+    return std::pow(10.0, db / 10.0);
 }
 
 static inline double a_to_db(double a)
@@ -55,7 +55,7 @@ static inline double a_to_db(double a)
     if (!a)
         return HIRT_DB_MIN;
 
-    db = 20.0 * log10(a);
+    db = 20.0 * std::log10(a);
 
     if (db < HIRT_DB_MIN)
         db = HIRT_DB_MIN;
@@ -70,7 +70,7 @@ static inline double pow_to_db(double pow)
     if (!pow)
         return HIRT_DB_MIN;
 
-    db = 10.0 * log10(pow);
+    db = 10.0 * std::log10(pow);
 
     if (db < HIRT_DB_MIN)
         db = HIRT_DB_MIN;

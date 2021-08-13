@@ -213,8 +213,8 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
     qs =  filter->qs;
 
     w0 = 2.0 * PI * f0 / sr;
-    cosw = cos(w0);
-    sinw = sin(w0);
+    cosw = std::cos(w0);
+    sinw = std::sin(w0);
 
     x1 = x2 = y1 = y2 = 0.;
 

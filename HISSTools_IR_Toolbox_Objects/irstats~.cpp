@@ -658,14 +658,14 @@ intptr_t calc_direct(float *ir, float *samples, double *window, intptr_t onset, 
     // Find max peak value
 
     for (i = onset; i < onset + search_length && i < length; i++)
-        max_value = fabs(ir[i]) > max_value ? fabs(ir[i]) : max_value;
+        max_value = std::fabs(ir[i]) > max_value ? std::fabs(ir[i]) : max_value;
 
     max_value = db_to_a(a_to_db(max_value) - 5);
 
     // Find first peak value
 
     for (i = onset + 1; i < (onset + search_length) && (i < length - 1); i++)
-        if (fabs(ir[i]) > max_value && fabs(ir[i]) > fabs(ir[i - 1]) && fabs(ir[i]) > fabs(ir[i + 1]))
+        if (std::fabs(ir[i]) > max_value && std::fabs(ir[i]) > std::fabs(ir[i - 1]) && std::fabs(ir[i]) > std::fabs(ir[i + 1]))
             break;
 
     start_search = i;
@@ -953,7 +953,7 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
 
     uintptr_t fft_size_log2;
     fft_size = calculate_fft_size(16384, fft_size_log2);
-    double fft_ratio = fabs(fft_size / sample_rate);
+    double fft_ratio = std::fabs(fft_size / sample_rate);
 
     // Allocate and check temporary memory
 

@@ -1312,7 +1312,7 @@ t_int *irmeasure_perform(t_int *w)
 
         for (i = 0; i < vec_size; i++)
         {
-            *out++ = static_cast<float>(amp * sin(phase * M_PI * 2));
+            *out++ = static_cast<float>(amp * std::sin(phase * M_PI * 2));
             phase += phase_inc;
         }
 
@@ -1453,7 +1453,7 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
 
         for (i = 0; i < vec_size; i++)
         {
-            *out++ = amp * sin(phase * M_PI * 2);
+            *out++ = amp * std::sin(phase * M_PI * 2);
             phase += phase_inc;
         }
 

@@ -252,7 +252,7 @@ long hann_setup_flag = 0;
 void setup_hann_wind()
 {
     for (uintptr_t i = 0; i < 4097; i++)
-        hann_table[i] = 0.5 * (1.0 - cos(M_PI * (4095 - i) / (double) 4095));
+        hann_table[i] = 0.5 * (1.0 - std::cos(M_PI * (4095 - i) / (double) 4095));
 }
 
 static inline double fast_hann_wind(double in)
@@ -387,7 +387,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
             for (i = 1; i < nyquist_bin + 1; i++)
             {
                 oct_width = ((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo);
-                oct_width = pow(2.0, oct_width * 0.5);
+                oct_width = std::pow(2.0, oct_width * 0.5);
 
                 intptr_t lo = static_cast<intptr_t>(i / oct_width);
                 intptr_t hi = static_cast<intptr_t>(i * oct_width);
@@ -452,7 +452,7 @@ void minimum_phase_components_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPL
     for (uintptr_t i = 0; i < fft_size_halved + 1; i++)
     {
         spectrum.realp[i] = spectrum.realp[i] < min_power ? min_power : spectrum.realp[i];
-        spectrum.realp[i] = 0.5 * log(spectrum.realp[i]);
+        spectrum.realp[i] = 0.5 * std::log(spectrum.realp[i]);
     }
 
     for (uintptr_t i = fft_size_halved + 1; i < fft_size; i++)
@@ -563,8 +563,8 @@ void mixed_phase_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D 
         amp = exp(spectrum.realp[i]);
         interp_phase = linphase_mul * i + minphase_mul * spectrum.imagp[i];
 
-        spectrum.realp[i] = amp * cos(interp_phase);
-        spectrum.imagp[i] = amp * sin(interp_phase);
+        spectrum.realp[i] = amp * std::cos(interp_phase);
+        spectrum.imagp[i] = amp * std::sin(interp_phase);
     }
 
     // do nyquist
@@ -655,17 +655,17 @@ void make_freq_dependent_power_array(double *power_array, double *specifier_arra
     num_items >>= 1;
     power_array[0] = specifier_array[1] + db_offset;
 
-    for (i = 1, list_pos = 0, gradient = 0, offset = specifier_array[1], next_log_freq = log(specifier_array[0]); i < fft_size_halved + 1; i++)
+    for (i = 1, list_pos = 0, gradient = 0, offset = specifier_array[1], next_log_freq = std::log(specifier_array[0]); i < fft_size_halved + 1; i++)
     {
         // Find place in list and calculate new line if relevant
 
-        bin_log_freq = log(i * freq_mul);
+        bin_log_freq = std::log(i * freq_mul);
 
         if (bin_log_freq > next_log_freq)
         {
             // Search for the point in the list
 
-            for (; bin_log_freq > next_log_freq && list_pos < num_items; list_pos++, prev_log_freq = next_log_freq, next_log_freq = log(specifier_array[list_pos << 1]));
+            for (; bin_log_freq > next_log_freq && list_pos < num_items; list_pos++, prev_log_freq = next_log_freq, next_log_freq = std::log(specifier_array[list_pos << 1]));
 
             if (list_pos == num_items)
             {

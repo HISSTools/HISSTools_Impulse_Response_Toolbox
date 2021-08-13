@@ -214,7 +214,7 @@ void rate_as_ratio(double rate, intptr_t& num, intptr_t& denom)
 {
     intptr_t Cf[256];
 
-    double npart = fabs(rate);
+    double npart = std::fabs(rate);
     short length = 0;
 
     num = 1;
@@ -293,7 +293,7 @@ temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, lon
         {
             while (current_num >= denom)
                 current_num -= denom;
-            filter_position = fabs(per_samp * (j - (double) current_num / (double) denom - filter_offset));
+            filter_position = std::fabs(per_samp * (j - (double) current_num / (double) denom - filter_offset));
             current_filter[j] = filter_position <= nzero ? mul * get_filter_value(filter, npoints, filter_position) : 0;
         }
     }
@@ -617,13 +617,13 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
     if (sym == gensym("resample"))
     {
         sample_rate = rate;
-        rate = fabs(bufdata.get_sample_rate() / rate);
+        rate = std::fabs(bufdata.get_sample_rate() / rate);
     }
 
     if (sym == gensym("both"))
     {
         sample_rate = sr_convert;
-        rate = rate * fabs(bufdata.get_sample_rate() / sr_convert);
+        rate = rate * std::fabs(bufdata.get_sample_rate() / sr_convert);
     }
 
     if (rate < 0.01)

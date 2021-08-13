@@ -203,7 +203,7 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
     // Calculate log frequencies and  convert powers to db
 
     for (i = 0; i < fft_size_halved + 1; i++)
-        log_freqs[i] = log((i / (static_cast<double>(fft_size))) * sample_rate);
+        log_freqs[i] = std::log((i / (static_cast<double>(fft_size))) * sample_rate);
     pow_to_db_array(spectrum_1.realp, fft_size_halved + 1);
 
     // End stop frequencies and db vals with duplicates

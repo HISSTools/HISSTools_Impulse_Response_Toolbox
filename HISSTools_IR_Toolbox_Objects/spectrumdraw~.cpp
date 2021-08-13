@@ -349,7 +349,7 @@ static inline double clip(double val, double min, double max)
 
 static inline double ftom(double a)
 {
-    return log(a) * ftom_mul + ftom_add;
+    return std::log(a) * ftom_mul + ftom_add;
 }
 
 
@@ -383,7 +383,7 @@ static inline double freq_2_bin(double freq, t_scale_vals *scale)
 static inline double bin_2_mouse(double bin, t_scale_vals *scale)
 {
     if (scale->log_mode)
-        return scale->bin_scale * (log(bin) - scale->bin_min);
+        return scale->bin_scale * (std::log(bin) - scale->bin_min);
     else
         return scale->bin_scale * (bin - scale->bin_min);
 }
@@ -401,7 +401,7 @@ static inline double mouse_2_bin(double x_val, t_scale_vals *scale)
 static inline double freq_2_mouse(double freq, t_scale_vals *scale)
 {
     if (scale->log_mode)
-        return scale->x_scale * (log(freq) - scale->x_min);
+        return scale->x_scale * (std::log(freq) - scale->x_min);
     else
         return scale->x_scale * (freq - scale->x_min);
 }
@@ -451,7 +451,7 @@ static inline void spectrumdraw_grid_precalc(t_spectrumdraw *x, t_scale_vals *sc
     double end_ref;
     double y_space;
     double y_ref;
-    double grid_mul = pow(2.0, labels ? freq_label_spacing[x->freq_labels] * freq_grid_spacing[x->freq_grid] : freq_grid_spacing[x->freq_grid]);
+    double grid_mul = std::pow(2.0, labels ? freq_label_spacing[x->freq_labels] * freq_grid_spacing[x->freq_grid] : freq_grid_spacing[x->freq_grid]);
 
     if (x->freq_range[0] > x->freq_range[1])
     {
@@ -461,7 +461,7 @@ static inline void spectrumdraw_grid_precalc(t_spectrumdraw *x, t_scale_vals *sc
     else
         end_ref = x->freq_range[0];
 
-    freq_ref /= pow(grid_mul, ceil((log(freq_ref) - log(end_ref)) / log(grid_mul)));
+    freq_ref /= std::pow(grid_mul, std::ceil((std::log(freq_ref) - std::log(end_ref)) / std::log(grid_mul)));
     scale->freq_ref = freq_ref;
     scale->freq_mul = grid_mul;
 
@@ -475,7 +475,7 @@ static inline void spectrumdraw_grid_precalc(t_spectrumdraw *x, t_scale_vals *sc
     }
 
     scale->y_ref = conv_yval_2_mouse(y_ref, scale);
-    scale->y_space = fabs(conv_yval_2_mouse(y_ref + y_space, scale) - scale->y_ref);
+    scale->y_space = std::fabs(conv_yval_2_mouse(y_ref + y_space, scale) - scale->y_ref);
 }
 
 
@@ -488,8 +488,8 @@ static inline void spectrumdraw_set_scale_vals(t_scale_vals *scale, t_rect *rect
 
     if (log_mode)
     {
-        x_min = log(x_min);
-        x_max =    log(x_max);
+        x_min = std::log(x_min);
+        x_max = std::log(x_max);
         scale->log_mode = 1;
     }
 
@@ -523,8 +523,8 @@ static inline void spectrumdraw_set_fft_scaling(t_scale_vals *scale, uintptr_t f
 
     if (scale->log_mode)
     {
-        x_min = log(x_min);
-        x_max =    log(x_max);
+        x_min = std::log(x_min);
+        x_max = std::log(x_max);
     }
 
     scale->bin_min = x_min;
@@ -1105,7 +1105,7 @@ void spectrumdraw_octave_smooth(double *in, float *out, intptr_t size, double oc
     if (oct_width)
     {
         oct_width /= 2.0;
-        oct_width = pow(2.0, oct_width);
+        oct_width = std::pow(2.0, oct_width);
 
         for (i = 1; i < size; i++)
             in[i] += in[i - 1];
@@ -1174,8 +1174,8 @@ void spectrumdraw_calc_selection_data(t_spectrumdraw *x)
     float *y_vals = (float *) x->curve_data[x->mouse_curve - 1].current_ptr;
     uintptr_t fft_size = x->curve_data[x->mouse_curve - 1].current_size;
     double fft_ratio = fft_size / x->curve_sr[x->mouse_curve - 1];
-    intptr_t sel_from = static_cast<intptr_t>(ceil (sel_min_freq * fft_ratio));
-    intptr_t sel_to =   static_cast<intptr_t>(floor(sel_max_freq * fft_ratio));
+    intptr_t sel_from = static_cast<intptr_t>(std::ceil (sel_min_freq * fft_ratio));
+    intptr_t sel_to =   static_cast<intptr_t>(std::floor(sel_max_freq * fft_ratio));
 
     // Check phase mode
 
@@ -1198,8 +1198,8 @@ void spectrumdraw_calc_selection_data(t_spectrumdraw *x)
 
     if (log_mode)
     {
-        x_min = log(x_min);
-        x_max = log(x_max);
+        x_min = std::log(x_min);
+        x_max = std::log(x_max);
     }
 
     // Sanity Check
@@ -1226,7 +1226,7 @@ void spectrumdraw_calc_selection_data(t_spectrumdraw *x)
             if ((x->mouse_mode == 2 || x->mouse_mode == 4))
             {
                 double bin_pos = x_val * fft_ratio;
-                intptr_t read_lo = static_cast<intptr_t>(floor(bin_pos));
+                intptr_t read_lo = static_cast<intptr_t>(std::floor(bin_pos));
                 intptr_t read_hi = read_lo + 1;
 
                 if (!fft_size)
@@ -1598,12 +1598,12 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
         case WIND_HANN:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.5 - (0.5 * cos(FFTW_TWOPI * ((double) i / (double) window_size))));
+                window[i] = (float) (0.5 - (0.5 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_HAMMING:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.54347826 - (0.45652174 * cos(FFTW_TWOPI * ((double) i / (double) window_size))));
+                window[i] = (float) (0.54347826 - (0.45652174 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_KAISER:
@@ -1659,37 +1659,37 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
         case WIND_BLACKMAN:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.42659071 - (0.49656062 * cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.07684867 * cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = (float) (0.42659071 - (0.49656062 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.07684867 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_62:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.44859f - 0.49364f * cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.05677f * cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = (float) ((0.44859f - 0.49364f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.05677f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_70:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.42323f - 0.49755f * cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.07922f * cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = (float) ((0.42323f - 0.49755f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.07922f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_74:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.402217f - 0.49703f * cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.09892f * cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.00188 * cos(FFTW_THREEPI * ((double) i / (double) window_size))));
+                window[i] = (float) ((0.402217f - 0.49703f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.09892f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.00188 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_92:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.35875f - 0.48829f * cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.14128f * cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.01168 * cos(FFTW_THREEPI * ((double) i / (double) window_size))));
+                window[i] = (float) ((0.35875f - 0.48829f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.14128f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.01168 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_HARRIS:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.35875 - (0.48829 * cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.14128 * cos(FFTW_FOURPI * ((double) i / (double) window_size))) - (0.01168 * cos(FFTW_SIXPI * ((double) i / (double) window_size))));
+                window[i] = (float) (0.35875 - (0.48829 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.14128 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))) - (0.01168 * std::cos(FFTW_SIXPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_FLAT_TOP:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.2810639 - (0.5208972 * cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.1980399 * cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = (float) (0.2810639 - (0.5208972 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.1980399 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
     }
 
@@ -1790,7 +1790,7 @@ void spectrumdraw_realtime(t_spectrumdraw *x, float *read_from, long phase_mode,
         t_frame_stats *frame_stats = (t_frame_stats *) x->realtime_stats[j].current_ptr;
 
         frame_stats->set_mode((t_frame_mode) (curve_mode - 1));
-        frame_stats->set_max_age(static_cast<uintptr_t>(ceil(x->peak_hold / x->redraw_time)));
+        frame_stats->set_max_age(static_cast<uintptr_t>(std::ceil(x->peak_hold / x->redraw_time)));
         frame_stats->set_alpha(2.0 / ((x->time_smooth[0] / x->redraw_time) + 1.0), 2.0 / ((x->time_smooth[1] / x->redraw_time) + 1.0));
 
         // Do stats
@@ -2091,7 +2091,7 @@ void frequency_label(char *text, double freq)
 
         freq = round(freq) / 1000.0;
 
-        if ((freq - floor(freq)) * 10.0 > 0.9998)
+        if ((freq - std::floor(freq)) * 10.0 > 0.9998)
             precision = 1;
 
         sprintf(text,"%.*lfk", precision, freq);
@@ -2187,13 +2187,13 @@ void spectrumdraw_jgraphics_paint_grid(t_spectrumdraw *x, t_jgraphics *g, double
         {
             case 0:
 
-                for (y_ref = y_ref - (ceil(y_ref / y_space) * y_space); y_ref < height; y_ref += y_space)
-                    jgraphics_line_draw_fast (g, 0, round(y_ref) + 0.5, width, round(y_ref) + 0.5, 1);
+                for (y_ref = y_ref - (std::ceil(y_ref / y_space) * y_space); y_ref < height; y_ref += y_space)
+                    jgraphics_line_draw_fast(g, 0, round(y_ref) + 0.5, width, round(y_ref) + 0.5, 1);
                 break;
 
             default:
 
-                for (y_ref = y_ref - (ceil(y_ref / y_space) * y_space) ;y_ref < height; y_ref += 2 * y_space)
+                for (y_ref = y_ref - (std::ceil(y_ref / y_space) * y_space) ;y_ref < height; y_ref += 2 * y_space)
                 {
                     jgraphics_rectangle(g, 0, y_ref, width, y_space);
                     jgraphics_fill(g);
@@ -2232,7 +2232,7 @@ void spectrumdraw_jgraphics_paint_ticks(t_spectrumdraw *x, t_jgraphics *g, doubl
 
     if (x->amp_grid)
     {
-        for (y_ref = y_ref - (ceil(y_ref / y_space) * y_space) ;y_ref < height; y_ref += y_space)
+        for (y_ref = y_ref - (std::ceil(y_ref / y_space) * y_space) ;y_ref < height; y_ref += y_space)
         {
             jgraphics_line_draw_fast(g, 0, y_ref, tick_length, y_ref, 1);
             jgraphics_line_draw_fast(g, width - tick_length, y_ref, width, y_ref, 1);
@@ -2588,12 +2588,12 @@ void spectrumdraw_paint_labels(t_spectrumdraw *x, t_jgraphics *g, t_scale_vals *
     if (x->amp_labels && !x->phase_mode && x->amp_grid)
     {
         last_draw = -10000.0;
-        amp_ref = amp_ref - floor(amp_ref);
+        amp_ref = amp_ref - std::floor(amp_ref);
 
         if (amp_ref > 0.0)
             base_precision = 1;
 
-        for (y_ref = y_ref - (ceil(y_ref / y_space) * y_space); y_ref <= height + 1; y_ref += y_space)
+        for (y_ref = y_ref - (std::ceil(y_ref / y_space) * y_space); y_ref <= height + 1; y_ref += y_space)
         {
             if (y_ref >= -1.0 && (y_ref - last_draw > text_height_pad) && (y_ref + y_offset - (max_text_height / 2.0)) >= -1.0 && (y_ref + y_offset + (max_text_height / 2.0)) <= label_height)
             {
@@ -2612,11 +2612,11 @@ void spectrumdraw_paint_labels(t_spectrumdraw *x, t_jgraphics *g, t_scale_vals *
     if (x->phase_labels && x->phase_mode && x->phase_grid)
     {
         long denominator = (long) (phase_denominators[x->phase_grid] * phase_label_spacing[x->phase_labels]);
-        long count = (long) ceil(y_ref / y_space);
+        long count = (long) std::ceil(y_ref / y_space);
 
         last_draw = -10000.0;
 
-        for (y_ref = y_ref - (ceil(y_ref / y_space) * y_space); y_ref <= height + 1; y_ref += y_space)
+        for (y_ref = y_ref - (std::ceil(y_ref / y_space) * y_space); y_ref <= height + 1; y_ref += y_space)
         {
             if (y_ref >= -1.0 && (y_ref - last_draw > text_height_pad) && (y_ref + y_offset - (max_text_height / 2.0)) >= -1.0 && (y_ref + y_offset + (max_text_height / 2.0)) <= label_height)
             {
@@ -2675,7 +2675,7 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
         if (x->phase_labels && x->phase_grid)
         {
             denominator = (long) (phase_denominators[x->phase_grid] * phase_label_spacing[x->phase_labels]);
-            count = (long) ceil(phase_denominators[x->phase_grid] / phase_label_spacing[x->phase_labels]);
+            count = (long) std::ceil(phase_denominators[x->phase_grid] / phase_label_spacing[x->phase_labels]);
 
             y_ref = 0.0;
             y_space = phase_grid_spacing[x->phase_grid] * phase_label_spacing[x->phase_labels];
@@ -2683,7 +2683,7 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
             y_min = -M_PI;
             y_max = M_PI;
 
-            for (y_ref = y_ref - (ceil((y_ref - y_min) / y_space) * y_space); y_ref <= y_max ; y_ref += y_space, count--)
+            for (y_ref = y_ref - (std::ceil((y_ref - y_min) / y_space) * y_space); y_ref <= y_max ; y_ref += y_space, count--)
             {
                 phase_label(text, count, denominator);
                 jfont_text_measure(jf,  text, &textwidth, &textheight);
@@ -2698,7 +2698,7 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
     {
         if (x->amp_labels && x->amp_grid)
         {
-            amp_ref = amp_ref - floor(amp_ref);
+            amp_ref = amp_ref - std::floor(amp_ref);
 
             y_ref = x->amp_ref;
             y_space = amp_grid_spacing[x->amp_grid] * amp_label_spacing[x->amp_labels];
@@ -2709,7 +2709,7 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
             if (amp_ref > 0.0)
                 base_precision = 1;
 
-            for (y_ref = y_ref - (ceil((y_ref - y_min) / y_space) * y_space); y_ref <= y_max ; y_ref += y_space)
+            for (y_ref = y_ref - (std::ceil((y_ref - y_min) / y_space) * y_space); y_ref <= y_max ; y_ref += y_space)
             {
                 amp_label(text,  y_ref, x->amp_grid, base_precision);
                 jfont_text_measure(jf,  text, &textwidth, &textheight);
@@ -2762,8 +2762,8 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
 
     intptr_t sel_min = 0;
     intptr_t sel_max = 0;
-    intptr_t sel_from = static_cast<intptr_t>(ceil (freq_2_bin(sel_min_freq, scale)));
-    intptr_t sel_to   = static_cast<intptr_t>(floor(freq_2_bin(sel_max_freq, scale)));
+    intptr_t sel_from = static_cast<intptr_t>(std::ceil (freq_2_bin(sel_min_freq, scale)));
+    intptr_t sel_to   = static_cast<intptr_t>(std::floor(freq_2_bin(sel_max_freq, scale)));
 
     intptr_t i;
 
@@ -2799,7 +2799,7 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
             if ((x->mouse_mode == 2 || x->mouse_mode == 4))
             {
                 double bin_pos = freq_2_bin(x_val, scale);
-                intptr_t read_lo = static_cast<intptr_t>(floor(bin_pos));
+                intptr_t read_lo = static_cast<intptr_t>(std::floor(bin_pos));
                 intptr_t read_hi = read_lo + 1;
 
                 if (fft_size && bin_pos >= 0.0 && (bin_pos <= (fft_size >> 1)))

@@ -124,7 +124,7 @@ intptr_t align_find_max(double *in, intptr_t length)
 
     for (intptr_t i = 0; i < length; i++)
     {
-        max_test = fabs(in[i]);
+        max_test = std::fabs(in[i]);
 
         if (max_test > max)
         {

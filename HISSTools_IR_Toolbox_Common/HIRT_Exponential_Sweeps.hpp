@@ -36,14 +36,14 @@ public:
         
         T *= sample_rate;
         
-        double L = std::round(f1 * T / (log(f2 / f1))) / f1;
+        double L = std::round(f1 * T / (std::log(f2 / f1))) / f1;
         
         m_K1 = 2 * M_PI * f1 * L;
         m_K2 = 1 / L;
         
-        double NT = std::round(f1 * T / (log(f2 / f1))) * log(f2 / f1) / f1;
+        double NT = std::round(f1 * T / (std::log(f2 / f1))) * std::log(f2 / f1) / f1;
         double final_phase = std::floor(L * f1 * (exp(NT * m_K2) - 1));
-        double NNT = std::ceil(log((final_phase / L / f1 + 1)) / m_K2);
+        double NNT = std::ceil(std::log((final_phase / L / f1 + 1)) / m_K2);
         
         m_T = static_cast<uintptr_t>(NNT);
         m_lo_f_act = f1;
@@ -63,7 +63,7 @@ public:
         
         // Start of amp curve
         
-        m_amp_specifier[0] = num_items ? log(amp_curve[0] / (f1 * sample_rate)) : 0.0;
+        m_amp_specifier[0] = num_items ? std::log(amp_curve[0] / (f1 * sample_rate)) : 0.0;
         m_amp_specifier[1] = last_db_val = num_items ? amp_curve[1] : 0.0;
         
         if (m_amp_specifier[0] > 0.0)
@@ -73,7 +73,7 @@ public:
         
         for (i = 0; i < num_items; i++)
         {
-            m_amp_specifier[2 * (i - num_invalid) + 2] = log(amp_curve[2 * i] / (f1 * sample_rate));
+            m_amp_specifier[2 * (i - num_invalid) + 2] = std::log(amp_curve[2 * i] / (f1 * sample_rate));
             m_amp_specifier[2 * (i - num_invalid) + 3] = amp_curve[2 * i + 1];
             
             // Sanitize values - If frequencies do not increase then ignore this pair
@@ -101,7 +101,7 @@ public:
 
     double harm_offset(uintptr_t harm) const
     {
-        return m_T / log(m_hi_f_act / m_lo_f_act) * log(static_cast<double>(harm));
+        return m_T / std::log(m_hi_f_act / m_lo_f_act) * std::log(static_cast<double>(harm));
     }
     
     uintptr_t gen(void *out, uintptr_t start, uintptr_t N, bool double_precision)
