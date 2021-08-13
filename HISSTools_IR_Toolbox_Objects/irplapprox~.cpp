@@ -33,7 +33,6 @@ struct t_irpiecewiseapprox
     // Approximation Outlet
 
     void *approximation_outlet;
-
 };
 
 
@@ -62,7 +61,7 @@ void irpiecewiseapprox_assist(t_irpiecewiseapprox *x, void *b, long m, long a, c
 void irpiecewiseapprox_process(t_irpiecewiseapprox *x, t_symbol *source);
 void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv);
 
-t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, uintptr_t N);
+void calc_PLA(t_PLA_data *PLA_data, double *x_vals, double *y_vals, long target_segments, uintptr_t N);
 void PLA_bottom_up(double *x_vals, double *y_vals, t_PLA_data *data, uintptr_t target_segments, uintptr_t num_segments);
 double PLA_calc_merged_cost(double *x_vals, double *y_vals, uintptr_t start_pos, uintptr_t end_pos);
 
@@ -148,7 +147,6 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 {
     FFT_SPLIT_COMPLEX_D spectrum_1;
 
-    t_PLA_data *PLA_data;
     t_PLA_data *current_data;
 
     t_atom out_list[HIRT_MAX_SPECIFIER_ITEMS];
@@ -176,6 +174,7 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     temp_fft_setup fft_setup(fft_size_log2);
 
+    temp_ptr<t_PLA_data> PLA_data(((fft_size_halved >> 1) + 1));
     temp_ptr<double> temp((fft_size * 2) + (fft_size_halved + 2));
     temp_ptr<float> in(source_length);
     
@@ -183,7 +182,7 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
     spectrum_1.imagp = spectrum_1.realp + fft_size;
     double *log_freqs = spectrum_1.imagp + fft_size;
 
-    if (!fft_setup || !temp || !in)
+    if (!fft_setup || !PLA_data || !temp || !in)
     {
         object_error((t_object *)x, "could not allocate temporary memory for processing");
         return;
@@ -217,39 +216,28 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     // Do PLA
 
-    PLA_data = calc_PLA(log_freqs + 1, spectrum_1.realp + 1, x->target_segments, fft_size_halved);
+    calc_PLA(PLA_data.get(), log_freqs + 1, spectrum_1.realp + 1, x->target_segments, fft_size_halved);
 
-    if (PLA_data)
+    // If norm mode is on find the maximum output value
+
+    if (x->norm_mode)
     {
-        // If norm mode is on find the maximum output value
-
-        if (x->norm_mode)
-        {
-            for (max_val = -HUGE_VAL, current_data = PLA_data; current_data; current_data = current_data->next_data)
-            {
-                pos = current_data->start_pos;
-                max_val = (spectrum_1.realp[pos + 1] > max_val) ? spectrum_1.realp[pos + 1] : max_val;
-            }
-        }
-
-        for (num_output_pairs = 0, current_data = PLA_data; current_data; current_data = current_data->next_data, num_output_pairs++)
+        for (max_val = -HUGE_VAL, current_data = PLA_data.get(); current_data; current_data = current_data->next_data)
         {
             pos = current_data->start_pos;
-
-            atom_setfloat(out_list + (num_output_pairs * 2) + 0, exp(log_freqs[pos + 1]));
-            atom_setfloat(out_list + (num_output_pairs * 2) + 1, spectrum_1.realp[pos + 1] - max_val);
+            max_val = (spectrum_1.realp[pos + 1] > max_val) ? spectrum_1.realp[pos + 1] : max_val;
         }
-
-        outlet_list(x->approximation_outlet, 0, (short) (num_output_pairs * 2), out_list);
     }
-    else
+
+    for (num_output_pairs = 0, current_data = PLA_data.get(); current_data; current_data = current_data->next_data, num_output_pairs++)
     {
-        object_error((t_object *) x, "could not allocate temporary linear approximation memory");
+        pos = current_data->start_pos;
+        
+        atom_setfloat(out_list + (num_output_pairs * 2) + 0, exp(log_freqs[pos + 1]));
+        atom_setfloat(out_list + (num_output_pairs * 2) + 1, spectrum_1.realp[pos + 1] - max_val);
     }
 
-    // Free resources
-
-    free(PLA_data);
+    outlet_list(x->approximation_outlet, 0, (short) (num_output_pairs * 2), out_list);
 }
 
 
@@ -258,17 +246,9 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 //////////////////////////////////////////////////////////////////////////
 
 
-t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, uintptr_t N)
+void calc_PLA(t_PLA_data *PLA_data, double *x_vals, double *y_vals, long target_segments, uintptr_t N)
 {
-    t_PLA_data *PLA_data = NULL;
     uintptr_t i;
-
-    // Allocate Resources
-
-    PLA_data = (t_PLA_data *) malloc(sizeof(t_PLA_data) * ((N >> 1) + 1));
-
-    if (!PLA_data)
-        return NULL;
 
     // Prepare Linear Approximation
 
@@ -281,13 +261,11 @@ t_PLA_data *calc_PLA(double *x_vals, double *y_vals, long target_segments, uintp
 
     PLA_data[i].start_pos = (i * 2);
     PLA_data[i].end_pos = (i * 2);
-    PLA_data[i].next_data = NULL;
+    PLA_data[i].next_data = nullptr;
 
     // Do Bottom up PLA
 
     PLA_bottom_up(x_vals, y_vals, PLA_data, target_segments, N / 2);
-
-    return PLA_data;
 }
 
 
