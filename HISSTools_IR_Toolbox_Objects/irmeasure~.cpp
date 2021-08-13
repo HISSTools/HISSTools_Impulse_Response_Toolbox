@@ -770,7 +770,7 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(rec_length + gen_length, &fft_size_log2);
+    fft_size = calculate_fft_size(rec_length + gen_length, fft_size_log2);
 
     // Allocate Temporary Memory
 

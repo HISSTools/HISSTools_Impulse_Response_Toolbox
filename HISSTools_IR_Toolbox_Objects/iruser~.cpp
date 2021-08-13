@@ -234,7 +234,7 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
     old_fft_size = fft_size;
     fft_size = fft_size < 0x10 ? 0x10 : fft_size;
     fft_size = fft_size > 0x10000000 ? 0x10000000 : fft_size;
-    fft_size = calculate_fft_size(fft_size, &fft_size_log2);
+    fft_size = calculate_fft_size(fft_size, fft_size_log2);
 
     if (old_fft_size != fft_size)
         object_warn((t_object *) x, "fft size out of range, or non-power of two - using %ld", fft_size);

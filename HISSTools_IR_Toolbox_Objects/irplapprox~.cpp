@@ -169,7 +169,7 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(source_length, &fft_size_log2);
+    fft_size = calculate_fft_size(source_length, fft_size_log2);
     fft_size_halved = fft_size >> 1;
 
     // Allocate Memory

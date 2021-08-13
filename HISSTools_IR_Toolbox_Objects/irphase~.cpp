@@ -263,7 +263,7 @@ void irphase_process_internal(t_irphase *x, t_symbol *sym, short argc, t_atom *a
         time_mul = 1.0;
     }
 
-    fft_size = calculate_fft_size((long) (max_length * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((long) (max_length * time_mul), fft_size_log2);
 
     if (fft_size < 8)
     {

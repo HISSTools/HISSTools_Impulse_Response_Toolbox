@@ -175,7 +175,7 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Calculate FFT size
 
-    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), fft_size_log2);
 
     // Allocate Memory
 

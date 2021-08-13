@@ -1519,7 +1519,7 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
     {
         // Calculate FFT size
 
-        fft_size = calculate_fft_size(length, &fft_size_log2);
+        fft_size = calculate_fft_size(length, fft_size_log2);
 
         // Allocate storage memory
 

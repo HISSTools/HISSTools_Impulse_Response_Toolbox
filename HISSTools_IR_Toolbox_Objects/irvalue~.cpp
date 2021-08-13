@@ -207,7 +207,7 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 
     // Calculate fft size
 
-    fft_size = calculate_fft_size((long) (source_length), &fft_size_log2);
+    fft_size = calculate_fft_size((long) (source_length), fft_size_log2);
 
     if (fft_size < 8)
     {

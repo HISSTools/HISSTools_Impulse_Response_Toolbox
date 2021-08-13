@@ -471,7 +471,7 @@ void irreference_process(t_irreference *x, t_symbol *sym, short argc, t_atom *ar
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(rec_length * 2, &fft_size_log2);
+    fft_size = calculate_fft_size(rec_length * 2, fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     // Allocate Temporary Memory

@@ -182,7 +182,7 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     // Check and calculate length
 
-    fft_size = calculate_fft_size((uintptr_t) (source_length_1 * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) (source_length_1 * time_mul), fft_size_log2);
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 
     if (fft_size < 8)
@@ -428,7 +428,7 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     // Calculate fft size
 
-    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), &fft_size_log2);
+    fft_size = calculate_fft_size((uintptr_t) (max_length * time_mul), fft_size_log2);
 
     deconvolve_delay = delay_retriever(x->deconvolve_delay, fft_size, sample_rate);
 

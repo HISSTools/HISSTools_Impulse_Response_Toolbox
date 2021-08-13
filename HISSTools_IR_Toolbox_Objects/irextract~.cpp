@@ -526,7 +526,7 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
     // Check and calculate lengths
 
-    fft_size = calculate_fft_size(rec_length + gen_length, &fft_size_log2);
+    fft_size = calculate_fft_size(rec_length + gen_length, fft_size_log2);
 
     if (rec_length % num_channels)
         object_warn ((t_object *) x, "buffer length is not a multiple of the number of channels - number may be wrong");

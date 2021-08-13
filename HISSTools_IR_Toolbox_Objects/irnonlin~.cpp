@@ -245,7 +245,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Calculate fft size
 
-    fft_size = calculate_fft_size(max_length, &fft_size_log2);
+    fft_size = calculate_fft_size(max_length, fft_size_log2);
 
     // Check length of buffers for writing
 

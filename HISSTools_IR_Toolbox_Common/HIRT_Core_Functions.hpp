@@ -2,18 +2,19 @@
 #ifndef __HIRT_CORE_FUNCTIONS__
 #define __HIRT_CORE_FUNCTIONS__
 
+#include <HISSTools_FFT.h>
 #include <HIRT_FFT_Setup.hpp>
 #include <HIRT_Memory.hpp>
-#include <HISSTools_FFT.h>
-#include <SIMDSupport.hpp>
+
+#include <cmath>
 #include <complex>
 #include <cstdint>
-    
+
 // Definitions and Enums
 
-#define HIRT_MAX_MEASURE_CHANS 128
-#define HIRT_MAX_SPECIFIER_ITEMS 2048
-#define HIRT_DB_MIN -500
+static constexpr int HIRT_MAX_MEASURE_CHANS = 128;
+static constexpr int HIRT_MAX_SPECIFIER_ITEMS = 2048;
+static constexpr double HIRT_DB_MIN = -500;
 
 enum t_smooth_mode
 {
@@ -35,7 +36,6 @@ enum t_filter_type
     FILTER_FILTER = 2
 };
 
-
 // Single Value Conversions
 
 static inline double db_to_a(double db)
@@ -43,12 +43,10 @@ static inline double db_to_a(double db)
     return pow(10.0, db / 20.0);
 }
 
-
 static inline double db_to_pow(double db)
 {
     return pow(10.0, db / 10.0);
 }
-
 
 static inline double a_to_db(double a)
 {
@@ -65,7 +63,6 @@ static inline double a_to_db(double a)
     return db;
 }
 
-
 static inline double pow_to_db(double pow)
 {
     double db;
@@ -81,13 +78,12 @@ static inline double pow_to_db(double pow)
     return db;
 }
 
-
 // Function Prototypes
 
 // FFT Size Calculations
 
-uintptr_t int_log2(uintptr_t in, uintptr_t *inexact);
-uintptr_t calculate_fft_size(uintptr_t input_size, uintptr_t *fft_size_log2);
+uintptr_t int_log2(uintptr_t in, bool& inexact);
+uintptr_t calculate_fft_size(uintptr_t input_size, uintptr_t& fft_size_log2);
 
 // DB / Pow Array Conversions
 

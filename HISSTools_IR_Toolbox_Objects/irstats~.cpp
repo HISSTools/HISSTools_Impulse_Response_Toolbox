@@ -979,7 +979,7 @@ double calc_gain(t_irstats *x, float *ir, intptr_t length, double sample_rate, d
 
     // Calculate FFT size
 
-    fft_size = calculate_fft_size(16384, &fft_size_log2);
+    fft_size = calculate_fft_size(16384, fft_size_log2);
     fft_ratio = fabs(fft_size / sample_rate);
 
     // Allocate and check temporary memory
