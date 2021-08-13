@@ -404,9 +404,6 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     double norm_factor;
     double sample_rate = 0.0;
 
-    double *temp_buf_d;
-    float *temp_buf_f;
-
     AH_SIntPtr crop1;
     AH_SIntPtr crop2;
     AH_SIntPtr fade_in;
@@ -528,19 +525,18 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Assign Temporary Memory
 
-    samples[0] = (double *) malloc(sizeof(double) * overall_length);
-    temp_buf_d = (double *) malloc(sizeof(double) * (max_length + pad_in + pad_out));
-    temp_buf_f = (float *) temp_buf_d;
+    temp_ptr<double> temp1(overall_length);
+    temp_ptr<double> temp2(max_length + pad_in + pad_out);
+    
+    samples[0] = temp1.get();
+    double *temp_buf_d = temp2.get();
+    float *temp_buf_f = reinterpret_cast<float *>(temp_buf_d);
 
     // Check temporary memory
 
-    if (!samples[0] || !temp_buf_d)
+    if (!temp1 || !temp2)
     {
         object_error((t_object *) x, "could not allocate temporary memory for internal storage");
-
-        free(samples[0]);
-        free(temp_buf_d);
-
         return;
     }
 
@@ -575,10 +571,7 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
                 overall_error = true;
     }
 
-    free(samples[0]);
-    free(temp_buf_d);
-
-    if (overall_error == false)
+    if (!overall_error)
         outlet_bang(x->process_done);
 }
 
@@ -678,9 +671,6 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     double sample_rate = 0.0;
     double norm_factor;
 
-    double *temp_buf_d;
-    float *temp_buf_f;
-
     AH_SIntPtr trim_offset;
     AH_SIntPtr trim_length;
     AH_SIntPtr fade_in;
@@ -770,26 +760,25 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
 
     // Check times
 
-    fade_in = fade_in < 0 ? 0 : fade_in;
+    fade_in  = fade_in  < 0 ? 0 : fade_in;
     fade_out = fade_out < 0 ? 0 : fade_out;
-    pad_in = pad_in < 0 ? 0 : pad_in;
-    pad_out = pad_out < 0 ? 0 : pad_out;
+    pad_in   = pad_in   < 0 ? 0 : pad_in;
+    pad_out  = pad_out  < 0 ? 0 : pad_out;
 
     // Assign Temporary Memory
 
-    samples[0] = (double *) malloc(sizeof(double) * overall_length);
-    temp_buf_d = (double *) malloc(sizeof(double) * (max_length + pad_in + pad_out));
-    temp_buf_f = (float *) temp_buf_d;
+    temp_ptr<double> temp1(overall_length);
+    temp_ptr<double> temp2(max_length + pad_in + pad_out);
+    
+    samples[0] = temp1.get();
+    double *temp_buf_d = temp2.get();
+    float *temp_buf_f = reinterpret_cast<float *>(temp_buf_d);
 
     // Check temporary memory
 
-    if (!samples[0] || !temp_buf_d)
+    if (!temp1 || !temp2)
     {
         object_error((t_object *) x, "could not allocate temporary memory for internal storage");
-
-        free(samples[0]);
-        free(temp_buf_d);
-
         return;
     }
 
@@ -833,10 +822,7 @@ void irtrimnorm_trim_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
         }
     }
 
-    free(samples[0]);
-    free(temp_buf_d);
-
-    if (overall_error == false)
+    if (!overall_error)
         outlet_bang(x->process_done);
 }
 

@@ -150,15 +150,9 @@ void irinvert_process(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
-
-    double *out_buf;
-    float *in_temp;
-    float *filter_in;
 
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source_1 = atom_getsym(argv++);
@@ -180,7 +174,6 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     t_atom_long read_chan = x->read_chan - 1;
     long deconvolve_mode = x->deconvolve_mode;
-    t_buffer_write_error error;
 
     // Check input buffers
 
@@ -200,30 +193,26 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     // Allocate Memory
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
 
-    spectrum_1.realp = allocate_aligned<double>(fft_size * 4);
+    temp_ptr<double> temp(fft_size * 4);
+    temp_ptr<float> filter_in(filter_length);
+
+    spectrum_1.realp = temp.get();
     spectrum_1.imagp = spectrum_1.realp + (fft_size >> 1);
     spectrum_2.realp = spectrum_1.imagp + (fft_size >> 1);
     spectrum_2.imagp = spectrum_2.realp + (fft_size >> 1);
     spectrum_3.realp = spectrum_2.imagp + (fft_size >> 1);
     spectrum_3.imagp = spectrum_3.realp + fft_size;
 
-    filter_in = filter_length ? allocate_aligned<float>(filter_length) : nullptr;
-
-    in_temp = (float *) spectrum_3.realp;
-    out_buf = spectrum_3.realp;
+    float *in_temp = reinterpret_cast<float *>(spectrum_3.realp);
+    double *out_buf = spectrum_3.realp;
 
     // Check memory allocations
 
-    if (!fft_setup || !spectrum_1.realp || (filter_length && !filter_in))
+    if (!fft_setup || !temp || (filter_length && !filter_in))
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(spectrum_1.realp);
-        deallocate_aligned(filter_in);
-
         return;
     }
 
@@ -237,19 +226,13 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
     fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
     fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
-    buffer_read(filter, 0, filter_in, fft_size);
-    deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, 0, sample_rate);
+    buffer_read(filter, 0, filter_in.get(), fft_size);
+    deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, 0, sample_rate);
 
     // Convert to time domain - copy out to buffer
 
     spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
-    error = buffer_write((t_object *)x, target, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
-
-    // Free resources
-
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(spectrum_1.realp);
-    deallocate_aligned(filter_in);
+    auto error = buffer_write((t_object *)x, target, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.);
 
     if (!error)
         outlet_bang(x->process_done);
@@ -407,18 +390,12 @@ void irinvert_mimo(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D impulses[128];
 
     t_symbol *in_buffer_names[128];
     t_symbol *out_buffer_names[128];
 
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
-
-    double *temp_buffer_d;
-    double *regularization;
-    float *temp_buffer_f;
 
     AH_SIntPtr lengths[128];
 
@@ -438,7 +415,6 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
     AH_SIntPtr num_buffers = 0;
     AH_SIntPtr i;
 
-    t_buffer_write_error error;
     long in_place = 1;
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
@@ -515,22 +491,20 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
 
     // Allocate Resources
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
-    temp_buffer_d = allocate_aligned<double>(fft_size * 2);
-    temp_buffer_f = (float *) temp_buffer_d;
-    regularization = temp_buffer_d + fft_size;
-    impulses[0].realp = allocate_aligned<double>(fft_size * sources * receivers);
+    temp_fft_setup fft_setup(fft_size_log2);
+    
+    temp_ptr<double> temp(fft_size * (2 + sources * receivers));
+    
+    double *temp_buffer_d = temp.get();
+    float  *temp_buffer_f = reinterpret_cast<float *>(temp_buffer_d);
+    double *regularization = temp_buffer_d + fft_size;
+    impulses[0].realp = regularization + fft_size;
 
     // Check Memory Allocations
 
-    if (!fft_setup || !temp_buffer_d || !impulses[0].realp)
+    if (!fft_setup || !temp)
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(impulses[0].realp);
-        deallocate_aligned(temp_buffer_d);
-
         return;
     }
 
@@ -565,19 +539,15 @@ void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *ar
         {
             delay_spectrum(impulses[i], fft_size, SPECTRUM_REAL, deconvolve_delay);
             spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
-            error = buffer_write((t_object*)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.);
+            auto error = buffer_write((t_object*)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.);
 
             if (error)
                 overall_error = true;
         }
     }
 
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(impulses[0].realp);
-    deallocate_aligned(temp_buffer_d);
-
     // Bang on success
 
-    if (overall_error == false)
+    if (!overall_error)
         outlet_bang(x->process_done);
 }

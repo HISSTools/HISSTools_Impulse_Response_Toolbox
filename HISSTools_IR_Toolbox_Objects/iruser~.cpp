@@ -195,11 +195,7 @@ void iruser_make(t_iruser *x, t_symbol *sym, long argc, t_atom *argv)
 
 void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
-
-    double *out_temp;
 
     double impulse_specifier[HIRT_MAX_SPECIFIER_ITEMS];
 
@@ -210,8 +206,6 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
     t_atom_long i;
 
     AH_UIntPtr fft_size_log2;
-
-    t_buffer_write_error error;
 
     double sample_rate = 0.0;
 
@@ -247,20 +241,19 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
 
     // Allocate Memory
 
-    out_temp = allocate_aligned<double>(3 * fft_size);
+    temp_fft_setup fft_setup(fft_size_log2);
+    
+    temp_ptr<double> temp(3 * fft_size);
+    
+    double *out_temp = temp.get();
     spectrum_1.realp = out_temp + fft_size;
     spectrum_1.imagp = spectrum_1.realp + fft_size;
-    hisstools_create_setup(&fft_setup, fft_size_log2);
 
     // Check memory allocation
 
-    if (!out_temp || !fft_setup)
+    if (!fft_setup || !temp)
     {
         object_error((t_object *) x, "could not allocate temporary memory");
-
-        hisstools_destroy_setup(fft_setup);
-        free(out_temp);
-
         return;
     }
 
@@ -275,12 +268,7 @@ void iruser_make_internal(t_iruser *x, t_symbol *sym, short argc, t_atom *argv)
     // Inverse FFT - copy out to buffer
 
     spectrum_to_time(fft_setup, out_temp, spectrum_1, fft_size, SPECTRUM_FULL);
-    error = buffer_write((t_object *)x, target, out_temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-
-    // Free Resources
-
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(out_temp);
+    auto error = buffer_write((t_object *)x, target, out_temp, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
 
     if (!error)
         outlet_bang(x->make_done);

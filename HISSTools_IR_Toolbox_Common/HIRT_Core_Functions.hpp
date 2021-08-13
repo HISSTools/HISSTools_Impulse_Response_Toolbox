@@ -3,6 +3,8 @@
 #define __HIRT_CORE_FUNCTIONS__
 
 #include <AH_Types.h>
+#include <HIRT_FFT_Setup.hpp>
+#include <HIRT_Memory.hpp>
 #include <HISSTools_FFT.h>
 #include <SIMDSupport.hpp>
 #include <complex>

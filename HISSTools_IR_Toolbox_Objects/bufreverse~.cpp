@@ -82,6 +82,7 @@ void *bufreverse_new()
 
 void bufreverse_free(t_bufreverse *x)
 {
+    free_HIRT_common_attributes(x);
 }
 
 
@@ -111,54 +112,43 @@ void bufreverse_process_internal(t_bufreverse *x, t_symbol *sym, short argc, t_a
 {
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source = atom_getsym(argv++);
-
-    float *temp1;
-    double *temp2;
-
-    t_buffer_write_error error;
-
-    AH_SIntPtr full_length = buffer_length(source);
     AH_SIntPtr i;
-
-    double sample_rate = 0;
+    
     t_atom_long read_chan = x->read_chan - 1;
 
     // Check source buffer
 
     if (buffer_check((t_object *) x, source))
         return;
-    sample_rate = buffer_sample_rate(source);
+    
+    AH_SIntPtr length = buffer_length(source);
+    double sample_rate = buffer_sample_rate(source);
 
     // Allocate Memory
 
-    temp1 = (float *) malloc(full_length * (sizeof(double) + sizeof(float)));
-    temp2 = (double *) (temp1 + full_length);
+    temp_ptr<float> temp1(length);
+    temp_ptr<float> temp2(length);
 
     // Check momory allocation
 
-    if (!temp1)
+    if (!temp1 || !temp2)
     {
         object_error((t_object *)x, "could not allocate temporary memory for processing");
-        free(temp1);
         return;
     }
 
     // Read from buffer
 
-    buffer_read(source, read_chan, (float *) temp1, full_length);
+    buffer_read(source, read_chan, temp1.get(), length);
 
-    // Copy to double precision version
+    // Copy in reverse to temporary storage
 
-    for (i = 0; i < full_length; i++)
-         temp2[i] = temp1[full_length - i - 1];
+    for (i = 0; i < length; i++)
+         temp2[i] = temp1[length - i - 1];
 
     // Copy out to buffer
 
-    error = buffer_write((t_object *)x, target, temp2, full_length, x->write_chan - 1, x->resize, sample_rate, 1.);
-
-    // Free Resources
-
-    free(temp1);
+    auto error = buffer_write_float((t_object *)x, target, temp2.get(), length, x->write_chan - 1, x->resize, sample_rate, 1.);
 
     if (!error)
         outlet_bang(x->process_done);

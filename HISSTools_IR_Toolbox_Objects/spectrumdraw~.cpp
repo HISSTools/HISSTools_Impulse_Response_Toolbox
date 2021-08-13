@@ -414,6 +414,7 @@ static inline double conv_yval_2_mouse(double y_val, t_scale_vals *scale)
     return scale->y_scale * (y_val - scale->y_max);
 }
 
+
 static inline double yval_2_mouse(double y_val, t_scale_vals *scale)
 {
     // Will convert power value inputs
@@ -1435,16 +1436,10 @@ void spectrumdraw_mousemove(t_spectrumdraw *x, t_object *patcherview, t_pt pt, l
 
 void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum;
 
     float *amp_vals;
     float *phase_vals;
-    float *in_buf;
-
-    double *temp_d;
-
     double sample_rate;
     double start_ms = 0;
     double end_ms = 0;
@@ -1539,51 +1534,43 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 
         // Allocate and check temporary memory
 
-        in_buf = allocate_aligned<float>(fft_size);
-        temp_d = allocate_aligned<double>(fft_size);
-        hisstools_create_setup(&fft_setup, fft_size_log2);
+        temp_fft_setup fft_setup(fft_size_log2);
+        
+        temp_ptr<float> in_buf(length);
+        temp_ptr<double> temp(fft_size * 2);
 
-        if (!fft_setup || !in_buf || !temp_d)
+        if (!fft_setup || !in_buf || !temp)
         {
-            hisstools_destroy_setup(fft_setup);
-            deallocate_aligned(in_buf);
-            deallocate_aligned(temp_d);
             object_error((t_object *) x, "could not allocate internal memory for analysis");
             return;
         }
 
-        spectrum.realp = (double *) (in_buf + fft_size);
+        spectrum.realp = temp.get() + fft_size;
         spectrum.imagp = spectrum.realp + (fft_size >> 1);
 
         // Read buffer and do FFT
 
-        buffer_read_part(buffer, read_chan, in_buf, offset, length);
-        time_to_halfspectrum_float(fft_setup, in_buf, length, spectrum, fft_size);
+        buffer_read_part(buffer, read_chan, in_buf.get(), offset, length);
+        time_to_halfspectrum_float(fft_setup, in_buf.get(), length, spectrum, fft_size);
 
         // Calculate Powers and Phases
 
-        temp_d[0] = spectrum.realp[0] * spectrum.realp[0];
+        temp[0] = spectrum.realp[0] * spectrum.realp[0];
         phase_vals[0] = 0.0;
 
-        for (i = 1; i < (AH_SIntPtr) (fft_size >> 1); i++)
+        for (i = 1; i < (fft_size >> 1); i++)
         {
-            temp_d[i] = (spectrum.realp[i] * spectrum.realp[i]) + (spectrum.imagp[i] * spectrum.imagp[i]);
+            temp[i] = (spectrum.realp[i] * spectrum.realp[i]) + (spectrum.imagp[i] * spectrum.imagp[i]);
             phase_vals[i] = atan2f((float) spectrum.imagp[i], (float) spectrum.realp[i]);
         }
 
-        temp_d[i] = spectrum.realp[i] * spectrum.realp[i];
-        phase_vals[i] = 0;
+        temp[fft_size >> 1] = spectrum.imagp[0] * spectrum.imagp[0];
+        phase_vals[fft_size >> 1] = 0.f;
 
-        spectrumdraw_octave_smooth(temp_d, amp_vals, (fft_size >> 1) + 1, x->oct_smooth);
+        spectrumdraw_octave_smooth(temp.get(), amp_vals, (fft_size >> 1) + 1, x->oct_smooth);
 
         x->curve_sr[display] = sample_rate;
         x->curve_freeze[display] = 2;
-
-        // Free memory
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(in_buf);
-        deallocate_aligned(temp_d);
 
         // Redraw
 
@@ -1735,6 +1722,7 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, AH_UIntPtr window_size, AH_
     for (i = 0; i < window_size; i++)
         window[i] *= scale;
 }
+
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -2920,7 +2908,7 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
         {
             if (!fft_size)
                 return;
-
+            
             for (i = sel_from; i < sel_to; i++)
             {
                 double test_val = y_vals[i];

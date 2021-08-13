@@ -30,7 +30,6 @@ struct t_bufconvolve
     // Bang Out
 
     void *process_done;
-
 };
 
 
@@ -41,12 +40,12 @@ struct t_bufconvolve
 
 // Function prototypes
 
-void *bufconvolve_new  (t_symbol *s, short argc, t_atom *argv);
-void bufconvolve_free (t_bufconvolve *x);
-void bufconvolve_assist (t_bufconvolve *x, void *b, long m, long a, char *s);
+void *bufconvolve_new(t_symbol *s, short argc, t_atom *argv);
+void bufconvolve_free(t_bufconvolve *x);
+void bufconvolve_assist(t_bufconvolve *x, void *b, long m, long a, char *s);
 
-void bufconvolve_process (t_bufconvolve *x, t_symbol *sym, long argc, t_atom *argv);
-void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, t_atom *argv);
+void bufconvolve_process(t_bufconvolve *x, t_symbol *sym, long argc, t_atom *argv);
+void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t_atom *argv);
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -77,7 +76,6 @@ int C74_EXPORT main()
 
 
 void *bufconvolve_new(t_symbol *s, short argc, t_atom *argv)
-
 {
     t_bufconvolve *x = (t_bufconvolve *) object_alloc(this_class);
 
@@ -143,17 +141,11 @@ void bufconvolve_process(t_bufconvolve *x, t_symbol *sym, long argc, t_atom *arg
 }
 
 
-void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, t_atom *argv)
+void bufconvolve_process_internal(t_bufconvolve *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
-
-    double *out_buf;
-    float *in_temp;
-    float *filter_in;
 
     AH_Boolean convolve_mode = sym == gensym("convolve") ? true : false;
 
@@ -179,7 +171,6 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 
     long deconvolve_mode = x->deconvolve_mode;
     t_atom_long read_chan = x->read_chan - 1;
-    t_buffer_write_error error;
 
     // Check input buffers
 
@@ -209,30 +200,26 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 
     // Allocate Memory (use pointer aliasing where possible for efficiency)
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
+    
+    temp_ptr<double> temp(fft_size * (convolve_mode ? 3 : 4));
+    temp_ptr<float> filter_in(filter_length);
 
-    spectrum_1.realp = allocate_aligned<double>(fft_size * (convolve_mode == true ? 3 : 4));
+    spectrum_1.realp = temp.get();
     spectrum_1.imagp = spectrum_1.realp + (fft_size >> 1);
     spectrum_2.realp = spectrum_1.imagp + (fft_size >> 1);
     spectrum_2.imagp = spectrum_2.realp + (fft_size >> 1);
     spectrum_3.realp = spectrum_2.imagp + (fft_size >> 1);
-    spectrum_3.imagp = convolve_mode == true ? 0 : spectrum_3.realp + fft_size;
+    spectrum_3.imagp = convolve_mode ? 0 : spectrum_3.realp + fft_size;
 
-    filter_in = filter_length ? allocate_aligned<float>(filter_length) : nullptr;
-
-    out_buf = spectrum_2.realp;
-    in_temp = (float *) spectrum_3.realp;
+    double *out_buf = spectrum_2.realp;
+    float *in_temp = reinterpret_cast<float *>(spectrum_3.realp);
 
     // Check memory allocations
 
     if (!fft_setup || !spectrum_1.realp || (filter_length && !filter_in))
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(spectrum_1.realp);
-        deallocate_aligned(filter_in);
-
         return;
     }
 
@@ -253,20 +240,14 @@ void bufconvolve_process_internal (t_bufconvolve *x, t_symbol *sym, short argc, 
 
         fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
         fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
-        buffer_read(filter, 0, filter_in, fft_size);
-        deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0.0, filter_in, filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
+        buffer_read(filter, 0, filter_in.get(), fft_size);
+        deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_3, filter_specifier, range_specifier, 0.0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
     }
 
     // Convert to time domain - copy out to buffer
 
     spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
-    error = buffer_write((t_object *) x, target, out_buf, (convolve_mode == true ? source_length_1 + source_length_2 - 1 : fft_size), x->write_chan - 1, x->resize, sample_rate, 1.);
-
-    // Free resources
-
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(spectrum_1.realp);
-    deallocate_aligned(filter_in);
+    auto error = buffer_write((t_object *) x, target, out_buf, (convolve_mode? source_length_1 + source_length_2 - 1 : fft_size), x->write_chan - 1, x->resize, sample_rate, 1.);
 
     if (!error)
         outlet_bang(x->process_done);

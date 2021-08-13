@@ -122,12 +122,8 @@ void iraverage_process(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
 
 void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
-
-    double *temp;
 
     t_symbol *target;
     t_symbol *buffer_names[128];
@@ -148,8 +144,6 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
-
-    t_buffer_write_error error;
 
     if (!argc)
     {
@@ -185,23 +179,22 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Allocate Memory
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
 
-    temp = allocate_aligned<double>(5 * fft_size);
-    spectrum_1.realp = temp + fft_size;
+    temp_ptr<double> temp(5 * fft_size);
+    
+    spectrum_1.realp = temp.get() + fft_size;
     spectrum_1.imagp = spectrum_1.realp + fft_size;
     spectrum_2.realp = spectrum_1.imagp + fft_size;
     spectrum_2.imagp = spectrum_2.realp + fft_size;
 
+    float *in = reinterpret_cast<float *>(temp.get());
+    
     // Check momory allocation
 
     if (!fft_setup || !temp)
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(temp);
-
         return;
     }
 
@@ -219,8 +212,8 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     {
         // Read buffer - convert to frequency domain - take power spectrum
 
-        read_length = buffer_read(buffer_names[i], read_chan, (float *) temp, fft_size);
-        time_to_spectrum_float(fft_setup, (float *) temp, read_length, spectrum_2, fft_size);
+        read_length = buffer_read(buffer_names[i], read_chan, in, fft_size);
+        time_to_spectrum_float(fft_setup, in, read_length, spectrum_2, fft_size);
         power_spectrum(spectrum_2, fft_size, SPECTRUM_FULL);
 
         // Accumulate
@@ -237,13 +230,8 @@ void iraverage_process_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
     // Change phase - convert to time domain - copy out to buffer
 
     variable_phase_from_power_spectrum(fft_setup, spectrum_1, fft_size, phase_retriever(x->out_phase), false);
-    spectrum_to_time(fft_setup, temp, spectrum_1, fft_size, SPECTRUM_FULL);
-    error = buffer_write((t_object *)x, target, temp, fft_size, write_chan, x->resize, sample_rate, 1.0);
-
-    // Free Resources
-
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(temp);
+    spectrum_to_time(fft_setup, temp.get(), spectrum_1, fft_size, SPECTRUM_FULL);
+    auto error = buffer_write((t_object *)x, target, temp.get(), fft_size, write_chan, x->resize, sample_rate, 1.0);
 
     if (!error)
         outlet_bang(x->process_done);
@@ -258,9 +246,6 @@ void iraverage_average(t_iraverage *x, t_symbol *sym, long argc, t_atom *argv)
 
 void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    double *accum;
-    float *temp;
-
     t_symbol *target;
     t_symbol *buffer_names[128];
 
@@ -277,8 +262,6 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
-
-    t_buffer_write_error error;
 
     // Check there are some arguments
 
@@ -301,16 +284,14 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Allocate memory
 
-    temp = allocate_aligned<float>(max_length);
-    accum = allocate_aligned<double>(max_length);
+    temp_ptr<float> temp(max_length);
+    temp_ptr<double> accum(max_length);
 
     // Check memory allocation
 
     if (!temp || !accum)
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-        deallocate_aligned(temp);
-        deallocate_aligned(accum);
         return;
     }
 
@@ -323,7 +304,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     for (i = 0; i < num_buffers; i++)
     {
-        read_length = buffer_read(buffer_names[i], read_chan, (float *) temp, max_length);
+        read_length = buffer_read(buffer_names[i], read_chan, temp.get(), max_length);
 
         for (j = 0; j < read_length; j++)
             accum[j] += temp[j];
@@ -336,12 +317,7 @@ void iraverage_average_internal(t_iraverage *x, t_symbol *sym, short argc, t_ato
 
     // Copy out to buffer
 
-    error = buffer_write((t_object *)x, target, accum, max_length, write_chan, x->resize, sample_rate, 1.0);
-
-    // Free Resources
-
-    deallocate_aligned(temp);
-    deallocate_aligned(accum);
+    auto error = buffer_write((t_object *)x, target, accum.get(), max_length, write_chan, x->resize, sample_rate, 1.0);
 
     if (!error)
         outlet_bang(x->process_done);

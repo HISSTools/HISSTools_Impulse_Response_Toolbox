@@ -31,7 +31,6 @@ struct t_irtransaural
     // Bang Out
 
     void *process_done;
-
 };
 
 
@@ -148,16 +147,10 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 {
     using complex = std::complex<double>;
     
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
     FFT_SPLIT_COMPLEX_D spectrum_4;
-
-    double *out_buf;
-    float *in_temp;
-    float *filter_in;
 
     t_symbol *target_1 = atom_getsym(argv++);
     t_symbol *target_2 = atom_getsym(argv++);
@@ -183,6 +176,8 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
     AH_UIntPtr fft_size_log2;
     AH_UIntPtr i;
 
+    AH_Boolean overall_error = false;
+    
     t_filter_type deconvolve_mode = (t_filter_type) x->deconvolve_mode;
     t_atom_long read_chan = x->read_chan - 1;
 
@@ -211,9 +206,12 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 
     // Allocate Memory
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
 
-    spectrum_1.realp = allocate_aligned<double>(fft_size * 5);
+    temp_ptr<double> temp(fft_size * 5);
+    temp_ptr<float> filter_in(filter_length);
+
+    spectrum_1.realp = temp.get();
     spectrum_1.imagp = spectrum_1.realp + fft_size_halved;
     spectrum_2.realp = spectrum_1.imagp + fft_size_halved;
     spectrum_2.imagp = spectrum_2.realp + fft_size_halved;
@@ -222,21 +220,14 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
     spectrum_4.realp = spectrum_3.imagp + fft_size_halved;
     spectrum_4.imagp = spectrum_4.realp + fft_size;
 
-    filter_in = filter_length ? allocate_aligned<float>(filter_length) : nullptr;
-
-    out_buf = spectrum_4.realp;
-    in_temp = (float *) spectrum_4.realp;
+    double *out_buf = spectrum_4.realp;
+    float *in_temp = reinterpret_cast<float *>(spectrum_4.realp);
 
     // Check memory allocations
 
-    if (!fft_setup || !spectrum_1.realp || (filter_length & !filter_in))
+    if (!fft_setup || !temp || (filter_length & !filter_in))
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(spectrum_1.realp);
-        deallocate_aligned(filter_in);
-
         return;
     }
 
@@ -244,7 +235,7 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 
     fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
     fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
-    buffer_read(filter, 0, filter_in, fft_size);
+    buffer_read(filter, 0, filter_in.get(), fft_size);
 
     // Get inputs - convert to frequency domain
 
@@ -273,16 +264,20 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
         // Deconvolve - convert to time domain - copy out to buffer
 
         spike_spectrum(spectrum_1, fft_size, SPECTRUM_REAL, deconvolve_delay);
-        deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
+        deconvolve(fft_setup, spectrum_1, spectrum_2, spectrum_4, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-
+        if (error)
+            overall_error = true;
+        
         // Deconvolve - convert to time domain - copy out to buffer
 
         spike_spectrum(spectrum_1, fft_size, SPECTRUM_REAL, deconvolve_delay);
-        deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
+        deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, 0, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
+        if (error)
+            overall_error = true;
     }
     else
     {
@@ -319,23 +314,21 @@ void irtransaural_process_internal(t_irtransaural *x, t_symbol *sym, short argc,
 
         // Deconvolve - convert to time domain - copy out to buffer
 
-        deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
+        deconvolve(fft_setup, spectrum_1, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_1, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_1, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
-
+        if (error)
+            overall_error = true;
+        
         // Deconvolve - convert to time domain - copy out to buffer
 
-        deconvolve(fft_setup, spectrum_2, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in, filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
+        deconvolve(fft_setup, spectrum_2, spectrum_3, spectrum_4, filter_specifier, range_specifier, 0, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, deconvolve_mode, deconvolve_phase, deconvolve_delay, sample_rate);
         spectrum_to_time(fft_setup, out_buf, spectrum_2, fft_size, SPECTRUM_REAL);
         error = buffer_write((t_object *)x, target_2, out_buf, fft_size, x->write_chan - 1, x->resize, sample_rate, 1.0);
+        if (error)
+            overall_error = true;
     }
 
-    // Free resources
-
-    deallocate_aligned(spectrum_1.realp);
-    deallocate_aligned(filter_in);
-    hisstools_destroy_setup(fft_setup);
-
-    if (!error)
+    if (!overall_error)
         outlet_bang(x->process_done);
 }

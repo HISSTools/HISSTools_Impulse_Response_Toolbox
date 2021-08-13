@@ -175,9 +175,6 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
     t_atom_long write_chan = x->write_chan - 1;
     double sample_rate = 0.0;
 
-    double *temp_buf_d;
-    float *temp_buf_f;
-
     AH_SIntPtr num_buffers = 0;
     AH_SIntPtr overall_length = 0;
     AH_SIntPtr max_length = 0;
@@ -185,7 +182,6 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
     AH_SIntPtr offset = 0;
     AH_SIntPtr i, j;
 
-    t_buffer_write_error error;
     AH_Boolean overall_error = false;
 
     // Check buffers, storing names and lengths +  calculate total / largest length
@@ -197,19 +193,18 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     // Assign Temporary Memory
 
-    samples[0] = (double *) malloc(sizeof(double) * overall_length);
-    temp_buf_d = (double *) malloc(sizeof(double) * max_length * 2);
-    temp_buf_f = (float *) temp_buf_d;
+    temp_ptr<double> temp1(overall_length);
+    temp_ptr<double> temp2(max_length * 2);
+
+    samples[0] = temp1.get();
+    double *temp_buf_d = temp2.get();
+    float  *temp_buf_f = reinterpret_cast<float *>(temp2.get());
 
     // Check temporary memory
 
-    if (!samples[0] || !temp_buf_d)
+    if (!temp1 || !temp2)
     {
         object_error((t_object *) x, "could not allocate temporary memory for internal storage");
-
-        free(samples[0]);
-        free(temp_buf_d);
-
         return;
     }
 
@@ -229,7 +224,7 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     for (i = 0; i < num_buffers; i++)
     {
-        max_pos[i] = align_find_max (samples[i], lengths[i]);
+        max_pos[i] = align_find_max(samples[i], lengths[i]);
 
         if (max_pos[i] > overall_max_pos)
             overall_max_pos = max_pos[i];
@@ -253,21 +248,16 @@ void iralign_align_internal(t_iralign *x, t_symbol *sym, short argc, t_atom *arg
 
     for (i = 0; i < num_buffers; i++)
     {
-        align_pad (temp_buf_d, samples[i], overall_max_pos - max_pos[i], lengths[i]);
+        align_pad(temp_buf_d, samples[i], overall_max_pos - max_pos[i], lengths[i]);
 
-        error = buffer_write((t_object *)x, out_buffer_names[i], temp_buf_d, lengths[i] + overall_max_pos - max_pos[i], write_chan, x->resize, sample_rate, 1.0);
+        auto error = buffer_write((t_object *)x, out_buffer_names[i], temp_buf_d, lengths[i] + overall_max_pos - max_pos[i], write_chan, x->resize, sample_rate, 1.0);
 
         if (error)
             overall_error = true;
     }
 
-    // Free
-
-    free(samples[0]);
-    free(temp_buf_d);
-
     // Bang on success
 
-    if (overall_error == false)
+    if (!overall_error)
         outlet_bang(x->process_done);
 }

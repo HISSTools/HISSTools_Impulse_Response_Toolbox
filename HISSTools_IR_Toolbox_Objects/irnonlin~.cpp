@@ -219,8 +219,6 @@ void irnonlin_nonlin(t_irnonlin *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D impulses[128];
 
     t_symbol *in_buffer_names[128];
@@ -231,10 +229,6 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
     double current_coeff;
     double real;
     double imag;
-
-    double *temp_buffer_d;
-    float *temp_buffer_f;
-
     AH_UIntPtr fft_size;
     AH_UIntPtr fft_size_log2;
 
@@ -243,8 +237,6 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
     AH_SIntPtr length;
     AH_SIntPtr max_length = 0;
     AH_SIntPtr i, j, k;
-
-    t_buffer_write_error error;
 
     AH_Boolean overall_error = false;
 
@@ -282,10 +274,13 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Allocate Resources
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
-    temp_buffer_d = allocate_aligned<double>(fft_size);
-    temp_buffer_f = (float *) temp_buffer_d;
-     impulses[0].realp = allocate_aligned<double>(fft_size * num_buffers);
+    temp_fft_setup fft_setup(fft_size_log2);
+
+    temp_ptr<double> temp(fft_size * (num_buffers + 1));
+    
+    double *temp_buffer_d = temp.get();
+    float  *temp_buffer_f = reinterpret_cast<float *>(temp_buffer_d);
+    impulses[0].realp = temp.get() + fft_size;
 
     // Solve linear equations to generate multiplicative coeffients for harmonics
 
@@ -293,15 +288,9 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Check Memory Allocations
 
-    if (!fft_setup || !temp_buffer_d || !impulses[0].realp || !coeff)
+    if (!fft_setup || !temp)
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(impulses[0].realp);
-        deallocate_aligned(temp_buffer_d);
-        matrix_destroy_complex(coeff);
-
         return;
     }
 
@@ -384,7 +373,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
                 for (j = 1; j < ((AH_SIntPtr) fft_size >> 1); j++)
                 {
                     impulses[i].realp[j] += -impulses[k].imagp[j] * current_coeff;
-                    impulses[i].imagp[j] += impulses[k].realp[j] * current_coeff;
+                    impulses[i].imagp[j] +=  impulses[k].realp[j] * current_coeff;
                 }
             }
         }
@@ -396,19 +385,12 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
     for (i = 0; i < num_buffers; i++)
     {
         spectrum_to_time(fft_setup, temp_buffer_d, impulses[i], fft_size, SPECTRUM_REAL);
-        error = buffer_write((t_object *)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.0);
+        auto error = buffer_write((t_object *)x, out_buffer_names[i], temp_buffer_d, fft_size, write_chan, x->resize, sample_rate, 1.0);
         overall_error = error ? true : overall_error;
     }
 
-    // Free Resources
-
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(impulses[0].realp);
-    deallocate_aligned(temp_buffer_d);
-    matrix_destroy_complex(coeff);
-
     // Bang on success
 
-    if (overall_error == false)
+    if (!overall_error)
         outlet_bang(x->process_done);
 }

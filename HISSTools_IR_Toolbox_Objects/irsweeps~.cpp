@@ -192,11 +192,7 @@ double irsweeps_param_check(t_irsweeps *x, const char *name, double val, double 
 
 void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, AH_SIntPtr sig_length, void *params, double sample_rate)
 {
-    // This can all be re-used for other signals
-
-    t_buffer_write_error error;
-
-    float *temp_buf = (float *) malloc(sig_length * sizeof(float));
+    temp_ptr<float> temp_buf(sig_length);
 
     if (!temp_buf)
     {
@@ -209,29 +205,25 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
     switch (sig_type)
     {
         case SWEEP:
-            ess_gen((t_ess *) params, temp_buf, false);
+            ess_gen((t_ess *) params, temp_buf.get(), false);
             break;
 
         case INV_SWEEP:
-            ess_igen((t_ess *) params, temp_buf, x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
+            ess_igen((t_ess *) params, temp_buf.get(), x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
             break;
 
         case MLS:
-            mls_gen((t_mls *) params, temp_buf, false);
+            mls_gen((t_mls *) params, temp_buf.get(), false);
             break;
 
         case NOISE:
-            coloured_noise_gen((t_noise_params *)params, temp_buf, false);
+            coloured_noise_gen((t_noise_params *)params, temp_buf.get(), false);
             break;
     }
 
     // Write to buffer
 
-    error = buffer_write_float((t_object *)x, buffer, temp_buf, sig_length, x->resize, x->write_chan - 1, sample_rate, 1.0);
-
-    // Free temporary memory
-
-    free(temp_buf);
+    auto error = buffer_write_float((t_object *)x, buffer, temp_buf.get(), sig_length, x->resize, x->write_chan - 1, sample_rate, 1.0);
 
     if (!error)
         outlet_bang(x->process_done);
@@ -309,10 +301,12 @@ void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     irsweeps_gen(x, buffer, sym == gensym("sweep") ? SWEEP : INV_SWEEP, sweep_length, &sweep_params, sample_rate);
 }
 
+
 void irsweeps_mls(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv)
 {
     defer(x, (method) irsweep_mls_internal, sym, (short) argc, argv);
 }
+
 
 void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv)
 {

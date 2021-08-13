@@ -102,7 +102,7 @@ void *irextract_new(t_symbol *s, short argc, t_atom *argv);
 void irextract_free(t_irextract *x);
 void irextract_assist(t_irextract *x, void *b, long m, long a, char *s);
 
-double irextract_param_check(t_irextract *x, char *name, double val, double min, double max);
+double irextract_param_check(t_irextract *x, const char *name, double val, double min, double max);
 
 void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
 void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv);
@@ -478,17 +478,12 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     t_atom_long num_channels = atom_getlong(argv + 1);
     double sample_rate = atom_getfloat(argv + 2);
     
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
     FFT_SPLIT_COMPLEX_D spectrum_2;
     FFT_SPLIT_COMPLEX_D spectrum_3;
 
-    double *excitation_sig;
     double *out_mem;
-    float *rec_mem;
-    float *filter_in;
-
+    
     t_symbol *filter = filter_retriever(x->deconvolve_filter_specifier);
 
     double filter_specifier[HIRT_MAX_SPECIFIER_ITEMS];
@@ -554,31 +549,24 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
     // Allocate Temporary Memory
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
 
-    excitation_sig = (double *) malloc(((gen_length > filter_length) ? gen_length : filter_length) * sizeof(double));
+    temp_ptr<double> temp(fft_size * 4);
+    temp_ptr<double> excitation_sig(gen_length);
 
-    spectrum_1.realp = allocate_aligned<double>(fft_size * 4);
+    temp_ptr<float> rec_mem(rec_length);
+    temp_ptr<float> filter_in(filter_length);
+
+    spectrum_1.realp = temp.get();
     spectrum_1.imagp = spectrum_1.realp + (fft_size >> 1);
     spectrum_2.realp = spectrum_1.imagp + (fft_size >> 1);
     spectrum_2.imagp = spectrum_2.realp + (fft_size >> 1);
     spectrum_3.realp = spectrum_2.imagp + (fft_size >> 1);
     spectrum_3.imagp = spectrum_3.realp + fft_size;
 
-    rec_mem = (float *) malloc(rec_length * sizeof(float));
-
-    filter_in = filter_length ? allocate_aligned<float>(filter_length) : nullptr;
-
-    if (!fft_setup || !excitation_sig || !spectrum_1.realp || (filter_length && !filter_in))
+    if (!fft_setup || !temp || !excitation_sig  || !rec_mem || (filter_length && !filter_in))
     {
         object_error ((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        free(excitation_sig);
-        free(rec_mem);
-        deallocate_aligned(spectrum_1.realp);
-        deallocate_aligned(filter_in);
-
         return;
     }
 
@@ -594,11 +582,6 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     if (!out_mem)
     {
         object_error ((t_object *) x, "could not allocate memory for output storage");
-        hisstools_destroy_setup(fft_setup);
-        free(excitation_sig);
-        free(rec_mem);
-        deallocate_aligned(spectrum_1.realp);
-        deallocate_aligned(filter_in);
         return;
     }
 
@@ -607,28 +590,28 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
     switch (x->measure_mode)
     {
         case SWEEP:
-            ess_gen(&x->sweep_params, excitation_sig, true);
+            ess_gen(&x->sweep_params, excitation_sig.get(), true);
             break;
 
         case MLS:
-            mls_gen(&x->max_length_params, excitation_sig, true);
+            mls_gen(&x->max_length_params, excitation_sig.get(), true);
             break;
 
         case NOISE:
-            coloured_noise_gen(&x->noise_params, excitation_sig, true);
+            coloured_noise_gen(&x->noise_params, excitation_sig.get(), true);
             break;
     }
 
     // Transform excitation signal into complex spectrum 2
 
-    time_to_halfspectrum_double(fft_setup, excitation_sig, gen_length, spectrum_2, fft_size);
+    time_to_halfspectrum_double(fft_setup, excitation_sig.get(), gen_length, spectrum_2, fft_size);
 
     if (bandlimit)
     {
         // Calculate standard filter for bandlimited deconvolution (sweep * inv sweep)
 
-        ess_igen(&x->sweep_params, excitation_sig, INVERT_ALL, true);
-        time_to_halfspectrum_double(fft_setup, (double *) excitation_sig, gen_length, spectrum_3, fft_size);
+        ess_igen(&x->sweep_params, excitation_sig.get(), INVERT_ALL, true);
+        time_to_halfspectrum_double(fft_setup, excitation_sig.get(), gen_length, spectrum_3, fft_size);
         convolve(spectrum_3, spectrum_2, fft_size, SPECTRUM_REAL);
 
         // Calculate full power spectrum from half spectrum - convert filter to have the required phase
@@ -656,24 +639,16 @@ void irextract_process_internal(t_irextract *x, t_symbol *sym, short argc, t_ato
 
         fill_power_array_specifier(filter_specifier, x->deconvolve_filter_specifier, x->deconvolve_num_filter_specifiers);
         fill_power_array_specifier(range_specifier, x->deconvolve_range_specifier, x->deconvolve_num_range_specifiers);
-        buffer_read(filter, 0, filter_in, fft_size);
-        make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, max_pow, filter_in, filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, sample_rate);
+        buffer_read(filter, 0, filter_in.get(), fft_size);
+        make_deconvolution_filter(fft_setup, spectrum_2, spectrum_3, filter_specifier, range_specifier, max_pow, filter_in.get(), filter_length, fft_size, SPECTRUM_REAL, (t_filter_type) deconvolve_mode, deconvolve_phase, sample_rate);
     }
 
     // Read recording from buffer / do transform into spectrum_1 for measurement recording - deconvolve - transform back
 
-    buffer_read(rec_buffer, read_chan, rec_mem, rec_length);
-    time_to_halfspectrum_float(fft_setup, rec_mem, rec_length, spectrum_1, fft_size);
+    buffer_read(rec_buffer, read_chan, rec_mem.get(), rec_length);
+    time_to_halfspectrum_float(fft_setup, rec_mem.get(), rec_length, spectrum_1, fft_size);
     deconvolve_with_filter(spectrum_1, spectrum_2, spectrum_3, fft_size, SPECTRUM_REAL);
     spectrum_to_time(fft_setup, out_mem, spectrum_1, fft_size, SPECTRUM_REAL);
-
-    // Free Memory
-
-    hisstools_destroy_setup(fft_setup);
-    free(excitation_sig);
-    free(rec_mem);
-    deallocate_aligned(spectrum_1.realp);
-    deallocate_aligned(filter_in);
 
     // Done
 
@@ -694,7 +669,6 @@ void irextract_getir(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
 void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *argv)
 {
-    t_buffer_write_error error;
     t_symbol *buffer;
 
     double *out_buf;
@@ -790,11 +764,12 @@ void irextract_getir_internal(t_irextract *x, t_symbol *sym, short argc, t_atom 
 
     // Write to buffer
 
-    error = buffer_write((t_object *) x, buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    auto error = buffer_write((t_object *) x, buffer, out_buf, L, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
     
     // Done
     
-    outlet_bang(x->process_done);
+    if (!error)
+        outlet_bang(x->process_done);
 }
 
 void irextract_dump(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
@@ -807,7 +782,6 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 {
     double *out_mem;
 
-    t_buffer_write_error error;
     t_symbol *buffer = NULL;
 
     AH_UIntPtr fft_size = x->fft_size;
@@ -841,9 +815,10 @@ void irextract_dump_internal(t_irextract *x, t_symbol *sym, short argc, t_atom *
 
     // Write to buffer
 
-    error = buffer_write((t_object *) x, buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
+    auto error = buffer_write((t_object *) x, buffer, out_mem, fft_size, x->write_chan - 1, x->resize, x->sample_rate, 1.0);
     
     // Done
     
-    outlet_bang(x->process_done);
+    if (!error)
+        outlet_bang(x->process_done);
 }

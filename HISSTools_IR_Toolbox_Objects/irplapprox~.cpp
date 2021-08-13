@@ -146,12 +146,7 @@ void irpiecewiseapprox_process(t_irpiecewiseapprox *x, t_symbol *source)
 
 void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source, short argc, t_atom *argv)
 {
-     FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
-
-    double *log_freqs;
-    float *in;
 
     t_PLA_data *PLA_data;
     t_PLA_data *current_data;
@@ -179,32 +174,29 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     // Allocate Memory
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
 
-    spectrum_1.realp = allocate_aligned<double>((fft_size * 2) + (fft_size_halved + 2));
+    temp_ptr<double> temp((fft_size * 2) + (fft_size_halved + 2));
+    temp_ptr<float> in(source_length);
+    
+    spectrum_1.realp = temp.get();
     spectrum_1.imagp = spectrum_1.realp + fft_size;
-    log_freqs = spectrum_1.imagp + fft_size;
+    double *log_freqs = spectrum_1.imagp + fft_size;
 
-    in = allocate_aligned<float>(source_length);
-
-    if (!fft_setup || !spectrum_1.realp || !in)
+    if (!fft_setup || !temp || !in)
     {
-        hisstools_destroy_setup(fft_setup);
-
-        deallocate_aligned(in);
-        deallocate_aligned(spectrum_1.realp);
-
+        object_error((t_object *)x, "could not allocate temporary memory for processing");
         return;
     }
 
     // Get input and sample rate
 
-    buffer_read(source, x->read_chan - 1, in, source_length);
+    buffer_read(source, x->read_chan - 1, in.get(), source_length);
     sample_rate = buffer_sample_rate(source);
 
     // Convert to frequency domain (for inversion only one buffer is given - use modelling spike for the other input)
 
-    time_to_spectrum_float(fft_setup, in, source_length, spectrum_1, fft_size);
+    time_to_spectrum_float(fft_setup, in.get(), source_length, spectrum_1, fft_size);
     power_spectrum(spectrum_1, fft_size, SPECTRUM_FULL);
 
     // Smooth
@@ -257,9 +249,6 @@ void irpiecewiseapprox_process_internal(t_irpiecewiseapprox *x, t_symbol *source
 
     // Free resources
 
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(in);
-    deallocate_aligned(spectrum_1.realp);
     free(PLA_data);
 }
 

@@ -90,7 +90,7 @@ void *irvalue_new(t_symbol *s, short argc, t_atom *argv)
 
     init_HIRT_common_attributes(x);
 
-    x->db_spectrum = NULL;
+    x->db_spectrum = nullptr;
     x->fft_size = 0;
     x->sampling_rate = 0.0;
 
@@ -189,12 +189,7 @@ void octave_smooth(double *in, double *out, AH_SIntPtr size, double oct_width)
 
 void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 {
-    FFT_SETUP_D fft_setup;
-
     FFT_SPLIT_COMPLEX_D spectrum_1;
-
-    double *db_spectrum;
-    float *in;
 
     AH_UIntPtr fft_size;
     AH_UIntPtr fft_size_log2;
@@ -222,30 +217,26 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
 
     // Allocate momory
 
-    hisstools_create_setup(&fft_setup, fft_size_log2);
+    temp_fft_setup fft_setup(fft_size_log2);
 
-    spectrum_1.realp = allocate_aligned<double>(2 * fft_size);
+    temp_ptr<double> temp(2 * fft_size);
+    temp_ptr<float> in(fft_size);
+
+    spectrum_1.realp = temp.get();
     spectrum_1.imagp = spectrum_1.realp + fft_size;
 
-    in = allocate_aligned<float>(fft_size);
+    double *db_spectrum = reinterpret_cast<double *>(malloc(sizeof(double) * ((fft_size >> 1) + 1)));
 
-    db_spectrum = (double *) malloc(sizeof(double) * ((fft_size >> 1) + 1));
-
-    if (!spectrum_1.realp || !fft_setup || !in)
+    if (!fft_setup || !temp || !in)
     {
         object_error((t_object *) x, "could not allocate temporary memory for processing");
-
-        hisstools_destroy_setup(fft_setup);
-        deallocate_aligned(spectrum_1.realp);
-        deallocate_aligned(in);
-
         return;
     }
 
     // Get input - convert to frequency domain - get power spectrum - convert phase
 
-    buffer_read(source, read_chan, in, fft_size);
-    time_to_halfspectrum_float(fft_setup, in, source_length, spectrum_1, fft_size);
+    buffer_read(source, read_chan, in.get(), fft_size);
+    time_to_halfspectrum_float(fft_setup, in.get(), source_length, spectrum_1, fft_size);
 
     power_full_spectrum_from_half_spectrum(spectrum_1, fft_size);
     octave_smooth(spectrum_1.realp, db_spectrum, ((fft_size >> 1) + 1), smooth);
@@ -253,16 +244,10 @@ void irvalue_set(t_irvalue *x, t_symbol *source, double smooth)
     for (unsigned long i = 0; i < ((fft_size >> 1) + 1); i++)
         db_spectrum[i] = pow_to_db(db_spectrum[i]);
 
-    // Free memory
-
-    hisstools_destroy_setup(fft_setup);
-    deallocate_aligned(spectrum_1.realp);
-    deallocate_aligned(in);
-
     // Assign to object
 
     free(x->db_spectrum);
     x->db_spectrum = db_spectrum;
-    x->fft_size =fft_size;
+    x->fft_size = fft_size;
     x->sampling_rate = buffer_sample_rate(source);
 }

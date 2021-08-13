@@ -4,6 +4,7 @@
 #include <ext_obex_util.h>
 #include <z_dsp.h>
 
+#include <HIRT_Memory.hpp>
 #include <HIRT_Buffer_Access.hpp>
 #include <HIRT_Multichannel_Convolution/Convolver.h>
 
@@ -272,7 +273,6 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
     ConvolveError set_error = CONVOLVE_ERR_NONE;
 
     t_symbol *buffer;
-    float *temp;
 
     t_atom_long in_chan;
     t_atom_long out_chan;
@@ -340,7 +340,7 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
     // Load to temporary buffer
 
     impulse_length = buffer_length(buffer);
-    temp = allocate_aligned<float>(impulse_length);
+    temp_ptr<float> temp(impulse_length);
 
     if (!temp)
     {
@@ -348,10 +348,10 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
         return;
     }
 
-    buffer_read(buffer, (long) read_chan, temp, impulse_length);
+    buffer_read(buffer, read_chan, temp.get(), impulse_length);
 
     if (x->multi)
-        set_error = x->multi->set(in_chan, out_chan, temp, impulse_length, !x->fixed_impulse_length);
+        set_error = x->multi->set(in_chan, out_chan, temp.get(), impulse_length, !x->fixed_impulse_length);
     
     if (set_error == CONVOLVE_ERR_IN_CHAN_OUT_OF_RANGE)
         object_error((t_object *) x, "input channel %ld out of range", in_chan + 1);
@@ -361,8 +361,6 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
         object_error((t_object *) x, "memory unavailable for set operation");
     if (set_error == CONVOLVE_ERR_MEM_ALLOC_TOO_SMALL)
         object_error((t_object *) x, "requested buffer / length too large for set fixed size");
-
-    deallocate_aligned(temp);
 }
 
 
@@ -409,5 +407,5 @@ void multiconvolve_dsp(t_multiconvolve *x, t_signal **sp, short *count)
 void multiconvolve_dsp64(t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     if (x->multi)
-        object_method(dsp64, gensym("dsp_add64"), x, multiconvolve_perform64, 0, NULL);
+        object_method(dsp64, gensym("dsp_add64"), x, multiconvolve_perform64, 0, nullptr);
 }

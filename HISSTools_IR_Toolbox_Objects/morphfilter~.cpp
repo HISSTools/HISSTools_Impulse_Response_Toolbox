@@ -111,6 +111,7 @@ void *morphfilter_new()
 
 void morphfilter_free(t_morphfilter *x)
 {
+    free_HIRT_common_attributes(x);
 }
 
 
@@ -327,11 +328,6 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
     t_symbol *target = atom_getsym(argv++);
     t_symbol *source = atom_getsym(argv++);
 
-    float *temp1;
-    double *temp2;
-
-    t_buffer_write_error error;
-
     AH_SIntPtr length = buffer_length(source);
     AH_SIntPtr full_length = length;
     AH_SIntPtr i;
@@ -347,22 +343,20 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
 
     // Allocate Memory
 
-    temp1 = allocate_aligned<float>(full_length);
-    temp2 = allocate_aligned<double>(full_length);
+    temp_ptr<float> temp1(length);
+    temp_ptr<double> temp2(length);
 
     // Check momory allocation
 
     if (!temp1 || !temp2)
     {
         object_error((t_object *)x, "could not allocate temporary memory for processing");
-        deallocate_aligned(temp1);
-        deallocate_aligned(temp2);
         return;
     }
 
     // Read from buffer
 
-    buffer_read(source, read_chan, (float *) temp1, full_length);
+    buffer_read(source, read_chan, temp1.get(), length);
 
     // Copy to double precision version
 
@@ -372,17 +366,13 @@ void morphfilter_process_internal(t_morphfilter *x, t_symbol *sym, short argc, t
     // Do filtering
 
     for (i = 0; i < x->nfilters; i++)
-        morphfilter_apply_filter(temp2, x->filter + i, sample_rate, full_length);
+        morphfilter_apply_filter(temp2.get(), x->filter + i, sample_rate, length);
 
     // Copy out to buffer
 
-    error = buffer_write((t_object *)x, target, temp2, full_length, x->write_chan - 1, x->resize, sample_rate, 1.);
-
-    // Free Resources
-
-    deallocate_aligned(temp1);
-    deallocate_aligned(temp2);
+    auto error = buffer_write((t_object *)x, target, temp2.get(), length, x->write_chan - 1, x->resize, sample_rate, 1.);
 
     if (!error)
         outlet_bang(x->process_done);
 }
+
