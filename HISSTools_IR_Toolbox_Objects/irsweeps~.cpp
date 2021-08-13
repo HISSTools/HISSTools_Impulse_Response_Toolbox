@@ -43,7 +43,7 @@ struct t_irsweeps
 
     HIRT_COMMON_ATTR
 
-    bool inv_amp;
+    long inv_amp;
 
     double amp;
 
