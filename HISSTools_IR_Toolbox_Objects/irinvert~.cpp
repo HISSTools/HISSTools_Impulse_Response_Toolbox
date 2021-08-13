@@ -49,7 +49,7 @@ void irinvert_assist(t_irinvert *x, void *b, long m, long a, char *s);
 void irinvert_process(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
 void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
 
-long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, t_matrix_complex *temp1, t_matrix_complex *temp2, double regularization);
+long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex& out, t_matrix_complex& in, t_matrix_complex& temp1, t_matrix_complex& temp2, double regularization);
 long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, uintptr_t fft_size, t_atom_long sources, t_atom_long receivers, double *regularization);
 void irinvert_mimo(t_irinvert *x, t_symbol *sym, long argc, t_atom *argv);
 void irinvert_mimo_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom *argv);
@@ -246,28 +246,19 @@ void irinvert_process_internal(t_irinvert *x, t_symbol *sym, short argc, t_atom 
 
 // MIMO (out-of-place only)
 
-long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex *out, t_matrix_complex *in, t_matrix_complex *temp1, t_matrix_complex *temp2, double regularization)
+long irinvert_matrix_mimo(t_irinvert *x, t_matrix_complex& out, t_matrix_complex& in, t_matrix_complex& temp1, t_matrix_complex& temp2, double regularization)
 {
     using complex = std::complex<double>;
     
-    uintptr_t n_dim = in->n_dim;
-    uintptr_t i;
-
-    MATRIX_REF_COMPLEX(out)
-    MATRIX_REF_COMPLEX(temp2)
-
-    // Dereference
-
-    MATRIX_DEREF(out)
-    MATRIX_DEREF(temp2)
+    uintptr_t n_dim = in.N();
 
     // Calculate
 
     matrix_conjugate_transpose_complex(temp1, in);
     matrix_multiply_complex(out, temp1, in);
 
-    for (i = 0; i < n_dim; i++)
-        MATRIX_ELEMENT(out, i, i) += complex(regularization, 0.0);
+    for (uintptr_t i = 0; i < n_dim; i++)
+        out(i, i) += complex(regularization, 0.0);
 
     matrix_choelsky_decompose_complex(temp2, out);
     matrix_choelsky_solve_complex(out, temp2, temp1);
@@ -280,11 +271,6 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, u
 {
     using complex = std::complex<double>;
 
-    t_matrix_complex *in;
-    t_matrix_complex *out;
-    t_matrix_complex *temp1;
-    t_matrix_complex *temp2;
-
     uintptr_t fft_size_halved = fft_size >> 1;
     uintptr_t i;
 
@@ -292,50 +278,38 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, u
 
     std::complex<double> out_val;
 
-    MATRIX_REF_COMPLEX(in)
-    MATRIX_REF_COMPLEX(out)
-
     // N.B. size of out is set such as to take temporary calculation of square matrix
 
-    in = matrix_alloc_complex(receivers, sources);
-    out = matrix_alloc_complex(sources > receivers ? sources : receivers, sources > receivers ? sources : receivers);
-    temp1 = matrix_alloc_complex(sources, receivers);
-    temp2 = matrix_alloc_complex(sources, sources);
-
-    if (!in || !out || !temp1 || !temp2)
-    {
-        object_error((t_object *) x, "could not allocate mmemory for matrix operations");
-        goto mimo_bail;
-    }
-
-    MATRIX_DEREF(in)
-    MATRIX_DEREF(out)
+    t_matrix_complex in(receivers, sources);
+    t_matrix_complex out(sources > receivers ? sources : receivers, sources > receivers ? sources : receivers);
+    t_matrix_complex temp1(sources, receivers);
+    t_matrix_complex temp2(sources, sources);
 
     // Do DC
 
     for (j = 0; j < receivers; j++)
         for (k = 0; k < sources; k++)
-            MATRIX_ELEMENT(in, j, k) = complex(impulses[j * sources + k].realp[0], 0.0);
+            in(j, k) = complex(impulses[j * sources + k].realp[0], 0.0);
 
     if (irinvert_matrix_mimo(x, out, in, temp1, temp2, regularization[0]))
-        goto mimo_bail;
+        return 1;
 
     for (j = 0; j < receivers; j++)
         for (k = 0; k < sources; k++)
-            impulses[j * sources + k].realp[0] = MATRIX_ELEMENT(out, j, k).real();
+            impulses[j * sources + k].realp[0] = out(j, k).real();
 
     // Do Nyquist
 
     for (j = 0; j < receivers; j++)
         for (k = 0; k < sources; k++)
-            MATRIX_ELEMENT(in, j, k) = complex(impulses[j * sources + k].imagp[0], 0.0);
+            in(j, k) = complex(impulses[j * sources + k].imagp[0], 0.0);
 
     if (irinvert_matrix_mimo(x, out, in, temp1, temp2, regularization[fft_size_halved]))
-        goto mimo_bail;
+        return 1;
 
     for (j = 0; j < receivers; j++)
         for (k = 0; k < sources; k++)
-            impulses[j * sources + k].imagp[0] = MATRIX_ELEMENT(out, j, k).real();
+            impulses[j * sources + k].imagp[0] = out(j, k).real();
 
     // Do Other Bins
 
@@ -344,7 +318,7 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, u
         for (j = 0; j < receivers; j++)
         {
             for (k = 0; k < sources; k++)
-                MATRIX_ELEMENT(in, j, k) = complex(impulses[j * sources + k].realp[i], impulses[j * sources + k].imagp[i]);
+                in(j, k) = complex(impulses[j * sources + k].realp[i], impulses[j * sources + k].imagp[i]);
         }
 
         if (irinvert_matrix_mimo(x, out, in, temp1, temp2, regularization[i]))
@@ -354,31 +328,14 @@ long irinvert_mimo_deconvolution(t_irinvert *x, FFT_SPLIT_COMPLEX_D *impulses, u
         {
             for (k = 0; k < sources; k++)
             {
-                out_val = MATRIX_ELEMENT(out, j, k);
+                out_val = out(j, k);
                 impulses[j * sources + k].realp[i] = out_val.real();
                 impulses[j * sources + k].imagp[i] = out_val.imag();
             }
         }
     }
 
-    if (i == fft_size_halved)
-    {
-        matrix_destroy_complex(in);
-        matrix_destroy_complex(out);
-        matrix_destroy_complex(temp1);
-        matrix_destroy_complex(temp2);
-
-        return 0;
-    }
-
-mimo_bail:
-
-    matrix_destroy_complex(in);
-    matrix_destroy_complex(out);
-    matrix_destroy_complex(temp1);
-    matrix_destroy_complex(temp2);
-
-    return 1;
+    return 0;
 }
 
 

@@ -146,21 +146,14 @@ double binom(double n, double k)
 
 // Solves the inversion of the matrix so as to determine the correct (complex) multiplication factor for each measured harmonic for the Hammerstein model
 
-t_matrix_complex *matrix_non_linear(uintptr_t size)
+t_matrix_complex&& matrix_non_linear(uintptr_t size)
 {
     using complex = std::complex<double>;
 
-    t_matrix_complex *mat = matrix_alloc_complex(size, size);
-
-    MATRIX_REF_COMPLEX(mat)
+    t_matrix_complex mat(size, size);
 
     complex pivot_recip, row_mult;
     uintptr_t i, j, k;
-
-    if (!mat)
-        return 0;
-
-    MATRIX_DEREF(mat)
 
     // N.B. Indices offset here to 1 (and stored correctly below)
 
@@ -169,9 +162,9 @@ t_matrix_complex *matrix_non_linear(uintptr_t size)
         for(j = 1; j <= size; j++)
         {
             if ((i >= j) && ((i + j + 1) & 1))
-                MATRIX_ELEMENT(mat, j - 1, i - 1) = (m1_cpow(i, j) * complex(binom((double) i, (double) ((i - j) / 2)), 0)) / complex(pow(2.0, (double) (i - 1)), 0.0);
+                mat(j - 1, i - 1) = (m1_cpow(i, j) * complex(binom((double) i, (double) ((i - j) / 2)), 0)) / complex(pow(2.0, (double) (i - 1)), 0.0);
             else
-                MATRIX_ELEMENT(mat, j - 1, i - 1) = complex(0.0, 0.0);
+                mat(j - 1, i - 1) = complex(0.0, 0.0);
         }
     }
 
@@ -179,11 +172,11 @@ t_matrix_complex *matrix_non_linear(uintptr_t size)
     {
         // Multiply rows
 
-        pivot_recip = complex(1.0, 0.0) / MATRIX_ELEMENT(mat, i, i);
-        MATRIX_ELEMENT(mat, i, i) = complex(1.0, 0.0);
+        pivot_recip = complex(1.0, 0.0) / mat(i, i);
+        mat(i, i) = complex(1.0, 0.0);
 
         for (j = 0; j < size; j++)
-            MATRIX_ELEMENT(mat, i, j) *= pivot_recip;
+            mat(i, j) *= pivot_recip;
 
         // Subtract rows
 
@@ -192,15 +185,15 @@ t_matrix_complex *matrix_non_linear(uintptr_t size)
             if (j == i)
                 continue;
 
-            row_mult = MATRIX_ELEMENT(mat, j, i);
-            MATRIX_ELEMENT(mat, j, i) = complex(0.0, 0.0);
+            row_mult = mat(j, i);
+            mat(j, i) = complex(0.0, 0.0);
 
             for (k = i; k < size; k++)
-                MATRIX_ELEMENT(mat, j, k) -= MATRIX_ELEMENT(mat, i, k) * row_mult;
+                mat(j, k) -= mat(i, k) * row_mult;
         }
     }
 
-    return mat;
+    return std::move(mat);
 }
 
 
@@ -239,10 +232,6 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
     intptr_t i, j, k;
 
     bool overall_error = false;
-
-    t_matrix_complex *coeff;
-
-    MATRIX_REF_COMPLEX(coeff)
 
     t_atom_long read_chan = x->read_chan - 1;
     t_atom_long write_chan = x->write_chan - 1;
@@ -284,7 +273,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
     // Solve linear equations to generate multiplicative coeffients for harmonics
 
-    coeff = matrix_non_linear(num_buffers);
+    t_matrix_complex coeff = matrix_non_linear(num_buffers);
 
     // Check Memory Allocations
 
@@ -301,8 +290,6 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
         impulses[i].realp = impulses[0].realp + (fft_size * i);
         impulses[i].imagp = impulses[i].realp + (fft_size >> 1);
     }
-
-    MATRIX_DEREF(coeff)
 
     // Do Transforms In
 
@@ -322,7 +309,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             // Copy first IR
 
-            current_coeff = MATRIX_ELEMENT(coeff, i, i).real();
+            current_coeff = coeff(i, i).real();
 
             for (j = 0; j < ((intptr_t) fft_size >> 1); j++)
             {
@@ -334,7 +321,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             for (k = i + 2; k < num_buffers; k += 2)
             {
-                current_coeff = MATRIX_ELEMENT(coeff, i, k).real();
+                current_coeff = coeff(i, k).real();
 
                 for (j = 0; j < ((intptr_t) fft_size >> 1); j++)
                 {
@@ -349,7 +336,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             // Copy first IR (multiplying by j first)
 
-            current_coeff = MATRIX_ELEMENT(coeff, i, i).imag();
+            current_coeff = coeff(i, i).imag();
 
             // Zero DC / Nyquist (need to be real for real signal)
 
@@ -368,7 +355,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             for (k = i + 2; k < num_buffers; k += 2)
             {
-                current_coeff = MATRIX_ELEMENT(coeff, i, k).imag();
+                current_coeff = coeff(i, k).imag();
 
                 for (j = 1; j < ((intptr_t) fft_size >> 1); j++)
                 {
