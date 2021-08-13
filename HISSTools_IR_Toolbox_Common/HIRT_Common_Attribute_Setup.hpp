@@ -1,9 +1,6 @@
 
-
 #ifndef __HIRT_COMMON_ATTRIBUTE_SETUP__
 #define __HIRT_COMMON_ATTRIBUTE_SETUP__
-
-#include <cstdint>
 
 // Phase Parsing and Retrieval
 
@@ -49,7 +46,6 @@ double phase_retriever(t_atom a)
     return 0;
 }
 #endif
-
 
 // Fill a Power Array Specifier from an Array of t_atom Specifiers (single db val, or freq/db pairs)
 
@@ -228,7 +224,6 @@ t_symbol *filter_retriever(t_atom *specifier)
         return 0;
 }
 #endif
-
 
 // Output Phase Attribute Setter
 
@@ -446,10 +441,8 @@ static inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
 static inline void free_HIRT_common_attributes(OBJ_CLASSNAME *x)
 {
 #ifdef OBJ_USES_HIRT_DECONVOLUTION_ATTR
-
     free(x->deconvolve_filter_specifier);
     free(x->deconvolve_range_specifier);
-
 #endif
 }
 
