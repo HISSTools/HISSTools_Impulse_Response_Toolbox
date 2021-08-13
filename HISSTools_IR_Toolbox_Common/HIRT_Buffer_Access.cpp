@@ -160,7 +160,7 @@ t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float
 /////////////////// Retrieve and Check Multiple Buffers //////////////////
 //////////////////////////////////////////////////////////////////////////
 
-short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, intptr_t *lengths, short argc, t_atom *argv, long in_place, short max_bufs, intptr_t *overall_len_ret, intptr_t *max_len_ret, double *sample_rate_ret)
+short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs, intptr_t *lengths, short argc, t_atom *argv, bool in_place, short max_bufs, intptr_t *overall_len_ret, intptr_t *max_len_ret, double *sample_rate_ret)
 {
     intptr_t overall_length = 0;
     intptr_t max_length = 0;
