@@ -392,55 +392,52 @@ void get_buffer_samples_local(ibuffer_data& bufdata, float *buf_samps, float *sa
 //////////////////////////////////////////////////////////////////////////
 
 
+static inline double sum_filter_mul(double *a, float *b, intptr_t N)
+{
+    constexpr int vec_size_d = (SIMDLimits<double>::max_size > 4) ? 4 : SIMDLimits<double>::max_size;
+    constexpr int vec_size_f = (SIMDLimits<float>::max_size >= 4) ? 4 : 1;
+    using VecTypeD = SizedVector<double, vec_size_d, 4>;
+    using VecTypeF = SizedVector<float, vec_size_f, 4>;
+    
+    VecTypeD sum(0.0);
+    double results[4];
+    intptr_t i;
+    
+    for (i = 0; i + 7 < N; i += 8)
+    {
+        sum += VecTypeD(a + i + 0) * VecTypeD(VecTypeF(b + i + 0));
+        sum += VecTypeD(a + i + 4) * VecTypeD(VecTypeF(b + i + 4));
+    }
+    for (; i + 3 < N; i += 4)
+        sum += VecTypeD(a + i + 0) * VecTypeD(VecTypeF(b + i + 0));
+    
+    sum.store(results);
+    
+    return results[0] + results[1] + results[2] + results[3];
+}
+
+/*
+ 
+N.B. - The code above is equivalent to the following scalar code
 
 double sum_filter_mul(double *a, float *b, intptr_t N)
 {
-    double Sum = 0.;
+    double sum = 0.0;
     intptr_t i;
 
     for (i = 0; i + 3 < N; i += 4)
     {
-        Sum += a[i+0] * b[i+0];
-        Sum += a[i+1] * b[i+1];
-        Sum += a[i+2] * b[i+2];
-        Sum += a[i+3] * b[i+3];
+        sum += a[i+0] * b[i+0];
+        sum += a[i+1] * b[i+1];
+        sum += a[i+2] * b[i+2];
+        sum += a[i+3] * b[i+3];
     }
     for (; i < N; i++)
-        Sum += a[i] * b[i];
+        sum += a[i] * b[i];
 
-    return Sum;
+    return sum;
 }
-
-#ifdef TARGET_INTEL
-static inline double sum_filter_mul(vDouble *a, float *b, intptr_t N)
-{
-    vDouble Sum = {0., 0.};
-    vFloat Temp;
-    double results[2];
-    intptr_t i;
-
-    for (i = 0; i + 3 < (N >> 1); i += 4)
-    {
-        Temp = F32_VEC_ULOAD(b + 2 * i);
-        Sum = F64_VEC_ADD_OP(Sum, F64_VEC_MUL_OP(a[i+0], F64_VEC_FROM_F32(Temp)));
-        Sum = F64_VEC_ADD_OP(Sum, F64_VEC_MUL_OP(a[i+1], F64_VEC_FROM_F32(F32_VEC_SHUFFLE(Temp, Temp, 0x4E))));
-
-        Temp = F32_VEC_ULOAD(b + 2 * i + 4);
-        Sum = F64_VEC_ADD_OP(Sum, F64_VEC_MUL_OP(a[i+2], F64_VEC_FROM_F32(Temp)));
-        Sum = F64_VEC_ADD_OP(Sum, F64_VEC_MUL_OP(a[i+3], F64_VEC_FROM_F32(F32_VEC_SHUFFLE(Temp, Temp, 0x4E))));
-    }
-    for (; i + 1 < N >> 1; i += 2)
-    {
-        Temp = F32_VEC_ULOAD(b + 2 * i);
-        Sum = F64_VEC_ADD_OP(Sum, F64_VEC_MUL_OP(a[i+0], F64_VEC_FROM_F32(Temp)));
-        Sum = F64_VEC_ADD_OP(Sum, F64_VEC_MUL_OP(a[i+1], F64_VEC_FROM_F32(F32_VEC_SHUFFLE(Temp, Temp, 0x4E))));
-    }
-
-    F64_VEC_USTORE(results, Sum);
-
-    return results[0] + results[1];
-}
-#endif
+*/
 
 //////////////////////////////////////////////////////////////////////////
 ////////////////////////// Fast Resample or Copy /////////////////////////
@@ -508,11 +505,7 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
         for (j = 0, current_filter = temp_filters.get(); i < second && j < denom; i++, j++, current_filter += max_filter_length)
         {
             intptr_t buf_offset = current_offset + ((j * num) / denom);
-#ifdef TARGET_INTEL
-            output[i] = sum_filter_mul((vDouble *)current_filter, buf_temp.get() + buf_offset, max_filter_length);
-#else
             output[i] = sum_filter_mul(current_filter, buf_temp.get() + buf_offset, max_filter_length);
-#endif
         }
     }
 
