@@ -417,7 +417,6 @@ static inline double sum_filter_mul(double *a, float *b, intptr_t N)
 }
 
 /*
- 
 N.B. - The code above is equivalent to the following scalar code
 
 double sum_filter_mul(double *a, float *b, intptr_t N)
