@@ -348,7 +348,7 @@ void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s)
 intptr_t irmeasure_calc_sweep_mem_size(t_ess& sweep_params, long num_out_chans, double out_length, double sample_rate)
 {
     intptr_t gen_length = sweep_params.length();
-    intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
+    intptr_t rec_length = static_cast<intptr_t>(num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
 }
@@ -357,7 +357,7 @@ intptr_t irmeasure_calc_sweep_mem_size(t_ess& sweep_params, long num_out_chans, 
 intptr_t irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate)
 {
     intptr_t gen_length = (1 << order) - 1;
-    intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
+    intptr_t rec_length = static_cast<intptr_t>(num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
 }
@@ -365,8 +365,8 @@ intptr_t irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_
 
 intptr_t irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate)
 {
-    intptr_t gen_length = (intptr_t) (length * sample_rate);
-    intptr_t rec_length = (intptr_t) (num_out_chans * ((out_length * sample_rate) + gen_length));
+    intptr_t gen_length = static_cast<intptr_t>(length * sample_rate);
+    intptr_t rec_length = static_cast<intptr_t>(num_out_chans * ((out_length * sample_rate) + gen_length));
 
     return rec_length * sizeof(double);
 }

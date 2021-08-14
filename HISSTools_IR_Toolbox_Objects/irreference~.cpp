@@ -774,7 +774,7 @@ t_int *irreference_perform(t_int *w)
     attempt_mem_swap(&x->rec_mem);
     double *rec_mem = (double *) x->rec_mem.current_ptr;
     uintptr_t mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
-    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
+    mem_check = x->rec_mem.current_size >= static_cast<uintptr_t>(mem_size);
 
     if (mem_check)
     {
@@ -855,7 +855,7 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
     attempt_mem_swap(&x->rec_mem);
     double *rec_mem = (double *) x->rec_mem.current_ptr;
     uintptr_t mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
-    mem_check = x->rec_mem.current_size >= (uintptr_t) mem_size;
+    mem_check = x->rec_mem.current_size >= static_cast<uintptr_t>(mem_size);
 
     if (mem_check)
     {

@@ -357,7 +357,7 @@ static inline void ftonote(char *out, double a)
 {
     double note = ftom(a) + 1200.0;
     double cents;
-    long base_note = (long) round (note);
+    long base_note = static_cast<long>(round(note));
 
     cents = (note - base_note) * 100.0;
 
@@ -1110,7 +1110,7 @@ void spectrumdraw_octave_smooth(double *in, float *out, intptr_t size, double oc
         for (i = 1; i < size; i++)
             in[i] += in[i - 1];
 
-        out[0] = (float) in[0];
+        out[0] = static_cast<float>(in[0]);
 
         for (i = 1; i < size; i++)
         {
@@ -1123,14 +1123,14 @@ void spectrumdraw_octave_smooth(double *in, float *out, intptr_t size, double oc
             if (hi > size - 1)
                 hi = size - 1;
 
-            out[i] = (float) ((in[hi] - in[lo]) / (hi - lo));
+            out[i] = static_cast<float>((in[hi] - in[lo]) / (hi - lo));
         }
     }
     else
     {
 
         for (i = 0; i < size; i++)
-            out[i] = (float) in[i];
+            out[i] = static_cast<float>(in[i]);
     }
 }
 
@@ -1544,7 +1544,7 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
         for (uintptr_t i = 1; i < (fft_size >> 1); i++)
         {
             temp[i] = (spectrum.realp[i] * spectrum.realp[i]) + (spectrum.imagp[i] * spectrum.imagp[i]);
-            phase_vals[i] = atan2f((float) spectrum.imagp[i], (float) spectrum.realp[i]);
+            phase_vals[i] = atan2f(static_cast<float>(spectrum.imagp[i]), static_cast<float>(spectrum.realp[i]));
         }
 
         temp[fft_size >> 1] = spectrum.imagp[0] * spectrum.imagp[0];
@@ -1598,12 +1598,12 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
         case WIND_HANN:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.5 - (0.5 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.5 - (0.5 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_HAMMING:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.54347826 - (0.45652174 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.54347826 - (0.45652174 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_KAISER:
@@ -1646,50 +1646,50 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
                     new_term = new_term * x_sq * (1.0 / (4.0 * (double) j * (double) j));
                     j++;
                 }
-                window[i] = (float) (b_func * alpha_bessel_recip);
+                window[i] = static_cast<float>(b_func * alpha_bessel_recip);
             }
             break;
 
         case WIND_TRIANGLE:
             for (i = 0; i < (window_size >> 1); i++)
-                window[i] = (float) ((double) i / (double) (window_size >> 1));
+                window[i] = static_cast<float>((double) i / (double) (window_size >> 1));
             for (; i < window_size; i++)
-                window[i] = (float) ((double) (((double) window_size - 1) - (double) i) / (double) (window_size >> 1));
+                window[i] = static_cast<float>((double) (((double) window_size - 1) - (double) i) / (double) (window_size >> 1));
             break;
 
         case WIND_BLACKMAN:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.42659071 - (0.49656062 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.07684867 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.42659071 - (0.49656062 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.07684867 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_62:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.44859f - 0.49364f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.05677f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.44859f - 0.49364f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.05677f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_70:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.42323f - 0.49755f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.07922f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.42323f - 0.49755f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.07922f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_74:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.402217f - 0.49703f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.09892f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.00188 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.402217f - 0.49703f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.09892f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.00188 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_92:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) ((0.35875f - 0.48829f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.14128f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.01168 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.35875f - 0.48829f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.14128f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.01168 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_BLACKMAN_HARRIS:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.35875 - (0.48829 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.14128 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))) - (0.01168 * std::cos(FFTW_SIXPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.35875 - (0.48829 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.14128 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))) - (0.01168 * std::cos(FFTW_SIXPI * ((double) i / (double) window_size))));
             break;
 
         case WIND_FLAT_TOP:
             for (i = 0; i < window_size; i++)
-                window[i] = (float) (0.2810639 - (0.5208972 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.1980399 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.2810639 - (0.5208972 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.1980399 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
             break;
     }
 
@@ -1700,7 +1700,7 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
     // N.B. Multiply by 2 due to real only signal (real sine wave has +/-ve frequencies of 1/2 amplitude each)
 
-    scale = 2.f / ((float) gain);
+    scale = 2.f / static_cast<float>(gain);
 
     for (i = 0; i < window_size; i++)
         window[i] *= scale;
@@ -1813,7 +1813,7 @@ void spectrumdraw_realtime(t_spectrumdraw *x, float *read_from, long phase_mode,
             phase_vals[0] = 0.0;
 
             for (i = 1; i < (fft_size >> 1); i++)
-                phase_vals[i] = atan2f((float) spectrum.imagp[i], (float) spectrum.realp[i]);
+                phase_vals[i] = atan2f(static_cast<float>(spectrum.imagp[i]), static_cast<float>(spectrum.realp[i]));
 
             phase_vals[i] = 0.0;
         }
@@ -1837,16 +1837,16 @@ t_int *spectrumdraw_perform(t_int *w)
 {
     // Set pointers
 
-    float **sig_ins = (float **) w[1];
-    long vec_size = (long) w[2];
-    t_spectrumdraw *x = (t_spectrumdraw *) w[3];
+    float **sig_ins = reinterpret_cast<float **>(w[1]);
+    long vec_size = static_cast<long>(w[2]);
+    t_spectrumdraw *x = reinterpret_cast<t_spectrumdraw *>(w[3]);
 
     long write_pointer = x->write_pointer;
     long hop_pointer = x->hop_pointer;
     long block_write_pointer = write_pointer;
     long block_hop_pointer = hop_pointer;
     long window_size = spectrumdraw_realtime_window_size(x);
-    long hop_size = (long) (x->redraw_time * x->sample_rate / 1000.0);
+    long hop_size = static_cast<long>(x->redraw_time * x->sample_rate / 1000.0);
     long draw = 0;
     long i, j;
 
@@ -1907,7 +1907,7 @@ void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, lo
     long block_write_pointer = write_pointer;
     long block_hop_pointer = hop_pointer;
     long window_size = spectrumdraw_realtime_window_size(x);
-    long hop_size = (long) (x->redraw_time * x->sample_rate / 1000.0);
+    long hop_size = static_cast<long>(x->redraw_time * x->sample_rate / 1000.0);
     long draw = 0;
     long i, j;
 
@@ -1943,7 +1943,7 @@ void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, lo
             if (write_pointer >= window_size)
                 write_pointer = 0;
 
-            in_store[write_pointer] = in_store[write_pointer + window_size] = (float) *sig_in++;
+            in_store[write_pointer] = in_store[write_pointer + window_size] = static_cast<float>(*sig_in++);
             write_pointer++;
             hop_pointer++;
         }
@@ -2611,8 +2611,8 @@ void spectrumdraw_paint_labels(t_spectrumdraw *x, t_jgraphics *g, t_scale_vals *
 
     if (x->phase_labels && x->phase_mode && x->phase_grid)
     {
-        long denominator = (long) (phase_denominators[x->phase_grid] * phase_label_spacing[x->phase_labels]);
-        long count = (long) std::ceil(y_ref / y_space);
+        long denominator = static_cast<long>(phase_denominators[x->phase_grid] * phase_label_spacing[x->phase_labels]);
+        long count = static_cast<long>(std::ceil(y_ref / y_space));
 
         last_draw = -10000.0;
 
@@ -2674,8 +2674,8 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
     {
         if (x->phase_labels && x->phase_grid)
         {
-            denominator = (long) (phase_denominators[x->phase_grid] * phase_label_spacing[x->phase_labels]);
-            count = (long) std::ceil(phase_denominators[x->phase_grid] / phase_label_spacing[x->phase_labels]);
+            denominator = static_cast<long>(phase_denominators[x->phase_grid] * phase_label_spacing[x->phase_labels]);
+            count = static_cast<long>(std::ceil(phase_denominators[x->phase_grid] / phase_label_spacing[x->phase_labels]));
 
             y_ref = 0.0;
             y_space = phase_grid_spacing[x->phase_grid] * phase_label_spacing[x->phase_labels];
