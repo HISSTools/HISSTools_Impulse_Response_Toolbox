@@ -170,6 +170,7 @@ void *iruser_new(t_symbol *s, short argc, t_atom *argv)
 void iruser_free(t_iruser *x)
 {
     free_HIRT_common_attributes(x);
+    free(x->response_specifier);
 }
 
 
