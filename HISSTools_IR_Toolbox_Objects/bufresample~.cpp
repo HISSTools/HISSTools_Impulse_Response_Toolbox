@@ -270,7 +270,7 @@ double get_filter_value(double *filter, long mul, double filter_position)
 }
 
 
-temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, long npoints, intptr_t num, intptr_t denom, intptr_t& max_filter_length, intptr_t& filter_offset)
+temp_ptr<double> bufresample_calc_temp_filters(double *filter, long nzero, long npoints, intptr_t num, intptr_t denom, intptr_t& max_filter_length, intptr_t& filter_offset)
 {
     double per_samp = num > denom ? (double) denom / (double) num : (double) 1;
     double one_over_per_samp = num > denom ? nzero * (double) num / (double) denom : nzero;
@@ -285,7 +285,7 @@ temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, lon
     double *current_filter = temp_filters.get();
 
     if (!temp_filters)
-        return std::move(temp_ptr<double>(0));
+        return temp_ptr<double>(0);
 
     for (intptr_t i = 0, current_num = 0; i < denom; i++, current_filter += max_filter_length, current_num += num)
     {
@@ -298,7 +298,7 @@ temp_ptr<double>&& bufresample_calc_temp_filters(double *filter, long nzero, lon
         }
     }
 
-    return std::move(temp_filters);
+    return temp_filters;
 }
 
 
@@ -443,7 +443,7 @@ double sum_filter_mul(double *a, float *b, intptr_t N)
 //////////////////////////////////////////////////////////////////////////
 
 
-temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, long nzero, long npoints, intptr_t nsamps, intptr_t num, intptr_t denom, long chan)
+temp_ptr<double> resample_fixed_ratio(ibuffer_data& bufdata, double *filter, long nzero, long npoints, intptr_t nsamps, intptr_t num, intptr_t denom, long chan)
 {
     double *current_filter;
 
@@ -466,7 +466,7 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
     // Check memory
 
     if (!temp || !output || !temp_filters || !buf_temp || !filter)
-        return std::move(temp_ptr<double>(0));
+        return temp_ptr<double>(0);
 
     // Set buffer in use
 
@@ -523,17 +523,17 @@ temp_ptr<double>&& resample_fixed_ratio(ibuffer_data& bufdata, double *filter, l
         }
     }
 
-    return std::move(output);
+    return output;
 }
 
 
-temp_ptr<double>&& bufresample_copy(ibuffer_data& bufdata, intptr_t nsamps, long chan)
+temp_ptr<double> bufresample_copy(ibuffer_data& bufdata, intptr_t nsamps, long chan)
 {
     temp_ptr<double> output(nsamps);
     temp_ptr<float> temp(nsamps);
 
     if (!temp || !output)
-        return std::move(temp_ptr<double>(0));
+        return temp_ptr<double>(0);
 
     // Special case where no resampling is necessary
 
@@ -542,7 +542,7 @@ temp_ptr<double>&& bufresample_copy(ibuffer_data& bufdata, intptr_t nsamps, long
     for (intptr_t i = 0; i < nsamps; i++)
         output[i] = temp[i];
 
-    return std::move(output);
+    return output;
 }
 
 
@@ -702,7 +702,7 @@ double calc_sample(ibuffer_data& bufdata, float *samples, double *filter, long n
 
 // Resample given a fixed rate as a double
 
-temp_ptr<double>&& resample_fixed_rate(ibuffer_data& bufdata, double *filter, long nzero, long npoints, double offset, intptr_t nsamps, double rate, long chan)
+temp_ptr<double> resample_fixed_rate(ibuffer_data& bufdata, double *filter, long nzero, long npoints, double offset, intptr_t nsamps, double rate, long chan)
 {
     double one_over_per_samp = rate > 1.0 ? nzero * rate : nzero;
     double mul = rate > 1.0 ? 1.0 / rate : 1.0;
@@ -717,12 +717,12 @@ temp_ptr<double>&& resample_fixed_rate(ibuffer_data& bufdata, double *filter, lo
     // Check memory
 
     if (!temp || !output || !filter)
-        return std::move(temp_ptr<double>(0));
+        return temp_ptr<double>(0);
 
     // Resample
 
     for (intptr_t i = 0; i < nsamps; i++)
         output[i] = mul * calc_sample(bufdata, temp.get(), filter, nzero, npoints, offset + (i * rate), rate, chan);
 
-    return std::move(output);
+    return output;
 }

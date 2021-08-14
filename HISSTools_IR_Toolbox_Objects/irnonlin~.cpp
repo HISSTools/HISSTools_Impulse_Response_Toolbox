@@ -146,7 +146,7 @@ double binom(double n, double k)
 
 // Solves the inversion of the matrix so as to determine the correct (complex) multiplication factor for each measured harmonic for the Hammerstein model
 
-t_matrix_complex&& matrix_non_linear(uintptr_t size)
+t_matrix_complex matrix_non_linear(uintptr_t size)
 {
     using complex = std::complex<double>;
 
@@ -190,7 +190,7 @@ t_matrix_complex&& matrix_non_linear(uintptr_t size)
         }
     }
 
-    return std::move(mat);
+    return mat;
 }
 
 
