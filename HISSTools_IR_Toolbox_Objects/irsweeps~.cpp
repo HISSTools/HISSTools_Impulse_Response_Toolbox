@@ -72,7 +72,11 @@ void irsweeps_assist(t_irsweeps *x, void *b, long m, long a, char *s);
 
 double irsweeps_param_check(t_irsweeps *x, char *name, double val, double min, double max);
 
-void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, uintptr_t sig_length, void *params, double sample_rate);
+template <class T>
+void irsweeps_gen(t_irsweeps *x, float *ptr, T *generator, bool inverse);
+
+template <class T>
+void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, uintptr_t sig_length, T *generator, bool inverse, double sample_rate);
 
 void irsweeps_sweep(t_irsweeps *x, t_symbol *sym, long argc, t_atom *argv);
 void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv);
@@ -190,7 +194,23 @@ double irsweeps_param_check(t_irsweeps *x, const char *name, double val, double 
 //////////////////////////////////////////////////////////////////////////
 
 
-void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type, uintptr_t sig_length, void *params, double sample_rate)
+template <class T>
+void irsweeps_gen(t_irsweeps *x, float *ptr, T *generator, bool inverse)
+{
+    generator->gen(ptr, false);
+}
+
+template <>
+void irsweeps_gen(t_irsweeps *x, float *ptr, t_ess *generator, bool inverse)
+{
+    if (inverse)
+        generator->igen(ptr, x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
+    else
+        generator->gen(ptr, false);
+}
+
+template <class T>
+void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, uintptr_t sig_length, T *generator, bool inverse, double sample_rate)
 {
     temp_ptr<float> temp_buf(sig_length);
 
@@ -202,24 +222,7 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, t_excitation_signal sig_type,
 
     // Generate signal
 
-    switch (sig_type)
-    {
-        case SWEEP:
-            ((t_ess *) params)->gen(temp_buf.get(), false);
-            break;
-
-        case INV_SWEEP:
-            ((t_ess *) params)->igen(temp_buf.get(), x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
-            break;
-
-        case MLS:
-            ((t_mls *) params)->gen(temp_buf.get(), false);
-            break;
-
-        case NOISE:
-            ((t_noise_params *) params)->gen(temp_buf.get(), false);
-            break;
-    }
+    irsweeps_gen(x, temp_buf.get(), generator, inverse);
 
     // Write to buffer
 
@@ -295,7 +298,7 @@ void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
         return;
     }
 
-    irsweeps_gen(x, buffer, sym == gensym("sweep") ? SWEEP : INV_SWEEP, sweep_length, &sweep_params, sample_rate);
+    irsweeps_gen(x, buffer, sweep_length, &sweep_params, sym == gensym("invsweep"), sample_rate);
 }
 
 
@@ -330,7 +333,7 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
     t_mls max_length_params(static_cast<uint32_t>(order), db_to_a(x->amp));
     uintptr_t mls_length = max_length_params.length();
 
-    irsweeps_gen(x, buffer, MLS, mls_length, &max_length_params, sample_rate);
+    irsweeps_gen(x, buffer, mls_length, &max_length_params, false, sample_rate);
 }
 
 
@@ -394,5 +397,5 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     t_noise_params noise_params(filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
     uintptr_t noise_length = noise_params.length();
 
-    irsweeps_gen(x, buffer, NOISE, noise_length, &noise_params, sample_rate);
+    irsweeps_gen(x, buffer, noise_length, &noise_params, false, sample_rate);
 }
