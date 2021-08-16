@@ -1130,7 +1130,7 @@ void irmeasure_mls_params(t_irmeasure *x)
 
     long order = x->order;
     long mls_length = (1 << order) - 1;
-    long chan_offset = (long) ((out_length * sample_rate) + mls_length);
+    long chan_offset = static_cast<long>((out_length * sample_rate) + mls_length);
     long i;
 
     x->max_length_params = t_mls(static_cast<uint32>(order), db_to_a(x->amp));
@@ -1153,8 +1153,8 @@ void irmeasure_noise_params(t_irmeasure *x)
     double out_length = x->out_length;
     double sample_rate = x->sample_rate;
 
-    long noise_length = (long) (sample_rate * length);
-    long chan_offset = (long) ((out_length * sample_rate) + noise_length);
+    long noise_length = static_cast<long>(sample_rate * length);
+    long chan_offset = static_cast<long>((out_length * sample_rate) + noise_length);
     long i;
 
     double amp_comp = 1.0;
@@ -1341,7 +1341,7 @@ t_int *irmeasure_perform(t_int *w)
             // Do Output
 
             for (j = 0; j < current_num_active_outs; j++)
-                irmeasure_perform_excitation(x, x->out_chans[j], (long) (x->current_t - x->chan_offset[j]), vec_size, false);
+                irmeasure_perform_excitation(x, x->out_chans[j], static_cast<long>(x->current_t - x->chan_offset[j]), vec_size, false);
 
             if (x->abs_progress)
                 progress_mul = 1000.0 / sample_rate;
@@ -1482,7 +1482,7 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
             // Do Output
 
             for (j = 0; j < current_num_active_outs; j++)
-                irmeasure_perform_excitation(x, outs[j], (long) (x->current_t - x->chan_offset[j]), vec_size, true);
+                irmeasure_perform_excitation(x, outs[j], static_cast<long>(x->current_t - x->chan_offset[j]), vec_size, true);
 
             if (x->abs_progress)
                 progress_mul = 1000.0 / sample_rate;

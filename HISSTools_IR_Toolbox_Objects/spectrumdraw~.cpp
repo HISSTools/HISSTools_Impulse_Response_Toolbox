@@ -5,6 +5,8 @@
 #include <jgraphics.h>
 #include <z_dsp.h>
 
+#include <algorithm>
+
 #include <AH_Memory_Swap.h>
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
@@ -336,14 +338,10 @@ t_jgraphics_text_justification combine_flags(t_jgraphics_text_justification a, t
     return (t_jgraphics_text_justification) result;
 }
 
-static inline double clip(double val, double min, double max)
+template <class T, class U, class V>
+static inline double clip(T val, U min, V max)
 {
-    if (val < min)
-        val = min;
-    if (val > max)
-        val = max;
-
-    return val;
+    return std::max(static_cast<T>(min), std::min(static_cast<T>(max), val));
 }
 
 
@@ -368,9 +366,10 @@ static inline void ftonote(char *out, double a)
 }
 
 
-static inline double bin_2_freq(double bin, t_scale_vals *scale)
+template <typename T>
+static inline double bin_2_freq(T bin, t_scale_vals *scale)
 {
-    return bin / scale->fft_ratio;
+    return static_cast<double>(bin) / scale->fft_ratio;
 }
 
 
@@ -380,12 +379,13 @@ static inline double freq_2_bin(double freq, t_scale_vals *scale)
 }
 
 
-static inline double bin_2_mouse(double bin, t_scale_vals *scale)
+template <typename T>
+static inline double bin_2_mouse(T bin, t_scale_vals *scale)
 {
     if (scale->log_mode)
-        return scale->bin_scale * (std::log(bin) - scale->bin_min);
+        return scale->bin_scale * (std::log(static_cast<double>(bin)) - scale->bin_min);
     else
-        return scale->bin_scale * (bin - scale->bin_min);
+        return scale->bin_scale * (static_cast<double>(bin) - scale->bin_min);
 }
 
 /*
@@ -529,8 +529,8 @@ static inline void spectrumdraw_set_fft_scaling(t_scale_vals *scale, uintptr_t f
 
     scale->bin_min = x_min;
     scale->bin_scale = (scale->width / (x_max - x_min)) * zoom;
-    scale->from = static_cast<uintptr_t>(std::floor(clip(scale->min_freq * scale->fft_ratio, 0, (double) (fft_size >> 1))));
-    scale->to =   static_cast<uintptr_t>(std::ceil (clip(scale->max_freq * scale->fft_ratio, 0, (double) (fft_size >> 1))) + 1.0);
+    scale->from = static_cast<uintptr_t>(std::floor(clip(scale->min_freq * scale->fft_ratio, 0, static_cast<double>(fft_size >> 1))));
+    scale->to =   static_cast<uintptr_t>(std::ceil(clip(scale->max_freq * scale->fft_ratio, 0, (fft_size >> 1))) + 1);
 }
 
 
@@ -1203,8 +1203,8 @@ void spectrumdraw_calc_selection_data(t_spectrumdraw *x)
 
     // Sanity Check
 
-    sel_from = static_cast<intptr_t>(clip((double) sel_from, 0, (double) (fft_size / 2 - 1)));
-    sel_to   = static_cast<intptr_t>(clip((double) sel_to, 0, (double) (fft_size / 2)));
+    sel_from = clip(sel_from, 0, fft_size / 2 - 1);
+    sel_to   = clip(sel_to  , 0, fft_size / 2);
 
     // Clip mouse positions and convert
 
@@ -1585,6 +1585,11 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
     double b_func;
     double temp;
 
+    auto normalise = [&](uintptr_t idx)
+    {
+        return (static_cast<double>(idx) / static_cast<double>(window_size));
+    };
+    
     if (mem_size != fft_size)
         return;
 
@@ -1597,12 +1602,12 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
         case WIND_HANN:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>(0.5 - (0.5 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.5 - (0.5 * std::cos(FFTW_TWOPI * normalise(i))));
             break;
 
         case WIND_HAMMING:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>(0.54347826 - (0.45652174 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.54347826 - (0.45652174 * std::cos(FFTW_TWOPI * normalise(i))));
             break;
 
         case WIND_KAISER:
@@ -1658,44 +1663,44 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
         case WIND_BLACKMAN:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>(0.42659071 - (0.49656062 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.07684867 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.42659071 - (0.49656062 * std::cos(FFTW_TWOPI * normalise(i))) + (0.07684867 * std::cos(FFTW_FOURPI * normalise(i))));
             break;
 
         case WIND_BLACKMAN_62:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>((0.44859f - 0.49364f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.05677f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.44859f - 0.49364f * std::cos(FFTW_TWOPI * normalise(i)) + 0.05677f * std::cos(FFTW_FOURPI * normalise(i))));
             break;
 
         case WIND_BLACKMAN_70:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>((0.42323f - 0.49755f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.07922f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.42323f - 0.49755f * std::cos(FFTW_TWOPI * normalise(i)) + 0.07922f * std::cos(FFTW_FOURPI * normalise(i))));
             break;
 
         case WIND_BLACKMAN_74:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>((0.402217f - 0.49703f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.09892f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.00188 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.402217f - 0.49703f * std::cos(FFTW_TWOPI * normalise(i)) + 0.09892f * std::cos(FFTW_FOURPI * normalise(i)) - 0.00188 * std::cos(FFTW_THREEPI * normalise(i))));
             break;
 
         case WIND_BLACKMAN_92:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>((0.35875f - 0.48829f * std::cos(FFTW_TWOPI * ((double) i / (double) window_size)) + 0.14128f * std::cos(FFTW_FOURPI * ((double) i / (double) window_size)) - 0.01168 * std::cos(FFTW_THREEPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>((0.35875f - 0.48829f * std::cos(FFTW_TWOPI * normalise(i)) + 0.14128f * std::cos(FFTW_FOURPI * normalise(i)) - 0.01168 * std::cos(FFTW_THREEPI * normalise(i))));
             break;
 
         case WIND_BLACKMAN_HARRIS:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>(0.35875 - (0.48829 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.14128 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))) - (0.01168 * std::cos(FFTW_SIXPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.35875 - (0.48829 * std::cos(FFTW_TWOPI * normalise(i))) + (0.14128 * std::cos(FFTW_FOURPI * normalise(i))) - (0.01168 * std::cos(FFTW_SIXPI * normalise(i))));
             break;
 
         case WIND_FLAT_TOP:
             for (i = 0; i < window_size; i++)
-                window[i] = static_cast<float>(0.2810639 - (0.5208972 * std::cos(FFTW_TWOPI * ((double) i / (double) window_size))) + (0.1980399 * std::cos(FFTW_FOURPI * ((double) i / (double) window_size))));
+                window[i] = static_cast<float>(0.2810639 - (0.5208972 * std::cos(FFTW_TWOPI * normalise(i))) + (0.1980399 * std::cos(FFTW_FOURPI * normalise(i))));
             break;
     }
 
     // Calculate the gain of the window
 
     for (i = 0, gain = 0; i < window_size; i++)
-        gain += (double) window[i];
+        gain += static_cast<double>(window[i]);
 
     // N.B. Multiply by 2 due to real only signal (real sine wave has +/-ve frequencies of 1/2 amplitude each)
 
@@ -1857,7 +1862,7 @@ t_int *spectrumdraw_perform(t_int *w)
         float *in_store = (float *) x->realtime_io[j].current_ptr;
         float *sig_in = sig_ins[j];
 
-        if ((long) x->realtime_io[j].current_size < window_size || !in_store || !sig_in)
+        if (static_cast<long>(x->realtime_io[j].current_size) < window_size || !in_store || !sig_in)
             continue;
 
         write_pointer = block_write_pointer;
@@ -1918,7 +1923,7 @@ void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, lo
         float *in_store = (float *) x->realtime_io[j].current_ptr;
         double *sig_in = ins[j];
 
-        if ((long) x->realtime_io[j].current_size < window_size || !in_store || !sig_in)
+        if (static_cast<long>(x->realtime_io[j].current_size) < window_size || !in_store || !sig_in)
             continue;
 
         write_pointer = block_write_pointer;
@@ -1997,7 +2002,7 @@ void spectrumdraw_dsp(t_spectrumdraw *x, t_signal **sp, short *count)
 void spectrumdraw_dsp64(t_spectrumdraw *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     spectrumdraw_dsp_common(x, samplerate, 0, count);
-    object_method(dsp64, gensym("dsp_add64"), x, spectrumdraw_perform64, 0, NULL);
+    object_method(dsp64, gensym("dsp_add64"), x, spectrumdraw_perform64, 0, nullptr);
 }
 
 
@@ -2296,7 +2301,7 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
     jgraphics_set_source_jrgba(g, color);
 
     from = !from ? 1 : from;
-    x_pos = bin_2_mouse((double) from, scale);
+    x_pos = bin_2_mouse(from, scale);
 
     if (x_pos > 0.0 && curve_style != DRAW_POINTS)
     {
@@ -2309,7 +2314,7 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
     for (i = from + 1; i < to; i++)
     {
         last_x_pos = x_pos;
-        x_pos = bin_2_mouse((double) i, scale);
+        x_pos = bin_2_mouse(i, scale);
 
         spectrumdraw_jgraphics_curve_vertex(g, x_pos, yval_2_mouse(y_vals[i], scale), curve_style);
 
@@ -2332,7 +2337,7 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
                 double x_max_pos = x_pos;
 
                 last_x_pos = x_pos;
-                x_pos = bin_2_mouse((double) ++i, scale);
+                x_pos = bin_2_mouse(++i, scale);
 
                 while (((x_pos - last_x_pos) < sub_sample_render) && i < to)
                 {
@@ -2350,7 +2355,7 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
                         x_max_pos = x_pos;
                     }
 
-                    x_pos = bin_2_mouse((double) ++i, scale);
+                    x_pos = bin_2_mouse(++i, scale);
                 }
 
                 if (x_min_pos < x_max_pos)
@@ -2384,7 +2389,7 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
                 double x_max_pos = x_pos;
 
                 last_x_pos = x_pos;
-                x_pos = bin_2_mouse((double) ++i, scale);
+                x_pos = bin_2_mouse(++i, scale);
 
                 while (((x_pos - last_x_pos) < sub_sample_render) && i < to)
                 {
@@ -2396,7 +2401,7 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
                         x_max_pos = x_pos;
                     }
 
-                    x_pos = bin_2_mouse((double) ++i, scale);
+                    x_pos = bin_2_mouse(++i, scale);
                 }
 
                 max_y = yval_2_mouse(max_y, scale);
@@ -2414,12 +2419,12 @@ void spectrumdraw_jgraphics_paint_curve_internal(t_spectrumdraw *x, t_jgraphics 
                 uintptr_t count = 1;
 
                 last_x_pos = x_pos;
-                x_pos = bin_2_mouse((double) ++i, scale);
+                x_pos = bin_2_mouse(++i, scale);
 
                 while (((x_pos - last_x_pos) < sub_sample_render) && i < to)
                 {
                     accum_val += y_vals[i];
-                    x_pos = bin_2_mouse((double) ++i, scale);
+                    x_pos = bin_2_mouse(++i, scale);
                     count++;
                 }
 
@@ -2890,9 +2895,9 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
                 }
             }
 
-            sel_avg_amp /= (double) (sel_to - sel_from);
-            double sel_min_amp_freq = bin_2_freq((double) sel_min, scale);
-            double sel_max_amp_freq = bin_2_freq((double) sel_max, scale);
+            sel_avg_amp /= static_cast<double>(sel_to - sel_from);
+            double sel_min_amp_freq = bin_2_freq(sel_min, scale);
+            double sel_max_amp_freq = bin_2_freq(sel_max, scale);
 
             if (x->phase_mode)
             {
@@ -2945,14 +2950,14 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
                         sel_min_freq, sel_max_freq, pow_to_db(sel_min_amp), sel_min_amp_freq, pow_to_db(sel_max_amp), sel_max_amp_freq, pow_to_db(sel_avg_amp));
             }
 
-            x_val = bin_2_mouse((double) sel_min, scale);
+            x_val = bin_2_mouse(sel_min, scale);
             y_val = yval_2_mouse(sel_min_amp, scale);
 
             jgraphics_set_source_jrgba(g, &x->u_indicator);
             jgraphics_ellipse(g, x_offset + x_val - 2.5, y_offset + y_val - 2.5, 5, 5);
             jgraphics_fill(g);
 
-            x_val = bin_2_mouse((double) sel_max, scale);
+            x_val = bin_2_mouse(sel_max, scale);
             y_val = yval_2_mouse(sel_max_amp, scale);
 
             jgraphics_set_source_jrgba(g, &x->u_indicator);

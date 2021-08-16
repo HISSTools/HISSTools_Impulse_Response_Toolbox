@@ -373,7 +373,7 @@ long irtrimnorm_crop_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 
     // Write to buffer
 
-    return (long) buffer_write((t_object *)x, buffer, temp_buf, crop_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor);
+    return static_cast<long>(buffer_write((t_object *)x, buffer, temp_buf, crop_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor));
 }
 
 
@@ -627,7 +627,7 @@ long irtrimnorm_trim_write_buffer(t_irtrimnorm *x, t_symbol *buffer, double *sam
 
     // Write to buffer
 
-    return (long) buffer_write((t_object *)x, buffer, temp_buf, trim_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor);
+    return static_cast<long>(buffer_write((t_object *)x, buffer, temp_buf, trim_length + pad_in + pad_out, x->write_chan - 1, x->resize, sample_rate, norm_factor));
 }
 
 

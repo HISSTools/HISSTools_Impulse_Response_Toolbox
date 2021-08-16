@@ -252,7 +252,7 @@ long hann_setup_flag = 0;
 void setup_hann_wind()
 {
     for (uintptr_t i = 0; i < 4097; i++)
-        hann_table[i] = 0.5 * (1.0 - std::cos(M_PI * (4095 - i) / (double) 4095));
+        hann_table[i] = 0.5 * (1.0 - std::cos(M_PI * static_cast<double>(4095 - i) / 4095.0));
 }
 
 static inline double fast_hann_wind(double in)
@@ -435,7 +435,7 @@ void zero_phase_from_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, uintptr_t fft_
 void linear_phase_from_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, uintptr_t fft_size, t_spectrum_format format)
 {
     zero_phase_from_power_spectrum (spectrum, fft_size, format);
-    delay_spectrum(spectrum, fft_size, format, (double) (fft_size >> 1));
+    delay_spectrum(spectrum, fft_size, format, static_cast<double>(fft_size >> 1));
 }
 
 void minimum_phase_components_from_power_spectrum(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum, uintptr_t fft_size)
@@ -621,7 +621,7 @@ void make_freq_dependent_power_array(double *power_array, double *specifier_arra
     uintptr_t list_pos;
     uintptr_t i;
 
-    double freq_mul = sample_rate / ((double) fft_size);
+    double freq_mul = sample_rate / static_cast<double>(fft_size);
     double prev_log_freq = -HUGE_VAL;
     double next_log_freq;
     double bin_log_freq;
