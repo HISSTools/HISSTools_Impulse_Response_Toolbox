@@ -273,7 +273,7 @@ void irextract_sweep(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
     t_atom_long num_channels = 1;
 
-    t_symbol *rec_buffer = NULL;
+    t_symbol *rec_buffer = nullptr;
 
     // Load parameters
 
@@ -340,7 +340,7 @@ void irextract_mls(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
     t_atom_long num_channels = 1;
     t_atom_long order = 18;
 
-    t_symbol *rec_buffer = NULL;
+    t_symbol *rec_buffer = nullptr;
 
     // Load parameters
 
@@ -387,7 +387,7 @@ void irextract_noise(t_irextract *x, t_symbol *sym, long argc, t_atom *argv)
 
     t_atom_long num_channels = 1;
 
-    t_symbol *rec_buffer = NULL;
+    t_symbol *rec_buffer = nullptr;
 
     t_noise_mode noise_mode = NOISE_MODE_WHITE;
 
@@ -474,7 +474,7 @@ void irextract_process(t_irextract *x, t_symbol *rec_buffer, t_atom_long num_cha
     atom_setlong(arguments + 1, num_channels);
     atom_setfloat(arguments + 2, sample_rate);
     
-    defer(x, (method) irextract_process_internal, NULL, (short) 3, arguments);
+    defer(x, (method) irextract_process_internal, nullptr, (short) 3, arguments);
 }
 
 

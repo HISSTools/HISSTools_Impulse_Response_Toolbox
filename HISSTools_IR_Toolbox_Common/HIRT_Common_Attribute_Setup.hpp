@@ -407,8 +407,8 @@ static inline long init_HIRT_common_attributes(OBJ_CLASSNAME *x)
         free(x->deconvolve_filter_specifier);
         free(x->deconvolve_range_specifier);
 
-        x->deconvolve_filter_specifier = NULL;
-        x->deconvolve_range_specifier = NULL;
+        x->deconvolve_filter_specifier = nullptr;
+        x->deconvolve_range_specifier = nullptr;
 
         object_error((t_object *) x, "could not allocate space for attribute storage");
 

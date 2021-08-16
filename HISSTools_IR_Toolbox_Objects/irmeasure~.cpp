@@ -1593,5 +1593,5 @@ void irmeasure_dsp(t_irmeasure *x, t_signal **sp, short *count)
 void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     irmeasure_dsp_common(x, samplerate);
-    object_method(dsp64, gensym("dsp_add64"), x, irmeasure_perform64, 0, NULL);
+    object_method(dsp64, gensym("dsp_add64"), x, irmeasure_perform64, 0, nullptr);
 }

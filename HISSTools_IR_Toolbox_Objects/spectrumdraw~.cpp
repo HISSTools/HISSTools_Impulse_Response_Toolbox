@@ -919,15 +919,14 @@ int C74_EXPORT main()
 
 void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_spectrumdraw *x = NULL;
-     t_dictionary *d = NULL;
+    t_dictionary *d = nullptr;
     long boxflags;
     short i;
 
     if (!(d = object_dictionaryarg(argc,argv)))
-        return NULL;
+        return nullptr;
 
-    x = (t_spectrumdraw *)object_alloc(this_class);
+    t_spectrumdraw *x = reinterpret_cast<t_spectrumdraw *>(object_alloc(this_class));
     boxflags = 0 | JBOX_DRAWFIRSTIN | JBOX_NODRAWBOX | JBOX_DRAWINLAST | JBOX_TRANSPARENT | JBOX_GROWBOTH;
 
     jbox_new((t_jbox *)x, boxflags, argc, argv);
@@ -1323,7 +1322,7 @@ void spectrumdraw_select(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 
     spectrumdraw_calc_selection_data(x);
 
-    jbox_invalidate_layer((t_object*)x, NULL, gensym("background_layer"));
+    jbox_invalidate_layer((t_object*)x, nullptr, gensym("background_layer"));
     jbox_redraw((t_jbox *)x);
 }
 
@@ -1371,7 +1370,7 @@ void spectrumdraw_mousedown(t_spectrumdraw *x, t_object *patcherview, t_pt pt, l
     x->selection_on = 0;
     x->mouse_sel_min_freq = spectrumdraw_mouse_x_2_freq(x, patcherview, pt.x);
 
-    jbox_invalidate_layer((t_object*)x, NULL, gensym("background_layer"));
+    jbox_invalidate_layer((t_object*)x, nullptr, gensym("background_layer"));
     jbox_redraw((t_jbox *)x);
 }
 
@@ -1386,7 +1385,7 @@ void spectrumdraw_mousedrag(t_spectrumdraw *x, t_object *patcherview, t_pt pt, l
 
     spectrumdraw_calc_selection_data(x);
 
-    jbox_invalidate_layer((t_object*)x, NULL, gensym("background_layer"));
+    jbox_invalidate_layer((t_object*)x, nullptr, gensym("background_layer"));
     jbox_redraw((t_jbox *)x);
 }
 
@@ -2477,7 +2476,7 @@ void spectrumdraw_jgraphics_paint(t_spectrumdraw *x, t_object *patcherview, t_sc
     }
     jbox_paint_layer((t_object *) x, patcherview, gensym("background_layer"), rect.x, rect.y);
 
-    jbox_invalidate_layer((t_object*)x, NULL, gensym("curve_layer"));
+    jbox_invalidate_layer((t_object*)x, nullptr, gensym("curve_layer"));
     g2 = jbox_start_layer((t_object *) x, patcherview, gensym("curve_layer"), rect.width, rect.height);
 
     if (g2)
@@ -3137,9 +3136,9 @@ t_max_err spectrumdraw_notify(t_spectrumdraw *x, t_symbol *sym, t_symbol *msg, v
                 x->freq_range[1] = 0.0001;
         }
 
-        jbox_invalidate_layer((t_object*)x, NULL, gensym("background_layer"));
-        jbox_invalidate_layer((t_object*)x, NULL, gensym("tick_layer"));
-        jbox_invalidate_layer((t_object*)x, NULL, gensym("label_layer"));
+        jbox_invalidate_layer((t_object*)x, nullptr, gensym("background_layer"));
+        jbox_invalidate_layer((t_object*)x, nullptr, gensym("tick_layer"));
+        jbox_invalidate_layer((t_object*)x, nullptr, gensym("label_layer"));
 
         if (attrname == gensym("fftsize"))
         {

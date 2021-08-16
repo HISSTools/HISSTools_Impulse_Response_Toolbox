@@ -937,5 +937,5 @@ void irreference_dsp(t_irreference *x, t_signal **sp, short *count)
 void irreference_dsp64(t_irreference *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     irreference_dsp_common(x, samplerate);
-    object_method(dsp64, gensym("dsp_add64"), x, irreference_perform64, 0, NULL);
+    object_method(dsp64, gensym("dsp_add64"), x, irreference_perform64, 0, nullptr);
 }
