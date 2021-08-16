@@ -36,7 +36,7 @@ long buffer_check(t_object *x, t_symbol *buffer)
 
     if (data.get_type() == kBufferNone)
     {
-        object_error((t_object *) x, "no valid buffer of name %s", buffer->s_name);
+        object_error(x, "no valid buffer of name %s", buffer->s_name);
         return 1;
     }
 
@@ -85,10 +85,10 @@ intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offs
 void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error error)
 {
     if (error == BUFFER_WRITE_ERR_NOT_FOUND)
-        object_error((t_object *) x, "no valid buffer of name %s", buffer->s_name);
+        object_error(x, "no valid buffer of name %s", buffer->s_name);
 
     if (error == BUFFER_WRITE_ERR_TOO_SMALL)
-        object_error((t_object *) x, "not enough room in buffer %s", buffer->s_name);
+        object_error(x, "not enough room in buffer %s", buffer->s_name);
 }
 
 template <typename T>
@@ -174,7 +174,7 @@ short buffer_multiple_names(t_object *x, t_symbol **in_bufs, t_symbol **out_bufs
     {
         if (argc % 2)
         {
-            object_error((t_object *) x, "target buffer with no matching input buffer");
+            object_error(x, "target buffer with no matching input buffer");
             return 0;
         }
 
