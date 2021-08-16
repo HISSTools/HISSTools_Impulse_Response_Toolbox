@@ -131,16 +131,19 @@ std::complex<double> m1_cpow(uintptr_t i, uintptr_t j)
 
 double factorial(double k)
 {
-    return (k <= 1) ? 1 : k * factorial (k - 1);
+    return (k <= 1) ? 1 : k * factorial(k - 1.0);
 }
 
 
-double binom(double n, double k)
+double binom(uintptr_t i, uintptr_t j)
 {
+    const double n = static_cast<double>(i);
+    const double k = static_cast<double>((i - j) / 2);
+    
     if (k <= 0)
         return 1;
-
-    return factorial(n) / ( factorial(k) * factorial(n - k));
+    
+    return factorial(n) / (factorial(k) * factorial(n - k));
 }
 
 
@@ -159,7 +162,7 @@ t_matrix_complex matrix_non_linear(uintptr_t size)
         for (uintptr_t j = 1; j <= size; j++)
         {
             if ((i >= j) && ((i + j + 1) & 1))
-                mat(j - 1, i - 1) = (m1_cpow(i, j) * complex(binom((double) i, (double) ((i - j) / 2)), 0)) / complex(pow(2.0, static_cast<double>(i - 1)), 0.0);
+                mat(j - 1, i - 1) = (m1_cpow(i, j) * complex(binom(i, j), 0.0)) / complex(pow(2.0, static_cast<double>(i - 1)), 0.0);
             else
                 mat(j - 1, i - 1) = complex(0.0, 0.0);
         }
