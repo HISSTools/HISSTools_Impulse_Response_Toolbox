@@ -83,7 +83,7 @@ int C74_EXPORT main()
 
 void *iraverage_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_iraverage *x = (t_iraverage *)object_alloc(this_class);
+    t_iraverage *x = reinterpret_cast<t_iraverage *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

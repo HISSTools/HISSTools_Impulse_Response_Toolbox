@@ -83,7 +83,7 @@ int C74_EXPORT main()
 
 void *irvalue_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irvalue *x = (t_irvalue *)object_alloc(this_class);
+    t_irvalue *x = reinterpret_cast<t_irvalue *>(object_alloc(this_class));
 
     x->value_outlet = floatout(x);
 

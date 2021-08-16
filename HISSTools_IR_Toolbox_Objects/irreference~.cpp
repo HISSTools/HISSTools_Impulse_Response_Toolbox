@@ -159,7 +159,7 @@ int C74_EXPORT main()
 
 void *irreference_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irreference *x = (t_irreference *)object_alloc(this_class);
+    t_irreference *x = reinterpret_cast<t_irreference *>(object_alloc(this_class));
     t_atom_long num_in_chans = 1;
 
     if (argc && atom_gettype(argv) == A_LONG)

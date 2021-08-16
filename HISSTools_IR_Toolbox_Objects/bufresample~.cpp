@@ -87,7 +87,7 @@ int C74_EXPORT main()
 
 void *bufresample_new()
 {
-    t_bufresample *x = (t_bufresample *)object_alloc (this_class);
+    t_bufresample *x = reinterpret_cast<t_bufresample *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

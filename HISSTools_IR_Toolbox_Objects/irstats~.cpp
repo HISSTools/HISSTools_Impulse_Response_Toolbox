@@ -297,7 +297,7 @@ int C74_EXPORT main()
 
 void *irstats_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irstats *x = (t_irstats *) object_alloc(this_class);
+    t_irstats *x = reinterpret_cast<t_irstats *>(object_alloc(this_class));
 
     x->results_outlet = listout(x);
 

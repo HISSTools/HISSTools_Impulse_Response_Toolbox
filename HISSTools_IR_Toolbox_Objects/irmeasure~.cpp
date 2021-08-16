@@ -242,7 +242,7 @@ int C74_EXPORT main()
 
 void *irmeasure_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irmeasure *x = (t_irmeasure *)object_alloc(this_class);
+    t_irmeasure *x = reinterpret_cast<t_irmeasure *>(object_alloc(this_class));
     t_atom_long num_out_chans = 1;
     t_atom_long num_in_chans = 1;
     long i;

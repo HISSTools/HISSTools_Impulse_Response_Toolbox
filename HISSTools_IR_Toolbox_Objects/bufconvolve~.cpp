@@ -77,7 +77,7 @@ int C74_EXPORT main()
 
 void *bufconvolve_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_bufconvolve *x = (t_bufconvolve *) object_alloc(this_class);
+    t_bufconvolve *x = reinterpret_cast<t_bufconvolve *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

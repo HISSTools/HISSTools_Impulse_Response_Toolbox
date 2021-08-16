@@ -85,7 +85,7 @@ int C74_EXPORT main()
 
 void *irinvert_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irinvert *x = (t_irinvert *)object_alloc(this_class);
+    t_irinvert *x = reinterpret_cast<t_irinvert *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

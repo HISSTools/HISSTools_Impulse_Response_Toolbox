@@ -101,7 +101,7 @@ int C74_EXPORT main()
 
 void *irpiecewiseapprox_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irpiecewiseapprox *x = (t_irpiecewiseapprox *)object_alloc(this_class);
+    t_irpiecewiseapprox *x = reinterpret_cast<t_irpiecewiseapprox *>(object_alloc(this_class));
 
     x->approximation_outlet = listout(x);
 

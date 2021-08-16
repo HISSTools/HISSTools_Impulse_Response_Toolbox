@@ -82,7 +82,7 @@ int C74_EXPORT main()
 
 void *iralign_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_iralign *x = (t_iralign *)object_alloc(this_class);
+    t_iralign *x = reinterpret_cast<t_iralign *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

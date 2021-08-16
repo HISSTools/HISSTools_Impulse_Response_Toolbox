@@ -126,7 +126,7 @@ int C74_EXPORT main()
 
 void *irsweeps_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irsweeps *x = (t_irsweeps *)object_alloc(this_class);
+    t_irsweeps *x = reinterpret_cast<t_irsweeps *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

@@ -70,7 +70,7 @@ int C74_EXPORT main()
 
 void *bufreverse_new()
 {
-    t_bufreverse *x = (t_bufreverse *)object_alloc(this_class);
+    t_bufreverse *x = reinterpret_cast<t_bufreverse *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

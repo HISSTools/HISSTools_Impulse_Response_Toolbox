@@ -78,7 +78,7 @@ int C74_EXPORT main()
 
 void *irtransaural_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irtransaural *x = (t_irtransaural *)object_alloc(this_class);
+    t_irtransaural *x = reinterpret_cast<t_irtransaural *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

@@ -166,7 +166,7 @@ int C74_EXPORT main()
 
 void *irextract_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irextract *x = (t_irextract *)object_alloc(this_class);
+    t_irextract *x = reinterpret_cast<t_irextract *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

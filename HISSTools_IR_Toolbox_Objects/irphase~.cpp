@@ -96,7 +96,7 @@ int C74_EXPORT main()
 
 void *irphase_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irphase *x = (t_irphase *)object_alloc(this_class);
+    t_irphase *x = reinterpret_cast<t_irphase *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

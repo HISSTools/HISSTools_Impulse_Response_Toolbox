@@ -157,7 +157,7 @@ int C74_EXPORT main()
 
 void *irtrimnorm_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_irtrimnorm *x = (t_irtrimnorm *)object_alloc(this_class);
+    t_irtrimnorm *x = reinterpret_cast<t_irtrimnorm *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 

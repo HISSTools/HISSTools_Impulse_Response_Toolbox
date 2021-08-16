@@ -167,7 +167,7 @@ int C74_EXPORT main()
 
 void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_multiconvolve *x = (t_multiconvolve *)object_alloc(this_class);
+    t_multiconvolve *x = reinterpret_cast<t_multiconvolve *>(object_alloc(this_class));
 
     t_atom_long num_in_chans = 1;
     t_atom_long num_out_chans = 0;

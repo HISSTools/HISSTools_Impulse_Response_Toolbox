@@ -98,7 +98,7 @@ int C74_EXPORT main()
 
 void *morphfilter_new()
 {
-    t_morphfilter *x = (t_morphfilter *)object_alloc (this_class);
+    t_morphfilter *x = reinterpret_cast<t_morphfilter *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
     x->nfilters = 0;

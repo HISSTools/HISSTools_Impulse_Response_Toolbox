@@ -146,7 +146,7 @@ int C74_EXPORT main()
 
 void *iruser_new(t_symbol *s, short argc, t_atom *argv)
 {
-    t_iruser *x = (t_iruser *)object_alloc(this_class);
+    t_iruser *x = reinterpret_cast<t_iruser *>(object_alloc(this_class));
 
     x->make_done = bangout(x);
     x->response_specifier = (t_atom *) malloc(sizeof(t_atom) * HIRT_MAX_SPECIFIER_ITEMS);
