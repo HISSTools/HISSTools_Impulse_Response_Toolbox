@@ -17,7 +17,8 @@ enum t_noise_mode
 
 // Noise Class
 
-class t_noise_params
+template <class T>
+class t_noise_gen
 {
     // Filter Calculator
     
@@ -128,7 +129,7 @@ public:
     
     // N.B. Times in seconds
     
-    t_noise_params(t_noise_mode mode, double fade_in, double fade_out, double length, double sample_rate, double amp)
+    t_noise_gen(t_noise_mode mode, double fade_in, double fade_out, double length, double sample_rate, double amp)
     : m_amp(amp)
     , m_sample_rate(sample_rate)
     , m_fade_in(fade_in)
@@ -156,20 +157,33 @@ public:
     
     uintptr_t length() const { return m_T; }
     
-    void gen(void *out, uintptr_t startN, uintptr_t N, bool double_precision)
+    void gen(T *out, uintptr_t N)
     {
-        if (double_precision)
-            gen_internal(reinterpret_cast<double *>(out), startN, N);
-        else
-            gen_internal(reinterpret_cast<float  *>(out), startN, N);
+        const double FiN = std::max(1.0, m_fade_in  * m_sample_rate * 2.0);
+        const double FoN = std::max(1.0, m_fade_out * m_sample_rate * 2.0);
+        
+        switch (m_mode)
+        {
+            case NOISE_MODE_WHITE:
+                for (uintptr_t i = 0; i < N; i++)
+                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_gen() * m_amp);
+                break;
+                
+            case NOISE_MODE_BROWN:
+                for (uintptr_t i = 0; i < N; i++)
+                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_browning(m_gen()) * m_amp);
+                break;
+                
+            case NOISE_MODE_PINK:
+                for (uintptr_t i = 0; i < N; i++)
+                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_browning(m_gen()) * m_amp);
+                break;
+        }
     }
     
-    void gen(void *out, bool double_precision)
+    void gen(T *out)
     {
-        if (double_precision)
-            gen_internal(reinterpret_cast<double *>(out), 0, m_T);
-        else
-            gen_internal(reinterpret_cast<float  *>(out), 0, m_T);
+        gen(out, m_T);
     }
 
     void measure(uintptr_t N, double&  max_pink, double& max_brown)
@@ -198,37 +212,11 @@ private:
         return fade_in * fade_out;
     }
     
-    template <typename T>
-    void gen_internal(T *out, uintptr_t startN, uintptr_t N)
-    {
-        const double FiN = std::max(1.0, m_fade_in  * m_sample_rate * 2.0);
-        const double FoN = std::max(1.0, m_fade_out * m_sample_rate * 2.0);
-        
-        switch (m_mode)
-        {
-            case NOISE_MODE_WHITE:
-                for (uintptr_t i = startN; i < startN + N; i++)
-                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_gen() * m_amp);
-                break;
-                
-            case NOISE_MODE_BROWN:
-                for (uintptr_t i = startN; i < startN + N; i++)
-                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_browning(m_gen()) * m_amp);
-                break;
-                
-            case NOISE_MODE_PINK:
-                for (uintptr_t i = startN; i < startN + N; i++)
-                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_browning(m_gen()) * m_amp);
-                break;
-        }
-    }
-    
     double m_amp;
     double m_sample_rate;
 
     double m_fade_in;
     double m_fade_out;
-    //double m_RT;
 
     uintptr_t m_T;
 

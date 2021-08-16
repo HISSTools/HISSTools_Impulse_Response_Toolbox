@@ -7,6 +7,7 @@
 
 // MLS Class
 
+template <class T>
 class t_mls
 {
 public:
@@ -28,26 +29,7 @@ public:
     uint32_t order()  const { return m_order; }
     double amp() const { return m_amp; }
     
-    void gen(void *out, uintptr_t N, bool double_precision)
-    {
-        if (double_precision)
-            gen_internal(reinterpret_cast<double *>(out), N);
-        else
-            gen_internal(reinterpret_cast<float  *>(out), N);
-    }
-    
-    void gen(void *out, bool double_precision)
-    {
-        if (double_precision)
-            gen_internal(reinterpret_cast<double *>(out), m_T);
-        else
-            gen_internal(reinterpret_cast<float  *>(out), m_T);
-    }
-    
-private:
-    
-    template <typename T>
-    void gen_internal(T *out, uintptr_t N)
+    void gen(T *out, uintptr_t N)
     {
         T amp = (T) m_amp;
         T two_amp = amp * 2;
@@ -58,6 +40,13 @@ private:
             m_lfsr = get_next_lfsr_int();
         }
     }
+    
+    void gen(T *out)
+    {
+        gen(out, m_T);
+    }
+    
+private:
     
     uint32_t get_next_lfsr_int()
     {

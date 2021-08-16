@@ -84,9 +84,6 @@ struct t_irmeasure
     long current_num_active_ins;
     long current_num_active_outs;
 
-    void *in_chans[HIRT_MAX_MEASURE_CHANS];
-    void *out_chans[HIRT_MAX_MEASURE_CHANS + 1];
-
     // Noise Amp Compensation
 
     double max_amp_brown;
@@ -96,9 +93,9 @@ struct t_irmeasure
 
     t_excitation_signal measure_mode;
 
-    t_ess sweep_params;
-    t_mls max_length_params;
-    t_noise_params noise_params;
+    t_ess<double> sweep_params;
+    t_mls<double> max_length_params;
+    t_noise_gen<double> noise_params;
 
     // Permanent Memory
 
@@ -136,7 +133,7 @@ void *irmeasure_new(t_symbol *s, short argc, t_atom *argv);
 void irmeasure_free(t_irmeasure *x);
 void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s);
 
-intptr_t irmeasure_calc_sweep_mem_size(t_ess& sweep_params, long num_out_chans, double out_length, double sample_rate);
+intptr_t irmeasure_calc_sweep_mem_size(t_ess<double>& sweep_params, long num_out_chans, double out_length, double sample_rate);
 intptr_t irmeasure_calc_mls_mem_size(long order, long num_out_chans, double out_length, double sample_rate);
 intptr_t irmeasure_calc_noise_mem_size(double length, long num_out_chans, double out_length, double sample_rate);
 intptr_t irmeasure_calc_mem_size(t_irmeasure *x, long num_in_chans, long num_out_chans, double sample_rate);
@@ -168,12 +165,9 @@ void irmeasure_mls_params(t_irmeasure *x);
 void irmeasure_noise_params(t_irmeasure *x);
 void irmeasure_params(t_irmeasure *x);
 
-static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, bool double_precision);
-t_int *irmeasure_perform(t_int *w);
+static inline void irmeasure_perform_excitation(t_irmeasure *x, double *out, long current_t, long vec_size);
 void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 
-void irmeasure_dsp_common(t_irmeasure *x, double samplerate);
-void irmeasure_dsp(t_irmeasure *x, t_signal **sp, short *count);
 void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
 
@@ -193,7 +187,6 @@ int C74_EXPORT main()
                           0);
 
     class_addmethod(this_class, (method)irmeasure_assist, "assist", A_CANT, 0L);
-    class_addmethod(this_class, (method)irmeasure_dsp, "dsp", A_CANT, 0L);
     class_addmethod(this_class, (method)irmeasure_dsp64, "dsp64", A_CANT, 0L);
 
     class_addmethod(this_class, (method)irmeasure_sweep, "sweep", A_GIMME, 0L);
@@ -345,7 +338,7 @@ void irmeasure_assist(t_irmeasure *x, void *b, long m, long a, char *s)
 //////////////////////////////////////////////////////////////////////////
 
 
-intptr_t irmeasure_calc_sweep_mem_size(t_ess& sweep_params, long num_out_chans, double out_length, double sample_rate)
+intptr_t irmeasure_calc_sweep_mem_size(t_ess<double>& sweep_params, long num_out_chans, double out_length, double sample_rate)
 {
     intptr_t gen_length = sweep_params.length();
     intptr_t rec_length = static_cast<intptr_t>(num_out_chans * ((out_length * sample_rate) + gen_length));
@@ -471,7 +464,7 @@ void irmeasure_sweep(t_irmeasure *x, t_symbol *sym, long argc, t_atom *argv)
 
     // Check length of sweep and memory allocation
 
-    t_ess sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), 0);
+    t_ess<double> sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), 0);
     
     if (sweep_params.length())
     {
@@ -723,9 +716,9 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     intptr_t gen_length = 0;
     intptr_t filter_length = buffer_length(filter);
 
-    t_ess sweep_params(x->sweep_params);
-    t_mls max_length_params(x->max_length_params);
-    t_noise_params noise_params(x->noise_params);
+    t_ess<double> sweep_params(x->sweep_params);
+    t_mls<double> max_length_params(x->max_length_params);
+    t_noise_gen<double> noise_params(x->noise_params);
 
     switch (x->measure_mode)
     {
@@ -794,9 +787,9 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
 
     switch (x->measure_mode)
     {
-        case SWEEP:     sweep_params.gen(excitation_sig.get(), true);         break;
-        case MLS:       max_length_params.gen(excitation_sig.get(), true);    break;
-        case NOISE:     noise_params.gen(excitation_sig.get(), true);         break;
+        case SWEEP:     sweep_params.gen(excitation_sig.get());         break;
+        case MLS:       max_length_params.gen(excitation_sig.get());    break;
+        case NOISE:     noise_params.gen(excitation_sig.get());         break;
     }
 
     // Transform excitation signal into complex spectrum 2
@@ -807,7 +800,7 @@ void irmeasure_process(t_irmeasure *x, t_symbol *sym, short argc, t_atom *argv)
     {
         // Calculate standard filter for bandlimited deconvolution (sweep * inv sweep)
 
-        sweep_params.igen(excitation_sig.get(), INVERT_ALL, true);
+        sweep_params.igen(excitation_sig.get(), INVERT_ALL);
         time_to_halfspectrum_double(fft_setup, excitation_sig.get(), gen_length, spectrum_3, fft_size);
         convolve(spectrum_3, spectrum_2, fft_size, SPECTRUM_REAL);
 
@@ -1108,7 +1101,7 @@ void irmeasure_sweep_params(t_irmeasure *x)
     double out_length = x->out_length;
     double sample_rate = x->sample_rate;
 
-    x->sweep_params = t_ess(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, sample_rate, db_to_a(x->amp), x->amp_curve);
+    x->sweep_params = t_ess<double>(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, sample_rate, db_to_a(x->amp), x->amp_curve);
     uintptr_t sweep_length = x->sweep_params.length();
 
     intptr_t chan_offset = static_cast<intptr_t>((out_length * sample_rate) + sweep_length);
@@ -1133,7 +1126,7 @@ void irmeasure_mls_params(t_irmeasure *x)
     long chan_offset = static_cast<long>((out_length * sample_rate) + mls_length);
     long i;
 
-    x->max_length_params = t_mls(static_cast<uint32>(order), db_to_a(x->amp));
+    x->max_length_params = t_mls<double>(static_cast<uint32>(order), db_to_a(x->amp));
 
     for (i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
@@ -1164,7 +1157,7 @@ void irmeasure_noise_params(t_irmeasure *x)
     if (noise_mode == NOISE_MODE_PINK)
         amp_comp = x->max_amp_pink;
 
-    x->noise_params = t_noise_params(noise_mode, x->fade_in, x->fade_out, length, sample_rate, db_to_a(x->amp) / amp_comp);
+    x->noise_params = t_noise_gen<double>(noise_mode, x->fade_in, x->fade_out, length, sample_rate, db_to_a(x->amp) / amp_comp);
 
     for (i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
@@ -1192,17 +1185,14 @@ void irmeasure_params(t_irmeasure *x)
 //////////////////////////////////////////////////////////////////////////
 
 
-static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long current_t, long vec_size, bool double_precision)
+static inline void irmeasure_perform_excitation(t_irmeasure *x, double *out, long current_t, long vec_size)
 {
     // Calculate where signal starts
 
     long start = std::max(0L, -current_t);
 
-    if (double_precision)
-        out = reinterpret_cast<double *>(out) + start;
-    else
-        out = reinterpret_cast<float *>(out) + start;
-
+    out += start;
+    
     // Calculate where sweep ends
 
     long todo = std::max(0L, std::min(vec_size - start, std::min(x->T, (x->T - current_t))));
@@ -1221,156 +1211,11 @@ static inline void irmeasure_perform_excitation(t_irmeasure *x, void *out, long 
     {
         switch (x->measure_mode)
         {
-            case SWEEP:     x->sweep_params.gen(out, current_t, todo, double_precision);    break;
-            case MLS:       x->max_length_params.gen(out, todo, double_precision);          break;
-            case NOISE:     x->noise_params.gen(out, current_t, todo, double_precision);    break;
+            case SWEEP:     x->sweep_params.gen(out, current_t, todo);      break;
+            case MLS:       x->max_length_params.gen(out, todo);            break;
+            case NOISE:     x->noise_params.gen(out, todo);                 break;
         }
     }
-}
-
-
-t_int *irmeasure_perform(t_int *w)
-{
-    // Set pointers
-
-    long vec_size = static_cast<long>(w[1]);
-    t_irmeasure *x = reinterpret_cast<t_irmeasure *>(w[2]);
-
-    float *in;
-    float *out;
-
-    double phase = x->phase;
-    double phase_inc = x->test_tone_freq / x->sample_rate;
-    double amp = db_to_a(x->amp);
-    double sample_rate = x->sample_rate;
-    double progress_mul = 0.0;
-
-    long test_tone = x->test_tone;
-    long current_num_active_ins = x->current_num_active_ins;
-    long current_num_active_outs = x->current_num_active_outs;
-    long num_out_chans = x->num_out_chans;
-    long i, j;
-    
-    // Check for stop / start
-
-    if (x->start_measurement)
-        irmeasure_params(x);
-
-    if (x->stop_measurement)
-        x->current_t = x->T2;
-
-    x->start_measurement = 0;
-    x->stop_measurement = 0;
-    intptr_t T2 = x->T2;
-
-    // Get counters
-
-    intptr_t current_t = x->current_t;
-    intptr_t current_t2 = current_t;
-    bool excitation_playing = current_t2 < T2;
-
-    // Check memory
-
-    attempt_mem_swap(&x->rec_mem);
-    double *rec_mem = (double *) x->rec_mem.current_ptr;
-
-    intptr_t mem_size = irmeasure_calc_mem_size(x, current_num_active_ins, current_num_active_outs, sample_rate);
-    bool mem_check = x->rec_mem.current_size >= static_cast<uintptr_t>(mem_size);
-
-    if (mem_check)
-    {
-        // Record Input
-
-        for (j = 0; j < current_num_active_ins; j++)
-        {
-            in = reinterpret_cast<float *>(x->in_chans[j]);
-            double *measurement_rec = rec_mem + (j * T2);
-            current_t2 = current_t;
-            for (i = 0; i < vec_size && current_t2 < T2; i++, current_t2++)
-                measurement_rec[current_t2] = *in++;
-        }
-    }
-
-    // Zero all outputs (including progress)
-
-    for (j = 0; j < num_out_chans + 1; j++)
-        for (i = 0, out = reinterpret_cast<float *>(x->out_chans[j]); i < vec_size; i++)
-            *out++ = 0;
-
-    // Choose between test tones and sweeps
-
-    if (test_tone)
-    {
-        // Do Test tones
-
-        if (test_tone == -1)
-            out = reinterpret_cast<float *>(x->out_chans[0]);
-        else
-            out = reinterpret_cast<float *>(x->out_chans[test_tone - 1]);
-
-        // Generate one channel of test tone
-
-        for (i = 0; i < vec_size; i++)
-        {
-            *out++ = static_cast<float>(amp * std::sin(phase * M_PI * 2));
-            phase += phase_inc;
-        }
-
-        // Wrap tone generator phase
-
-        while (phase < 0.0)
-            phase += 1.0;
-        while (phase > 1.0)
-            phase -= 1.0;
-
-        // Copy to all other channels if relevant
-
-        if (test_tone == -1)
-        {
-            for (j = 1, in = reinterpret_cast<float *>(x->out_chans[0]); j < current_num_active_outs; j++)
-            {
-                for (i = 0, out = reinterpret_cast<float *>(x->out_chans[j]); i < vec_size; i++)
-                    out[i] = in[i];
-            }
-        }
-    }
-    else
-    {
-        if (mem_check)
-        {
-            // Do Output
-
-            for (j = 0; j < current_num_active_outs; j++)
-                irmeasure_perform_excitation(x, x->out_chans[j], static_cast<long>(x->current_t - x->chan_offset[j]), vec_size, false);
-
-            if (x->abs_progress)
-                progress_mul = 1000.0 / sample_rate;
-            else
-                if (T2)
-                    progress_mul = 1.0 / T2;
-
-            // Progress output
-
-            out = reinterpret_cast<float *>(x->out_chans[num_out_chans]);
-            current_t2 = x->current_t;
-            for (i = 0; i < vec_size && current_t2 < T2; i++, current_t2++)
-                out[i] = static_cast<float>(progress_mul * current_t2);
-            for (; i < vec_size; i++)
-                out[i] = static_cast<float>(progress_mul * T2);
-        }
-    }
-
-    // Store accumulators
-
-    x->current_t = current_t2;
-    x->phase = phase;
-
-    // Process when done
-
-    if (excitation_playing && current_t2 >= T2)
-        defer(x, (method) irmeasure_process, 0, 0, 0);
-
-    return w + 3;
 }
 
 
@@ -1482,7 +1327,7 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
             // Do Output
 
             for (j = 0; j < current_num_active_outs; j++)
-                irmeasure_perform_excitation(x, outs[j], static_cast<long>(x->current_t - x->chan_offset[j]), vec_size, true);
+                irmeasure_perform_excitation(x, outs[j], static_cast<long>(x->current_t - x->chan_offset[j]), vec_size);
 
             if (x->abs_progress)
                 progress_mul = 1000.0 / sample_rate;
@@ -1514,24 +1359,24 @@ void irmeasure_perform64(t_irmeasure *x, t_object *dsp64, double **ins, long num
 
 
 //////////////////////////////////////////////////////////////////////////
-///////////////////////////// DSP Routines ///////////////////////////////
+////////////////////////////// DSP Routine ///////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 
-void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
+void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     // Store sample rate
-
+    
     const double old_sr = x->sample_rate;
     x->sample_rate = samplerate;
-
+    
     if (x->sample_rate != old_sr || x->no_dsp)
     {
-        t_noise_params noise_params(NOISE_MODE_WHITE, 0, 0, 1, x->sample_rate, 1);
+        t_noise_gen<double> noise_params(NOISE_MODE_WHITE, 0, 0, 1, x->sample_rate, 1);
         noise_params.measure((1 << 25), x->max_amp_pink, x->max_amp_brown);
         x->no_dsp = 0;
     }
-
+    
     if (x->start_measurement)
     {
         intptr_t mem_size = 0;
@@ -1540,58 +1385,30 @@ void irmeasure_dsp_common(t_irmeasure *x, double samplerate)
         {
             case SWEEP:
             {
-                t_ess sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), nullptr);
+                t_ess<double> sweep_params(x->lo_f, x->hi_f, x->fade_in, x->fade_out, x->length, x->sample_rate, db_to_a(x->amp), nullptr);
                 mem_size = x->current_num_active_ins * irmeasure_calc_sweep_mem_size(sweep_params, x->current_num_active_outs, x->out_length, x->sample_rate);
                 break;
             }
-
+                
             case MLS:
                 mem_size = x->current_num_active_ins * irmeasure_calc_mls_mem_size(x->order, x->current_num_active_outs, x->out_length, x->sample_rate);
                 break;
-
+                
             case NOISE:
                 mem_size = x->current_num_active_ins * irmeasure_calc_noise_mem_size(x->length, x->current_num_active_outs, x->out_length, x->sample_rate);
                 break;
         }
-
+        
         if (!schedule_grow_mem_swap(&x->rec_mem, mem_size, mem_size))
             object_error((t_object *) x, "not able to allocate adequate memory for recording");
     }
     else
     {
         // Clear memory if the sample rate has changed and we have not just started measuring
-
+        
         if (x->sample_rate != old_sr)
             irmeasure_clear(x);
     }
-}
-
-
-void irmeasure_dsp(t_irmeasure *x, t_signal **sp, short *count)
-{
-    long i;
-
-    irmeasure_dsp_common(x, sp[0]->s_sr);
-
-    // Store pointers to ins and outs
-
-    for (i = 0; i < x->num_in_chans; i++)
-        x->in_chans[i] = sp[i]->s_vec;
-    for (; i < HIRT_MAX_MEASURE_CHANS; i++)
-        x->in_chans[i] = 0;
-
-    for (i = 0; i < x->num_out_chans; i++)
-        x->out_chans[i] = sp[i + x->num_in_chans]->s_vec;
-    x->out_chans[i] = sp[i + x->num_in_chans]->s_vec;
-    for (i++; i < HIRT_MAX_MEASURE_CHANS + 1; i++)
-        x->out_chans[i] = 0;
-
-    dsp_add((t_perfroutine)irmeasure_perform, 2, sp[0]->s_n, x);
-}
-
-
-void irmeasure_dsp64(t_irmeasure *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
-{
-    irmeasure_dsp_common(x, samplerate);
+    
     object_method(dsp64, gensym("dsp_add64"), x, irmeasure_perform64, 0, nullptr);
 }

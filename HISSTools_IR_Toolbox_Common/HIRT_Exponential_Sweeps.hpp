@@ -14,12 +14,13 @@ enum t_invert_mode
     INVERT_USER_CURVE_AND_SWEEP = 1,            // Output inverting the user amp curve and sweep but not the overall amplitude
     INVERT_ALL = 2,                             // Output inverting the user amp curve, sweep and the overall amplitude
 };
-    
+
+template <class T>
 class t_ess
 {
 public:
     
-    t_ess(double f1, double f2, double fade_in, double fade_out, double T, double sample_rate, double amp, double *amp_curve)
+    t_ess(double f1, double f2, double fade_in, double fade_out, double time, double sample_rate, double amp, double *amp_curve)
     : m_fade_in(fade_in)
     , m_fade_out(fade_out)
     , m_sample_rate(sample_rate)
@@ -34,14 +35,14 @@ public:
         f1 /= sample_rate;
         f2 /= sample_rate;
         
-        T *= sample_rate;
+        time *= sample_rate;
         
-        double L = std::round(f1 * T / (std::log(f2 / f1))) / f1;
+        double L = std::round(f1 * time / (std::log(f2 / f1))) / f1;
         
         m_K1 = 2 * M_PI * f1 * L;
         m_K2 = 1 / L;
         
-        double NT = std::round(f1 * T / (std::log(f2 / f1))) * std::log(f2 / f1) / f1;
+        double NT = std::round(f1 * time / (std::log(f2 / f1))) * std::log(f2 / f1) / f1;
         double final_phase = std::floor(L * f1 * (exp(NT * m_K2) - 1));
         double NNT = std::ceil(std::log((final_phase / L / f1 + 1)) / m_K2);
         
@@ -104,42 +105,7 @@ public:
         return m_T / std::log(m_hi_f_act / m_lo_f_act) * std::log(static_cast<double>(harm));
     }
     
-    uintptr_t gen(void *out, uintptr_t start, uintptr_t N, bool double_precision)
-    {
-        if (double_precision)
-            return gen_internal(reinterpret_cast<double *>(out), start, N);
-        else
-            return gen_internal(reinterpret_cast<float  *>(out), start, N);
-    }
-    
-    uintptr_t igen(void *out, uintptr_t start, uintptr_t N, t_invert_mode inv_amp, bool double_precision)
-    {
-        if (double_precision)
-            return igen_internal(reinterpret_cast<double *>(out), start, N, inv_amp);
-        else
-            return igen_internal(reinterpret_cast<float  *>(out), start, N, inv_amp);
-    }
-    
-    uintptr_t gen(void *out, bool double_precision)
-    {
-        if (double_precision)
-            return gen_internal(reinterpret_cast<double *>(out), 0, m_T);
-        else
-            return gen_internal(reinterpret_cast<float  *>(out), 0, m_T);
-    }
-    
-    uintptr_t igen(void *out, t_invert_mode inv_amp, bool double_precision)
-    {
-        if (double_precision)
-            return igen_internal(reinterpret_cast<double *>(out), 0, m_T, inv_amp);
-        else
-            return igen_internal(reinterpret_cast<float  *>(out), 0, m_T, inv_amp);
-    }
-    
-private:
-
-    template <typename T>
-    uintptr_t gen_internal(T *out, uintptr_t start, uintptr_t N)
+    uintptr_t gen(T *out, uintptr_t start, uintptr_t N)
     {
         const double FiN = std::max(1.0, m_fade_in  * m_sample_rate * 2.0);
         const double FoN = std::max(1.0, m_fade_out * m_sample_rate * 2.0);
@@ -161,8 +127,7 @@ private:
         return N;
     }
     
-    template <typename T>
-    uintptr_t igen_internal(T *out, uintptr_t start, uintptr_t N, t_invert_mode inv_amp)
+    uintptr_t igen(T *out, uintptr_t start, uintptr_t N, t_invert_mode inv_amp)
     {
         const double FiN = std::max(1.0, m_fade_in  * m_sample_rate * 2.0);
         const double FoN = std::max(1.0, m_fade_out * m_sample_rate * 2.0);
@@ -188,6 +153,18 @@ private:
         
         return N;
     }
+    
+    uintptr_t gen(T *out)
+    {
+        return gen(out, 0, m_T);
+    }
+    
+    uintptr_t igen(T *out, t_invert_mode inv_amp)
+    {
+        return igen(out, 0, m_T, inv_amp);
+    }
+    
+private:
     
     double fade(uintptr_t i, double FiN, double FoN)
     {

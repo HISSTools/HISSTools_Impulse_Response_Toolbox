@@ -45,9 +45,7 @@ void multiconvolve_assist(t_multiconvolve *x, void *b, long m, long a, char *s);
 void multiconvolve_clear(t_multiconvolve *x);
 void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *argv);
 
-t_int *multiconvolve_perform(t_int *w);
 void multiconvolve_perform64(t_multiconvolve *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
-void multiconvolve_dsp(t_multiconvolve *x, t_signal **sp, short *count);
 void multiconvolve_dsp64(t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
 
@@ -142,7 +140,6 @@ int C74_EXPORT main()
 
     class_addmethod(this_class, (method)multiconvolve_assist, "assist", A_CANT, 0L);
     class_addmethod(this_class, (method)multiconvolve_dsp64, "dsp64", A_CANT, 0L);
-    class_addmethod(this_class, (method)multiconvolve_dsp, "dsp", A_CANT, 0L);
 
     class_addmethod(this_class, (method)multiconvolve_set, "set", A_GIMME, 0L);
     class_addmethod(this_class, (method)multiconvolve_clear, "clear", 0L);
@@ -363,19 +360,9 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
 
 
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////// Perform Routines ////////////////////////////
+//////////////////////////// Perform Routine /////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-
-t_int *multiconvolve_perform(t_int *w)
-{
-    t_multiconvolve *x = reinterpret_cast<t_multiconvolve *>(w[1]);
-    long vec_size = static_cast<long>(w[2]);
-
-    x->multi->process(x->ins, x->outs, x->num_in_chans, x->num_out_chans, vec_size);
-
-    return w + 3;
-}
 
 void multiconvolve_perform64(t_multiconvolve *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
 {
@@ -384,20 +371,8 @@ void multiconvolve_perform64(t_multiconvolve *x, t_object *dsp64, double **ins, 
 
 
 //////////////////////////////////////////////////////////////////////////
-///////////////////////////// DSP Routines ///////////////////////////////
+///////////////////////////// DSP Routine ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-
-
-void multiconvolve_dsp(t_multiconvolve *x, t_signal **sp, short *count)
-{
-    for (long i = 0; i < x->num_in_chans; i++)
-        x->ins[i] = reinterpret_cast<float *>(sp[i]->s_vec);
-    for (long i = 0; i < x->num_out_chans; i++)
-        x->outs[i] = reinterpret_cast<float *>(sp[i + x->num_in_chans]->s_vec);
-
-    if (x->multi)
-        dsp_add(multiconvolve_perform, 2, x, sp[0]->s_n);
-}
 
 
 void multiconvolve_dsp64(t_multiconvolve *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

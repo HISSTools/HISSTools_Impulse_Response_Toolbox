@@ -201,12 +201,12 @@ void irsweeps_gen(t_irsweeps *x, float *ptr, T *generator, bool inverse)
 }
 
 template <>
-void irsweeps_gen(t_irsweeps *x, float *ptr, t_ess *generator, bool inverse)
+void irsweeps_gen(t_irsweeps *x, float *ptr, t_ess<float> *generator, bool inverse)
 {
     if (inverse)
-        generator->igen(ptr, x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE, false);
+        generator->igen(ptr, x->inv_amp ? INVERT_ALL : INVERT_USER_CURVE_TO_FIXED_REFERENCE);
     else
-        generator->gen(ptr, false);
+        generator->gen(ptr);
 }
 
 template <class T>
@@ -289,7 +289,7 @@ void irsweeps_sweep_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     // Get sweep length and allocate temmporary memory
 
     fill_amp_curve_specifier(amp_curve, x->amp_curve_specifier, x->amp_curve_num_specifiers);
-    t_ess sweep_params(f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve);
+    t_ess<float> sweep_params(f1, f2, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp), amp_curve);
     uintptr_t sweep_length = sweep_params.length();
 
     if (!sweep_length)
@@ -330,7 +330,7 @@ void irsweep_mls_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *argv
 
     order = static_cast<t_atom_long>(irsweeps_param_check(x, "order", static_cast<double>(order), 1, 24));
 
-    t_mls max_length_params(static_cast<uint32_t>(order), db_to_a(x->amp));
+    t_mls<float> max_length_params(static_cast<uint32_t>(order), db_to_a(x->amp));
     uintptr_t mls_length = max_length_params.length();
 
     irsweeps_gen(x, buffer, mls_length, &max_length_params, false, sample_rate);
@@ -383,7 +383,7 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
 
     if (filter_mode != NOISE_MODE_WHITE && x->last_sample_rate != sample_rate)
     {
-        t_noise_params noise_params(NOISE_MODE_WHITE, 0, 0, 1, sample_rate, 1);
+        t_noise_gen<float> noise_params(NOISE_MODE_WHITE, 0, 0, 1, sample_rate, 1);
         noise_params.measure((1 << 25), x->max_amp_pink, x->max_amp_brown);
         
         x->last_sample_rate = sample_rate;
@@ -394,7 +394,7 @@ void irsweeps_noise_internal(t_irsweeps *x, t_symbol *sym, short argc, t_atom *a
     if (filter_mode == NOISE_MODE_PINK)
         amp_comp = x->max_amp_pink;
 
-    t_noise_params noise_params(filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
+    t_noise_gen<float> noise_params(filter_mode, fade_in / 1000.0, fade_out / 1000.0, length / 1000.0, sample_rate, db_to_a(x->amp) / amp_comp);
     uintptr_t noise_length = noise_params.length();
 
     irsweeps_gen(x, buffer, noise_length, &noise_params, false, sample_rate);

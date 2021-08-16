@@ -151,8 +151,7 @@ struct t_spectrumdraw
 
     // Curve Data and Params
 
-    void *sig_ins[SPECTRUMDRAW_NUM_CURVES];
-    long sig_ins_valid[SPECTRUMDRAW_NUM_CURVES];
+    bool sig_ins_valid[SPECTRUMDRAW_NUM_CURVES];
 
     t_safe_mem_swap curve_data[SPECTRUMDRAW_NUM_CURVES];
 
@@ -289,11 +288,8 @@ void spectrumdraw_buffer(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *ar
 void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uintptr_t fft_size);
 void spectrumdraw_realtime(t_spectrumdraw *x, float *read_from, long phase_mode, long N);
 
-t_int *spectrumdraw_perform(t_int *w);
 void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 
-void spectrumdraw_dsp_common(t_spectrumdraw *x, double samplerate, t_signal **sp, short *count);
-void spectrumdraw_dsp(t_spectrumdraw *x, t_signal **sp, short *count);
 void spectrumdraw_dsp64(t_spectrumdraw *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
 long gcd(long a, long b);
@@ -564,7 +560,6 @@ int C74_EXPORT main()
 
     class_addmethod(c, (method)spectrumdraw_select, "select", A_GIMME, 0);
 
-    class_addmethod(c, (method)spectrumdraw_dsp, "dsp", A_CANT, 0L);
     class_addmethod(c, (method)spectrumdraw_dsp64, "dsp64", A_CANT, 0L);
     class_addmethod(c, (method)spectrumdraw_assist, "assist", A_CANT, 0);
 
@@ -937,10 +932,7 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
     init_HIRT_common_attributes(x);
 
     for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
-    {
-        x->sig_ins[i] = 0;
-        x->sig_ins_valid[i] = 0;
-    }
+        x->sig_ins_valid[i] = false;
 
     // Init once per object memory
 
@@ -1833,75 +1825,8 @@ void spectrumdraw_realtime(t_spectrumdraw *x, float *read_from, long phase_mode,
 
 
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////// Perform Routines ////////////////////////////
+//////////////////////////// Perform Routine /////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-
-
-t_int *spectrumdraw_perform(t_int *w)
-{
-    // Set pointers
-
-    float **sig_ins = reinterpret_cast<float **>(w[1]);
-    long vec_size = static_cast<long>(w[2]);
-    t_spectrumdraw *x = reinterpret_cast<t_spectrumdraw *>(w[3]);
-
-    long write_pointer = x->write_pointer;
-    long hop_pointer = x->hop_pointer;
-    long block_write_pointer = write_pointer;
-    long block_hop_pointer = hop_pointer;
-    long window_size = spectrumdraw_realtime_window_size(x);
-    long hop_size = static_cast<long>(x->redraw_time * x->sample_rate / 1000.0);
-    long draw = 0;
-    long i, j;
-
-    for (j = 0; j < SPECTRUMDRAW_NUM_CURVES; j++)
-    {
-        if (attempt_mem_swap(x->realtime_io + j) == SWAP_FAILED)
-            continue;
-
-        float *in_store = (float *) x->realtime_io[j].current_ptr;
-        float *sig_in = sig_ins[j];
-
-        if (static_cast<long>(x->realtime_io[j].current_size) < window_size || !in_store || !sig_in)
-            continue;
-
-        write_pointer = block_write_pointer;
-        hop_pointer = block_hop_pointer;
-
-        for (i = 0; i < vec_size; i++)
-        {
-            if (hop_pointer >= hop_size)
-            {
-                // Add a threadsafe mechanism here...
-
-                if (ATOMIC_INCREMENT(&x->draw_check) == 1)
-                {
-                    spectrumdraw_realtime(x, in_store + write_pointer, x->phase_mode, j);
-                    draw = 1;
-                }
-                ATOMIC_DECREMENT(&x->draw_check);
-                hop_pointer = 0;
-            }
-
-            if (write_pointer >= window_size)
-                write_pointer = 0;
-
-            in_store[write_pointer] = in_store[write_pointer + window_size] = *sig_in++;
-            write_pointer++;
-            hop_pointer++;
-        }
-    }
-
-    x->write_pointer = write_pointer;
-    x->hop_pointer = hop_pointer;
-
-    // Only draw once per signal vector
-
-    if (draw)
-        jbox_redraw((t_jbox *)x);
-
-    return w + 4;
-}
 
 
 void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
@@ -1964,44 +1889,25 @@ void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, lo
 
 
 //////////////////////////////////////////////////////////////////////////
-///////////////////////////// DSP Routines ///////////////////////////////
+///////////////////////////// DSP Routine ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 
-void spectrumdraw_dsp_common(t_spectrumdraw *x, double samplerate, t_signal **sp, short *count)
+void spectrumdraw_dsp64(t_spectrumdraw *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     short i;
 
     for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         if (count[i] > 0)
-        {
-            x->sig_ins_valid[i] = 1;
-            if (sp)
-                x->sig_ins[i] = sp[i]->s_vec;
-        }
+            x->sig_ins_valid[i] = true;
         else
-        {
-            x->sig_ins[i] = 0;
-            x->sig_ins_valid[i] = 0;
-        }
+            x->sig_ins_valid[i] = false;
     }
 
     x->sample_rate = samplerate;
     check_realtime_io(x, spectrumdraw_realtime_fft_size(x));
-}
 
-
-void spectrumdraw_dsp(t_spectrumdraw *x, t_signal **sp, short *count)
-{
-    spectrumdraw_dsp_common(x, sp[0]->s_sr, sp, count);
-    dsp_add((t_perfroutine)spectrumdraw_perform, 3, x->sig_ins, sp[0]->s_n, x);
-}
-
-
-void spectrumdraw_dsp64(t_spectrumdraw *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
-{
-    spectrumdraw_dsp_common(x, samplerate, 0, count);
     object_method(dsp64, gensym("dsp_add64"), x, spectrumdraw_perform64, 0, nullptr);
 }
 

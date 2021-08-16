@@ -50,10 +50,6 @@ struct t_irreference
     long current_num_active_ins;
     long num_in_chans;
 
-    // Input Pointers
-
-    void *in_chans[HIRT_MAX_MEASURE_CHANS + 1];
-
     // Permanent Memory
 
     t_safe_mem_swap rec_mem;
@@ -104,11 +100,8 @@ void irreference_dump_internal(t_irreference *x, t_symbol *sym, short argc, t_at
 void irreference_getir(t_irreference *x, t_symbol *sym, long argc, t_atom *argv);
 void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_atom *argv);
 
-t_int *irreference_perform(t_int *w);
 void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam);
 
-void irreference_dsp_common(t_irreference *x, double samplerate);
-void irreference_dsp(t_irreference *x, t_signal **sp, short *count);
 void irreference_dsp64(t_irreference *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
 
@@ -128,7 +121,6 @@ int C74_EXPORT main()
                           0);
 
     class_addmethod(this_class, (method)irreference_assist, "assist", A_CANT, 0L);
-    class_addmethod(this_class, (method)irreference_dsp, "dsp", A_CANT, 0L);
     class_addmethod(this_class, (method)irreference_dsp64, "dsp64", A_CANT, 0L);
 
     class_addmethod(this_class, (method)irreference_rec, "rec", A_GIMME, 0L);
@@ -722,94 +714,8 @@ void irreference_getir_internal(t_irreference *x, t_symbol *sym, short argc, t_a
 
 
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////// Perform Routines ////////////////////////////
+//////////////////////////// Perform Routine /////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-
-
-t_int *irreference_perform(t_int *w)
-{
-    // Set pointers
-
-    long vec_size = static_cast<long>(w[1]);
-    t_irreference *x = reinterpret_cast<t_irreference *>(w[2]);
-
-    float *out = reinterpret_cast<float *>(w[3]);
-
-    double sample_rate = x->sample_rate;
-    double progress_mul = 1.0;
-
-    bool record_on = false;
-    bool mem_check;
-
-    // Check for stop / start
-
-    if (x->start_rec)
-    {
-        x->T = static_cast<intptr_t>(sample_rate * x->length);
-        x->current_length = x->T;
-        x->current_out_length = x->out_length;
-        x->current_t = 0;
-    }
-
-    if (x->stop_rec)
-    {
-        x->current_length = x->current_t;
-        x->current_t = x->T;
-        record_on = x->stop_rec == 2;
-    }
-
-    x->start_rec = 0;
-    x->stop_rec = 0;
-    intptr_t T = x->T;
-    intptr_t i;
-    
-    // Get counters
-
-    intptr_t current_t = x->current_t;
-    intptr_t current_t2 = current_t;
-    record_on = record_on || current_t2 < T;
-
-    // Check memory
-
-    attempt_mem_swap(&x->rec_mem);
-    double *rec_mem = (double *) x->rec_mem.current_ptr;
-    uintptr_t mem_size = irreference_calc_mem_size(x, x->current_num_active_ins);
-    mem_check = x->rec_mem.current_size >= static_cast<uintptr_t>(mem_size);
-
-    if (mem_check)
-    {
-        // Record Inputs
-
-        for (long j = 0; j < x->current_num_active_ins + 1; j++)
-        {
-            float *in = reinterpret_cast<float *>(x->in_chans[j]);
-            double *rec_ptr = rec_mem + (j * T);
-            for (i = 0, current_t2 = current_t; (i < vec_size) && (current_t2 < T); i++, current_t2++)
-                rec_ptr[current_t2] = *in++;
-        }
-    }
-
-    if (x->abs_progress)
-        progress_mul = 1000.0 / sample_rate;
-    else if (T)
-        progress_mul = 1.0 / T;
-
-    for (i = 0, current_t2 = current_t; i < vec_size && current_t2 < T && mem_check; i++)
-        *out++ = static_cast<float>(current_t2++ * progress_mul);
-    for (; i < vec_size; i++)
-        *out++ = static_cast<float>(progress_mul * T);
-
-    // Store accumulators
-
-    x->current_t = current_t2;
-
-    // Process when done
-
-    if (record_on && current_t2 >= T)
-        defer(x, (method) irreference_process, 0, 0, 0);
-
-    return w + 4;
-}
 
 
 void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vec_size, long flags, void *userparam)
@@ -892,11 +798,11 @@ void irreference_perform64(t_irreference *x, t_object *dsp64, double **ins, long
 
 
 //////////////////////////////////////////////////////////////////////////
-///////////////////////////// DSP Routines ///////////////////////////////
+///////////////////////////// DSP Routine ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 
-void irreference_dsp_common(t_irreference *x, double samplerate)
+void irreference_dsp64(t_irreference *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
     // Store sample rate
 
@@ -919,23 +825,6 @@ void irreference_dsp_common(t_irreference *x, double samplerate)
         if (x->sample_rate != old_sr)
             irreference_clear(x);
     }
-}
 
-
-void irreference_dsp(t_irreference *x, t_signal **sp, short *count)
-{
-    // Store pointers to ins and outs
-
-    for (long i = 0; i < x->num_in_chans + 1; i++)
-        x->in_chans[i] = sp[i]->s_vec;
-
-    irreference_dsp_common(x, sp[0]->s_sr);
-    dsp_add((t_perfroutine)irreference_perform, 3, sp[0]->s_n, x, sp[x->num_in_chans + 1]->s_vec);
-}
-
-
-void irreference_dsp64(t_irreference *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
-{
-    irreference_dsp_common(x, samplerate);
     object_method(dsp64, gensym("dsp_add64"), x, irreference_perform64, 0, nullptr);
 }
