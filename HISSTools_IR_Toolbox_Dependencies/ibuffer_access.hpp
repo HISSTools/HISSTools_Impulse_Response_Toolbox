@@ -57,6 +57,8 @@ public:
     double get_sample_rate() const      { return sample_rate; }
     t_ibuffer_format get_format() const { return format; }
 
+    bool exists() const                 { return buffer_object; }
+    
 private:
     
     void acquire_buffer();
