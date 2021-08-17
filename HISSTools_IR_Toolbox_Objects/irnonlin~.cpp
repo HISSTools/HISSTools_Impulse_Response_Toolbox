@@ -112,11 +112,14 @@ void irnonlin_assist(t_irnonlin *x, void *b, long m, long a, char *s)
 
 // These functions are used to calculate the necessary matrix for inversion in order to the multiplication coefficients for conversion
 
-std::complex<double> m1_cpow(uintptr_t i, uintptr_t j)
+std::complex<double> m1_pow(uintptr_t i, uintptr_t j)
 {
     using complex = std::complex<double>;
     
     complex val = complex(1.0, 0.0);
+    
+    // N.B. - There is an addition here (not a subtraction as in the original formula)
+    
     uintptr_t int_part = (i << 1) + (j >> 1);
 
     if (int_part & 1)
@@ -129,21 +132,21 @@ std::complex<double> m1_cpow(uintptr_t i, uintptr_t j)
 }
 
 
-double factorial(double k)
+double factorial(uintptr_t k)
 {
-    return (k <= 1) ? 1 : k * factorial(k - 1.0);
+    return (k <= 1) ? 1 : k * factorial(k - 1);
 }
 
 
-double binom(uintptr_t i, uintptr_t j)
+double binomial(uintptr_t i, uintptr_t j)
 {
     const double n = static_cast<double>(i);
     const double k = static_cast<double>((i - j) / 2);
     
     if (k <= 0)
-        return 1;
+        return 1.0;
     
-    return factorial(n) / (factorial(k) * factorial(n - k));
+    return static_cast<double>(factorial(n) / (factorial(k) * factorial(n - k)));
 }
 
 
@@ -162,7 +165,7 @@ t_matrix_complex matrix_non_linear(uintptr_t size)
         for (uintptr_t j = 1; j <= size; j++)
         {
             if ((i >= j) && ((i + j + 1) & 1))
-                mat(j - 1, i - 1) = (m1_cpow(i, j) * complex(binom(i, j), 0.0)) / complex(pow(2.0, static_cast<double>(i - 1)), 0.0);
+                mat(j - 1, i - 1) = (m1_pow(i, j) * complex(binomial(i, j), 0.0)) / complex(pow(2.0, static_cast<double>(i - 1)), 0.0);
             else
                 mat(j - 1, i - 1) = complex(0.0, 0.0);
         }
@@ -342,7 +345,7 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
                 impulses[i].imagp[j] =  impulses[i].realp[j] * current_coeff;
             }
 
-            // Accumulate by other IRs (multiplying by j first)
+            // Accumulate other IRs (multiplying by j first)
 
             for (short k = i + 2; k < num_buffers; k += 2)
             {
