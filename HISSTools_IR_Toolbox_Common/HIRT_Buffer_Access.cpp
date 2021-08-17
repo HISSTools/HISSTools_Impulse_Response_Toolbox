@@ -85,7 +85,10 @@ intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offs
 void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error error)
 {
     if (error == BUFFER_WRITE_ERR_NOT_FOUND)
-        object_error(x, "no valid buffer of name %s", buffer->s_name);
+        object_error(x, "no buffer of name %s", buffer->s_name);
+    
+    if (error == BUFFER_WRITE_ERR_INVALID)
+        object_error(x, "buffer %s is not valid", buffer->s_name);
 
     if (error == BUFFER_WRITE_ERR_TOO_SMALL)
         object_error(x, "not enough room in buffer %s", buffer->s_name);
@@ -100,7 +103,10 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
     t_buffer_ref *ref = buffer_ref_new(owner, buffer);
     t_object *object = buffer_ref_getobject(ref);
 
-    if (resize && object)
+    if (!object)
+        return BUFFER_WRITE_ERR_NOT_FOUND;
+    
+    if (resize)
     {
         t_atom temp_atom[2];
         atom_setlong(temp_atom, write_length);
