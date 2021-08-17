@@ -462,7 +462,7 @@ struct SIMDType<double, 2> : public SIMDVector<double, float64x2_t, 2>
     
     friend SIMDType min(const SIMDType& a, const SIMDType& b) { return vminq_f64(a.mVal, b.mVal); }
     friend SIMDType max(const SIMDType& a, const SIMDType& b) { return vmaxq_f64(a.mVal, b.mVal); }
-    friend SIMDType sel(const SIMDType& a, const SIMDType& b, const SIMDType& c) { return and_not(c, a) | (b & c); }
+    //friend SIMDType sel(const SIMDType& a, const SIMDType& b, const SIMDType& c) { return and_not(c, a) | (b & c); }
     
     //friend SIMDType and_not(const SIMDType& a, const SIMDType& b) { return _mm_andnot_pd(a.mVal, b.mVal); }
     //friend SIMDType operator & (const SIMDType& a, const SIMDType& b) { return vandq_s64(a.mVal, b.mVal); }
@@ -521,7 +521,7 @@ struct SIMDType<float, 4> : public SIMDVector<float, float32x4_t, 4>
     
     friend SIMDType min(const SIMDType& a, const SIMDType& b) { return vminq_f32(a.mVal, b.mVal); }
     friend SIMDType max(const SIMDType& a, const SIMDType& b) { return vmaxq_f32(a.mVal, b.mVal); }
-    friend SIMDType sel(const SIMDType& a, const SIMDType& b, const SIMDType& c) { return and_not(c, a) | (b & c); }
+    //friend SIMDType sel(const SIMDType& a, const SIMDType& b, const SIMDType& c) { return and_not(c, a) | (b & c); }
     
     //friend SIMDType and_not(const SIMDType& a, const SIMDType& b) { return _mm_andnot_ps(a.mVal, b.mVal); }
     //friend SIMDType operator & (const SIMDType& a, const SIMDType& b) { return vandq_s32(a.mVal, b.mVal); }
@@ -545,20 +545,20 @@ struct SIMDType<float, 4> : public SIMDVector<float, float32x4_t, 4>
     {
         SizedVector<double, 2, 4> vec;
         
-        vec.mData[0] = vcvt_f64_f32(vget_low_f32(mVal);
-        vec.mData[1] = vcvt_f64_f32(vget_high_f32(mVal);
+        vec.mData[0] = vcvt_f64_f32(vget_low_f32(mVal));
+        vec.mData[1] = vcvt_f64_f32(vget_high_f32(mVal));
         
         return vec;
     }
 };
 
 template<>
-struct SIMDType<int32_t, 4> : public SIMDVector<int32_t, __m128i, 4>
+struct SIMDType<int32_t, 4> : public SIMDVector<int32_t, int32x4_t, 4>
 {
     SIMDType() {}
     SIMDType(const int32_t& a) { mVal = vdupq_n_s32(a); }
     SIMDType(const int32_t* a) { mVal = vld1q_s32(a); }
-    SIMDType(__m128i a) : SIMDVector(a) {}
+    SIMDType(int32x4_t a) : SIMDVector(a) {}
     
     void store(int32_t *a) const { vst1q_s32(a, mVal); }
     
