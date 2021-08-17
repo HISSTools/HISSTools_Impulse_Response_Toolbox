@@ -441,7 +441,7 @@ static inline double mouse_2_yval(double y_val, t_scale_vals *scale)
 //////////////////////////////////////////////////////////////////////////
 
 
-static inline void spectrumdraw_grid_precalc(t_spectrumdraw *x, t_scale_vals *scale, long labels)
+static inline void spectrumdraw_grid_precalc(t_spectrumdraw *x, t_scale_vals *scale, bool labels)
 {
     double freq_ref = x->freq_ref;
     double end_ref;
@@ -2403,7 +2403,7 @@ void spectrumdraw_jgraphics_paint(t_spectrumdraw *x, t_object *patcherview, t_sc
 
                 jgraphics_set_line_width(g2, x->curve_thickness[i]);
                 spectrumdraw_set_fft_scaling(scale, x->curve_data[i].current_size, x->curve_sr[i], 1.0);
-                spectrumdraw_jgraphics_paint_curve (x, g2, scale->from, scale->to, y_vals, scale, zoom_factor, sub_sample_render, rect.width, rect.height, x->curve_colors + i);
+                spectrumdraw_jgraphics_paint_curve(x, g2, scale->from, scale->to, y_vals, scale, zoom_factor, sub_sample_render, rect.width, rect.height, x->curve_colors + i);
                 jgraphics_set_line_width(g2, 1.0);
             }
         }
@@ -2734,7 +2734,7 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
             else
                 y_val = mouse_2_yval(mouse_y, scale);
 
-            if (x->mouse_mode == 2 || x->mouse_mode == 4)
+            if (fft_size && (x->mouse_mode == 2 || x->mouse_mode == 4))
             {
                 jgraphics_set_source_jrgba(g, &x->u_indicator);
                 jgraphics_ellipse(g, x_offset + mouse_x - 2.5, y_offset + conv_yval_2_mouse(y_val, scale) - 2.5, 5, 5);
@@ -2781,7 +2781,10 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
         else
         {
             if (!fft_size)
+            {
+                jgraphics_restore(g);
                 return;
+            }
             
             for (i = sel_from; i < sel_to; i++)
             {
@@ -2957,7 +2960,7 @@ void spectrumdraw_paint(t_spectrumdraw *x, t_object *patcherview)
 
     spectrumdraw_get_measurements(x, &text_width, &text_height, &rect);
     spectrumdraw_set_scale_vals(&scale, &rect, min_freq, max_freq, y_min, y_max, !x->linear_mode, !x->phase_mode);
-    spectrumdraw_grid_precalc(x, &scale, 0);
+    spectrumdraw_grid_precalc(x, &scale, false);
 
     // Load Display Parameters
 
@@ -2974,20 +2977,17 @@ void spectrumdraw_paint(t_spectrumdraw *x, t_object *patcherview)
 
     spectrumdraw_jgraphics_paint(x, patcherview, &scale, zoom_factor, sub_sample_render, rect, sel_min_freq, sel_max_freq);
 
-    // Draw Overlay Data
-
-    if (x->curve_data[x->mouse_curve - 1].current_ptr)
-    {
-        float *y_vals = (float *) x->curve_data[x->mouse_curve - 1].current_ptr;
+    // Draw Overlay Data and Labels
+    
+    float *y_vals = (float *) x->curve_data[x->mouse_curve - 1].current_ptr;
         
-        if (x->phase_mode)
-            y_vals += (x->curve_data[x->mouse_curve - 1].current_size >> 1) + 1;
+    if (x->phase_mode && x->curve_data[x->mouse_curve - 1].current_size)
+        y_vals += (x->curve_data[x->mouse_curve - 1].current_size >> 1) + 1;
 
-        spectrumdraw_grid_precalc(x, &scale, 1);
-        spectrumdraw_set_fft_scaling(&scale, x->curve_data[x->mouse_curve - 1].current_size, x->curve_sr[x->mouse_curve - 1], 1.0);
-        spectrumdraw_paint_selection_data(x, g, y_vals, &scale, x->curve_data[x->mouse_curve - 1].current_size, rect.x, rect.y, rect.width, rect.height, sel_min_freq, sel_max_freq);
-        spectrumdraw_paint_labels(x, g,  &scale, rect.x, rect.y, rect.width, rect.height, textrect.width, textrect.height, text_width, text_height);
-    }
+    spectrumdraw_grid_precalc(x, &scale, true);
+    spectrumdraw_set_fft_scaling(&scale, x->curve_data[x->mouse_curve - 1].current_size, x->curve_sr[x->mouse_curve - 1], 1.0);
+    spectrumdraw_paint_selection_data(x, g, y_vals, &scale, x->curve_data[x->mouse_curve - 1].current_size, rect.x, rect.y, rect.width, rect.height, sel_min_freq, sel_max_freq);
+    spectrumdraw_paint_labels(x, g,  &scale, rect.x, rect.y, rect.width, rect.height, textrect.width, textrect.height, text_width, text_height);
     
     // Draw Border
 
