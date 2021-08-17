@@ -282,7 +282,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
     double *spectrum_in = spectrum.imagp;
     double *temp_filter;
     
-    double filter_val, half_width_recip, oct_width, accum, smooth_mul;
+    double filter_val, half_width_recip, oct_width, accum;
 
     intptr_t half_width, current_half_width, loop_size;
     intptr_t nyquist_bin = (fft_size >> 1);
@@ -291,8 +291,14 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
 
     smooth_lo = smooth_lo > 1.0 ? 1.0 : smooth_lo;
     smooth_hi = smooth_hi > 1.0 ? 1.0 : smooth_hi;
-    smooth_mul = smooth_hi - smooth_lo;
+    const double smooth_mul = smooth_hi - smooth_lo;
 
+    auto calc_half_width = [&](intptr_t i)
+    {
+        const double normalised = static_cast<double>(i) / static_cast<double>(nyquist_bin);
+        return static_cast<intptr_t>((normalised * smooth_mul) + smooth_lo) * static_cast<double>(nyquist_bin);
+    };
+    
     // Copy power spectrum from real part (spectrum_out) to imaginary part (spectrum_in) for calculation
 
     for (uintptr_t i = 0; i < fft_size; i++)
@@ -317,7 +323,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
             {
                 // Linear relationship between bin and width
 
-                half_width = (intptr_t) (((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo) * (double) nyquist_bin);
+                half_width = calc_half_width(i);
                 half_width = (half_width >= nyquist_bin) ? nyquist_bin - 1 : half_width;
                 
                 // Make a temporary filter each time half_width changes
@@ -355,7 +361,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
             {
                 // Linear relationship between bin and width
 
-                half_width = (intptr_t) (((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo) * (double) nyquist_bin);
+                half_width = calc_half_width(i);
                 accum = 0.0;
 
                 intptr_t lo = i - half_width;
@@ -386,7 +392,7 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
 
             for (i = 1; i < nyquist_bin + 1; i++)
             {
-                oct_width = ((( (double) i / (double) nyquist_bin) * smooth_mul) + smooth_lo);
+                oct_width = (static_cast<double>(i) / static_cast<double>(nyquist_bin) * smooth_mul) + smooth_lo;
                 oct_width = std::pow(2.0, oct_width * 0.5);
 
                 intptr_t lo = static_cast<intptr_t>(i / oct_width);
@@ -1155,7 +1161,7 @@ void deconvolve(FFT_SETUP_D fft_setup, FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT
 
 void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, uintptr_t fft_size, t_spectrum_format format, double spike)
 {
-    long double spike_const = (long double) (2.0 * M_PI) * (double) (fft_size - spike) / ((double) fft_size);
+    long double spike_const = static_cast<long double>(2.0 * M_PI) * (static_cast<double>(fft_size) - spike) / (static_cast<double>(fft_size));
     long double phase;
     uintptr_t i;
     
@@ -1188,7 +1194,7 @@ void spike_spectrum(FFT_SPLIT_COMPLEX_D spectrum, uintptr_t fft_size, t_spectrum
 
 void delay_spectrum(FFT_SPLIT_COMPLEX_D spectrum, uintptr_t fft_size, t_spectrum_format format, double delay)
 {
-    long double delay_const = (long double) (2.0 * M_PI) * (double) -delay / ((double) fft_size);
+    long double delay_const = static_cast<long double>(2.0 * M_PI) * (-delay / static_cast<double>(fft_size));
     uintptr_t i;
     
     if (!delay)

@@ -130,7 +130,7 @@ double IZero(double x_sq)
 
     for (long i = 1; new_term > DBL_EPSILON; i++)  // Gives Maximum Accuracy With Speed!
     {
-        new_term = new_term * x_sq * (1.0 / (4.0 * (double) i * (double) i));
+        new_term = new_term * x_sq * (1.0 / (4.0 * (static_cast<double>(i * i))));
         b_func += new_term;
     }
 
@@ -165,13 +165,13 @@ void generate_filter(t_bufresample *x, long nzero, long npoints, double cf, doub
     {
         // Kaiser Window
 
-        const double v1 = ((double) i) / half_filter_length;
+        const double v1 = static_cast<double>(i) / half_filter_length;
         const double x_sq = (1 - v1 * v1) * alpha * alpha;
         const double v2 = IZero(x_sq) * alpha_bessel_recip;
 
         // Multiply with Sinc Function
 
-        const double sinc_arg = M_PI * (double) i / npoints;
+        const double sinc_arg = M_PI * static_cast<double>(i) / npoints;
         filter[i] = (sin (2 * cf * sinc_arg) / sinc_arg) * v2;
     }
 
@@ -272,10 +272,9 @@ double get_filter_value(double *filter, long mul, double filter_position)
 
 temp_ptr<double> bufresample_calc_temp_filters(double *filter, long nzero, long npoints, intptr_t num, intptr_t denom, intptr_t& max_filter_length, intptr_t& filter_offset)
 {
-    double per_samp = num > denom ? (double) denom / (double) num : (double) 1;
-    double one_over_per_samp = num > denom ? nzero * (double) num / (double) denom : nzero;
-    double filter_position;
-    double mul = num > denom ? (double) denom / (double) num : 1.;
+    const double per_samp = num > denom ? static_cast<double>(denom) / static_cast<double>(num) : 1.0;
+    const double mul = per_samp;
+    const double one_over_per_samp = num > denom ? nzero * static_cast<double>(num) / static_cast<double>(denom) : nzero;
 
     max_filter_length = static_cast<intptr_t>(one_over_per_samp + one_over_per_samp + 1);
     filter_offset = max_filter_length >> 1;
@@ -293,8 +292,8 @@ temp_ptr<double> bufresample_calc_temp_filters(double *filter, long nzero, long 
         {
             while (current_num >= denom)
                 current_num -= denom;
-            filter_position = std::fabs(per_samp * (j - (double) current_num / (double) denom - filter_offset));
-            current_filter[j] = filter_position <= nzero ? mul * get_filter_value(filter, npoints, filter_position) : 0;
+            const double filter_position = std::fabs(per_samp * (j - static_cast<double>(current_num) / static_cast<double>(denom) - filter_offset));
+            current_filter[j] = filter_position <= nzero ? mul * get_filter_value(filter, npoints, filter_position) : 0.0;
         }
     }
 
@@ -631,7 +630,7 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
     long nzero = (nom_size >> 0x10) & 0x3FF;
 
     rate_as_ratio(rate, num, denom);
-    intptr_t nsamps = static_cast<intptr_t>(std::ceil(((double) denom * (double) bufdata.get_length()) / (double) num));
+    intptr_t nsamps = static_cast<intptr_t>(std::ceil(static_cast<double>(denom * bufdata.get_length()) / static_cast<double>(num)));
         
     if (filter)
     {

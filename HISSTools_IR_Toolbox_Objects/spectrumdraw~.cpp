@@ -1616,7 +1616,7 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
             while (new_term)
             {
                 b_func += new_term;
-                new_term = new_term * x_sq * (1.0 / (4.0 * (double) j * (double) j));
+                new_term = new_term * x_sq * (1.0 / (4.0 * static_cast<double>(j * j)));
                 j++;
             }
 
@@ -1626,7 +1626,7 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
             for (i = 0; i < window_size; i++)
             {
-                temp = ((2.0 * (double) i) - ((double) window_size - 1.0));
+                temp = ((2.0 * static_cast<double>(i)) - (static_cast<double>(window_size) - 1.0));
                 temp = temp / window_size;
                 temp *= temp;
                 x_sq = (1 - temp) * 46.24;
@@ -1639,7 +1639,7 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
                 while (new_term)
                 {
                     b_func += new_term;
-                    new_term = new_term * x_sq * (1.0 / (4.0 * (double) j * (double) j));
+                    new_term = new_term * x_sq * (1.0 / (4.0 * static_cast<double>(j * j)));
                     j++;
                 }
                 window[i] = static_cast<float>(b_func * alpha_bessel_recip);
@@ -1648,9 +1648,9 @@ void spectrumdraw_generate_window(t_spectrumdraw *x, uintptr_t window_size, uint
 
         case WIND_TRIANGLE:
             for (i = 0; i < (window_size >> 1); i++)
-                window[i] = static_cast<float>((double) i / (double) (window_size >> 1));
+                window[i] = static_cast<float>(i) / static_cast<float>(window_size >> 1);
             for (; i < window_size; i++)
-                window[i] = static_cast<float>((double) (((double) window_size - 1) - (double) i) / (double) (window_size >> 1));
+                window[i] = static_cast<float>((window_size - (i + 1)) / static_cast<float>(window_size >> 1));
             break;
 
         case WIND_BLACKMAN:
