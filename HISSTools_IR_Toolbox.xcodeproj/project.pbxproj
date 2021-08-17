@@ -2791,7 +2791,7 @@
 			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_ALTIVEC_EXTENSIONS = YES;
-				LLVM_LTO = YES;
+				LLVM_LTO = NO;
 			};
 			name = Development;
 		};
