@@ -36,7 +36,10 @@ long buffer_check(t_object *x, t_symbol *buffer)
 
     if (data.get_type() == kBufferNone)
     {
-        object_error(x, "no valid buffer of name %s", buffer->s_name);
+        if (!data.exists())
+            object_error(x, "no buffer of name %s", buffer->s_name);
+        else
+            object_error(x, "buffer %s is not valid", buffer->s_name);
         return 1;
     }
 
