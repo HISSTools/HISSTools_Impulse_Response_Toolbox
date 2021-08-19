@@ -36,7 +36,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NOMINMAX;_USE_MATH_DEFINES;DENORM_WANT_FIX;NO_TRANSLATION_SUPPORT;WIN_VERSION;WIN32;_DEBUG;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -49,8 +49,6 @@
       <AssemblerListingLocation>$(IntDir)$(TargetName).asm</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <Optimization>Disabled</Optimization>
-      <ExceptionHandling>
-      </ExceptionHandling>
       <WarningLevel>Level3</WarningLevel>
       <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
