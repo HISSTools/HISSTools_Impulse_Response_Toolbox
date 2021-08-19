@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Max6_support\c74support\max-includes\common\dllmain_win.c" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.cpp" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.cpp" />
     <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT\HISSTools_FFT.cpp" />
