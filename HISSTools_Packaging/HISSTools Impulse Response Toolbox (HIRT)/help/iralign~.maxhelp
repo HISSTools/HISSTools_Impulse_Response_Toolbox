@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,7 @@
 		"subpatcher_template" : "<none>",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -50,7 +51,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -84,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -128,7 +130,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 1,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -161,6 +163,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -864,6 +867,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-63", 0 ],
+									"hidden" : 1,
+									"midpoints" : [ 50.5, 359.5, 258.69662500000004, 359.5 ],
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
 									"hidden" : 1,
 									"order" : 7,
@@ -1002,7 +1014,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1036,6 +1048,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [  ],
 						"lines" : [  ]
 					}
@@ -1063,8 +1076,8 @@
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
@@ -1076,15 +1089,15 @@
 			}
 , 			{
 				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"type" : "PNG",
 				"implicit" : 1
 			}
