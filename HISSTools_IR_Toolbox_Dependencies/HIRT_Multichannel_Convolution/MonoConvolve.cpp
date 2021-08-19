@@ -242,7 +242,7 @@ void HISSTools::MonoConvolve::setPartitions(uintptr_t maxLength, bool zeroLatenc
        
     // Allocate the final resizeable partition
         
-    mAllocator = [maxLength, offset, largestSize](uintptr_t size)
+    mAllocator = [offset, largestSize](uintptr_t size)
     {
         return new HISSTools::PartitionedConvolve(largestSize, std::max(size, uintptr_t(largestSize)) - offset, offset, 0);
     };
