@@ -20,28 +20,27 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Max6_support\c74support\max-includes\common\dllmain_win.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT\HISSTools_FFT.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\multi_channel_convolve.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\output_channel_convolve.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\partition_convolve.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\time_domain_convolve.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\zero_latency_convolve.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\multiconvolve~.c" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT\HISSTools_FFT.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\Convolver.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\NToMonoConvolve.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\PartitionedConvolve.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\TimeDomainConvolve.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\MonoConvolve.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\multiconvolve~.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\convolve_errors.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\convolve_latency_modes.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\multi_channel_convolve.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\output_channel_convolve.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\partition_convolve.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\time_domain_convolve.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_Multichannel_Convolution\zero_latency_convolve.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\ConvolveErrors.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\Convolver.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\NToMonoConvolve.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\PartitionedConvolve.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\TimeDomainConvolve.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\HIRT_Multichannel_Convolution\MonoConvolve.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>multiconvolve~</ProjectName>

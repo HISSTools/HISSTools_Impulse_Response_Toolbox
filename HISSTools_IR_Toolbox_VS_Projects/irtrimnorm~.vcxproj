@@ -20,18 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Max6_support\c74support\max-includes\common\dllmain_win.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Trim_Normalise.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT\HISSTools_FFT.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\irtrimnorm~.c" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Trim_Normalise.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT\HISSTools_FFT.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\irtrimnorm~.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Trim_Normalise.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Core_Functions.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Trim_Normalise.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>irtrimnorm~</ProjectName>

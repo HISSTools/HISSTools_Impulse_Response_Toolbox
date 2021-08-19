@@ -20,13 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Max6_support\c74support\max-includes\common\dllmain_win.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.c" />
-    <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\morphfilter~.c" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.cpp" />
+    <ClCompile Include="..\HISSTools_IR_Toolbox_Objects\morphfilter~.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.h" />
-    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.h" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Common\HIRT_Buffer_Access.hpp" />
+    <ClInclude Include="..\HISSTools_IR_Toolbox_Dependencies\ibuffer_access.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>morphfilter~</ProjectName>

@@ -35,7 +35,7 @@
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DENORM_WANT_FIX;NO_TRANSLATION_SUPPORT;WIN_VERSION;WIN64;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_USE_MATH_DEFINES;DENORM_WANT_FIX;NO_TRANSLATION_SUPPORT;WIN_VERSION;WIN64;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -48,7 +48,7 @@
       </PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(IntDir)\pdb\$(ProjectName).pdb</ProgramDataBaseFileName>
       <AssemblerListingLocation>$(IntDir)$(TargetName).asm</AssemblerListingLocation>
-      <CompileAs>CompileAsC</CompileAs>
+      <CompileAs>CompileAsCpp</CompileAs>
       <StringPooling>true</StringPooling>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
