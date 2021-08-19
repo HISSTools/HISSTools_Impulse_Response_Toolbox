@@ -16,7 +16,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalLibraryDirectories>..\..\Max6_support\c74support\max-includes\x64;..\..\Max6_support\c74support\msp-includes\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\max-sdk-base\c74support\max-includes\x64;..\..\max-sdk-base\c74support\msp-includes\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ModuleDefinitionFile>
@@ -34,7 +34,7 @@
       <AdditionalOptions>/EXPORT:main %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\Max6_support\c74support\max-includes;..\..\Max6_support\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HISSTools_IR_Toolbox_Dependencies\HISSTools_FFT;..\HISSTools_IR_Toolbox_Dependencies;..\HISSTools_IR_Toolbox_Common;..\..\max-sdk-base\c74support\max-includes;..\..\max-sdk-base\c74support\msp-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NOMINMAX;_USE_MATH_DEFINES;DENORM_WANT_FIX;WIN_VERSION;WIN64;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
