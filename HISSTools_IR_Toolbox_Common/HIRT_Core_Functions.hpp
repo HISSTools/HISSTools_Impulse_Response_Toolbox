@@ -2,9 +2,9 @@
 #ifndef __HIRT_CORE_FUNCTIONS__
 #define __HIRT_CORE_FUNCTIONS__
 
-#include <HISSTools_FFT.h>
-#include <HIRT_FFT_Setup.hpp>
-#include <HIRT_Memory.hpp>
+#include <HISSTools_FFT/HISSTools_FFT.h>
+#include "HIRT_FFT_Setup.hpp"
+#include "HIRT_Memory.hpp"
 
 #include <cmath>
 #include <complex>

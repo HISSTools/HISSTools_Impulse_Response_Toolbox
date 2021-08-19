@@ -2,7 +2,7 @@
 #ifndef __HIRT_FFT_SETUP__
 #define __HIRT_FFT_SETUP__
 
-#include <HISSTools_FFT.h>
+#include <HISSTools_FFT/HISSTools_FFT.h>
 
 class temp_fft_setup
 {
