@@ -2,9 +2,8 @@
 #include "MonoConvolve.h"
 #include "ConvolveSIMD.h"
 
+#include <algorithm>
 #include <cassert>
-#include <functional>
-#include <random>
 #include <stdexcept>
 
 typedef MemorySwap<HISSTools::PartitionedConvolve>::Ptr PartPtr;
@@ -20,7 +19,12 @@ void largeFree(HISSTools::PartitionedConvolve *largePartition)
 // Standard Constructor
 
 HISSTools::MonoConvolve::MonoConvolve(uintptr_t maxLength, LatencyMode latency)
-: mAllocator(nullptr), mPart4(0), mLength(0), mPart4Offset(0), mReset(false)
+: mAllocator(nullptr)
+, mPart4(0)
+, mLength(0)
+, mPart4ResetOffset(0)
+, mReset(false)
+, mRandGenerator(std::random_device()())
 {
     switch (latency)
     {
@@ -33,7 +37,12 @@ HISSTools::MonoConvolve::MonoConvolve(uintptr_t maxLength, LatencyMode latency)
 // Constructor (custom partitioning)
 
 HISSTools::MonoConvolve::MonoConvolve(uintptr_t maxLength, bool zeroLatency, uint32_t A, uint32_t B, uint32_t C, uint32_t D)
-: mAllocator(nullptr), mPart4(0), mLength(0), mPart4Offset(0), mReset(false)
+: mAllocator(nullptr)
+, mPart4(0)
+, mLength(0)
+, mPart4ResetOffset(0)
+, mReset(false)
+, mRandGenerator(std::random_device()())
 {
     setPartitions(maxLength, zeroLatency, A, B, C, D);
 }
@@ -49,7 +58,7 @@ HISSTools::MonoConvolve::MonoConvolve(MonoConvolve&& obj)
 , mPart3(std::move(obj.mPart3))
 , mPart4(std::move(obj.mPart4))
 , mLength(obj.mLength)
-, mPart4Offset(obj.mPart4Offset)
+, mPart4ResetOffset(obj.mPart4ResetOffset)
 , mReset(true)
 {}
 
@@ -65,7 +74,7 @@ HISSTools::MonoConvolve& HISSTools::MonoConvolve::operator = (MonoConvolve&& obj
     mPart3 = std::move(obj.mPart3);
     mPart4 = std::move(obj.mPart4);
     mLength = obj.mLength;
-    mPart4Offset = obj.mPart4Offset;
+    mPart4ResetOffset = obj.mPart4ResetOffset;
     mReset = true;
     
     return *this;
@@ -76,7 +85,7 @@ void HISSTools::MonoConvolve::setResetOffset(intptr_t offset)
     PartPtr part4 = mPart4.access();
     
     if (offset < 0)
-        offset = std::rand() % (mSizes.back() >> 1);
+        offset = mRandDistribution(mRandGenerator);
     
     if (mPart1) mPart1.get()->setResetOffset(offset + (mSizes[numSizes() - 3] >> 3));
     if (mPart2) mPart2.get()->setResetOffset(offset + (mSizes[numSizes() - 2] >> 3));
@@ -84,7 +93,7 @@ void HISSTools::MonoConvolve::setResetOffset(intptr_t offset)
     
     if (part4.get()) part4.get()->setResetOffset(offset);
     
-    mPart4Offset = offset;
+    mPart4ResetOffset = offset;
 }
 
 ConvolveError HISSTools::MonoConvolve::resize(uintptr_t length)
@@ -93,7 +102,7 @@ ConvolveError HISSTools::MonoConvolve::resize(uintptr_t length)
     PartPtr part4 = mPart4.equal(mAllocator, largeFree, length);
     
     if (part4.get())
-        part4.get()->setResetOffset(mPart4Offset);
+        part4.get()->setResetOffset(mPart4ResetOffset);
     
     return part4.getSize() == length ? CONVOLVE_ERR_NONE : CONVOLVE_ERR_MEM_UNAVAILABLE;
 }
@@ -119,7 +128,7 @@ ConvolveError HISSTools::MonoConvolve::set(const float *input, uintptr_t length,
         setPart(mPart3.get(), input, length);
         setPart(part4.get(), input, length);
         
-        part4.get()->setResetOffset(mPart4Offset);
+        part4.get()->setResetOffset(mPart4ResetOffset);
         
         mLength = length;
         reset();
@@ -141,6 +150,12 @@ ConvolveError HISSTools::MonoConvolve::reset()
 }
 
 template<class T>
+bool isUnaligned(const T* ptr)
+{
+    return reinterpret_cast<uintptr_t>(ptr) % 16;
+}
+
+template<class T>
 void sum(T *temp, T *out, uintptr_t numItems)
 {
     for (uintptr_t i = 0; i < numItems; i++, out++, temp++)
@@ -152,7 +167,7 @@ void processAndSum(T *obj, const float *in, float *temp, float *out, uintptr_t n
 {
     if (obj && obj->process(in, accumulate ? temp : out, numSamples) && accumulate)
     {
-        if ((numSamples % 4) || (((uintptr_t) out) % 16) || (((uintptr_t) temp) % 16))
+        if ((numSamples % 4) || isUnaligned(out) || isUnaligned(temp))
             sum(temp, out, numSamples);
         else
             sum(reinterpret_cast<FloatVector *>(temp), reinterpret_cast<FloatVector *>(out), numSamples / FloatVector::size);
@@ -229,12 +244,13 @@ void HISSTools::MonoConvolve::setPartitions(uintptr_t maxLength, bool zeroLatenc
         
     mAllocator = [maxLength, offset, largestSize](uintptr_t size)
     {
-        return new HISSTools::PartitionedConvolve(largestSize, std::min(size, uintptr_t(maxLength)) - offset, offset, 0);
+        return new HISSTools::PartitionedConvolve(largestSize, std::max(size, uintptr_t(largestSize)) - offset, offset, 0);
     };
        
     part4.equal(mAllocator, largeFree, maxLength);
     
     // Set offsets
     
+    mRandDistribution = std::uniform_int_distribution<uintptr_t>(0, (mSizes.back() >> 1) - 1);
     setResetOffset();
 }

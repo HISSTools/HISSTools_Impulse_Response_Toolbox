@@ -1,9 +1,6 @@
 
 #include "Convolver.h"
 
-#include <stdio.h>
-#include <string.h>
-
 HISSTools::Convolver::Convolver(uint32_t numIns, uint32_t numOuts, LatencyMode latency)
 : mTemporaryMemory(0)
 {

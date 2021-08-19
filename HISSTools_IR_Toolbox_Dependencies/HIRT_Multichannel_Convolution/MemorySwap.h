@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include <stdlib.h>
 #include <cstdint>
+#include <cstdlib>
 #include <atomic>
 #include <functional>
 

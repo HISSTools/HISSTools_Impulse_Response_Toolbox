@@ -4,6 +4,7 @@
 #include "MonoConvolve.h"
 #include "ConvolveErrors.h"
 
+#include <algorithm>
 #include <cstdint>
 #include <vector>
 

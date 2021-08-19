@@ -11,12 +11,9 @@
  */
 
 #include "ConvolveSIMD.h"
-
 #include "PartitionedConvolve.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <functional>
+
+#include <algorithm>
 
 // Pointer Utility
 
@@ -25,42 +22,6 @@ void offsetSplitPointer(FFT_SPLIT_COMPLEX_F &complex1, const FFT_SPLIT_COMPLEX_F
     complex1.realp = complex2.realp + offset;
     complex1.imagp = complex2.imagp + offset;
 }
-
-// FIX - sort the seeding
-
-/*
- #ifndef __APPLE__
- #include <Windows.h>
- #endif
-
- // Random seeding for rand
- 
- static __inline unsigned int get_rand_seed ()
- {
- unsigned int seed;
- 
- #ifdef __APPLE__
- seed = arc4random();
- #else
- HCRYPTPROV hProvider = 0;
- const DWORD dwLength = 4;
- BYTE *pbBuffer = (BYTE *) &seed;
- 
- if (!CryptAcquireContextW(&hProvider, 0, 0, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT | CRYPT_SILENT))
- return 0;
- 
- CryptGenRandom(hProvider, dwLength, pbBuffer);
- CryptReleaseContext(hProvider, 0);
- #endif
- 
- return seed;
- }
- 
- void init_partition_convolve()
- {
- srand(get_rand_seed());
- }
- */
 
 ConvolveError HISSTools::PartitionedConvolve::setMaxFFTSize(uintptr_t maxFFTSize)
 {
@@ -89,7 +50,16 @@ ConvolveError HISSTools::PartitionedConvolve::setMaxFFTSize(uintptr_t maxFFTSize
 }
 
 HISSTools::PartitionedConvolve::PartitionedConvolve(uintptr_t maxFFTSize, uintptr_t maxLength, uintptr_t offset, uintptr_t length)
-: mMaxImpulseLength(maxLength), mFFTSizeLog2(0), mInputPosition(0), mPartitionsDone(0), mLastPartition(0), mNumPartitions(0), mValidPartitions(0), mResetOffset(-1), mResetFlag(true)
+: mMaxImpulseLength(maxLength)
+, mFFTSizeLog2(0)
+, mInputPosition(0)
+, mPartitionsDone(0)
+, mLastPartition(0)
+, mNumPartitions(0)
+, mValidPartitions(0)
+, mResetOffset(-1)
+, mResetFlag(true)
+, mRandGenerator(std::random_device()())
 {
     // Set default initial attributes and variables
     
@@ -178,6 +148,8 @@ ConvolveError HISSTools::PartitionedConvolve::setFFTSize(uintptr_t FFTSize)
         mFFTSizeLog2 = FFTSizeLog2;
     }
     
+    mRandDistribution = std::uniform_int_distribution<uintptr_t>(0, (FFTSize >> 1) - 1);
+    
     return error;
 }
 
@@ -237,7 +209,7 @@ ConvolveError HISSTools::PartitionedConvolve::set(const float *input, uintptr_t 
         
         // Get samples and zero pad
         
-        std::copy(input + bufferPosition, input + bufferPosition + numSamps, bufferTemp1);
+        std::copy_n(input + bufferPosition, numSamps, bufferTemp1);
         std::fill_n(bufferTemp1 + numSamps, FFTSize - numSamps, 0.f);
         
         // Do fft straight into position
@@ -262,7 +234,7 @@ void scaleStore(float *out, float *temp, uintptr_t FFTSize, bool offset)
 {
     T *outPtr = reinterpret_cast<T *>(out + (offset ? FFTSize >> 1: 0));
     T *tempPtr = reinterpret_cast<T *>(temp);
-    T scaleMul((float) (1.0 / (double) (FFTSize << 2)));
+    T scaleMul(1.f / static_cast<float>(FFTSize << 2));
     
     for (uintptr_t i = 0; i < (FFTSize / (T::size * 2)); i++)
         *(outPtr++) = *(tempPtr++) * scaleMul;
@@ -296,12 +268,12 @@ bool HISSTools::PartitionedConvolve::process(const float *in, float *out, uintpt
     {
         // Reset fft buffers + accum buffer
         
-        memset(mFFTBuffers[0], 0, getMaxFFTSize() * 5 * sizeof(float));
+        std::fill_n(mFFTBuffers[0], getMaxFFTSize() * 5, 0.f);
         
         // Reset fft RWCounter (randomly or by fixed amount)
         
         if (mResetOffset < 0)
-            while (FFTSizeHalved < (uintptr_t) (RWCounter = rand() / (RAND_MAX / FFTSizeHalved)));
+            RWCounter = mRandDistribution(mRandGenerator);
         else
             RWCounter = mResetOffset % FFTSizeHalved;
         
@@ -329,18 +301,18 @@ bool HISSTools::PartitionedConvolve::process(const float *in, float *out, uintpt
         
         // Load input into buffer (twice) and output from the output buffer
         
-        memcpy(mFFTBuffers[0] + RWCounter, in, loopSize * sizeof(float));
+        std::copy_n(in, loopSize, mFFTBuffers[0] + RWCounter);
         
         if ((hiCounter + loopSize) > FFTSize)
         {
             uintptr_t hi_loop = FFTSize - hiCounter;
-            memcpy(mFFTBuffers[1] + hiCounter, in, hi_loop * sizeof(float));
-            memcpy(mFFTBuffers[1], in + hi_loop, (loopSize - hi_loop) * sizeof(float));
+            std::copy_n(in, hi_loop, mFFTBuffers[1] + hiCounter);
+            std::copy_n(in + hi_loop, (loopSize - hi_loop), mFFTBuffers[1]);
         }
         else
-            memcpy(mFFTBuffers[1] + hiCounter, in, loopSize * sizeof(float));
+            std::copy_n(in, loopSize, mFFTBuffers[1] + hiCounter);
         
-        memcpy(out, mFFTBuffers[3] + RWCounter, loopSize * sizeof(float));
+        std::copy_n(mFFTBuffers[3] + RWCounter, loopSize, out);
         
         // Updates to pointers and counters
         
@@ -397,8 +369,8 @@ bool HISSTools::PartitionedConvolve::process(const float *in, float *out, uintpt
             
             // Clear accumulation buffer
             
-            memset(mAccumBuffer.realp, 0, FFTSizeHalved * sizeof(float));
-            memset(mAccumBuffer.imagp, 0, FFTSizeHalved * sizeof(float));
+            std::fill_n(mAccumBuffer.realp, FFTSizeHalved, 0.f);
+            std::fill_n(mAccumBuffer.imagp, FFTSizeHalved, 0.f);
             
             // Update RWCounter
             

@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <random>
 #include <vector>
 
 enum LatencyMode
@@ -61,7 +62,12 @@ namespace HISSTools
         
         uintptr_t mLength;
         
-        intptr_t mPart4Offset;
+        intptr_t mPart4ResetOffset;
         bool mReset;
+        
+        // Random Number Generation
+        
+        std::default_random_engine mRandGenerator;
+        std::uniform_int_distribution<uintptr_t> mRandDistribution;
     };
 }

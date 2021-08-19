@@ -6,6 +6,7 @@
 #include "ConvolveErrors.h"
 
 #include <cstdint>
+#include <random>
 
 namespace HISSTools
 {
@@ -27,8 +28,7 @@ namespace HISSTools
         PartitionedConvolve(PartitionedConvolve& obj) = delete;
         PartitionedConvolve& operator = (PartitionedConvolve& obj) = delete;
         PartitionedConvolve(PartitionedConvolve&& obj) = delete;
-        PartitionedConvolve& operator = (PartitionedConvolve        //obj.mFreeFunction = nullptr;
-&& obj) = delete;
+        PartitionedConvolve& operator = (PartitionedConvolve&& obj) = delete;
         
         ConvolveError setFFTSize(uintptr_t FFTSize);
         ConvolveError setLength(uintptr_t length);
@@ -84,5 +84,10 @@ namespace HISSTools
         
         intptr_t mResetOffset;
         bool mResetFlag;
+        
+        // Random number generation
+        
+        std::default_random_engine mRandGenerator;
+        std::uniform_int_distribution<uintptr_t> mRandDistribution;
     };
 }
