@@ -24,7 +24,7 @@ enum t_buffer_write_error
 double buffer_sample_rate(t_symbol *buffer);
 intptr_t buffer_length(t_symbol *buffer);
 
-long buffer_check(t_object *x, t_symbol *buffer);
+long buffer_check(t_object *x, t_symbol *buffer, t_atom_long chan = 0);
 
 intptr_t buffer_read(t_symbol *buffer, long chan, float *out, intptr_t max_length);
 intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offset, intptr_t read_length);

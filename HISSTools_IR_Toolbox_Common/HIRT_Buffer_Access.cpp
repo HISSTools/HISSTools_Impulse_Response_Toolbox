@@ -25,7 +25,7 @@ intptr_t buffer_length(t_symbol *buffer)
 
 // Returns 0 for a valid buffer (or zero value symbol pointer), otherwise 1
 
-long buffer_check(t_object *x, t_symbol *buffer)
+long buffer_check(t_object *x, t_symbol *buffer, t_atom_long chan)
 {
     ibuffer_data data(buffer);
 
@@ -40,6 +40,12 @@ long buffer_check(t_object *x, t_symbol *buffer)
             object_error(x, "no buffer of name %s", buffer->s_name);
         else
             object_error(x, "buffer %s is not valid", buffer->s_name);
+        return 1;
+    }
+    
+    if (chan >= data.get_num_chans())
+    {
+        object_error(x, "buffer %s does not have enough channels", buffer->s_name);
         return 1;
     }
 
