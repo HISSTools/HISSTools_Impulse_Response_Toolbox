@@ -7,8 +7,20 @@
 #include <stdint.h>
 
 #include "AH_Atomic.h"
-#include "AH_VectorOps.h"
 
+#ifdef __APPLE__
+
+#define ALIGNED_MALLOC malloc
+#define ALIGNED_FREE free
+
+#else
+
+#include <malloc.h>
+
+#define ALIGNED_MALLOC(x)  _aligned_malloc(x, 16)
+#define ALIGNED_FREE  _aligned_free
+
+#endif
 
 // All memory assignments are aligned in order that the memory is suitable for vector ops etc.
 // Swap results
