@@ -255,12 +255,12 @@ private:
     }
     
 #ifdef _WIN32
-    static T *allocate(size_t size)
+    static T* allocate(size_t size)
     {
-        return static_cast<T *>(_aligned_malloc(size * sizeof(T), SIMDLimits<T>::byte_width));
+        return static_cast<T *>(_aligned_malloc(size * sizeof(T), 16));
     }
     
-    static void deallocate_aligned(T *ptr)
+    static void deallocate(T *ptr)
     {
         _aligned_free(ptr);
     }
