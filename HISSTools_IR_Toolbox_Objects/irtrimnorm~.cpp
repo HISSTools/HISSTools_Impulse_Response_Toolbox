@@ -539,7 +539,7 @@ void irtrimnorm_crop_internal(t_irtrimnorm *x, t_symbol *sym, short argc, t_atom
     {
         for (short i = 0; i < num_buffers; i++)
         {
-            if (irtrimnorm_crop_check_write(x, out_buffer_names[i], crop1, crop2, pad_in, pad_out, lengths[i]));
+            if (irtrimnorm_crop_check_write(x, out_buffer_names[i], crop1, crop2, pad_in, pad_out, lengths[i]))
             {
                 overall_error = true;
                 break;
