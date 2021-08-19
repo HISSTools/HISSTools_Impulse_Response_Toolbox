@@ -5,7 +5,7 @@ PRODUCT_NAME = $TARGET_NAME
 
 // Paths
 
-C74SUPPORT = $(SRCROOT)/../max-sdk-8.0.3/source/c74support
+C74SUPPORT = $(SRCROOT)/../max-sdk-base/c74support
 HEADER_SEARCH_PATHS = "$(SRCROOT)/HISSTools_IR_Toolbox_Dependencies/" "$(SRCROOT)/HISSTools_IR_Toolbox_Common/" "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes" "$(C74SUPPORT)/jit-includes"
 FRAMEWORK_SEARCH_PATHS = "$(C74SUPPORT)/max-includes" "$(C74SUPPORT)/msp-includes" "$(C74SUPPORT)/jit-includes"
 
@@ -30,7 +30,7 @@ MACOSX_DEPLOYMENT_TARGET = 10.7
 
 // Build a Universal Binary with 32/64 bit versions
 
-ARCHS = i386 x86_64
+ARCHS = x86_64 arm64
 
 // We define this so as to support backward compatibility (this prevents using Max6 only translation symbol generation)
 
