@@ -1126,7 +1126,7 @@ void irmeasure_mls_params(t_irmeasure *x)
     long chan_offset = static_cast<long>((out_length * sample_rate) + mls_length);
     long i;
 
-    x->max_length_params = t_mls<double>(static_cast<uint32>(order), db_to_a(x->amp));
+    x->max_length_params = t_mls<double>(static_cast<uint32_t>(order), db_to_a(x->amp));
 
     for (i = 0; i < x->current_num_active_outs; i++)
         x->chan_offset[i] = (i * chan_offset);
@@ -1195,7 +1195,8 @@ static inline void irmeasure_perform_excitation(t_irmeasure *x, double *out, lon
     
     // Calculate where sweep ends
 
-    long todo = std::max(0L, std::min(vec_size - start, std::min(x->T, (x->T - current_t))));
+	long T = static_cast<long>(x->T);
+    long todo = std::max(0L, std::min(vec_size - start, std::min(T, (T - current_t))));
 
     // Reset
 

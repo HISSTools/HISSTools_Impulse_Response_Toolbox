@@ -8,7 +8,7 @@
 
 t_frame_stats::t_frame_stats(uintptr_t max_N)
 : m_current_frame(max_N, 0.0)
-, m_ages(max_N, 0.0)
+, m_ages(max_N, 0)
 , m_max_N(max_N)
 {
     reset(true);

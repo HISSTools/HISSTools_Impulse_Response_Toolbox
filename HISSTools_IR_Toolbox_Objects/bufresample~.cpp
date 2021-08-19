@@ -596,7 +596,7 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
 
     // Check source buffer
 
-    long chan = x->read_chan - 1;
+    long chan = static_cast<long>(x->read_chan - 1);
     if (buffer_check((t_object *) x, source))
         return;
 

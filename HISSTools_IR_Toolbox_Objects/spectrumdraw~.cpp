@@ -320,12 +320,12 @@ t_max_err spectrumdraw_notify(t_spectrumdraw *x, t_symbol *sym, t_symbol *msg, v
 
 uintptr_t spectrumdraw_realtime_fft_size(t_spectrumdraw *x)
 {
-    return static_cast<uintptr_t>(1 << (x->fft_select + 8));
+    return static_cast<uintptr_t>(uintptr_t(1) << (x->fft_select + 8));
 }
 
 uintptr_t spectrumdraw_realtime_window_size(t_spectrumdraw *x)
 {
-    return spectrumdraw_realtime_fft_size(x) / static_cast<uintptr_t>(1 << (x->zero_pad));
+    return spectrumdraw_realtime_fft_size(x) / static_cast<uintptr_t>(uintptr_t(1) << (x->zero_pad));
 }
       
 t_jgraphics_text_justification combine_flags(t_jgraphics_text_justification a, t_jgraphics_text_justification b)
@@ -335,7 +335,7 @@ t_jgraphics_text_justification combine_flags(t_jgraphics_text_justification a, t
 }
 
 template <class T, class U, class V>
-static inline double clip(T val, U min, V max)
+static inline T clip(T val, U min, V max)
 {
     return std::max(static_cast<T>(min), std::min(static_cast<T>(max), val));
 }
@@ -1036,7 +1036,7 @@ void free_fft_stats(void *frame_stats)
 
 void *alloc_realtime_data(uintptr_t size, uintptr_t nom_size)
 {
-    void *ptr = allocate_aligned<uint8>(size);
+    void *ptr = allocate_aligned<uint8_t>(size);
 
     if (ptr)
         memset(ptr, 0, size);
@@ -1225,10 +1225,10 @@ void spectrumdraw_calc_selection_data(t_spectrumdraw *x)
 
                 // Safefy Check
 
-                if (read_lo > (fft_size >> 1))
+                if (read_lo > static_cast<intptr_t>(fft_size >> 1))
                     read_lo = fft_size >> 1;
 
-                if (read_hi > (fft_size >> 1))
+                if (read_hi > static_cast<intptr_t>(fft_size >> 1))
                     read_hi = fft_size >> 1;
 
                 y_val = y_vals[read_lo] + (bin_pos - read_lo) * (y_vals[read_hi] - y_vals[read_lo]);
@@ -1835,7 +1835,7 @@ void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, lo
     long hop_pointer = x->hop_pointer;
     long block_write_pointer = write_pointer;
     long block_hop_pointer = hop_pointer;
-    long window_size = spectrumdraw_realtime_window_size(x);
+    long window_size = static_cast<long>(spectrumdraw_realtime_window_size(x));
     long hop_size = static_cast<long>(x->redraw_time * x->sample_rate / 1000.0);
     long draw = 0;
     long i, j;
@@ -2716,10 +2716,10 @@ void spectrumdraw_paint_selection_data(t_spectrumdraw *x, t_jgraphics *g, float 
                 {
                     // Safefy Check
 
-                    if (read_lo > (fft_size >> 1))
+                    if (read_lo > static_cast<intptr_t>(fft_size >> 1))
                         read_lo = fft_size >> 1;
 
-                    if (read_hi > (fft_size >> 1))
+                    if (read_hi > static_cast<intptr_t>(fft_size >> 1))
                         read_hi = fft_size >> 1;
 
                     y_val = y_vals[read_lo] + (bin_pos - read_lo) * (y_vals[read_hi] - y_vals[read_lo]);
@@ -3054,7 +3054,7 @@ t_max_err spectrumdraw_notify(t_spectrumdraw *x, t_symbol *sym, t_symbol *msg, v
         if (attrname == gensym("fftsize"))
         {
             uintptr_t new_fft_size_log_2 = x->fft_select + 8;
-            uintptr_t new_fft_size = static_cast<uintptr_t>(1 << new_fft_size_log_2);
+            uintptr_t new_fft_size = static_cast<uintptr_t>(uintptr_t(1) << new_fft_size_log_2);
 
             schedule_equal_mem_swap(&x->realtime_temp, 2 * (new_fft_size + 1) * (sizeof(float) + sizeof(double)), new_fft_size);
             schedule_equal_mem_swap_custom(&x->realtime_setup, (alloc_method) alloc_fft_setup, (free_method) free_fft_setup, new_fft_size_log_2, new_fft_size);

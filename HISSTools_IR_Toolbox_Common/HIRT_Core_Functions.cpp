@@ -296,8 +296,8 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
     auto calc_half_width = [&](intptr_t i)
     {
         const double normalised = static_cast<double>(i) / static_cast<double>(nyquist_bin);
-        return static_cast<intptr_t>((normalised * smooth_mul) + smooth_lo) * static_cast<double>(nyquist_bin);
-    };
+		return static_cast<intptr_t>(((normalised * smooth_mul) + smooth_lo) * static_cast<double>(nyquist_bin));
+	};
     
     // Copy power spectrum from real part (spectrum_out) to imaginary part (spectrum_in) for calculation
 

@@ -56,7 +56,7 @@ long buffer_check(t_object *x, t_symbol *buffer, t_atom_long chan)
 ///////////////////////////// Read Routines //////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-intptr_t buffer_read(t_symbol *buffer, long chan, float *out, intptr_t max_length)
+intptr_t buffer_read(t_symbol *buffer, t_atom_long chan, float *out, intptr_t max_length)
 {
     ibuffer_data data(buffer);
 
@@ -68,12 +68,12 @@ intptr_t buffer_read(t_symbol *buffer, long chan, float *out, intptr_t max_lengt
 
     chan = chan % data.get_num_chans();
     
-    ibuffer_get_samps(data, out, 0, data.get_length(), chan);
+    ibuffer_get_samps(data, out, 0, data.get_length(), static_cast<long>(chan));
 
     return data.get_length();
 }
 
-intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offset, intptr_t read_length)
+intptr_t buffer_read_part(t_symbol *buffer, t_atom_long chan, float *out, intptr_t offset, intptr_t read_length)
 {
     ibuffer_data data(buffer);
 
@@ -82,7 +82,7 @@ intptr_t buffer_read_part(t_symbol *buffer, long chan, float *out, intptr_t offs
 
     chan = chan % data.get_num_chans();
 
-    ibuffer_get_samps(data, out, offset, read_length, chan);
+    ibuffer_get_samps(data, out, offset, read_length, static_cast<long>(chan));
 
     return read_length;
 }
@@ -104,7 +104,7 @@ void buffer_write_error(t_object *x, t_symbol *buffer, t_buffer_write_error erro
 }
 
 template <typename T>
-t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in, intptr_t write_length, long chan, long resize, double sample_rate, double mul)
+t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in, intptr_t write_length, t_atom_long chan, long resize, double sample_rate, double mul)
 {
     t_buffer_info info;
     t_atom temp_atom[2];
@@ -135,12 +135,12 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
     
     float *write_samples = samples + chan;
     
-    for (size_t i = 0; i < write_length; i++, write_samples += info.b_nchans)
+    for (intptr_t i = 0; i < write_length; i++, write_samples += info.b_nchans)
         *write_samples = static_cast<float>(in[i] * mul);
     
     if (!resize)
     {
-        for (size_t i = write_length; i < info.b_frames; i++, write_samples += info.b_nchans)
+        for (intptr_t i = write_length; i < info.b_frames; i++, write_samples += info.b_nchans)
             *write_samples = 0.f;
     }
     
@@ -157,16 +157,16 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
     return BUFFER_WRITE_ERR_NONE;
 }
 
-t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, intptr_t write_length, long chan, long resize, double sample_rate, double mul)
+t_buffer_write_error buffer_write(t_object *owner, t_symbol *buffer, double *in, intptr_t write_length, t_atom_long chan, long resize, double sample_rate, double mul)
 {
-    auto error =  buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
+    auto error = buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
     buffer_write_error(owner, buffer, error);
     return error;
 }
 
-t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, intptr_t write_length, long resize, long chan, double sample_rate, float mul)
+t_buffer_write_error buffer_write_float(t_object *owner, t_symbol *buffer, float *in, intptr_t write_length, t_atom_long chan, long resize, double sample_rate, float mul)
 {
-    auto error =  buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
+    auto error = buffer_write_base(owner, buffer, in, write_length, chan, resize, sample_rate, mul);
     buffer_write_error(owner, buffer, error);
     return error;
 }

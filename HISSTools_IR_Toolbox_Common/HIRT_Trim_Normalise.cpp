@@ -176,8 +176,9 @@ double calculate_rms_run(t_rms_measure *rms, double *in, uintptr_t length, uintp
 
     pre_length = pre_length > index ? index : pre_length;
     post_length = (index + post_length >= length) ? (length - 1) - index: post_length;
+	accum = 0.0;
 
-    for (uintptr_t i = index - pre_length, accum = 0.0; i <= post_length; i++)
+    for (uintptr_t i = index - pre_length; i <= post_length; i++)
     {
         in_val = in[i];
         accum += in_val * in_val;

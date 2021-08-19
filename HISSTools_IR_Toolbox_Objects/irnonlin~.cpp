@@ -140,8 +140,8 @@ double factorial(uintptr_t k)
 
 double binomial(uintptr_t i, uintptr_t j)
 {
-    const double n = static_cast<double>(i);
-    const double k = static_cast<double>((i - j) / 2);
+    const uintptr_t n = i;
+    const uintptr_t k = (i - j) / 2;
     
     if (k <= 0)
         return 1.0;

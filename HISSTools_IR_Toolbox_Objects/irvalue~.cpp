@@ -129,7 +129,7 @@ void irvalue_float(t_irvalue *x, double freq)
     }
 
     double bin = (freq / x->sampling_rate) * x->fft_size;
-    uintptr_t lo_bin = std::floor(bin);
+    uintptr_t lo_bin = static_cast<uintptr_t>(std::floor(bin));
 
     if (lo_bin == (x->fft_size >> 1))
     {

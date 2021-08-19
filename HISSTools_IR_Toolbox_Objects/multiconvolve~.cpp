@@ -346,7 +346,7 @@ void multiconvolve_set(t_multiconvolve *x, t_symbol *sym, long argc, t_atom *arg
     buffer_read(buffer, read_chan, temp.get(), impulse_length);
 
     if (x->multi)
-        set_error = x->multi->set(in_chan, out_chan, temp.get(), impulse_length, !x->fixed_impulse_length);
+        set_error = x->multi->set(static_cast<uint32_t>(in_chan), static_cast<uint32_t>(out_chan), temp.get(), impulse_length, !x->fixed_impulse_length);
     
     if (set_error == CONVOLVE_ERR_IN_CHAN_OUT_OF_RANGE)
         object_error((t_object *) x, "input channel %ld out of range", in_chan + 1);

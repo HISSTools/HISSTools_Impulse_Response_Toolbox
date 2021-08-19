@@ -41,7 +41,7 @@ ConvolveError HISSTools::PartitionedConvolve::setMaxFFTSize(uintptr_t maxFFTSize
         maxFFTSizeLog2 = MIN_FFT_SIZE_LOG2;
     }
     
-    if (maxFFTSize != (1 << maxFFTSizeLog2))
+    if (maxFFTSize != (uintptr_t(1) << maxFFTSizeLog2))
         error = CONVOLVE_ERR_FFT_SIZE_MAX_NON_POWER_OF_TWO;
     
     mMaxFFTSizeLog2 = maxFFTSizeLog2;
@@ -122,7 +122,7 @@ uintptr_t HISSTools::PartitionedConvolve::log2(uintptr_t value)
         bitCount++;
     }
     
-    if (value == 1U << (bitCount - 1U))
+    if (value == uintptr_t(1) << (bitCount - 1U))
         return bitCount - 1U;
     else
         return bitCount;
@@ -137,7 +137,7 @@ ConvolveError HISSTools::PartitionedConvolve::setFFTSize(uintptr_t FFTSize)
     if (FFTSizeLog2 < MIN_FFT_SIZE_LOG2 || FFTSizeLog2 > mMaxFFTSizeLog2)
         return CONVOLVE_ERR_FFT_SIZE_OUT_OF_RANGE;
     
-    if (FFTSize != (1 << FFTSizeLog2))
+    if (FFTSize != (uintptr_t(1) << FFTSizeLog2))
         error = CONVOLVE_ERR_FFT_SIZE_NON_POWER_OF_TWO;
     
     // Set fft variables iff the fft size has actually actually changed
