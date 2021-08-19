@@ -17,6 +17,8 @@
 #include <algorithm>
 
 #ifdef __APPLE__
+#include <Accelerate/Accelerate.h>
+
 uintptr_t padded_length(uintptr_t length)
 {
     return length;
@@ -92,7 +94,7 @@ void HISSTools::TimeDomainConvolve::reset()
 #ifdef __APPLE__
 void convolve(const float *in, const float *impulse, float *output, uintptr_t N, uintptr_t L)
 {
-    vDSP_conv(in + 1 - L, (vDSP_Stride) 1, impulse, (vDSP_Stride) 1, output, (vDSP_Stride) 1, (vDSP_Length) N, L);
+    vDSP_conv(in + 1 - L,  1, impulse, 1, output, 1, N, L);
 }
 #else
 void convolve(const float *in, const float *impulse, float *output, uintptr_t N, uintptr_t L)
