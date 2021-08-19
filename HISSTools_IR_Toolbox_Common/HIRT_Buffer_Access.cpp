@@ -113,7 +113,7 @@ t_buffer_write_error buffer_write_base(t_object *owner, t_symbol *buffer, T *in,
     {
         t_atom temp_atom[2];
         atom_setlong(temp_atom, write_length);
-        object_method_typed (object, gensym("sizeinsamps"), 1L, temp_atom, temp_atom + 1);
+        object_method_typed(object, gensym("sizeinsamps"), 1L, temp_atom, temp_atom + 1);
     }
     
     float *samples = buffer_locksamples(buffer_ref_getobject(ref));
