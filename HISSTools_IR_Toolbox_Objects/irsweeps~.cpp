@@ -226,7 +226,7 @@ void irsweeps_gen(t_irsweeps *x, t_symbol *buffer, uintptr_t sig_length, T *gene
 
     // Write to buffer
 
-    auto error = buffer_write_float((t_object *)x, buffer, temp_buf.get(), sig_length, x->resize, x->write_chan - 1, sample_rate, 1.0);
+    auto error = buffer_write_float((t_object *)x, buffer, temp_buf.get(), sig_length, x->write_chan - 1, x->resize, sample_rate, 1.0);
 
     if (!error)
         outlet_bang(x->process_done);
