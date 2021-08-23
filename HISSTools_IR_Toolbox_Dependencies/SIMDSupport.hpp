@@ -430,12 +430,12 @@ struct SIMDType<double, 2> : public SIMDVector<double, float64x2_t, 2>
 private:
     
     template <int64x2_t Op(int64x2_t, int64x2_t)>
-    friend SIMDType bitwise(const SIMDType& a, const SIMDType& b)
+    static SIMDType bitwise(const SIMDType& a, const SIMDType& b)
     {
         return vreinterpretq_s64_f64(Op(vreinterpretq_s64_f64(a.mVal), vreinterpretq_s64_f64(b.mVal)));
     }
     
-    friend float64x2_t neq(float64x2_t a, float64x2_t b)
+    static float64x2_t neq(float64x2_t a, float64x2_t b)
     {
         return vreinterpretq_s32_f64(vmvnq_s32(vreinterpretq_s32_f64(vceqq_f64(a, b))));
     }
@@ -515,12 +515,12 @@ struct SIMDType<float, 4> : public SIMDVector<float, float32x4_t, 4>
 private:
     
     template <int32x4_t Op(int32x4_t, int32x4_t)>
-    friend SIMDType bitwise(const SIMDType& a, const SIMDType& b)
+    static SIMDType bitwise(const SIMDType& a, const SIMDType& b)
     {
         return vreinterpretq_s32_f32(Op(vreinterpretq_s32_f32(a.mVal), vreinterpretq_s32_f32(b.mVal)));
     }
     
-    friend float32x4_t neq(float32x4_t a, float32x4_t b)
+    static float32x4_t neq(float32x4_t a, float32x4_t b)
     {
         return vreinterpretq_s32_f32(vmvnq_s32(vreinterpretq_s32_f32(vceqq_f32(a, b))));
     }
