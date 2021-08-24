@@ -646,6 +646,10 @@ void bufresample_process_internal(t_bufresample *x, t_symbol *sym, short argc, t
         return;
     }
 
+    // Release source
+    
+    bufdata.release();
+    
     // Copy out to buffer
 
     auto error = buffer_write((t_object *)x, target, output.get(), nsamps, x->write_chan - 1, x->resize, sample_rate, 1.);
