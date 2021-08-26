@@ -28,7 +28,7 @@ CLANG_CXX_LIBRARY = libc++
 BASE_SDK = 10.7
 MACOSX_DEPLOYMENT_TARGET = 10.7
 
-// Build a Universal Binary with 32/64 bit versions
+// Build a Universal Binary
 
 ARCHS = x86_64 arm64
 
