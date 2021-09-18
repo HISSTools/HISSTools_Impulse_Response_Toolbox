@@ -2125,6 +2125,7 @@
 		0FFBC547097463A900D78707 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				LLVM_LTO = YES;
 			};
@@ -2511,6 +2512,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				LLVM_LTO = YES;
 			};
@@ -2790,6 +2792,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				LLVM_LTO = NO;
 			};
