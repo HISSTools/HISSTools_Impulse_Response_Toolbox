@@ -555,7 +555,7 @@ int C74_EXPORT main()
     class_addmethod(c, (method)spectrumdraw_mousedrag, "mousedrag",    A_CANT, 0);
     class_addmethod(c, (method)spectrumdraw_mouseup, "mouseup",    A_CANT, 0);
     class_addmethod(c, (method)spectrumdraw_mouseenter, "mouseenter", A_CANT, 0);
-    class_addmethod(c, (method)spectrumdraw_mouseleave,    "mouseleave", A_CANT, 0);
+    class_addmethod(c, (method)spectrumdraw_mouseleave, "mouseleave", A_CANT, 0);
     class_addmethod(c, (method)spectrumdraw_mousemove, "mousemove", A_CANT, 0);
 
     class_addmethod(c, (method)spectrumdraw_select, "select", A_GIMME, 0);
@@ -576,38 +576,38 @@ int C74_EXPORT main()
 
     CLASS_ATTR_RGBA(c, "bgcolor", 0, t_spectrumdraw, u_background);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "bgcolor", 0, "1. 1. 1. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"bgcolor",0,"rgba","Background Color");
+    CLASS_ATTR_STYLE_LABEL(c,"bgcolor", 0, "rgba","Background Color");
 
     CLASS_ATTR_RGBA(c, "bordercolor", 0, t_spectrumdraw, u_outline);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "bordercolor", 0, "0. 0. 0. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"bordercolor",0,"rgba","Border Color");
+    CLASS_ATTR_STYLE_LABEL(c,"bordercolor", 0, "rgba","Border Color");
 
     CLASS_ATTR_RGBA(c, "indicatorcolor", 0, t_spectrumdraw, u_indicator);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "indicatorcolor", 0, "1. 0. 0. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"indicatorcolor",0,"rgba","Indicator Color");
+    CLASS_ATTR_STYLE_LABEL(c,"indicatorcolor", 0, "rgba","Indicator Color");
 
     CLASS_ATTR_RGBA(c, "selectcolor", 0, t_spectrumdraw, u_select);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "selectcolor", 0, "0.4 0.4 0.4 0.4");
-    CLASS_ATTR_STYLE_LABEL(c,"selectcolor",0,"rgba","Selection Color");
+    CLASS_ATTR_STYLE_LABEL(c,"selectcolor", 0, "rgba","Selection Color");
 
     CLASS_ATTR_RGBA(c, "markercolor", 0, t_spectrumdraw, u_marker);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "markercolor", 0, "1. 0. 0. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"markercolor",0,"rgba","Marker Color");
+    CLASS_ATTR_STYLE_LABEL(c,"markercolor", 0, "rgba","Marker Color");
 
     CLASS_ATTR_RGBA(c, "tickcolor", 0, t_spectrumdraw, u_tick);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "tickcolor", 0, "1. 1. 1. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"tickcolor",0,"rgba","Tick Color");
+    CLASS_ATTR_STYLE_LABEL(c,"tickcolor", 0, "rgba","Tick Color");
 
     CLASS_ATTR_RGBA(c, "gridcolor", 0, t_spectrumdraw, u_grid);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "gridcolor", 0, "0.4 0.4 0.4 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"gridcolor",0,"rgba","Grid Color");
+    CLASS_ATTR_STYLE_LABEL(c,"gridcolor", 0, "rgba","Grid Color");
 
     CLASS_ATTR_RGBA(c, "textboxcolor", 0, t_spectrumdraw, u_textbox);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "textboxcolor", 0, "1. 1. 1. 0.9");
-    CLASS_ATTR_STYLE_LABEL(c,"textboxcolor",0,"rgba","Text Box Color");
+    CLASS_ATTR_STYLE_LABEL(c,"textboxcolor", 0, "rgba","Text Box Color");
 
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "color", 0, "0.5 0. 0. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"color",0,"rgba","Curve Color");
+    CLASS_ATTR_STYLE_LABEL(c,"color", 0, "rgba","Curve Color");
 
     for (i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
@@ -619,18 +619,18 @@ int C74_EXPORT main()
 
         CLASS_ATTR_RGBA(c, attrib_name, 0, t_spectrumdraw, curve_colors[i]);
         CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
-        CLASS_ATTR_STYLE_LABEL(c, attrib_name,0,"rgba", display_name);
+        CLASS_ATTR_STYLE_LABEL(c, attrib_name, 0, "rgba", display_name);
     }
 
     // Do text color
 
     CLASS_ATTR_RGBA(c, "textcolor", 0, t_spectrumdraw, u_textcolor);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "textcolor", 0, "0. 0. 0. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"textcolor",0,"rgba","Label Text Color");
+    CLASS_ATTR_STYLE_LABEL(c,"textcolor", 0, "rgba","Label Text Color");
 
     CLASS_ATTR_RGBA(c, "displaytextcolor", 0, t_spectrumdraw, u_displaytextcolor);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "displaytextcolor", 0, "0. 0. 0. 1.");
-    CLASS_ATTR_STYLE_LABEL(c,"displaytextcolor",0,"rgba","Display Text Color");
+    CLASS_ATTR_STYLE_LABEL(c,"displaytextcolor", 0, "rgba","Display Text Color");
 
     CLASS_STICKY_ATTR_CLEAR(c, "category");
 
@@ -733,51 +733,51 @@ int C74_EXPORT main()
 
     CLASS_ATTR_LONG(c, "phasemode", 0, t_spectrumdraw, phase_mode);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "phasemode", 0, "0");
-    CLASS_ATTR_STYLE_LABEL(c,"phasemode",0,"onoff","Phase Mode");
+    CLASS_ATTR_STYLE_LABEL(c,"phasemode", 0, "onoff","Phase Mode");
 
     CLASS_ATTR_LONG(c, "linearmode", 0, t_spectrumdraw, linear_mode);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "linearmode", 0, "0");
-    CLASS_ATTR_STYLE_LABEL(c,"linearmode",0,"onoff","Linear Mode");
+    CLASS_ATTR_STYLE_LABEL(c,"linearmode", 0, "onoff","Linear Mode");
 
     CLASS_ATTR_LONG(c, "mousemode", 0, t_spectrumdraw, mouse_mode);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "mousemode", 0, "1");
     CLASS_ATTR_ENUMINDEX(c,"mousemode", 0, "None Mouse Curve \"Mouse + Selection\" \"Curve + Selection\"");
     CLASS_ATTR_FILTER_CLIP(c, "mousemode", 0, 4);
-    CLASS_ATTR_LABEL(c,"mousemode",0,"Mousing Mode");
+    CLASS_ATTR_LABEL(c,"mousemode", 0, "Mousing Mode");
 
     CLASS_ATTR_LONG(c, "mousedatapos", 0, t_spectrumdraw, mouse_data_pos);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "mousedatapos", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"mousedatapos", 0, "\"Top Left\" \"Top Right\" \"Bottom Left\" \"Bottom Right\"");
     CLASS_ATTR_FILTER_CLIP(c, "mousedatapos", 0, 3);
-    CLASS_ATTR_LABEL(c,"mousedatapos",0,"Mouse Data Position");
+    CLASS_ATTR_LABEL(c,"mousedatapos", 0, "Mouse Data Position");
 
     CLASS_ATTR_LONG(c, "mousecurve", 0, t_spectrumdraw, mouse_curve);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "mousecurve", 0, "1");
     CLASS_ATTR_FILTER_CLIP(c, "mousecurve", 1, SPECTRUMDRAW_NUM_CURVES);
-    CLASS_ATTR_LABEL(c,"mousecurve",0,"Mouse Curve");
+    CLASS_ATTR_LABEL(c,"mousecurve",0 ,"Mouse Curve");
 
     CLASS_ATTR_LONG(c, "freqstyle", 0, t_spectrumdraw, freq_display_options);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "freqstyle", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"freqstyle", 0, "Freq Note \"Freq + Note\"");
     CLASS_ATTR_FILTER_CLIP(c, "freqstyle", 0, 2);
-    CLASS_ATTR_LABEL(c,"freqstyle",0,"Frequency Display Style");
+    CLASS_ATTR_LABEL(c,"freqstyle",0 , "Frequency Display Style");
 
     CLASS_ATTR_LONG(c, "curvestyle", 0, t_spectrumdraw, curve_style);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "curvestyle", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"curvestyle", 0, "Lines Dots Fill \"Line + Fill\"");
     CLASS_ATTR_FILTER_CLIP(c, "curvestyle", 0, 3);
-    CLASS_ATTR_LABEL(c,"curvestyle",0,"Curve Style");
+    CLASS_ATTR_LABEL(c,"curvestyle",0, "Curve Style");
 
     CLASS_ATTR_DOUBLE(c, "octavesmooth", 0, t_spectrumdraw, oct_smooth);
     CLASS_ATTR_FILTER_CLIP(c, "octavesmooth", 0.0, 1.0);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "octavesmooth", 0, "0.");
-    CLASS_ATTR_LABEL(c,"octavesmooth",0,"Octave Smoothing");
+    CLASS_ATTR_LABEL(c,"octavesmooth",0, "Octave Smoothing");
 
     CLASS_ATTR_LONG(c, "subsamplestyle", 0, t_spectrumdraw, subsample_style);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "subsamplestyle", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"subsamplestyle", 0, "Full Peak Average");
     CLASS_ATTR_FILTER_CLIP(c, "subsamplestyle", 0, 2);
-    CLASS_ATTR_LABEL(c,"subsamplestyle",0,"Subsample Style");
+    CLASS_ATTR_LABEL(c,"subsamplestyle",0, "Subsample Style");
 
     CLASS_ATTR_DOUBLE_ARRAY(c, "freqrange", 0, t_spectrumdraw, freq_range, 2);
     CLASS_ATTR_FILTER_MIN(c, "freqrange", 0.0001);
@@ -803,58 +803,58 @@ int C74_EXPORT main()
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "gridstyle", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"gridstyle", 0, "Normal Plaid Ticks \"Plaid + Ticks\"");
     CLASS_ATTR_FILTER_CLIP(c, "gridstyle", 0, 3);
-    CLASS_ATTR_LABEL(c,"gridstyle",0,"Grid Style");
+    CLASS_ATTR_LABEL(c,"gridstyle", 0, "Grid Style");
 
     CLASS_ATTR_LONG(c, "freqgrid", 0, t_spectrumdraw, freq_grid);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "freqgrid", 0, "7");
     CLASS_ATTR_ENUMINDEX(c,"freqgrid", 0, "Off 1/32 1/24 1/16 1/12 1/8 1/4 1/3 1/2 1 1.5 2 3 4");
     CLASS_ATTR_FILTER_CLIP(c, "freqgrid", 0, 13);
-    CLASS_ATTR_LABEL(c,"freqgrid",0,"Freq Grid (octaves)");
+    CLASS_ATTR_LABEL(c,"freqgrid", 0, "Freq Grid (octaves)");
 
     CLASS_ATTR_LONG(c, "ampgrid", 0, t_spectrumdraw, amp_grid);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "ampgrid", 0, "6");
     CLASS_ATTR_ENUMINDEX(c,"ampgrid", 0, "Off 0.25 0.5 1 2.5 5 10 15 20 25 50");
     CLASS_ATTR_FILTER_CLIP(c, "ampgrid", 0, 10);
-    CLASS_ATTR_LABEL(c,"ampgrid",0,"Amp Grid (dB)");
+    CLASS_ATTR_LABEL(c,"ampgrid", 0, "Amp Grid (dB)");
 
     CLASS_ATTR_LONG(c, "phasegrid", 0, t_spectrumdraw, phase_grid);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "phasegrid", 0, "4");
     CLASS_ATTR_ENUMINDEX(c,"phasegrid", 0, "Off π/12 π/8 π/6 π/4 π/3 π/2 π");
     CLASS_ATTR_FILTER_CLIP(c, "phasegrid", 0, 7);
-    CLASS_ATTR_LABEL(c,"phasegrid",0,"Phase Grid");
+    CLASS_ATTR_LABEL(c,"phasegrid", 0, "Phase Grid");
 
     CLASS_ATTR_DOUBLE(c, "freqref", 0, t_spectrumdraw, freq_ref);
     CLASS_ATTR_FILTER_MIN(c, "freqref", 1.0);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "freqref", 0, "1000");
-    CLASS_ATTR_LABEL(c,"freqref",0,"Freq Reference (Hz)");
+    CLASS_ATTR_LABEL(c,"freqref", 0, "Freq Reference (Hz)");
 
     CLASS_ATTR_DOUBLE(c, "ampref", 0, t_spectrumdraw, amp_ref);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "ampref", 0, "0");
-    CLASS_ATTR_LABEL(c,"ampref",0,"Amp Reference (dB)");
+    CLASS_ATTR_LABEL(c,"ampref", 0, "Amp Reference (dB)");
 
     CLASS_ATTR_LONG(c, "freqlabels", 0, t_spectrumdraw, freq_labels);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "freqlabels", 0, "3");
     CLASS_ATTR_ENUMINDEX(c,"freqlabels", 0, "Off 1 2 3 4 6 8 9 12");
     CLASS_ATTR_FILTER_CLIP(c, "freqlabels", 0, 8);
-    CLASS_ATTR_LABEL(c,"freqlabels",0,"Freq Labels (grid points)");
+    CLASS_ATTR_LABEL(c,"freqlabels", 0, "Freq Labels (grid points)");
 
     CLASS_ATTR_LONG(c, "amplabels", 0, t_spectrumdraw, amp_labels);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "amplabels", 0, "1");
     CLASS_ATTR_ENUMINDEX(c,"amplabels", 0, "Off 1 2 3 4 5 6 7 8 9 10");
     CLASS_ATTR_FILTER_CLIP(c, "amplabels", 0, 10);
-    CLASS_ATTR_LABEL(c,"amplabels",0,"Amp Labels (grid points)");
+    CLASS_ATTR_LABEL(c,"amplabels", 0, "Amp Labels (grid points)");
 
     CLASS_ATTR_LONG(c, "phaselabels", 0, t_spectrumdraw, phase_labels);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "phaselabels", 0, "1");
     CLASS_ATTR_ENUMINDEX(c,"phaselabels", 0, "Off 1 2 3 4 5 6 7 8 9 10");
     CLASS_ATTR_FILTER_CLIP(c, "phaselabels", 0, 10);
-    CLASS_ATTR_LABEL(c,"phaselabels",0,"Phase Labels (grid points)");
+    CLASS_ATTR_LABEL(c,"phaselabels", 0, "Phase Labels (grid points)");
 
     CLASS_ATTR_LONG(c, "labelpos", 0, t_spectrumdraw, label_pos);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "labelpos", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"labelpos", 0, "\"Top Left\" \"Top Right\" \"Bottom Left\" \"Bottom Right\"");
     CLASS_ATTR_FILTER_CLIP(c, "labelpos", 0, 3);
-    CLASS_ATTR_LABEL(c,"labelpos",0,"Label Positions");
+    CLASS_ATTR_LABEL(c,"labelpos", 0, "Label Positions");
 
     CLASS_STICKY_ATTR_CLEAR(c, "category");
 
@@ -866,17 +866,17 @@ int C74_EXPORT main()
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "fftsize", 0, "4");
     CLASS_ATTR_ENUMINDEX(c,"fftsize", 0, "256 512 1024 2048 4096 8192 16384 32768 65536");
     CLASS_ATTR_FILTER_CLIP(c, "fftsize", 0, 8);
-    CLASS_ATTR_LABEL(c,"fftsize",0,"FFT Size");
+    CLASS_ATTR_LABEL(c,"fftsize", 0, "FFT Size");
 
     CLASS_ATTR_DOUBLE(c, "interval", 0, t_spectrumdraw, redraw_time);
     CLASS_ATTR_FILTER_MIN(c, "interval", 10);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "interval", 0, "50");
-    CLASS_ATTR_LABEL(c,"interval",0,"Polling Interval (ms)");
+    CLASS_ATTR_LABEL(c,"interval", 0, "Polling Interval (ms)");
 
     CLASS_ATTR_DOUBLE(c, "peakhold", 0, t_spectrumdraw, peak_hold);
     CLASS_ATTR_FILTER_MIN(c, "peakhold", 10);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "peakhold", 0, "3000");
-    CLASS_ATTR_LABEL(c,"peakhold",0,"Peak Hold Time (ms)");
+    CLASS_ATTR_LABEL(c,"peakhold", 0, "Peak Hold Time (ms)");
 
     CLASS_ATTR_DOUBLE_ARRAY(c, "timesmooth", 0, t_spectrumdraw, time_smooth, 2);
     CLASS_ATTR_FILTER_MIN(c, "timesmooth", 1.0);
@@ -887,17 +887,17 @@ int C74_EXPORT main()
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "windowtype", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"windowtype", 0, "\"Hann\" Hamming Kaiser Triangle Blackman \"Blackman 62\" \"Blackman 70\" \"Blackman 74\" \"Blackman 92\" Blackman-Harris \"Flat Top\" Rectangle");
     CLASS_ATTR_FILTER_CLIP(c, "windowtype", 0, 11);
-    CLASS_ATTR_LABEL(c,"windowtype",0,"Window Type");
+    CLASS_ATTR_LABEL(c,"windowtype", 0, "Window Type");
 
     CLASS_ATTR_LONG(c, "zeropad", 0, t_spectrumdraw, zero_pad);
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "zeropad", 0, "0");
     CLASS_ATTR_ENUMINDEX(c,"zeropad", 0, "Off 2x 4x 8x 16x");
     CLASS_ATTR_FILTER_CLIP(c, "zeropad", 0, 4);
-    CLASS_ATTR_LABEL(c,"zeropad",0,"Zero Padding");
+    CLASS_ATTR_LABEL(c,"zeropad", 0, "Zero Padding");
 
     CLASS_STICKY_ATTR_CLEAR(c, "category");
 
-    CLASS_ATTR_DEFAULT(c,"patching_rect",0, "0. 0. 400 160.");
+    CLASS_ATTR_DEFAULT(c,"patching_rect", 0, "0. 0. 400 160.");
 
     class_dspinitjbox(c);
     class_register(CLASS_BOX, c);
@@ -916,7 +916,6 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_dictionary *d = nullptr;
     long boxflags;
-    short i;
 
     if (!(d = object_dictionaryarg(argc,argv)))
         return nullptr;
@@ -931,7 +930,7 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 
     init_HIRT_common_attributes(x);
 
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
         x->sig_ins_valid[i] = false;
 
     // Init once per object memory
@@ -941,7 +940,7 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 
     // Init per curve / channel memory
 
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         alloc_mem_swap(x->realtime_data + i, 0, 0);
         alloc_mem_swap(x->realtime_stats + i, 0, 0);
@@ -971,8 +970,6 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 
 void spectrumdraw_free(t_spectrumdraw *x)
 {
-    short i;
-
     dsp_freejbox((t_pxjbox *)x);
     jbox_free((t_jbox *)x);
 
@@ -983,7 +980,7 @@ void spectrumdraw_free(t_spectrumdraw *x)
 
     // Once per curve / channel
 
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         free_mem_swap(x->curve_data + i);
         free_mem_swap(x->realtime_io + i);

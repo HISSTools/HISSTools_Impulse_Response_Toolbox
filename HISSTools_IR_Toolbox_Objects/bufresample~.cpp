@@ -251,8 +251,6 @@ void rate_as_ratio(double rate, intptr_t& num, intptr_t& denom)
 //////////////////////////////////////////////////////////////////////////
 
 
-
-
 // Get a filter value from a position 0-nzero on the RHS wing (translate for LHS) - EITHER
 // - filter_position *MUST* be in range 0 to nzero inclusive (passing nzero as mul) OR
 // - filter_position *MUST* be in range 0 to 1 inclusive (passing nzero * npoints / half length as mul)
