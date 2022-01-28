@@ -176,7 +176,7 @@ public:
                 
             case NOISE_MODE_PINK:
                 for (uintptr_t i = 0; i < N; i++)
-                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_browning(m_gen()) * m_amp);
+                    *out++ = static_cast<T>(fade(i, FiN, FoN) * m_pinking(m_gen()) * m_amp);
                 break;
         }
     }
