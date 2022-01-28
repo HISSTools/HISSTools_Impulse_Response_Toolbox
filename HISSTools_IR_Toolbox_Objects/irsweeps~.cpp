@@ -197,7 +197,7 @@ double irsweeps_param_check(t_irsweeps *x, const char *name, double val, double 
 template <class T>
 void irsweeps_gen(t_irsweeps *x, float *ptr, T *generator, bool inverse)
 {
-    generator->gen(ptr, false);
+    generator->gen(ptr);
 }
 
 template <>
