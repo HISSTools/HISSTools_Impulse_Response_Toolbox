@@ -59,15 +59,15 @@ void fade_calc_fade_in(double *in_buf, uintptr_t fade_length, uintptr_t length, 
     };
     
     double mul = 1.0 / fade_length;
-    length = std::min(fade_length, length);
+    fade_length = std::min(fade_length, length);
     
     switch (fade_type)
     {
-        case FADE_LIN:          apply(in_buf, length, mul, &fade_linear);              break;
-        case FADE_SQUARE:       apply(in_buf, length, mul, &fade_square);              break;
-        case FADE_SQUARE_ROOT:  apply(in_buf, length, mul, &fade_square_root);         break;
-        case FADE_COS:          apply(in_buf, length, mul * M_PI * 0.5, &fade_cos);    break;
-        case FADE_GOMPERTZ:     apply(in_buf, length, mul * 2.9, &fade_linear);        break;
+        case FADE_LIN:          apply(in_buf, fade_length, mul, &fade_linear);              break;
+        case FADE_SQUARE:       apply(in_buf, fade_length, mul, &fade_square);              break;
+        case FADE_SQUARE_ROOT:  apply(in_buf, fade_length, mul, &fade_square_root);         break;
+        case FADE_COS:          apply(in_buf, fade_length, mul * M_PI * 0.5, &fade_cos);    break;
+        case FADE_GOMPERTZ:     apply(in_buf, fade_length, mul * 2.9, &fade_linear);        break;
     }
 }
 
@@ -79,18 +79,18 @@ void fade_calc_fade_out(double *in_buf, uintptr_t fade_length, uintptr_t length,
             *io-- *= FadeOp(i, mul);
     };
     
-    double mul = 1.0 / fade_length;
-    length = std::min(fade_length, length);
-
     in_buf += length - 1;
+
+    double mul = 1.0 / fade_length;
+    fade_length = std::min(fade_length, length);
 
     switch (fade_type)
     {
-        case FADE_LIN:          apply(in_buf, length, mul, &fade_linear);              break;
-        case FADE_SQUARE:       apply(in_buf, length, mul, &fade_square);              break;
-        case FADE_SQUARE_ROOT:  apply(in_buf, length, mul, &fade_square_root);         break;
-        case FADE_COS:          apply(in_buf, length, mul * M_PI * 0.5, &fade_cos);    break;
-        case FADE_GOMPERTZ:     apply(in_buf, length, mul * 2.9, &fade_linear);        break;
+        case FADE_LIN:          apply(in_buf, fade_length, mul, &fade_linear);              break;
+        case FADE_SQUARE:       apply(in_buf, fade_length, mul, &fade_square);              break;
+        case FADE_SQUARE_ROOT:  apply(in_buf, fade_length, mul, &fade_square_root);         break;
+        case FADE_COS:          apply(in_buf, fade_length, mul * M_PI * 0.5, &fade_cos);    break;
+        case FADE_GOMPERTZ:     apply(in_buf, fade_length, mul * 2.9, &fade_linear);        break;
     }
 }
 
