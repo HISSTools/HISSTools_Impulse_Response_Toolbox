@@ -549,11 +549,11 @@ int C74_EXPORT main()
     jbox_initclass(c, JBOX_FIXWIDTH | JBOX_COLOR | JBOX_FONTATTR);
 
     class_addmethod(c, (method)spectrumdraw_notify, "notify", A_CANT, 0);
-    class_addmethod(c, (method)spectrumdraw_paint, "paint",    A_CANT, 0);
+    class_addmethod(c, (method)spectrumdraw_paint, "paint", A_CANT, 0);
 
-    class_addmethod(c, (method)spectrumdraw_mousedown, "mousedown",    A_CANT, 0);
-    class_addmethod(c, (method)spectrumdraw_mousedrag, "mousedrag",    A_CANT, 0);
-    class_addmethod(c, (method)spectrumdraw_mouseup, "mouseup",    A_CANT, 0);
+    class_addmethod(c, (method)spectrumdraw_mousedown, "mousedown", A_CANT, 0);
+    class_addmethod(c, (method)spectrumdraw_mousedrag, "mousedrag", A_CANT, 0);
+    class_addmethod(c, (method)spectrumdraw_mouseup, "mouseup", A_CANT, 0);
     class_addmethod(c, (method)spectrumdraw_mouseenter, "mouseenter", A_CANT, 0);
     class_addmethod(c, (method)spectrumdraw_mouseleave, "mouseleave", A_CANT, 0);
     class_addmethod(c, (method)spectrumdraw_mousemove, "mousemove", A_CANT, 0);
@@ -1387,7 +1387,7 @@ void spectrumdraw_mouseup(t_spectrumdraw *x, t_object *patcherview, t_pt pt, lon
 void spectrumdraw_mouseenter(t_spectrumdraw *x, t_object *patcherview, t_pt pt, long modifiers)
 {
     x->mouse_over = true;
-    spectrumdraw_mouse_store_rel(x,  patcherview, pt.x, pt.y);
+    spectrumdraw_mouse_store_rel(x, patcherview, pt.x, pt.y);
 
     spectrumdraw_calc_selection_data(x);
 
@@ -1404,7 +1404,7 @@ void spectrumdraw_mouseleave(t_spectrumdraw *x, t_object *patcherview, t_pt pt, 
 
 void spectrumdraw_mousemove(t_spectrumdraw *x, t_object *patcherview, t_pt pt, long modifiers)
 {
-    spectrumdraw_mouse_store_rel(x,  patcherview, pt.x, pt.y);
+    spectrumdraw_mouse_store_rel(x, patcherview, pt.x, pt.y);
     spectrumdraw_calc_selection_data(x);
     jbox_redraw((t_jbox *)x);
 }
@@ -2464,7 +2464,7 @@ void spectrumdraw_paint_labels(t_spectrumdraw *x, t_jgraphics *g, t_scale_vals *
         for (; x_ref <= width + 1; freq_ref *= grid_mul, x_ref = freq_2_mouse(freq_ref, scale))
         {
             frequency_label(text, mouse_2_freq(x_ref, scale));
-            jfont_text_measure(jf,  text, &textwidth, &textheight);
+            jfont_text_measure(jf, text, &textwidth, &textheight);
             jtextlayout_set(jtl, text, jf, x_ref + x_offset - width, 0, 2.0 * width, label_height, justify, t_jgraphics_textlayout_flags(0));
 
             // Draw it
@@ -2504,7 +2504,7 @@ void spectrumdraw_paint_labels(t_spectrumdraw *x, t_jgraphics *g, t_scale_vals *
         {
             if (y_ref >= -1.0 && (y_ref - last_draw > text_height_pad) && (y_ref + y_offset - (max_text_height / 2.0)) >= -1.0 && (y_ref + y_offset + (max_text_height / 2.0)) <= label_height)
             {
-                amp_label(text,  mouse_2_yval(y_ref, scale), x->amp_grid, base_precision);
+                amp_label(text, mouse_2_yval(y_ref, scale), x->amp_grid, base_precision);
                 jtextlayout_set(jtl, text, jf, offset, y_ref - max_text_height + y_offset, max_text_width, 2.0 * max_text_height, justify, t_jgraphics_textlayout_flags(0));
                 jtextlayout_settextcolor(jtl, &x->u_textcolor);
 
@@ -2593,7 +2593,7 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
             for (y_ref = y_ref - (std::ceil((y_ref - y_min) / y_space) * y_space); y_ref <= y_max ; y_ref += y_space, count--)
             {
                 phase_label(text, count, denominator);
-                jfont_text_measure(jf,  text, &textwidth, &textheight);
+                jfont_text_measure(jf, text, &textwidth, &textheight);
                 min_width = textwidth > min_width ? textwidth : min_width;
             }
 
@@ -2618,8 +2618,8 @@ void spectrumdraw_get_measurements(t_spectrumdraw *x, double *return_width, doub
 
             for (y_ref = y_ref - (std::ceil((y_ref - y_min) / y_space) * y_space); y_ref <= y_max ; y_ref += y_space)
             {
-                amp_label(text,  y_ref, x->amp_grid, base_precision);
-                jfont_text_measure(jf,  text, &textwidth, &textheight);
+                amp_label(text, y_ref, x->amp_grid, base_precision);
+                jfont_text_measure(jf, text, &textwidth, &textheight);
                 min_width = textwidth > min_width ? textwidth : min_width;
             }
 
@@ -2984,7 +2984,7 @@ void spectrumdraw_paint(t_spectrumdraw *x, t_object *patcherview)
     spectrumdraw_grid_precalc(x, &scale, true);
     spectrumdraw_set_fft_scaling(&scale, x->curve_data[x->mouse_curve - 1].current_size, x->curve_sr[x->mouse_curve - 1], 1.0);
     spectrumdraw_paint_selection_data(x, g, y_vals, &scale, x->curve_data[x->mouse_curve - 1].current_size, rect.x, rect.y, rect.width, rect.height, sel_min_freq, sel_max_freq);
-    spectrumdraw_paint_labels(x, g,  &scale, rect.x, rect.y, rect.width, rect.height, textrect.width, textrect.height, text_width, text_height);
+    spectrumdraw_paint_labels(x, g, &scale, rect.x, rect.y, rect.width, rect.height, textrect.width, textrect.height, text_width, text_height);
     
     // Draw Border
 

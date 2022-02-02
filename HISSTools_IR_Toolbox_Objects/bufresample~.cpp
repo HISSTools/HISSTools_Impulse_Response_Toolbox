@@ -201,7 +201,7 @@ void bufresample_set_filter(t_bufresample *x, t_symbol *sym, long argc, t_atom *
 
     alpha = (alpha <= 0.) ? 1.0 : alpha;
 
-    generate_filter(x, static_cast<long>(nzero),  static_cast<long>(npoints), cf, alpha);
+    generate_filter(x, static_cast<long>(nzero), static_cast<long>(npoints), cf, alpha);
 }
 
 
