@@ -952,6 +952,12 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
     x->mouse_over = false;
     x->selection_on = false;
     
+    x->mouse_curve = 0;
+    x->mouse_x = -1.0;
+    x->mouse_y = -1.0;
+    x->mouse_sel_min_freq = 0.0;
+    x->mouse_sel_max_freq = 0.0;
+    
     x->write_pointer = 0;
     x->hop_pointer = 0;
 
@@ -1153,6 +1159,11 @@ void spectrumdraw_calc_selection_data(t_spectrumdraw *x)
 
     bool inbox = mouse_x >= 0 && mouse_x <= 1 && mouse_y >= 0 && mouse_y <= 1;
 
+    // N.B. This can be called via notify before x->mouse_curve has been set
+    
+    if (!x->mouse_curve)
+        return;
+    
     // Try to swap memory
 
     attempt_mem_swap(&x->curve_data[x->mouse_curve - 1]);
