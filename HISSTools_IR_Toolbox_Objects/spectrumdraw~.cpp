@@ -110,7 +110,7 @@ struct t_spectrumdraw
 
     // Flags
 
-    long selection_on;
+    bool selection_on;
     long label_pos;
     long mouse_data_pos;
     long mouse_curve;
@@ -950,8 +950,8 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
     }
 
     x->mouse_over = false;
-    x->selection_on = 0;
-
+    x->selection_on = false;
+    
     x->write_pointer = 0;
     x->hop_pointer = 0;
 
@@ -1301,10 +1301,10 @@ void spectrumdraw_freeze(t_spectrumdraw *x, t_atom_long freeze_chan)
 void spectrumdraw_select(t_spectrumdraw *x, t_symbol *sym, long argc, t_atom *argv)
 {
     if (argc < 2)
-        x->selection_on = 0;
+        x->selection_on = false;
     else
     {
-        x->selection_on = 1;
+        x->selection_on = true;
         x->mouse_sel_min_freq = atom_getfloat(argv++);
         x->mouse_sel_max_freq = atom_getfloat(argv++);
     }
@@ -1356,7 +1356,7 @@ void spectrumdraw_mousedown(t_spectrumdraw *x, t_object *patcherview, t_pt pt, l
     if (x->mouse_mode < 3)
         return;
 
-    x->selection_on = 0;
+    x->selection_on = false;
     x->mouse_sel_min_freq = spectrumdraw_mouse_x_2_freq(x, patcherview, pt.x);
 
     jbox_invalidate_layer((t_object*)x, nullptr, gensym("background_layer"));
@@ -1369,7 +1369,7 @@ void spectrumdraw_mousedrag(t_spectrumdraw *x, t_object *patcherview, t_pt pt, l
     if (x->mouse_mode < 3)
         return;
 
-    x->selection_on = 1;
+    x->selection_on = true;
     x->mouse_sel_max_freq = spectrumdraw_mouse_x_2_freq(x, patcherview, pt.x);
 
     spectrumdraw_calc_selection_data(x);
@@ -3033,7 +3033,7 @@ t_max_err spectrumdraw_notify(t_spectrumdraw *x, t_symbol *sym, t_symbol *msg, v
         if (attrname == gensym("mousemode"))
         {
             if (x->mouse_mode < 3)
-                x->selection_on = 0;
+                x->selection_on = false;
         }
 
         if (attrname == gensym("freqrange"))
