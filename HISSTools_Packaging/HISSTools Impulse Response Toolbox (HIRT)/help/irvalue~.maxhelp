@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 8,
+			"minor" : 2,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -67,8 +67,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 8,
+							"minor" : 2,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -104,6 +104,68 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-27",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 419.0, 253.0, 94.0, 23.0 ],
+									"text" : "set irvaluehelp"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "float" ],
+									"patching_rect" : [ 64.0, 338.0, 56.0, 23.0 ],
+									"text" : "irvalue~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 83.0, 306.5, 419.0, 21.0 ],
+									"text" : "(& must re-set irvalue~ buffer~ reference with every buffer~ change)",
+									"textcolor" : [ 0.502, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 24.0, 198.0, 23.0, 23.0 ],
+									"text" : "t b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-8",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 259.5, 214.0, 157.5, 36.0 ],
+									"text" : "(optional additional message)",
+									"textcolor" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-17",
 									"maxclass" : "newobj",
@@ -259,7 +321,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 162.0, 254.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"text" : "2",
+									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
 
@@ -279,7 +341,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 124.0, 144.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"text" : "2",
+									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
 
@@ -299,7 +361,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 321.0, 254.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
-									"text" : "1",
+									"text" : "2",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
 
@@ -360,7 +422,6 @@
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_initial" : [ 0.0 ],
-											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
 											"parameter_longname" : "number[1]",
 											"parameter_mmax" : 3.0,
@@ -403,25 +464,13 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-27",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 419.0, 253.0, 94.0, 23.0 ],
-									"text" : "set irvaluehelp"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"buffername" : "irvaluehelp",
 									"id" : "obj-24",
 									"maxclass" : "waveform~",
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 419.0, 305.5, 286.0, 88.0 ]
+									"patching_rect" : [ 419.0, 338.0, 286.0, 88.0 ]
 								}
 
 							}
@@ -519,18 +568,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-7",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "float" ],
-									"patching_rect" : [ 64.0, 338.0, 56.0, 23.0 ],
-									"text" : "irvalue~"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"background" : 1,
 									"bgmode" : 0,
 									"border" : 0,
@@ -539,6 +576,7 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
@@ -582,14 +620,17 @@
 									"fontface" : 0,
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
+									"frozen_box_attributes" : [ "linearmode" ],
 									"id" : "obj-25",
 									"ignoreclick" : 1,
+									"linearmode" : 0,
 									"markers" : [ 440.0 ],
 									"maxclass" : "spectrumdraw~",
 									"numinlets" : 4,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 305.0, 503.0, 400.0, 160.0 ]
+									"patching_rect" : [ 305.0, 503.0, 400.0, 160.0 ],
+									"phaselabels" : 0
 								}
 
 							}
@@ -621,20 +662,6 @@
 								}
 
 							}
-, 							{
-								"box" : 								{
-									"attr" : "linearmode",
-									"id" : "obj-30",
-									"lock" : 1,
-									"maxclass" : "attrui",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 591.0, 448.0, 114.0, 23.0 ],
-									"text_width" : 91.0
-								}
-
-							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -656,8 +683,17 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-18", 0 ],
+									"hidden" : 1,
+									"midpoints" : [ 33.5, 236.5, 73.5, 236.5 ],
+									"source" : [ "obj-10", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
-									"midpoints" : [ 214.5, 306.5, 73.5, 306.5 ],
+									"midpoints" : [ 214.5, 294.5, 73.5, 294.5 ],
 									"source" : [ "obj-11", 0 ]
 								}
 
@@ -687,7 +723,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-29", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 73.5, 292.5, 188.5, 292.5 ],
+									"midpoints" : [ 73.5, 283.5, 188.5, 283.5 ],
 									"order" : 0,
 									"source" : [ "obj-18", 0 ]
 								}
@@ -745,6 +781,16 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-10", 0 ],
+									"hidden" : 1,
+									"midpoints" : [ 428.5, 307.0, 12.0, 307.0, 12.0, 187.0, 33.5, 187.0 ],
+									"order" : 3,
+									"source" : [ "obj-27", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-24", 0 ],
 									"order" : 0,
 									"source" : [ "obj-27", 0 ]
@@ -754,8 +800,18 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
-									"midpoints" : [ 428.5, 292.0, 314.5, 292.0 ],
+									"midpoints" : [ 428.5, 294.0, 314.5, 294.0 ],
 									"order" : 1,
+									"source" : [ "obj-27", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"color" : [ 0.502, 0.0, 0.0, 1.0 ],
+									"destination" : [ "obj-7", 0 ],
+									"midpoints" : [ 428.5, 307.5, 73.5, 307.5 ],
+									"order" : 2,
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -783,14 +839,6 @@
 									"destination" : [ "obj-14", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-3", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-25", 0 ],
-									"midpoints" : [ 600.5, 486.5, 314.5, 486.5 ],
-									"source" : [ "obj-30", 0 ]
 								}
 
 							}
@@ -915,8 +963,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 8,
+							"minor" : 2,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -980,9 +1028,10 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "helpname.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
+				"name" : "HIRT_HISSTools_Logo.png",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"patcherrelativepath" : "../misc/HIRT_image",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
@@ -992,32 +1041,31 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"type" : "JSON",
+				"name" : "helpname.js",
+				"bootpath" : "C74:/help/resources",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"type" : "PNG",
+				"name" : "hirt.credits.mini.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"patcherrelativepath" : "../misc/HIRT_resources",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.helpstarter.js",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "spectrumdraw~.mxo",
+				"name" : "irvalue~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "irvalue~.mxo",
+				"name" : "spectrumdraw~.mxo",
 				"type" : "iLaX"
 			}
  ],
