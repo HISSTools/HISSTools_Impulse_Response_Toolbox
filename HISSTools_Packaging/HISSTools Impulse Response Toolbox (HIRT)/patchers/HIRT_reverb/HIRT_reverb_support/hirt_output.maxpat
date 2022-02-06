@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 0,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "<none>",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"annotation" : "Click dial name to reset dial to default",
@@ -48,7 +49,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "style", "underline", "mode", "textjustification", "rounded", "fontface", "bgcolor", "hint", "usebgoncolor", "presentation_rect", "parameter_enable", "background", "jspainterfile", "fontsize", "ignoreclick", "fontlink", "legacytextcolor", "presentation", "annotation", "usetextovercolor" ],
+					"frozen_box_attributes" : [ "rounded", "fontsize", "background", "hint", "annotation", "usebgoncolor", "ignoreclick", "presentation_rect", "parameter_enable", "legacytextcolor", "textjustification", "presentation", "bgcolor", "jspainterfile", "usetextovercolor", "fontface", "mode", "style", "fontlink", "underline" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -100,12 +101,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 743.857117000000017, 23.0, 80.5, 22.0 ],
+					"patching_rect" : [ 743.857117000000017, 23.0, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"mode" : 0
+						"mode" : 1
 					}
 ,
-					"text" : "hover"
+					"text" : "hover @mode 1"
 				}
 
 			}
@@ -115,7 +116,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 784.857117000000017, 101.526923999999994, 95.0, 22.0 ],
+					"patching_rect" : [ 793.857117000000017, 101.526923999999994, 95.0, 22.0 ],
 					"text" : "s #1hover_2"
 				}
 
@@ -126,7 +127,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 805.357117000000017, 62.0, 101.0, 22.0 ],
+					"patching_rect" : [ 819.357117000000017, 62.0, 101.0, 22.0 ],
 					"text" : "s #1hover_13"
 				}
 
@@ -153,8 +154,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -187,6 +188,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "PeteSubDefault10",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -211,8 +213,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 0,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -245,6 +247,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "PeteSubDefault10",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-5",
@@ -972,9 +975,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1204,6 +1207,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-59",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -1228,6 +1232,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-65",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -1252,6 +1257,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-64",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.maxpat",
 					"numinlets" : 1,
@@ -1276,6 +1282,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-63",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -1300,6 +1307,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-62",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -1456,7 +1464,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
-					"midpoints" : [ 773.857117000000017, 53.0, 814.857117000000017, 53.0 ],
+					"midpoints" : [ 778.357117000000017, 53.0, 828.857117000000017, 53.0 ],
 					"source" : [ "obj-16", 1 ]
 				}
 
@@ -1486,7 +1494,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 685.0, 72.763462000000004, 794.357117000000017, 72.763462000000004 ],
+					"midpoints" : [ 685.0, 72.763462000000004, 803.357117000000017, 72.763462000000004 ],
 					"source" : [ "obj-18", 1 ]
 				}
 
@@ -1609,7 +1617,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-62", 0 ],
 					"midpoints" : [ 354.5, 240.0, 633.5, 240.0 ],
-					"order" : 3,
+					"order" : 1,
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -1627,7 +1635,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-64", 0 ],
 					"midpoints" : [ 354.5, 225.0, 354.5, 225.0 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -1636,7 +1644,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-65", 0 ],
 					"midpoints" : [ 354.5, 240.5, 471.5, 240.5 ],
-					"order" : 0,
+					"order" : 3,
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -1667,15 +1675,80 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-65::obj-70" : [ "Dry/Wet.val.2205", "Dry/Wet.val", 0 ],
-			"obj-64::obj-70" : [ "Gain.val.2206", "Gain.val", 0 ],
-			"obj-63::obj-70" : [ "Width.val.2207", "Width.val", 0 ],
-			"obj-62::obj-70" : [ "Cascade.val.2210", "Cascade.val", 0 ],
 			"obj-59::obj-70" : [ "Predelay.val.2209", "Predelay.val", 0 ],
+			"obj-62::obj-70" : [ "Cascade.val.2210", "Cascade.val", 0 ],
+			"obj-63::obj-70" : [ "Width.val.2207", "Width.val", 0 ],
+			"obj-64::obj-70" : [ "Gain.val.2206", "Gain.val", 0 ],
+			"obj-65::obj-70" : [ "Dry/Wet.val.2205", "Dry/Wet.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
+,
+			"parameter_overrides" : 			{
+				"obj-59::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Predelay.val.2209",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
+					"parameter_shortname" : "Predelay.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-62::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Cascade.val.2210",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Cascade.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-63::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Width.val.2207",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Width.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-64::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Gain.val.2206",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_shortname" : "Gain.val",
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-65::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Dry/Wet.val.2205",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Dry/Wet.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
 
+			}
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -1697,9 +1770,9 @@
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{
+					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

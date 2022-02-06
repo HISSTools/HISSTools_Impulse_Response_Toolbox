@@ -836,8 +836,13 @@
 		}
 ,
 		"Zoom" : 		{
-			"name" : "UI Zoom Factor",
-			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+			"name" : "UI Zoom Quick Select",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 80% to 200%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Zoom Menu" : 		{
+			"name" : "UI Zoom Selector",
+			"annotation" : "Select UI Zoom Factor. Scaling available from 80% to 200%. User preference default can also be set for global Max-wide usage. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
 		}
 
 	}
@@ -1209,8 +1214,13 @@
 		}
 ,
 		"Zoom" : 		{
-			"name" : "UI Zoom Factor",
-			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+			"name" : "UI Zoom Quick Select",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 80% to 200%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Zoom Menu" : 		{
+			"name" : "UI Zoom Selector",
+			"annotation" : "Select UI Zoom Factor. Scaling available from 80% to 200%. User preference default can also be set for global Max-wide usage. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
 		}
 
 	}
@@ -1340,10 +1350,15 @@
 			"name" : "Trim & Normalize",
 			"annotation" : "When on, recorded IRs will be normalised and automatically trimmed. Otherwise IRs are left exactly as measured."
 		}
-,
+		,
 		"Zoom" : 		{
-			"name" : "UI Zoom Factor",
-			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+			"name" : "UI Zoom Quick Select",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 80% to 200%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Zoom Menu" : 		{
+			"name" : "UI Zoom Selector",
+			"annotation" : "Select UI Zoom Factor. Scaling available from 80% to 200%. User preference default can also be set for global Max-wide usage. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
 		}
 
 	}

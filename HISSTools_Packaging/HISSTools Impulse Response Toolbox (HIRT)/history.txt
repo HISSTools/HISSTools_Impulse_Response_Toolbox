@@ -5,19 +5,49 @@ The HISSTools Impulse Response Toolbox (HIRT) — History
 Change Log
 -----------------------------------------------------------------------------------------
 
+Changes in 2.1
+
+New Features
+
+All externals on macOS platform now Universal Binaries operating across Intel and Apple Silicon processors
+All externals are signed
+
+Improvements
+
+irvalue~: helpfile improved for clarity
+Effect abstractions: now handle patcher zoom more elegantly
+Effect abstractions: editing mode is now more obvious
+
+Bug Fixes
+
+spectrumdraw~: drawing issue with 'select' fixed
+spectrumdraw~: load ordering of attributes fixed (@smoothing)
+Effect abstractions: fixed inline documentation for issues introduced in changes to Max [hover] object
+
+-------
+
+Changes in 2.0.1
+
+Bug Fixes
+
+Effect abstractions: fixed bug in UI dial where values could be sent in inactive mode under certain circumstances
+Effect abstractions: fixed multiconvolve~ initialising in hirt.convolutionreverb~
+
+-------
+
 Changes in 2.0
 
 New Features
 
-moved to package format
-new complete reference documentation and updated help files
-new abstractions including Convolution Reverb effect
+Moved to Max Package format
+New complete reference documentation and updated help files
+New abstractions including Convolution Reverb effect
 
-morphfilter~: new object for use in the convolution reverb (for IR damping)
-bufreverse~: new  object for use in the convolution reverb (for IR reversal)
-bufresample~: new  object for use in the convolution reverb (for IR resampling)
+morphfilter~: new object for use in the hirt.convolutionreverb~ (for IR damping)
+bufreverse~: new  object for use in the hirt.convolutionreverb~ (for IR reversal)
+bufresample~: new  object for use in the hirt.convolutionreverb~ (for IR resampling)
 
-all objects: can now access limitless channels of a buffer~
+All objects: can now access limitless channels of a buffer~
 
 Improvements
 
@@ -45,7 +75,7 @@ spectrumdraw~: the ‘Hann’ window is now correctly named
 
 All objects: buffer reading is now as documented when requesting a channel above the number in the buffer.
 
-all objects (windows only): fixed code relating to deconvolution filters and amp specifiers
+All objects (windows only): fixed code relating to deconvolution filters and amp specifiers
 
 -------
 
@@ -79,7 +109,7 @@ irextract~/irmeasure~/irsweeps~: added control over sweep amplitude against freq
 
 Bug Fixes
 
-multiple objects: time multiplier arguments now correct in all objects
+Multiple objects: time multiplier arguments now correct in all objects
 
 irmeasure~: i/o args have been swapped 
 irphase~ arguments are now safe
