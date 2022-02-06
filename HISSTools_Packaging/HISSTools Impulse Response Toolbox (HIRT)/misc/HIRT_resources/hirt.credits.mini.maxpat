@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 2,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"handoff" : "",
@@ -95,7 +96,7 @@
 					"patching_rect" : [ 60.0, 153.5, 262.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 2.25, 219.0, 20.0 ],
-					"text" : "HISSTools Impulse Response Toolbox v2.0",
+					"text" : "HISSTools Impulse Response Toolbox v2.1",
 					"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 					"textjustification" : 2,
 					"varname" : "autohelp_top_digest[2]"
