@@ -285,6 +285,11 @@
 			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the bottom of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
 		}
 ,
+		"Float Window" : 		{
+			"name" : "UI Floating Window",
+			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
+		}
+,
 		"Global Patcher Name" : 		{
 			"name" : "User Reverb Name",
 			"annotation" : "If this reverb instance is given a name as the first argument to the abstraction, it displays here. This name is also the name used to control this instance remotely (with messages to Max) and is the name passed to the 'Global Patcher Name' variable of this abstraction (for organising via a custom Pattr system)."
@@ -978,6 +983,11 @@
 			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the bottom of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
 		}
 ,
+		"Float Window" : 		{
+			"name" : "UI Floating Window",
+			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
+		}
+,
 		"Global Patcher Name" : 		{
 			"name" : "User Reverb Name",
 			"annotation" : "If this convolver instance is given a name as the first argument to the abstraction, it displays here. This name is also the name used to control this instance remotely (with messages to Max) and is the name passed to the 'Global Patcher Name' variable of this abstraction (for organising via a custom Pattr system)."
@@ -1259,6 +1269,11 @@
 		"Engage Info View" : 		{
 			"name" : "Info On/Off",
 			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the right of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Float Window" : 		{
+			"name" : "UI Floating Window",
+			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
 		}
 ,
 		"Info Name" : 		{
