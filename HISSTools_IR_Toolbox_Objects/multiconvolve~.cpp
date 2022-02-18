@@ -185,7 +185,7 @@ void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
     if (argc && atom_gettype(argv) != A_SYM)
     {
         num_out_chans = atom_getlong(argv++);
-        num_out_chans = multiconvolve_arg_check(x, "number of in channels", num_out_chans, 1, MAXIMUM_MSP_CHANS);
+        num_out_chans = multiconvolve_arg_check(x, "number of out channels", num_out_chans, 1, MAXIMUM_MSP_CHANS);
         argc--;
     }
 
