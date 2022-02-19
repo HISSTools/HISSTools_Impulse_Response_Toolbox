@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -51,7 +51,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -613,7 +613,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 720.0, 513.0, 115.0, 22.0 ],
+					"patching_rect" : [ 720.0, 498.0, 115.0, 22.0 ],
 					"text" : "zl.lookup hide show"
 				}
 
@@ -986,7 +986,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1122.0, 405.0, 66.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 17.0, 130.0, 70.0, 20.0 ],
+					"presentation_rect" : [ 17.0, 132.0, 70.0, 20.0 ],
 					"text" : "Reverse IR",
 					"textcolor" : [ 0.094, 0.118, 0.137, 1.0 ],
 					"textjustification" : 1
@@ -1385,7 +1385,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1978,7 +1978,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -1988,7 +1987,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -2939,14 +2939,14 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "hirt.dial.maxpat",
+				"name" : "hirt.dial.linear.only.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.dial.linear.only.maxpat",
+				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
@@ -2977,7 +2977,6 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -2987,7 +2986,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",

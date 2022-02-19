@@ -297,7 +297,7 @@
 ,
 		"IR Add" : 		{
 			"name" : "IR Browse",
-			"annotation" : "Click here to browse for a new Impulse Response file. Slot A or B will be populated depending on current state. Adding an IR here is identical to drag & drop, or using the @file[] attributes."
+			"annotation" : "Click here to browse for a new Impulse Response file. Slot A or B will be populated depending on current state. Adding an IR here is identical to drag & drop, or using the various @file* attributes."
 		}
 ,
 		"IR Length Display A" : 		{
@@ -984,7 +984,7 @@
 		}
 ,
 		"Float Window" : 		{
-			"name" : "UI Floating Window",
+			"name" : "UI Float Window",
 			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
 		}
 ,
@@ -1130,7 +1130,7 @@
 ,
 		"Saturation Type" : 		{
 			"name" : "Saturation Type",
-			"annotation" : "Choose Saturation algorithm. 'Off' = bypassed in terms of audio-chain and CPU usage (default). 'Type I' is a subtle classic tanh-like analog saturator. 'Type II' is an agressive waveshaper, best used for special effects rather than clean processing. Both Saturators are inside the EQ audio path and respond to changes in filter section Gains."
+			"annotation" : "Choose Saturation algorithm. 'Off' - bypassed in terms of audio-chain and CPU usage (default). 'Type I' is a subtle classic tanh-like analog saturator. 'Type II' is an agressive waveshaper, best used for special effects. Both Saturators are oversampled. Both Saturators are inside the EQ audio path and respond to changes in filter Gains. Saturation 'moves' with 'EQ Routing'."
 		}
 ,
 		"Show Folder" : 		{

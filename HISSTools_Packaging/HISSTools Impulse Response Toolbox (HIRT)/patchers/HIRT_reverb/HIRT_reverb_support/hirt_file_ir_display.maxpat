@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -324,11 +324,11 @@
 							"expression" : ""
 						}
 ,
-						"textcolor" : 						{
+						"focusbordercolor" : 						{
 							"expression" : ""
 						}
 ,
-						"focusbordercolor" : 						{
+						"textcolor" : 						{
 							"expression" : ""
 						}
 ,
@@ -371,11 +371,11 @@
 							"expression" : ""
 						}
 ,
-						"textcolor" : 						{
+						"focusbordercolor" : 						{
 							"expression" : ""
 						}
 ,
-						"focusbordercolor" : 						{
+						"textcolor" : 						{
 							"expression" : ""
 						}
 ,
@@ -446,7 +446,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "From Drop A",
+					"comment" : "From Time A",
 					"id" : "obj-5",
 					"index" : 0,
 					"maxclass" : "outlet",
@@ -458,7 +458,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "From Drop B",
+					"comment" : "From Time B",
 					"id" : "obj-6",
 					"index" : 0,
 					"maxclass" : "outlet",
@@ -579,7 +579,7 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "thinmode", "thinthresh", "thinto", "bgcolor", "gridcolor", "gridorigincolor" ],
+					"frozen_box_attributes" : [ "bgcolor", "thinmode", "gridcolor", "thinto", "gridorigincolor", "thinthresh" ],
 					"gridcolor" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"gridorigincolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-3",
@@ -644,7 +644,7 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "thinmode", "thinthresh", "thinto", "bgcolor", "gridcolor", "gridorigincolor" ],
+					"frozen_box_attributes" : [ "bgcolor", "thinmode", "gridcolor", "thinto", "gridorigincolor", "thinthresh" ],
 					"gridcolor" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"gridorigincolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-8",
@@ -1122,7 +1122,6 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -1132,7 +1131,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",

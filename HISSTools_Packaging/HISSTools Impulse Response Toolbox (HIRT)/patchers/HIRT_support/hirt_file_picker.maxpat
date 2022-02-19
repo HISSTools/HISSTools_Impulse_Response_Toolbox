@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-33",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 338.0, 51.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"color" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
 					"id" : "obj-29",
@@ -102,7 +114,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "loadbang for 'Convolver' only",
+					"comment" : "bang if you want, but not needed anymore",
 					"id" : "obj-23",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -148,7 +160,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "rounded", "fontsize", "background", "hint", "usebgoncolor", "ignoreclick", "parameter_enable", "legacytextcolor", "textjustification", "presentation", "bgcolor", "jspainterfile", "usetextovercolor", "fontface", "mode", "style", "fontlink", "underline" ],
+					"frozen_box_attributes" : [ "underline", "rounded", "fontface", "background", "hint", "jspainterfile", "ignoreclick", "fontlink", "parameter_enable", "usebgoncolor", "fontsize", "textjustification", "presentation", "legacytextcolor", "bgcolor", "mode", "style", "usetextovercolor" ],
 					"hint" : "",
 					"id" : "obj-21",
 					"ignoreclick" : 0,
@@ -242,7 +254,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -688,7 +700,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "rounded", "fontsize", "background", "hint", "usebgoncolor", "ignoreclick", "parameter_enable", "legacytextcolor", "textjustification", "presentation", "bgcolor", "jspainterfile", "usetextovercolor", "fontface", "mode", "style", "fontlink", "underline" ],
+					"frozen_box_attributes" : [ "underline", "rounded", "fontface", "background", "hint", "jspainterfile", "ignoreclick", "fontlink", "parameter_enable", "usebgoncolor", "fontsize", "textjustification", "presentation", "legacytextcolor", "bgcolor", "mode", "style", "usetextovercolor" ],
 					"hint" : "",
 					"id" : "obj-20",
 					"ignoreclick" : 0,
@@ -734,7 +746,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "rounded", "fontsize", "background", "hint", "usebgoncolor", "ignoreclick", "parameter_enable", "legacytextcolor", "textjustification", "presentation", "bgcolor", "jspainterfile", "usetextovercolor", "fontface", "mode", "style", "fontlink", "underline" ],
+					"frozen_box_attributes" : [ "underline", "rounded", "fontface", "background", "hint", "jspainterfile", "ignoreclick", "fontlink", "parameter_enable", "usebgoncolor", "fontsize", "textjustification", "presentation", "legacytextcolor", "bgcolor", "mode", "style", "usetextovercolor" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -945,7 +957,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1225,13 +1237,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 358.0, 45.0, 794.0, 599.0 ],
+						"rect" : [ 646.0, 45.0, 794.0, 599.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1862,7 +1874,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -1872,7 +1883,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -1914,7 +1926,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 26.0, 49.0, 20.0 ],
 					"text" : "IR",
-					"textcolor" : [ 1.0, 1.0, 1.0, 0.660000026226044 ],
+					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
 					"textjustification" : 2
 				}
 
@@ -1931,7 +1943,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 4.0, 49.0, 20.0 ],
 					"text" : "Folder",
-					"textcolor" : [ 1.0, 1.0, 1.0, 0.660000026226044 ],
+					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
 					"textjustification" : 2
 				}
 
@@ -1950,7 +1962,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2136,7 +2148,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2224,7 +2236,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2561,7 +2573,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2826,7 +2838,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3495,7 +3507,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3960,7 +3972,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -3970,7 +3981,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -4014,7 +4026,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -4087,13 +4099,13 @@
 							}
 , 							{
 								"box" : 								{
-									"comment" : "Full Path of IR (External)",
+									"comment" : "Integer Index of IR Menu (Chosen)",
 									"id" : "obj-11",
 									"index" : 3,
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
+									"outlettype" : [ "bang" ],
 									"patching_rect" : [ 369.0, 34.0, 30.0, 30.0 ]
 								}
 
@@ -4178,7 +4190,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4828,7 +4840,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5059,7 +5071,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5345,6 +5357,20 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-16",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 295.0, 222.666655999999989, 72.0, 33.0 ],
+									"text" : "not used anymore",
+									"textjustification" : 2
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -5389,7 +5415,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-37", 0 ],
-									"midpoints" : [ 378.5, 260.083327999999995, 182.5, 260.083327999999995 ],
+									"midpoints" : [ 378.5, 260.166655999999989, 182.5, 260.166655999999989 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -5532,7 +5558,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -5542,7 +5567,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -5605,19 +5631,15 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 70.0, 27.5, 197.0, 17.0 ],
 					"saved_attribute_attributes" : 					{
-						"bordercolor" : 						{
-							"expression" : ""
-						}
-,
-						"textcolor" : 						{
-							"expression" : ""
-						}
-,
 						"activebgcolor" : 						{
 							"expression" : ""
 						}
 ,
-						"tricolor" : 						{
+						"bordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"focusbordercolor" : 						{
 							"expression" : ""
 						}
 ,
@@ -5625,7 +5647,11 @@
 							"expression" : ""
 						}
 ,
-						"focusbordercolor" : 						{
+						"textcolor" : 						{
+							"expression" : ""
+						}
+,
+						"tricolor" : 						{
 							"expression" : ""
 						}
 ,
@@ -5667,19 +5693,15 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 70.0, 5.5, 197.0, 17.0 ],
 					"saved_attribute_attributes" : 					{
-						"bordercolor" : 						{
-							"expression" : ""
-						}
-,
-						"textcolor" : 						{
-							"expression" : ""
-						}
-,
 						"activebgcolor" : 						{
 							"expression" : ""
 						}
 ,
-						"tricolor" : 						{
+						"bordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"focusbordercolor" : 						{
 							"expression" : ""
 						}
 ,
@@ -5687,7 +5709,11 @@
 							"expression" : ""
 						}
 ,
-						"focusbordercolor" : 						{
+						"textcolor" : 						{
+							"expression" : ""
+						}
+,
+						"tricolor" : 						{
 							"expression" : ""
 						}
 ,
@@ -5929,6 +5955,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-39", 2 ],
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"midpoints" : [ 384.5, 190.5, 384.25, 190.5 ],
 					"source" : [ "obj-39", 1 ]
@@ -6050,7 +6083,6 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -6060,7 +6092,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",

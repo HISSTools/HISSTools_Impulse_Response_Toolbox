@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -56,7 +56,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -102,7 +102,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -498,7 +498,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1424,7 +1424,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1582,7 +1582,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1630,7 +1630,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -2073,8 +2073,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -2147,7 +2147,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -2516,8 +2516,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -2618,7 +2618,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3988,7 +3988,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4311,7 +4311,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4573,7 +4573,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4620,7 +4620,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5420,7 +5420,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5508,7 +5508,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -6363,7 +6363,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "texton", "bgcolor", "hint", "fontface", "background", "ignoreclick", "textovercolor", "textjustification", "presentation", "fontsize", "jspainterfile", "text", "fontlink", "style", "mode", "underline", "rounded" ],
+					"frozen_box_attributes" : [ "textovercolor", "rounded", "fontface", "hint", "text", "fontlink", "mode", "fontsize", "jspainterfile", "presentation", "bgcolor", "textjustification", "background", "style", "ignoreclick", "texton", "underline" ],
 					"hint" : "",
 					"id" : "obj-87",
 					"ignoreclick" : 0,
@@ -6411,7 +6411,7 @@
 					"elementcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
 					"fontname" : "Lato Regular",
 					"fontsize" : 10.0,
-					"frozen_box_attributes" : [ "arrow", "parameter_enable", "menumode", "allowdrag", "autopopulate", "items" ],
+					"frozen_box_attributes" : [ "items", "parameter_enable", "arrow", "autopopulate", "menumode", "allowdrag" ],
 					"id" : "obj-64",
 					"items" : [ 80, "%", ",", 90, "%", ",", 100, "%", ",", 110, "%", ",", 120, "%", ",", 140, "%", ",", 160, "%", ",", 180, "%", ",", 200, "%", ",", "<separator>", ",", "Store", "Current", "as", "Default" ],
 					"maxclass" : "umenu",
@@ -6493,7 +6493,7 @@
 					"bgcolor" : [ 0.8, 0.8, 0.8, 0.0 ],
 					"elementcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fgcolor" : [ 0.27843137254902, 0.411764705882353, 0.141176470588235, 1.0 ],
-					"frozen_box_attributes" : [ "increment", "parameter_enable" ],
+					"frozen_box_attributes" : [ "parameter_enable", "increment" ],
 					"id" : "obj-65",
 					"increment" : 1.0,
 					"maxclass" : "incdec",
@@ -6521,13 +6521,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 177.0, 45.0, 705.0, 631.0 ],
+						"rect" : [ 317.0, 45.0, 704.0, 631.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6556,6 +6556,57 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-29",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 499.666666666666686, 352.806640625, 54.0, 22.0 ],
+									"text" : "deferlow"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-21",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"patching_rect" : [ 437.0, 196.806640625, 22.0, 22.0 ],
+									"text" : "t 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-20",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 437.0, 119.806640625, 128.0, 22.0 ],
+									"text" : "r #0_clearfilepath"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-19",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 575.0, 195.806640625, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-28",
 									"maxclass" : "newobj",
@@ -6918,6 +6969,31 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-24",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 437.0, 98.0, 128.0, 20.0 ],
+									"text" : "!! dev !!"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-31",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 555.666666666666742, 347.306640625, 100.0, 33.0 ],
+									"text" : "problem with load pickup here"
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -7013,8 +7089,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-16", 0 ],
-									"midpoints" : [ 509.166666666666686, 345.806640625, 679.833333333333371, 345.806640625, 679.833333333333371, 224.806640625, 584.5, 224.806640625 ],
+									"destination" : [ "obj-29", 0 ],
 									"source" : [ "obj-12", 2 ]
 								}
 
@@ -7061,6 +7136,31 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-19", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-10", 0 ],
+									"hidden" : 1,
+									"midpoints" : [ 446.5, 265.306640625, 416.5, 265.306640625 ],
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-23", 0 ]
 								}
@@ -7093,6 +7193,14 @@
 									"destination" : [ "obj-27", 0 ],
 									"midpoints" : [ 359.5, 474.806640625, 96.0, 474.806640625 ],
 									"source" : [ "obj-28", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"midpoints" : [ 509.166666666666686, 389.806640625, 679.833333333333371, 389.806640625, 679.833333333333371, 224.806640625, 584.5, 224.806640625 ],
+									"source" : [ "obj-29", 0 ]
 								}
 
 							}
@@ -7167,8 +7275,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -7438,7 +7546,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "bgcolor", "hint", "fontface", "presentation_rect", "background", "parameter_enable", "ignoreclick", "textjustification", "presentation", "fontsize", "jspainterfile", "fontlink", "style", "mode", "underline", "rounded" ],
+					"frozen_box_attributes" : [ "rounded", "fontface", "hint", "presentation_rect", "fontlink", "parameter_enable", "mode", "fontsize", "jspainterfile", "presentation", "bgcolor", "textjustification", "background", "style", "ignoreclick", "underline" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -7482,7 +7590,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "texton", "bgcolor", "hint", "fontface", "background", "ignoreclick", "textovercolor", "textjustification", "presentation", "fontsize", "jspainterfile", "text", "fontlink", "style", "mode", "underline", "rounded" ],
+					"frozen_box_attributes" : [ "textovercolor", "rounded", "fontface", "hint", "text", "fontlink", "mode", "fontsize", "jspainterfile", "presentation", "bgcolor", "textjustification", "background", "style", "ignoreclick", "texton", "underline" ],
 					"hint" : "",
 					"id" : "obj-45",
 					"ignoreclick" : 0,
@@ -7610,7 +7718,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7772,8 +7880,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -7865,7 +7973,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7940,7 +8048,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -8480,7 +8588,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 628.0, 481.6790771484375, 95.5, 22.0 ],
-									"text" : "8.2.1",
+									"text" : "8.2.2",
 									"textjustification" : 2
 								}
 
@@ -8546,7 +8654,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -9306,7 +9414,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -9953,8 +10061,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -10037,7 +10145,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -10083,7 +10191,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -10400,8 +10508,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -10472,7 +10580,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -10661,7 +10769,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -10906,7 +11014,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11134,8 +11242,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -11205,7 +11313,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11494,7 +11602,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11911,7 +12019,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -12957,8 +13065,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -13051,7 +13159,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -13097,7 +13205,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -13295,8 +13403,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -13944,8 +14052,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -14041,7 +14149,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -14110,7 +14218,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -14872,8 +14980,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -15511,8 +15619,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -15586,53 +15694,53 @@
 , 			{
 				"box" : 				{
 					"alias" : 					{
-						"Offline::Damp::Damp Slope Low::Slope 1" : "dampslope1",
-						"Offline::Damp::Damp Decay Bell::Decay 2" : "dampdecay2",
-						"Realtime::Position::Position Depth::Depth" : "depth",
-						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
-						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
-						"Output::Output Predelay::Predelay" : "predelay",
-						"Output::Output Width::Width" : "width",
-						"Modulation Active" : "modulation",
-						"Offline::Shape::Shape Size::Size" : "size",
-						"Offline::Damp::Damp Freq Low::Freq 1" : "dampfreq1",
-						"Offline::Damp::Damp Slope High::Slope 3" : "dampslope3",
-						"Position Active" : "position",
-						"Offline::Shape::Length Mode" : "lengthmode",
-						"Realtime::Modulation::Widen" : "modwidth",
-						"Realtime::Position::Position Pan::Pan" : "pan",
-						"EQ::EQ Gain High::Gain 3" : "eqgain3",
-						"IR::IR Mode" : "irmode",
-						"Skin State" : "skin",
-						"Offline::Shape::Reverse" : "reverse",
-						"Offline::Shape::Shape Length Percent::Length" : "lengthpercent",
-						"Output::Output Cascade::Cascade" : "cascade",
-						"Offline::Damp::Damp Freq High::Freq 3" : "dampfreq3",
-						"Offline::Shape::Direct Mode" : "direct",
-						"Offline::Damp::Damp Q Bell::Q 2" : "dampq2",
-						"Output::Output Gain::Gain" : "gain",
-						"EQ::EQ Slope Low::Slope 1" : "eqslope1",
-						"Offline::Shape::Shape Fade In::Fade In" : "fadein",
-						"EQ::EQ Gain Bell::Gain 2" : "eqgain2",
-						"Damp Active" : "damp",
-						"Bypass State" : "bypass",
-						"Offline::Shape::Shape Decay::Decay" : "decay",
-						"Offline::Damp::Damp Decay Low::Decay 1" : "dampdecay1",
-						"Offline::Damp::Damp Freq Bell::Freq 2" : "dampfreq2",
-						"Realtime::Modulation::Modulation Rate::Rate" : "rate",
-						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
-						"EQ::EQ Slope High::Slope 3" : "eqslope3",
-						"Output::Output DryWet::Dry/Wet" : "drywet",
-						"Shape Active" : "shape",
-						"EQ::EQ Routing" : "eq",
 						"Offline::Shape::Shape Length Time::Length" : "lengthtime",
 						"Offline::Damp::Damp Decay High::Decay 3" : "dampdecay3",
 						"Realtime::Modulation::Type" : "modtype",
+						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
+						"Modulation Active" : "modulation",
+						"Realtime::Position::Position Depth::Depth" : "depth",
+						"EQ::EQ Slope High::Slope 3" : "eqslope3",
+						"Offline::Shape::Length Mode" : "lengthmode",
+						"Offline::Damp::Damp Slope Low::Slope 1" : "dampslope1",
+						"Damp Active" : "damp",
 						"Offline::Shape::Shape Early::Early" : "early",
-						"Realtime::Modulation::Modulation Amount::Amount" : "amount",
+						"Offline::Damp::Damp Decay Bell::Decay 2" : "dampdecay2",
+						"Offline::Shape::Shape Fade In::Fade In" : "fadein",
 						"EQ::EQ Freq High::Freq 3" : "eqfreq3",
+						"EQ::EQ Q Bell::Q 2" : "eqq2",
+						"Output::Output Width::Width" : "width",
+						"Offline::Damp::Damp Freq Low::Freq 1" : "dampfreq1",
+						"Offline::Damp::Damp Slope High::Slope 3" : "dampslope3",
+						"Realtime::Modulation::Modulation Amount::Amount" : "amount",
+						"Realtime::Modulation::Widen" : "modwidth",
+						"Output::Output DryWet::Dry/Wet" : "drywet",
+						"Shape Active" : "shape",
+						"Skin State" : "skin",
+						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
+						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
+						"Offline::Shape::Shape Length Percent::Length" : "lengthpercent",
+						"Realtime::Modulation::Modulation Rate::Rate" : "rate",
+						"Offline::Damp::Damp Freq High::Freq 3" : "dampfreq3",
+						"Offline::Damp::Damp Q Bell::Q 2" : "dampq2",
 						"Offline::Shape::Shape Fade Out::Fade Out" : "fadeout",
-						"EQ::EQ Q Bell::Q 2" : "eqq2"
+						"Output::Output Cascade::Cascade" : "cascade",
+						"Offline::Shape::Shape Decay::Decay" : "decay",
+						"EQ::EQ Gain High::Gain 3" : "eqgain3",
+						"EQ::EQ Routing" : "eq",
+						"Bypass State" : "bypass",
+						"Offline::Shape::Direct Mode" : "direct",
+						"Offline::Damp::Damp Decay Low::Decay 1" : "dampdecay1",
+						"Offline::Shape::Shape Size::Size" : "size",
+						"Position Active" : "position",
+						"Offline::Damp::Damp Freq Bell::Freq 2" : "dampfreq2",
+						"Realtime::Position::Position Pan::Pan" : "pan",
+						"Output::Output Predelay::Predelay" : "predelay",
+						"IR::IR Mode" : "irmode",
+						"EQ::EQ Slope Low::Slope 1" : "eqslope1",
+						"Output::Output Gain::Gain" : "gain",
+						"Offline::Shape::Reverse" : "reverse",
+						"EQ::EQ Gain Bell::Gain 2" : "eqgain2"
 					}
 ,
 					"color" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
@@ -15815,7 +15923,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -16326,8 +16434,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -16425,7 +16533,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -16657,7 +16765,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -16703,7 +16811,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -16972,8 +17080,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -17046,7 +17154,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -17315,8 +17423,8 @@
 														"styles" : [ 															{
 																"name" : "max6box",
 																"default" : 																{
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
@@ -17389,7 +17497,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -17683,7 +17791,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -18726,8 +18834,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -19624,8 +19732,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -19698,7 +19806,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -19907,8 +20015,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -20111,7 +20219,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -20157,7 +20265,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -20434,8 +20542,8 @@
 												"name" : "DP.M4L",
 												"default" : 												{
 													"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -20470,8 +20578,8 @@
 , 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -20680,7 +20788,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -21302,8 +21410,8 @@
 												"name" : "DP.M4L",
 												"default" : 												{
 													"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -21338,8 +21446,8 @@
 , 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -22483,8 +22591,8 @@
 								"name" : "DP.M4L",
 								"default" : 								{
 									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -22519,8 +22627,8 @@
 , 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -22795,7 +22903,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -23318,8 +23426,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -25479,21 +25587,43 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "hirt_tabs_offline.maxpat",
+				"name" : "HIRT_HISSTools_Logo.png",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"patcherrelativepath" : "../../misc/HIRT_image",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bufresample~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bufreverse~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "hirt.buffer.filter.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt.convolvestereo~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt.convrvrb.realtime~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "./HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_tab_shape.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.maxpat",
+				"name" : "hirt.damping.cascade.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -25507,98 +25637,21 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_tab_damp.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_damp.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tabs_realtime.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_position.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_pos.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_modulation.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_mod.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_ir.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_loading.maxpat",
+				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_loading_scheme.maxpat",
+				"name" : "hirt.size.resample.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_file_set.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_check.maxpat",
+				"name" : "hirt.svfcoeff.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -25612,14 +25665,77 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_folder.maxpat",
+				"name" : "hirt_conv_rvrb_zoom.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convolution_rt_library.genexpr",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "GenX",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_clientlist_alias.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_rt_part1.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_rt_part3.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_rt_part5.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_cr_info_view.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_data_colls.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_data_colls.maxpat",
+				"name" : "hirt_eq.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_eq_library.genexpr",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "GenX",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_file_check.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -25633,7 +25749,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_filter_type.maxpat",
+				"name" : "hirt_file_loading.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -25647,108 +25763,31 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_cr_info_view.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_output.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_clientlist_alias.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_conv_rvrb_zoom.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convrvrb.realtime~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolvestereo~.maxpat",
+				"name" : "hirt_file_set.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convrvrb_rt_part1.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
+				"name" : "hirt_filter_type.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
+				"name" : "hirt_folder.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part3.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part5.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
+				"name" : "hirt_gain_and_display.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
@@ -25759,37 +25798,44 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
+				"name" : "hirt_interface_damp.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../jsui",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.damping.cascade.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
+				"name" : "hirt_interface_eq.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../jsui",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.buffer.filter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
+				"name" : "hirt_interface_mod.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../jsui",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_partition_late.maxpat",
+				"name" : "hirt_interface_pos.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../jsui",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_ir.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "./HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_partition_fix_length.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"name" : "hirt_loading_scheme.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -25801,7 +25847,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_partition_early.maxpat",
+				"name" : "hirt_output.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "./HIRT_reverb_support",
 				"type" : "JSON",
@@ -25815,16 +25861,23 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_gain_and_display.maxpat",
+				"name" : "hirt_partition_early.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "./HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.size.resample.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
+				"name" : "hirt_partition_fix_length.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_partition_late.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -25836,35 +25889,56 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
+				"name" : "hirt_tab_damp.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tab_modulation.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tab_position.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tab_shape.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tabs_offline.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tabs_realtime.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "./HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_zoom_factor.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"patcherrelativepath" : "../../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "iraverage~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irdisplay~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irtrimnorm~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "morphfilter~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irstats~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irmix~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -25872,11 +25946,31 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bufreverse~.mxo",
+				"name" : "irdisplay~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bufresample~.mxo",
+				"name" : "irmix~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "irstats~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "irtrimnorm~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "morphfilter~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "multiconvolve~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "spectrumdraw~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -25903,8 +25997,8 @@
 				"name" : "DP.M4L",
 				"default" : 				{
 					"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-					"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-					"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+					"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+					"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -25939,8 +26033,8 @@
 , 			{
 				"name" : "max6box",
 				"default" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,

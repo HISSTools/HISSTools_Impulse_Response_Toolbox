@@ -1,5 +1,5 @@
 {
 	"name" : "HIRT Snippets",
 	"type" : "filelist",
-	"contents" : [ "hirt_ir_statistics_helper.maxsnip", "hirt.convolutionreverb~bpatcher.maxsnip", "hirt.convolver~bpatcher.maxsnip", "hirt.irmaker~bpatcher.maxsnip" ]
+	"contents" : [ "hirt_chooser_impulse_responses.maxsnip", "hirt_menu_impulse_responses.maxsnip", "hirt_ir_statistics_helper.maxsnip", "hirt.convolutionreverb~bpatcher.maxsnip", "hirt.convolver~bpatcher.maxsnip", "hirt.irmaker~bpatcher.maxsnip" ]
 }

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 20.0, 60.0, 866.0, 258.0 ],
+		"rect" : [ 20.0, 60.0, 866.0, 298.0 ],
 		"openrect" : [ 0.0, 0.0, 866.0, 298.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 1,
@@ -43,104 +43,7 @@
 		"title" : "HIRT Convolver",
 		"boxes" : [ 			{
 				"box" : 				{
-					"align" : 0,
-					"annotation" : "",
-					"background" : 0,
-					"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
-					"bgoncolor" : [ 0.376471, 0.384314, 0.4, 0.0 ],
-					"blinktime" : 20,
-					"fontface" : 0,
-					"fontlink" : 0,
-					"fontname" : "Lato",
-					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "texton", "bgcolor", "hint", "fontface", "background", "ignoreclick", "textovercolor", "textjustification", "presentation", "fontsize", "jspainterfile", "text", "fontlink", "style", "mode", "underline", "rounded" ],
-					"hint" : "",
-					"id" : "obj-87",
-					"ignoreclick" : 0,
-					"jspainterfile" : "",
-					"legacytextcolor" : 1,
-					"maxclass" : "textbutton",
-					"mode" : 1,
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "int" ],
-					"parameter_enable" : 0,
-					"parameter_mappable" : 0,
-					"patching_rect" : [ 148.900000000000006, 145.0, 51.142882999999983, 19.5 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 133.0, 5.0, 35.5, 19.0 ],
-					"rounded" : 0.0,
-					"style" : "",
-					"text" : "float",
-					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
-					"textjustification" : 0,
-					"texton" : "Float",
-					"textoncolor" : [ 1.0, 1.0, 1.0, 0.66 ],
-					"textovercolor" : [ 0.38, 0.38, 0.4, 1.0 ],
-					"tosymbol" : 0,
-					"truncate" : 0,
-					"underline" : 0,
-					"varname" : "Float Window"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"allowdrag" : 0,
-					"arrow" : 0,
-					"autopopulate" : 0,
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
-					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.0,
-					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 0.0 ],
-					"bgfillcolor_color1" : [ 0.376470588235294, 0.384313725490196, 0.4, 1.0 ],
-					"bgfillcolor_color2" : [ 0.290196078431373, 0.309803921568627, 0.301960784313725, 1.0 ],
-					"bgfillcolor_proportion" : 0.39,
-					"bgfillcolor_type" : "color",
-					"color" : [ 1.0, 1.0, 1.0, 0.658823529411765 ],
-					"elementcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
-					"fontname" : "Lato Regular",
-					"fontsize" : 10.0,
-					"frozen_box_attributes" : [ "arrow", "parameter_enable", "menumode", "allowdrag", "autopopulate", "items" ],
-					"id" : "obj-64",
-					"items" : [ 80, "%", ",", 90, "%", ",", 100, "%", ",", 110, "%", ",", 120, "%", ",", 140, "%", ",", 160, "%", ",", 180, "%", ",", 200, "%", ",", "<separator>", ",", "Store", "Current", "as", "Default" ],
-					"maxclass" : "umenu",
-					"menumode" : 0,
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"parameter_mappable" : 0,
-					"patching_rect" : [ 75.5, 186.0, 40.0, 20.0 ],
-					"prefix_mode" : 2,
-					"presentation" : 1,
-					"presentation_rect" : [ 93.5, 5.0, 44.0, 20.0 ],
-					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
-					"varname" : "Zoom Menu"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 2,
-					"fontsize" : 10.0,
-					"hidden" : 1,
-					"id" : "obj-86",
-					"linecount" : 2,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 36.5, 46.0, 76.0, 29.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 113.0, 88.5, 140.0, 18.0 ],
-					"text" : "cmnd/ctrl-click to edit",
-					"textjustification" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"color" : [ 0.819608, 0.211765, 0.14902, 1.0 ],
+					"color" : [ 0.82, 0.211765, 0.14902, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-19",
@@ -153,13 +56,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 244.0, 165.0, 764.0, 447.0 ],
+						"rect" : [ 676.0, 419.0, 764.0, 447.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -323,7 +226,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -502,7 +405,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -764,7 +667,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -812,7 +715,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -834,7 +737,7 @@
 														"toptoolbarpinned" : 2,
 														"righttoolbarpinned" : 2,
 														"bottomtoolbarpinned" : 2,
-														"toolbars_unpinned_last_save" : 0,
+														"toolbars_unpinned_last_save" : 15,
 														"tallnewobj" : 0,
 														"boxanimatetime" : 200,
 														"enablehscroll" : 1,
@@ -1313,6 +1216,19 @@
 												}
 
 											}
+, 											{
+												"box" : 												{
+													"hidden" : 1,
+													"id" : "obj-9",
+													"linecount" : 2,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 329.0, 272.0, 150.0, 33.0 ],
+													"text" : "<<-- clipping fix for very short IRs goes here ??"
+												}
+
+											}
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
@@ -1662,10 +1578,107 @@
 			}
 , 			{
 				"box" : 				{
+					"align" : 0,
+					"annotation" : "",
+					"background" : 0,
+					"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
+					"bgoncolor" : [ 0.376471, 0.384314, 0.4, 0.0 ],
+					"blinktime" : 20,
+					"fontface" : 0,
+					"fontlink" : 0,
+					"fontname" : "Lato",
+					"fontsize" : 11.0,
+					"frozen_box_attributes" : [ "textovercolor", "rounded", "fontface", "hint", "text", "fontlink", "mode", "fontsize", "jspainterfile", "presentation", "bgcolor", "textjustification", "background", "style", "ignoreclick", "texton", "underline" ],
+					"hint" : "",
+					"id" : "obj-87",
+					"ignoreclick" : 0,
+					"jspainterfile" : "",
+					"legacytextcolor" : 1,
+					"maxclass" : "textbutton",
+					"mode" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"parameter_mappable" : 0,
+					"patching_rect" : [ 148.900000000000006, 145.0, 51.142882999999983, 19.5 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 133.0, 5.0, 35.5, 19.0 ],
+					"rounded" : 0.0,
+					"style" : "",
+					"text" : "float",
+					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
+					"textjustification" : 0,
+					"texton" : "Float",
+					"textoncolor" : [ 1.0, 1.0, 1.0, 0.66 ],
+					"textovercolor" : [ 0.38, 0.38, 0.4, 1.0 ],
+					"tosymbol" : 0,
+					"truncate" : 0,
+					"underline" : 0,
+					"varname" : "Float Window"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"allowdrag" : 0,
+					"arrow" : 0,
+					"autopopulate" : 0,
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 0.0 ],
+					"bgfillcolor_color1" : [ 0.376470588235294, 0.384313725490196, 0.4, 1.0 ],
+					"bgfillcolor_color2" : [ 0.290196078431373, 0.309803921568627, 0.301960784313725, 1.0 ],
+					"bgfillcolor_proportion" : 0.39,
+					"bgfillcolor_type" : "color",
+					"color" : [ 1.0, 1.0, 1.0, 0.658823529411765 ],
+					"elementcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
+					"fontname" : "Lato Regular",
+					"fontsize" : 10.0,
+					"frozen_box_attributes" : [ "items", "parameter_enable", "arrow", "autopopulate", "menumode", "allowdrag" ],
+					"id" : "obj-64",
+					"items" : [ 80, "%", ",", 90, "%", ",", 100, "%", ",", 110, "%", ",", 120, "%", ",", 140, "%", ",", 160, "%", ",", 180, "%", ",", 200, "%", ",", "<separator>", ",", "Store", "Current", "as", "Default" ],
+					"maxclass" : "umenu",
+					"menumode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 0,
+					"parameter_mappable" : 0,
+					"patching_rect" : [ 75.5, 186.0, 40.0, 20.0 ],
+					"prefix_mode" : 2,
+					"presentation" : 1,
+					"presentation_rect" : [ 93.5, 5.0, 44.0, 20.0 ],
+					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
+					"varname" : "Zoom Menu"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 2,
+					"fontsize" : 10.0,
+					"hidden" : 1,
+					"id" : "obj-86",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 36.5, 46.0, 76.0, 29.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 113.0, 88.5, 140.0, 18.0 ],
+					"text" : "cmnd/ctrl-click to edit",
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgcolor" : [ 0.8, 0.8, 0.8, 0.0 ],
 					"elementcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fgcolor" : [ 0.27843137254902, 0.411764705882353, 0.141176470588235, 1.0 ],
-					"frozen_box_attributes" : [ "increment", "parameter_enable" ],
+					"frozen_box_attributes" : [ "parameter_enable", "increment" ],
 					"id" : "obj-65",
 					"increment" : 1.0,
 					"maxclass" : "incdec",
@@ -1710,7 +1723,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1745,6 +1758,83 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-29",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 481.666666666666686, 352.806640625, 54.0, 22.0 ],
+									"text" : "deferlow"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-21",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"patching_rect" : [ 437.0, 196.806640625, 22.0, 22.0 ],
+									"text" : "t 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-20",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 437.0, 119.806640625, 128.0, 22.0 ],
+									"text" : "r #0_clearfilepath"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-19",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 575.0, 195.806640625, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-24",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 437.0, 98.0, 128.0, 20.0 ],
+									"text" : "!! dev !!"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-31",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 537.666666666666742, 347.306640625, 118.0, 33.0 ],
+									"text" : "problem not present in convolver~ ?"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-28",
 									"maxclass" : "newobj",
@@ -2250,6 +2340,31 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-19", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-10", 0 ],
+									"hidden" : 1,
+									"midpoints" : [ 446.5, 265.306640625, 416.5, 265.306640625 ],
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-23", 0 ]
 								}
@@ -2356,8 +2471,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -2540,7 +2655,7 @@
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 754.357117000000017, 273.5, 163.0, 35.0 ],
 					"saved_object_attributes" : 					{
-						"initial" : [ 0 ],
+						"initial" : [ 1 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
 					}
@@ -2620,7 +2735,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "bgcolor", "hint", "fontface", "presentation_rect", "background", "parameter_enable", "ignoreclick", "textjustification", "presentation", "fontsize", "jspainterfile", "fontlink", "style", "mode", "underline", "rounded" ],
+					"frozen_box_attributes" : [ "rounded", "fontface", "hint", "presentation_rect", "fontlink", "parameter_enable", "mode", "fontsize", "jspainterfile", "presentation", "bgcolor", "textjustification", "background", "style", "ignoreclick", "underline" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -2664,7 +2779,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "texton", "bgcolor", "hint", "fontface", "background", "ignoreclick", "textovercolor", "textjustification", "presentation", "fontsize", "jspainterfile", "text", "fontlink", "style", "mode", "underline", "rounded" ],
+					"frozen_box_attributes" : [ "textovercolor", "rounded", "fontface", "hint", "text", "fontlink", "mode", "fontsize", "jspainterfile", "presentation", "bgcolor", "textjustification", "background", "style", "ignoreclick", "texton", "underline" ],
 					"hint" : "",
 					"id" : "obj-45",
 					"ignoreclick" : 0,
@@ -2792,7 +2907,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2954,8 +3069,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -3025,7 +3140,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3124,7 +3239,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3652,7 +3767,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 613.0, 474.6790771484375, 95.5, 22.0 ],
-									"text" : "8.2.1",
+									"text" : "8.2.2",
 									"textjustification" : 2
 								}
 
@@ -3753,7 +3868,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4247,8 +4362,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -4470,7 +4585,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5152,7 +5267,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5198,7 +5313,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5538,7 +5653,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5936,7 +6051,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -6981,8 +7096,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -7075,7 +7190,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7553,8 +7668,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -7650,7 +7765,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7719,7 +7834,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 2,
-															"revision" : 1,
+															"revision" : 2,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -8481,8 +8596,8 @@
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -9128,8 +9243,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -9203,25 +9318,25 @@
 , 			{
 				"box" : 				{
 					"alias" : 					{
-						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
-						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
-						"Offline::RT Predelay::Predelay" : "predelay",
+						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
+						"EQ::EQ Slope High::Slope 3" : "eqslope3",
+						"EQ::EQ Freq High::Freq 3" : "eqfreq3",
 						"Output::Output Width::Width" : "width",
-						"Offline::IR Size::Size" : "size",
-						"EQ::EQ Gain High::Gain 3" : "eqgain3",
+						"EQ::EQ Q Bell::Q 2" : "eqq2",
+						"Output::Output DryWet::Dry/Wet" : "drywet",
 						"Skin State" : "skin",
+						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
+						"EQ::Saturation Type" : "saturation",
+						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
+						"Offline::IR Decay::Decay" : "decay",
+						"EQ::EQ Gain High::Gain 3" : "eqgain3",
+						"EQ::EQ Routing" : "eq",
+						"Bypass State" : "bypass",
+						"Offline::IR Size::Size" : "size",
+						"Offline::RT Predelay::Predelay" : "predelay",
 						"Output::Output Gain::Gain" : "gain",
 						"EQ::EQ Slope Low::Slope 1" : "eqslope1",
-						"EQ::EQ Gain Bell::Gain 2" : "eqgain2",
-						"Bypass State" : "bypass",
-						"Offline::IR Decay::Decay" : "decay",
-						"EQ::Saturation Type" : "saturation",
-						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
-						"Output::Output DryWet::Dry/Wet" : "drywet",
-						"EQ::EQ Slope High::Slope 3" : "eqslope3",
-						"EQ::EQ Routing" : "eq",
-						"EQ::EQ Freq High::Freq 3" : "eqfreq3",
-						"EQ::EQ Q Bell::Q 2" : "eqq2"
+						"EQ::EQ Gain Bell::Gain 2" : "eqgain2"
 					}
 ,
 					"color" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
@@ -9238,7 +9353,7 @@
 					}
 ,
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 0, 45, 570, 800 ],
+						"client_rect" : [ 0, 79, 570, 834 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0,
 						"storage_rect" : [ 227, 45, 1280, 800 ]
@@ -9391,7 +9506,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -9761,8 +9876,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -9835,7 +9950,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -10044,8 +10159,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -10198,7 +10313,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -10244,7 +10359,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -10521,8 +10636,8 @@
 												"name" : "DP.M4L",
 												"default" : 												{
 													"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -10557,8 +10672,8 @@
 , 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -10739,7 +10854,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "int", "int" ],
 									"patching_rect" : [ 892.0, 66.0, 58.0, 22.0 ],
-									"text" : "change 1"
+									"text" : "change 0"
 								}
 
 							}
@@ -10767,7 +10882,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -10920,7 +11035,7 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 95.0, 326.0, 85.0, 22.0 ],
-													"text" : "zl.reg 798 560"
+													"text" : "zl.reg 866 298"
 												}
 
 											}
@@ -10943,8 +11058,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "int", "int" ],
-													"patching_rect" : [ 95.0, 368.0, 103.0, 22.0 ],
-													"text" : "unpack 866 258"
+													"patching_rect" : [ 95.0, 368.0, 104.0, 22.0 ],
+													"text" : "unpack 866 298"
 												}
 
 											}
@@ -10956,7 +11071,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "int" ],
 													"patching_rect" : [ 95.0, 173.5, 44.5, 22.0 ],
-													"text" : "i 0"
+													"text" : "i 1"
 												}
 
 											}
@@ -11040,7 +11155,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 95.0, 485.0, 271.000000000000057, 22.0 ],
-													"text" : "pack 886 318 20 60"
+													"text" : "pack 886 358 20 60"
 												}
 
 											}
@@ -11230,7 +11345,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-43", 0 ],
-													"midpoints" : [ 188.5, 417.5, 188.5, 417.5 ],
+													"midpoints" : [ 189.5, 417.5, 188.5, 417.5 ],
 													"source" : [ "obj-31", 1 ]
 												}
 
@@ -11389,8 +11504,8 @@
 												"name" : "DP.M4L",
 												"default" : 												{
 													"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+													"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+													"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -11425,8 +11540,8 @@
 , 											{
 												"name" : "max6box",
 												"default" : 												{
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
@@ -11607,7 +11722,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 999.0, 329.5, 80.0, 22.0 ],
-									"text" : "zl.reg 34 75"
+									"text" : "zl.reg 20 60"
 								}
 
 							}
@@ -12570,8 +12685,8 @@
 								"name" : "DP.M4L",
 								"default" : 								{
 									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -12606,8 +12721,8 @@
 , 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -12708,7 +12823,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -13231,8 +13346,8 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
@@ -13505,7 +13620,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 419.553527999999972, 41.0, 528.0, 60.0 ],
-					"text" : "The HIRT Convolver offers high-quality convolution using Impulse Responses. Drop an impulse (or a single channel of a true stereo impulse stored as two stereo files) to load it into the convolution engine. Offline control is offered over the decay time and size of the virtual space. The predelay time, width of the reverb, and levels can be controlled in realtime. ",
+					"text" : "The HIRT Convolver offers high-quality convolution using Impulse Responses. Drop an impulse (or a single channel of a true stereo impulse stored as two stereo files) to load it into the convolution engine. Offline control is offered over the decay time and size of the virtual space. The EQ & saturation, predelay time, width of the reverb, and levels can be controlled in realtime. ",
 					"textcolor" : [ 1.0, 1.0, 1.0, 0.660000026226044 ]
 				}
 
@@ -13831,7 +13946,7 @@
 				"patchline" : 				{
 					"color" : [ 0.819608, 0.211765, 0.14902, 1.0 ],
 					"destination" : [ "obj-36", 0 ],
-					"midpoints" : [ 276.0, 431.179077000000007, 231.678573999999998, 431.179077000000007, 231.678573999999998, 252.179077000000007, 276.357146999999998, 252.179077000000007 ],
+					"midpoints" : [ 276.0, 431.179077000000007, 234.17857349999997, 431.179077000000007, 234.17857349999997, 252.179077000000007, 276.357146999999998, 252.179077000000007 ],
 					"order" : 1,
 					"source" : [ "obj-19", 0 ]
 				}
@@ -14030,6 +14145,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"destination" : [ "obj-46", 0 ],
 					"source" : [ "obj-33", 0 ]
 				}
@@ -14122,6 +14238,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-46", 0 ]
 				}
@@ -14129,6 +14246,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"destination" : [ "obj-47", 0 ],
 					"source" : [ "obj-51", 0 ]
 				}
@@ -14490,53 +14608,15 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "hirt_decay_size_pre.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_cv_info_view.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_output_mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolver_clientlist_alias.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "HIRT_HISSTools_Logo.png",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
 				"patcherrelativepath" : "../../misc/HIRT_image",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "bufresample~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "hirt.convolver.realtime~.maxpat",
@@ -14553,98 +14633,28 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convolver_rt_part1.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
+				"name" : "hirt.dial.linear.only.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
+				"name" : "hirt.dial.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolver_rt_part3.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_params.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../HIRT_reverb/HIRT_reverb_support",
+				"name" : "hirt.size.resample.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_ir_single.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_filter_type.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_loading.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_loading_scheme.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_set.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_check.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -14658,14 +14668,84 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_folder.maxpat",
+				"name" : "hirt_conv_zoom.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convolution_rt_library.genexpr",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "GenX",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convolver_clientlist_alias.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convolver_rt_part1.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convolver_rt_part3.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_cv_info_view.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_data_colls.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_data_colls.maxpat",
+				"name" : "hirt_decay_size_pre.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_eq_library.genexpr",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../../code",
+				"type" : "GenX",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_eq_sat.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_file_check.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_file_loading.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -14679,35 +14759,21 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_eq_sat.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
+				"name" : "hirt_file_set.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
+				"name" : "hirt_filter_type.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_conv_zoom.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "./HIRT_convolver_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_nan_fix.maxpat",
+				"name" : "hirt_folder.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
 				"type" : "JSON",
@@ -14721,9 +14787,44 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.size.resample.maxpat",
+				"name" : "hirt_gain_params.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_interface_eq.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../jsui",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_ir_single.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_loading_scheme.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_nan_fix.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_output_mini.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
+				"patcherrelativepath" : "./HIRT_convolver_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -14735,8 +14836,11 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
+				"name" : "hirt_zoom_factor.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"patcherrelativepath" : "../../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "iraverage~.mxo",
@@ -14747,7 +14851,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "spectrumdraw~.mxo",
+				"name" : "irstats~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -14755,11 +14859,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "irstats~.mxo",
+				"name" : "multiconvolve~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bufresample~.mxo",
+				"name" : "spectrumdraw~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -14786,8 +14890,8 @@
 				"name" : "DP.M4L",
 				"default" : 				{
 					"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-					"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-					"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+					"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+					"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -14822,8 +14926,8 @@
 , 			{
 				"name" : "max6box",
 				"default" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,

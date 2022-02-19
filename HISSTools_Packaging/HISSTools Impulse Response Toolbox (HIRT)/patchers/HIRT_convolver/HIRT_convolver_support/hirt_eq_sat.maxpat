@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -439,7 +439,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -935,7 +935,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1371,9 +1371,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1391,7 +1391,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -1401,7 +1400,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -1443,7 +1443,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2255,9 +2255,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2275,7 +2275,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -2285,7 +2284,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -2533,7 +2533,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3004,7 +3004,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3658,7 +3658,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -4157,9 +4157,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4177,7 +4177,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -4187,7 +4186,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -4221,7 +4221,7 @@
 				"box" : 				{
 					"comment" : "Audio In",
 					"id" : "obj-12",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -4248,11 +4248,11 @@
 				"box" : 				{
 					"comment" : "Audio In",
 					"id" : "obj-13",
-					"index" : 0,
+					"index" : 2,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 685.25, 27.5, 30.0, 30.0 ]
 				}
 
@@ -4275,7 +4275,7 @@
 				"box" : 				{
 					"comment" : "EQ Params",
 					"id" : "obj-2",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -4297,7 +4297,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5344,9 +5344,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5364,7 +5364,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -5374,7 +5373,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -5526,9 +5526,10 @@
 					"mousemode" : 0,
 					"numinlets" : 4,
 					"numoutlets" : 1,
-					"octavesmooth" : 0.16666,
+					"octavesmooth" : 0.0,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 685.25, 83.5, 262.0, 96.0 ],
+					"phaselabels" : 0,
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 25.0, 359.0, 150.0 ],
 					"thickness" : 2.0,
@@ -6499,172 +6500,12 @@
 
 			}
  ],
-		"parameters" : 		{
-			"obj-17::obj-70" : [ "Slope.1.val.1357", "Slope.1.val", 0 ],
-			"obj-19::obj-70" : [ "Gain.1.val.1358", "Gain.1.val", 0 ],
-			"obj-21" : [ "Saturation Type", "Saturation", 0 ],
-			"obj-22::obj-70" : [ "Freq.1.val.1359", "Freq.1.val", 0 ],
-			"obj-3" : [ "EQ Routing", "EQ", 0 ],
-			"obj-50::obj-70" : [ "Q.2.val.1351", "Q.2.val", 0 ],
-			"obj-51::obj-70" : [ "Gain.2.val.1352", "Gain.2.val", 0 ],
-			"obj-53::obj-70" : [ "Freq.2.val.1353", "Freq.2.val", 0 ],
-			"obj-54::obj-70" : [ "Slope.3.val.1354", "Slope.3.val", 0 ],
-			"obj-55::obj-70" : [ "Gain.3.val.1355", "Gain.3.val", 0 ],
-			"obj-56::obj-70" : [ "Freq.3.val.1356", "Freq.3.val", 0 ],
-			"parameterbanks" : 			{
-
-			}
-,
-			"parameter_overrides" : 			{
-				"obj-17::obj-70" : 				{
-					"parameter_exponent" : 3.0,
-					"parameter_initial" : 0.5,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Slope.1.val.1357",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ 0.05, 18.0 ],
-					"parameter_shortname" : "Slope.1.val",
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10
-				}
-,
-				"obj-19::obj-70" : 				{
-					"parameter_exponent" : 1.0,
-					"parameter_initial" : 0.0,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Gain.1.val.1358",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_shortname" : "Gain.1.val",
-					"parameter_type" : 0,
-					"parameter_units" : " ",
-					"parameter_unitstyle" : 4
-				}
-,
-				"obj-22::obj-70" : 				{
-					"parameter_exponent" : 4.0,
-					"parameter_initial" : 125.0,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Freq.1.val.1359",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ 10.0, 18000.0 ],
-					"parameter_shortname" : "Freq.1.val",
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3
-				}
-,
-				"obj-50::obj-70" : 				{
-					"parameter_exponent" : 3.0,
-					"parameter_initial" : 0.707107,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Q.2.val.1351",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ 0.05, 18.0 ],
-					"parameter_shortname" : "Q.2.val",
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10
-				}
-,
-				"obj-51::obj-70" : 				{
-					"parameter_exponent" : 1.0,
-					"parameter_initial" : 0.0,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Gain.2.val.1352",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_shortname" : "Gain.2.val",
-					"parameter_type" : 0,
-					"parameter_units" : " ",
-					"parameter_unitstyle" : 4
-				}
-,
-				"obj-53::obj-70" : 				{
-					"parameter_exponent" : 4.0,
-					"parameter_initial" : 1000.0,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Freq.2.val.1353",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ 10.0, 18000.0 ],
-					"parameter_shortname" : "Freq.2.val",
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3
-				}
-,
-				"obj-54::obj-70" : 				{
-					"parameter_exponent" : 3.0,
-					"parameter_initial" : 0.5,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Slope.3.val.1354",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ 0.05, 18.0 ],
-					"parameter_shortname" : "Slope.3.val",
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10
-				}
-,
-				"obj-55::obj-70" : 				{
-					"parameter_exponent" : 1.0,
-					"parameter_initial" : 0.0,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Gain.3.val.1355",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_shortname" : "Gain.3.val",
-					"parameter_type" : 0,
-					"parameter_units" : " ",
-					"parameter_unitstyle" : 4
-				}
-,
-				"obj-56::obj-70" : 				{
-					"parameter_exponent" : 4.0,
-					"parameter_initial" : 8000.0,
-					"parameter_invisible" : 0,
-					"parameter_longname" : "Freq.3.val.1356",
-					"parameter_modmode" : 0,
-					"parameter_range" : [ 10.0, 18000.0 ],
-					"parameter_shortname" : "Freq.3.val",
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
-		"dependency_cache" : [ 			{
-				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
- ],
-		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -6682,7 +6523,6 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -6692,7 +6532,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",
