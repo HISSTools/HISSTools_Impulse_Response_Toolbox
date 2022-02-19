@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 122.0, 150.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -36,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -48,8 +50,7 @@
 					"patching_rect" : [ 60.0, 153.5, 307.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 125.0, 1.25, 265.0, 22.0 ],
-					"style" : "",
-					"text" : "HISSTools Impulse Response Toolbox v2.0",
+					"text" : "HISSTools Impulse Response Toolbox v2.1",
 					"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 					"varname" : "autohelp_top_digest[2]"
 				}
@@ -63,10 +64,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 60.0, 202.833344, 307.0, 22.0 ],
+					"patching_rect" : [ 60.0, 202.833344000000011, 307.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 125.0, 20.583334, 265.0, 22.0 ],
-					"style" : "",
+					"presentation_rect" : [ 125.0, 20.583334000000001, 265.0, 22.0 ],
 					"text" : "Alex Harker and Pierre Alexandre Tremblay",
 					"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
 				}
@@ -80,10 +80,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 60.0, 252.166672, 307.0, 22.0 ],
+					"patching_rect" : [ 60.0, 252.166672000000005, 307.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 125.0, 39.916668, 265.0, 22.0 ],
-					"style" : "",
+					"presentation_rect" : [ 125.0, 39.916668000000001, 265.0, 22.0 ],
 					"text" : "CeReNeM - The University of Huddersfield",
 					"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
 				}
@@ -107,9 +106,9 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 7/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc",
-				"patcherrelativepath" : ".",
-				"type" : "PNG ",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"patcherrelativepath" : "../HIRT_image",
+				"type" : "PNG",
 				"implicit" : 1
 			}
  ],

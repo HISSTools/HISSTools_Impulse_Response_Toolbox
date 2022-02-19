@@ -394,7 +394,7 @@
 
 	<!--DISCUSSION-->
 	<discussion>
-		An MSP version of the original Ableton 'IR Measurement Device' by Alex Harker, 2018 port by Pete Dowling. To explore the abstraction either right-click an instantiated abstraction and choose "Object > Open Original...", or open the original '.maxpat' from the Max Browser. After this, cmnd/ctrl-e to go into edit mode, then cmnd/ctrl-click the "View" button.
+		Based on the original Ableton 'IR Measurement Device' device programmed by Alex Harker. 2018 MSP port by Pete Dowling. To explore the abstraction either right-click an instantiated abstraction and choose "Object > Open Original...", or open the original '.maxpat' from the Max Browser. After this, cmnd/ctrl-e to go into edit mode, then cmnd/ctrl-click the "View" button.
 	</discussion>
 
 	<!--SEEALSO-->
@@ -477,7 +477,7 @@
 	<misc name = "Discussion">
 		<entry name ="More details">
 			<description>
-		An MSP version of the original Ableton 'IR Measurement Device' by Alex Harker, 2018 port by Pete Dowling. To explore the abstraction either right-click an instantiated abstraction and choose "Object > Open Original...", or open the original '.maxpat' from the Max Browser. After this, cmnd/ctrl-e to go into edit mode, then cmnd/ctrl-click the "View" button.
+				Based on the original Ableton 'IR Measurement Device' device programmed by Alex Harker. 2018 MSP port by Pete Dowling. To explore the abstraction either right-click an instantiated abstraction and choose "Object > Open Original...", or open the original '.maxpat' from the Max Browser. After this, cmnd/ctrl-e to go into edit mode, then cmnd/ctrl-click the "View" button.
 			</description>
 		</entry>
 		<entry name ="Keywords">

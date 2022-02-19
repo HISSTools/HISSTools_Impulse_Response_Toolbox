@@ -285,6 +285,11 @@
 			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the bottom of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
 		}
 ,
+		"Float Window" : 		{
+			"name" : "UI Floating Window",
+			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
+		}
+,
 		"Global Patcher Name" : 		{
 			"name" : "User Reverb Name",
 			"annotation" : "If this reverb instance is given a name as the first argument to the abstraction, it displays here. This name is also the name used to control this instance remotely (with messages to Max) and is the name passed to the 'Global Patcher Name' variable of this abstraction (for organising via a custom Pattr system)."
@@ -836,8 +841,13 @@
 		}
 ,
 		"Zoom" : 		{
-			"name" : "UI Zoom Factor",
-			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+			"name" : "UI Zoom Quick Select",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 80% to 200%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Zoom Menu" : 		{
+			"name" : "UI Zoom Selector",
+			"annotation" : "Select UI Zoom Factor. Scaling available from 80% to 200%. User preference default can also be set for global Max-wide usage. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
 		}
 
 	}
@@ -971,6 +981,11 @@
 		"Engage Info View" : 		{
 			"name" : "Show/Hide Info View",
 			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the bottom of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Float Window" : 		{
+			"name" : "UI Floating Window",
+			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
 		}
 ,
 		"Global Patcher Name" : 		{
@@ -1209,8 +1224,13 @@
 		}
 ,
 		"Zoom" : 		{
-			"name" : "UI Zoom Factor",
-			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+			"name" : "UI Zoom Quick Select",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 80% to 200%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Zoom Menu" : 		{
+			"name" : "UI Zoom Selector",
+			"annotation" : "Select UI Zoom Factor. Scaling available from 80% to 200%. User preference default can also be set for global Max-wide usage. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
 		}
 
 	}
@@ -1249,6 +1269,11 @@
 		"Engage Info View" : 		{
 			"name" : "Info On/Off",
 			"annotation" : "Info View describes every interface element under the mouse. When On, it appears in a panel at the right of the interface. When Off, it disappears. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Float Window" : 		{
+			"name" : "UI Floating Window",
+			"annotation" : "unfloat/float toggle for the main UI window. (This does nothing in embedded bpatcher mode)."
 		}
 ,
 		"Info Name" : 		{
@@ -1340,10 +1365,15 @@
 			"name" : "Trim & Normalize",
 			"annotation" : "When on, recorded IRs will be normalised and automatically trimmed. Otherwise IRs are left exactly as measured."
 		}
-,
+		,
 		"Zoom" : 		{
-			"name" : "UI Zoom Factor",
-			"annotation" : "Increment / Decrement UI Zoom. Factors available from 50% to 175%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+			"name" : "UI Zoom Quick Select",
+			"annotation" : "Increment / Decrement UI Zoom. Factors available from 80% to 200%. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
+		}
+,
+		"Zoom Menu" : 		{
+			"name" : "UI Zoom Selector",
+			"annotation" : "Select UI Zoom Factor. Scaling available from 80% to 200%. User preference default can also be set for global Max-wide usage. For the glasses wearers. (This does nothing in embedded bpatcher mode)."
 		}
 
 	}

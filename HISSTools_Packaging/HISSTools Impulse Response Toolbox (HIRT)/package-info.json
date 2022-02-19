@@ -3,7 +3,7 @@
 	"displayname" : "",
 	"version" : "2.1.0",
 	"author" : "Alex Harker, Pierre Alexandre Tremblay, CeReNeM, The University of Huddersfield",
-	"authors" : [  ],
+	"authors" : [ "Alex Harker", "Pierre Alexandre Tremblay", "Pete Dowling" ],
 	"description" : "A set of tools for working with convolution and impulse responses in Max. This set of objects addresses various tasks, including realtime zero-latency convolution, measuring impulse responses, spectral display from realtime data or buffers, and buffer-based convolution, deconvolution and inversion.",
 	"tags" : [ "audio", "spectral", "convolution", "impulse response", "reverb", " microphone correction", "speaker correction" ],
 	"website" : "http://thehiss.org/",
@@ -13,7 +13,7 @@
 	"max_version_max" : "none",
 	"os" : 	{
 		"macintosh" : 		{
-			"min_version" : "10.10.x",
+			"min_version" : "10.11.x",
 			"platform" : [ "x64", "aarch64" ]
 		}
 ,

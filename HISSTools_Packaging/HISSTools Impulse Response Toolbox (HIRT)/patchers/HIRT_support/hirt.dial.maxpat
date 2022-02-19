@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 4,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -49,8 +49,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -504,8 +504,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -614,7 +614,7 @@
 					"fontface" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "activetricolor", "bordercolor", "activeslidercolor", "fontsize", "activetricolor2", "focusbordercolor", "jspainterfile", "appearance", "activebgcolor", "tricolor2", "tricolor", "fontface", "hint" ],
+					"frozen_box_attributes" : [ "fontsize", "bordercolor", "hint", "tricolor2", "activetricolor", "activeslidercolor", "activebgcolor", "appearance", "activetricolor2", "tricolor", "jspainterfile", "focusbordercolor", "fontface" ],
 					"hint" : "",
 					"id" : "obj-70",
 					"jspainterfile" : "",
@@ -624,20 +624,56 @@
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
 					"parameter_mappable" : 0,
-					"patching_rect" : [ 135.0, 437.5, 71.0, 17.0 ],
+					"patching_rect" : [ 135.0, 437.5, 72.0, 17.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 42.5, 70.0, 17.0 ],
 					"saved_attribute_attributes" : 					{
+						"bordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"tricolor2" : 						{
+							"expression" : ""
+						}
+,
+						"activetricolor" : 						{
+							"expression" : ""
+						}
+,
+						"textcolor" : 						{
+							"expression" : ""
+						}
+,
+						"activeslidercolor" : 						{
+							"expression" : ""
+						}
+,
+						"activebgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"activetricolor2" : 						{
+							"expression" : ""
+						}
+,
+						"tricolor" : 						{
+							"expression" : ""
+						}
+,
+						"focusbordercolor" : 						{
+							"expression" : ""
+						}
+,
 						"valueof" : 						{
-							"parameter_shortname" : "hirt.val",
 							"parameter_defer" : 1,
-							"parameter_type" : 0,
-							"parameter_unitstyle" : 5,
-							"parameter_units" : " ",
-							"parameter_longname" : "hirt.val",
+							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
+							"parameter_longname" : "hirt.val",
 							"parameter_mmax" : 100.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_shortname" : "hirt.val",
+							"parameter_type" : 0,
+							"parameter_units" : " ",
+							"parameter_unitstyle" : 5
 						}
 
 					}
@@ -660,8 +696,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1066,8 +1102,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1115,7 +1151,7 @@
 						"toolbarexclusions" : [ "audiopowerctrl", "browsebeap", "browsevizzie", "lessonbrowser" ]
 					}
 ,
-					"patching_rect" : [ 68.0, 139.0, 51.0, 22.0 ],
+					"patching_rect" : [ 68.0, 139.0, 69.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1134,12 +1170,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 68.0, 100.0, 67.0, 22.0 ],
+					"patching_rect" : [ 68.0, 100.0, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"mode" : 0
+						"mode" : 1
 					}
 ,
-					"text" : "hover"
+					"text" : "hover @mode 1"
 				}
 
 			}
@@ -1166,8 +1202,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1235,8 +1271,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1753,8 +1789,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -1860,8 +1896,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2360,8 +2396,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2418,8 +2454,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3123,8 +3159,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3981,8 +4017,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4053,7 +4089,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "background", "textjustification", "ignoreclick", "fontsize", "fontlink", "presentation", "usetextovercolor", "jspainterfile", "style", "underline", "mode", "rounded", "usebgoncolor", "fontface", "hint", "bgcolor", "parameter_enable", "legacytextcolor" ],
+					"frozen_box_attributes" : [ "rounded", "fontsize", "background", "hint", "usebgoncolor", "ignoreclick", "parameter_enable", "legacytextcolor", "textjustification", "presentation", "bgcolor", "jspainterfile", "usetextovercolor", "fontface", "mode", "style", "fontlink", "underline" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -4092,7 +4128,7 @@
 					"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
 					"degrees" : 315,
 					"floatoutput" : 1,
-					"frozen_box_attributes" : [ "jspainterfile", "needlecolor", "thickness", "outlinecolor", "bgcolor", "parameter_enable", "floatoutput", "degrees" ],
+					"frozen_box_attributes" : [ "outlinecolor", "floatoutput", "parameter_enable", "bgcolor", "jspainterfile", "thickness", "degrees", "needlecolor" ],
 					"id" : "obj-86",
 					"jspainterfile" : "",
 					"maxclass" : "dial",
@@ -4136,8 +4172,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -4194,8 +4230,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4342,8 +4378,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -4781,8 +4817,8 @@
 																"name" : "max6box",
 																"default" : 																{
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
 																"parentstyle" : "",
@@ -4852,8 +4888,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5188,8 +5224,8 @@
 																"name" : "max6box",
 																"default" : 																{
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
 																"parentstyle" : "",
@@ -5259,8 +5295,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5583,8 +5619,8 @@
 																"name" : "max6box",
 																"default" : 																{
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
 																"parentstyle" : "",
@@ -5654,8 +5690,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5978,8 +6014,8 @@
 																"name" : "max6box",
 																"default" : 																{
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
 																"parentstyle" : "",
@@ -6223,8 +6259,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -6295,8 +6331,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7211,8 +7247,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -7408,8 +7444,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7465,8 +7501,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7630,8 +7666,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -7714,8 +7750,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7939,8 +7975,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -8091,8 +8127,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -8162,8 +8198,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -8303,8 +8339,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -8374,8 +8410,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -8431,8 +8467,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -8561,8 +8597,8 @@
 																		"fileversion" : 1,
 																		"appversion" : 																		{
 																			"major" : 8,
-																			"minor" : 1,
-																			"revision" : 4,
+																			"minor" : 2,
+																			"revision" : 1,
 																			"architecture" : "x64",
 																			"modernui" : 1
 																		}
@@ -9404,8 +9440,8 @@
 																				"name" : "max6box",
 																				"default" : 																				{
 																					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-																					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-																					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+																					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+																					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																				}
 ,
 																				"parentstyle" : "",
@@ -10034,8 +10070,8 @@
 																"name" : "max6box",
 																"default" : 																{
 																	"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+																	"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+																	"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 																}
 ,
 																"parentstyle" : "",
@@ -10130,8 +10166,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -10201,8 +10237,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -10352,8 +10388,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -10958,8 +10994,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -11847,8 +11883,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -11930,8 +11966,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -12226,8 +12262,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -12310,8 +12346,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -12819,8 +12855,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -12941,8 +12977,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -12987,8 +13023,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -13211,8 +13247,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -13850,8 +13886,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -14371,8 +14407,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -14491,8 +14527,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -15256,8 +15292,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -15552,7 +15588,7 @@
 					"bgcolor" : [ 0.65, 0.65, 0.67, 1.0 ],
 					"degrees" : 315,
 					"floatoutput" : 1,
-					"frozen_box_attributes" : [ "ignoreclick", "presentation", "jspainterfile", "style", "thickness", "annotation", "varname", "hint", "hidden", "parameter_enable", "floatoutput", "degrees" ],
+					"frozen_box_attributes" : [ "hint", "annotation", "floatoutput", "ignoreclick", "parameter_enable", "presentation", "jspainterfile", "thickness", "style", "degrees", "hidden", "varname" ],
 					"hidden" : 0,
 					"hint" : "",
 					"id" : "obj-12",
@@ -15930,11 +15966,12 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-70" : [ "hirt.val", "", 0 ],
+			"obj-70" : [ "hirt.val", "hirt.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [  ],
@@ -15943,8 +15980,8 @@
 				"name" : "max6box",
 				"default" : 				{
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

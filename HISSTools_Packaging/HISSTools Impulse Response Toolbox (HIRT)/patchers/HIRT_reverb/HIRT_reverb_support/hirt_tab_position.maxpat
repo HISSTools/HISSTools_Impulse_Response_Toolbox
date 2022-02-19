@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 4,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -69,12 +69,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 120.5, 584.939391999999998, 80.5, 22.0 ],
+					"patching_rect" : [ 120.5, 584.939391999999998, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"mode" : 0
+						"mode" : 1
 					}
 ,
-					"text" : "hover"
+					"text" : "hover @mode 1"
 				}
 
 			}
@@ -84,7 +84,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 161.5, 663.466309000000024, 95.0, 22.0 ],
+					"patching_rect" : [ 170.5, 663.466309000000024, 95.0, 22.0 ],
 					"text" : "s #1hover_2"
 				}
 
@@ -95,7 +95,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 623.939391999999998, 101.0, 22.0 ],
+					"patching_rect" : [ 196.0, 623.939391999999998, 101.0, 22.0 ],
 					"text" : "s #1hover_13"
 				}
 
@@ -140,6 +140,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-28",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.maxpat",
 					"numinlets" : 1,
@@ -164,6 +165,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-29",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.maxpat",
 					"numinlets" : 1,
@@ -527,7 +529,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 61.0, 634.702854000000002, 171.0, 634.702854000000002 ],
+					"midpoints" : [ 61.0, 634.702854000000002, 180.0, 634.702854000000002 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -725,7 +727,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
-					"midpoints" : [ 150.5, 614.93939899999998, 191.5, 614.93939899999998 ],
+					"midpoints" : [ 155.0, 614.93939899999998, 205.5, 614.93939899999998 ],
 					"source" : [ "obj-4", 1 ]
 				}
 
@@ -848,39 +850,40 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-28::obj-70" : [ "Depth.val.1230", "", 0 ],
-			"obj-29::obj-70" : [ "Pan.val.1231", "", 0 ],
+			"obj-28::obj-70" : [ "Depth.val.1230", "Depth.val", 0 ],
+			"obj-29::obj-70" : [ "Pan.val.1231", "Pan.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
 				"obj-28::obj-70" : 				{
-					"parameter_longname" : "Depth.val.1230",
-					"parameter_shortname" : "Depth.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Depth.val.1230",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ -100.0, 100.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_shortname" : "Depth.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
 				"obj-29::obj-70" : 				{
-					"parameter_longname" : "Pan.val.1231",
-					"parameter_shortname" : "Pan.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 6,
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Pan.val.1231",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ -50.0, 50.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_shortname" : "Pan.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 6
 				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -902,9 +905,9 @@
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
-					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

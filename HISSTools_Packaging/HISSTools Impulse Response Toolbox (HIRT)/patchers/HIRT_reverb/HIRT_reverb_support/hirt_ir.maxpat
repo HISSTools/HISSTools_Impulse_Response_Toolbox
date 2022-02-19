@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 4,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -49,8 +49,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -710,8 +710,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -780,7 +780,14 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 519.0, 527.0, 62.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1.0, 15.0, 358.0, 19.0 ]
+					"presentation_rect" : [ 1.0, 15.0, 358.0, 19.0 ],
+					"saved_attribute_attributes" : 					{
+						"linecolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -869,12 +876,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 936.0, 336.0, 80.5, 22.0 ],
+					"patching_rect" : [ 936.0, 336.0, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"mode" : 0
+						"mode" : 1
 					}
 ,
-					"text" : "hover"
+					"text" : "hover @mode 1"
 				}
 
 			}
@@ -884,7 +891,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 977.0, 415.5, 95.0, 22.0 ],
+					"patching_rect" : [ 986.0, 415.5, 95.0, 22.0 ],
 					"text" : "s #1hover_2"
 				}
 
@@ -895,7 +902,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 997.5, 374.0, 101.0, 22.0 ],
+					"patching_rect" : [ 1010.5, 374.0, 101.0, 22.0 ],
 					"text" : "s #1hover_13"
 				}
 
@@ -922,8 +929,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1043,8 +1050,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1578,8 +1585,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -1802,6 +1809,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-131",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt_file_picker.maxpat",
 					"numinlets" : 2,
@@ -1826,6 +1834,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-114",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt_file_ir_display.maxpat",
 					"numinlets" : 2,
@@ -1859,15 +1868,15 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "Mode",
-							"parameter_enum" : [ "Single", "Split" ],
 							"parameter_defer" : 1,
-							"parameter_type" : 1,
+							"parameter_enum" : [ "Single", "Split" ],
+							"parameter_initial" : [ 0.0 ],
+							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Mode IR",
-							"parameter_initial_enable" : 1,
 							"parameter_mmax" : 1.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_shortname" : "Mode",
+							"parameter_type" : 1
 						}
 
 					}
@@ -1899,16 +1908,16 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "Select",
-							"parameter_enum" : [ "A::Early", "B::Late" ],
 							"parameter_defer" : 1,
-							"parameter_type" : 1,
-							"parameter_linknames" : 1,
-							"parameter_longname" : "Select IR",
+							"parameter_enum" : [ "A::Early", "B::Late" ],
+							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 1,
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Select IR",
 							"parameter_mmax" : 1.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_shortname" : "Select",
+							"parameter_type" : 1
 						}
 
 					}
@@ -2058,8 +2067,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3120,8 +3129,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -3193,8 +3202,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3296,8 +3305,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3342,8 +3351,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 4,
+															"minor" : 2,
+															"revision" : 1,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3847,8 +3856,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3925,7 +3934,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 560.5, 197.5, 233.0, 62.0 ],
+													"patching_rect" : [ 560.5, 197.5, 236.0, 62.0 ],
 													"text" : "displayA1 definecolor 0.65 0.65 0.67 0.66, displayB1 definecolor 0.65 0.65 0.67 0.66, displayA2 definecolor 0. 0. 0. 0., displayB2 definecolor 0. 0. 0. 0."
 												}
 
@@ -3941,7 +3950,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 33.5, 197.5, 233.0, 62.0 ],
+													"patching_rect" : [ 33.5, 197.5, 236.0, 62.0 ],
 													"text" : "displayA1 definecolor 0.82 0.21 0.15 0.66, displayB1 definecolor 0.82 0.21 0.15 0.66, displayA2 definecolor 0. 0. 0. 0., displayB2 definecolor 0. 0. 0. 0."
 												}
 
@@ -4141,8 +4150,8 @@
 												"name" : "max6box",
 												"default" : 												{
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -4322,8 +4331,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -4824,8 +4833,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5233,8 +5242,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5613,8 +5622,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5684,8 +5693,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5759,8 +5768,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -6388,8 +6397,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 4,
+											"minor" : 2,
+											"revision" : 1,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7133,8 +7142,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -7259,7 +7268,14 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 7.0, 100.0, 62.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 48.25, 10.0, 22.0, 5.0 ]
+					"presentation_rect" : [ 48.25, 10.0, 22.0, 5.0 ],
+					"saved_attribute_attributes" : 					{
+						"linecolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -7273,7 +7289,14 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 7.0, 107.499992000000006, 62.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 171.0, 10.0, 22.0, 5.0 ]
+					"presentation_rect" : [ 171.0, 10.0, 22.0, 5.0 ],
+					"saved_attribute_attributes" : 					{
+						"linecolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -7567,7 +7590,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
-					"midpoints" : [ 1007.0, 365.5, 1007.0, 365.5 ],
+					"midpoints" : [ 1020.5, 365.5, 1020.0, 365.5 ],
 					"source" : [ "obj-4", 3 ]
 				}
 
@@ -7575,7 +7598,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
-					"midpoints" : [ 966.0, 365.5, 1007.0, 365.5 ],
+					"midpoints" : [ 970.5, 365.5, 1020.0, 365.5 ],
 					"source" : [ "obj-4", 1 ]
 				}
 
@@ -7591,7 +7614,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
-					"midpoints" : [ 986.5, 386.25, 986.5, 386.25 ],
+					"midpoints" : [ 995.5, 386.25, 995.5, 386.25 ],
 					"source" : [ "obj-4", 2 ]
 				}
 
@@ -7780,16 +7803,17 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-131::obj-10" : [ "Category Menu", "", 0 ],
-			"obj-53" : [ "Mode IR", "", 0 ],
-			"obj-114::obj-35" : [ "Drop A", "", 3 ],
-			"obj-49" : [ "Select IR", "", 0 ],
-			"obj-131::obj-11" : [ "IR Menu", "", 0 ],
-			"obj-114::obj-65" : [ "Drop B", "", 3 ],
+			"obj-114::obj-35" : [ "Drop A", "live.drop", 3 ],
+			"obj-114::obj-65" : [ "Drop B", "live.drop", 3 ],
+			"obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
+			"obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
+			"obj-49" : [ "Select IR", "Select", 0 ],
+			"obj-53" : [ "Mode IR", "Mode", 0 ],
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -7880,8 +7904,8 @@
 				"name" : "max6box",
 				"default" : 				{
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

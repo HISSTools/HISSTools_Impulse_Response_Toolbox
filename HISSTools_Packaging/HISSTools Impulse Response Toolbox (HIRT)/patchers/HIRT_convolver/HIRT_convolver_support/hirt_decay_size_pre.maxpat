@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 7,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "PeteSubDefault10",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"hidden" : 1,
@@ -49,8 +50,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -83,6 +84,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "PeteSubDefault10",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-3",
@@ -307,9 +309,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 								}
 ,
 								"parentstyle" : "",
@@ -375,13 +377,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "init" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -414,6 +416,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "PeteSubDefault10",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-7",
@@ -744,9 +747,9 @@
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 								}
 ,
 								"parentstyle" : "",
@@ -864,6 +867,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-59",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -909,12 +913,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 408.5, 432.0, 80.5, 22.0 ],
+					"patching_rect" : [ 408.5, 432.0, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"mode" : 0
+						"mode" : 1
 					}
 ,
-					"text" : "hover"
+					"text" : "hover @mode 1"
 				}
 
 			}
@@ -924,7 +928,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 449.5, 510.526977999999986, 95.0, 22.0 ],
+					"patching_rect" : [ 458.5, 510.526977999999986, 95.0, 22.0 ],
 					"text" : "s #1hover_2"
 				}
 
@@ -935,7 +939,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 470.0, 471.0, 101.0, 22.0 ],
+					"patching_rect" : [ 484.0, 471.0, 101.0, 22.0 ],
 					"text" : "s #1hover_13"
 				}
 
@@ -1177,6 +1181,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-48",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.maxpat",
 					"numinlets" : 1,
@@ -1201,6 +1206,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-97",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.maxpat",
 					"numinlets" : 1,
@@ -1225,7 +1231,14 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 358.0, 262.5, 24.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 29.5, 61.0, 11.0, 11.5 ]
+					"presentation_rect" : [ 29.5, 61.0, 11.0, 11.5 ],
+					"saved_attribute_attributes" : 					{
+						"linecolor" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -1307,6 +1320,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 1 ],
+					"midpoints" : [ 167.5, 175.219695999999999, 720.5, 175.219695999999999 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -1322,7 +1336,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 349.0, 481.763485000000003, 459.0, 481.763485000000003 ],
+					"midpoints" : [ 349.0, 481.763485000000003, 468.0, 481.763485000000003 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -1345,6 +1359,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 438.5, 53.219699999999989, 665.5, 53.219699999999989 ],
 					"order" : 0,
 					"source" : [ "obj-25", 0 ]
 				}
@@ -1411,7 +1426,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
-					"midpoints" : [ 438.5, 462.000029999999981, 479.5, 462.000029999999981 ],
+					"midpoints" : [ 443.0, 462.000029999999981, 493.5, 462.000029999999981 ],
 					"source" : [ "obj-4", 1 ]
 				}
 
@@ -1520,7 +1535,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
 					"midpoints" : [ 108.5, 217.75, 398.0, 217.75 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-70", 0 ]
 				}
 
@@ -1529,7 +1544,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-97", 0 ],
 					"midpoints" : [ 108.5, 217.75, 291.0, 217.75 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-70", 0 ]
 				}
 
@@ -1539,7 +1554,7 @@
 					"color" : [ 0.749019607843137, 0.74902, 0.74902, 0.0 ],
 					"destination" : [ "obj-48", 0 ],
 					"hidden" : 1,
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-77", 0 ]
 				}
 
@@ -1549,7 +1564,7 @@
 					"color" : [ 0.749019607843137, 0.74902, 0.74902, 0.0 ],
 					"destination" : [ "obj-97", 0 ],
 					"hidden" : 1,
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-77", 0 ]
 				}
 
@@ -1596,36 +1611,61 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-59::obj-70" : [ "hirt.val", "hirt.val", 0 ],
+			"obj-48::obj-70" : [ "hirt.val[1]", "hirt.val", 0 ],
+			"obj-59::obj-70" : [ "hirt.val[2]", "hirt.val", 0 ],
+			"obj-97::obj-70" : [ "hirt.val", "hirt.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
+				"obj-48::obj-70" : 				{
+					"parameter_exponent" : 1.58,
+					"parameter_initial" : 100.0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[1]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 50.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
 				"obj-59::obj-70" : 				{
 					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[2]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-97::obj-70" : 				{
+					"parameter_exponent" : 1.01,
+					"parameter_initial" : 100.0,
+					"parameter_invisible" : 1,
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 1.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../../HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1635,9 +1675,9 @@
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ]
+					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
 				}
 ,
 				"parentstyle" : "",

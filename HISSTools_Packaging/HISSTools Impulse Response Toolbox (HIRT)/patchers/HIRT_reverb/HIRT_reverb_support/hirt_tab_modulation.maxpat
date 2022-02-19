@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 4,
+			"minor" : 2,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -89,12 +89,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 227.5, 484.0, 80.5, 22.0 ],
+					"patching_rect" : [ 227.5, 484.0, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"mode" : 0
+						"mode" : 1
 					}
 ,
-					"text" : "hover"
+					"text" : "hover @mode 1"
 				}
 
 			}
@@ -104,7 +104,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 268.5, 562.526917000000026, 95.0, 22.0 ],
+					"patching_rect" : [ 277.5, 562.526917000000026, 95.0, 22.0 ],
 					"text" : "s #1hover_2"
 				}
 
@@ -115,7 +115,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 289.0, 523.0, 101.0, 22.0 ],
+					"patching_rect" : [ 303.0, 523.0, 101.0, 22.0 ],
 					"text" : "s #1hover_13"
 				}
 
@@ -142,8 +142,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 4,
+							"minor" : 2,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -547,8 +547,8 @@
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -653,14 +653,14 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "Widen",
 							"parameter_enum" : [ "Normal", "Widen" ],
-							"parameter_type" : 1,
+							"parameter_initial" : [ 0.0 ],
+							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Widen",
-							"parameter_initial_enable" : 1,
 							"parameter_mmax" : 1.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_shortname" : "Widen",
+							"parameter_type" : 1
 						}
 
 					}
@@ -693,14 +693,14 @@
 					"rounded" : 1.0,
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "Type",
 							"parameter_enum" : [ "Mod1", "Mod2" ],
-							"parameter_type" : 1,
+							"parameter_initial" : [ 0.0 ],
+							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Type",
-							"parameter_initial_enable" : 1,
 							"parameter_mmax" : 1.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_shortname" : "Type",
+							"parameter_type" : 1
 						}
 
 					}
@@ -724,6 +724,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-8",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -748,6 +749,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-29",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "hirt.dial.linear.only.maxpat",
 					"numinlets" : 1,
@@ -1244,7 +1246,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 257.5, 514.000006999999982, 298.5, 514.000006999999982 ],
+					"midpoints" : [ 262.0, 514.000006999999982, 312.5, 514.000006999999982 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -1389,7 +1391,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 168.0, 533.763462000000004, 278.0, 533.763462000000004 ],
+					"midpoints" : [ 168.0, 533.763462000000004, 287.0, 533.763462000000004 ],
 					"source" : [ "obj-5", 1 ]
 				}
 
@@ -1536,41 +1538,42 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-25" : [ "Widen", "", 0 ],
-			"obj-29::obj-70" : [ "Rate.val.1227", "", 0 ],
-			"obj-49" : [ "Type", "", 0 ],
-			"obj-8::obj-70" : [ "Amount.val.1226", "", 0 ],
+			"obj-25" : [ "Widen", "Widen", 0 ],
+			"obj-29::obj-70" : [ "Rate.val.1227", "Rate.val", 0 ],
+			"obj-49" : [ "Type", "Type", 0 ],
+			"obj-8::obj-70" : [ "Amount.val.1226", "Amount.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
 				"obj-29::obj-70" : 				{
-					"parameter_longname" : "Rate.val.1227",
-					"parameter_shortname" : "Rate.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 1.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Rate.val.1227",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_shortname" : "Rate.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
 				}
 ,
 				"obj-8::obj-70" : 				{
-					"parameter_longname" : "Amount.val.1226",
-					"parameter_shortname" : "Amount.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 50.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Amount.val.1226",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_shortname" : "Amount.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -1593,8 +1596,8 @@
 				"name" : "max6box",
 				"default" : 				{
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
