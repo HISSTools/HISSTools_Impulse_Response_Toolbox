@@ -23,7 +23,12 @@ The current version is 2.1.0.
 ## Compiling the Max Externals in XCode / MSVS:
 
 There are provided projects/solutions for XCode and Microsoft Visual Studio.<br>
-Once the requirements are satisfied building from the projects/solutions should be straightforward.
+Once the requirements are satisfied building from the projects/solutions should be straightforward.<br>
+Please note the following:
+
+- Within the XCode project the *All HIRT Externals* shared scheme will build the entire toolbox.
+- Within the XCode project the *Notarized Externals* shared scheme is for internal use only and will fail on other machines as it relies on local settings for certificates and signing /notarization profiles.
+- On both platforms builds are installed into the relevant folders with HISSTools_Packaging/ 
 
 ### Requirements
 
