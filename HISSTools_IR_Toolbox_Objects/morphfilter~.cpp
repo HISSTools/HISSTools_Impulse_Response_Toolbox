@@ -201,15 +201,15 @@ double dbtoa(double db)
 
 void morphfilter_apply_filter(double *samples, t_filter_params *filter, double sr, intptr_t length)
 {
-    double a0, a1, a2, b0, b1, b2, x1, x2, y1, y2, g_db1, g_db2, rate, A, sqrtA, f0, w0, qs, cosw, sinw;
+    double a0, a1, a2, b0, b1, b2, x1, x2, y1, y2, rate, A, sqrtA, f0, w0, qs, cosw, sinw;
     double Ap1, Am1, Ap1c, Am1c;
     double alpha, alpha_shelf, alpha_mul_A, alpha_div_A;
     double gain_mul;
 
     f0 = filter->f0;
     rate = filter->rate;
-    g_db1 = filter->g_db0;
-    g_db2 = rate ? g_db1 + (filter->g_db_alter / filter->rate * (1000. * length / sr)) : g_db1;
+    //g_db1 = filter->g_db0;
+    //g_db2 = rate ? g_db1 + (filter->g_db_alter / filter->rate * (1000. * length / sr)) : g_db1;
     qs =  filter->qs;
 
     w0 = 2.0 * PI * f0 / sr;
