@@ -6,11 +6,6 @@ A toolbox for convolution, deconvolution and other impulse response related task
 By **Alex Harker** and **Pierre Alexandre Tremblay** with **Pete Dowling**<br/>
 **CeReNeM** - The University of Huddersfield
 
-## Contact:
-
-* a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
-* http://thehiss.org/
-
 ## About
 
 The HISSTools Impulse Response Toolbox (HIRT) is a set of tools for working with convolution and impulse responses in Max. This set of object addresses various tasks, including measuring impulse responses, spectral display from realtime data/ buffers, and buffer-based convolution, deconvolution and inversion.
@@ -59,6 +54,11 @@ The following files have dependencies on the Max SDK.
 - HISSTools_IR_Toolbox_Dependencies/ibuffer_access.cpp
 
 Other files should compile on Mac OS / Windows / Linux.
+
+## Contact:
+
+* a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
+* http://thehiss.org/
 
 Enjoy,
 
