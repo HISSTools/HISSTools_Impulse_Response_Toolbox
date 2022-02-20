@@ -3,7 +3,7 @@ HISSTools Impulse Response Toolbox (HIRT)
 
 A toolbox for convolution, deconvolution and other impulse response related tasks.
 
-![HISSTools Logo](logo.jpg)
+![HISSTools Logo](logo.png)
 
 By **Alex Harker** and **Pierre Alexandre Tremblay** with **Pete Dowling**<br/>
 **CeReNeM** - The University of Huddersfield
