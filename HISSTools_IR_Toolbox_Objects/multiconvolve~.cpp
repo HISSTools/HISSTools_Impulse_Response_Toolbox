@@ -23,8 +23,8 @@ struct t_multiconvolve
     HISSTools::Convolver *multi;
 
     long parallel_mode;
-    long num_in_chans;
-    long num_out_chans;
+    uint32_t num_in_chans;
+    uint32_t num_out_chans;
 
     float *ins[MAXIMUM_MSP_CHANS];
     float *outs[MAXIMUM_MSP_CHANS];
@@ -70,14 +70,14 @@ t_max_err multiconvolve_fixed_size_set(t_multiconvolve *x, t_object *attr, long 
         {
             if (!x->parallel_mode)
             {
-                for (long i = 0; i < x->num_out_chans; i++)
-                    for (long j = 0; j < x->num_in_chans; j++)
+                for (uint32_t i = 0; i < x->num_out_chans; i++)
+                    for (uint32_t j = 0; j < x->num_in_chans; j++)
                         if (x->multi->resize(j, i, final_size) == CONVOLVE_ERR_MEM_UNAVAILABLE)
                             error = 1;
             }
             else
             {
-                for (long i = 0; i < x->num_in_chans; i++)
+                for (uint32_t i = 0; i < x->num_in_chans; i++)
                     if (x->multi->resize(i, i, final_size) == CONVOLVE_ERR_MEM_UNAVAILABLE)
                         error = 1;
             }
@@ -216,8 +216,8 @@ void *multiconvolve_new(t_symbol *s, short argc, t_atom *argv)
         x->parallel_mode = 0;
 
     x->fixed_impulse_length = 0;
-    x->num_in_chans = static_cast<long>(num_in_chans);
-    x->num_out_chans = actual_num_out_chans;
+    x->num_in_chans = static_cast<uint32_t>(num_in_chans);
+    x->num_out_chans = static_cast<uint32_t>(actual_num_out_chans);
 
     if (x->parallel_mode)
         x->multi = new HISSTools::Convolver(x->num_in_chans, latency_mode);
