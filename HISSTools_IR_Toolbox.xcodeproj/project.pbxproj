@@ -44,186 +44,57 @@
 		B804E67326B541B30035EA9C /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B804E66626B541B30035EA9C /* TimeDomainConvolve.cpp */; };
 		B804E67426B541B30035EA9C /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B804E66726B541B30035EA9C /* NToMonoConvolve.cpp */; };
 		B804E67526B541B30035EA9C /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B804E66826B541B30035EA9C /* Convolver.cpp */; };
-		B804E67626B541B30035EA9C /* MonoConvolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E66926B541B30035EA9C /* MonoConvolve.h */; };
 		B804E67726B541B30035EA9C /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B804E66A26B541B30035EA9C /* PartitionedConvolve.cpp */; };
-		B804E67826B541B30035EA9C /* ConvolveErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E66B26B541B30035EA9C /* ConvolveErrors.h */; };
-		B804E67926B541B30035EA9C /* MemorySwap.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E66C26B541B30035EA9C /* MemorySwap.h */; };
-		B804E67A26B541B30035EA9C /* NToMonoConvolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E66D26B541B30035EA9C /* NToMonoConvolve.h */; };
-		B804E67B26B541B30035EA9C /* ConvolveSIMD.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E66E26B541B30035EA9C /* ConvolveSIMD.h */; };
 		B804E67C26B541B30035EA9C /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B804E66F26B541B30035EA9C /* MonoConvolve.cpp */; };
-		B804E67D26B541B30035EA9C /* PartitionedConvolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E67026B541B30035EA9C /* PartitionedConvolve.h */; };
-		B804E67E26B541B30035EA9C /* Convolver.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E67126B541B30035EA9C /* Convolver.h */; };
-		B804E67F26B541B30035EA9C /* TimeDomainConvolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B804E67226B541B30035EA9C /* TimeDomainConvolve.h */; };
-		B807D7241635830F00E3E3A6 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B807D7251635830F00E3E3A6 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
-		B807D7261635830F00E3E3A6 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B807D7271635830F00E3E3A6 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B807D72C1635830F00E3E3A6 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
-		B807D72D1635830F00E3E3A6 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
 		B807D775163584AC00E3E3A6 /* irextract~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B807D774163584AC00E3E3A6 /* irextract~.cpp */; };
-		B80D1E721653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E731653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E741653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E751653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E761653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E771653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E781653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E791653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E7A1653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E7B1653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E7C1653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E7D1653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E7E1653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E7F1653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E801653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E811653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E821653ECDF00921D8B /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B80D1E841653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E851653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E861653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E871653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E881653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E891653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E8A1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E8B1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E8C1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E8D1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E8E1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E8F1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E901653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E911653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E921653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E931653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B80D1E941653ECED00921D8B /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B81E5FDC142A0DEC00E80E6C /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B81E5FE4142A0DEC00E80E6C /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B81E601E142A101900E80E6C /* iralign~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81E601D142A101800E80E6C /* iralign~.cpp */; };
-		B828018B15AAF84A00D2B4F0 /* HIRT_Frame_Stats.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B828018915AAF84A00D2B4F0 /* HIRT_Frame_Stats.hpp */; };
-		B82801AD15AAF8D800D2B4F0 /* HIRT_Frame_Stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B828018A15AAF84A00D2B4F0 /* HIRT_Frame_Stats.cpp */; };
-		B828026215AAFCDF00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828026315AAFCE600D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828026415AAFCEE00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828026F15AAFD0100D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027215AAFD1300D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027315AAFD1700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027415AAFD1D00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027715AAFD3100D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027815AAFD3700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027915AAFD3E00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027C15AAFD4800D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027D15AAFD4F00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027E15AAFD5700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828027F15AAFD5D00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828028015AAFD6300D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B828028315AAFD6D00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
 		B8594231218B397400C783CF /* bufresample~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B859422E218B397300C783CF /* bufresample~.cpp */; };
 		B8594233218B39B100C783CF /* bufreverse~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B859422D218B397300C783CF /* bufreverse~.cpp */; };
 		B8594234218B39C600C783CF /* morphfilter~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B859422F218B397400C783CF /* morphfilter~.cpp */; };
-		B86704A214EB1C5700F132B4 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B86704A314EB1C5700F132B4 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
-		B86704A814EB1C5700F132B4 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B86704DB14EB1CD900F132B4 /* irtransaural~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B86704DA14EB1CD900F132B4 /* irtransaural~.cpp */; };
-		B871973F131FD3F300B1356A /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8719744131FD3F300B1356A /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
-		B882BBE7218B163700D6C5B1 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B882BBE8218B163700D6C5B1 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B882BBE9218B163700D6C5B1 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B882BBED218B163700D6C5B1 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B882BBEF218B163700D6C5B1 /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B882BBFE218B164300D6C5B1 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B882BBFF218B164300D6C5B1 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B882BC00218B164300D6C5B1 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B882BC04218B164300D6C5B1 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B882BC06218B164300D6C5B1 /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B882BC15218B164500D6C5B1 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B882BC16218B164500D6C5B1 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B882BC17218B164500D6C5B1 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B882BC1B218B164500D6C5B1 /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B882BC1D218B164500D6C5B1 /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B887385C1D103513005D16FF /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B887385D1D103513005D16FF /* HIRT_Max_Length_Sequences.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8BB9F4013CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp */; };
-		B887385E1D103513005D16FF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B887385F1D103513005D16FF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B88738621D103513005D16FF /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
-		B88738631D103513005D16FF /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
-		B88738651D103513005D16FF /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
-		B88738661D103513005D16FF /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
-		B88738731D103559005D16FF /* irvalue~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B88738721D103559005D16FF /* irvalue~.cpp */; };
-		B890394E13CEFB4C0090602F /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B890395313CEFB4C0090602F /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B890397F13CEFBB20090602F /* irphase~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B890397E13CEFBB20090602F /* irphase~.cpp */; };
-		B89E6721137AE78C007BBD9F /* irmeasure~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B89E6720137AE78C007BBD9F /* irmeasure~.cpp */; };
-		B8A189F8137AA8CD0056CD0F /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8A189FC137AA8CD0056CD0F /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
-		B8A73657151B980B0030B923 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8A73658151B980B0030B923 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8A73659151B980B0030B923 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8A7365E151B980B0030B923 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8A7367A151B98590030B923 /* irstats~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8A73679151B98590030B923 /* irstats~.cpp */; };
-		B8B5B4EF13FD29EE00DAE433 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8B5B4F013FD29EE00DAE433 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
-		B8B5B4F813FD29EE00DAE433 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
-		B8B5B4FA13FD29EE00DAE433 /* HIRT_Trim_Normalise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C0EDDB13A7B1060061554C /* HIRT_Trim_Normalise.cpp */; };
+		B8A963B827C27E2B001C368F /* ibuffer_access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */; };
+		B8A963B927C27E34001C368F /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B80D1E831653ECED00921D8B /* HISSTools_FFT.cpp */; };
+		B8A963BA27C27E3A001C368F /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
+		B8A963BB27C27E3E001C368F /* HIRT_Buffer_Access.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B82801D215AAF97000D2B4F0 /* HIRT_Buffer_Access.cpp */; };
+		B8A963BD27C27E50001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963BE27C27E57001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963BF27C27E5B001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C027C27E5F001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C127C27E6C001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C227C27E72001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C327C27E77001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C427C27E7B001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C527C27E7F001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C627C27E84001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C727C27E88001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C827C27E8C001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963C927C27E90001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963CA27C27E95001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963CB27C27E99001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963CC27C27E9F001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963CD27C27EA3001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963CE27C27EA7001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963CF27C27EAA001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963D027C27EAE001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963D127C27EB3001C368F /* libHIRT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A963B327C27E19001C368F /* libHIRT.a */; };
+		B8A963D227C27F06001C368F /* HIRT_Matrix_Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C38E00138FA30A007023E9 /* HIRT_Matrix_Math.cpp */; };
+		B8A963D327C27F0A001C368F /* HIRT_Trim_Normalise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C0EDDB13A7B1060061554C /* HIRT_Trim_Normalise.cpp */; };
+		B8A963D427C27F22001C368F /* irmeasure~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B89E6720137AE78C007BBD9F /* irmeasure~.cpp */; };
+		B8A963D527C27F47001C368F /* irvalue~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B88738721D103559005D16FF /* irvalue~.cpp */; };
+		B8A963D627C27F65001C368F /* HIRT_Frame_Stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B828018A15AAF84A00D2B4F0 /* HIRT_Frame_Stats.cpp */; };
 		B8B5B51313FD2A5200DAE433 /* irtrimnorm~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8B5B51213FD2A5200DAE433 /* irtrimnorm~.cpp */; };
-		B8BB9F4213CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8BB9F4013CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp */; };
-		B8BE8FAA13811E1400FD97AA /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8BE8FAF13811E1400FD97AA /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8BE8FE513811E6C00FD97AA /* bufconvolve~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BE8FD213811E4B00FD97AA /* bufconvolve~.cpp */; };
-		B8C0EDDC13A7B1060061554C /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
-		B8C0EDF313A7C0320061554C /* HIRT_Trim_Normalise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C0EDDB13A7B1060061554C /* HIRT_Trim_Normalise.cpp */; };
-		B8C1407E142C976D00E735D1 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8C1407F142C976D00E735D1 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
-		B8C14085142C976D00E735D1 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8C1409B142C97B700E735D1 /* irnonlin~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C1409A142C97B700E735D1 /* irnonlin~.cpp */; };
-		B8C140DE142C9E0300E735D1 /* HIRT_Matrix_Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C38E00138FA30A007023E9 /* HIRT_Matrix_Math.cpp */; };
-		B8C3107013CDF8DA007C4B91 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8C3107613CDF8DA007C4B91 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8C563D91369A466000DE87D /* spectrumdraw~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8719731131FD3ED00B1356A /* spectrumdraw~.cpp */; };
-		B8C5D516144B099B00910524 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8C5D517144B099B00910524 /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8C5D518144B099B00910524 /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8C5D51C144B099B00910524 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8C5D539144B09F100910524 /* iruser~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5D538144B09F100910524 /* iruser~.cpp */; };
 		B8C5D54B144B0A4900910524 /* iraverage~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C310A213CDF95C007C4B91 /* iraverage~.cpp */; };
-		B8C92B21149104B9004F2F1E /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8C92B22149104B9004F2F1E /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8C92B23149104B9004F2F1E /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8C92B27149104B9004F2F1E /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8C92B5314910554004F2F1E /* irplapprox~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C92B5214910554004F2F1E /* irplapprox~.cpp */; };
-		B8CE761B13D43EC900DA589D /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8CE761C13D43EC900DA589D /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
-		B8CE762313D43EC900DA589D /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8CE766413D43F1400DA589D /* irreference~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8CE766313D43F1400DA589D /* irreference~.cpp */; };
-		B8CF2DCA15A6FDDA00EBDB95 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8CF2DCB15A6FDDA00EBDB95 /* HIRT_Trim_Normalise.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8C0EDDA13A7B1060061554C /* HIRT_Trim_Normalise.hpp */; };
 		B8CF2E2E15A6FEA600EBDB95 /* multiconvolve~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8CF2E2D15A6FEA600EBDB95 /* multiconvolve~.cpp */; };
-		B8E99E4213A665B600636932 /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8E99E4813A665B600636932 /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
 		B8E99E7B13A6661600636932 /* irsweeps~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8E99E7A13A6661600636932 /* irsweeps~.cpp */; };
-		B8E9C6DC1444AB8800CBEA1B /* HIRT_Core_Functions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8E03D3213057214007780F7 /* HIRT_Core_Functions.hpp */; };
-		B8E9C6E11444AB8800CBEA1B /* HIRT_Core_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8BCDE9613053DD100A77A3F /* HIRT_Core_Functions.cpp */; };
-		B8E9C6E31444AB8800CBEA1B /* HIRT_Matrix_Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C38E00138FA30A007023E9 /* HIRT_Matrix_Math.cpp */; };
 		B8E9C7441444ABC800CBEA1B /* irinvert~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8E9C71F1444ABB900CBEA1B /* irinvert~.cpp */; };
-		B8EA5F301445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F311445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F321445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F331445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F341445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F351445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F361445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F371445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F3A1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F3B1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F3C1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F3D1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F401445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F411445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F421445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F431445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F441445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F451445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
-		B8EA5F461445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2E1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp */; };
-		B8EA5F471445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B8EA5F2F1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +245,153 @@
 			remoteGlobalIDString = B887385A1D103513005D16FF;
 			remoteInfo = "irvalue~";
 		};
+		B8FDB21127C27FAC004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21327C27FAF004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21527C27FB2004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21727C27FB8004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21927C27FBF004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21B27C27FC2004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21D27C27FC5004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB21F27C27FC8004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22127C27FCC004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22327C27FCF004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22527C28026004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22727C2802A004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22927C2802D004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22B27C28030004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22D27C28033004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB22F27C28036004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB23127C28039004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB23327C2803C004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB23527C2803F004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB23727C28042004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
+		B8FDB23927C28045004A04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A963B227C27E19001C368F;
+			remoteInfo = HIRT_Core;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -427,6 +445,7 @@
 		B8A18A08137AA8CD0056CD0F /* irmeasure~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irmeasure~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A7366A151B980B0030B923 /* irstats~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irstats~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A73679151B98590030B923 /* irstats~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "irstats~.cpp"; path = "../HISSTools_IR_Toolbox_Objects/irstats~.cpp"; sourceTree = "<group>"; };
+		B8A963B327C27E19001C368F /* libHIRT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHIRT.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AE9D0913FC390100AF492F /* HIRT_Coloured_Noise.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HIRT_Coloured_Noise.hpp; path = HISSTools_IR_Toolbox_Common/HIRT_Coloured_Noise.hpp; sourceTree = "<group>"; };
 		B8B5B50513FD29EE00DAE433 /* irtrimnorm~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "irtrimnorm~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B5B51213FD2A5200DAE433 /* irtrimnorm~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "irtrimnorm~.cpp"; path = "../HISSTools_IR_Toolbox_Objects/irtrimnorm~.cpp"; sourceTree = "<group>"; };
@@ -466,6 +485,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C227C27E72001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +493,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C027C27E5F001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +501,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963CA27C27E95001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +509,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963D127C27EB3001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +517,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963BF27C27E5B001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +525,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963CF27C27EAA001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +533,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963BE27C27E57001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +541,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963CE27C27EA7001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +549,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C627C27E84001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,10 +557,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C427C27E7B001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8A73660151B980B0030B923 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A963CD27C27EA3001C368F /* libHIRT.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A963B127C27E19001C368F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -543,6 +580,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963CB27C27E99001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +588,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963BD27C27E50001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +596,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C527C27E7F001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +604,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C127C27E6C001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +612,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963CC27C27E9F001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +620,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C727C27E88001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +628,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C827C27E8C001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +636,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963D027C27EAE001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +644,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C927C27E90001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +652,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A963C327C27E77001C368F /* libHIRT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +666,7 @@
 				B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */,
 				08FB77ADFE841716C02AAC07 /* Source */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
+				B8A963BC27C27E50001C368F /* Frameworks */,
 			);
 			name = "plus~";
 			sourceTree = "<group>";
@@ -657,6 +705,7 @@
 				B882BBFA218B163700D6C5B1 /* bufreverse~.mxo */,
 				B882BC11218B164300D6C5B1 /* morphfilter~.mxo */,
 				B882BC28218B164500D6C5B1 /* bufresample~.mxo */,
+				B8A963B327C27E19001C368F /* libHIRT.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -760,6 +809,13 @@
 			path = HISSTools_FFT;
 			sourceTree = "<group>";
 		};
+		B8A963BC27C27E50001C368F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -767,10 +823,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B807D7241635830F00E3E3A6 /* HIRT_Core_Functions.hpp in Headers */,
-				B807D7251635830F00E3E3A6 /* HIRT_Trim_Normalise.hpp in Headers */,
-				B807D7261635830F00E3E3A6 /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B807D7271635830F00E3E3A6 /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,9 +830,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B81E5FDC142A0DEC00E80E6C /* HIRT_Core_Functions.hpp in Headers */,
-				B8EA5F361445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F371445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,8 +837,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B86704A214EB1C5700F132B4 /* HIRT_Core_Functions.hpp in Headers */,
-				B86704A314EB1C5700F132B4 /* HIRT_Trim_Normalise.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,9 +844,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B871973F131FD3F300B1356A /* HIRT_Core_Functions.hpp in Headers */,
-				B8EA5F401445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F411445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,9 +851,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B882BBE7218B163700D6C5B1 /* HIRT_Core_Functions.hpp in Headers */,
-				B882BBE8218B163700D6C5B1 /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B882BBE9218B163700D6C5B1 /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,9 +858,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B882BBFE218B164300D6C5B1 /* HIRT_Core_Functions.hpp in Headers */,
-				B882BBFF218B164300D6C5B1 /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B882BC00218B164300D6C5B1 /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,9 +865,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B882BC15218B164500D6C5B1 /* HIRT_Core_Functions.hpp in Headers */,
-				B882BC16218B164500D6C5B1 /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B882BC17218B164500D6C5B1 /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,10 +872,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B887385C1D103513005D16FF /* HIRT_Core_Functions.hpp in Headers */,
-				B887385D1D103513005D16FF /* HIRT_Max_Length_Sequences.hpp in Headers */,
-				B887385E1D103513005D16FF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B887385F1D103513005D16FF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,10 +879,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B890394E13CEFB4C0090602F /* HIRT_Core_Functions.hpp in Headers */,
-				B8BB9F4213CF49B50029A8D6 /* HIRT_Max_Length_Sequences.hpp in Headers */,
-				B8EA5F421445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F431445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,10 +886,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8A189F8137AA8CD0056CD0F /* HIRT_Core_Functions.hpp in Headers */,
-				B8C0EDDC13A7B1060061554C /* HIRT_Trim_Normalise.hpp in Headers */,
-				B8EA5F3C1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F3D1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,9 +893,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8A73657151B980B0030B923 /* HIRT_Core_Functions.hpp in Headers */,
-				B8A73658151B980B0030B923 /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8A73659151B980B0030B923 /* HIRT_Common_Attribute_Vars.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A963AF27C27E19001C368F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,10 +907,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8B5B4EF13FD29EE00DAE433 /* HIRT_Core_Functions.hpp in Headers */,
-				B8B5B4F013FD29EE00DAE433 /* HIRT_Trim_Normalise.hpp in Headers */,
-				B8EA5F461445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F471445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,9 +914,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8BE8FAA13811E1400FD97AA /* HIRT_Core_Functions.hpp in Headers */,
-				B8EA5F341445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F351445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,10 +921,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C1407E142C976D00E735D1 /* HIRT_Core_Functions.hpp in Headers */,
-				B8C1407F142C976D00E735D1 /* HIRT_Trim_Normalise.hpp in Headers */,
-				B8EA5F441445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F451445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,9 +928,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C3107013CDF8DA007C4B91 /* HIRT_Core_Functions.hpp in Headers */,
-				B8EA5F321445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F331445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,9 +935,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C5D516144B099B00910524 /* HIRT_Core_Functions.hpp in Headers */,
-				B8C5D517144B099B00910524 /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8C5D518144B099B00910524 /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,9 +942,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C92B21149104B9004F2F1E /* HIRT_Core_Functions.hpp in Headers */,
-				B8C92B22149104B9004F2F1E /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8C92B23149104B9004F2F1E /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,10 +949,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8CE761B13D43EC900DA589D /* HIRT_Core_Functions.hpp in Headers */,
-				B8CE761C13D43EC900DA589D /* HIRT_Trim_Normalise.hpp in Headers */,
-				B8EA5F301445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F311445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,17 +956,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B804E67D26B541B30035EA9C /* PartitionedConvolve.h in Headers */,
-				B8CF2DCA15A6FDDA00EBDB95 /* HIRT_Core_Functions.hpp in Headers */,
-				B8CF2DCB15A6FDDA00EBDB95 /* HIRT_Trim_Normalise.hpp in Headers */,
-				B804E67926B541B30035EA9C /* MemorySwap.h in Headers */,
-				B804E67B26B541B30035EA9C /* ConvolveSIMD.h in Headers */,
-				B804E67F26B541B30035EA9C /* TimeDomainConvolve.h in Headers */,
-				B804E67826B541B30035EA9C /* ConvolveErrors.h in Headers */,
-				B804E67A26B541B30035EA9C /* NToMonoConvolve.h in Headers */,
-				B804E67626B541B30035EA9C /* MonoConvolve.h in Headers */,
-				B828018B15AAF84A00D2B4F0 /* HIRT_Frame_Stats.hpp in Headers */,
-				B804E67E26B541B30035EA9C /* Convolver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,9 +963,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8E99E4213A665B600636932 /* HIRT_Core_Functions.hpp in Headers */,
-				B8EA5F3A1445CBF800403DAF /* HIRT_Common_Attribute_Setup.hpp in Headers */,
-				B8EA5F3B1445CBF800403DAF /* HIRT_Common_Attribute_Vars.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,7 +970,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8E9C6DC1444AB8800CBEA1B /* HIRT_Core_Functions.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +989,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21C27C27FC2004A04EC /* PBXTargetDependency */,
 			);
 			name = "irextract~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1021,6 +1010,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21627C27FB2004A04EC /* PBXTargetDependency */,
 			);
 			name = "iralign~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1041,6 +1031,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB23427C2803C004A04EC /* PBXTargetDependency */,
 			);
 			name = "irtransaural~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1061,6 +1052,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22627C28026004A04EC /* PBXTargetDependency */,
 			);
 			name = "spectrumdraw~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1081,6 +1073,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21827C27FB8004A04EC /* PBXTargetDependency */,
 			);
 			name = "bufreverse~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1101,6 +1094,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22A27C2802D004A04EC /* PBXTargetDependency */,
 			);
 			name = "morphfilter~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1121,6 +1115,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21427C27FAF004A04EC /* PBXTargetDependency */,
 			);
 			name = "bufresample~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1141,6 +1136,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22C27C28030004A04EC /* PBXTargetDependency */,
 			);
 			name = "irvalue~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1161,6 +1157,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22427C27FCF004A04EC /* PBXTargetDependency */,
 			);
 			name = "irphase~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1181,6 +1178,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22027C27FC8004A04EC /* PBXTargetDependency */,
 			);
 			name = "irmeasure~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1201,12 +1199,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22E27C28033004A04EC /* PBXTargetDependency */,
 			);
 			name = "irstats~";
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = MSPExternal;
 			productReference = B8A7366A151B980B0030B923 /* irstats~.mxo */;
 			productType = "com.apple.product-type.bundle";
+		};
+		B8A963B227C27E19001C368F /* HIRT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8A963B427C27E19001C368F /* Build configuration list for PBXNativeTarget "HIRT" */;
+			buildPhases = (
+				B8A963AF27C27E19001C368F /* Headers */,
+				B8A963B027C27E19001C368F /* Sources */,
+				B8A963B127C27E19001C368F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HIRT;
+			productName = HIRT_Core;
+			productReference = B8A963B327C27E19001C368F /* libHIRT.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		B8B5B4ED13FD29EE00DAE433 /* irtrimnorm~ */ = {
 			isa = PBXNativeTarget;
@@ -1221,6 +1237,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB23227C28039004A04EC /* PBXTargetDependency */,
 			);
 			name = "irtrimnorm~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1241,6 +1258,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21227C27FAC004A04EC /* PBXTargetDependency */,
 			);
 			name = "bufconvolve~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1261,6 +1279,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22227C27FCC004A04EC /* PBXTargetDependency */,
 			);
 			name = "irnonlin~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1281,6 +1300,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21A27C27FBF004A04EC /* PBXTargetDependency */,
 			);
 			name = "iraverage~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1301,6 +1321,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB23027C28036004A04EC /* PBXTargetDependency */,
 			);
 			name = "iruser~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1321,6 +1342,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB23A27C28045004A04EC /* PBXTargetDependency */,
 			);
 			name = "irplapprox~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1341,6 +1363,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB23827C28042004A04EC /* PBXTargetDependency */,
 			);
 			name = "irreference~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1361,6 +1384,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB22827C2802A004A04EC /* PBXTargetDependency */,
 			);
 			name = "multiconvolve~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1381,6 +1405,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB23627C2803F004A04EC /* PBXTargetDependency */,
 			);
 			name = "irsweeps~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1401,6 +1426,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8FDB21E27C27FC5004A04EC /* PBXTargetDependency */,
 			);
 			name = "irinvert~";
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -1414,6 +1440,78 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				TargetAttributes = {
+					B807D7221635830F00E3E3A6 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B81AF9E7143A1BBA0014A77A = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B81E5FDA142A0DEC00E80E6C = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B86704A014EB1C5700F132B4 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B871973D131FD3F300B1356A = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B882BBE5218B163700D6C5B1 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B882BBFC218B164300D6C5B1 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B882BC13218B164500D6C5B1 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B887385A1D103513005D16FF = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B890394C13CEFB4C0090602F = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8A189F6137AA8CD0056CD0F = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8A73655151B980B0030B923 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8A963B227C27E19001C368F = {
+						CreatedOnToolsVersion = 13.2.1;
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8B5B4ED13FD29EE00DAE433 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8BE8FA813811E1400FD97AA = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8C1407C142C976D00E735D1 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8C3106E13CDF8DA007C4B91 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8C5D514144B099B00910524 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8C92B1F149104B9004F2F1E = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8CE761913D43EC900DA589D = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8CF2DC815A6FDDA00EBDB95 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8E99E4013A665B600636932 = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+					B8E9C6DA1444AB8800CBEA1B = {
+						DevelopmentTeam = 76XBB8EK7J;
+					};
+				};
 			};
 			buildConfigurationList = 0FFBC544097463A900D78707 /* Build configuration list for PBXProject "HISSTools_IR_Toolbox" */;
 			compatibilityVersion = "Xcode 2.4";
@@ -1430,6 +1528,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				B8A963B227C27E19001C368F /* HIRT */,
 				B8BE8FA813811E1400FD97AA /* bufconvolve~ */,
 				B882BC13218B164500D6C5B1 /* bufresample~ */,
 				B882BBE5218B163700D6C5B1 /* bufreverse~ */,
@@ -1761,11 +1860,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B807D72C1635830F00E3E3A6 /* HIRT_Core_Functions.cpp in Sources */,
-				B807D72D1635830F00E3E3A6 /* HIRT_Buffer_Access.cpp in Sources */,
 				B807D775163584AC00E3E3A6 /* irextract~.cpp in Sources */,
-				B80D1E7F1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E911653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1773,11 +1868,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B81E5FE4142A0DEC00E80E6C /* HIRT_Core_Functions.cpp in Sources */,
-				B828026315AAFCE600D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B81E601E142A101900E80E6C /* iralign~.cpp in Sources */,
-				B80D1E811653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E931653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1785,11 +1876,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B86704A814EB1C5700F132B4 /* HIRT_Core_Functions.cpp in Sources */,
-				B828027915AAFD3E00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B86704DB14EB1CD900F132B4 /* irtransaural~.cpp in Sources */,
-				B80D1E771653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E891653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1797,12 +1884,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8719744131FD3F300B1356A /* HIRT_Core_Functions.cpp in Sources */,
-				B828028315AAFD6D00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B82801AD15AAF8D800D2B4F0 /* HIRT_Frame_Stats.cpp in Sources */,
 				B8C563D91369A466000DE87D /* spectrumdraw~.cpp in Sources */,
-				B80D1E721653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E841653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1810,8 +1892,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B882BBED218B163700D6C5B1 /* HIRT_Buffer_Access.cpp in Sources */,
-				B882BBEF218B163700D6C5B1 /* ibuffer_access.cpp in Sources */,
 				B8594233218B39B100C783CF /* bufreverse~.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1820,8 +1900,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B882BC04218B164300D6C5B1 /* HIRT_Buffer_Access.cpp in Sources */,
-				B882BC06218B164300D6C5B1 /* ibuffer_access.cpp in Sources */,
 				B8594234218B39C600C783CF /* morphfilter~.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1831,8 +1909,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8594231218B397400C783CF /* bufresample~.cpp in Sources */,
-				B882BC1B218B164500D6C5B1 /* HIRT_Buffer_Access.cpp in Sources */,
-				B882BC1D218B164500D6C5B1 /* ibuffer_access.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1840,11 +1916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B88738621D103513005D16FF /* HIRT_Core_Functions.cpp in Sources */,
-				B88738631D103513005D16FF /* HIRT_Buffer_Access.cpp in Sources */,
-				B88738651D103513005D16FF /* ibuffer_access.cpp in Sources */,
-				B88738661D103513005D16FF /* HISSTools_FFT.cpp in Sources */,
-				B88738731D103559005D16FF /* irvalue~.cpp in Sources */,
+				B8A963D527C27F47001C368F /* irvalue~.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1852,11 +1924,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B890395313CEFB4C0090602F /* HIRT_Core_Functions.cpp in Sources */,
-				B828027415AAFD1D00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B890397F13CEFBB20090602F /* irphase~.cpp in Sources */,
-				B80D1E7B1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E8D1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1864,11 +1932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8A189FC137AA8CD0056CD0F /* HIRT_Core_Functions.cpp in Sources */,
-				B828027215AAFD1300D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B89E6721137AE78C007BBD9F /* irmeasure~.cpp in Sources */,
-				B80D1E7D1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E8F1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
+				B8A963D427C27F22001C368F /* irmeasure~.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1876,11 +1940,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8A7365E151B980B0030B923 /* HIRT_Core_Functions.cpp in Sources */,
-				B828027F15AAFD5D00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8A7367A151B98590030B923 /* irstats~.cpp in Sources */,
-				B80D1E741653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E861653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A963B027C27E19001C368F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A963BB27C27E3E001C368F /* HIRT_Buffer_Access.cpp in Sources */,
+				B8A963BA27C27E3A001C368F /* HIRT_Core_Functions.cpp in Sources */,
+				B8A963D627C27F65001C368F /* HIRT_Frame_Stats.cpp in Sources */,
+				B8A963D227C27F06001C368F /* HIRT_Matrix_Math.cpp in Sources */,
+				B8A963D327C27F0A001C368F /* HIRT_Trim_Normalise.cpp in Sources */,
+				B8A963B927C27E34001C368F /* HISSTools_FFT.cpp in Sources */,
+				B8A963B827C27E2B001C368F /* ibuffer_access.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1888,12 +1962,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8B5B4F813FD29EE00DAE433 /* HIRT_Core_Functions.cpp in Sources */,
-				B828027C15AAFD4800D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B8B5B4FA13FD29EE00DAE433 /* HIRT_Trim_Normalise.cpp in Sources */,
 				B8B5B51313FD2A5200DAE433 /* irtrimnorm~.cpp in Sources */,
-				B80D1E761653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E881653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1901,11 +1970,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8BE8FAF13811E1400FD97AA /* HIRT_Core_Functions.cpp in Sources */,
-				B828026215AAFCDF00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8BE8FE513811E6C00FD97AA /* bufconvolve~.cpp in Sources */,
-				B80D1E821653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E941653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1913,12 +1978,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C14085142C976D00E735D1 /* HIRT_Core_Functions.cpp in Sources */,
-				B828027315AAFD1700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B8C140DE142C9E0300E735D1 /* HIRT_Matrix_Math.cpp in Sources */,
 				B8C1409B142C97B700E735D1 /* irnonlin~.cpp in Sources */,
-				B80D1E7C1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E8E1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1926,11 +1986,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C3107613CDF8DA007C4B91 /* HIRT_Core_Functions.cpp in Sources */,
-				B828026415AAFCEE00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8C5D54B144B0A4900910524 /* iraverage~.cpp in Sources */,
-				B80D1E801653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E921653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1938,11 +1994,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C5D51C144B099B00910524 /* HIRT_Core_Functions.cpp in Sources */,
-				B828027D15AAFD4F00D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8C5D539144B09F100910524 /* iruser~.cpp in Sources */,
-				B80D1E751653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E871653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1950,11 +2002,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C92B27149104B9004F2F1E /* HIRT_Core_Functions.cpp in Sources */,
-				B828027E15AAFD5700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8C92B5314910554004F2F1E /* irplapprox~.cpp in Sources */,
-				B80D1E7A1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E8C1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1962,11 +2010,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8CE762313D43EC900DA589D /* HIRT_Core_Functions.cpp in Sources */,
-				B828027715AAFD3100D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B8CE766413D43F1400DA589D /* irreference~.cpp in Sources */,
-				B80D1E791653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E8B1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1975,14 +2019,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B804E67726B541B30035EA9C /* PartitionedConvolve.cpp in Sources */,
-				B828028015AAFD6300D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
 				B804E67C26B541B30035EA9C /* MonoConvolve.cpp in Sources */,
 				B804E67526B541B30035EA9C /* Convolver.cpp in Sources */,
 				B804E67426B541B30035EA9C /* NToMonoConvolve.cpp in Sources */,
 				B8CF2E2E15A6FEA600EBDB95 /* multiconvolve~.cpp in Sources */,
-				B80D1E731653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
 				B804E67326B541B30035EA9C /* TimeDomainConvolve.cpp in Sources */,
-				B80D1E851653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1990,12 +2031,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8E99E4813A665B600636932 /* HIRT_Core_Functions.cpp in Sources */,
-				B828027815AAFD3700D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B8C0EDF313A7C0320061554C /* HIRT_Trim_Normalise.cpp in Sources */,
 				B8E99E7B13A6661600636932 /* irsweeps~.cpp in Sources */,
-				B80D1E781653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E8A1653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2003,12 +2039,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8E9C6E11444AB8800CBEA1B /* HIRT_Core_Functions.cpp in Sources */,
-				B828026F15AAFD0100D2B4F0 /* HIRT_Buffer_Access.cpp in Sources */,
-				B8E9C6E31444AB8800CBEA1B /* HIRT_Matrix_Math.cpp in Sources */,
 				B8E9C7441444ABC800CBEA1B /* irinvert~.cpp in Sources */,
-				B80D1E7E1653ECDF00921D8B /* ibuffer_access.cpp in Sources */,
-				B80D1E901653ECED00921D8B /* HISSTools_FFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2120,11 +2151,117 @@
 			target = B887385A1D103513005D16FF /* irvalue~ */;
 			targetProxy = B8ECA2F52136A742007B475B /* PBXContainerItemProxy */;
 		};
+		B8FDB21227C27FAC004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21127C27FAC004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB21427C27FAF004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21327C27FAF004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB21627C27FB2004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21527C27FB2004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB21827C27FB8004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21727C27FB8004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB21A27C27FBF004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21927C27FBF004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB21C27C27FC2004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21B27C27FC2004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB21E27C27FC5004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21D27C27FC5004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22027C27FC8004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB21F27C27FC8004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22227C27FCC004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22127C27FCC004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22427C27FCF004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22327C27FCF004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22627C28026004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22527C28026004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22827C2802A004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22727C2802A004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22A27C2802D004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22927C2802D004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22C27C28030004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22B27C28030004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB22E27C28033004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22D27C28033004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB23027C28036004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB22F27C28036004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB23227C28039004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB23127C28039004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB23427C2803C004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB23327C2803C004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB23627C2803F004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB23527C2803F004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB23827C28042004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB23727C28042004A04EC /* PBXContainerItemProxy */;
+		};
+		B8FDB23A27C28045004A04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A963B227C27E19001C368F /* HIRT */;
+			targetProxy = B8FDB23927C28045004A04EC /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0FFBC547097463A900D78707 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				LLVM_LTO = YES;
@@ -2133,6 +2270,7 @@
 		};
 		B807D73B1635830F00E3E3A6 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2142,6 +2280,7 @@
 		};
 		B81AF9EA143A1BBB0014A77A /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				PRODUCT_NAME = "All Correction Tools";
 			};
@@ -2149,6 +2288,7 @@
 		};
 		B81E5FF1142A0DEC00E80E6C /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2158,6 +2298,7 @@
 		};
 		B86704B414EB1C5700F132B4 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2168,6 +2309,7 @@
 		};
 		B871974E131FD3F300B1356A /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2203,6 +2345,7 @@
 		};
 		B882BBF9218B163700D6C5B1 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2237,6 +2380,7 @@
 		};
 		B882BC10218B164300D6C5B1 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2271,6 +2415,7 @@
 		};
 		B882BC27218B164500D6C5B1 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2306,6 +2451,7 @@
 		};
 		B887386F1D103513005D16FF /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2315,6 +2461,7 @@
 		};
 		B890395E13CEFB4C0090602F /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2324,6 +2471,7 @@
 		};
 		B8A18A07137AA8CD0056CD0F /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2333,6 +2481,7 @@
 		};
 		B8A73669151B980B0030B923 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2340,8 +2489,149 @@
 			};
 			name = Default;
 		};
+		B8A963B527C27E19001C368F /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Development;
+		};
+		B8A963B627C27E19001C368F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Deployment;
+		};
+		B8A963B727C27E19001C368F /* Default */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Default;
+		};
 		B8B5B50413FD29EE00DAE433 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2351,6 +2641,7 @@
 		};
 		B8BE8FB713811E1400FD97AA /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2360,6 +2651,7 @@
 		};
 		B8C14090142C976D00E735D1 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2369,6 +2661,7 @@
 		};
 		B8C3108013CDF8DA007C4B91 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2378,6 +2671,7 @@
 		};
 		B8C5D528144B099B00910524 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2387,6 +2681,7 @@
 		};
 		B8C92B33149104B9004F2F1E /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2396,6 +2691,7 @@
 		};
 		B8CE762F13D43EC900DA589D /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2405,6 +2701,7 @@
 		};
 		B8CF2DDC15A6FDDA00EBDB95 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2414,6 +2711,7 @@
 		};
 		B8E99E5313A665B600636932 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2423,6 +2721,7 @@
 		};
 		B8E9C6EE1444AB8800CBEA1B /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -2646,6 +2945,7 @@
 		};
 		B8F3AC2B1694678F00DF6BF8 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2903,6 +3203,7 @@
 		};
 		B8F3AC57169467E500DF6BF8 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AC44169467C300DF6BF8 /* Config_HIRT.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3039,6 +3340,16 @@
 				B8F3AC54169467E500DF6BF8 /* Development */,
 				B8F3AC281694678F00DF6BF8 /* Deployment */,
 				B8A73669151B980B0030B923 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		B8A963B427C27E19001C368F /* Build configuration list for PBXNativeTarget "HIRT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A963B527C27E19001C368F /* Development */,
+				B8A963B627C27E19001C368F /* Deployment */,
+				B8A963B727C27E19001C368F /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
