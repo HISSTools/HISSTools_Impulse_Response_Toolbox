@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8A73655151B980B0030B923"
-               BuildableName = ".bundle"
+               BuildableName = "irstats~.mxo"
                BlueprintName = "irstats~"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Development"
@@ -46,13 +44,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8A73655151B980B0030B923"
-            BuildableName = ".bundle"
+            BuildableName = "irstats~.mxo"
             BlueprintName = "irstats~"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Deployment"

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B882BC13218B164500D6C5B1"
-               BuildableName = ".bundle"
+               BuildableName = "bufresample~.mxo"
                BlueprintName = "bufresample~"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
@@ -26,18 +26,14 @@
       buildConfiguration = "Development"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Development"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -48,13 +44,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B882BC13218B164500D6C5B1"
-            BuildableName = ".bundle"
+            BuildableName = "bufresample~.mxo"
             BlueprintName = "bufresample~"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Deployment"
@@ -66,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B882BC13218B164500D6C5B1"
-            BuildableName = ".bundle"
+            BuildableName = "bufresample~.mxo"
             BlueprintName = "bufresample~"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>

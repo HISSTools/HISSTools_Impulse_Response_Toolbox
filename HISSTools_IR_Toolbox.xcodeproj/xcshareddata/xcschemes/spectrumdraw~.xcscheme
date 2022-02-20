@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B871973D131FD3F300B1356A"
-               BuildableName = ".bundle"
+               BuildableName = "spectrumdraw~.mxo"
                BlueprintName = "spectrumdraw~"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Development"
@@ -46,13 +44,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B871973D131FD3F300B1356A"
-            BuildableName = ".bundle"
+            BuildableName = "spectrumdraw~.mxo"
             BlueprintName = "spectrumdraw~"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Deployment"

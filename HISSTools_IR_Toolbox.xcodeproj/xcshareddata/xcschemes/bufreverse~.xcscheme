@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B882BBE5218B163700D6C5B1"
-               BuildableName = ".bundle"
+               BuildableName = "bufreverse~.mxo"
                BlueprintName = "bufreverse~"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Development"
@@ -46,13 +44,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B882BBE5218B163700D6C5B1"
-            BuildableName = ".bundle"
+            BuildableName = "bufreverse~.mxo"
             BlueprintName = "bufreverse~"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Deployment"
@@ -64,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B882BBE5218B163700D6C5B1"
-            BuildableName = ".bundle"
+            BuildableName = "bufreverse~.mxo"
             BlueprintName = "bufreverse~"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
