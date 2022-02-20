@@ -1,28 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1320"
-   version = "1.7">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <PostActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "&quot;$SRCROOT/../HISSTools_Packaging/package_notarization.sh&#10;">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "B81AF9E7143A1BBA0014A77A"
-                     BuildableName = "All HIRT Externals"
-                     BlueprintName = "All HIRT Externals"
-                     ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -32,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B81AF9E7143A1BBA0014A77A"
-               BuildableName = "All HIRT Externals"
-               BlueprintName = "All HIRT Externals"
+               BlueprintIdentifier = "B89C242527C2B9450014781F"
+               BuildableName = "Notarized Externals"
+               BlueprintName = "Notarized Externals"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -72,9 +54,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B81AF9E7143A1BBA0014A77A"
-            BuildableName = "All HIRT Externals"
-            BlueprintName = "All HIRT Externals"
+            BlueprintIdentifier = "B89C242527C2B9450014781F"
+            BuildableName = "Notarized Externals"
+            BlueprintName = "Notarized Externals"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

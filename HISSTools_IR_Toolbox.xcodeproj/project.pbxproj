@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -37,6 +37,18 @@
 			);
 			name = "All HIRT Externals";
 			productName = "All Correction Tools";
+		};
+		B89C242527C2B9450014781F /* Notarized Externals */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B89C242927C2B9450014781F /* Build configuration list for PBXAggregateTarget "Notarized Externals" */;
+			buildPhases = (
+				B89C242C27C2B9560014781F /* ShellScript */,
+			);
+			dependencies = (
+				B89C242B27C2B9540014781F /* PBXTargetDependency */,
+			);
+			name = "Notarized Externals";
+			productName = "Notarized Externals";
 		};
 /* End PBXAggregateTarget section */
 
@@ -202,6 +214,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B882BBFC218B164300D6C5B1;
 			remoteInfo = "morphfilter~";
+		};
+		B89C242A27C2B9540014781F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B81AF9E7143A1BBA0014A77A;
+			remoteInfo = "All HIRT Externals";
 		};
 		B8C5D551144B0DC700910524 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1441,6 +1460,9 @@
 			isa = PBXProject;
 			attributes = {
 				TargetAttributes = {
+					B89C242527C2B9450014781F = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					B8A963B227C27E19001C368F = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -1484,6 +1506,7 @@
 				B8CF2DC815A6FDDA00EBDB95 /* multiconvolve~ */,
 				B871973D131FD3F300B1356A /* spectrumdraw~ */,
 				B81AF9E7143A1BBA0014A77A /* All HIRT Externals */,
+				B89C242527C2B9450014781F /* Notarized Externals */,
 			);
 		};
 /* End PBXProject section */
@@ -1788,6 +1811,27 @@
 		};
 /* End PBXRezBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B89C242C27C2B9560014781F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/HISSTools_Packaging/package_notarization.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B807D7291635830F00E3E3A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -2053,6 +2097,11 @@
 			isa = PBXTargetDependency;
 			target = B882BBFC218B164300D6C5B1 /* morphfilter~ */;
 			targetProxy = B882BC2E218B167300D6C5B1 /* PBXContainerItemProxy */;
+		};
+		B89C242B27C2B9540014781F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B81AF9E7143A1BBA0014A77A /* All HIRT Externals */;
+			targetProxy = B89C242A27C2B9540014781F /* PBXContainerItemProxy */;
 		};
 		B8C5D552144B0DC700910524 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2396,6 +2445,24 @@
 			buildSettings = {
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+			};
+			name = Default;
+		};
+		B89C242627C2B9450014781F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		B89C242727C2B9450014781F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		B89C242827C2B9450014781F /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 			};
 			name = Default;
 		};
@@ -3191,6 +3258,16 @@
 				B8F3AC4D169467E500DF6BF8 /* Development */,
 				B8F3AC211694678F00DF6BF8 /* Deployment */,
 				B890395E13CEFB4C0090602F /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		B89C242927C2B9450014781F /* Build configuration list for PBXAggregateTarget "Notarized Externals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B89C242627C2B9450014781F /* Development */,
+				B89C242727C2B9450014781F /* Deployment */,
+				B89C242827C2B9450014781F /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
