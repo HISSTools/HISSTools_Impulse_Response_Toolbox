@@ -15,7 +15,7 @@ The HISSTools Impulse Response Toolbox is now released through the cycling74 pac
 * a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
 * http://thehiss.org/
 
-##About
+## About
 
 The HISSTools Impulse Response Toolbox (HIRT) is a set of tools for working with convolution and impulse responses in Max.<br>
 This set of object addresses various tasks, including measuring impulse responses, spectral display from realtime data/ buffers, and buffer-based convolution, deconvolution and inversion.
@@ -28,7 +28,7 @@ You may use it however you see fit, as long as you respect the terms of the lice
 There are provided projects/solutions for XCode and Microsoft Visual Studio.<br>
 Once the requirements are satisfied building from the projects/solutions should be straightforward.
 
-###Requirements
+### Requirements
 
 The projects are configured to expect the max-base-sdk repo (https://github.com/Cycling74/max-sdk-base) to be located in a parallel location (i.e. with the two repos placed in the same parent folder). 
 
