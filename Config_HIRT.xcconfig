@@ -32,6 +32,10 @@ MACOSX_DEPLOYMENT_TARGET = 10.11
 
 ARCHS = x86_64 arm64
 
+// Set Bundel Identifier
+
+PRODUCT_BUNDLE_IDENTIFIER = HISSTools.${TARGET_NAME:rfc1034identifier}
+
 // We define this so as to support backward compatibility (this prevents using Max6 only translation symbol generation)
 
 GCC_PREPROCESSOR_DEFINITIONS = "DENORM_WANT_FIX = 1" "NO_TRANSLATION_SUPPORT = 1"
