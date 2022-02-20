@@ -642,7 +642,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 175.5, 375.75, 243.0, 22.0 ],
+					"patching_rect" : [ 175.5, 375.75, 241.0, 22.0 ],
 					"restore" : [ "<empty>" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
@@ -3095,6 +3095,19 @@
 			}
 , 			{
 				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-9",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 200.5, 97.0, 78.0, 60.0 ],
+					"text" : "(fixes long standing double load bug)"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"angle" : 270.0,
 					"background" : 1,
 					"border" : 1,
@@ -3133,7 +3146,7 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "bgcolor", "thinmode", "gridcolor", "thinto", "gridorigincolor", "thinthresh" ],
+					"frozen_box_attributes" : [ "thinto", "gridcolor", "gridorigincolor", "bgcolor", "thinmode", "thinthresh" ],
 					"gridcolor" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"gridorigincolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-52",
@@ -3177,7 +3190,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
-					"midpoints" : [ 297.0, 413.25, 94.0, 413.25 ],
+					"midpoints" : [ 296.0, 413.25, 94.0, 413.25 ],
 					"source" : [ "obj-1", 1 ]
 				}
 

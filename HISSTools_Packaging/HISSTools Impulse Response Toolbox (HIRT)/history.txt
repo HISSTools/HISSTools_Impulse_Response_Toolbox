@@ -9,19 +9,20 @@ Changes in 2.1
 
 New Features
 
-All externals on macOS platform now Universal Binaries operating across Intel and Apple Silicon processors
+All externals on macOS platform now in UB2 format and operating on Intel and Apple Silicon
 All externals are signed
 
 Improvements
 
 irvalue~: helpfile improved for clarity
-Effect abstractions: now handle patcher zoom more elegantly
+Effect abstractions: now handle patcher zoom and float more elegantly
 Effect abstractions: editing mode is now more obvious
 
 Bug Fixes
 
 spectrumdraw~: drawing issue with 'select' fixed
-spectrumdraw~: load ordering of attributes fixed (@smoothing)
+Effect abstractions: fixed damping to morphfilter~ for case of very short IRs
+Effect abstractions: fixed @file attribute persistence in hirt.convolver~
 Effect abstractions: fixed inline documentation for issues introduced in changes to Max [hover] object
 
 -------
@@ -30,8 +31,8 @@ Changes in 2.0.1
 
 Bug Fixes
 
-Effect abstractions: fixed bug in UI dial where values could be sent in inactive mode under certain circumstances
-Effect abstractions: fixed multiconvolve~ initialising in hirt.convolutionreverb~
+Effect abstractions: fixed bug in custom UI dial where values could be sent in inactive mode under certain circumstances
+Effect abstractions: fixed multiconvolve~ latency initialising in hirt.convolutionreverb~
 
 -------
 
