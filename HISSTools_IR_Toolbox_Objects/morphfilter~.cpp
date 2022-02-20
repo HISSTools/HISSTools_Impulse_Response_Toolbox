@@ -180,7 +180,7 @@ void morphfilter_clear (t_morphfilter *x)
 }
 
 
-static inline double morphfilter_biquad (double in, double a0, double a1, double a2, double b0, double b1, double b2, double *x1, double *x2, double *y1, double *y2)
+static inline double morphfilter_biquad(double in, double a0, double a1, double a2, double b0, double b1, double b2, double *x1, double *x2, double *y1, double *y2)
 {
     double out = (b0 * in + b1 * *x1 + b2 * *x2 - a1 * *y1 - a2 * *y2) / a0;
 
@@ -195,7 +195,7 @@ static inline double morphfilter_biquad (double in, double a0, double a1, double
 
 double dbtoa(double db)
 {
-    return pow (10.0, db / 20.);
+    return pow(10.0, db / 20.0);
 }
 
 
@@ -216,10 +216,12 @@ void morphfilter_apply_filter(double *samples, t_filter_params *filter, double s
     cosw = std::cos(w0);
     sinw = std::sin(w0);
 
-    x1 = x2 = y1 = y2 = 0.;
+    x1 = x2 = y1 = y2 = 0.0;
 
-    A = dbtoa(filter->g_db0 / 2.);
-    gain_mul = rate == 0 ? 1 : dbtoa(filter->g_db_alter / (2 * (filter->rate * sr) / 1000.));
+    // FIX - this looks wrong for gain at least, but I'm not sure why the division is there...
+    
+    A = dbtoa(filter->g_db0 / 2.0);
+    gain_mul = rate == 0 ? 1 : dbtoa(filter->g_db_alter / (2 * (filter->rate * sr) / 1000.0));
 
     switch (filter->filter_type)
     {
