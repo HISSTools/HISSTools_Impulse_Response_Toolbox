@@ -282,8 +282,9 @@ void smooth_power_spectrum(FFT_SPLIT_COMPLEX_D spectrum, t_smooth_mode mode, uin
     double *spectrum_in = spectrum.imagp;
     double *temp_filter;
     
-    double filter_val, half_width_recip, oct_width, accum;
-
+    double filter_val, oct_width, accum;
+    double half_width_recip = 1.0;
+    
     intptr_t half_width, current_half_width, loop_size;
     intptr_t nyquist_bin = (fft_size >> 1);
     intptr_t limit = fft_size - 1;
