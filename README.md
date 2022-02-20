@@ -6,11 +6,11 @@ A toolbox for convolution, deconvolution and other impulse response related task
 By Alex Harker and Pierre Alexandre Tremblay with Pete Dowling<br/>
 CeReNeM - The University of Huddersfield
 
-##Release
+## Release
 
 The HISSTools Impulse Response Toolbox is now released through the cycling74 package manager - the current version is 2.1.0. If you are looking to install the current release you are advised to do so via the package manager.
 
-##Contact:
+## Contact:
 
 * a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
 * http://thehiss.org/
