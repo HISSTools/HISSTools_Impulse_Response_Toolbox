@@ -6,11 +6,10 @@ A toolbox for convolution, deconvolution and other impulse response related task
 By **Alex Harker** and **Pierre Alexandre Tremblay** with **Pete Dowling**<br/>
 **CeReNeM** - The University of Huddersfield
 
-## Release
+## Contact:
 
-The HISSTools Impulse Response Toolbox is now released via Cycling74 package manager for Max.<br>
-If you are looking to install the current release you are advised to do so via the Max Package Manager.<br>
-The current version is 2.1.0. 
+* a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
+* http://thehiss.org/
 
 ## About
 
@@ -18,10 +17,11 @@ The HISSTools Impulse Response Toolbox (HIRT) is a set of tools for working with
 
 The HIRT is distributed freely, under a Modified BSD License.<br>
 
-## Contact:
+## Release / Installation
 
-* a.harker@hud.ac.uk / p.a.tremblay@hud.ac.uk
-* http://thehiss.org/
+The HISSTools Impulse Response Toolbox is now released via Cycling74 package manager for Max.<br>
+If you are looking to install the current release you are advised to do so via the Max Package Manager.<br>
+The current version is 2.1.0. 
 
 ## Compiling the Max Externals in XCode / MSVS:
 
