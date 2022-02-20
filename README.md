@@ -27,8 +27,8 @@ Once the requirements are satisfied building from the projects/solutions should 
 Please note the following:
 
 - Within the XCode project the *All HIRT Externals* shared scheme will build the entire toolbox.
-- Within the XCode project the *Notarized Externals* shared scheme is for internal use only and will fail on other machines as it relies on local settings for certificates and signing /notarization profiles.
-- On both platforms builds are installed into the relevant folders with HISSTools_Packaging/ 
+- Within the XCode project the *Notarized Externals* shared scheme is for internal use only and will fail on other machines as it relies on local settings for certificates and signing/notarization profiles.
+- On both platforms builds are installed into the relevant folders within HISSTools_Packaging/ 
 
 ### Requirements
 
