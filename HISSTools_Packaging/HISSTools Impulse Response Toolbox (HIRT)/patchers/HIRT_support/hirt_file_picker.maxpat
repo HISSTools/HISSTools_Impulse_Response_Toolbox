@@ -40,18 +40,6 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-33",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 338.0, 51.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"color" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
 					"id" : "obj-29",
 					"linecount" : 2,
@@ -114,7 +102,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "bang if you want, but not needed anymore",
+					"comment" : "(legacy) (bang) to \"Menu IR\" / (int) to \"Menu IR\" 'checkitems'",
 					"id" : "obj-23",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -160,7 +148,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "underline", "rounded", "fontface", "background", "hint", "jspainterfile", "ignoreclick", "fontlink", "parameter_enable", "usebgoncolor", "fontsize", "textjustification", "presentation", "legacytextcolor", "bgcolor", "mode", "style", "usetextovercolor" ],
+					"frozen_box_attributes" : [ "presentation", "legacytextcolor", "fontlink", "jspainterfile", "style", "background", "usetextovercolor", "ignoreclick", "underline", "rounded", "fontface", "textjustification", "bgcolor", "hint", "parameter_enable", "usebgoncolor", "fontsize", "mode" ],
 					"hint" : "",
 					"id" : "obj-21",
 					"ignoreclick" : 0,
@@ -700,7 +688,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "underline", "rounded", "fontface", "background", "hint", "jspainterfile", "ignoreclick", "fontlink", "parameter_enable", "usebgoncolor", "fontsize", "textjustification", "presentation", "legacytextcolor", "bgcolor", "mode", "style", "usetextovercolor" ],
+					"frozen_box_attributes" : [ "presentation", "legacytextcolor", "fontlink", "jspainterfile", "style", "background", "usetextovercolor", "ignoreclick", "underline", "rounded", "fontface", "textjustification", "bgcolor", "hint", "parameter_enable", "usebgoncolor", "fontsize", "mode" ],
 					"hint" : "",
 					"id" : "obj-20",
 					"ignoreclick" : 0,
@@ -746,7 +734,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "underline", "rounded", "fontface", "background", "hint", "jspainterfile", "ignoreclick", "fontlink", "parameter_enable", "usebgoncolor", "fontsize", "textjustification", "presentation", "legacytextcolor", "bgcolor", "mode", "style", "usetextovercolor" ],
+					"frozen_box_attributes" : [ "presentation", "legacytextcolor", "fontlink", "jspainterfile", "style", "background", "usetextovercolor", "ignoreclick", "underline", "rounded", "fontface", "textjustification", "bgcolor", "hint", "parameter_enable", "usebgoncolor", "fontsize", "mode" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -4105,7 +4093,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "int" ],
 									"patching_rect" : [ 369.0, 34.0, 30.0, 30.0 ]
 								}
 
@@ -5950,13 +5938,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-39", 2 ],
-					"source" : [ "obj-33", 0 ]
 				}
 
 			}
