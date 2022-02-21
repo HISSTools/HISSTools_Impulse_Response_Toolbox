@@ -46,7 +46,7 @@ struct t_bufresample
 
 // Function prototypes
 
-void *bufresample_new();
+void *bufresample_new(t_symbol *s, short argc, t_atom *argv);
 void bufresample_free(t_bufresample *x);
 void bufresample_assist(t_bufresample *x, void *b, long m, long a, char *s);
 
@@ -69,6 +69,7 @@ int C74_EXPORT main()
                           (method)bufresample_free,
                           sizeof(t_bufresample),
                           0L,
+                          A_GIMME,
                           0);
 
     class_addmethod(this_class, (method)bufresample_process, "both", A_GIMME, 0L);
@@ -85,7 +86,7 @@ int C74_EXPORT main()
 }
 
 
-void *bufresample_new()
+void *bufresample_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_bufresample *x = reinterpret_cast<t_bufresample *>(object_alloc(this_class));
 
@@ -94,7 +95,7 @@ void *bufresample_new()
     alloc_mem_swap(&x->filter, 0, 0);
     generate_filter(x, 10, 16384, 0.455, 11);
     init_HIRT_common_attributes(x);
-
+    attr_args_process(x, argc, argv);
 
     return x;
 }

@@ -60,7 +60,7 @@ struct t_morphfilter
 
 // Function prototypes
 
-void *morphfilter_new();
+void *morphfilter_new(t_symbol *s, short argc, t_atom *argv);
 void morphfilter_free(t_morphfilter *x);
 void morphfilter_assist(t_morphfilter *x, void *b, long m, long a, char *s);
 
@@ -79,6 +79,7 @@ int C74_EXPORT main()
                           (method)morphfilter_free,
                           sizeof(t_morphfilter),
                           0L,
+                          A_GIMME,
                           0);
 
     class_addmethod(this_class, (method)morphfilter_process, "process", A_SYM, A_SYM, 0L);
@@ -96,7 +97,7 @@ int C74_EXPORT main()
 }
 
 
-void *morphfilter_new()
+void *morphfilter_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_morphfilter *x = reinterpret_cast<t_morphfilter *>(object_alloc(this_class));
 
@@ -104,6 +105,7 @@ void *morphfilter_new()
     x->nfilters = 0;
 
     init_HIRT_common_attributes(x);
+    attr_args_process(x, argc, argv);
 
     return x;
 }

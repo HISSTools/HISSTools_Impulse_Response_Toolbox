@@ -39,7 +39,7 @@ struct t_bufreverse
 
 // Function prototypes
 
-void *bufreverse_new();
+void *bufreverse_new(t_symbol *s, short argc, t_atom *argv);
 void bufreverse_free(t_bufreverse *x);
 void bufreverse_assist(t_bufreverse *x, void *b, long m, long a, char *s);
 
@@ -54,6 +54,7 @@ int C74_EXPORT main()
                           (method)bufreverse_free,
                           sizeof(t_bufreverse),
                           0L,
+                          A_GIMME,
                           0);
 
     class_addmethod(this_class, (method)bufreverse_process, "process", A_SYM, A_SYM, 0L);
@@ -68,13 +69,14 @@ int C74_EXPORT main()
 }
 
 
-void *bufreverse_new()
+void *bufreverse_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_bufreverse *x = reinterpret_cast<t_bufreverse *>(object_alloc(this_class));
 
     x->process_done = bangout(x);
 
     init_HIRT_common_attributes(x);
+    attr_args_process(x, argc, argv);
 
     return x;
 }
