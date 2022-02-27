@@ -196,6 +196,81 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ "Slope 3", "EQ S Hi", "@range", 0.05, 18.0, "@initial", 0.5, "@units", "Native", "@exponent", 3.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Slope Hi", "@annotation", "Adjusts the Resonance of the Highshelf input filter. Moderate to lower settings sound more natural." ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-54",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 1156.25, 330.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 253.0, 175.0, 70.0, 50.0 ],
+					"varname" : "EQ Slope High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Gain 3", "EQ Gain Hi", "@range", -18.0, 18.0, "@bipolar", 1, "@initial", 0.0, "@units", "deciBel", "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Gain Hi", "@annotation", "Adjusts the amount of boost or attenuation of the Highshelf input filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first." ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-55",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 859.25, 330.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 145.0, 175.0, 70.0, 50.0 ],
+					"varname" : "EQ Gain High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Freq 3", "EQ Freq Hi", "@range", 10.0, 18000.0, "@initial", 8000.0, "@units", "Hertz", "@exponent", 4.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Freq Hi", "@annotation", "Sets the center frequency of the Highshelf input filter." ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-56",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 562.0, 330.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.0, 175.0, 70.0, 50.0 ],
+					"varname" : "EQ Freq High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-23",
 					"maxclass" : "button",
@@ -403,81 +478,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 25.0, 358.0, 150.0 ],
 					"varname" : "EQ Frequency Display"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Slope 3", "EQ S Hi", "@range", 0.05, 18.0, "@initial", 0.5, "@units", "Native", "@exponent", 3.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Slope Hi", "@annotation", "Adjusts the Resonance of the Highshelf input filter. Moderate to lower settings sound more natural." ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-54",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 1156.25, 330.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 253.0, 175.0, 70.0, 50.0 ],
-					"varname" : "EQ Slope High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Gain 3", "EQ Gain Hi", "@range", -18.0, 18.0, "@bipolar", 1, "@initial", 0.0, "@units", "deciBel", "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Gain Hi", "@annotation", "Adjusts the amount of boost or attenuation of the Highshelf input filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first." ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-55",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 859.25, 330.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 145.0, 175.0, 70.0, 50.0 ],
-					"varname" : "EQ Gain High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Freq 3", "EQ Freq Hi", "@range", 10.0, 18000.0, "@initial", 8000.0, "@units", "Hertz", "@exponent", 4.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Freq Hi", "@annotation", "Sets the center frequency of the Highshelf input filter." ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-56",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 562.0, 330.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 36.0, 175.0, 70.0, 50.0 ],
-					"varname" : "EQ Freq High",
-					"viewvisibility" : 1
 				}
 
 			}
@@ -990,7 +990,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 472.0, 45.0, 600.0, 465.0 ],
+						"rect" : [ 840.0, 45.0, 600.0, 465.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1529,7 +1529,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 218.0, 129.0, 809.0, 614.0 ],
+						"rect" : [ 610.0, 242.0, 809.0, 614.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2098,7 +2098,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-15", 0 ],
-									"disabled" : 1,
 									"source" : [ "obj-16", 0 ]
 								}
 
@@ -2114,6 +2113,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-29", 0 ],
+									"disabled" : 1,
 									"midpoints" : [ 43.5, 229.5, 151.5, 229.5 ],
 									"source" : [ "obj-17", 0 ]
 								}
@@ -2232,6 +2232,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-29", 1 ],
+									"disabled" : 1,
 									"midpoints" : [ 182.5, 190.5, 182.5, 190.5 ],
 									"source" : [ "obj-28", 0 ]
 								}
@@ -3855,6 +3856,19 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-20",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 927.5, 340.0, 71.0, 33.0 ],
+									"text" : "!! this does nothing !!"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-18",
 									"maxclass" : "newobj",
 									"numinlets" : 3,
@@ -3945,13 +3959,14 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "int" ],
 									"patching_rect" : [ 841.0, 18.0, 30.0, 30.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"hidden" : 1,
 									"id" : "obj-19",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -3978,6 +3993,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"hidden" : 1,
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -4234,6 +4250,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"hidden" : 1,
 									"id" : "obj-28",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -4402,6 +4419,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-15", 0 ],
+									"hidden" : 1,
 									"midpoints" : [ 718.5, 385.5, 718.5, 385.5 ],
 									"source" : [ "obj-1", 0 ]
 								}
@@ -4487,6 +4505,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-60", 0 ],
+									"hidden" : 1,
 									"midpoints" : [ 937.0, 648.0, 58.5, 648.0 ],
 									"source" : [ "obj-19", 0 ]
 								}
@@ -4529,14 +4548,6 @@
 									"destination" : [ "obj-25", 0 ],
 									"midpoints" : [ 415.0, 327.0, 415.5, 327.0 ],
 									"source" : [ "obj-27", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"midpoints" : [ 1033.666625999999951, 48.0, 1033.666625999999951, 48.0 ],
-									"source" : [ "obj-28", 0 ]
 								}
 
 							}
@@ -4595,6 +4606,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
+									"hidden" : 1,
 									"midpoints" : [ 718.0, 118.5, 718.5, 118.5 ],
 									"source" : [ "obj-37", 1 ]
 								}
@@ -4669,6 +4681,8 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-19", 0 ],
+									"disabled" : 1,
+									"hidden" : 1,
 									"midpoints" : [ 937.0, 319.5, 937.0, 319.5 ],
 									"source" : [ "obj-43", 3 ]
 								}
@@ -5054,7 +5068,6 @@
 					"mousemode" : 0,
 					"numinlets" : 4,
 					"numoutlets" : 1,
-					"octavesmooth" : 0.0,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 685.25, 83.5, 262.0, 96.0 ],
 					"phaselabels" : 0,
@@ -5134,7 +5147,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 144.083327999999995, 388.0, 178.916672000000005, 20.0 ],
-					"text" : "^ this used to be a tab but...",
+					"text" : "^ init 1...",
 					"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ]
 				}
 
@@ -6031,6 +6044,7 @@
 					"parameter_exponent" : 3.0,
 					"parameter_initial" : 0.707107,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val",
 					"parameter_modmode" : 0,
 					"parameter_range" : [ 0.05, 18.0 ],
 					"parameter_type" : 0,

@@ -148,7 +148,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "presentation", "legacytextcolor", "fontlink", "jspainterfile", "style", "background", "usetextovercolor", "ignoreclick", "underline", "rounded", "fontface", "textjustification", "bgcolor", "hint", "parameter_enable", "usebgoncolor", "fontsize", "mode" ],
+					"frozen_box_attributes" : [ "textjustification", "underline", "rounded", "fontface", "mode", "usebgoncolor", "hint", "bgcolor", "parameter_enable", "legacytextcolor", "fontsize", "background", "jspainterfile", "fontlink", "ignoreclick", "usetextovercolor", "presentation", "style" ],
 					"hint" : "",
 					"id" : "obj-21",
 					"ignoreclick" : 0,
@@ -688,7 +688,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "presentation", "legacytextcolor", "fontlink", "jspainterfile", "style", "background", "usetextovercolor", "ignoreclick", "underline", "rounded", "fontface", "textjustification", "bgcolor", "hint", "parameter_enable", "usebgoncolor", "fontsize", "mode" ],
+					"frozen_box_attributes" : [ "textjustification", "underline", "rounded", "fontface", "mode", "usebgoncolor", "hint", "bgcolor", "parameter_enable", "legacytextcolor", "fontsize", "background", "jspainterfile", "fontlink", "ignoreclick", "usetextovercolor", "presentation", "style" ],
 					"hint" : "",
 					"id" : "obj-20",
 					"ignoreclick" : 0,
@@ -734,7 +734,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "presentation", "legacytextcolor", "fontlink", "jspainterfile", "style", "background", "usetextovercolor", "ignoreclick", "underline", "rounded", "fontface", "textjustification", "bgcolor", "hint", "parameter_enable", "usebgoncolor", "fontsize", "mode" ],
+					"frozen_box_attributes" : [ "textjustification", "underline", "rounded", "fontface", "mode", "usebgoncolor", "hint", "bgcolor", "parameter_enable", "legacytextcolor", "fontsize", "background", "jspainterfile", "fontlink", "ignoreclick", "usetextovercolor", "presentation", "style" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -5356,6 +5356,19 @@
 									"patching_rect" : [ 295.0, 222.666655999999989, 72.0, 33.0 ],
 									"text" : "not used anymore",
 									"textjustification" : 2
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-17",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 344.5, 262.666655999999932, 234.5, 47.0 ],
+									"text" : "this really annoying bang is only required to fill pattrstorage \"Current File\" slot on load if populated with external IR resource"
 								}
 
 							}

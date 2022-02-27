@@ -111,6 +111,7 @@
 			</digest>
 			<description>
 				The symbol <m>iradd</m> alone causes a file browser window to open for selecting a new impulse response file for loading into the convolution engine. Adding an IR with this message is identical to drag &amp; drop in the interface or using the <m>file</m> attribute. <br />
+				Note: when adding a set of stereo or true stereo IRs, only one of the associated files need be added - other files will be parsed automatically. <br />
 			</description>
 		</method>
 		<method name="irfolder">
@@ -314,6 +315,7 @@
 			<description>
 				Load a new IR file by file name (if file present in your search path) or by file path/name (if file outside your search path).
 				Must be a symbol, so use "quotes" if there are spaces.
+				Note: when adding a set of stereo or true stereo IRs, only one of the associated files need be added - other files will be parsed automatically.
 			</description>
 			<attributelist>
 				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Load IR File" />
