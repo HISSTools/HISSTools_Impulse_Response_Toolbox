@@ -6116,21 +6116,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "hirt.dial.linear.only.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_interface_eq.js",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../../jsui",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

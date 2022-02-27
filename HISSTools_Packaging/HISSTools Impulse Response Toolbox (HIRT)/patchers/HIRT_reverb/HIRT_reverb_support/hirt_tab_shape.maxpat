@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-33",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 167.5, 261.0, 97.0, 22.0 ],
+					"text" : "substitute 0 100."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-77",
 					"maxclass" : "newobj",
@@ -509,10 +521,10 @@
 					"id" : "obj-68",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 591.5, 80.439391999999998, 44.5, 22.0 ],
-					"text" : "t i i"
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "int", "int" ],
+					"patching_rect" : [ 591.5, 80.439391999999998, 70.0, 22.0 ],
+					"text" : "t i i i"
 				}
 
 			}
@@ -2022,6 +2034,18 @@
 			}
 , 			{
 				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-67",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 167.5, 242.0, 97.0, 20.0 ],
+					"text" : "shape off extra"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"angle" : 270.0,
 					"background" : 1,
 					"border" : 1,
@@ -2267,6 +2291,24 @@
 					"destination" : [ "obj-62", 0 ],
 					"midpoints" : [ 145.0, 535.5, 145.0, 535.5 ],
 					"source" : [ "obj-32", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-55", 0 ],
+					"midpoints" : [ 177.0, 317.0, 291.0, 317.0 ],
+					"order" : 1,
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-56", 0 ],
+					"midpoints" : [ 177.0, 317.0, 398.0, 317.0 ],
+					"order" : 0,
+					"source" : [ "obj-33", 0 ]
 				}
 
 			}
@@ -2535,6 +2577,14 @@
 					"destination" : [ "obj-70", 0 ],
 					"midpoints" : [ 626.5, 163.0, 145.5, 163.0 ],
 					"source" : [ "obj-63", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"midpoints" : [ 652.0, 176.219695999999999, 177.0, 176.219695999999999 ],
+					"source" : [ "obj-68", 2 ]
 				}
 
 			}
@@ -2941,14 +2991,14 @@
 		"dependency_cache" : [ 			{
 				"name" : "hirt.dial.linear.only.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}

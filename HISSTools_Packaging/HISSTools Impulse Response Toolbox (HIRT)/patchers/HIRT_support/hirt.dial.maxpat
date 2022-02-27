@@ -110,6 +110,18 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-21",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 304.0, 535.0, 54.0, 22.0 ],
+									"text" : "deferlow"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-18",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -364,19 +376,19 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"color" : [ 0.425, 0.425, 0.425, 0.9 ],
-									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 404.0, 306.0, 404.0, 306.0 ],
-									"order" : 0,
+									"destination" : [ "obj-21", 0 ],
+									"midpoints" : [ 404.0, 310.25, 313.5, 310.25 ],
+									"order" : 1,
 									"source" : [ "obj-10", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-8", 0 ],
-									"midpoints" : [ 404.0, 312.75, 313.5, 312.75 ],
-									"order" : 1,
+									"color" : [ 0.425, 0.425, 0.425, 0.9 ],
+									"destination" : [ "obj-6", 0 ],
+									"midpoints" : [ 404.0, 306.0, 404.0, 306.0 ],
+									"order" : 0,
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -469,6 +481,13 @@
 									"destination" : [ "obj-13", 1 ],
 									"midpoints" : [ 298.5, 304.25, 298.5, 304.25 ],
 									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 0 ],
+									"source" : [ "obj-21", 0 ]
 								}
 
 							}
@@ -659,7 +678,7 @@
 					"fontface" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "bordercolor", "activebgcolor", "hint", "jspainterfile", "activetricolor", "activeslidercolor", "fontsize", "tricolor", "activetricolor2", "tricolor2", "appearance", "focusbordercolor", "fontface" ],
+					"frozen_box_attributes" : [ "focusbordercolor", "tricolor", "tricolor2", "activetricolor", "activeslidercolor", "fontface", "bordercolor", "activetricolor2", "hint", "activebgcolor", "appearance", "fontsize", "jspainterfile" ],
 					"hint" : "",
 					"id" : "obj-70",
 					"jspainterfile" : "",
@@ -669,7 +688,7 @@
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
 					"parameter_mappable" : 0,
-					"patching_rect" : [ 135.0, 437.5, 73.0, 17.0 ],
+					"patching_rect" : [ 135.0, 437.5, 80.0, 17.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 42.5, 70.0, 17.0 ],
 					"saved_attribute_attributes" : 					{
@@ -710,7 +729,6 @@
 						}
 ,
 						"valueof" : 						{
-							"parameter_defer" : 1,
 							"parameter_initial" : [ 0.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "hirt.val",
@@ -3190,24 +3208,10 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-60", 0 ],
-													"source" : [ "obj-61", 1 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"color" : [ 0.986246, 0.007121, 0.027434, 1.0 ],
 													"destination" : [ "obj-138", 0 ],
 													"midpoints" : [ 58.0, 324.0, 58.0, 324.0 ],
 													"source" : [ "obj-62", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-59", 0 ],
-													"source" : [ "obj-62", 1 ]
 												}
 
 											}
@@ -4339,7 +4343,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "usetextovercolor", "hint", "mode", "jspainterfile", "parameter_enable", "fontsize", "background", "presentation", "bgcolor", "usebgoncolor", "ignoreclick", "style", "fontlink", "legacytextcolor", "textjustification", "underline", "rounded", "fontface" ],
+					"frozen_box_attributes" : [ "ignoreclick", "presentation", "bgcolor", "style", "fontlink", "textjustification", "underline", "usebgoncolor", "rounded", "fontface", "mode", "hint", "legacytextcolor", "parameter_enable", "fontsize", "background", "jspainterfile", "usetextovercolor" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -4378,7 +4382,7 @@
 					"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
 					"degrees" : 315,
 					"floatoutput" : 1,
-					"frozen_box_attributes" : [ "jspainterfile", "parameter_enable", "thickness", "degrees", "needlecolor", "bgcolor", "outlinecolor", "floatoutput" ],
+					"frozen_box_attributes" : [ "floatoutput", "bgcolor", "needlecolor", "thickness", "outlinecolor", "parameter_enable", "degrees", "jspainterfile" ],
 					"id" : "obj-86",
 					"jspainterfile" : "",
 					"maxclass" : "dial",
@@ -15838,7 +15842,7 @@
 					"bgcolor" : [ 0.65, 0.65, 0.67, 1.0 ],
 					"degrees" : 315,
 					"floatoutput" : 1,
-					"frozen_box_attributes" : [ "hint", "annotation", "jspainterfile", "parameter_enable", "hidden", "thickness", "degrees", "presentation", "ignoreclick", "style", "varname", "floatoutput" ],
+					"frozen_box_attributes" : [ "ignoreclick", "presentation", "floatoutput", "style", "varname", "thickness", "hint", "hidden", "parameter_enable", "annotation", "degrees", "jspainterfile" ],
 					"hidden" : 0,
 					"hint" : "",
 					"id" : "obj-12",

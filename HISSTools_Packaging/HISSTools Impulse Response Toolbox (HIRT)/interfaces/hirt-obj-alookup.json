@@ -597,7 +597,7 @@
 ,
 		"Shape Active" : 		{
 			"name" : "Shape Active",
-			"annotation" : "Toggles the IR Shaping on or off. If off, the IR is returned to the unedited state, apart from the Decay and Size parameters which are constant."
+			"annotation" : "Toggles the IR Shaping on or off. If off, the IR is returned to the unedited state, but values are returned to the edit when switched on again."
 		}
 ,
 		"Shape Decay" : 		{
