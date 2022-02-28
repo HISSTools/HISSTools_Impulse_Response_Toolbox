@@ -7,7 +7,7 @@ EXTERNAL_PATH="$PACKAGE_PATH/externals/HIRT_externals_OSX"
 REVERB_EXT_PATH="$PACKAGE_PATH/patchers/HIRT_reverb/HIRT_reverb_support"
 NOTARIZE="$DIR/package_notarize_external.sh"
 
-# Notarize main externals;
+# Notarize main externals
 
 "$NOTARIZE" "$EXTERNAL_PATH" bufconvolve~.mxo || exit 1
 "$NOTARIZE" "$EXTERNAL_PATH" bufresample~.mxo || exit 1
