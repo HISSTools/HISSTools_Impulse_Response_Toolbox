@@ -678,7 +678,7 @@
 					"fontface" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "focusbordercolor", "tricolor", "tricolor2", "activetricolor", "activeslidercolor", "fontface", "bordercolor", "activetricolor2", "hint", "activebgcolor", "appearance", "fontsize", "jspainterfile" ],
+					"frozen_box_attributes" : [ "activetricolor", "bordercolor", "activetricolor2", "activeslidercolor", "activebgcolor", "tricolor", "appearance", "fontface", "focusbordercolor", "hint", "jspainterfile", "tricolor2", "fontsize" ],
 					"hint" : "",
 					"id" : "obj-70",
 					"jspainterfile" : "",
@@ -3208,10 +3208,24 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-60", 0 ],
+													"source" : [ "obj-61", 1 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"color" : [ 0.986246, 0.007121, 0.027434, 1.0 ],
 													"destination" : [ "obj-138", 0 ],
 													"midpoints" : [ 58.0, 324.0, 58.0, 324.0 ],
 													"source" : [ "obj-62", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-59", 0 ],
+													"source" : [ "obj-62", 1 ]
 												}
 
 											}
@@ -4343,7 +4357,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "ignoreclick", "presentation", "bgcolor", "style", "fontlink", "textjustification", "underline", "usebgoncolor", "rounded", "fontface", "mode", "hint", "legacytextcolor", "parameter_enable", "fontsize", "background", "jspainterfile", "usetextovercolor" ],
+					"frozen_box_attributes" : [ "mode", "presentation", "fontlink", "bgcolor", "style", "usebgoncolor", "background", "underline", "ignoreclick", "rounded", "legacytextcolor", "fontface", "textjustification", "hint", "jspainterfile", "usetextovercolor", "parameter_enable", "fontsize" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -4382,7 +4396,7 @@
 					"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
 					"degrees" : 315,
 					"floatoutput" : 1,
-					"frozen_box_attributes" : [ "floatoutput", "bgcolor", "needlecolor", "thickness", "outlinecolor", "parameter_enable", "degrees", "jspainterfile" ],
+					"frozen_box_attributes" : [ "needlecolor", "outlinecolor", "bgcolor", "floatoutput", "degrees", "jspainterfile", "parameter_enable", "thickness" ],
 					"id" : "obj-86",
 					"jspainterfile" : "",
 					"maxclass" : "dial",
@@ -15842,7 +15856,7 @@
 					"bgcolor" : [ 0.65, 0.65, 0.67, 1.0 ],
 					"degrees" : 315,
 					"floatoutput" : 1,
-					"frozen_box_attributes" : [ "ignoreclick", "presentation", "floatoutput", "style", "varname", "thickness", "hint", "hidden", "parameter_enable", "annotation", "degrees", "jspainterfile" ],
+					"frozen_box_attributes" : [ "presentation", "hidden", "style", "floatoutput", "ignoreclick", "varname", "degrees", "hint", "jspainterfile", "parameter_enable", "annotation", "thickness" ],
 					"hidden" : 0,
 					"hint" : "",
 					"id" : "obj-12",
