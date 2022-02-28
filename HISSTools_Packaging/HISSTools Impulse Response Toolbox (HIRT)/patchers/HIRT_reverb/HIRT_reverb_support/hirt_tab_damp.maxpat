@@ -4779,6 +4779,7 @@
 					"mousemode" : 0,
 					"numinlets" : 4,
 					"numoutlets" : 1,
+					"octavesmooth" : 0.15,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 913.0, 112.0, 264.0, 96.0 ],
 					"phaselabels" : 0,
@@ -4813,6 +4814,7 @@
 					"mousemode" : 0,
 					"numinlets" : 4,
 					"numoutlets" : 1,
+					"octavesmooth" : 0.15,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 647.0, 112.0, 264.0, 96.0 ],
 					"phaselabels" : 0,
@@ -5875,21 +5877,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "hirt.dial.linear.only.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_interface_damp.js",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../../jsui",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
