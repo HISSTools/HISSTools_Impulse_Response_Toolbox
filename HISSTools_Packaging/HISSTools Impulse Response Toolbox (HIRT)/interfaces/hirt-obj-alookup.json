@@ -2,7 +2,7 @@
 	"hirt.convolutionreverb~" : 	{
 		"Damp Active" : 		{
 			"name" : "Damp Active",
-			"annotation" : "Toggles the IR Dampening on or off. Damp applies a 3 band dampening process to the IR over time. This happens offline."
+			"annotation" : "Toggles the IR Dampening on or off. Damp applies a 3 band dampening process to the IR over time. This happens offline. If off, the IR is returned to the unedited state, but values are returned to the edit when switched on again."
 		}
 ,
 		"Damp Decay High" : 		{
