@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 75.0, 798.0, 560.0 ],
+		"rect" : [ 100.0, 60.0, 798.0, 560.0 ],
 		"openrect" : [ 0.0, 0.0, 798.0, 560.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 1,
@@ -6363,7 +6363,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "text", "textjustification", "underline", "rounded", "fontface", "mode", "hint", "bgcolor", "textovercolor", "fontsize", "background", "texton", "jspainterfile", "fontlink", "ignoreclick", "presentation", "style" ],
+					"frozen_box_attributes" : [ "hint", "text", "fontsize", "fontlink", "textovercolor", "mode", "presentation", "texton", "style", "textjustification", "background", "jspainterfile", "underline", "fontface", "ignoreclick", "rounded", "bgcolor" ],
 					"hint" : "",
 					"id" : "obj-87",
 					"ignoreclick" : 0,
@@ -6385,7 +6385,7 @@
 					"textcolor" : [ 1.0, 1.0, 1.0, 0.66 ],
 					"textjustification" : 2,
 					"texton" : "Float",
-					"textoncolor" : [ 1.0, 1.0, 1.0, 0.66 ],
+					"textoncolor" : [ 0.95, 0.75, 0.34, 1.0 ],
 					"textovercolor" : [ 0.38, 0.38, 0.4, 1.0 ],
 					"tosymbol" : 0,
 					"truncate" : 0,
@@ -6411,7 +6411,7 @@
 					"elementcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
 					"fontname" : "Lato Regular",
 					"fontsize" : 10.0,
-					"frozen_box_attributes" : [ "autopopulate", "items", "parameter_enable", "arrow", "menumode", "allowdrag" ],
+					"frozen_box_attributes" : [ "parameter_enable", "autopopulate", "arrow", "menumode", "allowdrag", "items" ],
 					"id" : "obj-64",
 					"items" : [ 80, "%", ",", 90, "%", ",", 100, "%", ",", 110, "%", ",", 120, "%", ",", 140, "%", ",", 160, "%", ",", 180, "%", ",", 200, "%", ",", "<separator>", ",", "Store", "Current", "as", "Default" ],
 					"maxclass" : "umenu",
@@ -7546,7 +7546,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "textjustification", "underline", "rounded", "fontface", "mode", "hint", "bgcolor", "presentation_rect", "parameter_enable", "fontsize", "background", "jspainterfile", "fontlink", "ignoreclick", "presentation", "style" ],
+					"frozen_box_attributes" : [ "hint", "presentation_rect", "parameter_enable", "fontsize", "fontlink", "mode", "presentation", "style", "textjustification", "background", "jspainterfile", "underline", "fontface", "ignoreclick", "rounded", "bgcolor" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -7590,7 +7590,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "text", "textjustification", "underline", "rounded", "fontface", "mode", "hint", "bgcolor", "textovercolor", "fontsize", "background", "texton", "jspainterfile", "fontlink", "ignoreclick", "presentation", "style" ],
+					"frozen_box_attributes" : [ "hint", "text", "fontsize", "fontlink", "textovercolor", "mode", "presentation", "texton", "style", "textjustification", "background", "jspainterfile", "underline", "fontface", "ignoreclick", "rounded", "bgcolor" ],
 					"hint" : "",
 					"id" : "obj-45",
 					"ignoreclick" : 0,
@@ -16049,53 +16049,53 @@
 , 			{
 				"box" : 				{
 					"alias" : 					{
-						"Bypass State" : "bypass",
-						"Offline::Damp::Damp Decay High::Decay 3" : "dampdecay3",
-						"Output::Output Predelay::Predelay" : "predelay",
-						"Realtime::Modulation::Type" : "modtype",
-						"EQ::EQ Gain High::Gain 3" : "eqgain3",
-						"Realtime::Position::Position Depth::Depth" : "depth",
-						"Output::Output Width::Width" : "width",
-						"Offline::Damp::Damp Slope Low::Slope 1" : "dampslope1",
-						"Realtime::Modulation::Modulation Amount::Amount" : "amount",
-						"Offline::Damp::Damp Decay Bell::Decay 2" : "dampdecay2",
-						"EQ::EQ Slope Low::Slope 1" : "eqslope1",
-						"EQ::EQ Routing" : "eq",
-						"Offline::Shape::Shape Decay::Decay" : "decay",
-						"EQ::EQ Gain Bell::Gain 2" : "eqgain2",
+						"Modulation Active" : "modulation",
+						"Offline::Shape::Length Mode" : "lengthmode",
+						"Realtime::Position::Position Pan::Pan" : "pan",
+						"Offline::Damp::Damp Decay Low::Decay 1" : "dampdecay1",
 						"Output::Output DryWet::Dry/Wet" : "drywet",
-						"Output::Output Cascade::Cascade" : "cascade",
-						"Offline::Damp::Damp Freq Low::Freq 1" : "dampfreq1",
+						"Position Active" : "position",
+						"EQ::EQ Gain Bell::Gain 2" : "eqgain2",
+						"Skin State" : "skin",
 						"Offline::Damp::Damp Slope High::Slope 3" : "dampslope3",
-						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
-						"Offline::Shape::Direct Mode" : "direct",
+						"Output::Output Width::Width" : "width",
+						"Offline::Shape::Shape Length Time::Length" : "lengthtime",
+						"Offline::Shape::Reverse" : "reverse",
 						"Realtime::Modulation::Widen" : "modwidth",
 						"Shape Active" : "shape",
-						"EQ::EQ Slope High::Slope 3" : "eqslope3",
-						"Offline::Shape::Shape Early::Early" : "early",
-						"Offline::Shape::Shape Fade In::Fade In" : "fadein",
-						"Skin State" : "skin",
-						"Position Active" : "position",
-						"Offline::Shape::Shape Length Percent::Length" : "lengthpercent",
-						"Damp Active" : "damp",
-						"Offline::Shape::Length Mode" : "lengthmode",
-						"Offline::Damp::Damp Freq High::Freq 3" : "dampfreq3",
-						"Realtime::Position::Position Pan::Pan" : "pan",
-						"Modulation Active" : "modulation",
-						"Offline::Damp::Damp Q Bell::Q 2" : "dampq2",
-						"EQ::EQ Freq High::Freq 3" : "eqfreq3",
-						"Offline::Shape::Shape Size::Size" : "size",
 						"EQ::EQ Q Bell::Q 2" : "eqq2",
-						"Offline::Shape::Reverse" : "reverse",
-						"Output::Output Gain::Gain" : "gain",
-						"Offline::Damp::Damp Decay Low::Decay 1" : "dampdecay1",
+						"EQ::EQ Slope Low::Slope 1" : "eqslope1",
+						"EQ::EQ Slope High::Slope 3" : "eqslope3",
 						"Offline::Damp::Damp Freq Bell::Freq 2" : "dampfreq2",
-						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
+						"Realtime::Modulation::Modulation Rate::Rate" : "rate",
+						"Offline::Shape::Direct Mode" : "direct",
 						"IR::IR Mode" : "irmode",
-						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
+						"Offline::Shape::Shape Early::Early" : "early",
+						"Output::Output Predelay::Predelay" : "predelay",
+						"Damp Active" : "damp",
+						"Offline::Shape::Shape Fade In::Fade In" : "fadein",
+						"EQ::EQ Gain High::Gain 3" : "eqgain3",
+						"Bypass State" : "bypass",
+						"EQ::EQ Freq High::Freq 3" : "eqfreq3",
+						"Offline::Shape::Shape Length Percent::Length" : "lengthpercent",
+						"Offline::Damp::Damp Freq Low::Freq 1" : "dampfreq1",
+						"Realtime::Modulation::Modulation Amount::Amount" : "amount",
+						"Offline::Damp::Damp Freq High::Freq 3" : "dampfreq3",
+						"EQ::EQ Routing" : "eq",
+						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
+						"Output::Output Cascade::Cascade" : "cascade",
+						"Offline::Damp::Damp Slope Low::Slope 1" : "dampslope1",
+						"Offline::Shape::Shape Size::Size" : "size",
+						"Offline::Damp::Damp Decay High::Decay 3" : "dampdecay3",
+						"Realtime::Position::Position Depth::Depth" : "depth",
 						"Offline::Shape::Shape Fade Out::Fade Out" : "fadeout",
-						"Offline::Shape::Shape Length Time::Length" : "lengthtime",
-						"Realtime::Modulation::Modulation Rate::Rate" : "rate"
+						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
+						"Output::Output Gain::Gain" : "gain",
+						"Offline::Shape::Shape Decay::Decay" : "decay",
+						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
+						"Offline::Damp::Damp Decay Bell::Decay 2" : "dampdecay2",
+						"Offline::Damp::Damp Q Bell::Q 2" : "dampq2",
+						"Realtime::Modulation::Type" : "modtype"
 					}
 ,
 					"color" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
@@ -16129,15 +16129,15 @@
 						"Offline::Shape::Shape Fade Out::Fade Out" : 10,
 						"Offline::Shape::Shape Fade In::Fade In" : 11,
 						"Offline::Shape::Shape Length Time::Length" : 8,
-						"Offline::Damp::Damp Freq Low::Freq 1" : 16,
-						"Offline::Damp::Damp Decay Low::Decay 1" : 16,
-						"Offline::Damp::Damp Slope Low::Slope 1" : 16,
 						"Offline::Damp::Damp Freq High::Freq 3" : 15,
 						"Offline::Damp::Damp Decay High::Decay 3" : 15,
 						"Offline::Damp::Damp Slope High::Slope 3" : 15,
 						"Offline::Damp::Damp Freq Bell::Freq 2" : 14,
 						"Offline::Damp::Damp Decay Bell::Decay 2" : 14,
 						"Offline::Damp::Damp Q Bell::Q 2" : 14,
+						"Offline::Damp::Damp Freq Low::Freq 1" : 16,
+						"Offline::Damp::Damp Decay Low::Decay 1" : 16,
+						"Offline::Damp::Damp Slope Low::Slope 1" : 16,
 						"Realtime::Position::Position Pan::Pan" : 22,
 						"Realtime::Position::Position Depth::Depth" : 21,
 						"Realtime::Modulation::Type" : 23,
@@ -16146,14 +16146,14 @@
 						"Realtime::Modulation::Modulation Amount::Amount" : 26,
 						"EQ::EQ Routing" : 19,
 						"EQ::EQ Freq High::Freq 3" : 29,
-						"EQ::EQ Gain High::Gain 3" : 29,
-						"EQ::EQ Slope High::Slope 3" : 29,
-						"EQ::EQ Freq Bell::Freq 2" : 27,
-						"EQ::EQ Gain Bell::Gain 2" : 27,
+						"EQ::EQ Gain High::Gain 3" : 30,
+						"EQ::EQ Slope High::Slope 3" : 27,
+						"EQ::EQ Freq Bell::Freq 2" : 28,
+						"EQ::EQ Gain Bell::Gain 2" : 29,
 						"EQ::EQ Q Bell::Q 2" : 27,
 						"EQ::EQ Freq Low::Freq 1" : 28,
-						"EQ::EQ Gain Low::Gain 1" : 28,
-						"EQ::EQ Slope Low::Slope 1" : 28,
+						"EQ::EQ Gain Low::Gain 1" : 29,
+						"EQ::EQ Slope Low::Slope 1" : 27,
 						"IR::IR Mode" : 1,
 						"Output::Output Cascade::Cascade" : 31,
 						"Output::Output Width::Width" : 33,
@@ -16309,8 +16309,8 @@
 					"id" : "obj-44",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -16322,7 +16322,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 25.0, 70.0, 810.0, 420.0 ],
+						"rect" : [ 25.0, 70.0, 945.0, 466.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -16352,13 +16352,49 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 754.0, 283.0, 117.0, 22.0 ],
+									"text" : "prepend textoncolor"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-11",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 754.0, 190.0, 131.0, 22.0 ],
+									"text" : "zl.reg 0.95 0.75 0.34 1."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-14",
+									"index" : 5,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 754.0, 367.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"comment" : "",
 									"id" : "obj-8",
 									"index" : 4,
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 500.0, 352.0, 30.0, 30.0 ]
+									"patching_rect" : [ 500.0, 367.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -16478,7 +16514,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 242.0, 352.0, 30.0, 30.0 ]
+									"patching_rect" : [ 242.0, 367.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -16576,7 +16612,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 328.0, 352.0, 30.0, 30.0 ]
+									"patching_rect" : [ 328.0, 367.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -16588,7 +16624,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 414.0, 352.0, 30.0, 30.0 ]
+									"patching_rect" : [ 414.0, 367.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -16613,6 +16649,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-11", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-16", 0 ],
 									"midpoints" : [ 209.5, 227.5, 209.5, 227.5 ],
 									"source" : [ "obj-12", 0 ]
@@ -16630,16 +16673,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-16", 0 ],
-									"midpoints" : [ 359.5, 227.5, 209.5, 227.5 ],
-									"order" : 2,
-									"source" : [ "obj-15", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-34", 0 ],
-									"midpoints" : [ 359.5, 227.5, 59.5, 227.5 ],
+									"midpoints" : [ 359.5, 232.5, 209.5, 232.5 ],
 									"order" : 3,
 									"source" : [ "obj-15", 0 ]
 								}
@@ -16647,9 +16681,18 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-34", 0 ],
+									"midpoints" : [ 359.5, 232.5, 59.5, 232.5 ],
+									"order" : 4,
+									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
-									"midpoints" : [ 359.5, 227.0, 509.5, 227.0 ],
-									"order" : 1,
+									"midpoints" : [ 359.5, 232.0, 509.5, 232.0 ],
+									"order" : 2,
 									"source" : [ "obj-15", 0 ]
 								}
 
@@ -16657,7 +16700,16 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
-									"midpoints" : [ 359.5, 227.0, 629.5, 227.0 ],
+									"midpoints" : [ 359.5, 232.0, 629.5, 232.0 ],
+									"order" : 1,
+									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"midpoints" : [ 359.5, 232.0, 763.5, 232.0 ],
 									"order" : 0,
 									"source" : [ "obj-15", 0 ]
 								}
@@ -16666,7 +16718,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
-									"midpoints" : [ 209.5, 333.5, 423.5, 333.5 ],
+									"midpoints" : [ 209.5, 348.5, 423.5, 348.5 ],
 									"source" : [ "obj-16", 0 ]
 								}
 
@@ -16723,7 +16775,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-42", 0 ],
-									"midpoints" : [ 59.5, 339.5, 337.5, 339.5 ],
+									"midpoints" : [ 59.5, 354.5, 337.5, 354.5 ],
 									"source" : [ "obj-34", 0 ]
 								}
 
@@ -16732,6 +16784,15 @@
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
 									"midpoints" : [ 59.5, 181.0, 509.5, 181.0 ],
+									"order" : 1,
+									"source" : [ "obj-37", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-11", 0 ],
+									"midpoints" : [ 59.5, 181.0, 763.5, 181.0 ],
 									"order" : 0,
 									"source" : [ "obj-37", 0 ]
 								}
@@ -16741,7 +16802,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
 									"midpoints" : [ 59.5, 181.0, 209.5, 181.0 ],
-									"order" : 1,
+									"order" : 2,
 									"source" : [ "obj-37", 0 ]
 								}
 
@@ -16750,7 +16811,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"midpoints" : [ 59.5, 181.0, 59.5, 181.0 ],
-									"order" : 2,
+									"order" : 3,
 									"source" : [ "obj-37", 0 ]
 								}
 
@@ -16783,7 +16844,16 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"midpoints" : [ 509.5, 320.5, 251.5, 320.5 ],
-									"order" : 1,
+									"order" : 2,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"midpoints" : [ 509.5, 320.5, 763.5, 320.5 ],
+									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -16792,7 +16862,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
 									"midpoints" : [ 509.5, 320.5, 509.5, 320.5 ],
-									"order" : 0,
+									"order" : 1,
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -16808,7 +16878,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
-									"midpoints" : [ 629.5, 320.5, 251.5, 320.5 ],
+									"midpoints" : [ 629.5, 335.5, 251.5, 335.5 ],
 									"order" : 1,
 									"source" : [ "obj-7", 0 ]
 								}
@@ -16817,14 +16887,76 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
-									"midpoints" : [ 629.5, 320.5, 509.5, 320.5 ],
+									"midpoints" : [ 629.5, 335.5, 509.5, 335.5 ],
 									"order" : 0,
 									"source" : [ "obj-7", 0 ]
 								}
 
 							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"source" : [ "obj-9", 0 ]
+								}
+
+							}
  ],
 						"styles" : [ 							{
+								"name" : "AudioStatus_Menu",
+								"default" : 								{
+									"bgfillcolor" : 									{
+										"type" : "color",
+										"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
+										"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
+										"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+										"angle" : 270.0,
+										"proportion" : 0.39,
+										"autogradient" : 0
+									}
+
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "DP.M4L",
+								"default" : 								{
+									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "DP.M4L-New",
+								"default" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ],
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "DP.M4L.Test1",
+								"default" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ],
+									"color" : [ 0.345098, 0.513725, 0.572549, 1.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "Daan_small10",
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
 								"name" : "max6box",
 								"default" : 								{
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
@@ -16867,6 +16999,43 @@
 								"name" : "max6outlet",
 								"default" : 								{
 									"color" : [ 0.0, 0.454902, 0.498039, 1.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "newobjBlue-1",
+								"default" : 								{
+									"accentcolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "newobjGreen-1",
+								"default" : 								{
+									"accentcolor" : [ 0.0, 0.533333, 0.168627, 1.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "newobjYellow-1",
+								"default" : 								{
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+									"fontsize" : [ 12.059008 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "numberGold-1",
+								"default" : 								{
+									"accentcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -25196,7 +25365,7 @@
 					"color" : [ 0.74902, 0.74902, 0.74902, 0.0 ],
 					"destination" : [ "obj-108", 1 ],
 					"hidden" : 1,
-					"order" : 2,
+					"order" : 1,
 					"source" : [ "obj-44", 3 ]
 				}
 
@@ -25265,8 +25434,7 @@
 					"color" : [ 0.65, 0.65, 0.65, 0.0 ],
 					"destination" : [ "obj-87", 0 ],
 					"hidden" : 1,
-					"order" : 1,
-					"source" : [ "obj-44", 3 ]
+					"source" : [ "obj-44", 4 ]
 				}
 
 			}
@@ -25597,6 +25765,7 @@
 				"obj-1::obj-1::obj-12::obj-70" : 				{
 					"parameter_exponent" : 2.5,
 					"parameter_initial" : 15000.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[54]",
 					"parameter_modmode" : 0,
@@ -25608,6 +25777,7 @@
 				"obj-1::obj-1::obj-44::obj-70" : 				{
 					"parameter_exponent" : 2.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[53]",
 					"parameter_modmode" : 0,
@@ -25619,6 +25789,7 @@
 				"obj-1::obj-1::obj-45::obj-70" : 				{
 					"parameter_exponent" : 2.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[52]",
 					"parameter_modmode" : 0,
@@ -25630,6 +25801,7 @@
 				"obj-1::obj-1::obj-46::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[51]",
 					"parameter_modmode" : 0,
@@ -25641,6 +25813,7 @@
 				"obj-1::obj-1::obj-47::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[50]",
 					"parameter_modmode" : 0,
@@ -25652,6 +25825,7 @@
 				"obj-1::obj-1::obj-48::obj-70" : 				{
 					"parameter_exponent" : 1.58,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[49]",
 					"parameter_modmode" : 0,
@@ -25663,6 +25837,7 @@
 				"obj-1::obj-1::obj-97::obj-70" : 				{
 					"parameter_exponent" : 1.01,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[21]",
 					"parameter_modmode" : 0,
@@ -25674,6 +25849,7 @@
 				"obj-1::obj-2::obj-100::obj-70" : 				{
 					"parameter_exponent" : 4.0,
 					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[37]",
 					"parameter_modmode" : 0,
@@ -25685,6 +25861,7 @@
 				"obj-1::obj-2::obj-101::obj-70" : 				{
 					"parameter_exponent" : 4.0,
 					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[34]",
 					"parameter_modmode" : 0,
@@ -25696,6 +25873,7 @@
 				"obj-1::obj-2::obj-36::obj-70" : 				{
 					"parameter_exponent" : 1.189901,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[32]",
 					"parameter_modmode" : 0,
@@ -25707,6 +25885,7 @@
 				"obj-1::obj-2::obj-79::obj-70" : 				{
 					"parameter_exponent" : 1.189901,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[38]",
 					"parameter_modmode" : 0,
@@ -25718,6 +25897,7 @@
 				"obj-1::obj-2::obj-81::obj-70" : 				{
 					"parameter_exponent" : 1.189901,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[35]",
 					"parameter_modmode" : 0,
@@ -25729,6 +25909,7 @@
 				"obj-1::obj-2::obj-88::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[33]",
 					"parameter_modmode" : 0,
@@ -25740,6 +25921,7 @@
 				"obj-1::obj-2::obj-92::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[39]",
 					"parameter_modmode" : 0,
@@ -25751,6 +25933,7 @@
 				"obj-1::obj-2::obj-96::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[36]",
 					"parameter_modmode" : 0,
@@ -25762,6 +25945,7 @@
 				"obj-1::obj-2::obj-99::obj-70" : 				{
 					"parameter_exponent" : 4.0,
 					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[24]",
 					"parameter_modmode" : 0,
@@ -25773,6 +25957,7 @@
 				"obj-24::obj-1::obj-28::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[58]",
 					"parameter_modmode" : 0,
@@ -25784,6 +25969,7 @@
 				"obj-24::obj-1::obj-29::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[57]",
 					"parameter_modmode" : 0,
@@ -25795,6 +25981,7 @@
 				"obj-24::obj-2::obj-29::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[19]",
 					"parameter_modmode" : 0,
@@ -25806,6 +25993,7 @@
 				"obj-24::obj-2::obj-8::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[59]",
 					"parameter_modmode" : 0,
@@ -25817,6 +26005,7 @@
 				"obj-31::obj-17::obj-70" : 				{
 					"parameter_exponent" : 3.0,
 					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[67]",
 					"parameter_modmode" : 0,
@@ -25828,6 +26017,7 @@
 				"obj-31::obj-19::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[66]",
 					"parameter_modmode" : 0,
@@ -25840,6 +26030,7 @@
 				"obj-31::obj-22::obj-70" : 				{
 					"parameter_exponent" : 4.0,
 					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[65]",
 					"parameter_modmode" : 0,
@@ -25851,6 +26042,7 @@
 				"obj-31::obj-50::obj-70" : 				{
 					"parameter_exponent" : 3.0,
 					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[64]",
 					"parameter_modmode" : 0,
@@ -25862,6 +26054,7 @@
 				"obj-31::obj-51::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[63]",
 					"parameter_modmode" : 0,
@@ -25874,6 +26067,7 @@
 				"obj-31::obj-53::obj-70" : 				{
 					"parameter_exponent" : 4.0,
 					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[62]",
 					"parameter_modmode" : 0,
@@ -25885,6 +26079,7 @@
 				"obj-31::obj-54::obj-70" : 				{
 					"parameter_exponent" : 3.0,
 					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[61]",
 					"parameter_modmode" : 0,
@@ -25896,6 +26091,7 @@
 				"obj-31::obj-55::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[60]",
 					"parameter_modmode" : 0,
@@ -25908,6 +26104,7 @@
 				"obj-31::obj-56::obj-70" : 				{
 					"parameter_exponent" : 4.0,
 					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[20]",
 					"parameter_modmode" : 0,
@@ -25935,6 +26132,7 @@
 				"obj-3::obj-59::obj-70" : 				{
 					"parameter_exponent" : 2.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
 					"parameter_range" : [ 0.0, 200.0 ],
@@ -25945,6 +26143,7 @@
 				"obj-3::obj-62::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[3]",
 					"parameter_modmode" : 0,
@@ -25956,6 +26155,7 @@
 				"obj-3::obj-63::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[2]",
 					"parameter_modmode" : 0,
@@ -25967,6 +26167,7 @@
 				"obj-3::obj-64::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[23]",
 					"parameter_modmode" : 0,
@@ -25979,6 +26180,7 @@
 				"obj-3::obj-65::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[1]",
 					"parameter_modmode" : 0,
@@ -26023,8 +26225,8 @@
 			}
 , 			{
 				"name" : "hirt.convrvrb.realtime~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -26072,8 +26274,8 @@
 			}
 , 			{
 				"name" : "hirt_conv_rvrb_zoom.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
@@ -26086,8 +26288,8 @@
 			}
 , 			{
 				"name" : "hirt_convrvrb_clientlist_alias.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
@@ -26114,8 +26316,8 @@
 			}
 , 			{
 				"name" : "hirt_cr_info_view.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -26128,8 +26330,8 @@
 			}
 , 			{
 				"name" : "hirt_eq.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -26149,8 +26351,8 @@
 			}
 , 			{
 				"name" : "hirt_file_ir_display.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -26191,15 +26393,15 @@
 			}
 , 			{
 				"name" : "hirt_gain_and_display.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_gain_params.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -26233,8 +26435,8 @@
 			}
 , 			{
 				"name" : "hirt_ir.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -26254,85 +26456,85 @@
 			}
 , 			{
 				"name" : "hirt_output.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_partition_copy_buffers.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_partition_early.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_partition_fix_length.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_partition_late.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_size_resample_feed.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_tab_damp.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_tab_modulation.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_tab_position.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_tab_shape.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_tabs_offline.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt_tabs_realtime.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
+				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../../../../../../SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}

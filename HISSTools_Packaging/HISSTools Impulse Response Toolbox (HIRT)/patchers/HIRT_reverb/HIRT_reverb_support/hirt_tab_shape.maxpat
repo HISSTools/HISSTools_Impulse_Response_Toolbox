@@ -2558,7 +2558,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 278.5, 541.5, 316.5, 541.5 ],
+					"midpoints" : [ 278.5, 542.5, 316.5, 542.5 ],
 					"source" : [ "obj-45", 1 ]
 				}
 
@@ -3109,6 +3109,7 @@
 				"obj-12::obj-70" : 				{
 					"parameter_exponent" : 2.5,
 					"parameter_initial" : 15000.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[2]",
 					"parameter_modmode" : 0,
@@ -3120,6 +3121,7 @@
 				"obj-44::obj-70" : 				{
 					"parameter_exponent" : 2.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[3]",
 					"parameter_modmode" : 0,
@@ -3131,6 +3133,7 @@
 				"obj-45::obj-70" : 				{
 					"parameter_exponent" : 2.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[4]",
 					"parameter_modmode" : 0,
@@ -3142,6 +3145,7 @@
 				"obj-46::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[5]",
 					"parameter_modmode" : 0,
@@ -3153,6 +3157,7 @@
 				"obj-47::obj-70" : 				{
 					"parameter_exponent" : 1.0,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[6]",
 					"parameter_modmode" : 0,
@@ -3164,6 +3169,7 @@
 				"obj-48::obj-70" : 				{
 					"parameter_exponent" : 1.58,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_longname" : "hirt.val[1]",
 					"parameter_modmode" : 0,
@@ -3175,6 +3181,7 @@
 				"obj-97::obj-70" : 				{
 					"parameter_exponent" : 1.01,
 					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
 					"parameter_modmode" : 0,
 					"parameter_range" : [ 1.0, 200.0 ],

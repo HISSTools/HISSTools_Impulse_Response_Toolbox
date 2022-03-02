@@ -23,7 +23,7 @@ Bug Fixes
 spectrumdraw~: drawing issue with 'select' fixed
 Effect abstractions: fixed damping to morphfilter~ for case of very short IRs
 Effect abstractions: fixed @file attribute persistence in hirt.convolver~
-Effect abstractions: fixed inline documentation for issues introduced in changes to Max [hover] object
+Effect abstractions: fixed inline documentation for issues introduced in changes to Max [hover] object, and other minor UI issues
 
 -------
 

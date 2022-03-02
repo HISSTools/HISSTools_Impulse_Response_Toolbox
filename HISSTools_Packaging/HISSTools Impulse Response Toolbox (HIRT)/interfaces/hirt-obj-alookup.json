@@ -5,26 +5,6 @@
 			"annotation" : "Toggles the IR Dampening on or off. Damp applies a 3 band dampening process to the IR over time. This happens offline. If off, the IR is returned to the unedited state, but values are returned to the edit when switched on again."
 		}
 ,
-		"Damp Decay High" : 		{
-			"name" : "Damp Decay High",
-			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
-		}
-,
-		"Damp Decay Low" : 		{
-			"name" : "Damp Decay Low",
-			"annotation" : "Offline. Adjusts the amount of boost or attenuation of the Dampening. Negative gains sound more natural. Positive gains are used to increase the decay of certain frequencies for example to add sizzle or clarity in the highs."
-		}
-,
-		"Damp Freq High" : 		{
-			"name" : "Damp Freq High",
-			"annotation" : "Offline. Sets the center frequency of the High Frequency Dampening."
-		}
-,
-		"Damp Freq Low" : 		{
-			"name" : "Damp Freq Low",
-			"annotation" : "Offline. Sets the center frequency of the Low Frequency Dampening."
-		}
-,
 		"Damp Q Bell" : 		{
 			"name" : "Damp Q Bell",
 			"annotation" : "Offline. Adjusts the Bandwidth of the Peak Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
@@ -33,16 +13,6 @@
 		"Damp Reset" : 		{
 			"name" : "Reset",
 			"annotation" : "Reset Damp section to initial default state"
-		}
-,
-		"Damp Slope High" : 		{
-			"name" : "Damp Slope High",
-			"annotation" : "Offline. Adjusts the Slope of the High Frequency Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
-		}
-,
-		"Damp Slope Low" : 		{
-			"name" : "Damp Slope Low",
-			"annotation" : "Offline. Adjusts the Slope of the Low Frequency Dampening. Has a pronounced effect on the dampening. Moderate settings sound more natural. Extremely high values create filter sweeps."
 		}
 ,
 		"Damping Frequency Display" : 		{
@@ -235,39 +205,9 @@
 			"annotation" : "This area is a drop zone for samples to be used as the convolution Impulse. It is tied to the active edit toggle (A/B above). In Single mode it displays the active IR and in Split it displays both with the active as a brighter color. The display is updated with all offline processes."
 		}
 ,
-		"EQ Freq High" : 		{
-			"name" : "EQ Freq High",
-			"annotation" : "Sets the center frequency of the Highshelf filter."
-		}
-,
-		"EQ Freq Low" : 		{
-			"name" : "EQ Freq Low",
-			"annotation" : "Sets the center frequency of the Lowshelf filter."
-		}
-,
 		"EQ Frequency Display" : 		{
 			"name" : "EQ Frequency Display",
 			"annotation" : "Displays the EQ curve and wet output of the Reverb. Click + drag a marble in the display to adjust Frequency and Gain. Alt/Option + click + drag-vertical will adjust Q/Slope. Double-click a marble to reset the Gain. Cmnd/Ctrl + double-click to reset the Gain and Frequency. Alt/Option + Cmnd/Ctrl + double-click to reset the Gain and Frequency and Q/Slope."
-		}
-,
-		"EQ Gain Bell" : 		{
-			"name" : "EQ Gain Bell",
-			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
-		}
-,
-		"EQ Gain High" : 		{
-			"name" : "EQ Gain High",
-			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
-		}
-,
-		"EQ Gain Low" : 		{
-			"name" : "EQ Gain Low",
-			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
-		}
-,
-		"EQ Q Bell" : 		{
-			"name" : "EQ Q Bell",
-			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
 		}
 ,
 		"EQ Reset" : 		{
@@ -353,16 +293,6 @@
 		"Modulation Active" : 		{
 			"name" : "Modulation Active",
 			"annotation" : "Toggles the Modulation on or off. Off also CPU disables this section. Modulation adds subtle modulation so that the reverberation is not too static."
-		}
-,
-		"Modulation Amount" : 		{
-			"name" : "Amount",
-			"annotation" : "Adjusts the amount of modulation."
-		}
-,
-		"Modulation Rate" : 		{
-			"name" : "Rate",
-			"annotation" : "Adjusts the rate of the semi random modulation."
 		}
 ,
 		"Modulation Reset" : 		{
@@ -545,24 +475,9 @@
 			"annotation" : "Switch view between Offline Shape and Damp controls."
 		}
 ,
-		"Output DryWet" : 		{
-			"name" : "DryWet",
-			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
-		}
-,
-		"Output Predelay" : 		{
-			"name" : "Predelay",
-			"annotation" : "Predelay controls the delay time, in milliseconds, before the onset of the first early reflection. One's impression of the distance from any walls, e.g. the size of a room, depends partially on this delay. Typical values for natural sounds range from 1ms to 25ms, but try setting it to times close to beats for interesting results."
-		}
-,
 		"Position Active" : 		{
 			"name" : "Position Active",
 			"annotation" : "Toggles the Position adjustment on or off. Off also CPU disables this section. Position allows simulation of repositioning the source in a space."
-		}
-,
-		"Position Depth" : 		{
-			"name" : "Depth",
-			"annotation" : "Simulates repositioning of the source closer or further away in the room. This is essentially a balance between the Early and Late reflections with some delay compensation."
 		}
 ,
 		"Position Graphical Display" : 		{
@@ -582,7 +497,7 @@
 ,
 		"Reverse" : 		{
 			"name" : "Reverse",
-			"annotation" : "Offline. Reverses the IR."
+			"annotation" : "Offline. Reverses the IR. Also reverses the Cascade dial."
 		}
 ,
 		"Saturation Type" : 		{
@@ -600,44 +515,9 @@
 			"annotation" : "Toggles the IR Shaping on or off. If off, the IR is returned to the unedited state, but values are returned to the edit when switched on again."
 		}
 ,
-		"Shape Decay" : 		{
-			"name" : "Decay",
-			"annotation" : "Offline. Internally generates a new IR with an envelope to increase or decrease the decay time in %. This can be used for example to create a room out of a hall or to extend the length of the tail."
-		}
-,
-		"Shape Early" : 		{
-			"name" : "Early Amount",
-			"annotation" : "Offline. Sets the percentage of the early reflections to use. The default is 100% (no alteration). Smaller values trim the start of the IR accordingly."
-		}
-,
-		"Shape Fade In" : 		{
-			"name" : "Fade In",
-			"annotation" : "Offline. Applies a fade in of the specified length to the start of the IR."
-		}
-,
-		"Shape Fade Out" : 		{
-			"name" : "Fade Out",
-			"annotation" : "Offline. Applies a fade out of the specified length to the end of the IR. When shortening an IR using the length control, the fade out control can be used to adjust the abruptness of the effect."
-		}
-,
-		"Shape Length Percent" : 		{
-			"name" : "Length (Percent)",
-			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
-		}
-,
-		"Shape Length Time" : 		{
-			"name" : "Length (Time)",
-			"annotation" : "Offline. Sets the length of the IR to use. This can be used to shorten the IR to simulate a gated reverb effect, or for other special effects."
-		}
-,
 		"Shape Reset" : 		{
 			"name" : "Reset",
 			"annotation" : "Reset Shape section to initial default state"
-		}
-,
-		"Shape Size" : 		{
-			"name" : "Size",
-			"annotation" : "Offline. Internally generates a new IR by resampling. Larger sizes have a longer time and darker sound. Smaller sizes become brighter, shorter and more focused."
 		}
 ,
 		"Show Folder" : 		{
@@ -933,39 +813,9 @@
 			"annotation" : "This area is a drop zone for samples to be used as the convolver Impulse. It displays the active IR. The display is updated with the Decay & Size dials offline processes."
 		}
 ,
-		"EQ Freq High" : 		{
-			"name" : "EQ Freq High",
-			"annotation" : "Sets the center frequency of the Highshelf filter."
-		}
-,
-		"EQ Freq Low" : 		{
-			"name" : "EQ Freq Low",
-			"annotation" : "Sets the center frequency of the Lowshelf filter."
-		}
-,
 		"EQ Frequency Display" : 		{
 			"name" : "EQ Frequency Display",
 			"annotation" : "Displays the EQ curve and wet output of the Reverb. Click + drag a marble in the display to adjust Frequency and Gain. Alt/Option + click + drag-vertical will adjust Q/Slope. Double-click a marble to reset the Gain. Cmnd/Ctrl + double-click to reset the Gain and Frequency. Alt/Option + Cmnd/Ctrl + double-click to reset the Gain and Frequency and Q/Slope."
-		}
-,
-		"EQ Gain Bell" : 		{
-			"name" : "EQ Gain Bell",
-			"annotation" : "Adjusts the amount of boost or attenuation of the Bell Filter. Try subtle settings first."
-		}
-,
-		"EQ Gain High" : 		{
-			"name" : "EQ Gain High",
-			"annotation" : "Adjusts the amount of boost or attenuation of the Highshelf filter. Adjusting the Highshelf gain can make the reverb brighter or duller. Try subtle settings first."
-		}
-,
-		"EQ Gain Low" : 		{
-			"name" : "EQ Gain Low",
-			"annotation" : "Adjusts the amount of boost or attenuation of the Lowshelf filter. Rolling-off low frequencies can prevent muddy reverb. Try subtle settings first."
-		}
-,
-		"EQ Q Bell" : 		{
-			"name" : "EQ Q Bell",
-			"annotation" : "Adjusts the Bandwidth of the Bell filter. Moderate to lower settings sound more natural."
 		}
 ,
 		"EQ Reset" : 		{
@@ -1116,11 +966,6 @@
 		"Output DryWet" : 		{
 			"name" : "DryWet",
 			"annotation" : "Adjusts the balance between the input signal (dry) and the processed signal (wet). Set this to 100% when the Reverb is used like a return track insert."
-		}
-,
-		"Output Width" : 		{
-			"name" : "Width",
-			"annotation" : "Adjusts the stereo width of the Wet signal. With 0%, the wet signal is mono. With 100% the original image is preserved. Wet signals with wider images stand out in a mix more. Wet signals with a mono image blend into a mix more."
 		}
 ,
 		"RT Predelay" : 		{
