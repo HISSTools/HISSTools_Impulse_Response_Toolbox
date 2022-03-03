@@ -38,16 +38,15 @@
 			name = "All HIRT Externals";
 			productName = "All Correction Tools";
 		};
-		B89C242527C2B9450014781F /* Notarized Externals */ = {
+		B89C242527C2B9450014781F /* Notarized Package */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = B89C242927C2B9450014781F /* Build configuration list for PBXAggregateTarget "Notarized Externals" */;
+			buildConfigurationList = B89C242927C2B9450014781F /* Build configuration list for PBXAggregateTarget "Notarized Package" */;
 			buildPhases = (
 				B89C242C27C2B9560014781F /* ShellScript */,
 			);
 			dependencies = (
-				B89C242B27C2B9540014781F /* PBXTargetDependency */,
 			);
-			name = "Notarized Externals";
+			name = "Notarized Package";
 			productName = "Notarized Externals";
 		};
 /* End PBXAggregateTarget section */
@@ -214,13 +213,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = B882BBFC218B164300D6C5B1;
 			remoteInfo = "morphfilter~";
-		};
-		B89C242A27C2B9540014781F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B81AF9E7143A1BBA0014A77A;
-			remoteInfo = "All HIRT Externals";
 		};
 		B8C5D551144B0DC700910524 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1459,6 +1451,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					B89C242527C2B9450014781F = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -1506,7 +1499,7 @@
 				B8CF2DC815A6FDDA00EBDB95 /* multiconvolve~ */,
 				B871973D131FD3F300B1356A /* spectrumdraw~ */,
 				B81AF9E7143A1BBA0014A77A /* All HIRT Externals */,
-				B89C242527C2B9450014781F /* Notarized Externals */,
+				B89C242527C2B9450014781F /* Notarized Package */,
 			);
 		};
 /* End PBXProject section */
@@ -1828,7 +1821,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/HISSTools_Packaging/package_notarization.sh\"\n";
+			shellScript = "\"$SRCROOT/HISSTools_Packaging/package_build.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2097,11 +2090,6 @@
 			isa = PBXTargetDependency;
 			target = B882BBFC218B164300D6C5B1 /* morphfilter~ */;
 			targetProxy = B882BC2E218B167300D6C5B1 /* PBXContainerItemProxy */;
-		};
-		B89C242B27C2B9540014781F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B81AF9E7143A1BBA0014A77A /* All HIRT Externals */;
-			targetProxy = B89C242A27C2B9540014781F /* PBXContainerItemProxy */;
 		};
 		B8C5D552144B0DC700910524 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2451,18 +2439,21 @@
 		B89C242627C2B9450014781F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = "HISSTools.${TARGET_NAME:rfc1034identifier}";
 			};
 			name = Development;
 		};
 		B89C242727C2B9450014781F /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = "HISSTools.${TARGET_NAME:rfc1034identifier}";
 			};
 			name = Deployment;
 		};
 		B89C242827C2B9450014781F /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = "HISSTools.${TARGET_NAME:rfc1034identifier}";
 			};
 			name = Default;
 		};
@@ -3262,7 +3253,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		B89C242927C2B9450014781F /* Build configuration list for PBXAggregateTarget "Notarized Externals" */ = {
+		B89C242927C2B9450014781F /* Build configuration list for PBXAggregateTarget "Notarized Package" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B89C242627C2B9450014781F /* Development */,
