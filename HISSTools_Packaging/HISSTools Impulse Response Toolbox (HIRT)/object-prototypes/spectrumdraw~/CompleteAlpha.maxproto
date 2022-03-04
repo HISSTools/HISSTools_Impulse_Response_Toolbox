@@ -1,0 +1,33 @@
+{
+	"boxes" : [ 		{
+			"box" : 			{
+				"maxclass" : "spectrumdraw~",
+				"ampgrid" : 0,
+				"fontface" : 0,
+				"patching_rect" : [ 90.0, 247.0, 530.0, 175.0 ],
+				"fontsize" : 10.0,
+				"freqlabels" : 0,
+				"numinlets" : 4,
+				"id" : "obj-2",
+				"fontname" : "Arial Bold",
+				"textboxcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+				"numoutlets" : 1,
+				"phaselabels" : 0,
+				"freqgrid" : 0,
+				"amplabels" : 0,
+				"outlettype" : [ "" ],
+				"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ]
+			}
+
+		}
+ ],
+	"appversion" : 	{
+		"major" : 7,
+		"minor" : 3,
+		"revision" : 5,
+		"architecture" : "x64",
+		"modernui" : 1
+	}
+,
+	"preview_image" : [ 3533, "png", "IBkSG0fBZn....PCIgDQRA..BvK..H.uHX....PC5x1P....DLmPIQEBHf.B7g.YHB..MPXRDEDU3wY6XGaC.BDCDDzfn+aPRnSfbxe8RqlIzQW3JeLy7N...D04tG....qjfW..fzD7B..j10+COO26XG...rD9vK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZBdA..RSvK..PZGyLu6dD...rJ9vK..PZBdA..RSvK..PZeMtgBRfwSkMD.....IUjSD4pPfIH" ]
+}
