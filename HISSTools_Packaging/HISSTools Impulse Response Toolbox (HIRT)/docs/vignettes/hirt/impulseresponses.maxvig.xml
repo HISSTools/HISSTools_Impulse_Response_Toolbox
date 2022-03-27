@@ -46,4 +46,8 @@
 		</ul>
 	</bluebox>
 	<br />
+    <seealsolist>
+        <seealso name="hirttutorials" type="tutorial" module="hirt-tut"/>
+        <seealso name="hirttopic" type="vignette" module="hirt" />
+    </seealsolist>
 </vignette>

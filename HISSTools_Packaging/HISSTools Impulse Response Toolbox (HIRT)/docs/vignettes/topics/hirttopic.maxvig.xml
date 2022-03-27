@@ -44,32 +44,32 @@ For technical details see the <b>References</b> linked to from the <b>Extras</b>
 <br />
     </p>
     <seealsolist>
-        <seealso name="hirttutorials" type="tutorial" module="hirt" />
-		<seealso name="bufconvolve~" module="hirt"/>
-		<seealso name="bufresample~" module="hirt"/>
-		<seealso name="bufreverse~" module="hirt"/>
-		<seealso name="iralign~" module="hirt"/>
-		<seealso name="iraverage~" module="hirt"/>
-		<seealso name="irextract~" module="hirt"/>
-		<seealso name="irinvert~" module="hirt"/>
-		<seealso name="irmeasure~" module="hirt"/>
-		<seealso name="irnonlin~" module="hirt"/>
-		<seealso name="irphase~" module="hirt"/>
-		<seealso name="irplapprox~" module="hirt"/>
-		<seealso name="irreference~" module="hirt"/>
-		<seealso name="irstats~" module="hirt"/>
-		<seealso name="irsweeps~" module="hirt"/>
-		<seealso name="irtransaural~" module="hirt"/>
-		<seealso name="irtrimnorm~" module="hirt"/>
-		<seealso name="iruser~" module="hirt"/>
-		<seealso name="irvalue~" module="hirt"/>
-        <seealso name="morphfilter~" module="hirt"/>
-        <seealso name="multiconvolve~" module="hirt"/>
-		<seealso name="spectrumdraw~" module="hirt"/>
-		<seealso name="hirt.convolutionreverb~" module="hirt"/>
-		<seealso name="hirt.convolver~" module="hirt"/>
-		<seealso name="hirt.irmaker~" module="hirt"/>
-        <seealso name="impulseresponses" type="vignette" module="hirt" />
+        <seealso name="hirttutorials" module="hirt-tut" type="tutorial" />
+        <seealso name="impulseresponses" module="hirt" type="vignette" />
+        <seealso name="bufconvolve~" />
+        <seealso name="bufresample~" />
+        <seealso name="bufreverse~" />
+        <seealso name="iralign~" />
+        <seealso name="iraverage~" />
+        <seealso name="irextract~" />
+        <seealso name="irinvert~" />
+        <seealso name="irmeasure~" />
+        <seealso name="irnonlin~" />
+        <seealso name="irphase~" />
+        <seealso name="irplapprox~" />
+        <seealso name="irreference~" />
+        <seealso name="irstats~" />
+        <seealso name="irsweeps~" />
+        <seealso name="irtransaural~" />
+        <seealso name="irtrimnorm~" />
+        <seealso name="iruser~" />
+        <seealso name="irvalue~" />
+        <seealso name="morphfilter~" />
+        <seealso name="multiconvolve~" />
+        <seealso name="spectrumdraw~" />
+        <seealso name="hirt.convolutionreverb~" />
+        <seealso name="hirt.convolver~" />
+        <seealso name="hirt.irmaker~" />
     </seealsolist>
 </vignette>
 
