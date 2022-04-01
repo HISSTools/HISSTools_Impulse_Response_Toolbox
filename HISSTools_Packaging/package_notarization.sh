@@ -60,11 +60,12 @@ notarize_extra irmix~.mxo
 
 for pid in $pids; do
     wait $pid
-    if [ $? -eq 0 ]; then
+    PRESULT=$?
+    if [ PRESULT -eq 0 ]; then
         let COMPLETED+=1
     else
         RESULT=1
-        echo "FAILED - Job $pid exited with a status of $?"
+        echo "FAILED - Job $pid exited with a status of $PRESULT"
     fi
 done
 
