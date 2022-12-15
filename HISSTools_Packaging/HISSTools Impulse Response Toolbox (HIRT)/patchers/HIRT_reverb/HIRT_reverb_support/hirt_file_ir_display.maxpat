@@ -57,7 +57,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "clear" ],
-					"patching_rect" : [ 148.0, 292.5, 43.0, 22.0 ],
+					"patching_rect" : [ 143.0, 292.5, 43.0, 22.0 ],
 					"text" : "t clear"
 				}
 
@@ -69,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 148.0, 253.5, 68.0, 22.0 ],
+					"patching_rect" : [ 143.0, 253.5, 68.0, 22.0 ],
 					"text" : "route none"
 				}
 
@@ -579,7 +579,7 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "bgcolor", "thinmode", "gridcolor", "thinto", "gridorigincolor", "thinthresh" ],
+					"frozen_box_attributes" : [ "thinthresh", "bgcolor", "thinto", "gridcolor", "thinmode", "gridorigincolor" ],
 					"gridcolor" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"gridorigincolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-3",
@@ -644,7 +644,7 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "bgcolor", "thinmode", "gridcolor", "thinto", "gridorigincolor", "thinthresh" ],
+					"frozen_box_attributes" : [ "thinthresh", "bgcolor", "thinto", "gridcolor", "thinmode", "gridorigincolor" ],
 					"gridcolor" : [ 0.501961, 0.501961, 0.501961, 0.0 ],
 					"gridorigincolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"id" : "obj-8",
@@ -888,7 +888,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-31", 0 ],
-					"midpoints" : [ 157.5, 330.0, 206.0, 330.0 ],
+					"midpoints" : [ 152.5, 330.0, 206.0, 330.0 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -896,7 +896,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
-					"midpoints" : [ 157.5, 283.5, 157.5, 283.5 ],
+					"midpoints" : [ 152.5, 283.5, 152.5, 283.5 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -995,7 +995,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
-					"midpoints" : [ 233.5, 200.0, 157.5, 200.0 ],
+					"midpoints" : [ 233.5, 200.0, 152.5, 200.0 ],
 					"order" : 1,
 					"source" : [ "obj-65", 0 ]
 				}

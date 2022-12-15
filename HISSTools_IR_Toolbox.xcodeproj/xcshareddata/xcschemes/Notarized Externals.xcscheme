@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B89C242527C2B9450014781F"
-               BuildableName = "Notarized Externals"
-               BlueprintName = "Notarized Externals"
+               BuildableName = "Notarized Package"
+               BlueprintName = "Notarized Package"
                ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -55,8 +55,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B89C242527C2B9450014781F"
-            BuildableName = "Notarized Externals"
-            BlueprintName = "Notarized Externals"
+            BuildableName = "Notarized Package"
+            BlueprintName = "Notarized Package"
             ReferencedContainer = "container:HISSTools_IR_Toolbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

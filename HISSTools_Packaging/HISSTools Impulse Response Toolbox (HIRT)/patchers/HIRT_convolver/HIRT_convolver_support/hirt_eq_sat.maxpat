@@ -196,6 +196,81 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ "Slope 3", "EQ S Hi", "@range", 0.05, 18.0, "@initial", 0.5, "@units", "Native", "@exponent", 3.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Slope Hi", "@textcolor", "hirt", 7 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-54",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 1156.25, 330.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 290.0, 175.0, 70.0, 50.0 ],
+					"varname" : "EQ Slope High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Gain 3", "EQ Gain Hi", "@range", -18.0, 18.0, "@bipolar", 1, "@initial", 0.0, "@units", "deciBel", "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Gain Hi", "@textcolor", "hirt", 7 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-55",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 859.25, 330.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 232.0, 175.0, 70.0, 50.0 ],
+					"varname" : "EQ Gain High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Freq 3", "EQ Freq Hi", "@range", 10.0, 18000.0, "@initial", 8000.0, "@units", "Hertz", "@exponent", 4.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Freq Hi", "@textcolor", "hirt", 7 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-56",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 562.0, 330.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 174.0, 175.0, 70.0, 50.0 ],
+					"varname" : "EQ Freq High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-29",
 					"maxclass" : "button",
@@ -310,81 +385,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 25.0, 358.0, 150.0 ],
 					"varname" : "EQ Frequency Display"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Slope 3", "EQ S Hi", "@range", 0.05, 18.0, "@initial", 0.5, "@units", "Native", "@exponent", 3.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Slope Hi", "@textcolor", "hirt", 7 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-54",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 1156.25, 330.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 290.0, 175.0, 70.0, 50.0 ],
-					"varname" : "EQ Slope High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Gain 3", "EQ Gain Hi", "@range", -18.0, 18.0, "@bipolar", 1, "@initial", 0.0, "@units", "deciBel", "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Gain Hi", "@textcolor", "hirt", 7 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-55",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 859.25, 330.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 232.0, 175.0, 70.0, 50.0 ],
-					"varname" : "EQ Gain High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Freq 3", "EQ Freq Hi", "@range", 10.0, 18000.0, "@initial", 8000.0, "@units", "Hertz", "@exponent", 4.0, "@appearance", "Tiny", "@needlecolor", "hirt", 4, "@annotation_name", "EQ Freq Hi", "@textcolor", "hirt", 7 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-56",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 562.0, 330.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 174.0, 175.0, 70.0, 50.0 ],
-					"varname" : "EQ Freq High",
-					"viewvisibility" : 1
 				}
 
 			}
@@ -4221,7 +4221,7 @@
 				"box" : 				{
 					"comment" : "Audio In",
 					"id" : "obj-12",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -4248,11 +4248,11 @@
 				"box" : 				{
 					"comment" : "Audio In",
 					"id" : "obj-13",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 685.25, 27.5, 30.0, 30.0 ]
 				}
 
@@ -4275,7 +4275,7 @@
 				"box" : 				{
 					"comment" : "EQ Params",
 					"id" : "obj-2",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -4713,6 +4713,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"hidden" : 1,
 									"id" : "obj-28",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -4993,14 +4994,6 @@
 									"destination" : [ "obj-25", 0 ],
 									"midpoints" : [ 415.0, 327.0, 415.5, 327.0 ],
 									"source" : [ "obj-27", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"midpoints" : [ 1033.666625999999951, 48.0, 1033.666625999999951, 48.0 ],
-									"source" : [ "obj-28", 0 ]
 								}
 
 							}
@@ -5526,7 +5519,6 @@
 					"mousemode" : 0,
 					"numinlets" : 4,
 					"numoutlets" : 1,
-					"octavesmooth" : 0.0,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 685.25, 83.5, 262.0, 96.0 ],
 					"phaselabels" : 0,
@@ -6500,6 +6492,156 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-17::obj-70" : [ "hirt.val[8]", "hirt.val", 0 ],
+			"obj-19::obj-70" : [ "hirt.val[7]", "hirt.val", 0 ],
+			"obj-21" : [ "Saturation Type", "Saturation", 0 ],
+			"obj-22::obj-70" : [ "hirt.val[6]", "hirt.val", 0 ],
+			"obj-3" : [ "EQ Routing", "EQ", 0 ],
+			"obj-50::obj-70" : [ "hirt.val[5]", "hirt.val", 0 ],
+			"obj-51::obj-70" : [ "hirt.val[4]", "hirt.val", 0 ],
+			"obj-53::obj-70" : [ "hirt.val[3]", "hirt.val", 0 ],
+			"obj-54::obj-70" : [ "hirt.val[2]", "hirt.val", 0 ],
+			"obj-55::obj-70" : [ "hirt.val[1]", "hirt.val", 0 ],
+			"obj-56::obj-70" : [ "hirt.val", "hirt.val", 0 ],
+			"parameterbanks" : 			{
+
+			}
+,
+			"parameter_overrides" : 			{
+				"obj-17::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[8]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-19::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[7]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-22::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[6]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.707107,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[5]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-51::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[4]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-53::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[3]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-54::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[2]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-55::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[1]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-56::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_invisible" : 0,
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
+		"dependency_cache" : [ 			{
+				"name" : "hirt.dial.linear.only.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt.dial.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../../HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_interface_eq.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../../jsui",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "spectrumdraw~.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "max6box",
 				"default" : 				{

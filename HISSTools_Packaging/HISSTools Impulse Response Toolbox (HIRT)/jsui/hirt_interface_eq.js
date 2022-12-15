@@ -1,6 +1,4 @@
 
-// Num of Outlets
-
 outlets = 1;
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -67,8 +65,8 @@ var qors_scale = 10;
 // Mousing State Variables
 
 var select = 0;
-var handle = 0;
-var gain_state = 0;
+var handle = 2;
+//var gain_state = 0;
 var qors_mode = 0;
 var last_x;
 var last_y;
@@ -520,45 +518,6 @@ function calc_biquad_db(freq, a_coeff, b_coeff)
 }
 
 
-// TEST - is this quicker than above ? (we do not need the phase response)
-/*
-function calc_biquad_db(freq, a_coeff, b_coeff)
-{
-    var w0 = 2. * Math.PI * freq / sample_rate;
-    var Mag = 1.;
-    var i;
-    
-    var A = 0.;
-    var B = 0.;
-    var C = 0.;
-    var D = 0.;
-
-    var cosW0	= Math.cos(w0);    
-    var cosW02	= Math.cos(w0 * 2.);
-       
-    // Accumulate the magnitude response of the filters at a given input frequency
-    
-    for (i = 0; i < num_filters; i++)
-    {
-        A = (b_coeff[i * 3] * b_coeff[i * 3]) + (b_coeff[i * 3 + 1] * b_coeff[i * 3 + 1]) + 
-				(b_coeff[i * 3 + 2] * b_coeff[i * 3 + 2]);
-        B = (2. * cosW0 * ((b_coeff[i * 3] * b_coeff[i * 3 + 1]) + (b_coeff[i * 3 + 1] * b_coeff[i * 3 + 2]))) + 
-				(2. * cosW02 * b_coeff[i * 3] * b_coeff[i * 3 + 2]);
-        C = (a_coeff[i * 3]) + (a_coeff[i * 3 + 1] * a_coeff[i * 3 + 1]) + 
-				(a_coeff[i * 3 + 2] * a_coeff[i * 3 + 2]);
-        D = (2. * cosW0 * (a_coeff[i * 3 + 1] + (a_coeff[i * 3 + 1] * a_coeff[i * 3 + 2]))) + 
-				(2. * cosW02 * a_coeff[i * 3 + 2]);
-
-        Mag *= (A + B) / (C + D);   			// (numerator / denominator)
-    }
-       
-    // Return the response in dB
-               
-    return 10. * Math.log(Math.abs(Mag)) / log_10; 
-
-}
-*/
-
 ///////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////// Paint Routine //////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -770,29 +729,27 @@ function ondrag(x, y, but, cmd, shift, capslock, option, ctrl)
 {
     // If a handle is selected and we have moved, update the values according to mousing
 
-	var out_gain;
+	//var out_gain;
 
-    if (select)
+    if (select && (last_x != x || last_y != y)) // !! bug was here
     {
         if (qors_mode)
         {
             var ydel = y - last_y;
             qors_vals[handle] = clip_qors(ydel2qors(qors_vals[handle], ydel));
-			gain_state = gain_vals[handle] != 0.0;			// 1 if active, 0 if inactive
-			// must always output gain state first to determine active state of SVF for gen~
-            outlet(0, "gainstate", handle + 1, gain_state);
+			//gain_state = gain_vals[handle] != 0.0;			// 1 if active, 0 if inactive
+            //outlet(0, "gainstate", handle + 1, gain_state);
             outlet(0, "q", handle + 1, qors_vals[handle]);
         }
         else
         {    
             freq_vals[handle] = clip_freq(x2freq(x - last_x + freq2x(freq_vals[handle])));
 			gain_vals[handle] = clip_gain(y2gain(y - last_y + gain2y(gain_vals[handle])));
-			out_gain = gain_vals[handle];
-			gain_state = out_gain != 0.0;					// 1 if active, 0 if inactive
-			// must always output gain state first to determine active state of SVF for gen~
-			outlet(0, "gainstate", handle + 1, gain_state);
+			//out_gain = gain_vals[handle];
+			//gain_state = out_gain != 0.0;					// 1 if active, 0 if inactive
+			//outlet(0, "gainstate", handle + 1, gain_state);
             outlet(0, "freq", handle + 1, freq_vals[handle]);
-            outlet(0, "gain", handle + 1, out_gain);
+            outlet(0, "gain", handle + 1, gain_vals[handle]);//out_gain);
         }
     }
     
@@ -837,8 +794,8 @@ function ondblclick(x, y, but, cmd, shift, capslock, option, ctrl)
         gain_vals[handle] = gain_defaults[handle];
         outlet(0, "gain", handle + 1, gain_vals[handle]);
 
-		gain_state = 0;										// 0 = inactive
-		outlet(0, "gainstate", handle + 1, gain_state);
+		//gain_state = 0;										// 0 = inactive
+		//outlet(0, "gainstate", handle + 1, gain_state);
 
     }
     
@@ -853,37 +810,6 @@ function ondblclick(x, y, but, cmd, shift, capslock, option, ctrl)
 ondrag.local = 1;
 onclick.local = 1; 
 ondblclick.local = 1;
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////// Utility Functions //////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-
-
-// cartesian to polar
-function car2pol(real, imag)
-{
-    var al = Math.sqrt((real * real) + (imag * imag));
-    var th = Math.atan2(imag, real);
-    return {
-        alpha: al,
-        theta: th
-    };
-}
-
-// polar to cartesian
-function pol2car(alpha, theta)
-{
-    var re = alpha * Math.cos(theta);
-    var im = alpha * Math.sin(theta);
-    return {
-        real: re,
-        imag: im
-    };
-}
-
-car2pol.local = 1;
-pol2car.local = 1;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////

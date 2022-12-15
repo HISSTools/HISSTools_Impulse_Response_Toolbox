@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,6 +40,237 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ "Slope 1", "Damp S Lo", "@range", 0.05, 2.0, "@initial", 1.0, "@offline", 1, "@units", "Float", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"hidden" : 1,
+					"id" : "obj-88",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 962.5, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 253.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Slope Low",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Decay 1", "Damp Decay Lo", "@range", 20.0, 200.0, "@initial", 100.0, "@exponent", 1.189901, "@offline", 1, "@bipolar", 1, "@units", "%", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"hidden" : 1,
+					"id" : "obj-36",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 664.75, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 145.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Decay Low",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Freq 1", "Damp Freq Lo", "@range", 30.0, 18000.0, "@initial", 125.0, "@exponent", 4.0, "@offline", 1, "@units", "Hertz", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"hidden" : 1,
+					"id" : "obj-99",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 356.0, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Freq Low",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Q 2", "Damp Q Mid", "@range", 0.05, 2.0, "@initial", 0.707107, "@offline", 1, "@units", "Float", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"hidden" : 1,
+					"id" : "obj-92",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 1048.75, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 253.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Q Bell",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Decay 2", "Damp Decay Mid", "@range", 20.0, 200.0, "@initial", 100.0, "@exponent", 1.189901, "@offline", 1, "@bipolar", 1, "@units", "%", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"hidden" : 1,
+					"id" : "obj-79",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 751.75, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 145.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Decay Bell",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Freq 2", "Damp Freq Mid", "@range", 30.0, 18000.0, "@initial", 1000.0, "@exponent", 4.0, "@offline", 1, "@units", "Hertz", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"hidden" : 1,
+					"id" : "obj-100",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 442.75, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Freq Bell",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Slope 3", "Damp S Hi", "@range", 0.05, 2.0, "@initial", 1.0, "@offline", 1, "@units", "Float", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-96",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 1135.75, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 253.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Slope High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Decay 3", "Damp Decay Hi", "@range", 20.0, 200.0, "@initial", 100.0, "@exponent", 1.189901, "@offline", 1, "@bipolar", 1, "@units", "%", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-81",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 839.25, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 145.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Decay High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "Freq 3", "Damp Freq Hi", "@range", 30.0, 18000.0, "@initial", 8000.0, "@exponent", 4.0, "@offline", 1, "@units", "Hertz", "@appearance", "Tiny", "@active", 0 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-101",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "hirt.dial.linear.only.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "int", "" ],
+					"patching_rect" : [ 530.25, 357.0, 70.0, 50.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.0, 150.5, 70.0, 50.0 ],
+					"varname" : "Damp Freq High",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-77",
 					"maxclass" : "newobj",
@@ -51,7 +282,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -294,237 +525,6 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "Q 2", "Damp Q Mid", "@range", 0.05, 2.0, "@initial", 0.707107, "@offline", 1, "@units", "Float", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"hidden" : 1,
-					"id" : "obj-92",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 1048.75, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 253.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Q Bell",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Decay 2", "Damp Decay Mid", "@range", 20.0, 200.0, "@initial", 100.0, "@exponent", 1.189901, "@offline", 1, "@bipolar", 1, "@units", "%", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"hidden" : 1,
-					"id" : "obj-79",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 751.75, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 145.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Decay Bell",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Freq 2", "Damp Freq Mid", "@range", 30.0, 18000.0, "@initial", 1000.0, "@exponent", 4.0, "@offline", 1, "@units", "Hertz", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"hidden" : 1,
-					"id" : "obj-100",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 442.75, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 36.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Freq Bell",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Slope 3", "Damp S Hi", "@range", 0.05, 2.0, "@initial", 1.0, "@offline", 1, "@units", "Float", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"hidden" : 1,
-					"id" : "obj-96",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 1135.75, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 253.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Slope High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Decay 3", "Damp Decay Hi", "@range", 20.0, 200.0, "@initial", 100.0, "@exponent", 1.189901, "@offline", 1, "@bipolar", 1, "@units", "%", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"hidden" : 1,
-					"id" : "obj-81",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 839.25, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 145.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Decay High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Freq 3", "Damp Freq Hi", "@range", 30.0, 18000.0, "@initial", 8000.0, "@exponent", 4.0, "@offline", 1, "@units", "Hertz", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"hidden" : 1,
-					"id" : "obj-101",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 530.25, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 36.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Freq High",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Slope 1", "Damp S Lo", "@range", 0.05, 2.0, "@initial", 1.0, "@offline", 1, "@units", "Float", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-88",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 962.5, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 253.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Slope Low",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Decay 1", "Damp Decay Lo", "@range", 20.0, 200.0, "@initial", 100.0, "@exponent", 1.189901, "@offline", 1, "@bipolar", 1, "@units", "%", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-36",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 664.75, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 145.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Decay Low",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "Freq 1", "Damp Freq Lo", "@range", 30.0, 18000.0, "@initial", 125.0, "@exponent", 4.0, "@offline", 1, "@units", "Hertz", "@appearance", "Tiny", "@active", 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-99",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "hirt.dial.linear.only.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "int", "" ],
-					"patching_rect" : [ 356.0, 357.0, 70.0, 50.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 36.0, 150.5, 70.0, 50.0 ],
-					"varname" : "Damp Freq Low",
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-25",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -602,7 +602,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1360,7 +1360,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1846,7 +1846,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -1856,7 +1855,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -2079,7 +2079,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2150,7 +2150,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 2,
-											"revision" : 1,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3508,7 +3508,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -3518,7 +3517,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -3574,7 +3574,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3939,6 +3939,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"hidden" : 1,
 									"id" : "obj-28",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -4195,14 +4196,6 @@
 									"destination" : [ "obj-25", 0 ],
 									"midpoints" : [ 415.0, 327.0, 415.5, 327.0 ],
 									"source" : [ "obj-27", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"midpoints" : [ 1033.666625999999951, 48.0, 1033.666625999999951, 48.0 ],
-									"source" : [ "obj-28", 0 ]
 								}
 
 							}
@@ -4528,7 +4521,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -4538,7 +4530,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -4789,6 +4782,7 @@
 					"octavesmooth" : 0.15,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 913.0, 112.0, 264.0, 96.0 ],
+					"phaselabels" : 0,
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 2.0, 358.0, 149.0 ],
 					"thickness" : 2.0,
@@ -4823,24 +4817,13 @@
 					"octavesmooth" : 0.15,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 647.0, 112.0, 264.0, 96.0 ],
+					"phaselabels" : 0,
 					"presentation" : 1,
 					"presentation_rect" : [ 1.0, 2.0, 358.0, 149.0 ],
 					"thickness" : 2.0,
 					"thickness2" : 2.0,
 					"thickness3" : 2.0,
 					"thickness4" : 2.0
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"hidden" : 1,
-					"id" : "obj-42",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 689.75, 225.577087000000006, 255.75, 20.0 ],
-					"text" : "<<-- this one is not technically required ?"
 				}
 
 			}
@@ -5892,24 +5875,24 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "hirt_interface_damp.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "hirt.dial.linear.only.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../../HIRT_support",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_interface_damp.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../../../../../../../Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
@@ -5941,7 +5924,6 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -5951,7 +5933,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",

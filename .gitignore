@@ -37,3 +37,4 @@ HISSTools_Intermediate/
 *.ipch
 *.iobj
 *.ipdb
+build/
