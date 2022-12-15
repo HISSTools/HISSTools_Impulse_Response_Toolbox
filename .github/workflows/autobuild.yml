@@ -1,0 +1,100 @@
+name: build-github
+on: [workflow_dispatch]
+env: 
+  MXO_GLOB: -e mxo
+jobs:
+  deploy-win:
+    runs-on: windows-2019
+    steps:
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Checkout max-sdk-base
+        uses: actions/checkout@v3
+        with:
+          repository: 'Cycling74/max-sdk-base'
+          path: "max-sdk-base"
+      - name: Checkout main repo
+        uses: actions/checkout@v3
+        with:
+          path: "hirt"
+      - name: Build windows externals
+        run: msbuild "hirt/HISSTools_IR_Toolbox.sln" /p:configuration="Release" /p:platform=x64 /v:q /clp:ErrorsOnly /nologo /m
+      - name: Upload windows builds
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy-win
+          path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/"
+  deploy-mac:
+    runs-on: macos-latest
+    needs: deploy-win
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Checkout max-sdk-base
+        uses: actions/checkout@v3
+        with:
+          repository: 'Cycling74/max-sdk-base'
+          path: "max-sdk-base"
+      - name: Checkout main repo
+        uses: actions/checkout@v3
+        with:
+          path: "hirt"
+      - name: Download windows builds
+        uses: actions/download-artifact@v3
+        with:
+          name: deploy-win
+          path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/"
+      - name: Build mac externals
+        run: xcodebuild -project 'hirt/HISSTools_IR_Toolbox.xcodeproj' -scheme 'All HIRT Externals' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
+      - name: Setup keychain and identities
+        shell: bash
+        env:  
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APP_SPECIFIC_PWD: ${{ secrets.APP_SPECIFIC_PWD }}
+          CERT_PWD: ${{ secrets.CERT_PWD }}
+          CERT_BASE64: ${{ secrets.CERT_BASE64}}
+          CERTPATH: ${{ runner.temp }}/certificate.p12
+          KEYCHAINPWD: temporarykeychainpassword
+          KEYCHAINPATH: ${{ runner.temp }}/app-signing.keychain-db
+         # create and setup a temporary keychain, then decode the certificate and setup creditials for codesigning and notarization
+        run: |
+             security create-keychain -p "$KEYCHAINPWD" "$KEYCHAINPATH"
+             security list-keychain -d user -s "$KEYCHAINPATH"
+             security set-keychain-settings "$KEYCHAINPATH"
+             security unlock-keychain -p "$KEYCHAINPWD" "$KEYCHAINPATH"
+             echo -n "$CERT_BASE64" | base64 --decode --output $CERTPATH
+             security import "$CERTPATH" -P "$CERT_PWD" -A -t cert -f pkcs12 -k "$KEYCHAINPATH" -T /usr/bin/codesign
+             security set-key-partition-list -S apple-tool:,apple:, -s -k "$KEYCHAINPATH" -D "$CERT_BASE64" -t private "$KEYCHAINPATH"
+             xcrun notarytool store-credentials "HIRT-NOTARIZE" --apple-id $APPLE_ID --team-id $TEAM_ID --password $APP_SPECIFIC_PWD
+      - name: Mac builds notarization
+        shell: bash
+        # install fd /cd to package make temp folder with mxos / sign mxos / copy to folder / zip / notarize upload / deleete temps / staple
+        run: |
+             brew install fd
+             cd hirt/HISSTools_Packaging
+             mkdir -p Notarization
+             fd $MXO_GLOB -E .git -I
+             fd $MXO_GLOB -E .git -I -x codesign --force --timestamp --sign "Developer ID Application" {}
+             fd $MXO_GLOB -E .git -I -x ditto {} Notarization/{/} 
+             /usr/bin/ditto -c -k --keepParent Notarization Notarization.zip
+             xcrun notarytool submit Notarization.zip --keychain-profile "HIRT-NOTARIZE" --wait
+             rm -rf Notarization Notarization.zip
+             fd $MXO_GLOB -E .git -I -x xcrun stapler staple {}  
+      - name: Make zip
+        run: |
+             mkdir build/
+             cd hirt/HISSTools_Packaging/
+             zip -r ../../build/AHISSTools_Impulse_Response_Toolbox.zip "HISSTools Impulse Response Toolbox (HIRT)"
+      - name: Make release
+        uses: "softprops/action-gh-release@v1"
+        with:
+          prerelease: true
+          fail_on_unmatched_files: true
+          files: build/AHISSTools_Impulse_Response_Toolbox.zip
+          target_commitish: ${{ github.sha }}
+          tag_name: latest-${{ steps.date.outputs.date }}
+          body: This is an automated build of the HIRT. 
+          generate_release_notes: true
+    
