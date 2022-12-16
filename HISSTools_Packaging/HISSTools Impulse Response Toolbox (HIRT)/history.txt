@@ -5,7 +5,23 @@ The HISSTools Impulse Response Toolbox (HIRT) — History
 Change Log
 -----------------------------------------------------------------------------------------
 
-Changes in 2.1
+Changes in 2.1.1
+
+Improvements
+
+Modified "presets" tab of hirt.convolutionreverb~.maxhelp for clarity
+/extras/HISSTools.Impulse.Response.Toolbox.maxpat: changes for better mouse hovering etc
+Added Windows "ia32" externals back into package
+
+Bug Fixes
+
+Fixed crashing bug with irplapprox~ usage on Windows
+Updated reverb externals to incorporate irdisplay~ bug fix
+hirt.convolutionreverb~ abstraction: fixed samplerate update for audio off/on behaviour
+
+-------
+
+Changes in 2.1.0
 
 New Features
 
@@ -36,7 +52,7 @@ Effect abstractions: fixed multiconvolve~ latency initialising in hirt.convoluti
 
 -------
 
-Changes in 2.0
+Changes in 2.0.0
 
 New Features
 
@@ -76,11 +92,11 @@ spectrumdraw~: the ‘Hann’ window is now correctly named
 
 All objects: buffer reading is now as documented when requesting a channel above the number in the buffer.
 
-All objects (windows only): fixed code relating to deconvolution filters and amp specifiers
+All objects (Windows only): fixed code relating to deconvolution filters and amp specifiers
 
 -------
 
-Changes in 1.2
+Changes in 1.2.0
 
 New Features
 
@@ -96,7 +112,7 @@ irstats~: fixed bugs that prevented reporting center and t30 stats correctly
 -------
 
 
-Changes in 1.1
+Changes in 1.1.0
 
 PLEASE NOTE
 

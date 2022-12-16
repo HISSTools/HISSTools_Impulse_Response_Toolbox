@@ -28,6 +28,11 @@ xcuserdata/
 !default.mode2v3
 !default.perspectivev3
 
+# Externals
+
+*.mxo
+*.mxe64
+
 # Windows Build Directories / Files
 
 HISSTools_Builds/

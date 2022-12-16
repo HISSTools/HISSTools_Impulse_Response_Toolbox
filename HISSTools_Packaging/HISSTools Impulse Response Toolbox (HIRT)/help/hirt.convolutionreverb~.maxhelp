@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,7 @@
 		"subpatcher_template" : "<none>",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-9",
@@ -72,8 +73,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -107,6 +108,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-20",
@@ -139,7 +141,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 455.0, 277.0, 43.0, 23.0 ],
+									"patching_rect" : [ 470.0, 277.0, 43.0, 23.0 ],
 									"text" : "set -1"
 								}
 
@@ -181,12 +183,14 @@
 							}
 , 							{
 								"box" : 								{
+									"basictuning" : 440,
 									"clipheight" : 37.0,
 									"data" : 									{
 										"clips" : [ 											{
 												"absolutepath" : "sho0630.aif",
 												"filename" : "sho0630.aif",
 												"filekind" : "audiofile",
+												"id" : "u323020181",
 												"loop" : 1,
 												"content_state" : 												{
 													"originallength" : [ 0.0, "ticks" ],
@@ -210,12 +214,21 @@
  ]
 									}
 ,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
 									"id" : "obj-30",
 									"maxclass" : "playlist~",
+									"mode" : "basic",
 									"numinlets" : 1,
 									"numoutlets" : 5,
+									"originallength" : [ 0.0, "ticks" ],
+									"originaltempo" : 120.0,
 									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-									"patching_rect" : [ 42.0, 385.0, 231.0, 38.0 ]
+									"parameter_enable" : 0,
+									"patching_rect" : [ 42.0, 385.0, 231.0, 38.0 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"timestretch" : [ 0 ]
 								}
 
 							}
@@ -295,7 +308,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 527.0, 347.0, 20.0, 20.0 ],
+									"patching_rect" : [ 542.0, 347.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "5",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -392,7 +405,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 617.0, 282.0, 98.0, 23.0 ],
+									"patching_rect" : [ 632.0, 282.0, 98.0, 23.0 ],
 									"text" : "loadmess set 1"
 								}
 
@@ -405,7 +418,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 617.0, 313.0, 24.0, 24.0 ]
+									"patching_rect" : [ 632.0, 313.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -417,7 +430,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 617.0, 344.0, 46.0, 23.0 ],
+									"patching_rect" : [ 632.0, 344.0, 46.0, 23.0 ],
 									"text" : "flat $1"
 								}
 
@@ -427,12 +440,13 @@
 									"dontreplace" : 1,
 									"frozen_box_attributes" : [ "patching_rect" ],
 									"id" : "obj-31",
+									"linecount" : 5,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 181.0, 568.0, 350.0, 23.0 ],
-									"text" : "\"Output::Output DryWet::Dry/Wet\" 61.55"
+									"text" : "\"IR::IR File::Current File A\" \"pants:/Users/stkr/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/media/HIRT_Impulse_Responses/01 Spaces Mono to Stereo IRs/Huddersfield Town Hall.wav\""
 								}
 
 							}
@@ -455,7 +469,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 680.0, 384.0, 97.0, 23.0 ],
+									"patching_rect" : [ 695.0, 384.0, 97.0, 23.0 ],
 									"text" : "storagewindow"
 								}
 
@@ -467,7 +481,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 579.0, 384.0, 84.0, 23.0 ],
+									"patching_rect" : [ 594.0, 384.0, 84.0, 23.0 ],
 									"text" : "clientwindow"
 								}
 
@@ -483,7 +497,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 449.0, 384.0, 50.0, 23.0 ]
+									"patching_rect" : [ 464.0, 384.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -495,7 +509,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 419.0, 302.0, 79.0, 65.0 ],
+									"patching_rect" : [ 434.0, 302.0, 79.0, 65.0 ],
 									"tabs" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
 								}
 
@@ -662,7 +676,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 500.0, 322.0, 60.365096999999999, 25.0 ],
+									"patching_rect" : [ 515.0, 322.0, 60.365096999999999, 25.0 ],
 									"text" : "recall",
 									"textjustification" : 1
 								}
@@ -752,7 +766,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
-									"midpoints" : [ 458.5, 437.5, 191.5, 437.5 ],
+									"midpoints" : [ 473.5, 437.5, 191.5, 437.5 ],
 									"source" : [ "obj-21", 0 ]
 								}
 
@@ -760,7 +774,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 1 ],
-									"midpoints" : [ 588.5, 437.5, 521.5, 437.5 ],
+									"midpoints" : [ 603.5, 437.5, 521.5, 437.5 ],
 									"source" : [ "obj-23", 0 ]
 								}
 
@@ -776,7 +790,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 1 ],
-									"midpoints" : [ 689.5, 437.5, 521.5, 437.5 ],
+									"midpoints" : [ 704.5, 437.5, 521.5, 437.5 ],
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -815,7 +829,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 1 ],
-									"midpoints" : [ 626.5, 437.0, 521.5, 437.0 ],
+									"midpoints" : [ 641.5, 437.0, 521.5, 437.0 ],
 									"source" : [ "obj-39", 0 ]
 								}
 
@@ -910,8 +924,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -945,6 +959,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -1015,14 +1030,14 @@
 									"patching_rect" : [ 168.883086999999989, 323.0, 58.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_type" : 3,
-											"parameter_mmin" : 30.0,
-											"parameter_longname" : "number[5]",
+											"parameter_initial" : [ 8000.0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "number[5]",
 											"parameter_mmax" : 18000.0,
-											"parameter_initial" : [ 8000.0 ],
-											"parameter_shortname" : "number[2]"
+											"parameter_mmin" : 30.0,
+											"parameter_shortname" : "number[2]",
+											"parameter_type" : 3
 										}
 
 									}
@@ -1164,14 +1179,14 @@
 									"patching_rect" : [ 366.323486000000003, 323.0, 58.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_type" : 3,
-											"parameter_mmin" : 30.0,
-											"parameter_longname" : "number[4]",
+											"parameter_initial" : [ 8000.0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "number[4]",
 											"parameter_mmax" : 18000.0,
-											"parameter_initial" : [ 8000.0 ],
-											"parameter_shortname" : "number[2]"
+											"parameter_mmin" : 30.0,
+											"parameter_shortname" : "number[2]",
+											"parameter_type" : 3
 										}
 
 									}
@@ -1274,13 +1289,13 @@
 									"patching_rect" : [ 433.0, 529.0, 24.0, 24.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_type" : 3,
-											"parameter_longname" : "toggle",
+											"parameter_initial" : [ 0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "toggle",
 											"parameter_mmax" : 1.0,
-											"parameter_initial" : [ 0 ],
-											"parameter_shortname" : "toggle"
+											"parameter_shortname" : "toggle",
+											"parameter_type" : 3
 										}
 
 									}
@@ -1738,8 +1753,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1773,6 +1788,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",
@@ -2011,8 +2027,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 2,
+											"minor" : 3,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2045,6 +2061,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-10",
@@ -2056,8 +2073,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 1,
-															"revision" : 2,
+															"minor" : 3,
+															"revision" : 0,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -2090,6 +2107,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "<none>",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-6",
@@ -2604,8 +2622,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2639,6 +2657,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -2728,8 +2747,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 2,
+											"minor" : 3,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2762,6 +2781,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"hidden" : 1,
@@ -3031,6 +3051,7 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
@@ -3107,8 +3128,8 @@
 								"name" : "DP.M4L",
 								"default" : 								{
 									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -3118,8 +3139,8 @@
 								"name" : "DP.M4L-New",
 								"default" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ],
-									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ],
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ]
 								}
 ,
 								"parentstyle" : "",
@@ -3163,7 +3184,6 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
@@ -3173,7 +3193,8 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -3269,8 +3290,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3304,6 +3325,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -3345,12 +3367,14 @@
 							}
 , 							{
 								"box" : 								{
+									"basictuning" : 440,
 									"clipheight" : 56.0,
 									"data" : 									{
 										"clips" : [ 											{
 												"absolutepath" : "anton.aif",
 												"filename" : "anton.aif",
 												"filekind" : "audiofile",
+												"id" : "u924043281",
 												"loop" : 0,
 												"content_state" : 												{
 													"originallength" : [ 0.0, "ticks" ],
@@ -3375,6 +3399,7 @@
 												"absolutepath" : "drumLoop.aif",
 												"filename" : "drumLoop.aif",
 												"filekind" : "audiofile",
+												"id" : "u171043284",
 												"loop" : 1,
 												"content_state" : 												{
 													"originallength" : [ 0.0, "ticks" ],
@@ -3398,12 +3423,21 @@
  ]
 									}
 ,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
 									"id" : "obj-11",
 									"maxclass" : "playlist~",
+									"mode" : "basic",
 									"numinlets" : 1,
 									"numoutlets" : 5,
+									"originallength" : [ 0.0, "ticks" ],
+									"originaltempo" : 120.0,
 									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
 									"patching_rect" : [ 166.0, 285.0, 519.0, 114.0 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"timestretch" : [ 0 ],
 									"waveformdisplay" : 0
 								}
 
@@ -3430,13 +3464,13 @@
 									"patching_rect" : [ 26.0, 331.5, 24.0, 24.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_type" : 3,
-											"parameter_longname" : "toggle[1]",
+											"parameter_initial" : [ 0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "toggle[1]",
 											"parameter_mmax" : 1.0,
-											"parameter_initial" : [ 0 ],
-											"parameter_shortname" : "toggle"
+											"parameter_shortname" : "toggle",
+											"parameter_type" : 3
 										}
 
 									}
@@ -3567,6 +3601,7 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
@@ -3691,8 +3726,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3726,6 +3761,7 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [  ],
 						"lines" : [  ]
 					}
@@ -3770,1382 +3806,1512 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-2::obj-7::obj-3::obj-65::obj-70" : [ "Dry/Wet.val.1366", "Dry/Wet.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-99::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-8" : [ "Shape Active[4]", "Active", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-9" : [ "Reverse", "Reverse", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-79::obj-70" : [ "Decay.2.val.1428", "Decay.2.val", 0 ],
-			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-46::obj-70" : [ "hirt.val[37]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-11" : [ "Modulation Active[3]", "Active", 0 ],
-			"obj-2::obj-7::obj-31::obj-55::obj-70" : [ "Gain.3.val.1410", "Gain.3.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-92::obj-70" : [ "Q.2.val.1427", "Q.2.val", 0 ],
-			"obj-2::obj-7::obj-24::obj-2::obj-25" : [ "Widen", "Widen", 0 ],
-			"obj-2::obj-7::obj-31::obj-21" : [ "EQ Routing", "Active", 0 ],
-			"obj-2::obj-7::obj-36::obj-53" : [ "IR Mode", "Mode", 0 ],
-			"obj-8::obj-7::obj-31::obj-54::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-79" : [ "Offline Tabs[3]", "Offline", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[32]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-3::obj-65::obj-70" : [ "hirt.val[1]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-79::obj-70" : [ "hirt.val[48]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-31::obj-21" : [ "EQ Routing[4]", "Active", 0 ],
-			"obj-2::obj-7::obj-24::obj-1::obj-29::obj-70" : [ "Pan.val.1421", "Pan.val", 0 ],
-			"obj-2::obj-7::obj-11" : [ "Modulation Active", "Active", 0 ],
-			"obj-3::obj-7::obj-31::obj-56::obj-70" : [ "hirt.val[10]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-108::obj-90" : [ "number[6]", "number", 0 ],
-			"obj-2::obj-7::obj-31::obj-51::obj-70" : [ "Gain.2.val.1407", "Gain.2.val", 0 ],
-			"obj-8::obj-7::obj-3::obj-62::obj-70" : [ "hirt.val[63]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-96::obj-70" : [ "hirt.val[24]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-3::obj-62::obj-70" : [ "Cascade.val.1369", "Cascade.val", 0 ],
-			"obj-2::obj-7::obj-79" : [ "Offline Tabs", "Offline", 0 ],
-			"obj-2::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-47::obj-70" : [ "Length.val.1438", "Length.val", 0 ],
-			"obj-8::obj-7::obj-31::obj-19::obj-70" : [ "hirt.val[61]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-36::obj-49" : [ "Select IR", "Select", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-12::obj-70" : [ "hirt.val[27]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-31::obj-19::obj-70" : [ "Gain.1.val.1413", "Gain.1.val", 0 ],
-			"obj-8::obj-7::obj-24::obj-2::obj-8::obj-70" : [ "hirt.val[53]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-46::obj-70" : [ "Early.val.1437", "Early.val", 0 ],
-			"obj-2::obj-7::obj-24::obj-2::obj-49" : [ "Type", "Type", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-101::obj-70" : [ "hirt.val[44]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-9" : [ "Reverse[4]", "Reverse", 0 ],
-			"obj-3::obj-7::obj-31::obj-50::obj-70" : [ "hirt.val[5]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-79" : [ "Offline Tabs[4]", "Offline", 0 ],
-			"obj-8::obj-7::obj-108::obj-90" : [ "number[7]", "number", 0 ],
-			"obj-3::obj-7::obj-24::obj-1::obj-28::obj-70" : [ "hirt.val[16]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-36::obj-70" : [ "hirt.val[19]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-10" : [ "Damp Active[4]", "Active", 0 ],
-			"obj-2::obj-7::obj-36::obj-49" : [ "IR Select", "Select", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-45::obj-70" : [ "hirt.val[38]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-10" : [ "Damp Active[3]", "Active", 0 ],
-			"obj-2::obj-7::obj-31::obj-54::obj-70" : [ "Slope.3.val.1409", "Slope.3.val", 0 ],
-			"obj-8::obj-7::obj-31::obj-53::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-47::obj-70" : [ "hirt.val[31]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-24::obj-2::obj-49" : [ "Type[4]", "Type", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-92::obj-70" : [ "hirt.val[49]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-36::obj-114::obj-65" : [ "Drop B[4]", "live.drop", 3 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-9" : [ "Reverse[3]", "Reverse", 0 ],
-			"obj-8::obj-7::obj-36::obj-53" : [ "Mode IR", "Mode", 0 ],
-			"obj-3::obj-7::obj-31::obj-55::obj-70" : [ "hirt.val[9]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-31::obj-50::obj-70" : [ "Q.2.val.1406", "Q.2.val", 0 ],
-			"obj-8::obj-7::obj-3::obj-63::obj-70" : [ "hirt.val[64]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-100::obj-70" : [ "hirt.val[23]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu[4]", "Category Menu", 0 ],
-			"obj-2::obj-7::obj-24::obj-2::obj-29::obj-70" : [ "Rate.val.1418", "Rate.val", 0 ],
-			"obj-2::obj-7::obj-5" : [ "Realtime Tabs", "Realtime", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-36::obj-53" : [ "IR Mode[4]", "Mode", 0 ],
-			"obj-2::obj-7::obj-3::obj-64::obj-70" : [ "Gain.val.1367", "Gain.val", 0 ],
-			"obj-8::obj-7::obj-31::obj-17::obj-70" : [ "hirt.val[62]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-53" : [ "Direct Mode[4]", "Direct Mode", 0 ],
-			"obj-2::obj-7::obj-31::obj-17::obj-70" : [ "Slope.1.val.1412", "Slope.1.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-114::obj-35" : [ "Drop A", "live.drop", 3 ],
-			"obj-2::obj-7::obj-28" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
-			"obj-8::obj-7::obj-24::obj-2::obj-25" : [ "Widen[3]", "Widen", 0 ],
-			"obj-3::obj-7::obj-3::obj-62::obj-70" : [ "hirt.val[4]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-3::obj-59::obj-70" : [ "hirt.val", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-31::obj-56::obj-70" : [ "Freq.3.val.1411", "Freq.3.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-81::obj-70" : [ "hirt.val[45]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-36::obj-114::obj-35" : [ "Drop A[3]", "live.drop", 0 ],
-			"obj-3::obj-7::obj-31::obj-22::obj-70" : [ "hirt.val[13]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-28" : [ "PATCH/PRESS[4]", "PATCH/PRESS", 0 ],
-			"obj-8::obj-7::obj-14" : [ "Position Active[3]", "Active", 0 ],
-			"obj-3::obj-7::obj-24::obj-2::obj-29::obj-70" : [ "hirt.val[15]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-44::obj-70" : [ "Fade.In.val.1435", "Fade.In.val", 0 ],
-			"obj-8::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu[3]", "IR Menu", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-88::obj-70" : [ "hirt.val[18]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-44::obj-70" : [ "hirt.val[39]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-31::obj-53::obj-70" : [ "Freq.2.val.1408", "Freq.2.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-97::obj-70" : [ "Decay.val.1440", "Decay.val", 0 ],
-			"obj-2::obj-7::obj-14" : [ "Position Active", "Active", 0 ],
-			"obj-8::obj-7::obj-31::obj-51::obj-70" : [ "hirt.val[58]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-46::obj-70" : [ "hirt.val[30]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-99::obj-70" : [ "Freq.1.val.1426", "Freq.1.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
-			"obj-8::obj-7::obj-24::obj-1::obj-29::obj-70" : [ "hirt.val[50]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-48::obj-70" : [ "Size.val.1439", "Size.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-99::obj-70" : [ "hirt.val[41]", "hirt.val", 0 ],
-			"obj-8::obj-24" : [ "number[4]", "number[2]", 0 ],
-			"obj-3::obj-7::obj-31::obj-54::obj-70" : [ "hirt.val[8]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-36::obj-70" : [ "Decay.1.val.1425", "Decay.1.val", 0 ],
-			"obj-2::obj-7::obj-31::obj-22::obj-70" : [ "Freq.1.val.1414", "Freq.1.val", 0 ],
-			"obj-8::obj-7::obj-3::obj-64::obj-70" : [ "hirt.val[65]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-79::obj-70" : [ "hirt.val[22]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-88::obj-70" : [ "Slope.1.val.1424", "Slope.1.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-31::obj-21" : [ "EQ Routing[3]", "Active", 0 ],
-			"obj-3::obj-7::obj-14" : [ "Position Active[4]", "Active", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-101::obj-70" : [ "Freq.3.val.1432", "Freq.3.val", 0 ],
-			"obj-8::obj-7::obj-31::obj-56::obj-70" : [ "hirt.val[54]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-8" : [ "Shape Active[3]", "Active", 0 ],
-			"obj-3::obj-7::obj-3::obj-63::obj-70" : [ "hirt.val[3]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-3::obj-59::obj-70" : [ "Predelay.val.1365", "Predelay.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-96::obj-70" : [ "hirt.val[46]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-31::obj-19::obj-70" : [ "hirt.val[12]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-81::obj-70" : [ "Decay.3.val.1431", "Decay.3.val", 0 ],
-			"obj-8::obj-7::obj-5" : [ "Realtime Tabs[3]", "Realtime", 0 ],
-			"obj-3::obj-7::obj-24::obj-2::obj-8::obj-70" : [ "hirt.val[14]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-12::obj-70" : [ "Length.val.1434", "Length.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-101::obj-70" : [ "hirt.val[26]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-49" : [ "Length Mode", "Length Mode", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-96::obj-70" : [ "Slope.3.val.1430", "Slope.3.val", 0 ],
-			"obj-2::obj-7::obj-10" : [ "Damp Active", "Active", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-12::obj-70" : [ "hirt.val[40]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-2::obj-100::obj-70" : [ "Freq.2.val.1429", "Freq.2.val", 0 ],
-			"obj-2::obj-7::obj-24::obj-1::obj-28::obj-70" : [ "Depth.val.1420", "Depth.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-49" : [ "Length Mode[3]", "Length Mode", 0 ],
-			"obj-8::obj-7::obj-31::obj-50::obj-70" : [ "hirt.val[59]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-45::obj-70" : [ "hirt.val[29]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-24::obj-1::obj-28::obj-70" : [ "hirt.val[51]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-3::obj-63::obj-70" : [ "Width.val.1368", "Width.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-36::obj-70" : [ "hirt.val[42]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-31::obj-53::obj-70" : [ "hirt.val[7]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-3::obj-65::obj-70" : [ "hirt.val[66]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-92::obj-70" : [ "hirt.val[21]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-36::obj-49" : [ "IR Select[4]", "Select", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-49" : [ "Length Mode[4]", "Length Mode", 0 ],
-			"obj-3::obj-7::obj-5" : [ "Realtime Tabs[4]", "Realtime", 0 ],
-			"obj-2::obj-7::obj-36::obj-114::obj-65" : [ "Drop B", "live.drop", 3 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-47::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-24::obj-2::obj-49" : [ "Type[3]", "Type", 0 ],
-			"obj-2::obj-7::obj-1::obj-1::obj-45::obj-70" : [ "Fade.Out.val.1436", "Fade.Out.val", 0 ],
-			"obj-8::obj-7::obj-36::obj-114::obj-65" : [ "Drop B[3]", "live.drop", 0 ],
-			"obj-3::obj-7::obj-11" : [ "Modulation Active[4]", "Active", 0 ],
-			"obj-8::obj-7::obj-31::obj-55::obj-70" : [ "hirt.val[55]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-28" : [ "PATCH/PRESS[3]", "PATCH/PRESS", 0 ],
-			"obj-8::obj-40" : [ "number[5]", "number[2]", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-3::obj-64::obj-70" : [ "hirt.val[2]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-100::obj-70" : [ "hirt.val[47]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu[3]", "Category Menu", 0 ],
-			"obj-3::obj-7::obj-31::obj-17::obj-70" : [ "hirt.val[11]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-24::obj-2::obj-25" : [ "Widen[4]", "Widen", 0 ],
-			"obj-3::obj-7::obj-1::obj-2::obj-81::obj-70" : [ "hirt.val[25]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-36::obj-114::obj-35" : [ "Drop A[4]", "live.drop", 3 ],
-			"obj-2::obj-7::obj-8" : [ "Shape Active", "Active", 0 ],
 			"obj-2::obj-35" : [ "toggle[1]", "toggle", 0 ],
-			"obj-8::obj-7::obj-1::obj-1::obj-53" : [ "Direct Mode[3]", "Direct Mode", 0 ],
-			"obj-3::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu[4]", "IR Menu", 0 ],
-			"obj-8::obj-7::obj-31::obj-22::obj-70" : [ "hirt.val[60]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-1::obj-1::obj-44::obj-70" : [ "hirt.val[28]", "hirt.val", 0 ],
-			"obj-8::obj-7::obj-24::obj-2::obj-29::obj-70" : [ "hirt.val[52]", "hirt.val", 0 ],
-			"obj-8::obj-10" : [ "toggle", "toggle", 0 ],
-			"obj-2::obj-7::obj-24::obj-2::obj-8::obj-70" : [ "Amount.val.1417", "Amount.val", 0 ],
-			"obj-8::obj-7::obj-1::obj-2::obj-88::obj-70" : [ "hirt.val[43]", "hirt.val", 0 ],
-			"obj-3::obj-7::obj-31::obj-51::obj-70" : [ "hirt.val[6]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10" : [ "Damp Active", "Active", 0 ],
+			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
+			"obj-2::obj-7::obj-11" : [ "Modulation Active", "Active", 0 ],
+			"obj-2::obj-7::obj-14" : [ "Position Active", "Active", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-12::obj-70" : [ "Length.val.1434", "Length.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-44::obj-70" : [ "Fade.In.val.1435", "Fade.In.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-45::obj-70" : [ "Fade.Out.val.1436", "Fade.Out.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-46::obj-70" : [ "Early.val.1437", "Early.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-47::obj-70" : [ "Length.val.1438", "Length.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-48::obj-70" : [ "Size.val.1439", "Size.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-49" : [ "Length Mode", "Length Mode", 0 ],
 			"obj-2::obj-7::obj-1::obj-1::obj-53" : [ "Direct Mode", "Direct Mode", 0 ],
-			"obj-8::obj-7::obj-3::obj-59::obj-70" : [ "hirt.val[67]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-9" : [ "Reverse", "Reverse", 0 ],
+			"obj-2::obj-7::obj-1::obj-1::obj-97::obj-70" : [ "Decay.val.1440", "Decay.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-100::obj-70" : [ "Freq.2.val.1429", "Freq.2.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-101::obj-70" : [ "Freq.3.val.1432", "Freq.3.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-36::obj-70" : [ "Decay.1.val.1425", "Decay.1.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-79::obj-70" : [ "Decay.2.val.1428", "Decay.2.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-81::obj-70" : [ "Decay.3.val.1431", "Decay.3.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-88::obj-70" : [ "Slope.1.val.1424", "Slope.1.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-92::obj-70" : [ "Q.2.val.1427", "Q.2.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-96::obj-70" : [ "Slope.3.val.1430", "Slope.3.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-2::obj-99::obj-70" : [ "Freq.1.val.1426", "Freq.1.val", 0 ],
+			"obj-2::obj-7::obj-24::obj-1::obj-28::obj-70" : [ "Depth.val.1420", "Depth.val", 0 ],
+			"obj-2::obj-7::obj-24::obj-1::obj-29::obj-70" : [ "Pan.val.1421", "Pan.val", 0 ],
+			"obj-2::obj-7::obj-24::obj-2::obj-25" : [ "Widen", "Widen", 0 ],
+			"obj-2::obj-7::obj-24::obj-2::obj-29::obj-70" : [ "Rate.val.1418", "Rate.val", 0 ],
+			"obj-2::obj-7::obj-24::obj-2::obj-49" : [ "Type", "Type", 0 ],
+			"obj-2::obj-7::obj-24::obj-2::obj-8::obj-70" : [ "Amount.val.1417", "Amount.val", 0 ],
+			"obj-2::obj-7::obj-28" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
+			"obj-2::obj-7::obj-31::obj-17::obj-70" : [ "Slope.1.val.1412", "Slope.1.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-19::obj-70" : [ "Gain.1.val.1413", "Gain.1.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-21" : [ "EQ Routing", "Active", 0 ],
+			"obj-2::obj-7::obj-31::obj-22::obj-70" : [ "Freq.1.val.1414", "Freq.1.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-50::obj-70" : [ "Q.2.val.1406", "Q.2.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-51::obj-70" : [ "Gain.2.val.1407", "Gain.2.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-53::obj-70" : [ "Freq.2.val.1408", "Freq.2.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-54::obj-70" : [ "Slope.3.val.1409", "Slope.3.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-55::obj-70" : [ "Gain.3.val.1410", "Gain.3.val", 0 ],
+			"obj-2::obj-7::obj-31::obj-56::obj-70" : [ "Freq.3.val.1411", "Freq.3.val", 0 ],
+			"obj-2::obj-7::obj-36::obj-114::obj-35" : [ "Drop A", "live.drop", 3 ],
+			"obj-2::obj-7::obj-36::obj-114::obj-65" : [ "Drop B", "live.drop", 3 ],
+			"obj-2::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
+			"obj-2::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
+			"obj-2::obj-7::obj-36::obj-49" : [ "IR Select", "Select", 0 ],
+			"obj-2::obj-7::obj-36::obj-53" : [ "IR Mode", "Mode", 0 ],
+			"obj-2::obj-7::obj-3::obj-59::obj-70" : [ "Predelay.val.1365", "Predelay.val", 0 ],
+			"obj-2::obj-7::obj-3::obj-62::obj-70" : [ "Cascade.val.1369", "Cascade.val", 0 ],
+			"obj-2::obj-7::obj-3::obj-63::obj-70" : [ "Width.val.1368", "Width.val", 0 ],
+			"obj-2::obj-7::obj-3::obj-64::obj-70" : [ "Gain.val.1367", "Gain.val", 0 ],
+			"obj-2::obj-7::obj-3::obj-65::obj-70" : [ "Dry/Wet.val.1366", "Dry/Wet.val", 0 ],
+			"obj-2::obj-7::obj-5" : [ "Realtime Tabs", "Realtime", 0 ],
+			"obj-2::obj-7::obj-79" : [ "Offline Tabs", "Offline", 0 ],
+			"obj-2::obj-7::obj-8" : [ "Shape Active", "Active", 0 ],
+			"obj-3::obj-7::obj-10" : [ "Damp Active[4]", "Active", 0 ],
+			"obj-3::obj-7::obj-108::obj-90" : [ "number[6]", "number", 0 ],
+			"obj-3::obj-7::obj-11" : [ "Modulation Active[4]", "Active", 0 ],
+			"obj-3::obj-7::obj-14" : [ "Position Active[4]", "Active", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-12::obj-70" : [ "hirt.val[27]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-44::obj-70" : [ "hirt.val[28]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-45::obj-70" : [ "hirt.val[29]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-46::obj-70" : [ "hirt.val[30]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-47::obj-70" : [ "hirt.val[31]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[32]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-49" : [ "Length Mode[4]", "Length Mode", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-53" : [ "Direct Mode[4]", "Direct Mode", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-9" : [ "Reverse[4]", "Reverse", 0 ],
+			"obj-3::obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-100::obj-70" : [ "hirt.val[23]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-101::obj-70" : [ "hirt.val[26]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-36::obj-70" : [ "hirt.val[19]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-79::obj-70" : [ "hirt.val[22]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-81::obj-70" : [ "hirt.val[25]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-88::obj-70" : [ "hirt.val[18]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-92::obj-70" : [ "hirt.val[21]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-96::obj-70" : [ "hirt.val[24]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-1::obj-2::obj-99::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-24::obj-1::obj-28::obj-70" : [ "hirt.val[16]", "hirt.val", 0 ],
 			"obj-3::obj-7::obj-24::obj-1::obj-29::obj-70" : [ "hirt.val[17]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-24::obj-2::obj-25" : [ "Widen[4]", "Widen", 0 ],
+			"obj-3::obj-7::obj-24::obj-2::obj-29::obj-70" : [ "hirt.val[15]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-24::obj-2::obj-49" : [ "Type[4]", "Type", 0 ],
+			"obj-3::obj-7::obj-24::obj-2::obj-8::obj-70" : [ "hirt.val[14]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-28" : [ "PATCH/PRESS[4]", "PATCH/PRESS", 0 ],
+			"obj-3::obj-7::obj-31::obj-17::obj-70" : [ "hirt.val[11]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-19::obj-70" : [ "hirt.val[12]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-21" : [ "EQ Routing[4]", "Active", 0 ],
+			"obj-3::obj-7::obj-31::obj-22::obj-70" : [ "hirt.val[13]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-50::obj-70" : [ "hirt.val[5]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-51::obj-70" : [ "hirt.val[6]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-53::obj-70" : [ "hirt.val[7]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-54::obj-70" : [ "hirt.val[8]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-55::obj-70" : [ "hirt.val[9]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-31::obj-56::obj-70" : [ "hirt.val[10]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-36::obj-114::obj-35" : [ "Drop A[4]", "live.drop", 3 ],
+			"obj-3::obj-7::obj-36::obj-114::obj-65" : [ "Drop B[4]", "live.drop", 3 ],
+			"obj-3::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu[4]", "Category Menu", 0 ],
+			"obj-3::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu[4]", "IR Menu", 0 ],
+			"obj-3::obj-7::obj-36::obj-49" : [ "IR Select[4]", "Select", 0 ],
+			"obj-3::obj-7::obj-36::obj-53" : [ "IR Mode[4]", "Mode", 0 ],
+			"obj-3::obj-7::obj-3::obj-59::obj-70" : [ "hirt.val", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-3::obj-62::obj-70" : [ "hirt.val[4]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-3::obj-63::obj-70" : [ "hirt.val[3]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-3::obj-64::obj-70" : [ "hirt.val[2]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-3::obj-65::obj-70" : [ "hirt.val[1]", "hirt.val", 0 ],
+			"obj-3::obj-7::obj-5" : [ "Realtime Tabs[4]", "Realtime", 0 ],
+			"obj-3::obj-7::obj-79" : [ "Offline Tabs[4]", "Offline", 0 ],
+			"obj-3::obj-7::obj-8" : [ "Shape Active[4]", "Active", 0 ],
+			"obj-8::obj-10" : [ "toggle", "toggle", 0 ],
+			"obj-8::obj-24" : [ "number[4]", "number[2]", 0 ],
+			"obj-8::obj-40" : [ "number[5]", "number[2]", 0 ],
+			"obj-8::obj-7::obj-10" : [ "Damp Active[3]", "Active", 0 ],
+			"obj-8::obj-7::obj-108::obj-90" : [ "number[7]", "number", 0 ],
+			"obj-8::obj-7::obj-11" : [ "Modulation Active[3]", "Active", 0 ],
+			"obj-8::obj-7::obj-14" : [ "Position Active[3]", "Active", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-12::obj-70" : [ "hirt.val[40]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-44::obj-70" : [ "hirt.val[39]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-45::obj-70" : [ "hirt.val[38]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-46::obj-70" : [ "hirt.val[37]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-47::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-49" : [ "Length Mode[3]", "Length Mode", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-53" : [ "Direct Mode[3]", "Direct Mode", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-9" : [ "Reverse[3]", "Reverse", 0 ],
+			"obj-8::obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-100::obj-70" : [ "hirt.val[47]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-101::obj-70" : [ "hirt.val[44]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-36::obj-70" : [ "hirt.val[42]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-79::obj-70" : [ "hirt.val[48]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-81::obj-70" : [ "hirt.val[45]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-88::obj-70" : [ "hirt.val[43]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-92::obj-70" : [ "hirt.val[49]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-96::obj-70" : [ "hirt.val[46]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-1::obj-2::obj-99::obj-70" : [ "hirt.val[41]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-24::obj-1::obj-28::obj-70" : [ "hirt.val[51]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-24::obj-1::obj-29::obj-70" : [ "hirt.val[50]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-24::obj-2::obj-25" : [ "Widen[3]", "Widen", 0 ],
+			"obj-8::obj-7::obj-24::obj-2::obj-29::obj-70" : [ "hirt.val[52]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-24::obj-2::obj-49" : [ "Type[3]", "Type", 0 ],
+			"obj-8::obj-7::obj-24::obj-2::obj-8::obj-70" : [ "hirt.val[53]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-28" : [ "PATCH/PRESS[3]", "PATCH/PRESS", 0 ],
+			"obj-8::obj-7::obj-31::obj-17::obj-70" : [ "hirt.val[62]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-19::obj-70" : [ "hirt.val[61]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-21" : [ "EQ Routing[3]", "Active", 0 ],
+			"obj-8::obj-7::obj-31::obj-22::obj-70" : [ "hirt.val[60]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-50::obj-70" : [ "hirt.val[59]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-51::obj-70" : [ "hirt.val[58]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-53::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-54::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-55::obj-70" : [ "hirt.val[55]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-31::obj-56::obj-70" : [ "hirt.val[54]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-36::obj-114::obj-35" : [ "Drop A[3]", "live.drop", 0 ],
+			"obj-8::obj-7::obj-36::obj-114::obj-65" : [ "Drop B[3]", "live.drop", 0 ],
+			"obj-8::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu[3]", "Category Menu", 0 ],
+			"obj-8::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu[3]", "IR Menu", 0 ],
+			"obj-8::obj-7::obj-36::obj-49" : [ "Select IR", "Select", 0 ],
+			"obj-8::obj-7::obj-36::obj-53" : [ "Mode IR", "Mode", 0 ],
+			"obj-8::obj-7::obj-3::obj-59::obj-70" : [ "hirt.val[67]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-3::obj-62::obj-70" : [ "hirt.val[63]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-3::obj-63::obj-70" : [ "hirt.val[64]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-3::obj-64::obj-70" : [ "hirt.val[65]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-3::obj-65::obj-70" : [ "hirt.val[66]", "hirt.val", 0 ],
+			"obj-8::obj-7::obj-5" : [ "Realtime Tabs[3]", "Realtime", 0 ],
+			"obj-8::obj-7::obj-79" : [ "Offline Tabs[3]", "Offline", 0 ],
+			"obj-8::obj-7::obj-8" : [ "Shape Active[3]", "Active", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
-				"obj-2::obj-7::obj-3::obj-65::obj-70" : 				{
-					"parameter_longname" : "Dry/Wet.val.1366",
-					"parameter_shortname" : "Dry/Wet.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-99::obj-70" : 				{
-					"parameter_longname" : "hirt.val[20]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-79::obj-70" : 				{
-					"parameter_longname" : "Decay.2.val.1428",
-					"parameter_shortname" : "Decay.2.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-46::obj-70" : 				{
-					"parameter_longname" : "hirt.val[37]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-31::obj-55::obj-70" : 				{
-					"parameter_longname" : "Gain.3.val.1410",
-					"parameter_shortname" : "Gain.3.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-92::obj-70" : 				{
-					"parameter_longname" : "Q.2.val.1427",
-					"parameter_shortname" : "Q.2.val",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-31::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[56]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-3::obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[32]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-3::obj-7::obj-3::obj-65::obj-70" : 				{
-					"parameter_longname" : "hirt.val[1]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-79::obj-70" : 				{
-					"parameter_longname" : "hirt.val[48]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-24::obj-1::obj-29::obj-70" : 				{
-					"parameter_longname" : "Pan.val.1421",
-					"parameter_shortname" : "Pan.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 6,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -50.0, 50.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-31::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[10]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-51::obj-70" : 				{
-					"parameter_longname" : "Gain.2.val.1407",
-					"parameter_shortname" : "Gain.2.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-3::obj-62::obj-70" : 				{
-					"parameter_longname" : "hirt.val[63]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-96::obj-70" : 				{
-					"parameter_longname" : "hirt.val[24]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-3::obj-62::obj-70" : 				{
-					"parameter_longname" : "Cascade.val.1369",
-					"parameter_shortname" : "Cascade.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-1::obj-47::obj-70" : 				{
-					"parameter_longname" : "Length.val.1438",
-					"parameter_shortname" : "Length.val",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-31::obj-19::obj-70" : 				{
-					"parameter_longname" : "hirt.val[61]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-1::obj-12::obj-70" : 				{
-					"parameter_longname" : "hirt.val[27]",
-					"parameter_invisible" : 1,
+				"obj-2::obj-7::obj-1::obj-1::obj-12::obj-70" : 				{
 					"parameter_exponent" : 2.5,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
 					"parameter_initial" : 15000.0,
-					"parameter_range" : [ 100.0, 30000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-19::obj-70" : 				{
-					"parameter_longname" : "Gain.1.val.1413",
-					"parameter_shortname" : "Gain.1.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-24::obj-2::obj-8::obj-70" : 				{
-					"parameter_longname" : "hirt.val[53]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-1::obj-46::obj-70" : 				{
-					"parameter_longname" : "Early.val.1437",
-					"parameter_shortname" : "Early.val",
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
+					"parameter_longname" : "Length.val.1434",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 100.0, 30000.0 ],
+					"parameter_shortname" : "Length.val",
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-101::obj-70" : 				{
-					"parameter_longname" : "hirt.val[44]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-31::obj-50::obj-70" : 				{
-					"parameter_longname" : "hirt.val[5]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-3::obj-7::obj-24::obj-1::obj-28::obj-70" : 				{
-					"parameter_longname" : "hirt.val[16]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -100.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-36::obj-70" : 				{
-					"parameter_longname" : "hirt.val[19]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-45::obj-70" : 				{
-					"parameter_longname" : "hirt.val[38]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-54::obj-70" : 				{
-					"parameter_longname" : "Slope.3.val.1409",
-					"parameter_shortname" : "Slope.3.val",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-8::obj-7::obj-31::obj-53::obj-70" : 				{
-					"parameter_longname" : "hirt.val[57]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-1::obj-1::obj-47::obj-70" : 				{
-					"parameter_longname" : "hirt.val[31]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-92::obj-70" : 				{
-					"parameter_longname" : "hirt.val[49]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-36::obj-114::obj-65" : 				{
-					"parameter_longname" : "Drop B[4]"
-				}
-,
-				"obj-3::obj-7::obj-31::obj-55::obj-70" : 				{
-					"parameter_longname" : "hirt.val[9]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-31::obj-50::obj-70" : 				{
-					"parameter_longname" : "Q.2.val.1406",
-					"parameter_shortname" : "Q.2.val",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-8::obj-7::obj-3::obj-63::obj-70" : 				{
-					"parameter_longname" : "hirt.val[64]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-100::obj-70" : 				{
-					"parameter_longname" : "hirt.val[23]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-36::obj-131::obj-10" : 				{
-					"parameter_longname" : "Category Menu[4]"
-				}
-,
-				"obj-2::obj-7::obj-24::obj-2::obj-29::obj-70" : 				{
-					"parameter_longname" : "Rate.val.1418",
-					"parameter_shortname" : "Rate.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
-					"parameter_longname" : "hirt.val[34]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.01,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 1.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "Gain.val.1367",
-					"parameter_shortname" : "Gain.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-31::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[62]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-17::obj-70" : 				{
-					"parameter_longname" : "Slope.1.val.1412",
-					"parameter_shortname" : "Slope.1.val",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-3::obj-7::obj-3::obj-62::obj-70" : 				{
-					"parameter_longname" : "hirt.val[4]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-3::obj-59::obj-70" : 				{
-					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-56::obj-70" : 				{
-					"parameter_longname" : "Freq.3.val.1411",
-					"parameter_shortname" : "Freq.3.val",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-81::obj-70" : 				{
-					"parameter_longname" : "hirt.val[45]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-8::obj-7::obj-36::obj-114::obj-35" : 				{
-					"parameter_longname" : "Drop A[3]"
-				}
-,
-				"obj-3::obj-7::obj-31::obj-22::obj-70" : 				{
-					"parameter_longname" : "hirt.val[13]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-24::obj-2::obj-29::obj-70" : 				{
-					"parameter_longname" : "hirt.val[15]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 2
 				}
 ,
 				"obj-2::obj-7::obj-1::obj-1::obj-44::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
 					"parameter_longname" : "Fade.In.val.1435",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 1000.0 ],
 					"parameter_shortname" : "Fade.In.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-36::obj-131::obj-11" : 				{
-					"parameter_longname" : "IR Menu[3]"
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-88::obj-70" : 				{
-					"parameter_longname" : "hirt.val[18]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-44::obj-70" : 				{
-					"parameter_longname" : "hirt.val[39]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-53::obj-70" : 				{
-					"parameter_longname" : "Freq.2.val.1408",
-					"parameter_shortname" : "Freq.2.val",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
-					"parameter_longname" : "Decay.val.1440",
-					"parameter_shortname" : "Decay.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.01,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 1.0, 200.0 ]
-				}
-,
-				"obj-8::obj-7::obj-31::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[58]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-1::obj-46::obj-70" : 				{
-					"parameter_longname" : "hirt.val[30]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-99::obj-70" : 				{
-					"parameter_longname" : "Freq.1.val.1426",
-					"parameter_shortname" : "Freq.1.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-24::obj-1::obj-29::obj-70" : 				{
-					"parameter_longname" : "hirt.val[50]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 6,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -50.0, 50.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "Size.val.1439",
-					"parameter_shortname" : "Size.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-99::obj-70" : 				{
-					"parameter_longname" : "hirt.val[41]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-31::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[8]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-36::obj-70" : 				{
-					"parameter_longname" : "Decay.1.val.1425",
-					"parameter_shortname" : "Decay.1.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-31::obj-22::obj-70" : 				{
-					"parameter_longname" : "Freq.1.val.1414",
-					"parameter_shortname" : "Freq.1.val",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "hirt.val[65]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-79::obj-70" : 				{
-					"parameter_longname" : "hirt.val[22]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-88::obj-70" : 				{
-					"parameter_longname" : "Slope.1.val.1424",
-					"parameter_shortname" : "Slope.1.val",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[35]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-101::obj-70" : 				{
-					"parameter_longname" : "Freq.3.val.1432",
-					"parameter_shortname" : "Freq.3.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-31::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[54]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-3::obj-63::obj-70" : 				{
-					"parameter_longname" : "hirt.val[3]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-3::obj-59::obj-70" : 				{
-					"parameter_longname" : "Predelay.val.1365",
-					"parameter_shortname" : "Predelay.val",
-					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-96::obj-70" : 				{
-					"parameter_longname" : "hirt.val[46]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-31::obj-19::obj-70" : 				{
-					"parameter_longname" : "hirt.val[12]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-81::obj-70" : 				{
-					"parameter_longname" : "Decay.3.val.1431",
-					"parameter_shortname" : "Decay.3.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-3::obj-7::obj-24::obj-2::obj-8::obj-70" : 				{
-					"parameter_longname" : "hirt.val[14]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-1::obj-1::obj-12::obj-70" : 				{
-					"parameter_longname" : "Length.val.1434",
-					"parameter_shortname" : "Length.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.5,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 15000.0,
-					"parameter_range" : [ 100.0, 30000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-101::obj-70" : 				{
-					"parameter_longname" : "hirt.val[26]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-96::obj-70" : 				{
-					"parameter_longname" : "Slope.3.val.1430",
-					"parameter_shortname" : "Slope.3.val",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-12::obj-70" : 				{
-					"parameter_longname" : "hirt.val[40]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.5,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 15000.0,
-					"parameter_range" : [ 100.0, 30000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-2::obj-100::obj-70" : 				{
-					"parameter_longname" : "Freq.2.val.1429",
-					"parameter_shortname" : "Freq.2.val",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-24::obj-1::obj-28::obj-70" : 				{
-					"parameter_longname" : "Depth.val.1420",
-					"parameter_shortname" : "Depth.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -100.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-31::obj-50::obj-70" : 				{
-					"parameter_longname" : "hirt.val[59]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-3::obj-7::obj-1::obj-1::obj-45::obj-70" : 				{
-					"parameter_longname" : "hirt.val[29]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-24::obj-1::obj-28::obj-70" : 				{
-					"parameter_longname" : "hirt.val[51]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -100.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-3::obj-63::obj-70" : 				{
-					"parameter_longname" : "Width.val.1368",
-					"parameter_shortname" : "Width.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-36::obj-70" : 				{
-					"parameter_longname" : "hirt.val[42]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
-				}
-,
-				"obj-3::obj-7::obj-31::obj-53::obj-70" : 				{
-					"parameter_longname" : "hirt.val[7]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-3::obj-65::obj-70" : 				{
-					"parameter_longname" : "hirt.val[66]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-3::obj-7::obj-1::obj-2::obj-92::obj-70" : 				{
-					"parameter_longname" : "hirt.val[21]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-1::obj-47::obj-70" : 				{
-					"parameter_longname" : "hirt.val[36]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 2
 				}
 ,
 				"obj-2::obj-7::obj-1::obj-1::obj-45::obj-70" : 				{
-					"parameter_longname" : "Fade.Out.val.1436",
-					"parameter_shortname" : "Fade.Out.val",
-					"parameter_invisible" : 1,
 					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Fade.Out.val.1436",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 1000.0 ],
+					"parameter_shortname" : "Fade.Out.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
 				}
 ,
-				"obj-8::obj-7::obj-36::obj-114::obj-65" : 				{
-					"parameter_longname" : "Drop B[3]"
+				"obj-2::obj-7::obj-1::obj-1::obj-46::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Early.val.1437",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Early.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
-				"obj-8::obj-7::obj-31::obj-55::obj-70" : 				{
-					"parameter_longname" : "hirt.val[55]",
+				"obj-2::obj-7::obj-1::obj-1::obj-47::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Length.val.1438",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Length.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
+					"parameter_exponent" : 1.58,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Size.val.1439",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 50.0, 200.0 ],
+					"parameter_shortname" : "Size.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
+					"parameter_exponent" : 1.01,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Decay.val.1440",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 1.0, 200.0 ],
+					"parameter_shortname" : "Decay.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-100::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Freq.2.val.1429",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_shortname" : "Freq.2.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-101::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Freq.3.val.1432",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_shortname" : "Freq.3.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-36::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Decay.1.val.1425",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_shortname" : "Decay.1.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-79::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Decay.2.val.1428",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_shortname" : "Decay.2.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-81::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Decay.3.val.1431",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_shortname" : "Decay.3.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-88::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Slope.1.val.1424",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_shortname" : "Slope.1.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-92::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Q.2.val.1427",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_shortname" : "Q.2.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-96::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Slope.3.val.1430",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_shortname" : "Slope.3.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-2::obj-7::obj-1::obj-2::obj-99::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "Freq.1.val.1426",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_shortname" : "Freq.1.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-24::obj-1::obj-28::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "Depth.val.1420",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ -100.0, 100.0 ],
+					"parameter_shortname" : "Depth.val",
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-24::obj-1::obj-29::obj-70" : 				{
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Pan.val.1421",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -50.0, 50.0 ],
+					"parameter_shortname" : "Pan.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 6
+				}
+,
+				"obj-2::obj-7::obj-24::obj-2::obj-29::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Rate.val.1418",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_shortname" : "Rate.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-24::obj-2::obj-8::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Amount.val.1417",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Amount.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-31::obj-17::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Slope.1.val.1412",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_shortname" : "Slope.1.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-2::obj-7::obj-31::obj-19::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Gain.1.val.1413",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_shortname" : "Gain.1.val",
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-2::obj-7::obj-31::obj-22::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Freq.1.val.1414",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_shortname" : "Freq.1.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-31::obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Q.2.val.1406",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_shortname" : "Q.2.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-2::obj-7::obj-31::obj-51::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Gain.2.val.1407",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_shortname" : "Gain.2.val",
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-2::obj-7::obj-31::obj-53::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Freq.2.val.1408",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_shortname" : "Freq.2.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-31::obj-54::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Slope.3.val.1409",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_shortname" : "Slope.3.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-2::obj-7::obj-31::obj-55::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Gain.3.val.1410",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_shortname" : "Gain.3.val",
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-2::obj-7::obj-31::obj-56::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Freq.3.val.1411",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_shortname" : "Freq.3.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-2::obj-7::obj-3::obj-59::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Predelay.val.1365",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
+					"parameter_shortname" : "Predelay.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-2::obj-7::obj-3::obj-62::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Cascade.val.1369",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Cascade.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-3::obj-63::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Width.val.1368",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Width.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-3::obj-64::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Gain.val.1367",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_shortname" : "Gain.val",
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-2::obj-7::obj-3::obj-65::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Dry/Wet.val.1366",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Dry/Wet.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-1::obj-1::obj-12::obj-70" : 				{
+					"parameter_exponent" : 2.5,
+					"parameter_initial" : 15000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[27]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 100.0, 30000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-3::obj-7::obj-1::obj-1::obj-44::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[28]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 1000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-3::obj-7::obj-1::obj-1::obj-45::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[29]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 1000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-3::obj-7::obj-1::obj-1::obj-46::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[30]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-1::obj-1::obj-47::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[31]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
+					"parameter_exponent" : 1.58,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[32]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 50.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
 				"obj-3::obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
-					"parameter_longname" : "hirt.val[33]",
-					"parameter_invisible" : 1,
 					"parameter_exponent" : 1.01,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
 					"parameter_initial" : 100.0,
-					"parameter_range" : [ 1.0, 200.0 ]
-				}
-,
-				"obj-3::obj-7::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "hirt.val[2]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-8::obj-7::obj-1::obj-2::obj-100::obj-70" : 				{
-					"parameter_longname" : "hirt.val[47]",
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[33]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 1.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-100::obj-70" : 				{
 					"parameter_exponent" : 4.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
 					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 30.0, 18000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-36::obj-131::obj-10" : 				{
-					"parameter_longname" : "Category Menu[3]"
-				}
-,
-				"obj-3::obj-7::obj-31::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[11]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[23]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-101::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[26]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-36::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[19]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-79::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[22]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
 				"obj-3::obj-7::obj-1::obj-2::obj-81::obj-70" : 				{
-					"parameter_longname" : "hirt.val[25]",
-					"parameter_invisible" : 1,
 					"parameter_exponent" : 1.189901,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
 					"parameter_initial" : 100.0,
-					"parameter_range" : [ 20.0, 200.0 ]
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[25]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-88::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[18]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-92::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[21]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-96::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[24]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-3::obj-7::obj-1::obj-2::obj-99::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[20]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-3::obj-7::obj-24::obj-1::obj-28::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[16]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -100.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-24::obj-1::obj-29::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[17]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -50.0, 50.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 6
+				}
+,
+				"obj-3::obj-7::obj-24::obj-2::obj-29::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[15]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-3::obj-7::obj-24::obj-2::obj-8::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[14]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-31::obj-17::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[11]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-3::obj-7::obj-31::obj-19::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[12]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-3::obj-7::obj-31::obj-22::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[13]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-3::obj-7::obj-31::obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[5]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-3::obj-7::obj-31::obj-51::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[6]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-3::obj-7::obj-31::obj-53::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[7]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-3::obj-7::obj-31::obj-54::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[8]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-3::obj-7::obj-31::obj-55::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[9]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-3::obj-7::obj-31::obj-56::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[10]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
 				}
 ,
 				"obj-3::obj-7::obj-36::obj-114::obj-35" : 				{
 					"parameter_longname" : "Drop A[4]"
 				}
 ,
+				"obj-3::obj-7::obj-36::obj-114::obj-65" : 				{
+					"parameter_longname" : "Drop B[4]"
+				}
+,
+				"obj-3::obj-7::obj-36::obj-131::obj-10" : 				{
+					"parameter_longname" : "Category Menu[4]"
+				}
+,
 				"obj-3::obj-7::obj-36::obj-131::obj-11" : 				{
 					"parameter_longname" : "IR Menu[4]"
 				}
 ,
-				"obj-8::obj-7::obj-31::obj-22::obj-70" : 				{
-					"parameter_longname" : "hirt.val[60]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-3::obj-7::obj-1::obj-1::obj-44::obj-70" : 				{
-					"parameter_longname" : "hirt.val[28]",
-					"parameter_invisible" : 1,
+				"obj-3::obj-7::obj-3::obj-59::obj-70" : 				{
 					"parameter_exponent" : 2.0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 1000.0 ]
-				}
-,
-				"obj-8::obj-7::obj-24::obj-2::obj-29::obj-70" : 				{
-					"parameter_longname" : "hirt.val[52]",
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1.0,
-					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 2
 				}
 ,
-				"obj-2::obj-7::obj-24::obj-2::obj-8::obj-70" : 				{
-					"parameter_longname" : "Amount.val.1417",
-					"parameter_shortname" : "Amount.val",
+				"obj-3::obj-7::obj-3::obj-62::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[4]",
 					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
 					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-3::obj-63::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[3]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-7::obj-3::obj-64::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[2]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-3::obj-7::obj-3::obj-65::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[1]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-12::obj-70" : 				{
+					"parameter_exponent" : 2.5,
+					"parameter_initial" : 15000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[40]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 100.0, 30000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-44::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[39]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 1000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-45::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[38]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 1000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-46::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[37]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-47::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[36]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
+					"parameter_exponent" : 1.58,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[35]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 50.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
+					"parameter_exponent" : 1.01,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[34]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 1.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-100::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[47]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-101::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[44]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-36::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[42]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-79::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[48]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-81::obj-70" : 				{
+					"parameter_exponent" : 1.189901,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[45]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 20.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
 				"obj-8::obj-7::obj-1::obj-2::obj-88::obj-70" : 				{
-					"parameter_longname" : "hirt.val[43]",
-					"parameter_invisible" : 1,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 1,
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[43]",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ 0.05, 2.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
 				}
 ,
-				"obj-3::obj-7::obj-31::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[6]",
-					"parameter_invisible" : 0,
+				"obj-8::obj-7::obj-1::obj-2::obj-92::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[49]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-96::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[46]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 1
+				}
+,
+				"obj-8::obj-7::obj-1::obj-2::obj-99::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[41]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 30.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-24::obj-1::obj-28::obj-70" : 				{
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[51]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -100.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-24::obj-1::obj-29::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[50]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -50.0, 50.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 6
+				}
+,
+				"obj-8::obj-7::obj-24::obj-2::obj-29::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 1.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[52]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 2.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-24::obj-2::obj-8::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[53]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-31::obj-17::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[62]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-8::obj-7::obj-31::obj-19::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[61]",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-8::obj-7::obj-31::obj-22::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[60]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-31::obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[59]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-8::obj-7::obj-31::obj-51::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[58]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-8::obj-7::obj-31::obj-53::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[57]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-31::obj-54::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[56]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-8::obj-7::obj-31::obj-55::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[55]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-8::obj-7::obj-31::obj-56::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[54]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-8::obj-7::obj-36::obj-114::obj-35" : 				{
+					"parameter_longname" : "Drop A[3]"
+				}
+,
+				"obj-8::obj-7::obj-36::obj-114::obj-65" : 				{
+					"parameter_longname" : "Drop B[3]"
+				}
+,
+				"obj-8::obj-7::obj-36::obj-131::obj-10" : 				{
+					"parameter_longname" : "Category Menu[3]"
+				}
+,
+				"obj-8::obj-7::obj-36::obj-131::obj-11" : 				{
+					"parameter_longname" : "IR Menu[3]"
 				}
 ,
 				"obj-8::obj-7::obj-3::obj-59::obj-70" : 				{
-					"parameter_longname" : "hirt.val[67]",
 					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[67]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
 				}
 ,
-				"obj-3::obj-7::obj-24::obj-1::obj-29::obj-70" : 				{
-					"parameter_longname" : "hirt.val[17]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 6,
+				"obj-8::obj-7::obj-3::obj-62::obj-70" : 				{
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ -50.0, 50.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[63]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-3::obj-63::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[64]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-8::obj-7::obj-3::obj-64::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[65]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-8::obj-7::obj-3::obj-65::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[66]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "helpname.js",
+				"name" : "HIRT_HISSTools_Logo.png",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
+				"patcherrelativepath" : "../misc/HIRT_image",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "anton.aif",
+				"bootpath" : "C74:/media/msp",
+				"type" : "AIFF",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bufresample~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bufreverse~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "drumLoop.aif",
+				"bootpath" : "C74:/media/msp",
+				"type" : "AIFF",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "helpargs.js",
 				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -5157,35 +5323,16 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpargs.js",
+				"name" : "helpname.js",
 				"bootpath" : "C74:/help/resources",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "anton.aif",
-				"bootpath" : "C74:/media/msp",
-				"type" : "AIFF",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "drumLoop.aif",
-				"bootpath" : "C74:/media/msp",
-				"type" : "AIFF",
+				"name" : "hirt.buffer.filter.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../patchers/HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
@@ -5196,21 +5343,28 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_tabs_offline.maxpat",
+				"name" : "hirt.convolvestereo~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../patchers/HIRT_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt.convrvrb.realtime~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_tab_shape.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"name" : "hirt.credits.mini.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
+				"patcherrelativepath" : "../misc/HIRT_resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.dial.maxpat",
+				"name" : "hirt.damping.cascade.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
@@ -5224,98 +5378,28 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_tab_damp.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_damp.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tabs_realtime.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_position.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_pos.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_modulation.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_mod.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_ir.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_loading.maxpat",
+				"name" : "hirt.dial.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_loading_scheme.maxpat",
+				"name" : "hirt.helpstarter.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt.size.resample.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_file_set.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_check.maxpat",
+				"name" : "hirt.svfcoeff.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
@@ -5329,14 +5413,77 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_folder.maxpat",
+				"name" : "hirt_conv_rvrb_zoom.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convolution_rt_library.genexpr",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../code",
+				"type" : "GenX",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_clientlist_alias.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_rt_part1.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_rt_part3.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_convrvrb_rt_part5.gendsp",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../code",
+				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_cr_info_view.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_data_colls.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_data_colls.maxpat",
+				"name" : "hirt_eq.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_eq_library.genexpr",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
+				"patcherrelativepath" : "../code",
+				"type" : "GenX",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_file_check.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
@@ -5350,7 +5497,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_filter_type.maxpat",
+				"name" : "hirt_file_loading.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
@@ -5364,87 +5511,31 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_cr_info_view.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_output.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_clientlist_alias.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convrvrb.realtime~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolvestereo~.maxpat",
+				"name" : "hirt_file_set.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
 				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convrvrb_rt_part1.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
+				"name" : "hirt_filter_type.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../patchers/HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
+				"name" : "hirt_folder.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../patchers/HIRT_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part3.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part5.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
+				"name" : "hirt_gain_and_display.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
@@ -5455,44 +5546,44 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
+				"name" : "hirt_interface_damp.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../jsui",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.damping.cascade.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
+				"name" : "hirt_interface_eq.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../jsui",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.buffer.filter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
+				"name" : "hirt_interface_mod.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../jsui",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_partition_late.maxpat",
+				"name" : "hirt_interface_pos.js",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
+				"patcherrelativepath" : "../jsui",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_ir.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_partition_fix_length.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"name" : "hirt_loading_scheme.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
+				"patcherrelativepath" : "../patchers/HIRT_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -5504,7 +5595,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_partition_early.maxpat",
+				"name" : "hirt_output.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
@@ -5518,16 +5609,23 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_gain_and_display.maxpat",
+				"name" : "hirt_partition_early.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
 				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.size.resample.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
+				"name" : "hirt_partition_fix_length.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_partition_late.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -5539,67 +5637,85 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt.helpstarter.js",
+				"name" : "hirt_tab_damp.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tab_modulation.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tab_position.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tab_shape.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tabs_offline.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_tabs_realtime.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
+				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "hirt_zoom_factor.js",
 				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "iraverage~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "ircropfade~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "irdisplay~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "irmix~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "irstats~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "irtrimnorm~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "morphfilter~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
+				"name" : "multiconvolve~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "sho0630.aif",
@@ -5609,46 +5725,6 @@
 			}
 , 			{
 				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "iraverage~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irdisplay~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irtrimnorm~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "morphfilter~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irstats~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irmix~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ircropfade~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bufreverse~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bufresample~.mxo",
 				"type" : "iLaX"
 			}
  ],

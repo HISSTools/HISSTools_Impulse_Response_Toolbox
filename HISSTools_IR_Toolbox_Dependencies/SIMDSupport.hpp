@@ -42,7 +42,7 @@ template<class T>
 struct SIMDLimits
 {
     static const int max_size = 1;
-    static const int byte_width = sizeof(T);
+    static const int byte_width = alignof(T);
 };
 
 #if defined(__AVX512F__)

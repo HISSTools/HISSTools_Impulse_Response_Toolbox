@@ -552,12 +552,14 @@ intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, 
     double last_energy = 0.0;
     double energy_thresh = db_to_pow(-60);
 
+    // Debugging only
+    // intptr_t max_ratio_offset = 0;
+
     intptr_t hop_size = mstosamps(ONSET_HOP_SIZE_MS, sample_rate);
     intptr_t half_window_size = mstosamps(ONSET_HALF_SIZE_MS, sample_rate);
     intptr_t window_size = half_window_size + half_window_size + 1;
     intptr_t prior_max_energy_offset = 0;
     intptr_t max_offset = 0;
-    intptr_t max_ratio_offset = 0;
     intptr_t max_energy_offset = 0;
     intptr_t first_thresh_frame = -1;
 
@@ -593,8 +595,10 @@ intptr_t calc_onset(float *ir, float *samples, double *window, intptr_t length, 
 
         if (i && ratio > max_ratio)
         {
+            // Debugging only
+            // max_ratio_offset = i - hop_size;
+            
             max_ratio = ratio;
-            max_ratio_offset = i - hop_size;
             prior_max_energy = max_energy;
             prior_max_energy_offset = max_energy_offset;
         }
