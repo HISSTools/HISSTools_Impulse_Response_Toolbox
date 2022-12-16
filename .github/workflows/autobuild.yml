@@ -17,13 +17,25 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: "hirt"
+      - name: Checkout convolution reverb specific externals
+        uses: actions/checkout@v3
+        with:
+            repository: 'AlexHarker/M4L_Convolution_Reverb_Externals'
+            path: "m4l"
       - name: Build windows externals
-        run: msbuild "hirt/HISSTools_IR_Toolbox.sln" /p:configuration="Release" /p:platform=x64 /v:q /clp:ErrorsOnly /nologo /m
+        run: | 
+             msbuild "m4l/M4L_Convolution_Reverb_Externals.sln" /p:configuration="Release" /p:platform=x64 /v:q /clp:ErrorsOnly /nologo /m
+             msbuild "hirt/HISSTools_IR_Toolbox.sln" /p:configuration="Release" /p:platform=x64 /v:q /clp:ErrorsOnly /nologo /m
       - name: Upload windows builds
         uses: actions/upload-artifact@v3
         with:
-          name: deploy-win
+          name: deploy-win-hirt
           path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/"
+      - name: Upload windows convolution reverb specific builds
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy-win-m4l
+          path: m4l/build-win
   deploy-mac:
     runs-on: macos-latest
     needs: deploy-win
@@ -40,13 +52,26 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: "hirt"
+      - name: Checkout convolution reverb specific externals
+        uses: actions/checkout@v3
+        with:
+          repository: 'AlexHarker/M4L_Convolution_Reverb_Externals'
+          path: "m4l"
       - name: Download windows builds
         uses: actions/download-artifact@v3
         with:
-          name: deploy-win
+          name: deploy-win-hirt
           path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/"
+      - name: Download windows convolution reverb specific builds
+        uses: actions/download-artifact@v3
+        with:
+          name: deploy-win-m4l
+          path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support/"
       - name: Build mac externals
-        run: xcodebuild -project 'hirt/HISSTools_IR_Toolbox.xcodeproj' -scheme 'All HIRT Externals' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
+        run: |
+             xcodebuild -project 'm4l/M4L_Convolution_Reverb_Externals.xcodeproj' -scheme 'All Tools' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
+             mv m4l/build-mac/* "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support/"
+             xcodebuild -project 'hirt/HISSTools_IR_Toolbox.xcodeproj' -scheme 'All HIRT Externals' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
       - name: Setup keychain and identities
         shell: bash
         env:  
