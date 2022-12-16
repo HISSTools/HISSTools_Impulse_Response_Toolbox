@@ -111,13 +111,13 @@ jobs:
         run: |
              mkdir build/
              cd hirt/HISSTools_Packaging/
-             zip -r ../../build/AHISSTools_Impulse_Response_Toolbox.zip "HISSTools Impulse Response Toolbox (HIRT)"
+             zip -r ../../build/HISSTools_Impulse_Response_Toolbox.zip "HISSTools Impulse Response Toolbox (HIRT)"
       - name: Make release
         uses: "softprops/action-gh-release@v1"
         with:
           prerelease: true
           fail_on_unmatched_files: true
-          files: build/AHISSTools_Impulse_Response_Toolbox.zip
+          files: build/HISSTools_Impulse_Response_Toolbox.zip
           target_commitish: ${{ github.sha }}
           tag_name: latest-${{ steps.date.outputs.date }}
           body: This is an automated build of the HIRT. 
