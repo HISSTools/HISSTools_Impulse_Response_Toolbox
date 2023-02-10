@@ -56,7 +56,7 @@ public:
         
         for (i = 0; amp_curve && (i < 32); i++)
         {
-            if (isinf(amp_curve[i]))
+            if (std::isinf(amp_curve[i]))
                 break;
         }
         

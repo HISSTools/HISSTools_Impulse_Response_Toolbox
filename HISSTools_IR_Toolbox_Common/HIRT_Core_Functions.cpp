@@ -639,7 +639,7 @@ void make_freq_dependent_power_array(double *power_array, double *specifier_arra
 
     for (i = 0; i < HIRT_MAX_SPECIFIER_ITEMS; i++)
     {
-        if (isinf(specifier_array[i]))
+        if (std::isinf(specifier_array[i]))
             break;
     }
 
@@ -762,8 +762,8 @@ void deconvolve_with_amp_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLE
         real1[0] = (real1[0] / real2[0]) * filter_amps[0];
         imag1[0] = (imag1[0] / imag2[0]) * filter_amps[fft_size >> 1];
 
-        real1[0] = isinf(real1[0]) ? 0.0 : real1[0];
-        imag1[0] = isinf(imag1[0]) ? 0.0 : imag1[0];
+        real1[0] = std::isinf(real1[0]) ? 0.0 : real1[0];
+        imag1[0] = std::isinf(imag1[0]) ? 0.0 : imag1[0];
     }
 
     for (i = from; i < to; i++)
@@ -774,7 +774,7 @@ void deconvolve_with_amp_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLE
         c1 = c1 * std::conj(c2);
 
         mul = filter_amps[i] / std::norm(c2);
-        mul = isinf(mul) ? 0.0 : mul;
+        mul = std::isinf(mul) ? 0.0 : mul;
 
         real1[i] = c1.real() * mul;
         imag1[i] = c1.imag() * mul;
@@ -911,8 +911,8 @@ void deconvolve_with_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D 
         real1[0] = (real1[0] / real2[0]) * real3[0];
         imag1[0] = (imag1[0] / imag2[0]) * imag3[0];
 
-        real1[0] = isinf(real1[0]) ? 0.0 : real1[0];
-        imag1[0] = isinf(imag1[0]) ? 0.0 : imag1[0];
+        real1[0] = std::isinf(real1[0]) ? 0.0 : real1[0];
+        imag1[0] = std::isinf(imag1[0]) ? 0.0 : imag1[0];
     }
 
     for (uintptr_t i = from; i < to; i++)
@@ -924,7 +924,7 @@ void deconvolve_with_filter(FFT_SPLIT_COMPLEX_D spectrum_1, FFT_SPLIT_COMPLEX_D 
         c1 = (c1 * std::conj(c2)) * c3;
 
         mul = 1.0 / std::norm(c2);
-        mul = isinf(mul) ? 0.0 : mul;
+        mul = std::isinf(mul) ? 0.0 : mul;
 
         real1[i] = c1.real() * mul;
         imag1[i] = c1.imag() * mul;
