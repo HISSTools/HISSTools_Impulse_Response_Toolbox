@@ -2,43 +2,9 @@
 #ifndef _AH_ATOMIC_
 #define _AH_ATOMIC_
 
-// In case we are compiing for Max 4, or outside of the Max SDK we have to check fot a SDK number and provide the expected atomic macros if bit oresent or less than 5
-
-#if (defined C74_MAX_SDK_VERSION && (C74_MAX_SDK_VERSION >= 0x0500))
-
 // Use Max SDK macros
 
 #include <ext_atomic.h>
-
-#else
-
-// Local macros
-
-#ifdef __APPLE__    // Apple
-
-#include <libkern/OSAtomic.h>
-
-typedef int32_t t_int32_atomic;
-
-#define ATOMIC_INCREMENT OSAtomicIncrement32
-#define ATOMIC_DECREMENT OSAtomicDecrement32
-#define ATOMIC_INCREMENT_BARRIER OSAtomicIncrement32Barrier
-#define ATOMIC_DECREMENT_BARRIER OSAtomicDecrement32Barrier
-
-#else                // Windows
-
-#include <intrin.h>
-
-typedef volatile long t_int32_atomic;
-
-#define ATOMIC_INCREMENT                _InterlockedIncrement
-#define ATOMIC_DECREMENT                _InterlockedDecrement
-#define ATOMIC_INCREMENT_BARRIER        _InterlockedIncrement
-#define ATOMIC_DECREMENT_BARRIER        _InterlockedDecrement
-
-#endif        /* __APPLE__ */
-#endif        /* (C74_MAX_SDK_VERSION && (C74_MAX_SDK_VERSION >= 0x0500)) */
-
 
 static inline long Atomic_Compare_And_Swap(t_int32_atomic Comparand, t_int32_atomic Exchange, t_int32_atomic *Destination)
 {
