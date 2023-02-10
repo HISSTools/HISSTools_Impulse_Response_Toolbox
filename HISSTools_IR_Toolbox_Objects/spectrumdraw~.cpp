@@ -660,7 +660,7 @@ int C74_EXPORT main()
         CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, "1");
         CLASS_ATTR_ENUMINDEX(c, attrib_name, 0, "Off Normal Peak Smooth Accumulate");
         CLASS_ATTR_FILTER_CLIP(c, attrib_name, 0, 4);
-        CLASS_ATTR_LABEL(c,attrib_name,0,display_name);
+        CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
     }
 
     strcpy(chan_options, "1");
@@ -694,7 +694,7 @@ int C74_EXPORT main()
         CLASS_ATTR_LONG(c, attrib_name, 0, t_spectrumdraw, curve_chan[i]);
         CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
         CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1, SPECTRUMDRAW_NUM_CURVES);
-        CLASS_ATTR_LABEL(c,attrib_name,0,display_name);
+        CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
     }
 
     // Thickness Attributes
