@@ -534,35 +534,151 @@ static inline void spectrumdraw_set_fft_scaling(t_scale_vals *scale, uintptr_t f
 
 
 //////////////////////////////////////////////////////////////////////////
-/////////////////////// Main / New / Free / Assist ///////////////////////
+///////////////////////// Curve Attribute Helpers ////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
 
 // Static loop helpers
 
-template <int I, int N>
-struct static_loop
+template <int I, int N, template <int> class T>
+struct static_attribute_loop
 {
-    template <typename T>
-    void operator()(T loop)
+    void operator()(t_class *c)
     {
-        loop(I);
-        static_loop<I + 1, N>()(loop);
+        T<I>()(c);
+        static_attribute_loop<I + 1, N, T>()(c);
     }
 };
 
-template <int N>
-struct static_loop<N, N>
+
+template <int N, template <int> class T>
+struct static_attribute_loop<N, N, T>
 {
-    template <typename T>
-    void operator()(T loop)
+    void operator()(t_class *c)
     {}
 };
+
+
+// Curve Color Attributes
+
+template <int I>
+struct curve_color_attributes
+{
+    void operator()(t_class *c)
+    {
+        char attrib_name[32];
+        char display_name[32];
+        char temp_str[64];
+
+        sprintf(attrib_name, "color%d", I + 1);
+        sprintf(display_name, "Curve Color %d", I + 1);
+        sprintf(temp_str, "%lf %lf %lf 1.", (I == 3) ? 0.5 : 0.0, (I == 1) || (I == 3) ? 0.5 : 0.0, I == 2 ? 0.5 : 0.0);
+        
+        CLASS_ATTR_RGBA(c, attrib_name, 0, t_spectrumdraw, curve_colors[I]);
+        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
+        CLASS_ATTR_STYLE_LABEL(c, attrib_name, 0, "rgba", display_name);
+    }
+};
+
+// Curve Mode Attributes
+
+template <int I>
+struct curve_mode_attributes
+{
+    void operator()(t_class *c)
+    {
+        char attrib_name[32];
+        char display_name[32];
+        
+        if (!I)
+        {
+            sprintf(attrib_name, "mode");
+            sprintf(display_name, "Mode");
+        }
+        else
+        {
+            sprintf(attrib_name, "mode%d", I + 1);
+            sprintf(display_name, "Mode %d", I + 1);
+        }
+        
+        CLASS_ATTR_LONG(c, attrib_name, 0, t_spectrumdraw, curve_mode[I]);
+        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, "1");
+        CLASS_ATTR_ENUMINDEX(c, attrib_name, 0, "Off Normal Peak Smooth Accumulate");
+        CLASS_ATTR_FILTER_CLIP(c, attrib_name, 0, 4);
+        CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
+    }
+};
+
+
+// Chan Attributes
+
+template <int I>
+struct curve_chan_attributes
+{
+    void operator()(t_class *c)
+    {
+        char attrib_name[32];
+        char display_name[32];
+        char temp_str[64];
+
+        if (!I)
+        {
+            sprintf(attrib_name, "chan");
+            sprintf(display_name, "Input Channel");
+        }
+        else
+        {
+            sprintf(attrib_name, "chan%d", I + 1);
+            sprintf(display_name, "Input Channel %d", I + 1);
+        }
+
+        sprintf(temp_str, "%d", I + 1);
+
+        CLASS_ATTR_LONG(c, attrib_name, 0, t_spectrumdraw, curve_chan[I]);
+        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
+        CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1, SPECTRUMDRAW_NUM_CURVES);
+        CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
+    }
+};
+
+
+// Curve Thickness Attributes
+
+template <int I>
+struct curve_thickness_attributes
+{
+    void operator()(t_class *c)
+    {
+        char attrib_name[32];
+        char display_name[32];
+        
+        if (!I)
+        {
+            sprintf(attrib_name, "thickness");
+            sprintf(display_name, "Curve Thickness");
+        }
+        else
+        {
+            sprintf(attrib_name, "thickness%d", I + 1);
+            sprintf(display_name, "Curve Thickness %d", I + 1);
+        }
+        
+        CLASS_ATTR_DOUBLE(c, attrib_name, 0, t_spectrumdraw, curve_thickness[I]);
+        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, "1.");
+        CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1.0, 4.0);
+        CLASS_ATTR_LABEL(c,attrib_name, 0, display_name);
+    }
+};
+
+
+//////////////////////////////////////////////////////////////////////////
+/////////////////////// Main / New / Free / Assist ///////////////////////
+//////////////////////////////////////////////////////////////////////////
+
 
 int C74_EXPORT main()
 {
     t_class *c;
-
-    char temp_str[64];
 
     c = class_new("spectrumdraw~", (method)spectrumdraw_new, (method)spectrumdraw_free, sizeof(t_spectrumdraw), 0L, A_GIMME, 0);
 
@@ -630,18 +746,9 @@ int C74_EXPORT main()
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "color", 0, "0.5 0. 0. 1.");
     CLASS_ATTR_STYLE_LABEL(c,"color", 0, "rgba","Curve Color");
 
-    static_loop<1, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
-    {
-        char attrib_name[32];
-        char display_name[32];
-        sprintf(attrib_name, "color%d", i + 1);
-        sprintf(display_name, "Curve Color %d", i + 1);
-        sprintf(temp_str, "%lf %lf %lf 1.", (i == 3) ? 0.5 : 0.0, (i == 1) || (i == 3) ? 0.5 : 0.0, i == 2 ? 0.5 : 0.0);
-
-        CLASS_ATTR_RGBA(c, attrib_name, 0, t_spectrumdraw, curve_colors[i]);
-        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
-        CLASS_ATTR_STYLE_LABEL(c, attrib_name, 0, "rgba", display_name);
-    });
+    // Curve Color Attributes
+    
+    static_attribute_loop<1, SPECTRUMDRAW_NUM_CURVES, curve_color_attributes>()(c);
 
     // Do text color
 
@@ -659,80 +766,11 @@ int C74_EXPORT main()
 
     CLASS_STICKY_ATTR(c, "category", 0, "Curves");
 
-    // Mode Attributes
-
-    static_loop<0, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
-    {
-        char attrib_name[32];
-        char display_name[32];
-
-        if (!i)
-        {
-            sprintf(attrib_name, "mode");
-            sprintf(display_name, "Mode");
-        }
-        else
-        {
-            sprintf(attrib_name, "mode%d", i + 1);
-            sprintf(display_name, "Mode %d", i + 1);
-        }
-
-        CLASS_ATTR_LONG(c, attrib_name, 0, t_spectrumdraw, curve_mode[i]);
-        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, "1");
-        CLASS_ATTR_ENUMINDEX(c, attrib_name, 0, "Off Normal Peak Smooth Accumulate");
-        CLASS_ATTR_FILTER_CLIP(c, attrib_name, 0, 4);
-        CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
-    });
-
-    // Chan Attributes
-
-    static_loop<0, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
-    {
-        char attrib_name[32];
-        char display_name[32];
-
-        if (!i)
-        {
-            sprintf(attrib_name, "chan");
-            sprintf(display_name, "Input Channel");
-        }
-        else
-        {
-            sprintf(attrib_name, "chan%d", i + 1);
-            sprintf(display_name, "Input Channel %d", i + 1);
-        }
-
-        sprintf(temp_str, "%d", i + 1);
-
-        CLASS_ATTR_LONG(c, attrib_name, 0, t_spectrumdraw, curve_chan[i]);
-        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
-        CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1, SPECTRUMDRAW_NUM_CURVES);
-        CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
-    });
-
-    // Thickness Attributes
-
-    static_loop<0, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
-    {
-        char attrib_name[32];
-        char display_name[32];
-
-        if (!i)
-        {
-            sprintf(attrib_name, "thickness");
-            sprintf(display_name, "Curve Thickness");
-        }
-        else
-        {
-            sprintf(attrib_name, "thickness%d", i + 1);
-            sprintf(display_name, "Curve Thickness %d", i + 1);
-        }
-
-        CLASS_ATTR_DOUBLE(c, attrib_name, 0, t_spectrumdraw, curve_thickness[i]);
-        CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, "1.");
-        CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1.0, 4.0);
-        CLASS_ATTR_LABEL(c,attrib_name, 0, display_name);
-    });
+    // Mode / Chan / Thickness Attributes
+    
+    static_attribute_loop<0, SPECTRUMDRAW_NUM_CURVES, curve_mode_attributes>()(c);
+    static_attribute_loop<0, SPECTRUMDRAW_NUM_CURVES, curve_chan_attributes>()(c);
+    static_attribute_loop<0, SPECTRUMDRAW_NUM_CURVES, curve_thickness_attributes>()(c);
 
     CLASS_STICKY_ATTR_CLEAR(c, "category");
 
