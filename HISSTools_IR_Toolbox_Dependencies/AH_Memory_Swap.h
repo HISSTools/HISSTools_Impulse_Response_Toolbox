@@ -101,7 +101,7 @@ static void free_temp_mem_swap(t_object *x, t_symbol *s, short argc, t_atom *arg
 
 // Alloc - You should only call this from the new routine to be thread-safe
 
-static __inline long alloc_mem_swap(t_safe_mem_swap *mem_struct, uintptr_t size, uintptr_t nom_size)
+static inline long alloc_mem_swap(t_safe_mem_swap *mem_struct, uintptr_t size, uintptr_t nom_size)
 {
     long fail = 0;
 
@@ -139,7 +139,7 @@ static __inline long alloc_mem_swap(t_safe_mem_swap *mem_struct, uintptr_t size,
 
 // Free - frees the memory immediately which is only safe in the object free routine - use clear if you want to clear the memory safely elsewhere
 
-static __inline void free_mem_swap(t_safe_mem_swap *mem_struct)
+static inline void free_mem_swap(t_safe_mem_swap *mem_struct)
 {
     // Spin on the lock
 
@@ -180,7 +180,7 @@ static __inline void free_mem_swap(t_safe_mem_swap *mem_struct)
 
 // Clear - this routine defers the freeing of memory so it should be thread-safe
 
-static __inline void clear_mem_swap(t_safe_mem_swap *mem_struct)
+static inline void clear_mem_swap(t_safe_mem_swap *mem_struct)
 {
     t_atom method_ptr;
 
@@ -226,7 +226,7 @@ static __inline void clear_mem_swap(t_safe_mem_swap *mem_struct)
 // Access - this routine will lock to get access to the memory struct and safely return the most recent useable values (either current or swap - BUT does not perform a swap)
 // This routine can be used in any thread, and must be used if you are using grow_mem_swap to swap the memory anywhere in your code
 
-static __inline void *access_mem_swap(t_safe_mem_swap *mem_struct, uintptr_t *nom_size)
+static inline void *access_mem_swap(t_safe_mem_swap *mem_struct, uintptr_t *nom_size)
 {
     void *return_ptr;
 
@@ -257,7 +257,7 @@ static __inline void *access_mem_swap(t_safe_mem_swap *mem_struct, uintptr_t *no
 // Use this in one thread only (typically the audio thread)
 // Returns 0 on no swap, 1 on swap and -1 on swap failed
 
-static __inline t_swap_status attempt_mem_swap(t_safe_mem_swap *mem_struct)
+static inline t_swap_status attempt_mem_swap(t_safe_mem_swap *mem_struct)
 {
     t_atom method_ptr;
 
@@ -313,7 +313,7 @@ static __inline t_swap_status attempt_mem_swap(t_safe_mem_swap *mem_struct)
 // This pointer will *NOT* be freed by the mem_swap routines
 // This routine should only be called from max threads
 
-static __inline void schedule_swap_mem_swap(t_safe_mem_swap *mem_struct, void *ptr, uintptr_t nom_size)
+static inline void schedule_swap_mem_swap(t_safe_mem_swap *mem_struct, void *ptr, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
@@ -341,7 +341,7 @@ static __inline void schedule_swap_mem_swap(t_safe_mem_swap *mem_struct, void *p
 // Schedule Grow - this routine will lock to get access to the memory struct and allocate new memory if required, to be swapped in later
 // This routine should only be called from max threads
 
-static __inline void *schedule_grow_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size, uintptr_t nom_size)
+static inline void *schedule_grow_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
@@ -383,7 +383,7 @@ static __inline void *schedule_grow_mem_swap(t_safe_mem_swap *mem_struct,  uintp
 // Schedule Equal - This routine will lock to get access to the memory struct and allocate new memory unless the sizes are equal, placing the memory in the new slots
 // This routine should only be called from max threads
 
-static __inline void *schedule_equal_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size, uintptr_t nom_size)
+static inline void *schedule_equal_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
@@ -438,7 +438,7 @@ static __inline void *schedule_equal_mem_swap(t_safe_mem_swap *mem_struct,  uint
 // Grow Immediate - this routine will lock to get access to the memory struct, and if necessary free the old memory and assign new memory - swapping pointers immediately
 // This routine should only be called from max threads and must be used in combination with safe access (access_mem_swap)
 
-static __inline void *grow_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size, uintptr_t nom_size)
+static inline void *grow_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
@@ -503,7 +503,7 @@ static __inline void *grow_mem_swap(t_safe_mem_swap *mem_struct,  uintptr_t size
 
 // Alloc Custom - you should only call this from the new routine to be thread-safe
 
-static __inline long alloc_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, uintptr_t size, uintptr_t nom_size)
+static inline long alloc_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, uintptr_t size, uintptr_t nom_size)
 {
     long fail = 0;
 
@@ -542,7 +542,7 @@ static __inline long alloc_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_m
 // This routine will lock to get access to the memory struct and allocate new memory if required
 // This routine should only be called from max threads
 
-static __inline void *schedule_grow_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, uintptr_t size, uintptr_t nom_size)
+static inline void *schedule_grow_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, uintptr_t size, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
@@ -584,7 +584,7 @@ static __inline void *schedule_grow_mem_swap_custom (t_safe_mem_swap *mem_struct
 // This routine will lock to get access to the memory struct and allocate new memory unless the sizes are equal
 // This routine should only be called from max threads
 
-static __inline void *schedule_equal_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr,  uintptr_t size, uintptr_t nom_size)
+static inline void *schedule_equal_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr,  uintptr_t size, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
@@ -639,7 +639,7 @@ static __inline void *schedule_equal_mem_swap_custom (t_safe_mem_swap *mem_struc
 // This routine will lock to get access to the memory struct, freeing the old memory and assigning new memory
 // This routine should only be called from max threads and must be used in combination with safe access (access_mem_swap)
 
-static __inline void *grow_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, uintptr_t size, uintptr_t nom_size)
+static inline void *grow_mem_swap_custom (t_safe_mem_swap *mem_struct, alloc_method alloc_method_ptr, free_method free_method_ptr, uintptr_t size, uintptr_t nom_size)
 {
     t_atom method_ptr;
 
