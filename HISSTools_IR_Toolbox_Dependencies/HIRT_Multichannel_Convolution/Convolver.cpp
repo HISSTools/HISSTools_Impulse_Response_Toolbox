@@ -171,9 +171,10 @@ void HISSTools::Convolver::process(const double * const* ins, double** outs, siz
     
     for (uintptr_t i = 0; i < numOuts; i++)
     {
-        const float *n2nIn[1] = { mInTemps[i] };
-
-        mConvolvers[i]->process(mN2M ? mInTemps.data() : n2nIn, mTemp2, mTemp1, numSamples, mN2M ? numIns : 1);
+    	const float *n2nIn[1] = { mInTemps[i] };
+    	const float * const *inTemps = mInTemps.data();
+    	
+    	mConvolvers[i]->process(mN2M ? inTemps : n2nIn, mTemp2, mTemp1, numSamples, mN2M ? numIns : 1);
         
         for (uintptr_t j = 0; j < numSamples; j++)
             outs[i][j] = mTemp2[j];
