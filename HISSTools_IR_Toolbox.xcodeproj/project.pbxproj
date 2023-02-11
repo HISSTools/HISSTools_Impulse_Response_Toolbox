@@ -406,7 +406,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B80029731696FF4E00B0030C /* AH_Atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AH_Atomic.h; sourceTree = "<group>"; };
 		B80029761696FF4E00B0030C /* AH_Memory_Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AH_Memory_Swap.h; sourceTree = "<group>"; };
 		B80029981696FF4E00B0030C /* ibuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ibuffer.hpp; sourceTree = "<group>"; };
 		B800299A1696FF4E00B0030C /* ibuffer_access.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ibuffer_access.hpp; sourceTree = "<group>"; };
@@ -726,7 +725,6 @@
 			children = (
 				B879995F1695C9770088D616 /* HISSTools_FFT */,
 				B804E66526B541B30035EA9C /* HIRT_Multichannel_Convolution */,
-				B80029731696FF4E00B0030C /* AH_Atomic.h */,
 				B80029761696FF4E00B0030C /* AH_Memory_Swap.h */,
 				B80029981696FF4E00B0030C /* ibuffer.hpp */,
 				B80D1E711653ECDF00921D8B /* ibuffer_access.cpp */,

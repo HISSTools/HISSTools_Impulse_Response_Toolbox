@@ -3,22 +3,33 @@
 #define _AH_MEMORY_SWAP_
 
 #include <ext.h>
+#include <ext_atomic.h>
 
 #include <stdint.h>
 
-#include "AH_Atomic.h"
+static inline long Atomic_Compare_And_Swap_Barrier(t_int32_atomic Comparand, t_int32_atomic Exchange, t_int32_atomic *Destination)
+{
+    return ATOMIC_COMPARE_SWAP32(Comparand, Exchange, Destination);
+}
 
 #ifdef __APPLE__
 
 #define ALIGNED_MALLOC malloc
 #define ALIGNED_FREE free
 
-#else
+#elif defined _WIN32
 
 #include <malloc.h>
 
 #define ALIGNED_MALLOC(x)  _aligned_malloc(x, 16)
 #define ALIGNED_FREE  _aligned_free
+
+#else
+
+#include <malloc.h>
+
+#define ALIGNED_MALLOC(x) aligned_alloc(16, x)
+#define ALIGNED_FREE free
 
 #endif
 
