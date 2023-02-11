@@ -2,11 +2,11 @@
 /*
  *  ibuffer_access.cpp
  *
- *	Provides code for accessing and interpolating samplesfrom an ibuffer (or standard MSP buffer).
- *	Various kinds of interpolation are supported.
- *	All pointers used should be 16-byte aligned.
+ *  Provides code for accessing and interpolating samplesfrom an ibuffer (or standard MSP buffer).
+ *  Various kinds of interpolation are supported.
+ *  All pointers used should be 16-byte aligned.
  *
- *	See the accompanying header file for more details.
+ *  See the accompanying header file for more details.
  *
  *  Copyright 2010-20 Alex Harker. All rights reserved.
  *
@@ -152,7 +152,7 @@ void ibuffer_read(const ibuffer_data& buffer, float *out, const float *positions
 }
 
 template <class T, class U>
-void ibuffer_read_format_edges(const ibuffer_data& buffer, T *out, U *positions, intptr_t n_samps, long chan, T mul, InterpType interp, EdgeType edges, bool bound)
+void ibuffer_read_format_edges(const ibuffer_data& buffer, T *out, U *positions, intptr_t n_samps, long chan, T mul, InterpType interp, EdgeMode edges, bool bound)
 {
     switch (buffer.get_format())
     {
@@ -186,17 +186,17 @@ void ibuffer_read_format_edges(const ibuffer_data& buffer, T *out, U *positions,
     }
 }
 
-void ibuffer_read_edges(const ibuffer_data& buffer, double *out, const double *positions, intptr_t n_samps, long chan, double mul, InterpType interp, EdgeType edges, bool bound)
+void ibuffer_read_edges(const ibuffer_data& buffer, double *out, const double *positions, intptr_t n_samps, long chan, double mul, InterpType interp, EdgeMode edges, bool bound)
 {
     ibuffer_read_format_edges<double>(buffer, out, positions, n_samps, chan, mul, interp, edges, bound);
 }
 
-void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const double *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeType edges, bool bound, float pad_lo, float pad_hi)
+void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const double *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound, float pad_lo, float pad_hi)
 {
     ibuffer_read_format_edges<float>(buffer, out, positions, n_samps, chan, mul, interp, edges, bound);
 }
 
-void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeType edges, bool bound, float pad_lo, float pad_hi)
+void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound, float pad_lo, float pad_hi)
 {
     ibuffer_read_format_edges<float>(buffer, out, positions, n_samps, chan, mul, interp, edges, bound);
 }
@@ -204,7 +204,7 @@ void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *pos
 template <class T, class Ft>
 void ibuffer_get_samps_loop(Ft fetch, T *out, intptr_t offset, intptr_t n_samps, bool reverse)
 {
-	if (reverse)
+    if (reverse)
     {
         for (intptr_t i = n_samps - 1; i >= 0; i--)
             *out++ = static_cast<T>(fetch.get(offset + i));

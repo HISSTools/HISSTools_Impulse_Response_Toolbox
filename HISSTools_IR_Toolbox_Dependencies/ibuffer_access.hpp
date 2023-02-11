@@ -2,19 +2,19 @@
 /*
  *  ibuffer_access.hpp
  *
- *	Provides an interface for accessing and reading samples from an ibuffer (or MSP buffer).
- *	You should also compile ibufffer_access.cpp in the project
+ *  Provides an interface for accessing and reading samples from an ibuffer (or MSP buffer).
+ *  You should also compile ibufffer_access.cpp in the project
  *
- *	Various kinds of interpolation are supported using SIMD calculation and 32 bit / 64 bit output.
+ *  Various kinds of interpolation are supported using SIMD calculation and 32 bit / 64 bit output.
  *
- *	All output pointers used with SIMD routines should be suitably aligned.
+ *  All output pointers used with SIMD routines should be suitably aligned.
  *
  *  The ibuffer_data class handles acquisition of the (i)buffer~ using RAII.
- *	The main routines for accessing samples are then:
+ *  The main routines for accessing samples are then:
  *
  *  ibuffer_read            - read multiple samples at arbitrary positions with interpolation
- *	ibuffer_get_samp        - get a single sample
- *	ibuffer_get_samps       - get a number of consecutive samples in forward or reverse order
+ *  ibuffer_get_samp        - get a single sample
+ *  ibuffer_get_samps       - get a number of consecutive samples in forward or reverse order
  *
  *  Helpers are provided for using attributes to set the interpolation type.
  *
@@ -130,9 +130,9 @@ void ibuffer_read(const ibuffer_data& buffer, float *out, const float *positions
 
 // Read with various edge conditions and various forms of interpolation
 
-void ibuffer_read_edges(const ibuffer_data& buffer, double *out, const double *positions, intptr_t n_samps, long chan, double mul, InterpType interp, EdgeType edges, bool bound);
-void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const double *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeType edges, bool bound);
-void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeType edges, bool bound);
+void ibuffer_read_edges(const ibuffer_data& buffer, double *out, const double *positions, intptr_t n_samps, long chan, double mul, InterpType interp, EdgeMode edges, bool bound);
+void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const double *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound);
+void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound);
 
 // Get individual samples
 
@@ -165,13 +165,13 @@ t_max_err ibuf_interp_attribute_set(T *x, t_attr *a, long argc, t_atom *argv)
         t_symbol *type = atom_getsym(argv);
         
         if (type == gensym("linear"))
-            x->interp_type = kInterpLinear;
+            x->interp_type = InterpType::Linear;
         else if (type == gensym("hermite"))
-            x->interp_type = kInterpCubicHermite;
+            x->interp_type = InterpType::CubicHermite;
         else if (type == gensym("bspline"))
-            x->interp_type = kInterpCubicBSpline;
+            x->interp_type = InterpType::CubicBSpline;
         else if (type == gensym("lagrange"))
-            x->interp_type = kInterpCubicLagrange;
+            x->interp_type = InterpType::CubicLagrange;
         else
             object_error((t_object *) x, "%s: no interpolation mode %s", object_classname(x)->s_name,  type->s_name);
     }
@@ -199,10 +199,10 @@ t_max_err ibuf_interp_attribute_get(T *x, t_object *attr, long *argc, t_atom **a
         
         switch (x->interp_type)
         {
-            case kInterpLinear:             atom_setsym(*argv, gensym("linear"));       break;
-            case kInterpCubicHermite:       atom_setsym(*argv, gensym("hermite"));      break;
-            case kInterpCubicBSpline:       atom_setsym(*argv, gensym("bspline"));      break;
-            case kInterpCubicLagrange:      atom_setsym(*argv, gensym("lagrange"));     break;
+            case InterpType::Linear:            atom_setsym(*argv, gensym("linear"));       break;
+            case InterpType::CubicHermite:      atom_setsym(*argv, gensym("hermite"));      break;
+            case InterpType::CubicBSpline:      atom_setsym(*argv, gensym("bspline"));      break;
+            case InterpType::CubicLagrange:     atom_setsym(*argv, gensym("lagrange"));     break;
             
             default:
                 atom_setsym(*argv, gensym("linear"));
@@ -221,4 +221,4 @@ void add_ibuffer_interp_attribute(t_class *this_class, const char *attrname)
     CLASS_ATTR_LABEL(this_class, attrname, 0L, "Interpolation Type");
 }
 
-#endif	/* IBUFFER_ACCESS_H */
+#endif /* IBUFFER_ACCESS_H */
