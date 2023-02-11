@@ -1,5 +1,9 @@
 name: build-github
-on: [workflow_dispatch]
+on: 
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '**'
 env: 
   MXO_GLOB: -e mxo
 jobs:
@@ -40,9 +44,6 @@ jobs:
     runs-on: macos-11
     needs: deploy-win
     steps:
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Checkout max-sdk-base
         uses: actions/checkout@v3
         with:
@@ -115,11 +116,10 @@ jobs:
       - name: Make release
         uses: "softprops/action-gh-release@v1"
         with:
-          prerelease: true
+          prerelease: ${{ endsWith(github.ref_name, 'rc') }}
           fail_on_unmatched_files: true
           files: build/HISSTools_Impulse_Response_Toolbox.zip
           target_commitish: ${{ github.sha }}
-          tag_name: latest-${{ steps.date.outputs.date }}
-          body: This is an automated build of the HIRT. 
+          body: This is an automated build of the HIRT Package. 
           generate_release_notes: true
     
