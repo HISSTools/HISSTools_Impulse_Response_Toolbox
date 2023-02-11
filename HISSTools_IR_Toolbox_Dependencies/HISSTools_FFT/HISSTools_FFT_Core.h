@@ -376,7 +376,7 @@ namespace hisstools_fft_impl{
         struct static_for<N, N>
         {
             template <typename Fn>
-            void operator()(Vector4x &result, const Vector4x &, const Vector4x &, Fn const&) const {}
+            void operator()(Vector4x & /* result */, const Vector4x & /* a */, const Vector4x & /* b */ , Fn const& /* fn */) const {}
         };
         
         template <typename Op>

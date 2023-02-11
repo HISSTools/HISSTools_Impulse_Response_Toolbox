@@ -27,7 +27,7 @@ struct table_fetcher
     table_fetcher(intptr_t length, double scale_val) : size(length), scale(scale_val) {}
     
     template <class U, class V>
-    void split(U position, intptr_t& idx, V& fract, int N)
+    void split(U position, intptr_t& idx, V& fract, int /* N */)
     {
         idx = static_cast<intptr_t>(std::floor(position));
         fract = static_cast<V>(position - static_cast<V>(idx));
@@ -35,7 +35,7 @@ struct table_fetcher
     
     intptr_t limit() { return size - 1; }
     
-    void prepare(InterpType interpolation) {}
+    void prepare(InterpType /* interpolation */) {}
     
     const intptr_t size;
     const double scale;

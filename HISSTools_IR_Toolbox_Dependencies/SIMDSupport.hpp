@@ -126,7 +126,7 @@ template <class T>
 T *allocate_aligned(size_t size)
 {
     void *mem;
-    posix_memalign(&mem, SIMDLimits<T>::byte_width, size * sizeof(T));
+    static_cast<void>(posix_memalign(&mem, SIMDLimits<T>::byte_width, size * sizeof(T)));
     return static_cast<T *>(mem);
 }
 
@@ -363,29 +363,29 @@ private:
             static_iterate<First + 1, Last>()(result, a, b, fn);
         }
         
-        void load(SV &vector, const T *array)
+        void load(SV &v, const T *array)
         {
-            vector.mData[First] = VecType(array + First * vec_size);
-            static_iterate<First + 1, Last>().load(vector, array);
+            v.mData[First] = VecType(array + First * vec_size);
+            static_iterate<First + 1, Last>().load(v, array);
         }
         
-        void store(T *array, const SV& vector)
+        void store(T *array, const SV& v)
         {
-            vector.mData[First].store(array + First * vec_size);
-            static_iterate<First + 1, Last>().store(array, vector);
+            v.mData[First].store(array + First * vec_size);
+            static_iterate<First + 1, Last>().store(array, v);
         }
         
-        void set(SV &vector, const T& a)
+        void set(SV &v, const T& a)
         {
-            vector.mData[First] = a;
-            static_iterate<First + 1, Last>().set(vector, a);
+            v.mData[First] = a;
+            static_iterate<First + 1, Last>().set(v, a);
         }
         
         template <class U>
-        void set(SV &vector, const SizedVector<U, 1, final_size>& a)
+        void set(SV &v, const SizedVector<U, 1, final_size>& a)
         {
-            vector.mData[First] = a.mData[First];
-            static_iterate<First + 1, Last>().set(vector, a);
+            v.mData[First] = a.mData[First];
+            static_iterate<First + 1, Last>().set(v, a);
         }
     };
     
@@ -395,14 +395,14 @@ private:
     struct static_iterate<N, N>
     {
         template <typename Fn>
-        void operator()(SV &result, const SV& a, const SV& b, Fn const& fn) const {}
+        void operator()(SV & /*result*/, const SV& /* a */, const SV& /* b */, Fn const& /* fn */) const {}
         
-        void load(SV &vector, const T *array) {}
-        void store(T *array, const SV& vector) {}
-        void set(SV &vector, const T& a) {}
+        void load(SV & /* v */, const T * /* array */) {}
+        void store(T * /* array */, const SV& /* v */) {}
+        void set(SV & /* v */, const T& /* a */) {}
         
         template <class U>
-        void set(SV &vector, const SizedVector<U, 1, final_size>& a) {}
+        void set(SV & /* v */, const SizedVector<U, 1, final_size>& /* a */) {}
     };
     
     // Op template
