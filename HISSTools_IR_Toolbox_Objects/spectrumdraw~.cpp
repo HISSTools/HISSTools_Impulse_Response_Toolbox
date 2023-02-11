@@ -323,16 +323,19 @@ uintptr_t spectrumdraw_realtime_fft_size(t_spectrumdraw *x)
     return static_cast<uintptr_t>(uintptr_t(1) << (x->fft_select + 8));
 }
 
+
 uintptr_t spectrumdraw_realtime_window_size(t_spectrumdraw *x)
 {
     return spectrumdraw_realtime_fft_size(x) / static_cast<uintptr_t>(uintptr_t(1) << (x->zero_pad));
 }
-      
+    
+
 t_jgraphics_text_justification combine_flags(t_jgraphics_text_justification a, t_jgraphics_text_justification b)
 {
     int result = a | b;
     return (t_jgraphics_text_justification) result;
 }
+
 
 template <class T, class U, class V>
 static inline T clip(T val, U min, V max)
