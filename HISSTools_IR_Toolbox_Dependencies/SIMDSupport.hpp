@@ -125,8 +125,11 @@ void deallocate_aligned(T *ptr)
 template <class T>
 T *allocate_aligned(size_t size)
 {
-    void *mem;
-    static_cast<void>(posix_memalign(&mem, SIMDLimits<T>::byte_width, size * sizeof(T)));
+    void *mem = nullptr;
+    
+    if (posix_memalign(&mem, SIMDLimits<T>::byte_width, size * sizeof(T)))
+    	return nullptr;
+
     return static_cast<T *>(mem);
 }
 

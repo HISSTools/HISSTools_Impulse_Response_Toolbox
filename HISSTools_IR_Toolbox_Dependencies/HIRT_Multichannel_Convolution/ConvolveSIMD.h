@@ -96,7 +96,7 @@ typedef SSEFloat FloatVector;
 #ifdef __APPLE__
 #define ALIGNED_MALLOC malloc
 #define ALIGNED_FREE free
-#elif defined _WIN32 || defined _WIN64
+#elif defined _WIN32
 #include <malloc.h>
 #define ALIGNED_MALLOC(x)  _aligned_malloc(x, 16)
 #define ALIGNED_FREE(x)  _aligned_free(x)
@@ -104,4 +104,3 @@ typedef SSEFloat FloatVector;
 #define ALIGNED_MALLOC(x) aligned_alloc(16, x);
 #define ALIGNED_FREE free
 #endif
-
