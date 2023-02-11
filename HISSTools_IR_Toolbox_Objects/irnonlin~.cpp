@@ -341,8 +341,13 @@ void irnonlin_nonlin_internal(t_irnonlin *x, t_symbol *sym, short argc, t_atom *
 
             for (uintptr_t j = 1; j < (fft_size >> 1); j++)
             {
-                impulses[i].realp[j] = -impulses[i].imagp[j] * current_coeff;
-                impulses[i].imagp[j] =  impulses[i].realp[j] * current_coeff;
+                const double real = -impulses[i].imagp[j];
+                const double imag =  impulses[i].realp[j];
+                
+                // N.B. - must read and then write separately to avoid data corruption
+                
+                impulses[i].realp[j] = real * current_coeff;
+                impulses[i].imagp[j] = imag * current_coeff;
             }
 
             // Accumulate other IRs (multiplying by j first)
