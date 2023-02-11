@@ -37,7 +37,7 @@ jobs:
           name: deploy-win-m4l
           path: m4l/build-win
   deploy-mac:
-    runs-on: macos-latest
+    runs-on: macos-11
     needs: deploy-win
     steps:
       - name: Get current date
