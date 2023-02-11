@@ -538,7 +538,6 @@ static inline void spectrumdraw_set_fft_scaling(t_scale_vals *scale, uintptr_t f
 int C74_EXPORT main()
 {
     t_class *c;
-    short i;
 
     char chan_options[64];
     char temp_str[64];
@@ -609,7 +608,7 @@ int C74_EXPORT main()
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "color", 0, "0.5 0. 0. 1.");
     CLASS_ATTR_STYLE_LABEL(c,"color", 0, "rgba","Curve Color");
 
-    for (i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         char attrib_name[32];
         char display_name[32];
@@ -640,7 +639,7 @@ int C74_EXPORT main()
 
     // Mode Attributes
 
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         char attrib_name[32];
         char display_name[32];
@@ -667,13 +666,13 @@ int C74_EXPORT main()
 
     // Chan Attributes
 
-    for (i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         strcpy(temp_str, chan_options);
         sprintf(chan_options, "%s %d", temp_str, i + 1);
     }
 
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         char attrib_name[32];
         char display_name[32];
@@ -699,7 +698,7 @@ int C74_EXPORT main()
 
     // Thickness Attributes
 
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         char attrib_name[32];
         char display_name[32];
@@ -930,7 +929,7 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 
     init_HIRT_common_attributes(x);
 
-    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
         x->sig_ins_valid[i] = false;
 
     // Init once per object memory
@@ -940,7 +939,7 @@ void *spectrumdraw_new(t_symbol *s, short argc, t_atom *argv)
 
     // Init per curve / channel memory
 
-    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         alloc_mem_swap(x->realtime_data + i, 0, 0);
         alloc_mem_swap(x->realtime_stats + i, 0, 0);
@@ -986,7 +985,7 @@ void spectrumdraw_free(t_spectrumdraw *x)
 
     // Once per curve / channel
 
-    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         free_mem_swap(x->curve_data + i);
         free_mem_swap(x->realtime_io + i);
@@ -1056,7 +1055,7 @@ void *alloc_fft_stats(uintptr_t size, uintptr_t nom_size)
 
 void check_realtime_io(t_spectrumdraw *x, uintptr_t fft_size)
 {
-    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         if (x->sig_ins_valid[i])
             schedule_equal_mem_swap_custom(&x->realtime_io[i], alloc_realtime_data, 0, fft_size * 2 * sizeof(float), fft_size);
@@ -1903,9 +1902,7 @@ void spectrumdraw_perform64(t_spectrumdraw *x, t_object *dsp64, double **ins, lo
 
 void spectrumdraw_dsp64(t_spectrumdraw *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
-    short i;
-
-    for (i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         if (count[i] > 0)
             x->sig_ins_valid[i] = true;
@@ -2381,7 +2378,6 @@ void spectrumdraw_jgraphics_paint(t_spectrumdraw *x, t_object *patcherview, t_sc
     t_jgraphics *g2;
 
     float *y_vals;
-    short i;
 
     jbox_get_color((t_object *) x, &x->curve_colors[0]);
 
@@ -2400,7 +2396,7 @@ void spectrumdraw_jgraphics_paint(t_spectrumdraw *x, t_object *patcherview, t_sc
 
     if (g2)
     {
-        for (i = SPECTRUMDRAW_NUM_CURVES - 1; i >= 0; i--)
+        for (int i = SPECTRUMDRAW_NUM_CURVES - 1; i >= 0; i--)
         {
             if (x->curve_data[i].current_ptr)
             {
@@ -2940,7 +2936,7 @@ void spectrumdraw_paint(t_spectrumdraw *x, t_object *patcherview)
     
     // Try to swap memory
 
-    for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
         attempt_mem_swap(x->curve_data + i);
 
     double min_freq = x->freq_range[0];
@@ -3070,7 +3066,7 @@ t_max_err spectrumdraw_notify(t_spectrumdraw *x, t_symbol *sym, t_symbol *msg, v
             check_realtime_io(x, new_fft_size);
         }
 
-        for (short i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+        for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
         {
             if (get_attribname_symbol("mode", i) == attrname)
             {
