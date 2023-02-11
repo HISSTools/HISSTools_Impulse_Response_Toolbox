@@ -534,6 +534,26 @@ static inline void spectrumdraw_set_fft_scaling(t_scale_vals *scale, uintptr_t f
 /////////////////////// Main / New / Free / Assist ///////////////////////
 //////////////////////////////////////////////////////////////////////////
 
+// Static loop helpers
+
+template <int I, int N>
+struct static_loop
+{
+    template <typename T>
+    void operator()(T loop)
+    {
+        loop(I);
+        static_loop<I + 1, N>()(loop);
+    }
+};
+
+template <int N>
+struct static_loop<N, N>
+{
+    template <typename T>
+    void operator()(T loop)
+    {}
+};
 
 int C74_EXPORT main()
 {
@@ -607,7 +627,7 @@ int C74_EXPORT main()
     CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, "color", 0, "0.5 0. 0. 1.");
     CLASS_ATTR_STYLE_LABEL(c,"color", 0, "rgba","Curve Color");
 
-    for (int i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    static_loop<1, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
     {
         char attrib_name[32];
         char display_name[32];
@@ -618,7 +638,7 @@ int C74_EXPORT main()
         CLASS_ATTR_RGBA(c, attrib_name, 0, t_spectrumdraw, curve_colors[i]);
         CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
         CLASS_ATTR_STYLE_LABEL(c, attrib_name, 0, "rgba", display_name);
-    }
+    });
 
     // Do text color
 
@@ -638,7 +658,7 @@ int C74_EXPORT main()
 
     // Mode Attributes
 
-    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    static_loop<0, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
     {
         char attrib_name[32];
         char display_name[32];
@@ -659,11 +679,11 @@ int C74_EXPORT main()
         CLASS_ATTR_ENUMINDEX(c, attrib_name, 0, "Off Normal Peak Smooth Accumulate");
         CLASS_ATTR_FILTER_CLIP(c, attrib_name, 0, 4);
         CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
-    }
+    });
 
     // Chan Attributes
 
-    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    static_loop<0, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
     {
         char attrib_name[32];
         char display_name[32];
@@ -685,11 +705,11 @@ int C74_EXPORT main()
         CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, temp_str);
         CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1, SPECTRUMDRAW_NUM_CURVES);
         CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
-    }
+    });
 
     // Thickness Attributes
 
-    for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
+    static_loop<0, SPECTRUMDRAW_NUM_CURVES>()([&](int i)
     {
         char attrib_name[32];
         char display_name[32];
@@ -709,7 +729,7 @@ int C74_EXPORT main()
         CLASS_ATTR_DEFAULTNAME_SAVE_PAINT(c, attrib_name, 0, "1.");
         CLASS_ATTR_FILTER_CLIP(c, attrib_name, 1.0, 4.0);
         CLASS_ATTR_LABEL(c,attrib_name, 0, display_name);
-    }
+    });
 
     CLASS_STICKY_ATTR_CLEAR(c, "category");
 
