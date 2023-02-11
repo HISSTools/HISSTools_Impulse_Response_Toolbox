@@ -152,7 +152,7 @@ static inline double ibuffer_get_samp(const ibuffer_data& buffer, intptr_t offse
 // Interpolation Attributes
 
 template <class T, InterpType defaultValue>
-t_max_err ibuf_interp_attribute_set(T *x, t_attr *a, long argc, t_atom *argv)
+t_max_err ibuf_interp_attribute_set(T *x, t_attr * /* attr */, long argc, t_atom *argv)
 {
     if (!argc)
     {
@@ -188,7 +188,7 @@ t_max_err ibuf_interp_attribute_set(T *x, t_attr *a, long argc, t_atom *argv)
 }
 
 template <class T>
-t_max_err ibuf_interp_attribute_get(T *x, t_object *attr, long *argc, t_atom **argv)
+t_max_err ibuf_interp_attribute_get(T *x, t_object */* attr */, long *argc, t_atom **argv)
 {
     if (argc && argv)
     {
