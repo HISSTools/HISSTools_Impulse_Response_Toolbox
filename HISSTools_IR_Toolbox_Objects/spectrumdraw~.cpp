@@ -539,7 +539,6 @@ int C74_EXPORT main()
 {
     t_class *c;
 
-    char chan_options[64];
     char temp_str[64];
 
     c = class_new("spectrumdraw~", (method)spectrumdraw_new, (method)spectrumdraw_free, sizeof(t_spectrumdraw), 0L, A_GIMME, 0);
@@ -662,15 +661,7 @@ int C74_EXPORT main()
         CLASS_ATTR_LABEL(c, attrib_name, 0, display_name);
     }
 
-    strcpy(chan_options, "1");
-
     // Chan Attributes
-
-    for (int i = 1; i < SPECTRUMDRAW_NUM_CURVES; i++)
-    {
-        strcpy(temp_str, chan_options);
-        sprintf(chan_options, "%s %d", temp_str, i + 1);
-    }
 
     for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
