@@ -53,9 +53,11 @@ COPY_PHASE_STRIP = NO
 WRAPPER_EXTENSION = mxo
 GENERATE_PKGINFO_FILE = YES
 
-// Turn off C99 to minimise time spent working in Visual Studio
+// Ensure that errors and warnings are generated
 
-WARNING_CFLAGS = -Wall -Wno-four-char-constants -Wno-unknown-pragmas -Wdeclaration-after-statement -Wno-deprecated-declarations -Werror
+WARNING_CFLAGS = -Wall -Wextra -Wno-unused-parameter -Werror
+
+WARNING_CXXFLAGS = -Wall -Wextra -Wno-unused-parameter -Werror
 
 // Flags to enforce some build-time checks for the symbols used while not actually performing a hard link
 C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
