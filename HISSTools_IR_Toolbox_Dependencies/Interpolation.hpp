@@ -4,7 +4,7 @@
 
 // Enumeration of interpolation types
 
-enum InterpType { kInterpNone, kInterpLinear, kInterpCubicHermite, kInterpCubicLagrange, kInterpCubicBSpline };
+enum class InterpType { None, Linear, CubicHermite, CubicLagrange, CubicBSpline };
 
 // Linear
 

@@ -1,9 +1,10 @@
 
 #pragma once
 
-template <class T, class U, int vec_size> struct SIMDVector
+template <class T, class U, int vec_size>
+struct SIMDVector
 {
-    static const int size = vec_size;
+    static constexpr int size = vec_size;
     typedef T scalar_type;
     
     SIMDVector() {}

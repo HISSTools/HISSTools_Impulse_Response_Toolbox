@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <functional>
 
-#if defined(__arm__) || defined(__arm64)
+#if defined(__arm__) || defined(__arm64) || defined(__aarch64__)
 #include <arm_neon.h>
 #include <memory.h>
 #elif defined(__APPLE__) || defined(__linux__) || defined(_WIN32)
@@ -39,30 +39,30 @@ struct FloatSetup : public Setup<float> {};
 
 namespace hisstools_fft_impl{
     
-    template<class T> struct SIMDLimits     { static const int max_size = 1;};
+    template<class T> struct SIMDLimits     { static constexpr int max_size = 1;};
     
 #if defined(__AVX512F__)
     
-    template<> struct SIMDLimits<double>    { static const int max_size = 8; };
-    template<> struct SIMDLimits<float>     { static const int max_size = 16; };
+    template<> struct SIMDLimits<double>    { static constexpr int max_size = 8; };
+    template<> struct SIMDLimits<float>     { static constexpr int max_size = 16; };
     
 #elif defined(__AVX__)
     
-    template<> struct SIMDLimits<double>    { static const int max_size = 4; };
-    template<> struct SIMDLimits<float>     { static const int max_size = 8; };
+    template<> struct SIMDLimits<double>    { static constexpr int max_size = 4; };
+    template<> struct SIMDLimits<float>     { static constexpr int max_size = 8; };
     
 #elif defined(__SSE__)
     
-    template<> struct SIMDLimits<double>    { static const int max_size = 2; };
-    template<> struct SIMDLimits<float>     { static const int max_size = 4; };
+    template<> struct SIMDLimits<double>    { static constexpr int max_size = 2; };
+    template<> struct SIMDLimits<float>     { static constexpr int max_size = 4; };
     
-#elif defined(__arm__) || defined(__arm64__)
+#elif defined(__arm__) || defined(__arm64__) || defined(__aarch64__)
 
-    template<> struct SIMDLimits<float>     { static const int max_size = 4; };
+    template<> struct SIMDLimits<float>     { static constexpr int max_size = 4; };
 
 #endif
     
-    static const int alignment_size = SIMDLimits<float>::max_size * sizeof(float);
+    static constexpr int alignment_size = SIMDLimits<float>::max_size * sizeof(float);
     
 // Aligned Allocation
 
@@ -78,7 +78,7 @@ namespace hisstools_fft_impl{
             return nullptr;
     }
 
-#elif defined(__arm__) || defined(__arm64__)
+#elif defined(__arm__) || defined(__arm64__) || defined(__aarch64__)
     
     template <class T>
     T *allocate_aligned(size_t size)
@@ -115,7 +115,7 @@ namespace hisstools_fft_impl{
     
     // Offset for Table
     
-    static const uintptr_t trig_table_offset = 3;
+    static constexpr uintptr_t trig_table_offset = 3;
     
     // Data Type Definitions
     
@@ -124,7 +124,7 @@ namespace hisstools_fft_impl{
     template <class T, class U, int vec_size>
     struct SIMDVectorBase
     {
-        static const int size = vec_size;
+        static constexpr int size = vec_size;
         
         SIMDVectorBase() {}
         SIMDVectorBase(U a) : mVal(a) {}
@@ -314,7 +314,7 @@ namespace hisstools_fft_impl{
     
 #endif
     
-#if defined(__arm__) || defined(__arm64__)
+#if defined(__arm__) || defined(__arm64__)  || defined(__aarch64__)
     
     template<>
     struct SIMDVector<float, 4> : public SIMDVectorBase<float, float32x4_t, 4>
@@ -348,7 +348,7 @@ namespace hisstools_fft_impl{
     struct Vector4x
     {
         typedef SIMDVector<T, vec_size> ArrayType;
-        static const int array_size = 4 / vec_size;
+        static constexpr int array_size = 4 / vec_size;
         
         Vector4x() {}
         Vector4x(const Vector4x *ptr) { *this = *ptr; }
@@ -594,7 +594,7 @@ namespace hisstools_fft_impl{
     
 #endif
     
-#if defined(__arm__) || defined(__arm64__)
+#if defined(__arm__) || defined(__arm64__)  || defined(__aarch64__)
     
     // Template Specialisation for an ARM Float Packed (1 SIMD Element)
     

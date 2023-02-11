@@ -15,8 +15,8 @@ namespace HISSTools
         // N.B. MIN_FFT_SIZE_LOG2 should never be smaller than 4, as below code assumes loop unroll of vectors (4 vals) by 4 (== 16 or 2^4)
         // MAX_FFT_SIZE_LOG2 is perhaps conservative right now, but it is easy to increase this if necessary
         
-        const static int MIN_FFT_SIZE_LOG2 = 5;
-        const static int  MAX_FFT_SIZE_LOG2 = 20;
+        static constexpr int MIN_FFT_SIZE_LOG2 = 5;
+        static constexpr int MAX_FFT_SIZE_LOG2 = 20;
         
     public:
         

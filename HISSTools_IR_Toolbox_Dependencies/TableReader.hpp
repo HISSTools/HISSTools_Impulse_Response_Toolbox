@@ -8,7 +8,7 @@
 
 // Enumeration of edge types
 
-enum EdgeType { kZeroPad, kExtend, kWrap, kFold, kMirror, kExtrapolate };
+enum class EdgeMode { ZeroPad, Extend, Wrap, Fold, Mirror, Extrapolate };
 
 // Base class for table fetchers
 
@@ -134,7 +134,7 @@ struct table_fetcher_extrapolate : T
         auto beg = [&](intptr_t idx) { return T::operator()(idx); };
         auto end = [&](intptr_t idx) { return T::operator()(T::size - (idx + 1)); };
         
-        if (T::size >= 4 && (interpolation != kInterpNone) && (interpolation != kInterpLinear))
+        if (T::size >= 4 && (interpolation != InterpType::None) && (interpolation != InterpType::Linear))
         {
             ends[0] = cubic_lagrange_interp<fetch_type>()(fetch_type(-2), beg(0), beg(1), beg(2), beg(3));
             ends[1] = cubic_lagrange_interp<fetch_type>()(fetch_type(-2), end(0), end(1), end(2), end(3));
@@ -318,11 +318,11 @@ void table_read(Table fetcher, T *out, const U *positions, intptr_t n_samps, T m
     
     switch(interp)
     {
-        case kInterpNone:           table_read<no_interp_reader>(fetcher, out, positions, n_samps, mul);        break;
-        case kInterpLinear:         table_read<linear_reader>(fetcher, out, positions, n_samps, mul);           break;
-        case kInterpCubicHermite:   table_read<cubic_hermite_reader>(fetcher, out,positions, n_samps, mul);     break;
-        case kInterpCubicLagrange:  table_read<cubic_lagrange_reader>(fetcher, out, positions, n_samps, mul);   break;
-        case kInterpCubicBSpline:   table_read<cubic_bspline_reader>(fetcher, out, positions, n_samps, mul);    break;
+        case InterpType::None:          table_read<no_interp_reader>(fetcher, out, positions, n_samps, mul);        break;
+        case InterpType::Linear:        table_read<linear_reader>(fetcher, out, positions, n_samps, mul);           break;
+        case InterpType::CubicHermite:  table_read<cubic_hermite_reader>(fetcher, out,positions, n_samps, mul);     break;
+        case InterpType::CubicLagrange: table_read<cubic_lagrange_reader>(fetcher, out, positions, n_samps, mul);   break;
+        case InterpType::CubicBSpline:  table_read<cubic_bspline_reader>(fetcher, out, positions, n_samps, mul);    break;
     }
 }
 
@@ -385,16 +385,16 @@ void table_read_extrapolate(Table fetcher, T *out, const U *positions, intptr_t 
 // Main read call for variable edge behaviour
 
 template <class T, class U, class Table>
-void table_read_edges(Table fetcher, T *out, const U *positions, intptr_t n_samps, T mul, InterpType interp, EdgeType edges, bool bound)
+void table_read_edges(Table fetcher, T *out, const U *positions, intptr_t n_samps, T mul, InterpType interp, EdgeMode edges, bool bound)
 {
     switch (edges)
     {
-        case kZeroPad:      table_read_zeropad(fetcher, out, positions, n_samps, mul, interp, bound);       break;
-        case kExtend:       table_read_extend(fetcher, out, positions, n_samps, mul, interp, bound);        break;
-        case kWrap:         table_read_wrap(fetcher, out, positions, n_samps, mul, interp, bound);          break;
-        case kFold:         table_read_fold(fetcher, out, positions, n_samps, mul, interp, bound);          break;
-        case kMirror:       table_read_mirror(fetcher, out, positions, n_samps, mul, interp, bound);        break;
-        case kExtrapolate:  table_read_extrapolate(fetcher, out, positions, n_samps, mul, interp, bound);   break;
+        case EdgeMode::ZeroPad:     table_read_zeropad(fetcher, out, positions, n_samps, mul, interp, bound);       break;
+        case EdgeMode::Extend:      table_read_extend(fetcher, out, positions, n_samps, mul, interp, bound);        break;
+        case EdgeMode::Wrap:        table_read_wrap(fetcher, out, positions, n_samps, mul, interp, bound);          break;
+        case EdgeMode::Fold:        table_read_fold(fetcher, out, positions, n_samps, mul, interp, bound);          break;
+        case EdgeMode::Mirror:      table_read_mirror(fetcher, out, positions, n_samps, mul, interp, bound);        break;
+        case EdgeMode::Extrapolate: table_read_extrapolate(fetcher, out, positions, n_samps, mul, interp, bound);   break;
     }
 }
 
