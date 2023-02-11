@@ -191,12 +191,12 @@ void ibuffer_read_edges(const ibuffer_data& buffer, double *out, const double *p
     ibuffer_read_format_edges<double>(buffer, out, positions, n_samps, chan, mul, interp, edges, bound);
 }
 
-void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const double *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound, float pad_lo, float pad_hi)
+void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const double *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound)
 {
     ibuffer_read_format_edges<float>(buffer, out, positions, n_samps, chan, mul, interp, edges, bound);
 }
 
-void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound, float pad_lo, float pad_hi)
+void ibuffer_read_edges(const ibuffer_data& buffer, float *out, const float *positions, intptr_t n_samps, long chan, float mul, InterpType interp, EdgeMode edges, bool bound)
 {
     ibuffer_read_format_edges<float>(buffer, out, positions, n_samps, chan, mul, interp, edges, bound);
 }
