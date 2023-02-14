@@ -317,8 +317,7 @@ double irtrimnorm_calculate_trim(t_irtrimnorm *x, double **samples, intptr_t *le
 
 long irtrimnorm_crop_check_write(t_irtrimnorm *x, t_symbol *buffer, intptr_t crop1, intptr_t crop2, intptr_t pad_in, intptr_t pad_out, intptr_t L)
 {
-    L -= crop1;
-    crop2 -=crop1;
+    crop2 -= crop1;
 
     if (buffer_length(buffer) < crop2 + pad_in + pad_out)
     {
