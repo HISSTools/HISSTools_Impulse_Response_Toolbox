@@ -275,17 +275,17 @@ static inline t_swap_status attempt_mem_swap(t_safe_mem_swap *mem_struct)
 
             // Swap
 
-            mem_struct->current_ptr                = mem_struct->new_ptr;
-            mem_struct->current_size            = mem_struct->new_size;
-            mem_struct->current_free            = mem_struct->new_free;
-            mem_struct->current_free_method        = mem_struct->new_free_method;
+            mem_struct->current_ptr         = mem_struct->new_ptr;
+            mem_struct->current_size        = mem_struct->new_size;
+            mem_struct->current_free        = mem_struct->new_free;
+            mem_struct->current_free_method = mem_struct->new_free_method;
 
             // Zero
 
-            mem_struct->new_ptr                = NULL;
-            mem_struct->new_size            = 0;
-            mem_struct->new_free            = 0;
-            mem_struct->new_free_method        = NULL;
+            mem_struct->new_ptr         = NULL;
+            mem_struct->new_size        = 0;
+            mem_struct->new_free        = 0;
+            mem_struct->new_free_method = NULL;
 
             swap = SWAP_DONE;
         }
