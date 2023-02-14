@@ -263,8 +263,9 @@ void spectrumdraw_assist(t_spectrumdraw *x, void *b, long m, long a, char *s);
 
 void free_fft_setup(void *setup);
 void *alloc_fft_setup(uintptr_t size, uintptr_t nom_size);
-void free_fft_stats(void *frame_stats);
+void free_realtime_data(void *ptr);
 void *alloc_realtime_data(uintptr_t size, uintptr_t nom_size);
+void free_fft_stats(void *frame_stats);
 void *alloc_fft_stats(uintptr_t size, uintptr_t nom_size);
 void check_realtime_io(t_spectrumdraw *x, uintptr_t fft_size);
 
@@ -1082,22 +1083,26 @@ void *alloc_fft_setup(uintptr_t size, uintptr_t nom_size)
 }
 
 
-void free_fft_stats(void *frame_stats)
+void free_realtime_data(void *ptr)
 {
-    delete (t_frame_stats *)frame_stats;
+    ALIGNED_FREE(ptr);
 }
 
 
 void *alloc_realtime_data(uintptr_t size, uintptr_t nom_size)
 {
-    void *ptr = allocate_aligned<uint8_t>(size);
+    void *ptr = ALIGNED_MALLOC(size);
 
     if (ptr)
         memset(ptr, 0, size);
-
+   	
     return ptr;
 }
 
+void free_fft_stats(void *frame_stats)
+{
+    delete (t_frame_stats *)frame_stats;
+}
 
 void *alloc_fft_stats(uintptr_t size, uintptr_t nom_size)
 {
@@ -1110,13 +1115,13 @@ void check_realtime_io(t_spectrumdraw *x, uintptr_t fft_size)
     for (int i = 0; i < SPECTRUMDRAW_NUM_CURVES; i++)
     {
         if (x->sig_ins_valid[i])
-            schedule_equal_mem_swap_custom(&x->realtime_io[i], alloc_realtime_data, 0, fft_size * 2 * sizeof(float), fft_size);
+            schedule_equal_mem_swap_custom(&x->realtime_io[i], alloc_realtime_data, free_realtime_data, fft_size * 2 * sizeof(float), fft_size);
         else
             clear_mem_swap(&x->realtime_io[i]);
 
         if (x->sig_ins_valid[x->curve_chan[i] - 1] && x->curve_mode[i] && !x->curve_freeze[i])
         {
-            void *ptr = schedule_equal_mem_swap_custom(&x->realtime_data[i], alloc_realtime_data, 0, (fft_size + 2) * sizeof(float), fft_size);
+            void *ptr = schedule_equal_mem_swap_custom(&x->realtime_data[i], alloc_realtime_data, free_realtime_data, (fft_size + 2) * sizeof(float), fft_size);
             schedule_equal_mem_swap_custom(&x->realtime_stats[i], alloc_fft_stats, free_fft_stats, fft_size + 1, fft_size);
             schedule_swap_mem_swap(&x->curve_data[i], ptr, fft_size);
             x->curve_sr[i] = x->sample_rate;
