@@ -139,4 +139,3 @@ spectrumdraw~: crash with low frequency mousing
 spectrumdraw~: notes are assigned incorrectly to octaves
 
 -------
-
