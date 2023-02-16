@@ -6,9 +6,9 @@
 #include <algorithm>
 #include <memory>
 
+#include <AH_Memory_Swap.h>
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
-#include <AH_Memory_Swap.h>
 
 // Define common attributes and the class name (for the common attributes file)
 

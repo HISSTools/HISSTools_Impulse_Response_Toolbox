@@ -4,12 +4,11 @@
 #include <ext_obex_util.h>
 #include <z_dsp.h>
 
-#include <AH_Memory_Swap.h>
 #include <algorithm>
 
+#include <AH_Memory_Swap.h>
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
-
 #include <HIRT_Exponential_Sweeps.hpp>
 #include <HIRT_Coloured_Noise.hpp>
 #include <HIRT_Max_Length_Sequences.hpp>
