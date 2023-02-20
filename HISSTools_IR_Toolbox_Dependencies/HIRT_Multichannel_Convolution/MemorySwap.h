@@ -6,6 +6,8 @@
 #include <atomic>
 #include <functional>
 
+#include "../ThreadLocks.hpp"
+
 #ifdef _WIN32
 #include <malloc.h>
 #endif
@@ -115,7 +117,7 @@ public:
     // Constructor (standard allocation)
     
     MemorySwap(uintptr_t size)
-    : mLock(false), mPtr(nullptr), mSize(0), mFreeFunction(nullptr)
+    : mPtr(nullptr), mSize(0), mFreeFunction(nullptr)
     {
         if (size)
             set(allocate(size), size, &deallocate);
@@ -124,7 +126,7 @@ public:
     // Constructor (custom allocation)
     
     MemorySwap(AllocFunc allocFunction, FreeFunc freeFunction, uintptr_t size)
-    : mLock(false), mPtr(nullptr), mSize(0), mFreeFunction(nullptr)
+    : mPtr(nullptr), mSize(0), mFreeFunction(nullptr)
     {
         if (size)
             set(allocFunction(size), size, freeFunction);
@@ -139,7 +141,7 @@ public:
     MemorySwap& operator = (const MemorySwap&) = delete;
 
     MemorySwap(MemorySwap&& obj)
-    : mLock(false), mPtr(nullptr), mSize(0), mFreeFunction(nullptr)
+    : mPtr(nullptr), mSize(0), mFreeFunction(nullptr)
     {
         *this = std::move(obj);
         obj.mPtr = nullptr;
@@ -238,20 +240,17 @@ private:
     
     bool tryLock()
     {
-        bool expected = false;
-        return mLock.compare_exchange_strong(expected, true);
+        return mLock.attempt();
     }
     
     void lock()
     {
-        bool expected = false;
-        while (!mLock.compare_exchange_weak(expected, true));
+        mLock.acquire();
     }
     
     void unlock()
     {
-        bool expected = true;
-        mLock.compare_exchange_strong(expected, false);
+        mLock.release();
     }
     
 #ifdef _WIN32
@@ -283,7 +282,7 @@ private:
     }
 #endif
     
-    std::atomic<bool> mLock;
+    thread_lock mLock;
     
     T *mPtr;
     uintptr_t mSize;

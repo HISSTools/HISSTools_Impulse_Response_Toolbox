@@ -22,7 +22,9 @@ namespace HISSTools
 {
     class MonoConvolve
     {
-    	
+        typedef MemorySwap<HISSTools::PartitionedConvolve>::Ptr PartPtr;
+        typedef std::unique_ptr<HISSTools::PartitionedConvolve> PartUniquePtr;
+
     public:
         
         MonoConvolve(uintptr_t maxLength, LatencyMode latency);
@@ -46,6 +48,8 @@ namespace HISSTools
         void setPartitions(uintptr_t maxLength, bool zeroLatency, uint32_t A, uint32_t B = 0, uint32_t C = 0, uint32_t D = 0);
 
     private:
+
+        void setResetOffset(PartPtr &part4, intptr_t offset = -1);
 
         size_t numSizes() { return mSizes.size(); }
         

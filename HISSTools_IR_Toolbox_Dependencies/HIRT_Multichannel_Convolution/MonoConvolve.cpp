@@ -6,9 +6,6 @@
 #include <cassert>
 #include <stdexcept>
 
-typedef MemorySwap<HISSTools::PartitionedConvolve>::Ptr PartPtr;
-typedef std::unique_ptr<HISSTools::PartitionedConvolve> PartUniquePtr;
-
 // Free Utility
 
 void largeFree(HISSTools::PartitionedConvolve *largePartition)
@@ -83,7 +80,12 @@ HISSTools::MonoConvolve& HISSTools::MonoConvolve::operator = (MonoConvolve&& obj
 void HISSTools::MonoConvolve::setResetOffset(intptr_t offset)
 {
     PartPtr part4 = mPart4.access();
-    
+
+    setResetOffset(part4, offset);
+}
+
+void HISSTools::MonoConvolve::setResetOffset(PartPtr& part4, intptr_t offset)
+{
     if (offset < 0)
         offset = mRandDistribution(mRandGenerator);
     
@@ -252,5 +254,5 @@ void HISSTools::MonoConvolve::setPartitions(uintptr_t maxLength, bool zeroLatenc
     // Set offsets
     
     mRandDistribution = std::uniform_int_distribution<uintptr_t>(0, (mSizes.back() >> 1) - 1);
-    setResetOffset();
+    setResetOffset(part4);
 }
