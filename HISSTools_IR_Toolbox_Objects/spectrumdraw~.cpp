@@ -7,7 +7,7 @@
 
 #include <algorithm>
 
-#include <AH_Memory_Swap.h>
+#include <AH_Memory_Swap.hpp>
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
 #include <HIRT_Frame_Stats.hpp>

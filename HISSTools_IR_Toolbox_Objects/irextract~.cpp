@@ -4,7 +4,7 @@
 #include <ext_obex_util.h>
 #include <z_dsp.h>
 
-#include <AH_Memory_Swap.h>
+#include <AH_Memory_Swap.hpp>
 #include <HIRT_Core_Functions.hpp>
 #include <HIRT_Buffer_Access.hpp>
 #include <HIRT_Exponential_Sweeps.hpp>
