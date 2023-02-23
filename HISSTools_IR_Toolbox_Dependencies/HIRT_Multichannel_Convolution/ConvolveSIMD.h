@@ -56,6 +56,7 @@ typedef ARMFloat FloatVector;
 #include <Accelerate/Accelerate.h>
 #else
 #include <emmintrin.h>
+#include <immintrin.h>
 #endif
 
 struct SSEFloat : public SIMDVector<float, __m128, 4>
