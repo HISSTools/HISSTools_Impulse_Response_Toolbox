@@ -1,6 +1,6 @@
 This is an automated build of the HIRT Package.
 This is a stable release version.
-Download the zip below to install the package (or stable public release versions can be found through the max package manager).
+Download the zip below to install the package (stable public releases can also be installed via the max package manager).
 
 **Changes in 2.1.1**
 
