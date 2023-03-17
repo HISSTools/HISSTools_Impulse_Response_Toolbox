@@ -18,7 +18,7 @@ The HIRT is distributed freely, under a Modified BSD License.<br>
 
 The HISSTools Impulse Response Toolbox is now released via Cycling74 package manager for Max.<br>
 If you are looking to install the current release you are advised to do so via the Max Package Manager.<br>
-The current version is 2.1.0. 
+The current version is 2.1.1. 
 
 ## Compiling the Max Externals in Xcode / MSVS:
 
