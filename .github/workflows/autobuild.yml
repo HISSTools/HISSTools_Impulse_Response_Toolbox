@@ -43,6 +43,9 @@ jobs:
   deploy-mac:
     runs-on: macos-11
     needs: deploy-win
+    env:
+      release_notes: ${{ github.workspace }}/hirt/.github/releases/release-notes-${{ github.ref_name }}.txt
+      testing_version: ${{ endsWith(github.ref_name, 'rc') }}
     steps:
       - name: Checkout max-sdk-base
         uses: actions/checkout@v3
@@ -113,13 +116,22 @@ jobs:
              mkdir build/
              cd hirt/HISSTools_Packaging/
              zip -r ../../build/HISSTools_Impulse_Response_Toolbox.zip "HISSTools Impulse Response Toolbox (HIRT)"
+      - name: "Check Release Notes Existence"
+        uses: andstor/file-existence-action@v2
+        id: release_notes_check
+        with:
+          files: ${{ env.release_notes }}
       - name: Make release
         uses: "softprops/action-gh-release@v1"
         with:
-          prerelease: ${{ endsWith(github.ref_name, 'rc') }}
+          prerelease: ${{ env.testing_version }}
           fail_on_unmatched_files: true
           files: build/HISSTools_Impulse_Response_Toolbox.zip
           target_commitish: ${{ github.sha }}
-          body: This is an automated build of the HIRT Package. 
+          body_path: ${{ steps.release_notes_check.outputs.files_exists == 'true' && env.release_notes || '' }}
+          body: |
+                This is an automated build of the HIRT Package.
+                ${{ env.testing_version == 'true' && 'This version is intended for further testing (not a stable version).' || 'This is a stable release version.' }}
+                Download the zip below to install the package (or stable public release versions can be found through the max package manager).
           generate_release_notes: true
     
