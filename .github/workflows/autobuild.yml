@@ -45,7 +45,7 @@ jobs:
     needs: deploy-win
     env:
       release_notes: ${{ github.workspace }}/hirt/.github/releases/release-notes-${{ github.ref_name }}.txt
-      testing_version: ${{ endsWith(github.ref_name, 'rc') }}
+      testing_version: ${{ contains(github.ref_name, 'rc') }}
     steps:
       - name: Checkout max-sdk-base
         uses: actions/checkout@v3
