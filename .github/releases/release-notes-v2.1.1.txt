@@ -1,0 +1,21 @@
+This is an automated build of the HIRT Package.
+This is a stable release version.
+Download the zip below to install the package (stable public releases can also be installed via the max package manager).
+
+**Changes in 2.1.1**
+
+*Improvements*
+
+- Modified "presets" tab of hirt.convolutionreverb~.maxhelp for clarity
+- /extras/HISSTools.Impulse.Response.Toolbox.maxpat: changes for better mouse hovering etc
+- Added Windows "ia32" externals back into package
+- Documentation pages minor improvements
+
+*Bug Fixes*
+
+- Fixed crashing bug with irplapprox~ usage on Windows
+- Fixed irnonlin~ to give correct output
+- Updated reverb externals to incorporate irdisplay~ bug fix
+- hirt.convolutionreverb~ abstraction: fixed samplerate update for audio off/on behaviour
+- hirt.convolutionreverb~ abstraction: fixed alignment of early and late reflections (1 sample error)
+- Missing documentation descriptions fixed
