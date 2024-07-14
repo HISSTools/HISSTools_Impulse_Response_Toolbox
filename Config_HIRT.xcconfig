@@ -55,7 +55,7 @@ GENERATE_PKGINFO_FILE = YES
 
 // Ensure that errors and warnings are generated
 
-WARNING_CFLAGS = -Wall -Wextra -Wno-unused-parameter -Werror
+WARNING_CFLAGS = -Wall -Wextra -Wno-unused-parameter -Wno-deprecated-declarations -Werror
 
 // Flags to enforce some build-time checks for the symbols used while not actually performing a hard link
 C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
