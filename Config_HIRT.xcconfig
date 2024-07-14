@@ -25,8 +25,8 @@ CLANG_CXX_LIBRARY = libc++
 
 // This matches with Cycling's maximum backward compatibility
 
-BASE_SDK = 10.11
-MACOSX_DEPLOYMENT_TARGET = 10.11
+BASE_SDK = 10.13
+MACOSX_DEPLOYMENT_TARGET = 10.13
 
 // Build a Universal Binary
 
