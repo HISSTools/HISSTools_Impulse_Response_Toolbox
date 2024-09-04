@@ -62,12 +62,12 @@ jobs:
           repository: 'AlexHarker/M4L_Convolution_Reverb_Externals'
           path: "m4l"
       - name: Download windows builds
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: deploy-win-hirt
           path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/"
       - name: Download windows convolution reverb specific builds
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: deploy-win-m4l
           path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support/"
