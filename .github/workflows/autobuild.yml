@@ -31,12 +31,12 @@ jobs:
              msbuild "m4l/M4L_Convolution_Reverb_Externals.sln" /p:configuration="Release" /p:platform=x64 /v:q /clp:ErrorsOnly /nologo /m
              msbuild "hirt/HISSTools_IR_Toolbox.sln" /p:configuration="Release" /p:platform=x64 /v:q /clp:ErrorsOnly /nologo /m
       - name: Upload windows builds
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: deploy-win-hirt
           path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/externals/HIRT_externals_WIN/"
       - name: Upload windows convolution reverb specific builds
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: deploy-win-m4l
           path: m4l/build-win
