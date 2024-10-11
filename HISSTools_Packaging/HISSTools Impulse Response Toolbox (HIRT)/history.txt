@@ -5,6 +5,21 @@ The HISSTools Impulse Response Toolbox (HIRT) Ñ History
 Change Log
 -----------------------------------------------------------------------------------------
 
+Changes in 2.1.3
+
+Bug Fixes
+
+Messages to [hirt.convolutionreverb~]:
+
+irfolder
+irmenu
+irselect
+
+now work
+([pattrstorage] alias / full path name fix).
+
+-------
+
 Changes in 2.1.1
 
 Improvements

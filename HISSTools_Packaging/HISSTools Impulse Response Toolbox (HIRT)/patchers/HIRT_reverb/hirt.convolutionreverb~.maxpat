@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 2,
+			"minor" : 6,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -55,8 +55,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -101,8 +101,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -497,8 +497,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1423,8 +1423,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1581,8 +1581,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1629,8 +1629,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -2146,8 +2146,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -2617,8 +2617,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3987,8 +3987,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4310,8 +4310,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4572,8 +4572,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4619,8 +4619,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5449,8 +5449,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5537,8 +5537,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -6393,7 +6393,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "ignoreclick", "hint", "bgcolor", "fontsize", "text", "textovercolor", "presentation", "mode", "texton", "fontlink", "style", "jspainterfile", "fontface", "underline", "background", "rounded", "textjustification" ],
+					"frozen_box_attributes" : [ "hint", "fontlink", "text", "jspainterfile", "texton", "mode", "fontsize", "presentation", "background", "style", "ignoreclick", "textovercolor", "bgcolor", "underline", "textjustification", "rounded", "fontface" ],
 					"hint" : "",
 					"id" : "obj-87",
 					"ignoreclick" : 0,
@@ -6441,7 +6441,7 @@
 					"elementcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
 					"fontname" : "Lato Regular",
 					"fontsize" : 10.0,
-					"frozen_box_attributes" : [ "parameter_enable", "menumode", "arrow", "autopopulate", "allowdrag", "items" ],
+					"frozen_box_attributes" : [ "parameter_enable", "arrow", "autopopulate", "menumode", "allowdrag", "items" ],
 					"id" : "obj-64",
 					"items" : [ 80, "%", ",", 90, "%", ",", 100, "%", ",", 110, "%", ",", 120, "%", ",", 140, "%", ",", 160, "%", ",", 180, "%", ",", 200, "%", ",", "<separator>", ",", "Store", "Current", "as", "Default" ],
 					"maxclass" : "umenu",
@@ -6502,6 +6502,7 @@
 							"parameter_invisible" : 1,
 							"parameter_longname" : "PATCH/PRESS",
 							"parameter_mmax" : 1.0,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "PATCH/PRESS",
 							"parameter_type" : 3
 						}
@@ -6523,7 +6524,7 @@
 					"bgcolor" : [ 0.8, 0.8, 0.8, 0.0 ],
 					"elementcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fgcolor" : [ 0.27843137254902, 0.411764705882353, 0.141176470588235, 1.0 ],
-					"frozen_box_attributes" : [ "increment", "parameter_enable" ],
+					"frozen_box_attributes" : [ "parameter_enable", "increment" ],
 					"id" : "obj-65",
 					"increment" : 1.0,
 					"maxclass" : "incdec",
@@ -6550,8 +6551,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -6928,6 +6929,7 @@
 											"parameter_invisible" : 2,
 											"parameter_longname" : "number",
 											"parameter_mmax" : 8.0,
+											"parameter_modmode" : 0,
 											"parameter_shortname" : "number",
 											"parameter_type" : 0
 										}
@@ -7576,7 +7578,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "ignoreclick", "hint", "bgcolor", "fontsize", "presentation_rect", "parameter_enable", "presentation", "mode", "fontlink", "style", "jspainterfile", "fontface", "underline", "background", "rounded", "textjustification" ],
+					"frozen_box_attributes" : [ "hint", "fontlink", "jspainterfile", "presentation_rect", "parameter_enable", "mode", "fontsize", "presentation", "background", "style", "ignoreclick", "bgcolor", "underline", "textjustification", "rounded", "fontface" ],
 					"hint" : "",
 					"id" : "obj-118",
 					"ignoreclick" : 0,
@@ -7620,7 +7622,7 @@
 					"fontlink" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 11.0,
-					"frozen_box_attributes" : [ "ignoreclick", "hint", "bgcolor", "fontsize", "text", "textovercolor", "presentation", "mode", "texton", "fontlink", "style", "jspainterfile", "fontface", "underline", "background", "rounded", "textjustification" ],
+					"frozen_box_attributes" : [ "hint", "fontlink", "text", "jspainterfile", "texton", "mode", "fontsize", "presentation", "background", "style", "ignoreclick", "textovercolor", "bgcolor", "underline", "textjustification", "rounded", "fontface" ],
 					"hint" : "",
 					"id" : "obj-45",
 					"ignoreclick" : 0,
@@ -7747,8 +7749,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -8002,8 +8004,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -8077,8 +8079,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -8618,7 +8620,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 628.0, 481.6790771484375, 95.5, 22.0 ],
-									"text" : "8.5.2",
+									"text" : "8.6.5",
 									"textjustification" : 2
 								}
 
@@ -8683,8 +8685,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -9443,8 +9445,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -9550,8 +9552,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -10529,8 +10531,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -10575,8 +10577,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -10964,8 +10966,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11153,8 +11155,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11398,8 +11400,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11697,8 +11699,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -11986,8 +11988,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -12403,8 +12405,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -13543,14 +13545,14 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 63.0, 87.0, 1125.0, 525.0 ],
+										"rect" : [ 63.0, 87.0, 1231.0, 526.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -13580,6 +13582,309 @@
 										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
+													"id" : "obj-21",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patcher" : 													{
+														"fileversion" : 1,
+														"appversion" : 														{
+															"major" : 8,
+															"minor" : 6,
+															"revision" : 5,
+															"architecture" : "x64",
+															"modernui" : 1
+														}
+,
+														"classnamespace" : "box",
+														"rect" : [ 12.0, 126.0, 481.0, 464.0 ],
+														"bglocked" : 0,
+														"openinpresentation" : 0,
+														"default_fontsize" : 12.0,
+														"default_fontface" : 0,
+														"default_fontname" : "Arial",
+														"gridonopen" : 2,
+														"gridsize" : [ 15.0, 15.0 ],
+														"gridsnaponopen" : 1,
+														"objectsnaponopen" : 1,
+														"statusbarvisible" : 2,
+														"toolbarvisible" : 1,
+														"lefttoolbarpinned" : 2,
+														"toptoolbarpinned" : 2,
+														"righttoolbarpinned" : 2,
+														"bottomtoolbarpinned" : 2,
+														"toolbars_unpinned_last_save" : 0,
+														"tallnewobj" : 0,
+														"boxanimatetime" : 200,
+														"enablehscroll" : 1,
+														"enablevscroll" : 1,
+														"devicewidth" : 0.0,
+														"description" : "",
+														"digest" : "",
+														"tags" : "",
+														"style" : "",
+														"subpatcher_template" : "",
+														"assistshowspatchername" : 0,
+														"boxes" : [ 															{
+																"box" : 																{
+																	"id" : "obj-26",
+																	"linecount" : 8,
+																	"maxclass" : "comment",
+																	"numinlets" : 1,
+																	"numoutlets" : 0,
+																	"patching_rect" : [ 315.0, 118.0, 150.0, 114.0 ],
+																	"text" : "intercept these three messages to the abstraction as they use [pattr @invisible 1] to address their targets so need the full path name to [pattrstorage] rather than an alias name"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-13",
+																	"maxclass" : "newobj",
+																	"numinlets" : 2,
+																	"numoutlets" : 2,
+																	"outlettype" : [ "", "" ],
+																	"patching_rect" : [ 107.0, 304.0, 55.0, 22.0 ],
+																	"text" : "zl.ecils 1"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-11",
+																	"maxclass" : "newobj",
+																	"numinlets" : 2,
+																	"numoutlets" : 2,
+																	"outlettype" : [ "", "" ],
+																	"patching_rect" : [ 49.0, 265.0, 77.0, 22.0 ],
+																	"text" : "route symbol"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-10",
+																	"maxclass" : "newobj",
+																	"numinlets" : 2,
+																	"numoutlets" : 1,
+																	"outlettype" : [ "" ],
+																	"patching_rect" : [ 107.0, 343.0, 80.0, 22.0 ],
+																	"text" : "join 2"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-5",
+																	"maxclass" : "newobj",
+																	"numinlets" : 1,
+																	"numoutlets" : 1,
+																	"outlettype" : [ "" ],
+																	"patching_rect" : [ 49.0, 187.0, 94.0, 22.0 ],
+																	"text" : "prepend symbol"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-4",
+																	"maxclass" : "newobj",
+																	"numinlets" : 1,
+																	"numoutlets" : 4,
+																	"outlettype" : [ "", "", "", "" ],
+																	"patching_rect" : [ 49.0, 226.0, 239.5, 22.0 ],
+																	"saved_object_attributes" : 																	{
+																		"embed" : 0,
+																		"precision" : 6
+																	}
+,
+																	"text" : "coll #0_hirt_convrvrb_clientlist 1"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-3",
+																	"maxclass" : "newobj",
+																	"numinlets" : 2,
+																	"numoutlets" : 2,
+																	"outlettype" : [ "", "" ],
+																	"patching_rect" : [ 49.0, 148.0, 138.0, 22.0 ],
+																	"text" : "zl.ecils 1"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-17",
+																	"maxclass" : "newobj",
+																	"numinlets" : 4,
+																	"numoutlets" : 4,
+																	"outlettype" : [ "", "", "", "" ],
+																	"patching_rect" : [ 49.0, 94.0, 264.0, 22.0 ],
+																	"text" : "routepass irselect irfolder irmenu"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"comment" : "",
+																	"id" : "obj-18",
+																	"index" : 1,
+																	"maxclass" : "inlet",
+																	"numinlets" : 0,
+																	"numoutlets" : 1,
+																	"outlettype" : [ "" ],
+																	"patching_rect" : [ 49.0, 34.0, 30.0, 30.0 ]
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"comment" : "",
+																	"id" : "obj-20",
+																	"index" : 1,
+																	"maxclass" : "outlet",
+																	"numinlets" : 1,
+																	"numoutlets" : 0,
+																	"patching_rect" : [ 294.0, 397.0, 30.0, 30.0 ]
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-2",
+																	"linecount" : 5,
+																	"maxclass" : "comment",
+																	"numinlets" : 1,
+																	"numoutlets" : 0,
+																	"patching_rect" : [ 315.0, 12.0, 150.0, 74.0 ],
+																	"text" : "irmode not required as it's pattr is not @invisible\n\niradd is handled separately in parent"
+																}
+
+															}
+, 															{
+																"box" : 																{
+																	"id" : "obj-16",
+																	"linecount" : 5,
+																	"maxclass" : "comment",
+																	"numinlets" : 1,
+																	"numoutlets" : 0,
+																	"patching_rect" : [ 81.0, 12.0, 243.0, 74.0 ],
+																	"text" : "irmode, \"IR::IR Mode\" 1;\nirselect, \"IR::IR Select\" 2;\niradd, \"IR::IR Choice::Add IR\" 38;\nirfolder, \"IR::IR Choice::Folder Menu\" 36;\nirmenu, \"IR::IR Choice::IR Menu\" 37;"
+																}
+
+															}
+ ],
+														"lines" : [ 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-20", 0 ],
+																	"source" : [ "obj-10", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-13", 0 ],
+																	"source" : [ "obj-11", 1 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-13", 0 ],
+																	"source" : [ "obj-11", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-10", 0 ],
+																	"source" : [ "obj-13", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-20", 0 ],
+																	"source" : [ "obj-17", 3 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-3", 0 ],
+																	"source" : [ "obj-17", 2 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-3", 0 ],
+																	"source" : [ "obj-17", 1 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-3", 0 ],
+																	"source" : [ "obj-17", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-17", 0 ],
+																	"source" : [ "obj-18", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-10", 1 ],
+																	"source" : [ "obj-3", 1 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-5", 0 ],
+																	"source" : [ "obj-3", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-11", 0 ],
+																	"source" : [ "obj-4", 0 ]
+																}
+
+															}
+, 															{
+																"patchline" : 																{
+																	"destination" : [ "obj-4", 0 ],
+																	"source" : [ "obj-5", 0 ]
+																}
+
+															}
+ ]
+													}
+,
+													"patching_rect" : [ 1050.0, 408.0, 144.0, 22.0 ],
+													"saved_object_attributes" : 													{
+														"description" : "",
+														"digest" : "",
+														"globalpatchername" : "",
+														"tags" : ""
+													}
+,
+													"text" : "p intercept_at_invisible_1"
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"id" : "obj-19",
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -13589,8 +13894,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -13986,7 +14291,7 @@
 													"numoutlets" : 6,
 													"outlettype" : [ "bang", "bang", "bang", "bang", "bang", "" ],
 													"patching_rect" : [ 720.0, 81.0, 349.0, 22.0 ],
-													"text" : "sel iradd front wclose open close"
+													"text" : "sel iradd front open wclose close"
 												}
 
 											}
@@ -14095,7 +14400,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 1050.333251953125, 458.0, 30.0, 30.0 ]
+													"patching_rect" : [ 1050.0, 458.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -14165,6 +14470,13 @@
 													"destination" : [ "obj-63", 0 ],
 													"midpoints" : [ 688.833312999999976, 445.5, 58.5, 445.5 ],
 													"source" : [ "obj-2", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-61", 0 ],
+													"source" : [ "obj-21", 0 ]
 												}
 
 											}
@@ -14282,6 +14594,14 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-21", 0 ],
+													"midpoints" : [ 851.5, 379.5, 1059.5, 379.5 ],
+													"source" : [ "obj-4", 3 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-3", 0 ],
 													"midpoints" : [ 669.5, 379.5, 570.5, 379.5 ],
 													"source" : [ "obj-4", 0 ]
@@ -14293,14 +14613,6 @@
 													"destination" : [ "obj-5", 0 ],
 													"midpoints" : [ 790.833333333333258, 379.5, 790.833312999999976, 379.5 ],
 													"source" : [ "obj-4", 2 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-61", 0 ],
-													"midpoints" : [ 851.5, 379.5, 1059.833251953125, 379.5 ],
-													"source" : [ "obj-4", 3 ]
 												}
 
 											}
@@ -14379,6 +14691,13 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-21", 0 ],
+													"source" : [ "obj-71", 5 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-6", 0 ],
 													"midpoints" : [ 993.5, 202.5, 593.4285888671875, 202.5 ],
 													"source" : [ "obj-71", 4 ]
@@ -14388,24 +14707,16 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-6", 0 ],
-													"midpoints" : [ 861.5, 202.5, 593.4285888671875, 202.5 ],
-													"source" : [ "obj-71", 2 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-61", 0 ],
-													"midpoints" : [ 1059.5, 280.0, 1059.833251953125, 280.0 ],
-													"source" : [ "obj-71", 5 ]
+													"midpoints" : [ 927.5, 202.5, 593.4285888671875, 202.5 ],
+													"source" : [ "obj-71", 3 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-8", 0 ],
-													"midpoints" : [ 927.5, 187.5, 516.9285888671875, 187.5 ],
-													"source" : [ "obj-71", 3 ]
+													"midpoints" : [ 861.5, 187.5, 516.9285888671875, 187.5 ],
+													"source" : [ "obj-71", 2 ]
 												}
 
 											}
@@ -14533,8 +14844,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -14602,8 +14913,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -16079,53 +16390,53 @@
 , 			{
 				"box" : 				{
 					"alias" : 					{
+						"Offline::Shape::Shape Size::Size" : "size",
 						"EQ::EQ Freq High::Freq 3" : "eqfreq3",
-						"Offline::Damp::Damp Freq High::Freq 3" : "dampfreq3",
-						"Modulation Active" : "modulation",
-						"Offline::Shape::Shape Early::Early" : "early",
-						"Output::Output Predelay::Predelay" : "predelay",
-						"Offline::Shape::Shape Fade In::Fade In" : "fadein",
-						"Offline::Damp::Damp Freq Low::Freq 1" : "dampfreq1",
-						"Realtime::Modulation::Modulation Amount::Amount" : "amount",
-						"Offline::Damp::Damp Q Bell::Q 2" : "dampq2",
-						"Output::Output Gain::Gain" : "gain",
-						"IR::IR Mode" : "irmode",
-						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
-						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
-						"Offline::Damp::Damp Slope High::Slope 3" : "dampslope3",
-						"Offline::Shape::Shape Length Percent::Length" : "lengthpercent",
-						"Position Active" : "position",
-						"Damp Active" : "damp",
+						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
+						"Offline::Shape::Direct Mode" : "direct",
+						"EQ::EQ Slope High::Slope 3" : "eqslope3",
 						"EQ::EQ Slope Low::Slope 1" : "eqslope1",
 						"Output::Output Width::Width" : "width",
-						"EQ::EQ Slope High::Slope 3" : "eqslope3",
-						"Realtime::Position::Position Depth::Depth" : "depth",
-						"EQ::EQ Freq Low::Freq 1" : "eqfreq1",
-						"Offline::Shape::Reverse" : "reverse",
-						"EQ::EQ Q Bell::Q 2" : "eqq2",
-						"Offline::Shape::Shape Fade Out::Fade Out" : "fadeout",
-						"Offline::Shape::Shape Length Time::Length" : "lengthtime",
-						"Realtime::Modulation::Type" : "modtype",
-						"Offline::Damp::Damp Decay High::Decay 3" : "dampdecay3",
-						"Offline::Shape::Direct Mode" : "direct",
-						"Offline::Shape::Shape Size::Size" : "size",
-						"EQ::EQ Gain Bell::Gain 2" : "eqgain2",
-						"EQ::EQ Routing" : "eq",
 						"Skin State" : "skin",
+						"Offline::Shape::Shape Fade In::Fade In" : "fadein",
+						"Realtime::Modulation::Modulation Rate::Rate" : "rate",
+						"Offline::Shape::Shape Length Time::Length" : "lengthtime",
+						"Output::Output Gain::Gain" : "gain",
 						"Realtime::Modulation::Widen" : "modwidth",
-						"Shape Active" : "shape",
-						"EQ::EQ Gain High::Gain 3" : "eqgain3",
-						"Output::Output DryWet::Dry/Wet" : "drywet",
-						"Bypass State" : "bypass",
-						"Offline::Damp::Damp Decay Low::Decay 1" : "dampdecay1",
 						"Offline::Damp::Damp Freq Bell::Freq 2" : "dampfreq2",
-						"Offline::Damp::Damp Decay Bell::Decay 2" : "dampdecay2",
-						"Output::Output Cascade::Cascade" : "cascade",
 						"Offline::Shape::Length Mode" : "lengthmode",
-						"Realtime::Position::Position Pan::Pan" : "pan",
+						"IR::IR Mode" : "irmode",
+						"Position Active" : "position",
+						"Offline::Damp::Damp Slope High::Slope 3" : "dampslope3",
 						"Offline::Shape::Shape Decay::Decay" : "decay",
+						"Offline::Damp::Damp Freq Low::Freq 1" : "dampfreq1",
+						"Realtime::Position::Position Pan::Pan" : "pan",
+						"Realtime::Modulation::Type" : "modtype",
+						"Offline::Shape::Reverse" : "reverse",
+						"Realtime::Position::Position Depth::Depth" : "depth",
+						"Output::Output Cascade::Cascade" : "cascade",
+						"EQ::EQ Gain High::Gain 3" : "eqgain3",
+						"Modulation Active" : "modulation",
+						"Shape Active" : "shape",
+						"Offline::Shape::Shape Early::Early" : "early",
+						"Offline::Damp::Damp Decay High::Decay 3" : "dampdecay3",
+						"Offline::Shape::Shape Fade Out::Fade Out" : "fadeout",
+						"Realtime::Modulation::Modulation Amount::Amount" : "amount",
+						"EQ::EQ Gain Bell::Gain 2" : "eqgain2",
+						"Offline::Damp::Damp Q Bell::Q 2" : "dampq2",
+						"Offline::Shape::Shape Length Percent::Length" : "lengthpercent",
+						"EQ::EQ Gain Low::Gain 1" : "eqgain1",
 						"Offline::Damp::Damp Slope Low::Slope 1" : "dampslope1",
-						"Realtime::Modulation::Modulation Rate::Rate" : "rate"
+						"Output::Output DryWet::Dry/Wet" : "drywet",
+						"EQ::EQ Routing" : "eq",
+						"Bypass State" : "bypass",
+						"Damp Active" : "damp",
+						"EQ::EQ Freq Bell::Freq 2" : "eqfreq2",
+						"Offline::Damp::Damp Freq High::Freq 3" : "dampfreq3",
+						"Offline::Damp::Damp Decay Bell::Decay 2" : "dampdecay2",
+						"Offline::Damp::Damp Decay Low::Decay 1" : "dampdecay1",
+						"EQ::EQ Q Bell::Q 2" : "eqq2",
+						"Output::Output Predelay::Predelay" : "predelay"
 					}
 ,
 					"color" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
@@ -16345,8 +16656,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -17124,8 +17435,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -17356,8 +17667,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -17402,8 +17713,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -17745,8 +18056,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -18088,8 +18399,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -18382,8 +18693,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 5,
-															"revision" : 2,
+															"minor" : 6,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -20397,8 +20708,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -20810,8 +21121,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -20856,8 +21167,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -21379,8 +21690,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 2,
+											"minor" : 6,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -23335,6 +23646,7 @@
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Modulation Active",
 							"parameter_mmax" : 1.0,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "Active",
 							"parameter_type" : 1
 						}
@@ -23378,6 +23690,7 @@
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Position Active",
 							"parameter_mmax" : 1.0,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "Active",
 							"parameter_type" : 1
 						}
@@ -23422,6 +23735,7 @@
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Damp Active",
 							"parameter_mmax" : 1.0,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "Active",
 							"parameter_type" : 1
 						}
@@ -23466,6 +23780,7 @@
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Shape Active",
 							"parameter_mmax" : 1.0,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "Active",
 							"parameter_type" : 1
 						}
@@ -23494,8 +23809,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 2,
+							"minor" : 6,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -24159,6 +24474,7 @@
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Realtime Tabs",
 							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "Realtime",
 							"parameter_type" : 2
 						}
@@ -24205,6 +24521,7 @@
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Offline Tabs",
 							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
 							"parameter_shortname" : "Offline",
 							"parameter_type" : 2
 						}
@@ -26224,401 +26541,6 @@
 			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [ 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bufresample~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bufreverse~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "hirt.buffer.filter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolvestereo~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convrvrb.realtime~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.damping.cascade.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.jspainter.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.size.resample.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_base_name.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_conv_rvrb_zoom.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_clientlist_alias.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part1.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part3.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convrvrb_rt_part5.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_cr_info_view.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_data_colls.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_check.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_ir_display.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_loading.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_picker.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_set.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_filter_type.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_folder.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_and_display.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_params.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_damp.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_mod.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_pos.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_ir.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_loading_scheme.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_nan_fix.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_output.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_copy_buffers.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_early.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_fix_length.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_partition_late.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_size_resample_feed.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_damp.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_modulation.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_position.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tab_shape.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tabs_offline.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_tabs_realtime.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "./HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "iraverage~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ircropfade~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irdisplay~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irmix~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irstats~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irtrimnorm~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "morphfilter~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
- ],
 		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "AudioStatus_Menu",
