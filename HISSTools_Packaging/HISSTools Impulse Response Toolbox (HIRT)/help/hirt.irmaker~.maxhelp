@@ -2,15 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 1,
-			"revision" : 1,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 87.0, 79.0, 721.0, 686.0 ],
+		"rect" : [ 134.0, 172.0, 721.0, 686.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,8 @@
 		"subpatcher_template" : "<none>",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
+		"cluebar" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-6",
@@ -48,9 +50,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -84,6 +86,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
@@ -317,11 +321,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 310.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -372,7 +378,17 @@
 								}
 
 							}
- ]
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-41", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+ ],
+						"originid" : "pat-92022",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 39.0, 165.0, 78.0, 23.0 ],
@@ -398,9 +414,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -434,6 +450,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -495,6 +513,7 @@
 									"enablevscroll" : 0,
 									"id" : "obj-1",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.irmaker~.maxpat",
 									"numinlets" : 2,
@@ -569,11 +588,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 310.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -615,7 +636,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-92108",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 25.0, 125.0, 35.0, 23.0 ],
@@ -658,15 +681,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 87.0, 105.0, 721.0, 660.0 ],
+						"rect" : [ 134.0, 198.0, 721.0, 660.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -694,6 +717,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"bubble" : 1,
@@ -1105,8 +1130,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 382.0, 337.0, 222.0, 21.0 ],
-									"text" : "Bang on successful completion",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"text" : "Bang on successful completion"
 								}
 
 							}
@@ -1135,11 +1159,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 310.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -1200,6 +1226,42 @@
 								"patchline" : 								{
 									"destination" : [ "obj-16", 0 ],
 									"source" : [ "obj-19", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-40", 0 ],
+									"hidden" : 1,
+									"order" : 3,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-41", 0 ],
+									"hidden" : 1,
+									"order" : 2,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-88", 0 ],
+									"hidden" : 1,
+									"order" : 1,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-91", 0 ],
+									"hidden" : 1,
+									"order" : 0,
+									"source" : [ "obj-6", 1 ]
 								}
 
 							}
@@ -1268,7 +1330,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-92272",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 10.0, 85.0, 50.0, 23.0 ],
@@ -1310,9 +1374,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1346,8 +1410,12 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [  ],
-						"lines" : [  ]
+						"lines" : [  ],
+						"originid" : "pat-92358",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 240.336060000000003, 85.0, 45.0, 23.0 ],
@@ -1365,210 +1433,160 @@
 			}
  ],
 		"lines" : [  ],
+		"originid" : "pat-92020",
 		"parameters" : 		{
-			"obj-3::obj-1::obj-26" : [ "Stereo Mode[2]", "Stereo", 0 ],
-			"obj-3::obj-7::obj-108::obj-90" : [ "number[1]", "number", 0 ],
-			"obj-6::obj-7::obj-64" : [ "PATCH/PRESS[4]", "PATCH/PRESS", 0 ],
-			"obj-3::obj-1::obj-45" : [ "Test Tone Freq[2]", "Freq", 0 ],
-			"obj-6::obj-7::obj-57" : [ "Sweep Time[4]", "Sweep Time", 0 ],
-			"obj-6::obj-7::obj-133" : [ "Trim and Normalize[4]", "Trim", 0 ],
-			"obj-3::obj-7::obj-3" : [ "IR Time[1]", "IR Time", 0 ],
+			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
-			"obj-3::obj-7::obj-2" : [ "Test Tone Channel[1]", "Channel", 0 ],
-			"obj-3::obj-1::obj-108::obj-90" : [ "number[2]", "number", 0 ],
-			"obj-3::obj-1::obj-64" : [ "PATCH/PRESS[2]", "PATCH/PRESS", 0 ],
-			"obj-2::obj-7::obj-130" : [ "Test Tone Mode", "Tone", 0 ],
-			"obj-3::obj-1::obj-133" : [ "Trim and Normalize[2]", "Trim", 0 ],
-			"obj-6::obj-7::obj-50" : [ "Amplitude[4]", "Amp", 0 ],
-			"obj-2::obj-7::obj-127" : [ "Audition Mode", "Audition", 0 ],
-			"obj-6::obj-7::obj-3" : [ "IR Time[4]", "IR Time", 0 ],
-			"obj-3::obj-7::obj-45" : [ "Test Tone Freq[1]", "Freq", 0 ],
-			"obj-2::obj-7::obj-3" : [ "IR Time", "IR Time", 0 ],
-			"obj-3::obj-7::obj-127" : [ "Audition Mode[1]", "Audition", 0 ],
-			"obj-6::obj-7::obj-108::obj-90" : [ "number[3]", "number", 0 ],
-			"obj-3::obj-1::obj-130" : [ "Test Tone Mode[2]", "Tone", 0 ],
-			"obj-2::obj-7::obj-2" : [ "Test Tone Channel", "Channel", 0 ],
-			"obj-3::obj-1::obj-57" : [ "Sweep Time[2]", "Sweep Time", 0 ],
-			"obj-3::obj-1::obj-126" : [ "Input Mode[2]", "Input", 0 ],
-			"obj-6::obj-7::obj-126" : [ "Input Mode[4]", "Input", 0 ],
-			"obj-3::obj-7::obj-133" : [ "Trim and Normalize[1]", "Trim", 0 ],
-			"obj-6::obj-7::obj-127" : [ "Audition Mode[4]", "Audition", 0 ],
-			"obj-3::obj-7::obj-130" : [ "Test Tone Mode[1]", "Tone", 0 ],
-			"obj-3::obj-7::obj-26" : [ "Stereo Mode[1]", "Stereo", 0 ],
-			"obj-3::obj-1::obj-127" : [ "Audition Mode[2]", "Audition", 0 ],
-			"obj-2::obj-7::obj-133" : [ "Trim and Normalize", "Trim", 0 ],
-			"obj-3::obj-1::obj-50" : [ "Amplitude[2]", "Amp", 0 ],
-			"obj-6::obj-7::obj-45" : [ "Test Tone Freq[4]", "Freq", 0 ],
-			"obj-6::obj-7::obj-130" : [ "Test Tone Mode[4]", "Tone", 0 ],
-			"obj-3::obj-7::obj-126" : [ "Input Mode[1]", "Input", 0 ],
 			"obj-2::obj-7::obj-126" : [ "Input Mode", "Input", 0 ],
-			"obj-3::obj-7::obj-57" : [ "Sweep Time[1]", "Sweep Time", 0 ],
+			"obj-2::obj-7::obj-127" : [ "Audition Mode", "Audition", 0 ],
+			"obj-2::obj-7::obj-130" : [ "Test Tone Mode", "Tone", 0 ],
+			"obj-2::obj-7::obj-133" : [ "Trim and Normalize", "Trim", 0 ],
+			"obj-2::obj-7::obj-2" : [ "Test Tone Channel", "Channel", 0 ],
 			"obj-2::obj-7::obj-26" : [ "Stereo Mode", "Stereo", 0 ],
-			"obj-3::obj-1::obj-3" : [ "IR Time[2]", "IR Time", 0 ],
+			"obj-2::obj-7::obj-3" : [ "IR Time", "IR Time", 0 ],
 			"obj-2::obj-7::obj-45" : [ "Test Tone Freq", "Freq", 0 ],
-			"obj-3::obj-1::obj-2" : [ "Test Tone Channel[2]", "Channel", 0 ],
 			"obj-2::obj-7::obj-50" : [ "Amplitude", "Amp", 0 ],
-			"obj-6::obj-7::obj-2" : [ "Test Tone Channel[4]", "Channel", 0 ],
-			"obj-3::obj-7::obj-50" : [ "Amplitude[1]", "Amp", 0 ],
-			"obj-6::obj-7::obj-26" : [ "Stereo Mode[4]", "Stereo", 0 ],
-			"obj-2::obj-7::obj-64" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
-			"obj-3::obj-7::obj-64" : [ "PATCH/PRESS[1]", "PATCH/PRESS", 0 ],
 			"obj-2::obj-7::obj-57" : [ "Sweep Time", "Sweep Time", 0 ],
+			"obj-2::obj-7::obj-64" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
+			"obj-3::obj-1::obj-108::obj-90" : [ "number[2]", "number", 0 ],
+			"obj-3::obj-1::obj-126" : [ "Input Mode[2]", "Input", 0 ],
+			"obj-3::obj-1::obj-127" : [ "Audition Mode[2]", "Audition", 0 ],
+			"obj-3::obj-1::obj-130" : [ "Test Tone Mode[2]", "Tone", 0 ],
+			"obj-3::obj-1::obj-133" : [ "Trim and Normalize[2]", "Trim", 0 ],
+			"obj-3::obj-1::obj-2" : [ "Test Tone Channel[2]", "Channel", 0 ],
+			"obj-3::obj-1::obj-26" : [ "Stereo Mode[2]", "Stereo", 0 ],
+			"obj-3::obj-1::obj-3" : [ "IR Time[2]", "IR Time", 0 ],
+			"obj-3::obj-1::obj-45" : [ "Test Tone Freq[2]", "Freq", 0 ],
+			"obj-3::obj-1::obj-50" : [ "Amplitude[2]", "Amp", 0 ],
+			"obj-3::obj-1::obj-57" : [ "Sweep Time[2]", "Sweep Time", 0 ],
+			"obj-3::obj-1::obj-64" : [ "PATCH/PRESS[2]", "PATCH/PRESS", 0 ],
+			"obj-3::obj-6::obj-1" : [ "live.text[1]", "live.text", 0 ],
+			"obj-3::obj-7::obj-108::obj-90" : [ "number[1]", "number", 0 ],
+			"obj-3::obj-7::obj-126" : [ "Input Mode[1]", "Input", 0 ],
+			"obj-3::obj-7::obj-127" : [ "Audition Mode[1]", "Audition", 0 ],
+			"obj-3::obj-7::obj-130" : [ "Test Tone Mode[1]", "Tone", 0 ],
+			"obj-3::obj-7::obj-133" : [ "Trim and Normalize[1]", "Trim", 0 ],
+			"obj-3::obj-7::obj-2" : [ "Test Tone Channel[1]", "Channel", 0 ],
+			"obj-3::obj-7::obj-26" : [ "Stereo Mode[1]", "Stereo", 0 ],
+			"obj-3::obj-7::obj-3" : [ "IR Time[1]", "IR Time", 0 ],
+			"obj-3::obj-7::obj-45" : [ "Test Tone Freq[1]", "Freq", 0 ],
+			"obj-3::obj-7::obj-50" : [ "Amplitude[1]", "Amp", 0 ],
+			"obj-3::obj-7::obj-57" : [ "Sweep Time[1]", "Sweep Time", 0 ],
+			"obj-3::obj-7::obj-64" : [ "PATCH/PRESS[1]", "PATCH/PRESS", 0 ],
+			"obj-6::obj-6::obj-1" : [ "live.text[2]", "live.text", 0 ],
+			"obj-6::obj-7::obj-108::obj-90" : [ "number[3]", "number", 0 ],
+			"obj-6::obj-7::obj-126" : [ "Input Mode[4]", "Input", 0 ],
+			"obj-6::obj-7::obj-127" : [ "Audition Mode[4]", "Audition", 0 ],
+			"obj-6::obj-7::obj-130" : [ "Test Tone Mode[4]", "Tone", 0 ],
+			"obj-6::obj-7::obj-133" : [ "Trim and Normalize[4]", "Trim", 0 ],
+			"obj-6::obj-7::obj-2" : [ "Test Tone Channel[4]", "Channel", 0 ],
+			"obj-6::obj-7::obj-26" : [ "Stereo Mode[4]", "Stereo", 0 ],
+			"obj-6::obj-7::obj-3" : [ "IR Time[4]", "IR Time", 0 ],
+			"obj-6::obj-7::obj-45" : [ "Test Tone Freq[4]", "Freq", 0 ],
+			"obj-6::obj-7::obj-50" : [ "Amplitude[4]", "Amp", 0 ],
+			"obj-6::obj-7::obj-57" : [ "Sweep Time[4]", "Sweep Time", 0 ],
+			"obj-6::obj-7::obj-64" : [ "PATCH/PRESS[4]", "PATCH/PRESS", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
+				"obj-3::obj-1::obj-2" : 				{
+					"parameter_longname" : "Test Tone Channel[2]"
+				}
+,
 				"obj-3::obj-1::obj-26" : 				{
 					"parameter_longname" : "Stereo Mode[2]"
-				}
-,
-				"obj-3::obj-1::obj-45" : 				{
-					"parameter_longname" : "Test Tone Freq[2]"
-				}
-,
-				"obj-6::obj-7::obj-57" : 				{
-					"parameter_longname" : "Sweep Time[4]"
-				}
-,
-				"obj-3::obj-7::obj-3" : 				{
-					"parameter_longname" : "IR Time[1]"
-				}
-,
-				"obj-3::obj-7::obj-2" : 				{
-					"parameter_longname" : "Test Tone Channel[1]"
-				}
-,
-				"obj-6::obj-7::obj-50" : 				{
-					"parameter_longname" : "Amplitude[4]"
-				}
-,
-				"obj-6::obj-7::obj-3" : 				{
-					"parameter_longname" : "IR Time[4]"
-				}
-,
-				"obj-3::obj-7::obj-45" : 				{
-					"parameter_longname" : "Test Tone Freq[1]"
-				}
-,
-				"obj-3::obj-1::obj-57" : 				{
-					"parameter_longname" : "Sweep Time[2]"
-				}
-,
-				"obj-3::obj-7::obj-26" : 				{
-					"parameter_longname" : "Stereo Mode[1]"
-				}
-,
-				"obj-3::obj-1::obj-50" : 				{
-					"parameter_longname" : "Amplitude[2]"
-				}
-,
-				"obj-6::obj-7::obj-45" : 				{
-					"parameter_longname" : "Test Tone Freq[4]"
-				}
-,
-				"obj-3::obj-7::obj-57" : 				{
-					"parameter_longname" : "Sweep Time[1]"
 				}
 ,
 				"obj-3::obj-1::obj-3" : 				{
 					"parameter_longname" : "IR Time[2]"
 				}
 ,
-				"obj-3::obj-1::obj-2" : 				{
-					"parameter_longname" : "Test Tone Channel[2]"
+				"obj-3::obj-1::obj-45" : 				{
+					"parameter_longname" : "Test Tone Freq[2]"
 				}
 ,
-				"obj-6::obj-7::obj-2" : 				{
-					"parameter_longname" : "Test Tone Channel[4]"
+				"obj-3::obj-1::obj-50" : 				{
+					"parameter_longname" : "Amplitude[2]"
+				}
+,
+				"obj-3::obj-1::obj-57" : 				{
+					"parameter_longname" : "Sweep Time[2]"
+				}
+,
+				"obj-3::obj-6::obj-1" : 				{
+					"parameter_longname" : "live.text[1]"
+				}
+,
+				"obj-3::obj-7::obj-2" : 				{
+					"parameter_longname" : "Test Tone Channel[1]"
+				}
+,
+				"obj-3::obj-7::obj-26" : 				{
+					"parameter_longname" : "Stereo Mode[1]"
+				}
+,
+				"obj-3::obj-7::obj-3" : 				{
+					"parameter_longname" : "IR Time[1]"
+				}
+,
+				"obj-3::obj-7::obj-45" : 				{
+					"parameter_longname" : "Test Tone Freq[1]"
 				}
 ,
 				"obj-3::obj-7::obj-50" : 				{
 					"parameter_longname" : "Amplitude[1]"
 				}
 ,
+				"obj-3::obj-7::obj-57" : 				{
+					"parameter_longname" : "Sweep Time[1]"
+				}
+,
+				"obj-6::obj-6::obj-1" : 				{
+					"parameter_longname" : "live.text[2]"
+				}
+,
+				"obj-6::obj-7::obj-2" : 				{
+					"parameter_longname" : "Test Tone Channel[4]"
+				}
+,
 				"obj-6::obj-7::obj-26" : 				{
 					"parameter_longname" : "Stereo Mode[4]"
 				}
+,
+				"obj-6::obj-7::obj-3" : 				{
+					"parameter_longname" : "IR Time[4]"
+				}
+,
+				"obj-6::obj-7::obj-45" : 				{
+					"parameter_longname" : "Test Tone Freq[4]"
+				}
+,
+				"obj-6::obj-7::obj-50" : 				{
+					"parameter_longname" : "Amplitude[4]"
+				}
+,
+				"obj-6::obj-7::obj-57" : 				{
+					"parameter_longname" : "Sweep Time[4]"
+				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [ 			{
-				"name" : "helpname.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpdetails.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.irmaker~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_ir_maker",
-				"patcherrelativepath" : "../patchers/HIRT_ir_maker",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_im_info_view.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_ir_maker/HIRT_ir_maker_support",
-				"patcherrelativepath" : "../patchers/HIRT_ir_maker/HIRT_ir_maker_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "irmeasure~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irtrimnorm~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "iraverage~.mxo",
-				"type" : "iLaX"
-			}
- ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
+		"oscsendmode" : 0,
+		"oscsendudpaddr" : "127.0.0.1",
+		"oscsendudpport" : 30337,
+		"oscreceivemode" : 0,
+		"oscreceiveudpport" : 30338,
+		"oscqueryenable" : 0,
+		"oscprefixmode" : 0,
+		"oscprefix" : ""
 	}
 
 }

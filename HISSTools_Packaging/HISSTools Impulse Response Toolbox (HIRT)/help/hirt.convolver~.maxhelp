@@ -2,15 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 1,
-			"revision" : 2,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 831.0, 678.0 ],
+		"rect" : [ 100.0, 100.0, 831.0, 678.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,8 @@
 		"subpatcher_template" : "<none>",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
+		"cluebar" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-8",
@@ -60,9 +62,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -96,6 +98,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-26",
@@ -145,12 +149,14 @@
 							}
 , 							{
 								"box" : 								{
+									"basictuning" : 440,
 									"clipheight" : 37.0,
 									"data" : 									{
 										"clips" : [ 											{
 												"absolutepath" : "sacre.aiff",
 												"filename" : "sacre.aiff",
 												"filekind" : "audiofile",
+												"id" : "u291020996",
 												"loop" : 1,
 												"content_state" : 												{
 													"originallength" : [ 0.0, "ticks" ],
@@ -174,12 +180,52 @@
  ]
 									}
 ,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
 									"id" : "obj-30",
 									"maxclass" : "playlist~",
+									"mode" : "basic",
 									"numinlets" : 1,
 									"numoutlets" : 5,
+									"originallength" : [ 0.0, "ticks" ],
+									"originaltempo" : 120.0,
 									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-									"patching_rect" : [ 11.0, 405.5, 231.0, 38.0 ]
+									"parameter_enable" : 0,
+									"patching_rect" : [ 11.0, 405.5, 231.0, 38.0 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ]
 								}
 
 							}
@@ -472,7 +518,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 687.0, 339.0, 24.0, 24.0 ]
+									"patching_rect" : [ 687.0, 339.0, 24.0, 24.0 ],
+									"svg" : ""
 								}
 
 							}
@@ -897,7 +944,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-40",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 56.0, 205.0, 64.0, 23.0 ],
@@ -923,9 +972,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -959,6 +1008,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -983,9 +1034,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 2,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1018,6 +1069,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-10",
@@ -1028,9 +1081,9 @@
 													"patcher" : 													{
 														"fileversion" : 1,
 														"appversion" : 														{
-															"major" : 8,
-															"minor" : 1,
-															"revision" : 2,
+															"major" : 9,
+															"minor" : 0,
+															"revision" : 0,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -1063,6 +1116,8 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "<none>",
+														"assistshowspatchername" : 0,
+														"cluebar" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-6",
@@ -1172,7 +1227,8 @@
 																}
 
 															}
- ]
+ ],
+														"originid" : "pat-1464"
 													}
 ,
 													"patching_rect" : [ 713.5, 78.0, 35.0, 22.0 ],
@@ -1445,7 +1501,8 @@
 												}
 
 											}
- ]
+ ],
+										"originid" : "pat-1462"
 									}
 ,
 									"patching_rect" : [ 91.0, 178.0, 74.0, 23.0 ],
@@ -1764,7 +1821,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-1460",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 41.0, 165.0, 62.0, 23.0 ],
@@ -1790,9 +1849,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1826,6 +1885,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -1835,9 +1896,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 101.0, 332.0, 273.139404296875, 21.0 ],
-									"text" : "(also available as a handy Snippet)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"patching_rect" : [ 101.0, 312.0, 273.139404296875, 21.0 ],
+									"text" : "(also available as a handy Snippet)"
 								}
 
 							}
@@ -1849,7 +1909,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 11.0, 332.0, 88.0, 20.0 ]
+									"patching_rect" : [ 11.0, 312.0, 88.0, 20.0 ]
 								}
 
 							}
@@ -1883,7 +1943,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 101.0, 451.5, 178.0, 50.0 ],
 									"text" : "see a patch where the  hirt.convolver~ abstraction is instantiated as a Bpatcher:",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
 									"textjustification" : 2
 								}
 
@@ -1913,9 +1972,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 2,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1948,6 +2007,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"hidden" : 1,
@@ -2177,7 +2238,9 @@
 												}
 
 											}
- ]
+ ],
+										"originid" : "pat-1468",
+										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
 									"patching_rect" : [ 296.0, 504.761719250000112, 78.139404296875, 23.0 ],
@@ -2217,11 +2280,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 497.0, 230.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -2271,17 +2336,18 @@
 
 							}
  ],
+						"originid" : "pat-1466",
 						"styles" : [ 							{
 								"name" : "AudioStatus_Menu",
 								"default" : 								{
 									"bgfillcolor" : 									{
-										"type" : "color",
+										"angle" : 270.0,
+										"autogradient" : 0,
 										"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
 										"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
 										"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-										"angle" : 270.0,
 										"proportion" : 0.39,
-										"autogradient" : 0
+										"type" : "color"
 									}
 
 								}
@@ -2293,8 +2359,8 @@
 								"name" : "DP.M4L",
 								"default" : 								{
 									"bgcolor" : [ 0.4, 0.4, 0.4, 1.0 ],
-									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"selectioncolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2304,8 +2370,8 @@
 								"name" : "DP.M4L-New",
 								"default" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 0.15 ],
-									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ],
-									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ]
+									"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
+									"textcolor_inverse" : [ 1.0, 1.0, 1.0, 0.15 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2349,17 +2415,17 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
-										"type" : "gradient",
+										"angle" : 270.0,
+										"autogradient" : 0,
+										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
 										"color2" : [ 0.788235, 0.788235, 0.788235, 1.0 ],
-										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-										"angle" : 270.0,
 										"proportion" : 0.39,
-										"autogradient" : 0
+										"type" : "gradient"
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -2411,7 +2477,8 @@
 								"parentstyle" : "",
 								"multi" : 0
 							}
- ]
+ ],
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 26.0, 125.0, 61.0, 23.0 ],
@@ -2454,15 +2521,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 105.0, 831.0, 652.0 ],
+						"rect" : [ 100.0, 126.0, 831.0, 652.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -2490,6 +2557,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -2531,12 +2600,14 @@
 							}
 , 							{
 								"box" : 								{
+									"basictuning" : 440,
 									"clipheight" : 53.0,
 									"data" : 									{
 										"clips" : [ 											{
 												"absolutepath" : "isthatyou.aiff",
 												"filename" : "isthatyou.aiff",
 												"filekind" : "audiofile",
+												"id" : "u090013723",
 												"loop" : 0,
 												"content_state" : 												{
 													"originallength" : [ 0.0, "ticks" ],
@@ -2561,6 +2632,7 @@
 												"absolutepath" : "drumLoop.aif",
 												"filename" : "drumLoop.aif",
 												"filekind" : "audiofile",
+												"id" : "u673013714",
 												"loop" : 1,
 												"content_state" : 												{
 													"originallength" : [ 0.0, "ticks" ],
@@ -2584,12 +2656,52 @@
  ]
 									}
 ,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
 									"id" : "obj-11",
 									"maxclass" : "playlist~",
+									"mode" : "basic",
 									"numinlets" : 1,
 									"numoutlets" : 5,
+									"originallength" : [ 0.0, "ticks" ],
+									"originaltempo" : 120.0,
 									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
 									"patching_rect" : [ 196.0, 255.0, 331.0, 108.0 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ],
 									"waveformdisplay" : 0
 								}
 
@@ -2617,17 +2729,20 @@
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_type" : 3,
-											"parameter_longname" : "toggle",
+											"parameter_initial" : [ 0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "toggle",
 											"parameter_mmax" : 1.0,
-											"parameter_initial" : [ 0 ],
-											"parameter_shortname" : "toggle"
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "toggle",
+											"parameter_type" : 3
 										}
 
 									}
 ,
+									"svg" : "",
 									"varname" : "toggle"
 								}
 
@@ -2752,11 +2867,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 355.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -2849,7 +2966,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-1476",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 10.0, 85.0, 50.0, 23.0 ],
@@ -2891,9 +3010,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2927,8 +3046,12 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [  ],
-						"lines" : [  ]
+						"lines" : [  ],
+						"originid" : "pat-2898",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 287.716277999999988, 85.0, 45.0, 23.0 ],
@@ -2964,768 +3087,462 @@
 
 			}
  ],
+		"originid" : "pat-38",
 		"parameters" : 		{
-			"obj-2::obj-7::obj-3::obj-65::obj-70" : [ "Dry/Wet.val.1366", "Dry/Wet.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-51::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-19::obj-70" : [ "hirt.val[37]", "hirt.val", 0 ],
+			"obj-2::obj-35" : [ "toggle", "toggle", 0 ],
+			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],
-			"obj-2::obj-7::obj-10::obj-3" : [ "EQ Routing", "EQ", 0 ],
-			"obj-7::obj-1::obj-10::obj-53::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-3::obj-63::obj-70" : [ "hirt.val[63]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
-			"obj-7::obj-1::obj-10::obj-3" : [ "EQ Routing[5]", "EQ", 0 ],
-			"obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[87]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-3::obj-64::obj-70" : [ "hirt.val[85]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-17::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-19::obj-70" : [ "hirt.val[37]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-21" : [ "Saturation Type", "Saturation", 0 ],
 			"obj-2::obj-7::obj-10::obj-22::obj-70" : [ "hirt.val[38]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-1::obj-48::obj-70" : [ "hirt.val[31]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-56::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[64]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-17::obj-70" : [ "hirt.val[83]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-55::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-28" : [ "PATCH/PRESS[5]", "PATCH/PRESS", 0 ],
-			"obj-2::obj-7::obj-3::obj-64::obj-70" : [ "Gain.val.1367", "Gain.val", 0 ],
-			"obj-7::obj-1::obj-3::obj-65::obj-70" : [ "hirt.val[62]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-3" : [ "EQ Routing", "EQ", 0 ],
 			"obj-2::obj-7::obj-10::obj-50::obj-70" : [ "hirt.val", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-28" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
-			"obj-7::obj-1::obj-36::obj-131::obj-11" : [ "IR Menu[5]", "IR Menu", 0 ],
-			"obj-2::obj-7::obj-1::obj-97::obj-70" : [ "hirt.val[39]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-36::obj-35" : [ "Drop IR", "live.drop", 3 ],
+			"obj-2::obj-7::obj-10::obj-51::obj-70" : [ "hirt.val[20]", "hirt.val", 0 ],
 			"obj-2::obj-7::obj-10::obj-53::obj-70" : [ "hirt.val[30]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-22::obj-70" : [ "hirt.val[58]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-54::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-55::obj-70" : [ "hirt.val[34]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-10::obj-56::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-48::obj-70" : [ "hirt.val[31]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-59::obj-70" : [ "hirt.val[21]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-1::obj-97::obj-70" : [ "hirt.val[39]", "hirt.val", 0 ],
+			"obj-2::obj-7::obj-28" : [ "PATCH/PRESS", "PATCH/PRESS", 0 ],
+			"obj-2::obj-7::obj-36::obj-131::obj-10" : [ "Category Menu", "Category Menu", 0 ],
 			"obj-2::obj-7::obj-36::obj-131::obj-11" : [ "IR Menu", "IR Menu", 0 ],
+			"obj-2::obj-7::obj-36::obj-35" : [ "Drop IR", "live.drop", 3 ],
+			"obj-2::obj-7::obj-3::obj-63::obj-70" : [ "Width.val.1368", "Width.val", 0 ],
+			"obj-2::obj-7::obj-3::obj-64::obj-70" : [ "Gain.val.1367", "Gain.val", 0 ],
+			"obj-2::obj-7::obj-3::obj-65::obj-70" : [ "Dry/Wet.val.1366", "Dry/Wet.val", 0 ],
+			"obj-3::obj-6::obj-1" : [ "live.text[1]", "live.text", 0 ],
+			"obj-7::obj-1::obj-108::obj-90" : [ "number[3]", "number", 0 ],
+			"obj-7::obj-1::obj-10::obj-17::obj-70" : [ "hirt.val[83]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-10::obj-19::obj-70" : [ "hirt.val[84]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-10::obj-21" : [ "Saturation Type[5]", "Saturation", 0 ],
-			"obj-2::obj-7::obj-10::obj-56::obj-70" : [ "hirt.val[35]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-36::obj-35" : [ "Drop IR[5]", "live.drop", 3 ],
-			"obj-7::obj-1::obj-10::obj-54::obj-70" : [ "hirt.val[81]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-3::obj-63::obj-70" : [ "Width.val.1368", "Width.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-21" : [ "Saturation Type", "Saturation", 0 ],
-			"obj-2::obj-7::obj-1::obj-59::obj-70" : [ "hirt.val[21]", "hirt.val", 0 ],
-			"obj-2::obj-7::obj-10::obj-17::obj-70" : [ "hirt.val[36]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-36::obj-131::obj-10" : [ "Category Menu[5]", "Category Menu", 0 ],
-			"obj-2::obj-7::obj-10::obj-54::obj-70" : [ "hirt.val[33]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-22::obj-70" : [ "hirt.val[58]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-3" : [ "EQ Routing[5]", "EQ", 0 ],
 			"obj-7::obj-1::obj-10::obj-50::obj-70" : [ "hirt.val[55]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-10::obj-55::obj-70" : [ "hirt.val[82]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-10::obj-51::obj-70" : [ "hirt.val[80]", "hirt.val", 0 ],
-			"obj-2::obj-35" : [ "toggle", "toggle", 0 ],
+			"obj-7::obj-1::obj-10::obj-53::obj-70" : [ "hirt.val[56]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-54::obj-70" : [ "hirt.val[81]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-55::obj-70" : [ "hirt.val[82]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-10::obj-56::obj-70" : [ "hirt.val[57]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-1::obj-48::obj-70" : [ "hirt.val[87]", "hirt.val", 0 ],
 			"obj-7::obj-1::obj-1::obj-59::obj-70" : [ "hirt.val[86]", "hirt.val", 0 ],
-			"obj-7::obj-1::obj-108::obj-90" : [ "number[3]", "number", 0 ],
+			"obj-7::obj-1::obj-1::obj-97::obj-70" : [ "hirt.val[64]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-28" : [ "PATCH/PRESS[5]", "PATCH/PRESS", 0 ],
+			"obj-7::obj-1::obj-36::obj-131::obj-10" : [ "Category Menu[5]", "Category Menu", 0 ],
+			"obj-7::obj-1::obj-36::obj-131::obj-11" : [ "IR Menu[5]", "IR Menu", 0 ],
+			"obj-7::obj-1::obj-36::obj-35" : [ "Drop IR[5]", "live.drop", 3 ],
+			"obj-7::obj-1::obj-3::obj-63::obj-70" : [ "hirt.val[63]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-3::obj-64::obj-70" : [ "hirt.val[85]", "hirt.val", 0 ],
+			"obj-7::obj-1::obj-3::obj-65::obj-70" : [ "hirt.val[62]", "hirt.val", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
-				"obj-2::obj-7::obj-3::obj-65::obj-70" : 				{
-					"parameter_longname" : "Dry/Wet.val.1366",
-					"parameter_shortname" : "Dry/Wet.val",
+				"obj-2::obj-7::obj-10::obj-17::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[36]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-10::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[20]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 10
 				}
 ,
 				"obj-2::obj-7::obj-10::obj-19::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
 					"parameter_longname" : "hirt.val[37]",
-					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
 					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-1::obj-10::obj-53::obj-70" : 				{
-					"parameter_longname" : "hirt.val[56]",
-					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-1::obj-3::obj-63::obj-70" : 				{
-					"parameter_longname" : "hirt.val[63]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[87]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-7::obj-1::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "hirt.val[85]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
 					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 4
 				}
 ,
 				"obj-2::obj-7::obj-10::obj-22::obj-70" : 				{
-					"parameter_longname" : "hirt.val[38]",
 					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
 					"parameter_initial" : 125.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-2::obj-7::obj-1::obj-48::obj-70" : 				{
-					"parameter_longname" : "hirt.val[31]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.58,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 50.0, 200.0 ]
-				}
-,
-				"obj-7::obj-1::obj-10::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[57]",
-					"parameter_exponent" : 4.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[38]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
-					"parameter_longname" : "hirt.val[64]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.01,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 1.0, 200.0 ]
-				}
-,
-				"obj-7::obj-1::obj-10::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[83]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
-				}
-,
-				"obj-2::obj-7::obj-10::obj-55::obj-70" : 				{
-					"parameter_longname" : "hirt.val[34]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-2::obj-7::obj-3::obj-64::obj-70" : 				{
-					"parameter_longname" : "Gain.val.1367",
-					"parameter_shortname" : "Gain.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -20.0, 20.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-1::obj-3::obj-65::obj-70" : 				{
-					"parameter_longname" : "hirt.val[62]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 50.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 3
 				}
 ,
 				"obj-2::obj-7::obj-10::obj-50::obj-70" : 				{
 					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
+					"parameter_unitstyle" : 10
 				}
 ,
-				"obj-7::obj-1::obj-36::obj-131::obj-11" : 				{
-					"parameter_longname" : "IR Menu[5]"
-				}
-,
-				"obj-2::obj-7::obj-1::obj-97::obj-70" : 				{
-					"parameter_longname" : "hirt.val[39]",
-					"parameter_invisible" : 1,
-					"parameter_exponent" : 1.01,
+				"obj-2::obj-7::obj-10::obj-51::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[20]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
-					"parameter_initial" : 100.0,
-					"parameter_range" : [ 1.0, 200.0 ]
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
 				}
 ,
 				"obj-2::obj-7::obj-10::obj-53::obj-70" : 				{
-					"parameter_longname" : "hirt.val[30]",
 					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
 					"parameter_initial" : 1000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[30]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-22::obj-70" : 				{
-					"parameter_longname" : "hirt.val[58]",
-					"parameter_exponent" : 4.0,
+				"obj-2::obj-7::obj-10::obj-54::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[33]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
-					"parameter_initial" : 125.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
+					"parameter_unitstyle" : 10
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-19::obj-70" : 				{
-					"parameter_longname" : "hirt.val[84]",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
+				"obj-2::obj-7::obj-10::obj-55::obj-70" : 				{
+					"parameter_exponent" : 1.0,
 					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[34]",
+					"parameter_modmode" : 0,
 					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
 				}
 ,
 				"obj-2::obj-7::obj-10::obj-56::obj-70" : 				{
-					"parameter_longname" : "hirt.val[35]",
 					"parameter_exponent" : 4.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 3,
 					"parameter_initial" : 8000.0,
-					"parameter_range" : [ 10.0, 18000.0 ]
-				}
-,
-				"obj-7::obj-1::obj-36::obj-35" : 				{
-					"parameter_longname" : "Drop IR[5]"
-				}
-,
-				"obj-7::obj-1::obj-10::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[81]",
-					"parameter_exponent" : 3.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[35]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
+					"parameter_unitstyle" : 3
 				}
 ,
-				"obj-2::obj-7::obj-3::obj-63::obj-70" : 				{
-					"parameter_longname" : "Width.val.1368",
-					"parameter_shortname" : "Width.val",
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 5,
+				"obj-2::obj-7::obj-1::obj-48::obj-70" : 				{
+					"parameter_exponent" : 1.58,
 					"parameter_initial" : 100.0,
-					"parameter_range" : [ 0.0, 100.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[31]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 50.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
 				"obj-2::obj-7::obj-1::obj-59::obj-70" : 				{
-					"parameter_longname" : "hirt.val[21]",
 					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
 					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[21]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-17::obj-70" : 				{
-					"parameter_longname" : "hirt.val[36]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
+				"obj-2::obj-7::obj-1::obj-97::obj-70" : 				{
+					"parameter_exponent" : 1.01,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[39]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 1.0, 200.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-3::obj-63::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Width.val.1368",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Width.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-2::obj-7::obj-3::obj-64::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Gain.val.1367",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_shortname" : "Gain.val",
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-2::obj-7::obj-3::obj-65::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "Dry/Wet.val.1366",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
+					"parameter_shortname" : "Dry/Wet.val",
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-3::obj-6::obj-1" : 				{
+					"parameter_longname" : "live.text[1]"
+				}
+,
+				"obj-7::obj-1::obj-10::obj-17::obj-70" : 				{
+					"parameter_exponent" : 3.0,
 					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[83]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-7::obj-1::obj-10::obj-19::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[84]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-7::obj-1::obj-10::obj-22::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 125.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[58]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-7::obj-1::obj-10::obj-50::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.707107,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[55]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-7::obj-1::obj-10::obj-51::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[80]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-7::obj-1::obj-10::obj-53::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 1000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[56]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-7::obj-1::obj-10::obj-54::obj-70" : 				{
+					"parameter_exponent" : 3.0,
+					"parameter_initial" : 0.5,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[81]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.05, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 10
+				}
+,
+				"obj-7::obj-1::obj-10::obj-55::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[82]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -18.0, 18.0 ],
+					"parameter_type" : 0,
+					"parameter_units" : " ",
+					"parameter_unitstyle" : 4
+				}
+,
+				"obj-7::obj-1::obj-10::obj-56::obj-70" : 				{
+					"parameter_exponent" : 4.0,
+					"parameter_initial" : 8000.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[57]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 10.0, 18000.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 3
+				}
+,
+				"obj-7::obj-1::obj-1::obj-48::obj-70" : 				{
+					"parameter_exponent" : 1.58,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[87]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 50.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-7::obj-1::obj-1::obj-59::obj-70" : 				{
+					"parameter_exponent" : 2.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[86]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 2
+				}
+,
+				"obj-7::obj-1::obj-1::obj-97::obj-70" : 				{
+					"parameter_exponent" : 1.01,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 1,
+					"parameter_longname" : "hirt.val[64]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ 1.0, 200.0 ],
+					"parameter_type" : 0,
+					"parameter_unitstyle" : 5
 				}
 ,
 				"obj-7::obj-1::obj-36::obj-131::obj-10" : 				{
 					"parameter_longname" : "Category Menu[5]"
 				}
 ,
-				"obj-2::obj-7::obj-10::obj-54::obj-70" : 				{
-					"parameter_longname" : "hirt.val[33]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.5,
-					"parameter_range" : [ 0.05, 18.0 ]
+				"obj-7::obj-1::obj-36::obj-131::obj-11" : 				{
+					"parameter_longname" : "IR Menu[5]"
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-50::obj-70" : 				{
-					"parameter_longname" : "hirt.val[55]",
-					"parameter_exponent" : 3.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 10,
-					"parameter_initial" : 0.707107,
-					"parameter_range" : [ 0.05, 18.0 ]
+				"obj-7::obj-1::obj-36::obj-35" : 				{
+					"parameter_longname" : "Drop IR[5]"
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-55::obj-70" : 				{
-					"parameter_longname" : "hirt.val[82]",
+				"obj-7::obj-1::obj-3::obj-63::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 100.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[63]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
+					"parameter_unitstyle" : 5
+				}
+,
+				"obj-7::obj-1::obj-3::obj-64::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 0.0,
+					"parameter_initial_enable" : 0,
+					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[85]",
+					"parameter_modmode" : 0,
+					"parameter_range" : [ -20.0, 20.0 ],
+					"parameter_type" : 0,
 					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
+					"parameter_unitstyle" : 4
 				}
 ,
-				"obj-7::obj-1::obj-10::obj-51::obj-70" : 				{
-					"parameter_longname" : "hirt.val[80]",
+				"obj-7::obj-1::obj-3::obj-65::obj-70" : 				{
+					"parameter_exponent" : 1.0,
+					"parameter_initial" : 50.0,
+					"parameter_initial_enable" : 0,
 					"parameter_invisible" : 0,
+					"parameter_longname" : "hirt.val[62]",
 					"parameter_modmode" : 0,
+					"parameter_range" : [ 0.0, 100.0 ],
 					"parameter_type" : 0,
-					"parameter_unitstyle" : 4,
-					"parameter_units" : " ",
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ -18.0, 18.0 ],
-					"parameter_exponent" : 1.0
-				}
-,
-				"obj-7::obj-1::obj-1::obj-59::obj-70" : 				{
-					"parameter_longname" : "hirt.val[86]",
-					"parameter_exponent" : 2.0,
-					"parameter_invisible" : 0,
-					"parameter_modmode" : 0,
-					"parameter_type" : 0,
-					"parameter_unitstyle" : 2,
-					"parameter_initial" : 0.0,
-					"parameter_range" : [ 0.0, 200.0 ]
+					"parameter_unitstyle" : 5
 				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [ 			{
-				"name" : "helpname.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpdetails.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpargs.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "isthatyou.aiff",
-				"bootpath" : "C74:/docs/tutorial-patchers/msp-tut",
-				"type" : "AIFF",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "drumLoop.aif",
-				"bootpath" : "C74:/media/msp",
-				"type" : "AIFF",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolver~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver",
-				"patcherrelativepath" : "../patchers/HIRT_convolver",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_decay_size_pre.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.dial.linear.only.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_cv_info_view.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_output_mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolver_clientlist_alias.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolver.realtime~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolvestereo~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolver_rt_part1.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolver_rt_part3.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_params.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_ir_single.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_filter_type.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_loading.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_loading_scheme.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_set.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_check.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_base_name.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_folder.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_data_colls.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_file_picker.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_sat.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_interface_eq.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/jsui",
-				"patcherrelativepath" : "../jsui",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_zoom_factor.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_nan_fix.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_gain_display_single.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_convolver/HIRT_convolver_support",
-				"patcherrelativepath" : "../patchers/HIRT_convolver/HIRT_convolver_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.size.resample.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_size_resample_feed.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support",
-				"patcherrelativepath" : "../patchers/HIRT_reverb/HIRT_reverb_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_convolution_rt_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "sacre.aiff",
-				"bootpath" : "C74:/docs/tutorial-patchers/msp-tut",
-				"type" : "AIFF",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "iraverage~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irdisplay~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "morphfilter~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "irstats~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bufresample~.mxo",
-				"type" : "iLaX"
-			}
- ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
+		"oscsendmode" : 0,
+		"oscsendudpaddr" : "127.0.0.1",
+		"oscsendudpport" : 30337,
+		"oscreceivemode" : 0,
+		"oscreceiveudpport" : 30338,
+		"oscqueryenable" : 0,
+		"oscprefixmode" : 0,
+		"oscprefix" : ""
 	}
 
 }

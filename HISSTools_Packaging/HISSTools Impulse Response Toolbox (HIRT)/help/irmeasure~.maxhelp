@@ -2,15 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 1,
-			"revision" : 1,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 45.0, 826.0, 721.0 ],
+		"rect" : [ 134.0, 138.0, 826.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,8 @@
 		"subpatcher_template" : "<none>",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
+		"cluebar" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"hidden" : 1,
@@ -92,9 +94,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -127,6 +129,8 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "<none>",
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -584,6 +588,7 @@
 
 							}
  ],
+						"originid" : "pat-12226",
 						"toolbaradditions" : [ "transport", "audiosolo", "audiomute" ],
 						"toolbarexclusions" : [ "audiopowerctrl", "browsebeap", "browsevizzie", "lessonbrowser" ]
 					}
@@ -621,7 +626,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 291.666687000000024, 504.979247999999984, 95.5, 23.0 ],
-					"text" : "8.1.1",
+					"text" : "9.0.0",
 					"textjustification" : 2
 				}
 
@@ -716,9 +721,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -752,6 +757,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -762,9 +769,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 1,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -797,6 +804,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"hidden" : 1,
@@ -909,7 +918,8 @@
 												}
 
 											}
- ]
+ ],
+										"originid" : "pat-12230"
 									}
 ,
 									"patching_rect" : [ 275.410888999999997, 108.091064000000003, 44.0, 23.0 ],
@@ -1692,7 +1702,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-12228",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 70.0, 245.0, 131.0, 23.0 ],
@@ -1717,9 +1729,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1753,6 +1765,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"hidden" : 1,
@@ -1763,9 +1777,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 1,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1798,6 +1812,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"hidden" : 1,
@@ -1869,7 +1885,8 @@
 												}
 
 											}
- ]
+ ],
+										"originid" : "pat-12234"
 									}
 ,
 									"patching_rect" : [ 516.888030999999955, 66.807250999999994, 42.252685999999997, 23.0 ],
@@ -2521,7 +2538,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-12232",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 55.0, 205.0, 135.0, 23.0 ],
@@ -2546,9 +2565,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2582,6 +2601,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
@@ -2628,9 +2649,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 1,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2663,6 +2684,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-1",
@@ -2918,7 +2941,8 @@
 												}
 
 											}
- ]
+ ],
+										"originid" : "pat-12238"
 									}
 ,
 									"patching_rect" : [ 81.0, 397.567627000000016, 58.0, 23.0 ],
@@ -3141,10 +3165,12 @@
 									"patching_rect" : [ 622.0, 137.567626999999987, 53.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "number",
+											"parameter_initial" : [ 2 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 2 ],
+											"parameter_longname" : "number",
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
 											"parameter_shortname" : "number",
 											"parameter_type" : 3
 										}
@@ -3171,10 +3197,12 @@
 									"patching_rect" : [ 541.0, 137.567626999999987, 53.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "number[1]",
+											"parameter_initial" : [ 2 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
-											"parameter_initial" : [ 2 ],
+											"parameter_longname" : "number[1]",
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
 											"parameter_shortname" : "number[1]",
 											"parameter_type" : 3
 										}
@@ -3664,7 +3692,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-12236",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 40.0, 165.0, 131.0, 23.0 ],
@@ -3689,9 +3719,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3725,6 +3755,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-42",
@@ -3735,9 +3767,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 1,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3770,6 +3802,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-1",
@@ -3786,7 +3820,7 @@
 												"box" : 												{
 													"code" : "\r\nrequire(\"hirt_eq_library\");\r\n\r\n// svf coefficients calculated externally at max schedular rate\n\r\n// defaults filter=lowshelf, Hz=125, dB=0, q=0.5\nParam\ta1\t(0.982425,\tmin=-1,\t\tmax=1);\nParam\ta2\t(0.008748,\tmin=-1,\t\tmax=1);\nParam\ta3\t(0.000078,\tmin=-1,\t\tmax=1);\nParam\tm0\t(1);\nParam\tm1\t(0);\nParam\tm2\t(0);\n\r\nout1\t= svfSection(in1, a1, a2, a3, m0, m1, m2);\r\n\r\n",
 													"fontface" : 0,
-													"fontname" : "Menlo",
+													"fontname" : "<Monospaced>",
 													"fontsize" : 12.0,
 													"id" : "obj-3",
 													"maxclass" : "codebox",
@@ -3824,6 +3858,7 @@
 
 											}
  ],
+										"originid" : "pat-12242",
 										"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ]
 									}
 ,
@@ -3866,11 +3901,13 @@
 									"patching_rect" : [ 175.388000000000005, 83.099853999999993, 50.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmin" : -100.0,
-											"parameter_longname" : "number[6]",
-											"parameter_invisible" : 1,
-											"parameter_mmax" : 100.0,
 											"parameter_initial" : [ 0.0 ],
+											"parameter_invisible" : 1,
+											"parameter_longname" : "number[6]",
+											"parameter_mmax" : 100.0,
+											"parameter_mmin" : -100.0,
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
 											"parameter_shortname" : "number[5]",
 											"parameter_type" : 0
 										}
@@ -4167,18 +4204,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "bang" ],
 									"patching_rect" : [ 563.5, 216.099853999999993, 251.0, 23.0 ],
-									"saved_object_attributes" : 									{
-										"basictuning" : 440,
-										"followglobaltempo" : 0,
-										"formantcorrection" : 0,
-										"mode" : "basic",
-										"originallength" : [ 3313.023129251700539, "ticks" ],
-										"originaltempo" : 120.000000000000014,
-										"pitchcorrection" : 0,
-										"quality" : "basic",
-										"timestretch" : [ 0 ]
-									}
-,
 									"text" : "sfplay~ 1 @audiofile sho0630.aif @loop 1"
 								}
 
@@ -4417,9 +4442,9 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 1,
-											"revision" : 1,
+											"major" : 9,
+											"minor" : 0,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4452,6 +4477,8 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "<none>",
+										"assistshowspatchername" : 0,
+										"cluebar" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"hidden" : 1,
@@ -4479,12 +4506,14 @@
 													"patching_rect" : [ 408.0, 160.0, 50.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_mmin" : 0.1,
-															"parameter_longname" : "number[2]",
+															"parameter_initial" : [ 2.0 ],
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
+															"parameter_longname" : "number[2]",
 															"parameter_mmax" : 18.0,
-															"parameter_initial" : [ 2.0 ],
+															"parameter_mmin" : 0.1,
+															"parameter_modmode" : 0,
+															"parameter_osc_name" : "<default>",
 															"parameter_shortname" : "number[2]",
 															"parameter_type" : 3
 														}
@@ -4509,12 +4538,14 @@
 													"patching_rect" : [ 311.0, 160.0, 50.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_mmin" : -18.0,
-															"parameter_longname" : "number[3]",
+															"parameter_initial" : [ 1.0 ],
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
+															"parameter_longname" : "number[3]",
 															"parameter_mmax" : 18.0,
-															"parameter_initial" : [ 1.0 ],
+															"parameter_mmin" : -18.0,
+															"parameter_modmode" : 0,
+															"parameter_osc_name" : "<default>",
 															"parameter_shortname" : "number[3]",
 															"parameter_type" : 3
 														}
@@ -4539,12 +4570,14 @@
 													"patching_rect" : [ 211.333313000000004, 160.0, 50.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_mmin" : 30.0,
-															"parameter_longname" : "number[4]",
+															"parameter_initial" : [ 800.0 ],
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
+															"parameter_longname" : "number[4]",
 															"parameter_mmax" : 18000.0,
-															"parameter_initial" : [ 800.0 ],
+															"parameter_mmin" : 30.0,
+															"parameter_modmode" : 0,
+															"parameter_osc_name" : "<default>",
 															"parameter_shortname" : "number[4]",
 															"parameter_type" : 3
 														}
@@ -4567,13 +4600,15 @@
 													"patching_rect" : [ 131.5, 58.0, 100.0, 22.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
-															"parameter_longname" : "umenu",
+															"parameter_enum" : [ "Bypass", "Lowpass", "Bandpass", "Highpass", "Peak", "Notch", "Resonant", "Bell", "Lowshelf", "Highshelf" ],
+															"parameter_initial" : [ 1 ],
 															"parameter_initial_enable" : 1,
 															"parameter_invisible" : 1,
+															"parameter_longname" : "umenu",
 															"parameter_mmax" : 9.0,
-															"parameter_initial" : [ 1 ],
+															"parameter_modmode" : 0,
+															"parameter_osc_name" : "<default>",
 															"parameter_shortname" : "umenu",
-															"parameter_enum" : [ "Bypass", "Lowpass", "Bandpass", "Highpass", "Peak", "Notch", "Resonant", "Bell", "Lowshelf", "Highshelf" ],
 															"parameter_type" : 3
 														}
 
@@ -4619,9 +4654,9 @@
 													"patcher" : 													{
 														"fileversion" : 1,
 														"appversion" : 														{
-															"major" : 8,
-															"minor" : 1,
-															"revision" : 1,
+															"major" : 9,
+															"minor" : 0,
+															"revision" : 0,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -4654,6 +4689,8 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "",
+														"assistshowspatchername" : 0,
+														"cluebar" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-1",
@@ -4670,7 +4707,7 @@
 																"box" : 																{
 																	"code" : "\r\nrequire(\"hirt_eq_library\");\r\n\r\n// svf coefficients calculated externally at max schedular rate\n\r\n// defaults filter=lowshelf, Hz=125, dB=0, q=0.5\nParam\ta1\t(0.982425,\tmin=-1,\t\tmax=1);\nParam\ta2\t(0.008748,\tmin=-1,\t\tmax=1);\nParam\ta3\t(0.000078,\tmin=-1,\t\tmax=1);\nParam\tm0\t(1);\nParam\tm1\t(0);\nParam\tm2\t(0);\n\r\nout1\t= svfSection(in1, a1, a2, a3, m0, m1, m2);\r\n\r\n",
 																	"fontface" : 0,
-																	"fontname" : "Menlo",
+																	"fontname" : "<Monospaced>",
 																	"fontsize" : 12.0,
 																	"id" : "obj-3",
 																	"maxclass" : "codebox",
@@ -4708,6 +4745,7 @@
 
 															}
  ],
+														"originid" : "pat-12246",
 														"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ]
 													}
 ,
@@ -4871,12 +4909,13 @@
 
 											}
  ],
+										"originid" : "pat-12244",
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+													"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -4894,17 +4933,17 @@
 , 											{
 												"name" : "max6message",
 												"default" : 												{
-													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 													"bgfillcolor" : 													{
-														"type" : "gradient",
+														"angle" : 270.0,
+														"autogradient" : 0,
+														"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 														"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
 														"color2" : [ 0.788235, 0.788235, 0.788235, 1.0 ],
-														"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-														"angle" : 270.0,
 														"proportion" : 0.39,
-														"autogradient" : 0
+														"type" : "gradient"
 													}
-
+,
+													"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
 ,
 												"parentstyle" : "max6box",
@@ -5300,7 +5339,14 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 330.5, 67.316040000000001, 121.0, 147.783814000000007 ]
+									"patching_rect" : [ 330.5, 67.316040000000001, 121.0, 147.783814000000007 ],
+									"saved_attribute_attributes" : 									{
+										"linecolor" : 										{
+											"expression" : ""
+										}
+
+									}
+
 								}
 
 							}
@@ -5539,12 +5585,13 @@
 
 							}
  ],
+						"originid" : "pat-12240",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+									"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5562,17 +5609,17 @@
 , 							{
 								"name" : "max6message",
 								"default" : 								{
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
-										"type" : "gradient",
+										"angle" : 270.0,
+										"autogradient" : 0,
+										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 										"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
 										"color2" : [ 0.788235, 0.788235, 0.788235, 1.0 ],
-										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-										"angle" : 270.0,
 										"proportion" : 0.39,
-										"autogradient" : 0
+										"type" : "gradient"
 									}
-
+,
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "max6box",
@@ -5587,7 +5634,8 @@
 								"parentstyle" : "",
 								"multi" : 0
 							}
- ]
+ ],
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 25.0, 125.0, 68.0, 23.0 ],
@@ -5629,15 +5677,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 71.0, 826.0, 695.0 ],
+						"rect" : [ 134.0, 164.0, 826.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -5665,6 +5713,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
@@ -5870,8 +5920,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 278.0, 632.5, 408.0, 21.0 ],
-									"text" : "Bang on successful completion (can be used for auto-retrieval)",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"text" : "Bang on successful completion (can be used for auto-retrieval)"
 								}
 
 							}
@@ -5885,8 +5934,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 26.0, 262.0, 153.0, 21.0 ],
-									"text" : "Measurement Messages",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"text" : "Measurement Messages"
 								}
 
 							}
@@ -5916,8 +5964,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 223.5, 320.0, 562.0, 50.0 ],
-									"text" : "The ESS (exponentially swept sine) is a signal with good signal to noise and distortion rejection properties for IR measurement. The inverse signal can be convolved directly with the resultant recordings, without the need for deconvolution.",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"text" : "The ESS (exponentially swept sine) is a signal with good signal to noise and distortion rejection properties for IR measurement. The inverse signal can be convolved directly with the resultant recordings, without the need for deconvolution."
 								}
 
 							}
@@ -5966,8 +6013,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 298.0, 392.0, 462.0, 50.0 ],
-									"text" : "The MLS is an ordered noise-like signal containing all possible sequences of -1 and 1 of a given length (according to the order). The overall length of the MLS is (2^N) -1 samples where N is the order.",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"text" : "The MLS is an ordered noise-like signal containing all possible sequences of -1 and 1 of a given length (according to the order). The overall length of the MLS is (2^N) -1 samples where N is the order."
 								}
 
 							}
@@ -6103,8 +6149,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 278.0, 658.0, 408.0, 21.0 ],
-									"text" : "Measurement Progress (0..1 or ms - see @absprogress attribute)",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"text" : "Measurement Progress (0..1 or ms - see @absprogress attribute)"
 								}
 
 							}
@@ -6227,11 +6272,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-6",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 496.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -6316,6 +6363,87 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"hidden" : 1,
+									"order" : 6,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"hidden" : 1,
+									"order" : 7,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-31", 0 ],
+									"hidden" : 1,
+									"order" : 3,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-34", 0 ],
+									"hidden" : 1,
+									"order" : 4,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-41", 0 ],
+									"hidden" : 1,
+									"order" : 8,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-63", 0 ],
+									"hidden" : 1,
+									"order" : 0,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-65", 0 ],
+									"hidden" : 1,
+									"order" : 1,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-68", 0 ],
+									"hidden" : 1,
+									"order" : 2,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-69", 0 ],
+									"hidden" : 1,
+									"order" : 5,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"color" : [ 0.74902, 0.74902, 0.74902, 0.25 ],
 									"destination" : [ "obj-7", 0 ],
 									"midpoints" : [ 791.5, 564.0, 204.5, 564.0 ],
@@ -6346,7 +6474,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-12296",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 10.0, 85.0, 50.0, 23.0 ],
@@ -6388,9 +6518,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -6424,8 +6554,12 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [  ],
-						"lines" : [  ]
+						"lines" : [  ],
+						"originid" : "pat-12304",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 204.908905000000004, 85.0, 45.0, 23.0 ],
@@ -6560,105 +6694,35 @@
 
 			}
  ],
+		"originid" : "pat-12224",
 		"parameters" : 		{
-			"obj-9::obj-84::obj-12" : [ "number[2]", "number[2]", 0 ],
+			"obj-19::obj-13" : [ "number[1]", "number[1]", 0 ],
 			"obj-19::obj-14" : [ "number", "number", 0 ],
+			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-9::obj-50" : [ "number[6]", "number[5]", 0 ],
 			"obj-9::obj-84::obj-10" : [ "number[4]", "number[4]", 0 ],
-			"obj-9::obj-84::obj-4" : [ "umenu", "umenu", 0 ],
 			"obj-9::obj-84::obj-11" : [ "number[3]", "number[3]", 0 ],
-			"obj-19::obj-13" : [ "number[1]", "number[1]", 0 ],
+			"obj-9::obj-84::obj-12" : [ "number[2]", "number[2]", 0 ],
+			"obj-9::obj-84::obj-4" : [ "umenu", "umenu", 0 ],
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [ 			{
-				"name" : "helpname.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpdetails.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpargs.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.svfcoeff.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt_eq_library.genexpr",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/code",
-				"patcherrelativepath" : "../code",
-				"type" : "GenX",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "irmeasure~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
- ],
 		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "AudioStatus_Menu",
 				"default" : 				{
 					"bgfillcolor" : 					{
-						"type" : "color",
+						"angle" : 270.0,
+						"autogradient" : 0,
 						"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
 						"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
 						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0
+						"type" : "color"
 					}
 
 				}
@@ -6669,9 +6733,9 @@
 , 			{
 				"name" : "max6box",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"accentcolor" : [ 0.8, 0.839216, 0.709804, 1.0 ],
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ]
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.5 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -6689,17 +6753,17 @@
 , 			{
 				"name" : "max6message",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
-						"type" : "gradient",
+						"angle" : 270.0,
+						"autogradient" : 0,
+						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 						"color1" : [ 0.866667, 0.866667, 0.866667, 1.0 ],
 						"color2" : [ 0.788235, 0.788235, 0.788235, 1.0 ],
-						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0
+						"type" : "gradient"
 					}
-
+,
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "max6box",
@@ -6773,13 +6837,13 @@
 				"name" : "panelViolet",
 				"default" : 				{
 					"bgfillcolor" : 					{
-						"type" : "color",
+						"angle" : 270.0,
+						"autogradient" : 0,
 						"color" : [ 0.372549, 0.196078, 0.486275, 0.2 ],
 						"color1" : [ 0.454902, 0.462745, 0.482353, 1.0 ],
 						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0
+						"type" : "color"
 					}
 
 				}
@@ -6789,7 +6853,15 @@
 			}
  ],
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
+		"oscsendmode" : 0,
+		"oscsendudpaddr" : "127.0.0.1",
+		"oscsendudpport" : 30337,
+		"oscreceivemode" : 0,
+		"oscreceiveudpport" : 30338,
+		"oscqueryenable" : 0,
+		"oscprefixmode" : 0,
+		"oscprefix" : ""
 	}
 
 }
