@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 122.0, 150.0, 494.0, 386.0 ],
+		"rect" : [ 122.0, 150.0, 508.0, 459.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -29,8 +29,8 @@
 		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
-		"enablevscroll" : 1,
+		"enablehscroll" : 0,
+		"enablevscroll" : 0,
 		"devicewidth" : 0.0,
 		"description" : "",
 		"digest" : "",
@@ -40,6 +40,113 @@
 		"assistshowspatchername" : 0,
 		"cluebar" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"activebgcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"activebgoncolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"activetextcolor" : [ 0.85, 0.85, 0.85, 1.0 ],
+					"activetextoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"bgcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"bgoncolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"bordercolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"focusbordercolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"ignoreclick" : 1,
+					"inactivelcdcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"labeltextcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"lcdbgcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"lcdcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"maxclass" : "live.text",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"parameter_enable" : 1,
+					"parameter_mappable" : 0,
+					"patching_rect" : [ 52.0, 301.0, 140.0, 60.5 ],
+					"pictures" : [ "HIRT_HISSTools_Trace.svg", "HIRT_HISSTools_Trace.svg" ],
+					"presentation" : 1,
+					"presentation_rect" : [ -5.333333492279053, 1.333333373069763, 137.333337426185608, 60.000001788139343 ],
+					"remapsvgcolors" : 1,
+					"saved_attribute_attributes" : 					{
+						"activebgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"activebgoncolor" : 						{
+							"expression" : ""
+						}
+,
+						"activetextcolor" : 						{
+							"expression" : ""
+						}
+,
+						"activetextoncolor" : 						{
+							"expression" : ""
+						}
+,
+						"bgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"bgoncolor" : 						{
+							"expression" : ""
+						}
+,
+						"bordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"focusbordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"inactivelcdcolor" : 						{
+							"expression" : ""
+						}
+,
+						"labeltextcolor" : 						{
+							"expression" : ""
+						}
+,
+						"lcdbgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"lcdcolor" : 						{
+							"expression" : ""
+						}
+,
+						"textcolor" : 						{
+							"expression" : ""
+						}
+,
+						"textoffcolor" : 						{
+							"expression" : ""
+						}
+,
+						"valueof" : 						{
+							"parameter_enum" : [ "val1", "val2" ],
+							"parameter_longname" : "live.text",
+							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
+							"parameter_osc_enabled" : 0,
+							"parameter_osc_name" : "<default>",
+							"parameter_shortname" : "live.text",
+							"parameter_type" : 2
+						}
+
+					}
+,
+					"textcolor" : [ 0.219607843137255, 0.219607843137255, 0.219607843137255, 0.0 ],
+					"textoffcolor" : [ 0.219607843137255, 0.219607843137255, 0.219607843137255, 0.0 ],
+					"usepicture" : 1,
+					"usesvgviewbox" : 1,
+					"varname" : "live.text"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
@@ -56,8 +163,8 @@
 					"id" : "obj-10",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -100,13 +207,37 @@
 						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"comment" : "",
+									"id" : "obj-4",
+									"index" : 3,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 515.0, 463.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 103.0, 390.0, 133.0, 22.0 ],
+									"text" : "prepend activetextcolor"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 50.0, 197.0, 125.0, 22.0 ],
-									"text" : "t l l"
+									"text" : "t l l l"
 								}
 
 							}
@@ -229,7 +360,7 @@
 
 											}
  ],
-										"originid" : "pat-594",
+										"originid" : "pat-12369",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -302,7 +433,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 356.0, 433.0, 30.0, 30.0 ]
+									"patching_rect" : [ 356.0, 463.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -314,15 +445,34 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 156.0, 433.0, 30.0, 30.0 ]
+									"patching_rect" : [ 156.0, 463.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-10",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 238.0, 391.0, 148.0, 20.0 ],
+									"text" : "& activetextoncolor ?"
 								}
 
 							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-35", 0 ],
+									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-35", 0 ],
+									"source" : [ "obj-1", 2 ]
 								}
 
 							}
@@ -331,6 +481,14 @@
 									"destination" : [ "obj-56", 0 ],
 									"midpoints" : [ 59.5, 239.5, 365.5, 239.5 ],
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"midpoints" : [ 112.5, 437.5, 524.5, 437.5 ],
+									"source" : [ "obj-2", 0 ]
 								}
 
 							}
@@ -371,7 +529,7 @@
 
 							}
  ],
-						"originid" : "pat-592",
+						"originid" : "pat-12367",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -400,7 +558,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 125.0, 1.25, 265.0, 22.0 ],
 					"text" : "HISSTools Impulse Response Toolbox v2.1",
-					"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 					"varname" : "autohelp_top_digest[2]"
 				}
 
@@ -445,14 +602,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
 					"patching_rect" : [ 60.0, 61.0, 140.0, 60.5 ],
-					"pic" : "HIRT_HISSTools_Logo.png",
-					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 1.0, 140.0, 60.5 ]
+					"pic" : "HIRT_HISSTools_Logo.png"
 				}
 
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-10", 2 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
 					"order" : 0,
@@ -483,7 +645,21 @@
 
 			}
  ],
-		"originid" : "pat-590",
+		"originid" : "pat-12365",
+		"parameters" : 		{
+			"obj-1" : [ "live.text", "live.text", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute" ],
 		"oscsendmode" : 0,

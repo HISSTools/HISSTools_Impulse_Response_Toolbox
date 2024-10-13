@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 129.0, 158.0, 640.0, 480.0 ],
+		"rect" : [ 129.0, 158.0, 564.0, 451.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -41,6 +41,23 @@
 		"cluebar" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"handoff" : "",
+					"hint" : "HISSTools Overview",
+					"hltcolor" : [ 0.819607843137255, 0.211764705882353, 0.149019607843137, 0.5 ],
+					"id" : "obj-4",
+					"maxclass" : "ubutton",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "bang", "bang", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 287.0, 86.0, 65.0, 35.5 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 3.0, 313.0, 49.333334000000001 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -56,8 +73,8 @@
 					"id" : "obj-10",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -100,13 +117,37 @@
 						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"comment" : "",
+									"id" : "obj-4",
+									"index" : 3,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 515.0, 463.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 103.0, 390.0, 133.0, 22.0 ],
+									"text" : "prepend activetextcolor"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 50.0, 197.0, 125.0, 22.0 ],
-									"text" : "t l l"
+									"text" : "t l l l"
 								}
 
 							}
@@ -229,7 +270,7 @@
 
 											}
  ],
-										"originid" : "pat-588",
+										"originid" : "pat-12363",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -302,7 +343,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 356.0, 433.0, 30.0, 30.0 ]
+									"patching_rect" : [ 356.0, 463.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -314,15 +355,34 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 156.0, 433.0, 30.0, 30.0 ]
+									"patching_rect" : [ 156.0, 463.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-10",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 238.0, 391.0, 148.0, 20.0 ],
+									"text" : "& activetextoncolor ?"
 								}
 
 							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-35", 0 ],
+									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-35", 0 ],
+									"source" : [ "obj-1", 2 ]
 								}
 
 							}
@@ -331,6 +391,14 @@
 									"destination" : [ "obj-56", 0 ],
 									"midpoints" : [ 59.5, 239.5, 365.5, 239.5 ],
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"midpoints" : [ 112.5, 437.5, 524.5, 437.5 ],
+									"source" : [ "obj-2", 0 ]
 								}
 
 							}
@@ -371,7 +439,7 @@
 
 							}
  ],
-						"originid" : "pat-586",
+						"originid" : "pat-12361",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -389,23 +457,6 @@
 			}
 , 			{
 				"box" : 				{
-					"handoff" : "",
-					"hint" : "HISSTools Overview",
-					"hltcolor" : [ 0.819607843137255, 0.211764705882353, 0.149019607843137, 0.5 ],
-					"id" : "obj-4",
-					"maxclass" : "ubutton",
-					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "bang", "bang", "", "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 257.0, 86.0, 65.0, 35.5 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 3.0, 313.0, 49.333334000000001 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-3",
 					"ignoreclick" : 1,
@@ -413,7 +464,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 371.166672000000005, 51.0, 22.0 ],
+					"patching_rect" : [ 287.0, 371.0, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -428,7 +479,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 304.166672000000005, 212.0, 35.0 ],
+					"patching_rect" : [ 287.0, 304.0, 212.0, 35.0 ],
 					"text" : "loadunique HISSTools.Impulse.Response.Toolbox"
 				}
 
@@ -446,7 +497,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 2.25, 219.0, 20.0 ],
 					"text" : "HISSTools Impulse Response Toolbox v2.1",
-					"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"textcolor" : [ 0.85, 0.85, 0.85, 1.0 ],
 					"textjustification" : 2,
 					"varname" : "autohelp_top_digest[2]"
 				}
@@ -464,7 +515,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 16.583334000000001, 219.0, 20.0 ],
 					"text" : "Alex Harker and Pierre Alexandre Tremblay",
-					"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
+					"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 					"textjustification" : 2
 				}
 
@@ -481,7 +532,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 31.916668000000001, 219.0, 20.0 ],
 					"text" : "CeReNeM - The University of Huddersfield",
-					"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
+					"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 					"textjustification" : 2
 				}
 
@@ -495,15 +546,127 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 257.0, 86.0, 65.0, 35.5 ],
-					"pic" : "HIRT_HISSTools_Logo.png",
+					"patching_rect" : [ 287.0, 86.0, 65.0, 35.5 ],
+					"pic" : "HIRT_HISSTools_Logo.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"activebgcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"activebgoncolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"activetextcolor" : [ 0.85, 0.85, 0.85, 1.0 ],
+					"activetextoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"bgcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"bgoncolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"bordercolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"focusbordercolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"ignoreclick" : 1,
+					"inactivelcdcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"labeltextcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"lcdbgcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"lcdcolor" : [ 0.262745098039216, 0.262745098039216, 0.262745098039216, 0.0 ],
+					"maxclass" : "live.text",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"parameter_enable" : 1,
+					"parameter_mappable" : 0,
+					"patching_rect" : [ 118.0, 291.416672000000062, 140.0, 60.5 ],
+					"pictures" : [ "HIRT_HISSTools_Trace.svg", "HIRT_HISSTools_Trace.svg" ],
 					"presentation" : 1,
-					"presentation_rect" : [ 218.0, 1.0, 110.0, 60.076923076923073 ]
+					"presentation_rect" : [ 220.0, 1.5, 98.0, 52.25 ],
+					"remapsvgcolors" : 1,
+					"saved_attribute_attributes" : 					{
+						"activebgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"activebgoncolor" : 						{
+							"expression" : ""
+						}
+,
+						"activetextcolor" : 						{
+							"expression" : ""
+						}
+,
+						"activetextoncolor" : 						{
+							"expression" : ""
+						}
+,
+						"bgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"bgoncolor" : 						{
+							"expression" : ""
+						}
+,
+						"bordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"focusbordercolor" : 						{
+							"expression" : ""
+						}
+,
+						"inactivelcdcolor" : 						{
+							"expression" : ""
+						}
+,
+						"labeltextcolor" : 						{
+							"expression" : ""
+						}
+,
+						"lcdbgcolor" : 						{
+							"expression" : ""
+						}
+,
+						"lcdcolor" : 						{
+							"expression" : ""
+						}
+,
+						"textcolor" : 						{
+							"expression" : ""
+						}
+,
+						"textoffcolor" : 						{
+							"expression" : ""
+						}
+,
+						"valueof" : 						{
+							"parameter_enum" : [ "val1", "val2" ],
+							"parameter_longname" : "live.text",
+							"parameter_mmax" : 1,
+							"parameter_modmode" : 0,
+							"parameter_osc_enabled" : 0,
+							"parameter_osc_name" : "<default>",
+							"parameter_shortname" : "live.text",
+							"parameter_type" : 2
+						}
+
+					}
+,
+					"textcolor" : [ 0.219607843137255, 0.219607843137255, 0.219607843137255, 0.0 ],
+					"textoffcolor" : [ 0.219607843137255, 0.219607843137255, 0.219607843137255, 0.0 ],
+					"usepicture" : 1,
+					"usesvgviewbox" : 1,
+					"varname" : "live.text"
 				}
 
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-10", 2 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
 					"order" : 0,
@@ -550,7 +713,21 @@
 
 			}
  ],
-		"originid" : "pat-564",
+		"originid" : "pat-12349",
+		"parameters" : 		{
+			"obj-1" : [ "live.text", "live.text", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "Audiomix",
