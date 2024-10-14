@@ -2,15 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 1,
-			"revision" : 1,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 99.0, 79.0, 726.0, 678.0 ],
+		"rect" : [ 134.0, 172.0, 726.0, 678.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,8 @@
 		"subpatcher_template" : "<none>",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
+		"cluebar" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-7",
@@ -48,9 +50,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -84,6 +86,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-6",
@@ -257,18 +261,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "bang" ],
 									"patching_rect" : [ 140.0, 363.0, 335.0, 23.0 ],
-									"saved_object_attributes" : 									{
-										"basictuning" : 440,
-										"followglobaltempo" : 0,
-										"formantcorrection" : 0,
-										"mode" : "basic",
-										"originallength" : [ 3339.319727891156163, "ticks" ],
-										"originaltempo" : 120.0,
-										"pitchcorrection" : 0,
-										"quality" : "basic",
-										"timestretch" : [ 0 ]
-									}
-,
 									"text" : "sfplay~ 2 @audiofile drumLoop.aif @loop 1"
 								}
 
@@ -404,7 +396,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-10280",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 40.0, 165.0, 57.0, 23.0 ],
@@ -429,15 +423,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 726.0, 652.0 ],
+						"rect" : [ 134.0, 198.0, 726.0, 652.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -465,6 +459,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"disabled" : [ 0, 0, 0 ],
@@ -478,13 +474,15 @@
 									"patching_rect" : [ 49.0, 134.0, 18.0, 50.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "radiogroup",
-											"parameter_type" : 3,
-											"parameter_longname" : "radiogroup",
+											"parameter_initial" : [ 2 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "radiogroup",
 											"parameter_mmax" : 2.0,
-											"parameter_initial" : [ 2 ]
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "radiogroup",
+											"parameter_type" : 3
 										}
 
 									}
@@ -527,7 +525,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 241.0, 390.0, 450.0, 21.0 ],
 									"text" : "Red - filter / Yellow - input",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ],
 									"textjustification" : 1
 								}
 
@@ -572,18 +569,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "bang" ],
 									"patching_rect" : [ 157.0, 189.0, 255.0, 23.0 ],
-									"saved_object_attributes" : 									{
-										"basictuning" : 440,
-										"followglobaltempo" : 0,
-										"formantcorrection" : 0,
-										"mode" : "basic",
-										"originallength" : [ 2730.971428571428078, "ticks" ],
-										"originaltempo" : 119.999999999999986,
-										"pitchcorrection" : 0,
-										"quality" : "basic",
-										"timestretch" : [ 0 ]
-									}
-,
 									"text" : "sfplay~ 1 @audiofile cherokee.aif @loop 1"
 								}
 
@@ -614,13 +599,15 @@
 									"patching_rect" : [ 517.0, 189.0, 100.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "umenu",
-											"parameter_type" : 3,
-											"parameter_longname" : "umenu",
+											"parameter_initial" : [ 0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "umenu",
 											"parameter_mmax" : 2.0,
-											"parameter_initial" : [ 0 ]
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "umenu",
+											"parameter_type" : 3
 										}
 
 									}
@@ -651,7 +638,15 @@
 									"numinlets" : 4,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 241.0, 413.0, 450.0, 202.0 ]
+									"patching_rect" : [ 241.0, 413.0, 450.0, 202.0 ],
+									"saved_attribute_attributes" : 									{
+										"textcolor" : 										{
+											"expression" : "themecolor.theme_textcolor"
+										}
+
+									}
+,
+									"textcolor" : [ 0.85, 0.85, 0.85, 1.0 ]
 								}
 
 							}
@@ -669,14 +664,16 @@
 									"patching_rect" : [ 119.0, 413.0, 50.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "number",
-											"parameter_type" : 3,
-											"parameter_mmin" : -80.0,
-											"parameter_longname" : "number",
+											"parameter_initial" : [ -6.0 ],
 											"parameter_initial_enable" : 1,
 											"parameter_invisible" : 1,
+											"parameter_longname" : "number",
 											"parameter_mmax" : 10.0,
-											"parameter_initial" : [ -6.0 ]
+											"parameter_mmin" : -80.0,
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "number",
+											"parameter_type" : 3
 										}
 
 									}
@@ -828,18 +825,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-18",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 69.567627000000002, 400.0, 21.0 ],
-									"text" : "Here multiconvolve~ is used to realise a Linear Phase filter",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"background" : 1,
 									"border" : 0,
 									"filename" : "helpname.js",
@@ -852,6 +837,18 @@
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 10.0, 10.0, 327.199951171875, 57.599853515625 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"background" : 1,
+									"id" : "obj-18",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 10.0, 69.567627000000002, 400.0, 21.0 ],
+									"text" : "Here multiconvolve~ is used to realise a Linear Phase filter"
 								}
 
 							}
@@ -991,7 +988,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-10284",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 55.0, 207.0, 63.0, 23.0 ],
@@ -1016,9 +1015,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1052,6 +1051,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-1",
@@ -1460,7 +1461,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 419.0, 486.5, 229.0, 36.0 ],
 									"text" : "[input chan = 1] / [output chan = input chan] / buffer / [buffer chan = 1]",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -1472,18 +1473,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "bang" ],
 									"patching_rect" : [ 96.0, 448.0, 275.0, 23.0 ],
-									"saved_object_attributes" : 									{
-										"basictuning" : 440,
-										"followglobaltempo" : 0,
-										"formantcorrection" : 0,
-										"mode" : "basic",
-										"originallength" : [ 2708.876190476190459, "ticks" ],
-										"originaltempo" : 120.0,
-										"pitchcorrection" : 0,
-										"quality" : "basic",
-										"timestretch" : [ 0 ]
-									}
-,
 									"text" : "sfplay~ 1 @audiofile jongly.aif @loop 1"
 								}
 
@@ -1531,12 +1520,49 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"background" : 1,
+									"hidden" : 1,
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 257.0, 51.0, 104.0, 23.0 ],
+									"text" : "hirt_colour_hack"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"background" : 1,
+									"hidden" : 1,
+									"id" : "obj-59",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
+									"patching_rect" : [ 257.0, 11.0, 156.0, 23.0 ],
+									"text" : "getattr textcolor @listen 1"
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
 									"midpoints" : [ 507.0, 173.0, 507.0, 173.0 ],
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"color" : [ 0.447518749806177, 0.44751863973454, 0.447518668498017, 0.0 ],
+									"destination" : [ "obj-13", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-10", 0 ]
 								}
 
 							}
@@ -1641,6 +1667,23 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-10", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-59", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"color" : [ 0.447518749806177, 0.44751863973454, 0.447518668498017, 0.0 ],
+									"destination" : [ "obj-36", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-59", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-22", 0 ],
 									"midpoints" : [ 507.0, 209.0, 344.0, 209.0 ],
 									"source" : [ "obj-6", 0 ]
@@ -1677,7 +1720,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-10346",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 25.0, 125.0, 61.0, 23.0 ],
@@ -1719,15 +1764,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 99.0, 105.0, 726.0, 652.0 ],
+						"rect" : [ 0.0, 26.0, 726.0, 652.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -1755,6 +1800,8 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -1991,18 +2038,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "bang" ],
 									"patching_rect" : [ 95.0, 340.0, 275.0, 23.0 ],
-									"saved_object_attributes" : 									{
-										"basictuning" : 440,
-										"followglobaltempo" : 0,
-										"formantcorrection" : 0,
-										"mode" : "basic",
-										"originallength" : [ 2219.080272108843474, "ticks" ],
-										"originaltempo" : 120.0,
-										"pitchcorrection" : 0,
-										"quality" : "basic",
-										"timestretch" : [ 0 ]
-									}
-,
 									"text" : "sfplay~ 2 @audiofile anton.aif"
 								}
 
@@ -2164,11 +2199,13 @@
 									"enablevscroll" : 0,
 									"id" : "obj-7",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 386.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -2291,7 +2328,9 @@
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-10348",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 10.0, 85.0, 50.0, 23.0 ],
@@ -2333,9 +2372,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2369,8 +2408,12 @@
 						"style" : "",
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [  ],
-						"lines" : [  ]
+						"lines" : [  ],
+						"originid" : "pat-10356",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 292.228699000000006, 85.0, 45.0, 23.0 ],
@@ -2388,88 +2431,48 @@
 			}
  ],
 		"lines" : [  ],
+		"originid" : "pat-10278",
 		"parameters" : 		{
-			"obj-6::obj-28" : [ "umenu", "umenu", 0 ],
+			"obj-2::obj-7::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-6::obj-11" : [ "number", "number", 0 ],
+			"obj-6::obj-28" : [ "umenu", "umenu", 0 ],
 			"obj-6::obj-5" : [ "radiogroup", "radiogroup", 0 ],
+			"obj-6::obj-8::obj-21::obj-18::obj-1" : [ "live.text[2]", "live.text", 0 ],
+			"obj-6::obj-8::obj-25::obj-18::obj-1" : [ "live.text[3]", "live.text", 0 ],
+			"obj-6::obj-8::obj-7::obj-1" : [ "live.text[1]", "live.text", 0 ],
 			"parameterbanks" : 			{
 
 			}
+,
+			"parameter_overrides" : 			{
+				"obj-6::obj-8::obj-21::obj-18::obj-1" : 				{
+					"parameter_longname" : "live.text[2]"
+				}
+,
+				"obj-6::obj-8::obj-25::obj-18::obj-1" : 				{
+					"parameter_longname" : "live.text[3]"
+				}
+,
+				"obj-6::obj-8::obj-7::obj-1" : 				{
+					"parameter_longname" : "live.text[1]"
+				}
 
+			}
+,
+			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [ 			{
-				"name" : "helpname.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpdetails.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpargs.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.linearphasefilter~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.linearphasesection~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.convolvestereo~.maxpat",
-				"bootpath" : "~/SDKs/HISSTools_Impulse_Response_Toolbox/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_support",
-				"patcherrelativepath" : "../patchers/HIRT_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "multiconvolve~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
- ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
+		"oscsendmode" : 0,
+		"oscsendudpaddr" : "127.0.0.1",
+		"oscsendudpport" : 30337,
+		"oscreceivemode" : 0,
+		"oscreceiveudpport" : 30338,
+		"oscqueryenable" : 0,
+		"oscprefixmode" : 0,
+		"oscprefix" : ""
 	}
 
 }

@@ -2,15 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 79.0, 739.0, 695.0 ],
+		"rect" : [ 134.0, 172.0, 739.0, 695.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -40,6 +40,7 @@
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
 		"assistshowspatchername" : 0,
+		"cluebar" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-1",
@@ -66,15 +67,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 105.0, 739.0, 669.0 ],
+						"rect" : [ 134.0, 198.0, 739.0, 669.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -103,6 +104,7 @@
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-27",
@@ -135,7 +137,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 83.0, 306.5, 419.0, 21.0 ],
 									"text" : "(& must re-set irvalue~ buffer~ reference with every buffer~ change)",
-									"textcolor" : [ 0.502, 0.0, 0.0, 1.0 ]
+									"textcolor" : [ 0.657440163565426, 0.0, 0.010957336059424, 1.0 ]
 								}
 
 							}
@@ -301,7 +303,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 333.0, 526.0, 372.0, 128.0 ],
 									"setminmax" : [ -40.0, 40.0 ],
-									"slidercolor" : [ 1.0, 0.0, 0.0, 1.0 ],
+									"slidercolor" : [ 0.658823529411765, 0.0, 0.011764705882353, 1.0 ],
 									"thickness" : 1
 								}
 
@@ -425,6 +427,8 @@
 											"parameter_invisible" : 1,
 											"parameter_longname" : "number[1]",
 											"parameter_mmax" : 3.0,
+											"parameter_modmode" : 0,
+											"parameter_osc_name" : "<default>",
 											"parameter_shortname" : "number[1]",
 											"parameter_type" : 3
 										}
@@ -444,6 +448,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
 									"patching_rect" : [ 365.0, 448.0, 178.0, 23.0 ],
 									"text_width" : 83.0
 								}
@@ -519,7 +524,7 @@
 									"format" : 6,
 									"id" : "obj-14",
 									"maxclass" : "flonum",
-									"maximum" : 127.0,
+									"maximum" : 134.0,
 									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
@@ -580,8 +585,9 @@
 									"maxclass" : "bpatcher",
 									"name" : "hirt.credits.mini.maxpat",
 									"numinlets" : 0,
-									"numoutlets" : 0,
+									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 310.0, 11.0, 321.0, 54.0 ],
 									"varname" : "hirt_credits",
 									"viewvisibility" : 1
@@ -617,6 +623,7 @@
 , 							{
 								"box" : 								{
 									"amprange" : [ -40.0, 40.0 ],
+									"color" : [ 0.0, 0.501960784313725, 0.0, 1.0 ],
 									"fontface" : 0,
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
@@ -624,13 +631,22 @@
 									"id" : "obj-25",
 									"ignoreclick" : 1,
 									"linearmode" : 0,
-									"markers" : [ 440.0 ],
+									"markercolor" : [ 0.658823529411765, 0.0, 0.011764705882353, 1.0 ],
+									"markers" : [ 277.182631080343526 ],
 									"maxclass" : "spectrumdraw~",
 									"numinlets" : 4,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 305.0, 503.0, 400.0, 160.0 ],
-									"phaselabels" : 0
+									"phaselabels" : 0,
+									"saved_attribute_attributes" : 									{
+										"textcolor" : 										{
+											"expression" : "themecolor.theme_textcolor"
+										}
+
+									}
+,
+									"textcolor" : [ 0.85, 0.85, 0.85, 1.0 ]
 								}
 
 							}
@@ -915,12 +931,23 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.447518749806177, 0.44751863973454, 0.447518668498017, 0.0 ],
+									"destination" : [ "obj-8", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-23", 0 ],
 									"source" : [ "obj-7", 0 ]
 								}
 
 							}
- ]
+ ],
+						"originid" : "pat-1081",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 10.0, 85.0, 50.0, 23.0 ],
@@ -962,9 +989,9 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -999,8 +1026,11 @@
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
+						"cluebar" : 0,
 						"boxes" : [  ],
-						"lines" : [  ]
+						"lines" : [  ],
+						"originid" : "pat-1089",
+						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
 					"patching_rect" : [ 138.375, 85.0, 45.0, 23.0 ],
@@ -1018,8 +1048,10 @@
 			}
  ],
 		"lines" : [  ],
+		"originid" : "pat-1079",
 		"parameters" : 		{
 			"obj-6::obj-35" : [ "number[1]", "number[1]", 0 ],
+			"obj-6::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -1027,51 +1059,17 @@
 			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [ 			{
-				"name" : "HIRT_HISSTools_Logo.png",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_image",
-				"patcherrelativepath" : "../misc/HIRT_image",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpdetails.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "helpname.js",
-				"bootpath" : "C74:/help/resources",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.credits.mini.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/misc/HIRT_resources",
-				"patcherrelativepath" : "../misc/HIRT_resources",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hirt.helpstarter.js",
-				"bootpath" : "~/Documents/Max 8/Packages/HISSTools Impulse Response Toolbox (HIRT)/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "irvalue~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "spectrumdraw~.mxo",
-				"type" : "iLaX"
-			}
- ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute", "transport" ],
-		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ]
+		"toolbarexclusions" : [ "browsevizzie", "browsebeap" ],
+		"oscsendmode" : 0,
+		"oscsendudpaddr" : "127.0.0.1",
+		"oscsendudpport" : 30337,
+		"oscreceivemode" : 0,
+		"oscreceiveudpport" : 30338,
+		"oscqueryenable" : 0,
+		"oscprefixmode" : 0,
+		"oscprefix" : ""
 	}
 
 }
