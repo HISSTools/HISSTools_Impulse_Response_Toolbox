@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 138.0, 741.0, 721.0 ],
+		"rect" : [ 100.0, 100.0, 741.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 2,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 100,
 		"enablehscroll" : 1,
@@ -58,7 +58,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 164.0, 741.0, 695.0 ],
+						"rect" : [ 0.0, 26.0, 741.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -390,7 +390,7 @@
 
 											}
  ],
-										"originid" : "pat-13280",
+										"originid" : "pat-18756",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -631,7 +631,7 @@
 									"fontface" : 0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frozen_box_attributes" : [ "chan", "mode4", "chan4", "chan2", "mode3", "chan3" ],
+									"frozen_box_attributes" : [ "chan2", "chan3", "mode3", "chan4", "chan", "mode4" ],
 									"id" : "obj-39",
 									"maxclass" : "spectrumdraw~",
 									"mode3" : 2,
@@ -800,7 +800,7 @@
 
 							}
  ],
-						"originid" : "pat-13278",
+						"originid" : "pat-18754",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1171,7 +1171,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 466.0, 241.067626999999987, 145.0, 36.0 ],
 									"text" : "(Switch phase mode to see phase grid/labels)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -1304,7 +1304,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 342.269408999999996, 398.567627000000016, 359.730591000000004, 21.0 ],
 									"text" : "N.B. - Phase values are always referenced to 0π",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -1502,7 +1502,7 @@
 
 							}
  ],
-						"originid" : "pat-13282",
+						"originid" : "pat-18758",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2092,7 +2092,7 @@
 
 							}
  ],
-						"originid" : "pat-13284",
+						"originid" : "pat-18762",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2867,7 +2867,7 @@
 
 							}
  ],
-						"originid" : "pat-13286",
+						"originid" : "pat-18764",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2918,7 +2918,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 741.0, 695.0 ],
+						"rect" : [ 100.0, 126.0, 741.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -2931,7 +2931,7 @@
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
 						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 2,
+						"toptoolbarpinned" : 0,
 						"righttoolbarpinned" : 0,
 						"bottomtoolbarpinned" : 0,
 						"toolbars_unpinned_last_save" : 0,
@@ -2960,7 +2960,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 315.140076000000022, 129.5, 187.0, 21.0 ],
 									"text" : "(to curve number 1)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -2975,7 +2975,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 561.640076000000022, 235.0, 132.0, 21.0 ],
 									"text" : "(curve number 1)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -2990,7 +2990,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 190.640075999999993, 260.0, 132.0, 21.0 ],
 									"text" : "(curve number 2)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -3085,7 +3085,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 278.140076000000022, 170.0, 187.0, 21.0 ],
 									"text" : "(curve number 1)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -3214,7 +3214,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 61.640076000000001, 674.0, 609.514159999999947, 21.0 ],
 									"text" : "select - low freq / high freq / min freq / max freq / min amp / max amp / avg amp",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -3231,7 +3231,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 61.640076000000001, 637.0, 375.0, 23.0 ],
-									"text" : "mouse 4516.409244 32.472259"
+									"text" : "mouse 310.00801 35.221334"
 								}
 
 							}
@@ -3321,7 +3321,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 140.640075999999993, 195.0, 187.0, 21.0 ],
 									"text" : "(curve number 2)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -3754,7 +3754,7 @@
 
 							}
  ],
-						"originid" : "pat-13288",
+						"originid" : "pat-18766",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -3837,7 +3837,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-13296",
+						"originid" : "pat-18774",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -3856,7 +3856,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-13276",
+		"originid" : "pat-18752",
 		"parameters" : 		{
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"parameterbanks" : 			{

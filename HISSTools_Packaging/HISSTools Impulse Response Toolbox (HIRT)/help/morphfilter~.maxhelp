@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 2,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 100,
 		"enablehscroll" : 1,
@@ -483,7 +483,7 @@
 
 											}
  ],
-										"originid" : "pat-13747",
+										"originid" : "pat-18661",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -589,7 +589,7 @@
 
 							}
  ],
-						"originid" : "pat-13745",
+						"originid" : "pat-18659",
 						"styles" : [ 							{
 								"name" : "AudioStatus_Menu",
 								"default" : 								{
@@ -1702,7 +1702,7 @@
 
 							}
  ],
-						"originid" : "pat-13755",
+						"originid" : "pat-18669",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -3143,7 +3143,7 @@
 
 							}
  ],
-						"originid" : "pat-13763",
+						"originid" : "pat-18677",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4592,7 +4592,7 @@
 
 											}
  ],
-										"originid" : "pat-13782",
+										"originid" : "pat-18696",
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
@@ -4748,7 +4748,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 486.5, 138.238281000000001, 284.0, 50.0 ],
+									"patching_rect" : [ 486.5, 138.238281000000001, 287.0, 50.0 ],
 									"text" : "This example cascades four filters using a custom abstraction: gain, lowshelf, peaknotch & highshelf, with damping controls.",
 									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
@@ -5391,7 +5391,7 @@
 
 							}
  ],
-						"originid" : "pat-13779",
+						"originid" : "pat-18693",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -5505,7 +5505,7 @@
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
 						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 2,
+						"toptoolbarpinned" : 0,
 						"righttoolbarpinned" : 0,
 						"bottomtoolbarpinned" : 0,
 						"toolbars_unpinned_last_save" : 0,
@@ -6214,7 +6214,7 @@
 
 							}
  ],
-						"originid" : "pat-13824",
+						"originid" : "pat-18738",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -6297,7 +6297,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-13832",
+						"originid" : "pat-18746",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -6323,7 +6323,7 @@
 
 			}
  ],
-		"originid" : "pat-13743",
+		"originid" : "pat-18657",
 		"parameters" : 		{
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-3::obj-10::obj-10" : [ "cascade_tab_freq_low", "freq", 0 ],

@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 2,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 100,
 		"enablehscroll" : 1,
@@ -588,7 +588,7 @@
 
 							}
  ],
-						"originid" : "pat-12758",
+						"originid" : "pat-18099",
 						"toolbaradditions" : [ "transport", "audiosolo", "audiomute" ],
 						"toolbarexclusions" : [ "audiopowerctrl", "browsebeap", "browsevizzie", "lessonbrowser" ]
 					}
@@ -729,7 +729,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 826.0, 695.0 ],
+						"rect" : [ 0.0, 26.0, 826.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -919,7 +919,7 @@
 
 											}
  ],
-										"originid" : "pat-12762",
+										"originid" : "pat-18103",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -1787,7 +1787,7 @@
 
 							}
  ],
-						"originid" : "pat-12760",
+						"originid" : "pat-18101",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1970,7 +1970,7 @@
 
 											}
  ],
-										"originid" : "pat-12768",
+										"originid" : "pat-18109",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -2686,7 +2686,7 @@
 
 							}
  ],
-						"originid" : "pat-12766",
+						"originid" : "pat-18107",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -3089,7 +3089,7 @@
 
 											}
  ],
-										"originid" : "pat-12774"
+										"originid" : "pat-18115"
 									}
 ,
 									"patching_rect" : [ 81.0, 397.567627000000016, 58.0, 23.0 ],
@@ -3847,7 +3847,7 @@
 
 							}
  ],
-						"originid" : "pat-12772",
+						"originid" : "pat-18113",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4012,7 +4012,7 @@
 
 											}
  ],
-										"originid" : "pat-12778",
+										"originid" : "pat-18119",
 										"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ]
 									}
 ,
@@ -4905,7 +4905,7 @@
 
 															}
  ],
-														"originid" : "pat-12782",
+														"originid" : "pat-18123",
 														"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ]
 													}
 ,
@@ -5069,7 +5069,7 @@
 
 											}
  ],
-										"originid" : "pat-12780",
+										"originid" : "pat-18121",
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
@@ -5822,7 +5822,7 @@
 
 							}
  ],
-						"originid" : "pat-12776",
+						"originid" : "pat-18117",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -5922,7 +5922,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 826.0, 695.0 ],
+						"rect" : [ 100.0, 126.0, 826.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -5935,7 +5935,7 @@
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
 						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 2,
+						"toptoolbarpinned" : 0,
 						"righttoolbarpinned" : 0,
 						"bottomtoolbarpinned" : 0,
 						"toolbars_unpinned_last_save" : 0,
@@ -6721,7 +6721,7 @@
 
 							}
  ],
-						"originid" : "pat-12834",
+						"originid" : "pat-18175",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -6804,7 +6804,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-12842",
+						"originid" : "pat-18183",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -6940,7 +6940,7 @@
 
 			}
  ],
-		"originid" : "pat-12756",
+		"originid" : "pat-18097",
 		"parameters" : 		{
 			"obj-19::obj-13" : [ "number[1]", "number[1]", 0 ],
 			"obj-19::obj-14" : [ "number", "number", 0 ],

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 138.0, 824.0, 721.0 ],
+		"rect" : [ 100.0, 100.0, 824.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 2,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 100,
 		"enablehscroll" : 1,
@@ -123,7 +123,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-186",
+						"originid" : "pat-18417",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -157,7 +157,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 164.0, 824.0, 695.0 ],
+						"rect" : [ 100.0, 126.0, 824.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -170,7 +170,7 @@
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
 						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 2,
+						"toptoolbarpinned" : 0,
 						"righttoolbarpinned" : 0,
 						"bottomtoolbarpinned" : 0,
 						"toolbars_unpinned_last_save" : 0,
@@ -347,7 +347,7 @@
 
 											}
  ],
-										"originid" : "pat-190"
+										"originid" : "pat-18421"
 									}
 ,
 									"patching_rect" : [ 13.5390625, 471.975189, 50.654541015625, 23.0 ],
@@ -561,7 +561,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 42.0, 205.975189, 421.0, 65.0 ],
 									"text" : "N.B.  To measure nonlinear system components you must use the ESS signal. As harmonic distortion can create audible LF components from sub-sonic input components, it is necessary to measure from a lower starting frequency than for measuring linear systems.",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -1581,7 +1581,7 @@
 
 											}
  ],
-										"originid" : "pat-392",
+										"originid" : "pat-18623",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -2361,7 +2361,7 @@
 
 							}
  ],
-						"originid" : "pat-188",
+						"originid" : "pat-18419",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -2430,7 +2430,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-184",
+		"originid" : "pat-18415",
 		"parameters" : 		{
 			"obj-6::obj-33::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-6::obj-53.10::obj-23::obj-1" : [ "live.text[10]", "live.text", 0 ],

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 138.0, 741.0, 721.0 ],
+		"rect" : [ 100.0, 100.0, 741.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 2,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 100,
 		"enablehscroll" : 1,
@@ -75,7 +75,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 164.0, 741.0, 695.0 ],
+						"rect" : [ 100.0, 126.0, 741.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -88,7 +88,7 @@
 						"statusbarvisible" : 2,
 						"toolbarvisible" : 1,
 						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 2,
+						"toptoolbarpinned" : 0,
 						"righttoolbarpinned" : 0,
 						"bottomtoolbarpinned" : 0,
 						"toolbars_unpinned_last_save" : 0,
@@ -309,7 +309,7 @@
 
 											}
  ],
-										"originid" : "pat-718"
+										"originid" : "pat-18643"
 									}
 ,
 									"patching_rect" : [ 493.0, 548.26171875, 37.549072265625, 38.0 ],
@@ -513,7 +513,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 188.0, 234.349243000000001, 170.5, 36.0 ],
 									"text" : "set number of segments (see @segments attribute)",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -858,7 +858,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 273.0, 163.349243000000001, 151.0, 36.0 ],
 									"text" : "calculate approximation - input buffer",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -1110,7 +1110,7 @@
 
 							}
  ],
-						"originid" : "pat-716",
+						"originid" : "pat-18641",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -1242,7 +1242,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-726",
+						"originid" : "pat-18651",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1261,7 +1261,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-714",
+		"originid" : "pat-18639",
 		"parameters" : 		{
 			"obj-2::obj-3::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-2::obj-5" : [ "number", "number", 0 ],
