@@ -204,8 +204,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 508.214966000000004, 418.0, 210.0, 23.0 ],
-									"text" : "buffer~ avg2 \"St Pauls 2-2.wav\" - 1"
+									"patching_rect" : [ 508.214966000000004, 418.0, 206.0, 23.0 ],
+									"text" : "buffer~ avg2 \"St Pauls 2-2.wav\" -1"
 								}
 
 							}
@@ -844,7 +844,7 @@
 
 							}
  ],
-						"originid" : "pat-17965",
+						"originid" : "pat-18085",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -993,7 +993,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-17973",
+						"originid" : "pat-18093",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1012,7 +1012,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-17963",
+		"originid" : "pat-18083",
 		"parameters" : 		{
 			"obj-3::obj-14::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-3::obj-7" : [ "number", "number", 0 ],
