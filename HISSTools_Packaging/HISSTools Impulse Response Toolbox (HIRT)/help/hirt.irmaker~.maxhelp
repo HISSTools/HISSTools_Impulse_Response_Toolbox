@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 721.0, 686.0 ],
+		"rect" : [ 100.0, 100.0, 721.0, 686.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -58,7 +58,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 721.0, 660.0 ],
+						"rect" : [ 100.0, 126.0, 721.0, 660.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -194,7 +194,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 190.0, 270.0, 526.0, 21.0 ],
 									"text" : "[channels index = 0] / [amplitude index = 4] / [sweeptime index = 4] / [irlength index = 4]",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -380,6 +380,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-41", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-6", 1 ]
@@ -387,7 +388,7 @@
 
 							}
  ],
-						"originid" : "pat-92022",
+						"originid" : "pat-12146",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -637,7 +638,7 @@
 
 							}
  ],
-						"originid" : "pat-92108",
+						"originid" : "pat-12232",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -689,7 +690,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 721.0, 660.0 ],
+						"rect" : [ 0.0, 26.0, 721.0, 660.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -833,7 +834,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 436.0, 532.067627000000016, 270.0, 50.0 ],
 									"text" : "The output of the system (e.g. mics in a room) is returned to the object's inputs (here we use send~ and receive~ to do this).",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -862,7 +863,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 398.0, 477.067627000000016, 294.0, 50.0 ],
 									"text" : "measurement outputs need to go into the system to be measured (out to a speaker for instance; here we measure two svf~ objects)",
-									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -901,7 +902,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 34.0, 546.567627000000016, 51.0, 21.0 ],
 									"text" : "e.g.",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 									"textjustification" : 2
 								}
 
@@ -914,7 +915,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 34.0, 491.567627000000016, 51.0, 21.0 ],
 									"text" : "e.g.",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ],
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 									"textjustification" : 2
 								}
 
@@ -1231,6 +1232,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-40", 0 ],
 									"hidden" : 1,
 									"order" : 3,
@@ -1240,6 +1242,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-41", 0 ],
 									"hidden" : 1,
 									"order" : 2,
@@ -1249,6 +1252,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-88", 0 ],
 									"hidden" : 1,
 									"order" : 1,
@@ -1258,6 +1262,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-91", 0 ],
 									"hidden" : 1,
 									"order" : 0,
@@ -1331,7 +1336,7 @@
 
 							}
  ],
-						"originid" : "pat-92272",
+						"originid" : "pat-12396",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1414,7 +1419,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-92358",
+						"originid" : "pat-12482",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1433,7 +1438,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-92020",
+		"originid" : "pat-12144",
 		"parameters" : 		{
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-2::obj-7::obj-108::obj-90" : [ "number", "number", 0 ],

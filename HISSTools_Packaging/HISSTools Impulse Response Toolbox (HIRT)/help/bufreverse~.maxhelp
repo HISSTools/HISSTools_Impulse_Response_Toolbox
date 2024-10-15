@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 720.0, 673.0 ],
+		"rect" : [ 100.0, 100.0, 720.0, 673.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -75,7 +75,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 720.0, 647.0 ],
+						"rect" : [ 100.0, 126.0, 720.0, 647.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -140,7 +140,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 49.0, 204.0, 251.628661999999991, 21.0 ],
 									"text" : "process [target buffer] / [source buffer]",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -564,6 +564,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-33", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-6", 1 ]
@@ -585,7 +586,7 @@
 
 							}
  ],
-						"originid" : "pat-3220",
+						"originid" : "pat-178",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -668,7 +669,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-3228",
+						"originid" : "pat-186",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -687,7 +688,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-3218",
+		"originid" : "pat-176",
 		"parameters" : 		{
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"parameterbanks" : 			{

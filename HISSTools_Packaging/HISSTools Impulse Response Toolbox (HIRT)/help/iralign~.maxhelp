@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 741.0, 677.0 ],
+		"rect" : [ 100.0, 100.0, 741.0, 677.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -58,7 +58,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 741.0, 651.0 ],
+						"rect" : [ 100.0, 126.0, 741.0, 651.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -99,7 +99,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 261.0, 205.0, 435.25, 21.0 ],
 									"text" : "output buffer 1 2 3 etc ...... / input buffer 1 2 3 etc ......",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -114,7 +114,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 196.946625000000012, 123.0, 271.053344999999979, 21.0 ],
 									"text" : "input buffer 1 2 3 etc ......",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -309,7 +309,7 @@
 
 											}
  ],
-										"originid" : "pat-92710"
+										"originid" : "pat-12564"
 									}
 ,
 									"patching_rect" : [ 591.75, 323.0, 91.0, 23.0 ],
@@ -685,7 +685,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 501.0, 238.5, 195.25, 36.0 ],
 									"text" : "Inputs are aligned in corresponding output buffers",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -870,6 +870,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-11", 0 ],
 									"hidden" : 1,
 									"order" : 1,
@@ -879,6 +880,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-5", 0 ],
 									"hidden" : 1,
 									"order" : 2,
@@ -888,6 +890,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-53", 0 ],
 									"hidden" : 1,
 									"order" : 0,
@@ -975,7 +978,7 @@
 
 							}
  ],
-						"originid" : "pat-92708",
+						"originid" : "pat-12562",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1075,7 +1078,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-92718",
+						"originid" : "pat-12572",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1094,7 +1097,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-92706",
+		"originid" : "pat-12560",
 		"parameters" : 		{
 			"obj-2::obj-4::obj-1" : [ "live.text", "live.text", 0 ],
 			"parameterbanks" : 			{

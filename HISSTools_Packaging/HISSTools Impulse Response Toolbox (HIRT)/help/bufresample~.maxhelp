@@ -650,6 +650,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-56", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-6", 1 ]
@@ -682,7 +683,7 @@
 
 							}
  ],
-						"originid" : "pat-92760",
+						"originid" : "pat-144",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1214,7 +1215,7 @@
 
 											}
  ],
-										"originid" : "pat-92772",
+										"originid" : "pat-156",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -1837,6 +1838,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-56", 0 ],
 									"hidden" : 1,
 									"order" : 3,
@@ -1846,6 +1848,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-57", 0 ],
 									"hidden" : 1,
 									"order" : 2,
@@ -1855,6 +1858,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-58", 0 ],
 									"hidden" : 1,
 									"order" : 1,
@@ -1864,6 +1868,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-59", 0 ],
 									"hidden" : 1,
 									"order" : 0,
@@ -1894,7 +1899,7 @@
 
 							}
  ],
-						"originid" : "pat-92770",
+						"originid" : "pat-154",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2553,6 +2558,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-11", 0 ],
 									"hidden" : 1,
 									"order" : 1,
@@ -2562,6 +2568,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-26", 0 ],
 									"hidden" : 1,
 									"order" : 0,
@@ -2602,7 +2609,7 @@
 
 							}
  ],
-						"originid" : "pat-92780",
+						"originid" : "pat-164",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2685,7 +2692,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-92788",
+						"originid" : "pat-172",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ],
 						"bgcolor" : [ 0.94902, 0.94902, 0.94902, 1.0 ],
 						"editing_bgcolor" : [ 0.94902, 0.94902, 0.94902, 1.0 ]
@@ -2708,7 +2715,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-92758",
+		"originid" : "pat-142",
 		"parameters" : 		{
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-6::obj-6::obj-1" : [ "live.text[1]", "live.text", 0 ],

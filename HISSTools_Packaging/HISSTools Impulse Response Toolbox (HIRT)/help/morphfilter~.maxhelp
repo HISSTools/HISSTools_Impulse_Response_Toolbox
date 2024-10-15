@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 138.0, 831.0, 721.0 ],
+		"rect" : [ 100.0, 100.0, 831.0, 721.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -194,7 +194,7 @@
 								"box" : 								{
 									"autofit" : 1,
 									"forceaspect" : 1,
-									"frozen_box_attributes" : [ "forceaspect", "pic", "autofit" ],
+									"frozen_box_attributes" : [ "forceaspect", "autofit", "pic" ],
 									"id" : "obj-1",
 									"ignoreclick" : 1,
 									"maxclass" : "fpic",
@@ -483,7 +483,8 @@
 
 											}
  ],
-										"originid" : "pat-1103"
+										"originid" : "pat-13747",
+										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
 									"patching_rect" : [ 206.0, 378.261719000000028, 83.439453, 23.0 ],
@@ -588,7 +589,7 @@
 
 							}
  ],
-						"originid" : "pat-1101",
+						"originid" : "pat-13745",
 						"styles" : [ 							{
 								"name" : "AudioStatus_Menu",
 								"default" : 								{
@@ -850,9 +851,9 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 11.0, 128.0, 301.0, 36.0 ],
+									"patching_rect" : [ 11.0, 127.0, 301.0, 36.0 ],
 									"text" : "Morphing example with highshelf dB reduction every 250 ms over course of buffer~ length:",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -1701,7 +1702,7 @@
 
 							}
  ],
-						"originid" : "pat-1111",
+						"originid" : "pat-13755",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -3142,7 +3143,7 @@
 
 							}
  ],
-						"originid" : "pat-1119",
+						"originid" : "pat-13763",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -3299,7 +3300,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 84.0, 129.0, 1020.0, 554.0 ],
+										"rect" : [ 40.0, 83.0, 1020.0, 554.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 1,
 										"default_fontsize" : 13.0,
@@ -4591,7 +4592,7 @@
 
 											}
  ],
-										"originid" : "pat-1138",
+										"originid" : "pat-13782",
 										"styles" : [ 											{
 												"name" : "max6box",
 												"default" : 												{
@@ -4748,8 +4749,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 486.5, 138.238281000000001, 284.0, 50.0 ],
-									"text" : "This example cascades four filters using a custom abstraction: gain, highpass, peaknotch & lowpass, with damping controls.",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"text" : "This example cascades four filters using a custom abstraction: gain, lowshelf, peaknotch & highshelf, with damping controls.",
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -4777,7 +4778,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 11.0, 138.238281000000001, 458.5, 50.0 ],
 									"text" : "In the previous \"filter\" tab, the 'Add Filter' button first 'clears' morphfilter~ then adds the new filter specification to it. If there is no initial 'clear', morphfilter~ will cascade all the filters it receives (up to 16 cascaded filters are possible).",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -5390,7 +5391,7 @@
 
 							}
  ],
-						"originid" : "pat-1135",
+						"originid" : "pat-13779",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -5491,7 +5492,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 164.0, 831.0, 695.0 ],
+						"rect" : [ 100.0, 126.0, 831.0, 695.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -5550,7 +5551,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 11.0, 138.0, 371.0, 21.0 ],
 									"text" : "Basic example with NO morphing (just a static filter):",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -5801,7 +5802,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 461.5, 225.0, 183.5, 21.0 ],
 									"text" : "target buffer / source buffer",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -5869,7 +5870,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 461.5, 170.5, 330.0, 50.0 ],
 									"text" : "filter type = gain / [center frequency = 0. Hz] / [Q or slope = 0.] / [starting gain = 0.dB] / [gain alteration amount = 0.dB] / [gain amount rate = 0.ms]",
-									"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -6213,7 +6214,7 @@
 
 							}
  ],
-						"originid" : "pat-1180",
+						"originid" : "pat-13824",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -6296,7 +6297,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-1188",
+						"originid" : "pat-13832",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -6322,7 +6323,7 @@
 
 			}
  ],
-		"originid" : "pat-1099",
+		"originid" : "pat-13743",
 		"parameters" : 		{
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-3::obj-10::obj-10" : [ "cascade_tab_freq_low", "freq", 0 ],

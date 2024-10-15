@@ -364,7 +364,7 @@
 
 											}
  ],
-										"originid" : "pat-1013",
+										"originid" : "pat-13534",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -687,7 +687,8 @@
 
 											}
  ],
-										"originid" : "pat-1015"
+										"originid" : "pat-13536",
+										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
 									"patching_rect" : [ 479.290465999999981, 357.5, 120.0, 23.0 ],
@@ -994,7 +995,8 @@
 
 											}
  ],
-										"originid" : "pat-1017"
+										"originid" : "pat-13538",
+										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
 									"patching_rect" : [ 479.290465999999981, 277.5, 120.0, 23.0 ],
@@ -1584,7 +1586,7 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.0, 0.0, 0.0, 0.0 ],
+									"bgcolor" : [ 0.85, 0.85, 0.85, 0.0 ],
 									"fontface" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
@@ -1640,7 +1642,7 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.0, 0.0, 0.0, 0.0 ],
+									"bgcolor" : [ 0.85, 0.85, 0.85, 0.0 ],
 									"bubbleside" : 3,
 									"fontface" : 2,
 									"fontname" : "Arial",
@@ -2071,7 +2073,7 @@
 
 							}
  ],
-						"originid" : "pat-1011",
+						"originid" : "pat-13532",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2411,7 +2413,7 @@
 
 											}
  ],
-										"originid" : "pat-1023",
+										"originid" : "pat-13544",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -3475,7 +3477,7 @@
 
 							}
  ],
-						"originid" : "pat-1021",
+						"originid" : "pat-13542",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4038,7 +4040,7 @@
 
 							}
  ],
-						"originid" : "pat-1027",
+						"originid" : "pat-13548",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4121,7 +4123,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-1035",
+						"originid" : "pat-13556",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4140,7 +4142,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-1009",
+		"originid" : "pat-13530",
 		"parameters" : 		{
 			"obj-3::obj-6::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-7::obj-27" : [ "umenu", "umenu", 0 ],

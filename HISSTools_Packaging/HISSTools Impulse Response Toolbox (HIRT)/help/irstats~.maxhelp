@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 741.0, 640.0 ],
+		"rect" : [ 100.0, 100.0, 741.0, 640.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -75,7 +75,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 741.0, 614.0 ],
+						"rect" : [ 100.0, 126.0, 741.0, 614.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -170,7 +170,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 444.5, 499.0, 181.0, 23.0 ]
+									"patching_rect" : [ 449.0, 499.0, 181.0, 23.0 ]
 								}
 
 							}
@@ -434,11 +434,11 @@
 
 											}
  ],
-										"originid" : "pat-792",
+										"originid" : "pat-13502",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
-									"patching_rect" : [ 444.5, 390.0, 105.0, 23.0 ],
+									"patching_rect" : [ 449.0, 390.0, 105.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -531,7 +531,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 444.5, 294.0, 105.0, 23.0 ],
+									"patching_rect" : [ 449.0, 294.0, 105.0, 23.0 ],
 									"text" : "t s s s"
 								}
 
@@ -543,7 +543,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 487.5, 334.0, 138.0, 23.0 ],
+									"patching_rect" : [ 492.0, 334.0, 138.0, 23.0 ],
 									"text" : "prepend stats statsbuf"
 								}
 
@@ -661,7 +661,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 465.0, 216.0, 264.0, 21.0 ],
 									"text" : "input buffer / requested stat 1 2 3 etc  ......",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -685,13 +685,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-3",
-									"items" : [ "(List", "of", "Stats)", ",", "<separator>", ",", "t20", ",", "t30", ",", "edt", ",", "onset", ",", "directend", ",", "directexists", ",", "mixing", ",", "center", ",", "clarity", ",", "rms", ",", "peak", ",", "mixingrms", ",", "ned", ",", "gain", ",", "maxgain", ",", "length", ",", "sr" ],
+									"items" : [ "(Choose", "Stats)", ",", "<separator>", ",", "t20", ",", "t30", ",", "edt", ",", "onset", ",", "directend", ",", "directexists", ",", "mixing", ",", "center", ",", "clarity", ",", "rms", ",", "peak", ",", "mixingrms", ",", "ned", ",", "gain", ",", "maxgain", ",", "length", ",", "sr" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 406.0, 254.0, 96.0, 23.0 ],
+									"patching_rect" : [ 406.0, 254.0, 105.0, 23.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_initial" : [ 0 ],
@@ -732,7 +732,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 26.0, 567.0, 322.0, 36.0 ],
 									"text" : "N.B. Times are given in milliseconds unless @timeinsamps is on (which returns time in samples)",
-									"textcolor" : [ 0.501961, 0.501961, 0.501961, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -743,7 +743,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 504.0, 253.0, 225.0, 25.0 ],
+									"patching_rect" : [ 511.0, 253.0, 225.0, 25.0 ],
 									"text" : "Return single stat and description"
 								}
 
@@ -757,7 +757,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 549.5, 444.0, 76.0, 40.0 ],
+									"patching_rect" : [ 554.0, 444.0, 76.0, 40.0 ],
 									"text" : "Description"
 								}
 
@@ -803,7 +803,7 @@
 								"box" : 								{
 									"background" : 1,
 									"id" : "obj-34",
-									"linecolor" : [ 0.498039, 0.498039, 0.498039, 0.5 ],
+									"linecolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
@@ -822,7 +822,7 @@
 								"box" : 								{
 									"background" : 1,
 									"id" : "obj-32",
-									"linecolor" : [ 0.498039, 0.498039, 0.498039, 0.5 ],
+									"linecolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
@@ -841,7 +841,7 @@
 								"box" : 								{
 									"background" : 1,
 									"id" : "obj-30",
-									"linecolor" : [ 0.498039, 0.498039, 0.498039, 0.5 ],
+									"linecolor" : [ 0.85, 0.85, 0.85, 0.33 ],
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
@@ -1000,7 +1000,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 359.5, 605.0, 414.75, 605.0, 414.75, 476.0, 454.0, 476.0 ],
+									"midpoints" : [ 359.5, 605.0, 414.75, 605.0, 414.75, 476.0, 458.5, 476.0 ],
 									"order" : 0,
 									"source" : [ "obj-29", 0 ]
 								}
@@ -1092,13 +1092,13 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
-									"midpoints" : [ 497.0, 373.0, 35.5, 373.0 ],
+									"midpoints" : [ 501.5, 373.0, 35.5, 373.0 ],
 									"source" : [ "obj-8", 0 ]
 								}
 
 							}
  ],
-						"originid" : "pat-790",
+						"originid" : "pat-13500",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1181,7 +1181,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-800",
+						"originid" : "pat-13510",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1200,7 +1200,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-788",
+		"originid" : "pat-13498",
 		"parameters" : 		{
 			"obj-2::obj-3" : [ "umenu", "umenu", 0 ],
 			"obj-2::obj-6::obj-1" : [ "live.text", "live.text", 0 ],

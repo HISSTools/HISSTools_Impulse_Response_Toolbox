@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 726.0, 678.0 ],
+		"rect" : [ 100.0, 100.0, 726.0, 678.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -397,7 +397,7 @@
 
 							}
  ],
-						"originid" : "pat-10280",
+						"originid" : "pat-16960",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -431,7 +431,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 726.0, 652.0 ],
+						"rect" : [ 0.0, 26.0, 726.0, 652.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -989,7 +989,7 @@
 
 							}
  ],
-						"originid" : "pat-10284",
+						"originid" : "pat-16964",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1197,19 +1197,6 @@
 									"outlettype" : [ "bang", "bang" ],
 									"patching_rect" : [ 615.5, 262.0, 45.5, 23.0 ],
 									"text" : "t b b"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"hidden" : 1,
-									"id" : "obj-28",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 417.0, 11.0, 235.0, 23.0 ],
-									"text" : "loadmess symbol \"St Pauls Mono.wav\""
 								}
 
 							}
@@ -1548,6 +1535,20 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"background" : 1,
+									"hidden" : 1,
+									"id" : "obj-28",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 417.0, 11.0, 235.0, 23.0 ],
+									"text" : "loadmess symbol \"St Pauls Mono.wav\""
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -1721,7 +1722,7 @@
 
 							}
  ],
-						"originid" : "pat-10346",
+						"originid" : "pat-17026",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1772,7 +1773,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 726.0, 652.0 ],
+						"rect" : [ 100.0, 126.0, 726.0, 652.0 ],
 						"bglocked" : 1,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -2329,7 +2330,7 @@
 
 							}
  ],
-						"originid" : "pat-10348",
+						"originid" : "pat-17030",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2412,7 +2413,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-10356",
+						"originid" : "pat-17038",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -2431,7 +2432,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-10278",
+		"originid" : "pat-16958",
 		"parameters" : 		{
 			"obj-2::obj-7::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-6::obj-11" : [ "number", "number", 0 ],

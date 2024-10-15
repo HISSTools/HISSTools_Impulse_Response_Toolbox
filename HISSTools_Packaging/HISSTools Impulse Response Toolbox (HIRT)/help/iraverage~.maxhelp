@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 741.0, 692.0 ],
+		"rect" : [ 100.0, 100.0, 741.0, 692.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -58,8 +58,8 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 741.0, 666.0 ],
-						"bglocked" : 1,
+						"rect" : [ 100.0, 126.0, 741.0, 666.0 ],
+						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
 						"default_fontface" : 0,
@@ -160,7 +160,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 534.0, 194.0, 205.0, 36.0 ],
 									"text" : "output buffer / [time multiplier = 1] / input buffer 1 2 3 etc ......",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -175,7 +175,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 408.0, 139.0, 310.214966000000004, 21.0 ],
 									"text" : "output buffer / input buffer 1 2 3 etc ......",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -204,7 +204,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 508.214966000000004, 418.0, 212.0, 23.0 ],
+									"patching_rect" : [ 508.214966000000004, 418.0, 210.0, 23.0 ],
 									"text" : "buffer~ avg2 \"St Pauls 2-2.wav\" - 1"
 								}
 
@@ -661,7 +661,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 56.0, 187.0, 238.214966000000004, 21.0 ],
 									"text" : "\"process\" allows smoothing:",
-									"textcolor" : [ 0.5, 0.5, 0.5, 1.0 ]
+									"textcolor" : [ 0.85, 0.85, 0.85, 0.33 ]
 								}
 
 							}
@@ -736,6 +736,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-10", 0 ],
 									"hidden" : 1,
 									"order" : 1,
@@ -745,6 +746,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-11", 0 ],
 									"hidden" : 1,
 									"order" : 2,
@@ -754,6 +756,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.448, 0.44751863973454, 0.447518668498017, 0.0 ],
 									"destination" : [ "obj-15", 0 ],
 									"hidden" : 1,
 									"order" : 0,
@@ -841,7 +844,7 @@
 
 							}
  ],
-						"originid" : "pat-12000",
+						"originid" : "pat-17965",
 						"styles" : [ 							{
 								"name" : "max6box",
 								"default" : 								{
@@ -990,7 +993,7 @@
 						"cluebar" : 0,
 						"boxes" : [  ],
 						"lines" : [  ],
-						"originid" : "pat-12008",
+						"originid" : "pat-17973",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1009,7 +1012,7 @@
 			}
  ],
 		"lines" : [  ],
-		"originid" : "pat-11998",
+		"originid" : "pat-17963",
 		"parameters" : 		{
 			"obj-3::obj-14::obj-1" : [ "live.text", "live.text", 0 ],
 			"obj-3::obj-7" : [ "number", "number", 0 ],
