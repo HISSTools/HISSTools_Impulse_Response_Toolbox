@@ -532,7 +532,7 @@
 
 											}
  ],
-										"originid" : "pat-12247",
+										"originid" : "pat-14",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -846,7 +846,7 @@
 
 							}
  ],
-						"originid" : "pat-12245",
+						"originid" : "pat-12",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -1122,7 +1122,7 @@
 
 											}
  ],
-										"originid" : "pat-12251",
+										"originid" : "pat-18",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -1277,7 +1277,7 @@
 
 											}
  ],
-										"originid" : "pat-12253",
+										"originid" : "pat-20",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -1687,7 +1687,7 @@
 
 											}
  ],
-										"originid" : "pat-12255",
+										"originid" : "pat-22",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -2028,7 +2028,7 @@
 
 											}
  ],
-										"originid" : "pat-12257",
+										"originid" : "pat-24",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -2555,7 +2555,7 @@
 
 											}
  ],
-										"originid" : "pat-12259",
+										"originid" : "pat-26",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -2725,7 +2725,7 @@
 
 											}
  ],
-										"originid" : "pat-12261",
+										"originid" : "pat-28",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -3107,7 +3107,7 @@
 
 											}
  ],
-										"originid" : "pat-12263",
+										"originid" : "pat-30",
 										"toolbaradditions" : [ "audiosolo", "audiomute" ]
 									}
 ,
@@ -3947,7 +3947,7 @@
 
 							}
  ],
-						"originid" : "pat-12249",
+						"originid" : "pat-16",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4334,7 +4334,7 @@
 
 							}
  ],
-						"originid" : "pat-12265",
+						"originid" : "pat-32",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4808,7 +4808,7 @@
 
 							}
  ],
-						"originid" : "pat-12267",
+						"originid" : "pat-34",
 						"toolbaradditions" : [ "audiosolo", "audiomute" ]
 					}
 ,
@@ -4848,7 +4848,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 19.0, 156.0, 200.0, 474.0 ],
 					"rounded" : 6.0,
-					"tabs" : [ "bufconvolve~", "bufresample~", "bufreverse~", "hirt.convolutionreverb~", "hirt.convolver~", "hirt.irmaker~", "iralign~", "iraverage~", "irextract~", "irinvert~", "irmeasure~", "irnonlin~", "irphase~", "irplapprox~", "irreference~", "irstats~", "irsweeps~", "irtransaural~", "irtrimnorm~", "iruser~", "irvalue~", "morphfilter~", "multiconvolve~", "spectrumdraw~" ]
+					"tabs" : [ "_" ]
 				}
 
 			}
@@ -4938,8 +4938,9 @@
 					"maxclass" : "bpatcher",
 					"name" : "hirt.credits.maxpat",
 					"numinlets" : 0,
-					"numoutlets" : 0,
+					"numoutlets" : 3,
 					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 19.0, 19.0, 382.0, 66.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 19.0, 34.0, 382.0, 66.0 ],
@@ -5146,7 +5147,21 @@
 
 			}
  ],
-		"originid" : "pat-12243",
+		"originid" : "pat-10",
+		"parameters" : 		{
+			"obj-1::obj-1" : [ "live.text", "live.text", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo", "audiomute" ],
 		"oscsendmode" : 0,
