@@ -1,0 +1,2 @@
+max definecommand S patcher inserttextobj spectrumdraw~;
+max definecommandinstructions patcher S "HISSTools spectrumdraw~ ui";
