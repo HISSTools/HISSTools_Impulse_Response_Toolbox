@@ -73,9 +73,9 @@ jobs:
           path: "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support/"
       - name: Build mac externals
         run: |
-             xcodebuild -project 'm4l/M4L_Convolution_Reverb_Externals.xcodeproj' -scheme 'All Tools' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
+             xcodebuild -project 'm4l/M4L_Convolution_Reverb_Externals.xcodeproj' -scheme 'All Tools' -destination 'generic/platform=macOS' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
              mv m4l/build-mac/* "hirt/HISSTools_Packaging/HISSTools Impulse Response Toolbox (HIRT)/patchers/HIRT_reverb/HIRT_reverb_support/"
-             xcodebuild -project 'hirt/HISSTools_IR_Toolbox.xcodeproj' -scheme 'All HIRT Externals' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
+             xcodebuild -project 'hirt/HISSTools_IR_Toolbox.xcodeproj' -scheme 'All HIRT Externals' -destination 'generic/platform=macOS' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES
       - name: Setup keychain and identities
         shell: bash
         env:  
